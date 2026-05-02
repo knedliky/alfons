@@ -14,5 +14,7 @@ export * from './feedback/index.js';
 export * from './headers/index.js';
 // Pickers
 export * from './pickers/index.js';
+// Skeletons
+export * from './skeletons/index.js';
 // Admin atoms
 export * from './admin/index.js';
