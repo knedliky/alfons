@@ -25,3 +25,12 @@ export type { TooltipProps } from './Tooltip.svelte';
 
 export { default as Portrait } from './Portrait.svelte';
 export type { PortraitProps } from './Portrait.svelte';
+
+export { default as Badge } from './Badge.svelte';
+export type { BadgeProps } from './Badge.svelte';
+
+export { default as Icon } from './Icon.svelte';
+export type { IconName, IconProps } from './Icon.svelte';
+
+export { default as Divider } from './Divider.svelte';
+export type { DividerProps } from './Divider.svelte';
