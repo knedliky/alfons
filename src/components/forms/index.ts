@@ -15,5 +15,21 @@ export type { NumberFieldProps } from './NumberField.svelte';
 export { default as BoolField } from './BoolField.svelte';
 export type { BoolFieldProps } from './BoolField.svelte';
 
+export { default as DateField } from './DateField.svelte';
+export type { DateFieldProps } from './DateField.svelte';
+
+export { default as SelectField } from './SelectField.svelte';
+export type { SelectFieldProps } from './SelectField.svelte';
+
+export { default as MultiSelectField } from './MultiSelectField.svelte';
+export type { MultiSelectFieldProps } from './MultiSelectField.svelte';
+
 // Co-located field option types
-export type { TextFieldOptions, NumberFieldOptions, BoolFieldOptions } from './types.js';
+export type {
+	TextFieldOptions,
+	NumberFieldOptions,
+	BoolFieldOptions,
+	DateFieldOptions,
+	SelectFieldOptions,
+	MultiSelectFieldOptions
+} from './types.js';

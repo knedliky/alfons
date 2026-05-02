@@ -31,3 +31,26 @@ export interface NumberFieldOptions {
 export interface BoolFieldOptions {
 	/* No options defined by PocketBase for bool fields at present */
 }
+
+/**
+ * Options for date fields — mirrors PocketBase date field schema options.
+ * Currently empty as PocketBase date fields have no configurable options
+ * beyond min/max which are handled as direct props on the field component.
+ */
+export interface DateFieldOptions {
+	/* No options defined by PocketBase for date fields at present */
+}
+
+/**
+ * Options for select and multi-select fields — mirrors PocketBase select field schema options
+ */
+export interface SelectFieldOptions {
+	maxSelect?: number;
+	values: string[];
+}
+
+/**
+ * Options for multi-select fields — identical shape to SelectFieldOptions.
+ * Aliased for semantic clarity in form field components.
+ */
+export type MultiSelectFieldOptions = SelectFieldOptions;
