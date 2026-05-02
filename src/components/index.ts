@@ -12,5 +12,7 @@ export * from './layouts/index.js';
 export * from './feedback/index.js';
 // Headers
 export * from './headers/index.js';
+// Pickers
+export * from './pickers/index.js';
 // Admin atoms
 export * from './admin/index.js';
