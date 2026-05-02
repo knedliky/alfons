@@ -18,5 +18,7 @@ export * from './pickers/index.js';
 export * from './skeletons/index.js';
 // Forms
 export * from './forms/index.js';
+// Stats and charts
+export * from './stats/index.js';
 // Admin atoms
 export * from './admin/index.js';

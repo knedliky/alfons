@@ -36,7 +36,13 @@
   },
   "peerDependencies": {
     "@sveltejs/kit": ">=2",
+    "d3": ">=7",
     "svelte": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "d3": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@storybook/addon-svelte-csf": "^5.1.2",
