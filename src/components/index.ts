@@ -20,5 +20,7 @@ export * from './skeletons/index.js';
 export * from './forms/index.js';
 // Stats and charts
 export * from './stats/index.js';
+// Tables
+export * from './tables/index.js';
 // Admin atoms
 export * from './admin/index.js';
