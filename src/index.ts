@@ -8,5 +8,9 @@
  *
  * Component usage:
  *   import { Button, Input } from '@motif/design';
+ *
+ * Theme context:
+ *   import { createThemeContext, getThemeVariant } from '@motif/design';
  */
 export * from './components/index.js';
+export * from './contexts/theme.js';
