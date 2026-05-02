@@ -34,3 +34,9 @@ export type { IconName, IconProps } from './Icon.svelte';
 
 export { default as Divider } from './Divider.svelte';
 export type { DividerProps } from './Divider.svelte';
+
+export { default as RangeSlider } from './RangeSlider.svelte';
+export type { RangeSliderProps } from './RangeSlider.svelte';
+
+export { default as Skeleton } from './Skeleton.svelte';
+export type { SkeletonProps } from './Skeleton.svelte';
