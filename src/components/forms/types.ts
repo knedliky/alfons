@@ -54,3 +54,11 @@ export interface SelectFieldOptions {
  * Aliased for semantic clarity in form field components.
  */
 export type MultiSelectFieldOptions = SelectFieldOptions;
+
+/**
+ * Options for JSON fields — reserved for future schema constraints.
+ * Currently empty as PocketBase JSON fields have no configurable options.
+ */
+export interface JsonFieldOptions {
+	/* No options defined by PocketBase for JSON fields at present */
+}

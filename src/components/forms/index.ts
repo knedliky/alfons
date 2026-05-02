@@ -24,6 +24,9 @@ export type { SelectFieldProps } from './SelectField.svelte';
 export { default as MultiSelectField } from './MultiSelectField.svelte';
 export type { MultiSelectFieldProps } from './MultiSelectField.svelte';
 
+export { default as JsonField } from './JsonField.svelte';
+export type { JsonFieldProps } from './JsonField.svelte';
+
 // Co-located field option types
 export type {
 	TextFieldOptions,
@@ -31,5 +34,6 @@ export type {
 	BoolFieldOptions,
 	DateFieldOptions,
 	SelectFieldOptions,
-	MultiSelectFieldOptions
+	MultiSelectFieldOptions,
+	JsonFieldOptions
 } from './types.js';
