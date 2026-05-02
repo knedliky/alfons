@@ -83,7 +83,7 @@
 		height: 16px;
 		width: 16px;
 		border-radius: 50%;
-		background: var(--hex-sunset);
+		background: var(--accent);
 		cursor: pointer;
 		border: 2px solid var(--bg-primary);
 		box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
