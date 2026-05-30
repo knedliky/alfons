@@ -122,7 +122,7 @@
 	}
 
 	.page-frame__sidebar {
-		overflow-y: auto;
+		overflow: hidden;
 	}
 
 	/* Body column inside sidebar mode — stacks header/main/footer vertically */

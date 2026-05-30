@@ -13,6 +13,19 @@ const fontOptions = [
 	{ value: 'rock-salt', label: 'Rock Salt', style: "font-family: 'Rock Salt'" }
 ];
 
+const occupationOptions = [
+	{ value: 'data-analyst', label: 'Data Analyst' },
+	{ value: 'software-engineer', label: 'Software Engineer' },
+	{ value: 'registered-nurse', label: 'Registered Nurse' },
+	{ value: 'electrician', label: 'Electrician' },
+	{ value: 'primary-teacher', label: 'Primary School Teacher' },
+	{ value: 'civil-engineer', label: 'Civil Engineer' },
+	{ value: 'accountant', label: 'Accountant' },
+	{ value: 'graphic-designer', label: 'Graphic Designer' },
+	{ value: 'project-manager', label: 'Project Manager' },
+	{ value: 'physiotherapist', label: 'Physiotherapist' }
+];
+
 const meta = {
 	title: 'Atoms/Select',
 	component: Select,
@@ -102,5 +115,16 @@ export const AdminTheme: Story = {
 		value: '',
 		placeholder: 'Select status',
 		theme: 'admin'
+	}
+};
+
+export const Searchable: Story = {
+	args: {
+		options: occupationOptions,
+		value: '',
+		placeholder: 'Select an occupation',
+		searchable: true,
+		searchPlaceholder: 'Search occupations...',
+		theme: 'public'
 	}
 };

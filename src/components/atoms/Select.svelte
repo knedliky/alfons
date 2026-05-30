@@ -16,6 +16,10 @@
 		valid?: boolean;
 		disabled?: boolean;
 		theme?: 'admin' | 'public';
+		/** When true, render a search input above the options that filters by label. */
+		searchable?: boolean;
+		/** Placeholder shown in the search input. Ignored when `searchable` is false. */
+		searchPlaceholder?: string;
 		onchange?: (value: string) => void;
 	}
 </script>
@@ -37,6 +41,7 @@
 	 * - Full keyboard navigation (arrows, enter, escape, home/end)
 	 * - Admin and public theme contexts via CSS custom properties
 	 * - Closes on outside click and page scroll
+	 * - Optional `searchable` filter input with a "No matches" empty state
 	 * - Error state via aria-invalid="true" (set from error prop): border changes to --colour-error
 	 * - Success state via data-valid="true" attribute (set from valid prop): border changes to --colour-success
 	 */
@@ -52,13 +57,17 @@
 		valid = false,
 		disabled = false,
 		theme,
+		searchable = false,
+		searchPlaceholder = 'Search...',
 		onchange
 	}: SelectProps = $props();
 
 	let isOpen = $state(false);
 	let triggerRef = $state<HTMLButtonElement | null>(null);
 	let listRef = $state<HTMLDivElement | null>(null);
+	let searchInputRef = $state<HTMLInputElement | null>(null);
 	let highlightedIndex = $state(-1);
+	let searchQuery = $state('');
 	// Initialise off-screen to prevent flicker before position is calculated
 	let dropdownPosition = $state({ top: -9999, left: -9999, minWidth: 0, showAbove: false });
 
@@ -84,11 +93,23 @@
 		textMuted: getThemeToken('--text-muted', '--admin-text-muted'),
 		border: getThemeToken('--card-border', '--admin-border'),
 		background: getThemeToken('--card-bg', '--admin-bg'),
-		backgroundElevated: getThemeToken('--card-bg', '--admin-bg-elevated'),
+		backgroundElevated: getThemeToken('--bg-glass-solid', '--admin-bg-elevated'),
 		inputBg: getThemeToken('--input-bg', '--admin-bg')
 	});
 
 	const selectedOption = $derived(options.find((opt) => opt.value === value));
+
+	/**
+	 * Visible options after applying the search filter. When not searchable or
+	 * the query is empty this is identical to `options`. All selection,
+	 * keyboard navigation, and highlight logic operates over this list so the
+	 * filtered view stays internally consistent.
+	 */
+	const visibleOptions = $derived.by(() => {
+		if (!searchable || searchQuery.trim() === '') return options;
+		const query = searchQuery.toLowerCase().trim();
+		return options.filter((opt) => opt.label.toLowerCase().includes(query));
+	});
 
 	// Only show dropdown once position has been calculated
 	const isPositioned = $derived(dropdownPosition.minWidth > 0);
@@ -116,7 +137,7 @@
 		if (!isOpen) {
 			// Open first, then calculate position — ensures DOM is ready
 			isOpen = true;
-			highlightedIndex = options.findIndex((opt) => opt.value === value);
+			highlightedIndex = visibleOptions.findIndex((opt) => opt.value === value);
 			requestAnimationFrame(() => {
 				calculateDropdownPosition();
 			});
@@ -128,6 +149,7 @@
 	function closeDropdown() {
 		isOpen = false;
 		highlightedIndex = -1;
+		searchQuery = '';
 		// Reset position so stale values don't appear on next open
 		dropdownPosition = { top: -9999, left: -9999, minWidth: 0, showAbove: false };
 	}
@@ -141,12 +163,24 @@
 	function handleKeydown(event: KeyboardEvent) {
 		switch (event.key) {
 			case 'Enter':
-			case ' ':
 				event.preventDefault();
-				if (isOpen && highlightedIndex >= 0) {
-					selectOption(options[highlightedIndex]);
+				if (isOpen && highlightedIndex >= 0 && highlightedIndex < visibleOptions.length) {
+					selectOption(visibleOptions[highlightedIndex]);
 				} else {
 					toggleDropdown();
+				}
+				break;
+
+			case ' ':
+				// Space is a valid character in the search input — only treat it as
+				// "select highlighted" when the search input is not in play.
+				if (!searchable) {
+					event.preventDefault();
+					if (isOpen && highlightedIndex >= 0 && highlightedIndex < visibleOptions.length) {
+						selectOption(visibleOptions[highlightedIndex]);
+					} else {
+						toggleDropdown();
+					}
 				}
 				break;
 
@@ -158,10 +192,9 @@
 			case 'ArrowDown':
 				event.preventDefault();
 				if (!isOpen) {
-					isOpen = true;
-					highlightedIndex = options.findIndex((opt) => opt.value === value);
+					toggleDropdown();
 				} else {
-					highlightedIndex = Math.min(highlightedIndex + 1, options.length - 1);
+					highlightedIndex = Math.min(highlightedIndex + 1, visibleOptions.length - 1);
 				}
 				break;
 
@@ -174,15 +207,15 @@
 
 			case 'Home':
 				event.preventDefault();
-				if (isOpen) {
+				if (isOpen && visibleOptions.length > 0) {
 					highlightedIndex = 0;
 				}
 				break;
 
 			case 'End':
 				event.preventDefault();
-				if (isOpen) {
-					highlightedIndex = options.length - 1;
+				if (isOpen && visibleOptions.length > 0) {
+					highlightedIndex = visibleOptions.length - 1;
 				}
 				break;
 
@@ -203,6 +236,22 @@
 		if (isOpen) {
 			document.addEventListener('click', handleClickOutside);
 			return () => document.removeEventListener('click', handleClickOutside);
+		}
+	});
+
+	// Auto-focus the search input on open so the user can type immediately
+	$effect(() => {
+		if (isOpen && searchable && isPositioned) {
+			queueMicrotask(() => searchInputRef?.focus());
+		}
+	});
+
+	// Reset the highlight when the filter changes, so Enter doesn't select a
+	// stale row that scrolled out of the filtered list.
+	$effect(() => {
+		void searchQuery;
+		if (isOpen && searchable) {
+			highlightedIndex = visibleOptions.length > 0 ? 0 : -1;
 		}
 	});
 
@@ -244,7 +293,9 @@
 		--select-bg: {tokens.background};
 		--select-bg-elevated: {tokens.backgroundElevated};
 		--select-input-bg: {tokens.inputBg};
-	"
+		--select-highlighted-bg: color-mix(in oklch, var(--select-text) 10%, transparent);
+			--select-dropdown-shadow: var(--shadow-xl);
+"
 >
 	<button
 		bind:this={triggerRef}
@@ -295,52 +346,68 @@
 				top: {dropdownPosition.top}px;
 				left: {dropdownPosition.left}px;
 				min-width: {dropdownPosition.minWidth}px;
-				background: {tokens.inputBg};
+				background: {tokens.backgroundElevated};
 				border: 1px solid {tokens.border};
 			"
 		>
-			{#each options as option, index (option.value)}
-				{@const isSelected = option.value === value}
-				{@const isHighlighted = index === highlightedIndex}
-				<button
-					type="button"
-					class="select-option"
-					data-index={index}
+			{#if searchable}
+				<input
+					bind:this={searchInputRef}
+					bind:value={searchQuery}
+					class="select-search"
+					type="text"
+					placeholder={searchPlaceholder}
+					aria-label={searchPlaceholder}
+					onkeydown={handleKeydown}
 					style="
-						{option.style ?? ''}
-						color: {isSelected ? 'var(--accent)' : tokens.text};
-						background: {isSelected
-						? isHighlighted
-							? 'var(--select-selected-highlighted-bg)'
-							: 'var(--select-selected-bg)'
-						: isHighlighted
-							? tokens.backgroundElevated
-							: 'transparent'};
+						color: {tokens.text};
+						border-color: {tokens.border};
 					"
-					onclick={() => selectOption(option)}
-					onmouseenter={() => (highlightedIndex = index)}
-					role="option"
-					aria-selected={isSelected}
-				>
-					{option.label}
+				/>
+			{/if}
 
-					{#if isSelected}
-						<svg
-							class="select-check"
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
+			<div class="select-options">
+				{#if visibleOptions.length === 0}
+					<p class="select-empty" style="color: {tokens.textMuted};">No matches</p>
+				{:else}
+					{#each visibleOptions as option, index (option.value)}
+						{@const isSelected = option.value === value}
+						{@const isHighlighted = index === highlightedIndex}
+						<button
+							type="button"
+							class="select-option"
+							data-index={index}
+							style="
+								{option.style ?? ''}
+								color: {isSelected ? 'var(--accent)' : tokens.text};
+								background: {isHighlighted ? 'var(--select-highlighted-bg)' : 'transparent'};
+							"
+							onclick={() => selectOption(option)}
+							onmouseenter={() => (highlightedIndex = index)}
+							role="option"
+							aria-selected={isSelected}
 						>
-							<polyline points="20 6 9 17 4 12" />
-						</svg>
-					{/if}
-				</button>
-			{/each}
+							{option.label}
+
+							{#if isSelected}
+								<svg
+									class="select-check"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="20 6 9 17 4 12" />
+								</svg>
+							{/if}
+						</button>
+					{/each}
+				{/if}
+			</div>
 		</div>
 	{/if}
 </div>
@@ -359,7 +426,7 @@
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
-		border-radius: 9999px;
+		border-radius: var(--radius-lg);
 		font-size: 1rem;
 		font-family: inherit;
 		cursor: pointer;
@@ -401,7 +468,7 @@
 
 	.select-arrow {
 		flex-shrink: 0;
-		transition: transform var(--transition-normal);
+		transition: transform var(--transition-fast);
 	}
 
 	.select-arrow.open {
@@ -411,11 +478,16 @@
 	.select-dropdown {
 		/* Fixed positioning escapes overflow containers */
 		z-index: var(--z-dropdown);
+		display: flex;
+		flex-direction: column;
 		width: max-content;
 		max-height: 280px;
-		overflow-y: auto;
+		overflow: hidden;
+		padding: 0.25rem;
 		border-radius: var(--radius-lg);
 		box-shadow: var(--select-dropdown-shadow);
+		/* Glass-elevated surface with a subtle backdrop blur to match Merlin */
+		backdrop-filter: blur(12px);
 		/* Fade in to prevent position-calculation flicker */
 		animation: selectDropdownFadeIn 0.1s ease;
 	}
@@ -447,6 +519,51 @@
 		}
 	}
 
+	/* Search input — appears above the option list when `searchable` is set.
+	   Reads as part of the dropdown shell: subtle border, transparent fill. */
+	.select-search {
+		flex-shrink: 0;
+		width: 100%;
+		padding: 0.5rem 0.75rem;
+		margin-bottom: 0.25rem;
+		font-size: 0.9375rem;
+		font-family: inherit;
+		background: transparent;
+		border: 1px solid var(--select-border);
+		border-radius: var(--radius-md);
+		outline: none;
+		transition: border-color var(--transition-fast);
+	}
+
+	.select-search::placeholder {
+		color: var(--select-text-muted);
+	}
+
+	.select-search:focus {
+		border-color: var(--select-text-secondary);
+	}
+
+	/* Scroll container — only the option list scrolls, keeping any search input
+	   pinned to the top of the dropdown shell. The scrollbar is unified with the
+	   dropdown surface rather than the global accent-red thumb: the standard
+	   scrollbar-color property is set explicitly here so it overrides the global
+	   `* { scrollbar-color }` rule in base.css (Chrome honours the standard
+	   property over the ::-webkit-scrollbar pseudos when both are present). */
+	.select-options {
+		overflow-y: auto;
+		min-height: 0;
+		scrollbar-width: thin;
+		scrollbar-color: var(--select-border) transparent;
+	}
+
+	/* Empty state shown when the search query matches nothing. */
+	.select-empty {
+		margin: 0;
+		padding: 0.75rem 1.25rem;
+		font-size: 0.9375rem;
+		text-align: center;
+	}
+
 	.select-option {
 		display: flex;
 		align-items: center;
@@ -456,6 +573,7 @@
 		padding: 0.75rem 1.25rem;
 		background: transparent;
 		border: none;
+		border-radius: var(--radius-md);
 		font-size: 0.9375rem;
 		font-family: inherit;
 		cursor: pointer;
@@ -464,37 +582,25 @@
 		transition: background-color var(--transition-fast);
 	}
 
-	.select-option:first-child {
-		border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
-	}
-
-	.select-option:last-child {
-		border-radius: 0 0 calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px);
-	}
-
-	.select-option:only-child {
-		border-radius: calc(var(--radius-lg) - 1px);
-	}
-
 	.select-check {
 		flex-shrink: 0;
 		color: var(--accent);
 	}
 
-	.select-dropdown::-webkit-scrollbar {
+	.select-options::-webkit-scrollbar {
 		width: 6px;
 	}
 
-	.select-dropdown::-webkit-scrollbar-track {
+	.select-options::-webkit-scrollbar-track {
 		background: transparent;
 	}
 
-	.select-dropdown::-webkit-scrollbar-thumb {
+	.select-options::-webkit-scrollbar-thumb {
 		background: var(--select-border);
 		border-radius: 3px;
 	}
 
-	.select-dropdown::-webkit-scrollbar-thumb:hover {
+	.select-options::-webkit-scrollbar-thumb:hover {
 		background: var(--select-text-muted);
 	}
 

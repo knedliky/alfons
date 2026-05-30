@@ -108,6 +108,15 @@
 		transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
+	/* Arrow renders in the brand accent by default so the back affordance
+	   reads as an action rather than muted chrome. The path inherits
+	   currentColor from the SVG attribute, so this stroke override is what
+	   gives it the accent. Admin theme resets to currentColor below. */
+	.back-arrow path {
+		stroke: var(--accent);
+		stroke-width: 2.5;
+	}
+
 	.back-link:hover .back-arrow {
 		transform: translateX(-4px);
 	}
@@ -119,5 +128,12 @@
 
 	.back-link[data-theme='admin']:hover {
 		color: var(--admin-text);
+	}
+
+	/* Admin surfaces keep the muted chrome arrow — the brand accent is a
+	   public-facing affordance, not an admin one. */
+	.back-link[data-theme='admin'] .back-arrow path {
+		stroke: currentColor;
+		stroke-width: 2;
 	}
 </style>

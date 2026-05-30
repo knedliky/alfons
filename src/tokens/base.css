@@ -128,6 +128,12 @@ body {
 @layer base {
 	html {
 		scroll-behavior: smooth;
+		/* Reserve scrollbar gutter so navigating between long and short
+		   routes does not cause a horizontal layout shift. Without this,
+		   short pages render at full viewport width and long pages render
+		   ~15 px narrower (whatever the OS scrollbar width is), making
+		   the content jump sideways on every route change. */
+		scrollbar-gutter: stable;
 	}
 
 	body {
