@@ -5,8 +5,9 @@ export type { ButtonProps } from './Button.svelte';
 export { default as Input } from './Input.svelte';
 export type { InputProps } from './Input.svelte';
 
-export { default as AgentInput, DEFAULT_SKILL } from './AgentInput.svelte';
-export type { AgentInputProps, AgentSkill } from './AgentInput.svelte';
+export { default as AgentInput } from './AgentInput.svelte';
+export { DEFAULT_SKILL } from './agent-input.js';
+export type { AgentInputProps, AgentSkill } from './agent-input.js';
 
 export { default as Select } from './Select.svelte';
 export type { SelectProps, SelectOption } from './Select.svelte';
