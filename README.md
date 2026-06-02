@@ -28,7 +28,7 @@ bun add git+https://github.com/knedliky/motif
 
 ```svelte
 <script>
-  import { Button, Input, Label, Select, Textarea, Toggle, Tooltip, TagPill, Portrait } from '@motif/design';
+  import { Button, Input, Label, Select, Textarea, Toggle, Tooltip, Pill, Portrait } from '@motif/design';
 </script>
 ```
 
@@ -46,8 +46,8 @@ src/
       Input.svelte
       Label.svelte
       Portrait.svelte
+      Pill.svelte
       Select.svelte
-      TagPill.svelte
       Textarea.svelte
       Toggle.svelte
       Tooltip.svelte

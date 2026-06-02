@@ -161,19 +161,23 @@ function motifTypesPlugin() {
 			);
 
 			writeFileSync(
-				resolve(distDir, 'components/atoms/TagPill.svelte.d.ts'),
+				resolve(distDir, 'components/atoms/Pill.svelte.d.ts'),
 				[
-					"export type TagPillColour = 'default' | 'agents' | 'workflows' | 'synthesis' | 'data' | 'design' | 'infra';",
+					"export type PillColour = 'default' | 'agents' | 'workflows' | 'synthesis' | 'data' | 'design' | 'infra' | 'finance' | 'technology' | 'healthcare-education' | 'legal' | 'engineering-trades' | 'marketing-communications' | 'operations-admin';",
 					'',
-					'export interface TagPillProps {',
+					"export type PillFill = 'soft' | 'solid' | 'outline';",
+					'',
+					'export interface PillProps {',
 					'	label: string;',
 					"	size?: 'sm' | 'md';",
-					'	colour?: TagPillColour;',
+					'	colour?: PillColour;',
+					"	fill?: PillFill;",
+					'	tint?: string;',
 					'	class?: string;',
 					'}',
 					'',
-					'declare const TagPill: import("svelte").Component<TagPillProps>;',
-					'export default TagPill;',
+					'declare const Pill: import("svelte").Component<PillProps>;',
+					'export default Pill;',
 				].join('\n') + '\n',
 			);
 
@@ -310,8 +314,8 @@ function motifTypesPlugin() {
 					"export { default as Toggle } from './Toggle.svelte';",
 					"export type { ToggleProps } from './Toggle.svelte';",
 					'',
-					"export { default as TagPill } from './TagPill.svelte';",
-					"export type { TagPillProps, TagPillColour } from './TagPill.svelte';",
+					"export { default as Pill } from './Pill.svelte';",
+					"export type { PillProps, PillColour, PillFill } from './Pill.svelte';",
 					'',
 					"export { default as Tooltip } from './Tooltip.svelte';",
 					"export type { TooltipProps } from './Tooltip.svelte';",
