@@ -379,8 +379,12 @@
 							data-index={index}
 							style="
 								{option.style ?? ''}
-								color: {isSelected ? 'var(--accent)' : tokens.text};
-								background: {isHighlighted ? 'var(--select-highlighted-bg)' : 'transparent'};
+								color: {isSelected || isHighlighted ? tokens.text : tokens.textSecondary};
+								background: {isSelected
+									? 'color-mix(in oklch, var(--accent) 15%, transparent)'
+									: isHighlighted
+										? 'var(--select-highlighted-bg)'
+										: 'transparent'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}
@@ -388,22 +392,6 @@
 							aria-selected={isSelected}
 						>
 							{option.label}
-
-							{#if isSelected}
-								<svg
-									class="select-check"
-									width="16"
-									height="16"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								>
-									<polyline points="20 6 9 17 4 12" />
-								</svg>
-							{/if}
 						</button>
 					{/each}
 				{/if}
@@ -416,6 +404,9 @@
 	.select-container {
 		position: relative;
 		width: fit-content;
+		/* Monospace pill treatment — the canonical Select look (absorbed from the
+		   Merlin CustomSelect). Trigger, value, options and search all inherit. */
+		font-family: var(--font-mono);
 	}
 
 	.select-trigger {
@@ -426,11 +417,14 @@
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
-		border-radius: var(--radius-lg);
-		font-size: 1rem;
+		/* Full pill to match the search box, suggestion chips and filter row. */
+		border-radius: var(--radius-pill);
+		font-size: 0.875rem;
 		font-family: inherit;
 		cursor: pointer;
-		background: var(--select-input-bg);
+		/* Glassy card-bg surface, matching the toggle group and old CustomSelect
+		   (was --select-input-bg, the opaque form field background). */
+		background: var(--select-bg);
 		transition:
 			border-color var(--transition-normal),
 			background-color var(--transition-normal),
@@ -439,10 +433,13 @@
 		white-space: nowrap;
 	}
 
+	/* Small variant — the filter-row size: 40px tall (var(--input-height-sm)),
+	   compact mono text, lining up with the toggle-group / bracket-filter
+	   tracks and the AgentInput skill pill. */
 	.select-trigger-sm {
 		min-height: var(--input-height-sm);
 		padding: 0 1rem;
-		font-size: 0.875rem;
+		font-size: 0.6875rem;
 	}
 
 	.select-trigger:hover:not(:disabled) {
@@ -526,7 +523,7 @@
 		width: 100%;
 		padding: 0.5rem 0.75rem;
 		margin-bottom: 0.25rem;
-		font-size: 0.9375rem;
+		font-size: 0.8125rem;
 		font-family: inherit;
 		background: transparent;
 		border: 1px solid var(--select-border);
@@ -560,31 +557,30 @@
 	.select-empty {
 		margin: 0;
 		padding: 0.75rem 1.25rem;
-		font-size: 0.9375rem;
+		font-size: 0.8125rem;
 		text-align: center;
 	}
 
+	/* Options match the old CustomSelect: full-width, left-aligned, mono, with
+	   long labels wrapping rather than truncating. The selected row is marked by
+	   an accent-tinted background (set inline), not a trailing check icon. */
 	.select-option {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
+		display: block;
 		width: 100%;
-		padding: 0.75rem 1.25rem;
+		padding: 0.5rem 0.75rem;
 		background: transparent;
 		border: none;
 		border-radius: var(--radius-md);
-		font-size: 0.9375rem;
+		font-size: 0.8125rem;
 		font-family: inherit;
 		cursor: pointer;
 		text-align: left;
-		white-space: nowrap;
-		transition: background-color var(--transition-fast);
-	}
-
-	.select-check {
-		flex-shrink: 0;
-		color: var(--accent);
+		white-space: normal;
+		word-break: break-word;
+		line-height: 1.4;
+		transition:
+			background-color var(--transition-fast),
+			color var(--transition-fast);
 	}
 
 	.select-options::-webkit-scrollbar {

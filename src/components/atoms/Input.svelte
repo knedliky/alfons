@@ -95,7 +95,9 @@
 
 	.input[data-theme='public'] {
 		border: 1px solid var(--card-border);
-		background: var(--input-bg);
+		/* Glassy card-bg surface, matching the toggle group and Select (was the
+		   opaque --input-bg — this realises the documented glassmorphic intent). */
+		background: var(--card-bg);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}

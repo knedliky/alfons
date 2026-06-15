@@ -74,7 +74,9 @@
 
 	.textarea[data-theme='public'] {
 		border: 1px solid var(--card-border);
-		background: var(--input-bg);
+		/* Glassy card-bg surface, matching the toggle group and Select (was the
+		   opaque --input-bg). Keeps Textarea consistent with Input. */
+		background: var(--card-bg);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}
