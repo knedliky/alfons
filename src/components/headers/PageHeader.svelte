@@ -425,6 +425,13 @@
 		margin-bottom: 0;
 	}
 
+	/* Dark mode pairs the public subtitle with the title in full white — the
+	   secondary grey over-de-emphasises it on the near-black surface. Admin keeps
+	   its own token; the article excerpt stays secondary for long-form legibility. */
+	:global([data-colour-mode='dark']) .page-header:not(.variant-admin):not(.variant-article) p {
+		color: var(--text-primary);
+	}
+
 	/* Per-word glitch spans — inline so text reflows normally */
 	.glitch-word {
 		display: inline;
