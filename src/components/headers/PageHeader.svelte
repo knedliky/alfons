@@ -515,7 +515,7 @@
 	.variant-admin h1 {
 		color: var(--admin-text);
 		margin-bottom: var(--space-1);
-		font-family: 'Hanken Grotesk', sans-serif;
+		font-family: var(--font-body);
 		font-weight: 600;
 		font-size: 3rem;
 	}

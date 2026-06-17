@@ -172,11 +172,10 @@ body {
 	body {
 		background-color: var(--bg-primary);
 		color: var(--text-primary);
-		font-family:
-			'Hanken Grotesk',
-			system-ui,
-			-apple-system,
-			sans-serif;
+		/* Drive the body font from the token so --font-body actually applies.
+		   Previously hardcoded 'Hanken Grotesk' here, which silently ignored
+		   the token (and the bare name matched no loaded face anyway). */
+		font-family: var(--font-body);
 		font-size: 1.125rem;
 		/* 18px base — more readable than default 16px */
 		font-weight: 400;
