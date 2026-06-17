@@ -231,8 +231,12 @@
 		/* === 12. TYPOGRAPHY ==================================================
 		   Font families and semantic type-size tokens
 		   ==================================================================== */
-		--font-body: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
-		--font-mono: 'Azeret Mono', monospace;
+		/* Switzer is the default body sans (self-hosted @font-face in base.css).
+		   --font-mono names the 'Azeret Mono Variable' face that Fontsource
+		   actually registers: the bare 'Azeret Mono' matched no loaded face, so
+		   mono text silently fell back to the system monospace. */
+		--font-body: 'Switzer', system-ui, -apple-system, sans-serif;
+		--font-mono: 'Azeret Mono Variable', 'Azeret Mono', monospace;
 		--font-display: 'IBM Plex Serif', serif;
 		--font-drop-cap: 'Rock Salt', Georgia, cursive;
 

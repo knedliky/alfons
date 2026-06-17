@@ -28,6 +28,39 @@
 @import '@fontsource/ibm-plex-serif/latin-700.css';
 @import '@fontsource/rock-salt/latin-400.css';
 
+/* Switzer (Fontshare / Indian Type Foundry) — the default body sans
+   (--font-body). Not published on Fontsource, so the latin weights are
+   self-hosted under src/fonts/ and referenced relatively; consumers bundle
+   them through their own build when they import @motif/design/base. */
+@font-face {
+	font-family: 'Switzer';
+	src: url('../fonts/Switzer-400.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Switzer';
+	src: url('../fonts/Switzer-500.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Switzer';
+	src: url('../fonts/Switzer-600.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Switzer';
+	src: url('../fonts/Switzer-700.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* ==========================================================================
    TYPOGRAPHY SCALE — IBM Plex Serif for all headings and display text
    (technical aesthetic)
