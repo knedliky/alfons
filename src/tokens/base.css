@@ -220,14 +220,6 @@ body {
 		transition: var(--colour-mode-transition);
 	}
 
-	/* Hide grid on mobile for performance */
-	@media (max-width: 768px) {
-		body::after,
-		body::before {
-			display: none;
-		}
-	}
-
 	/* Monospace for metrics and code */
 	code,
 	pre,
