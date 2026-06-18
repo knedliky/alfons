@@ -196,7 +196,7 @@ body {
 		content: '';
 		position: fixed;
 		inset: 0;
-		z-index: var(--z-base);
+		z-index: -1; /* ground layer — sits behind content, not in front (was z:0) */
 		pointer-events: none;
 		background-image:
 			linear-gradient(var(--grid-colour) 1px, transparent 1px),
@@ -211,7 +211,7 @@ body {
 		content: '';
 		position: fixed;
 		inset: 0;
-		z-index: var(--z-base);
+		z-index: -1; /* ground layer — sits behind content, not in front (was z:0) */
 		pointer-events: none;
 		background-image:
 			linear-gradient(var(--grid-colour-accent) 1px, transparent 1px),
@@ -239,8 +239,8 @@ body {
 	   light like a chain-link fence under a streetlight — a grazing metallic sheen,
 	   faint near the source and brightest in the distance (the mask ramps
 	   transparent→opaque with distance from the light). Composited additively
-	   (screen) so it brightens rather than dulls. Dark-mode effect; light mode sets
-	   --ground-glint-strength to 0. */
+	   (screen) so it brightens rather than dulls. Dark-mode effect; in light mode the
+	   gridlines become grooves instead (see the light overrides below). */
 	html::after {
 		content: '';
 		position: fixed;
@@ -255,6 +255,43 @@ body {
 		mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
 		mix-blend-mode: screen;
 		opacity: var(--ground-glint-strength);
+	}
+
+	/* Depth ground (light) — gridlines as GROOVES, not metal. In light mode the main
+	   lines (html::after) and the in-between lines (body::after) read as incised
+	   channels: a soft recess + a lit lip offset toward the light. Normal blend (the
+	   recess darkens, the lip lightens) and no grazing mask — a groove is a physical
+	   feature present uniformly, not a specular highlight. Structural props (position,
+	   z-index, content, size, opacity) inherit from the base rules above. */
+	html[data-colour-mode='light']::after {
+		background-image:
+			linear-gradient(var(--ground-groove-shadow) 1px, transparent 1px),
+			linear-gradient(90deg, var(--ground-groove-shadow) 1px, transparent 1px),
+			linear-gradient(var(--ground-groove-light) 1px, transparent 1px),
+			linear-gradient(90deg, var(--ground-groove-light) 1px, transparent 1px);
+		background-position:
+			0 0,
+			0 0,
+			0 var(--ground-groove-offset),
+			var(--ground-groove-offset) 0;
+		mix-blend-mode: normal;
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
+
+	html[data-colour-mode='light'] body::after {
+		background-image:
+			linear-gradient(var(--ground-groove-shadow) 1px, transparent 1px),
+			linear-gradient(90deg, var(--ground-groove-shadow) 1px, transparent 1px),
+			linear-gradient(var(--ground-groove-light) 1px, transparent 1px),
+			linear-gradient(90deg, var(--ground-groove-light) 1px, transparent 1px);
+		background-position:
+			0 0,
+			0 0,
+			0 var(--ground-groove-offset),
+			var(--ground-groove-offset) 0;
+		mix-blend-mode: normal;
+		opacity: var(--ground-groove-fine-strength);
 	}
 
 	/* Monospace for metrics and code */

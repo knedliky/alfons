@@ -646,10 +646,19 @@
 		/* === 20. GRID PATTERN === */
 		--grid-colour: oklch(25% 0.02 55 / 4%); /* converted from rgba(60, 50, 40, 0.04) */
 		--grid-colour-accent: oklch(25% 0.02 55 / 8%); /* converted from rgba(60, 50, 40, 0.08) */
-		/* Depth ground — light-mode treatment pending (dark-first); keep a faint warm
-		   rake and disable the metallic glint, which is a dark-surface effect. */
-		--ground-rake-strength: 0.05;
-		--ground-glint-strength: 0;
+		/* Depth ground (light) — the gridlines read as incised GROOVES (a soft recess
+		   + a lit lip offset toward the light), not the dark-mode raised-metal glint.
+		   Main 160px lines via html::after, fine 40px lines via body::after. Tuned in
+		   the Merlin depth session. */
+		--ground-rake-strength: 0.3;
+		--ground-glint-strength: 0.33; /* main (160px) groove opacity */
+		--ground-groove-fine-strength: 0.34; /* in-between (40px) groove opacity */
+		--ground-groove-recess-l: 0.74; /* recess lightness — lower = deeper, darker channel */
+		--ground-groove-recess-a: 0.18; /* recess opacity */
+		--ground-groove-lip-a: 0.41; /* lit-lip opacity */
+		--ground-groove-offset: 1px; /* bevel offset, toward lower-right (away from the light) */
+		--ground-groove-shadow: oklch(var(--ground-groove-recess-l) 0.02 60 / var(--ground-groove-recess-a));
+		--ground-groove-light: oklch(1 0.01 85 / var(--ground-groove-lip-a));
 		--bg-primary-rgb: 240, 232, 221;
 
 		/* === 22. BUTTON VARIANTS === */
