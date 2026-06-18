@@ -93,7 +93,10 @@
 		textMuted: getThemeToken('--text-muted', '--admin-text-muted'),
 		border: getThemeToken('--card-border', '--admin-border'),
 		background: getThemeToken('--card-bg', '--admin-bg'),
-		backgroundElevated: getThemeToken('--bg-glass-solid', '--admin-bg-elevated'),
+		// The floating dropdown sits at L3 of the elevation ladder: the public theme
+		// uses the frosted-glass L3 fill (translucent, the dropdown's blur keeps it
+		// legible); admin keeps its solid elevated surface.
+		backgroundElevated: getThemeToken('--elevation-3-bg', '--admin-bg-elevated'),
 		inputBg: getThemeToken('--input-bg', '--admin-bg')
 	});
 
@@ -294,7 +297,6 @@
 		--select-bg-elevated: {tokens.backgroundElevated};
 		--select-input-bg: {tokens.inputBg};
 		--select-highlighted-bg: color-mix(in oklch, var(--select-text) 10%, transparent);
-			--select-dropdown-shadow: var(--shadow-xl);
 "
 >
 	<button
@@ -487,8 +489,10 @@
 		   options inside step down to --radius-md to nest concentrically. */
 		border-radius: var(--radius-message);
 		box-shadow: var(--select-dropdown-shadow);
-		/* Glass-elevated surface with a subtle backdrop blur to match Merlin */
-		backdrop-filter: blur(12px);
+		/* L3 frosted glass — the ladder's floating-level blur keeps the translucent
+		   --elevation-3-bg dropdown legible over busy content. */
+		backdrop-filter: blur(var(--frost-3));
+		-webkit-backdrop-filter: blur(var(--frost-3));
 		/* Fade in to prevent position-calculation flicker */
 		animation: selectDropdownFadeIn 0.1s ease;
 	}

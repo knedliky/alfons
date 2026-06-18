@@ -135,13 +135,11 @@
 		/* light: layered drop shadow */
 		--button-shadow-active: inset 0 2px 4px oklch(0% 0 0 / 10%); /* converted from rgba(0, 0, 0, 0.1) */
 		/* light: inset pressed */
-		--card-shadow: none;
-		/* light: directional warm shadow */
-		--card-shadow-hover: 0 4px 12px oklch(0% 0 0 / 10%); /* converted from rgba(0, 0, 0, 0.1) */
-		/* light: directional warm shadow */
+		--card-shadow: var(--elevation-1); /* aliased onto the elevation ladder (§10b) */
+		--card-shadow-hover: var(--elevation-2); /* a hovered card lifts one level */
 		--input-shadow: none;
 		/* light: inset pressed */
-		--shadow-glass: 0 4px 16px oklch(0% 0 0 / 20%), 0 2px 4px oklch(0% 0 0 / 10%);
+		--shadow-glass: var(--elevation-2); /* agent input + chat bubbles sit at L2 */
 		/* Frosted-panel drop shadow shared by the agent input and chat bubbles. */
 
 		/* === 8. INPUTS =======================================================
@@ -161,10 +159,8 @@
 		/* Select component tokens */
 		--select-selected-bg: oklch(45% 0.22 25 / 15%); /* converted from rgba(206, 32, 41, 0.15) */
 		--select-selected-highlighted-bg: oklch(45% 0.22 25 / 20%); /* converted from rgba(206, 32, 41, 0.2) */
-		--select-dropdown-shadow: 0 8px 24px oklch(0% 0 0 / 40%); /* converted from rgba(0, 0, 0, 0.4) */
-		/* light: rgba(60, 50, 40, 0.15) */
-		--tooltip-shadow: 0 2px 8px oklch(0% 0 0 / 20%); /* converted from rgba(0, 0, 0, 0.2) */
-		/* light: rgba(0, 0, 0, 0.08) */
+		--select-dropdown-shadow: var(--elevation-3); /* dropdowns float at L3 (§10b) */
+		--tooltip-shadow: var(--elevation-3); /* tooltips float at L3 */
 
 		/* === 10. ELEVATION / Z-INDEX =========================================
 		   Semantic z-index scale — use tokens instead of magic numbers.
@@ -178,6 +174,61 @@
 		--z-overlay: 30;
 		--z-toast: 40;
 		--z-widget: 50;
+
+		/* === 10b. ELEVATION LADDER ===========================================
+		   How surfaces stack ABOVE the depth ground, under ONE light source — the
+		   same off-screen upper-left rake that grazes the ground. Each level
+		   composes four cues that grow with height, each on the CSS property that
+		   renders it correctly:
+		     edge   -> a crisp directional border  (--el-edge-light / --el-edge-shade)
+		     cast   -> box-shadow                  (--elevation-1/2/3), down-and-right
+		     frost  -> backdrop-blur               (--frost-1/2/3)
+		     fill   -> background                  (--elevation-1/2/3-bg), thinned per level
+		   L1 resting (cards) · L2 raised (inputs, agent input, hovered cards) ·
+		   L3 floating (dropdowns, tooltips, toasts, modals). The scattered shadow
+		   tokens (--card-shadow, --shadow-glass, --select-dropdown-shadow,
+		   --tooltip-shadow) alias onto this ladder. Tuned in the Merlin depth
+		   session via the prototype-explorer TokenTuner.
+
+		   Tunable scalars — one knob moves the whole ladder coherently: */
+		--el-rim: 0.055; /* lit-edge alpha at L1 (edge brightness) */
+		--el-cast-depth: 0.22; /* cast-shadow alpha at L1 */
+		--el-cast-spread: 4; /* cast-shadow blur in px at L1 */
+		--el-fill: 0.58; /* L1 surface-fill alpha; higher levels step DOWN toward frosted glass */
+		--frost-1: 0px;
+		--frost-2: 5px;
+		--frost-3: 10px;
+
+		/* Lit EDGE — a crisp directional border (NOT an inset shadow, which can only
+		   render soft and reads as a blurry inner band). Top + left catch the light;
+		   bottom + right fall into shade. --el-rim drives the lit alpha. */
+		--el-shade: calc(var(--el-rim) * 3);
+		--el-edge-light: oklch(1 0 0 / var(--el-rim));
+		--el-edge-shade: oklch(0 0 0 / var(--el-shade));
+
+		/* CAST shadow per level — box-shadow only; lengths/alphas calc()'d from the
+		   scalars so one knob moves the whole ladder. Positive x/y throws the pool
+		   down-and-right, away from the upper-left light. */
+		--elevation-1:
+			1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px)
+				oklch(0 0 0 / var(--el-cast-depth));
+		--elevation-2:
+			2px calc(var(--el-cast-spread) * 1.3px) calc(var(--el-cast-spread) * 2px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08)),
+			3px calc(var(--el-cast-spread) * 2.7px) calc(var(--el-cast-spread) * 5.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 0.85));
+		--elevation-3:
+			4px calc(var(--el-cast-spread) * 2px) calc(var(--el-cast-spread) * 3.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.35)),
+			8px calc(var(--el-cast-spread) * 6px) calc(var(--el-cast-spread) * 13.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.43));
+
+		/* SURFACE fill per level — anchored to the real card surface (--bg-glass-solid)
+		   and thinned toward transparent: resting solid, floating frosted glass. The
+		   backdrop-blur (frost) keeps the thin floating panes legible. */
+		--elevation-1-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 100%), transparent);
+		--elevation-2-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 78%), transparent);
+		--elevation-3-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 62%), transparent);
 
 		/* === 11. SPACING =====================================================
 		   10-step spacing scale with smooth progression
@@ -618,11 +669,25 @@
 			0 16px 32px oklch(25% 0.02 55 / 8%); /* converted from rgba(60, 50, 40, ...) */
 		--button-shadow-active:
 			inset 0 2px 4px oklch(25% 0.02 55 / 15%), inset 0 1px 2px oklch(25% 0.02 55 / 10%); /* converted from rgba(60, 50, 40, ...) */
-		--card-shadow: 10px 10px 20px oklch(78% 0.01 55 / 40%), -8px -8px 16px oklch(95% 0.02 55 / 20%); /* converted from rgba(201,193,181,...) */
-		--card-shadow-hover:
-			12px 12px 24px oklch(78% 0.01 55 / 85%), -12px -12px 24px oklch(95% 0.02 55 / 70%); /* converted from rgba(201,193,181,...) */
+		/* === 10b. ELEVATION LADDER (light) === — warm two-sided cast; the lit edge is
+		   the existing directional card-border; surfaces anchored to --card-bg and
+		   thinned per level. The scattered shadow tokens below alias onto it. */
+		--elevation-1:
+			3px 3px 8px oklch(0.76 0.015 55 / 0.35), -2px -2px 6px oklch(0.99 0.02 80 / 0.55);
+		--elevation-2:
+			6px 6px 14px oklch(0.76 0.015 55 / 0.42), -4px -4px 10px oklch(0.99 0.02 80 / 0.6);
+		--elevation-3:
+			12px 14px 28px oklch(0.72 0.015 55 / 0.5), -8px -8px 20px oklch(0.99 0.02 80 / 0.65);
+		--el-edge-light: var(--card-border-top); /* lit edge reuses the tuned light card border */
+		--el-edge-shade: var(--card-border-bottom);
+		--elevation-1-bg: color-mix(in srgb, var(--card-bg) calc(var(--el-fill) * 100%), transparent);
+		--elevation-2-bg: color-mix(in srgb, var(--card-bg) calc(var(--el-fill) * 82%), transparent);
+		--elevation-3-bg: color-mix(in srgb, var(--card-bg) calc(var(--el-fill) * 68%), transparent);
+
+		--card-shadow: var(--elevation-1); /* aliased onto the light ladder */
+		--card-shadow-hover: var(--elevation-2);
 		--input-shadow: none; /* flat — matches dark mode; no neumorphic inset */
-		--shadow-glass: var(--card-shadow-hover), 0 6px 20px oklch(78% 0.01 55 / 30%); /* warm raised glow */
+		--shadow-glass: var(--elevation-2); /* agent input + chat bubbles at L2 */
 
 		/* === 13. STATE COLOURS === */
 		--colour-success-bg: oklch(46% 0.1 130 / 15%); /* converted from rgba(90, 122, 71, 0.15) */
@@ -668,9 +733,9 @@
 		--button-outline-hover-shadow: 0 2px 8px oklch(45% 0.22 25 / 25%); /* converted from rgba(206, 32, 41, 0.25) */
 
 		/* === 9. COMPONENT SHADOWS === */
-		--select-dropdown-shadow: 0 8px 24px oklch(25% 0.02 55 / 15%); /* converted from rgba(60, 50, 40, 0.15) */
-		--tooltip-shadow: 0 2px 8px oklch(0% 0 0 / 8%); /* converted from rgba(0, 0, 0, 0.08) */
-		--toast-shadow: 10px 10px 20px oklch(78% 0.01 55 / 40%), -8px -8px 16px oklch(95% 0.02 55 / 20%); /* converted from rgba(201,193,181,...) */
+		--select-dropdown-shadow: var(--elevation-3); /* dropdowns float at L3 */
+		--tooltip-shadow: var(--elevation-3); /* tooltips float at L3 */
+		--toast-shadow: var(--elevation-3); /* toasts float at L3 */
 
 		/* === SECTION SURFACES === */
 		--section-border-top-light: oklch(100% 0 0 / 50%); /* converted from rgba(255, 255, 255, 0.5) */

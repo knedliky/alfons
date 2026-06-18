@@ -109,9 +109,15 @@
 		box-shadow: var(--card-shadow-hover);
 	}
 
-	/* Dark mode: solid background for legibility over busy backgrounds */
+	/* Dark mode: solid background for legibility over busy backgrounds, plus the
+	   elevation ladder's crisp directional lit edge — top/left catch the upper-left
+	   light, bottom/right fall into shade (light mode already does this below). */
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default'] {
 		background: var(--bg-glass-solid);
+		border-top-color: var(--el-edge-light);
+		border-left-color: var(--el-edge-light);
+		border-right-color: var(--el-edge-shade);
+		border-bottom-color: var(--el-edge-shade);
 	}
 
 	/* Dark mode: warm sunset glow on hover */
@@ -208,9 +214,14 @@
 		box-shadow: var(--card-shadow);
 	}
 
-	/* Dark mode: solid background matching default, with scale + border glow on hover */
+	/* Dark mode: solid background matching default, with scale + border glow on hover.
+	   Carries the same directional lit edge as the default variant. */
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive'] {
 		background: var(--bg-glass-solid);
+		border-top-color: var(--el-edge-light);
+		border-left-color: var(--el-edge-light);
+		border-right-color: var(--el-edge-shade);
+		border-bottom-color: var(--el-edge-shade);
 	}
 
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive']:hover {
