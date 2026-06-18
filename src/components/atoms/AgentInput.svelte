@@ -445,10 +445,11 @@
 		padding: 0.25rem 0.75rem;
 		white-space: nowrap;
 		/* Rounded-rectangle corners that join the inputs' family rather than the full
-		   stadium it would otherwise share with the submit button. A literal
-		   --radius-message would clamp to a stadium at this height, so it is scaled to
-		   the same proportional roundness instead. */
-		border-radius: 0.6rem;
+		   stadium it would otherwise share with the submit button. --radius-md is the
+		   shared inner tier (a concentric step down from the container's
+		   --radius-message); a literal --radius-message would clamp to a stadium at
+		   this height. */
+		border-radius: var(--radius-md);
 		/* Fade out (rather than clip to a sliver) when the capped field scrolls. */
 		transition: opacity 0.15s ease;
 	}

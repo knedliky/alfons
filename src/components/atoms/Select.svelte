@@ -417,8 +417,10 @@
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
-		/* Full pill to match the search box, suggestion chips and filter row. */
-		border-radius: var(--radius-pill);
+		/* Rounded rectangle on the shared --radius-message tier, so the trigger
+		   reads as one family with the search box, the dropdown panel and any card
+		   surface beside it rather than as a lone stadium. */
+		border-radius: var(--radius-message);
 		font-size: 0.875rem;
 		font-family: inherit;
 		cursor: pointer;
@@ -481,7 +483,9 @@
 		max-height: 280px;
 		overflow: hidden;
 		padding: 0.25rem;
-		border-radius: var(--radius-lg);
+		/* Matches the trigger and the search box on the --radius-message tier; the
+		   options inside step down to --radius-md to nest concentrically. */
+		border-radius: var(--radius-message);
 		box-shadow: var(--select-dropdown-shadow);
 		/* Glass-elevated surface with a subtle backdrop blur to match Merlin */
 		backdrop-filter: blur(12px);
