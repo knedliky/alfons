@@ -221,6 +221,42 @@ body {
 		transition: var(--colour-mode-transition);
 	}
 
+	/* Depth ground (L0) — rake light: a warm graze radiating from off-screen
+	   upper-left (20% in, 25% above the top), as if a low sun crosses the drafting
+	   surface. Sits behind the grid and content. See design-system DEPTH.md. */
+	html::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background: radial-gradient(120% 150% at 20% -25%, var(--burnt-sunset), transparent 90%);
+		opacity: var(--ground-rake-strength);
+		transition: var(--colour-mode-transition);
+	}
+
+	/* Depth ground (L0) — glint: the main gridlines (every 4th, 160px) catch the rake
+	   light like a chain-link fence under a streetlight — a grazing metallic sheen,
+	   faint near the source and brightest in the distance (the mask ramps
+	   transparent→opaque with distance from the light). Composited additively
+	   (screen) so it brightens rather than dulls. Dark-mode effect; light mode sets
+	   --ground-glint-strength to 0. */
+	html::after {
+		content: '';
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background-image:
+			linear-gradient(var(--ground-glint-colour) 1px, transparent 1px),
+			linear-gradient(90deg, var(--ground-glint-colour) 1px, transparent 1px);
+		background-size: calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+		-webkit-mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
+		mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
+		mix-blend-mode: screen;
+		opacity: var(--ground-glint-strength);
+	}
+
 	/* Monospace for metrics and code */
 	code,
 	pre,

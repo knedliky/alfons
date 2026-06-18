@@ -492,6 +492,15 @@
 		--grid-opacity: 0.5;
 		--grid-opacity-accent: 0.6;
 
+		/* Depth ground — a warm rake light grazing the grid from off-screen
+		   upper-left, and the main (160px) gridlines glinting metallically where the
+		   light grazes at a shallow angle (faint near the source, brightest in the
+		   distance). Rendered by html::before / html::after in base.css; tuned in the
+		   Merlin depth session. */
+		--ground-rake-strength: 0.07;
+		--ground-glint-strength: 0.04;
+		--ground-glint-colour: oklch(0.9 0.09 85); /* warm gold */
+
 		/* === 21. BLOG / CATEGORY =============================================
 		   Category colour assignments for blog content taxonomy
 		   Agents:         Fire Engine Red
@@ -637,6 +646,10 @@
 		/* === 20. GRID PATTERN === */
 		--grid-colour: oklch(25% 0.02 55 / 4%); /* converted from rgba(60, 50, 40, 0.04) */
 		--grid-colour-accent: oklch(25% 0.02 55 / 8%); /* converted from rgba(60, 50, 40, 0.08) */
+		/* Depth ground — light-mode treatment pending (dark-first); keep a faint warm
+		   rake and disable the metallic glint, which is a dark-surface effect. */
+		--ground-rake-strength: 0.05;
+		--ground-glint-strength: 0;
 		--bg-primary-rgb: 240, 232, 221;
 
 		/* === 22. BUTTON VARIANTS === */
