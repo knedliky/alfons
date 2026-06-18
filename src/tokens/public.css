@@ -218,10 +218,13 @@
 		   roughly half the parent's radius. */
 		--radius-lg: 1rem;
 		/* 16px — moderate rounding for expanded cards */
-		--radius-message: 1.25rem;
-		/* 20px — chat bubbles and the agent input. The largest radius at which a
-		   single-line surface still reads as a rounded rectangle; above this it
-		   clamps to a stadium on short elements. */
+		--radius-message: 2rem;
+		/* 32px — chat bubbles and the agent input. Tuned up from 20px in the Merlin
+		   depth session for a softer surface. NOTE: above ~20px, short controls
+		   (e.g. the Select trigger) clamp toward a stadium while taller surfaces keep
+		   straight edges; and the inner tier --radius-md (10px) was sized for a 20px
+		   parent, so the concentric step is now looser. Revisit --radius-md if it
+		   reads off against this. */
 		--radius-bubble: 1.75rem;
 		/* 28px — larger expanded surfaces */
 		--radius-pill: 3rem;
@@ -486,7 +489,7 @@
 		/* light: rgba(60, 50, 40, 0.04) */
 		--grid-colour-accent: oklch(97% 0 0 / 6%); /* converted from rgba(243, 243, 243, 0.06) */
 		/* light: rgba(60, 50, 40, 0.08) */
-		--grid-opacity: 0.8;
+		--grid-opacity: 0.5;
 		--grid-opacity-accent: 0.6;
 
 		/* === 21. BLOG / CATEGORY =============================================
