@@ -199,6 +199,11 @@
 		--header-height: 80px;
 		--back-link-height: 0px;
 		/* Overridden to 46px by BackLink component when fixed mode is active */
+		/* Shared height for toolbar filter controls (ToggleGroup, SelectFilter, and
+		   their siblings) so cross-row controls stay the same outer height. 2.75rem
+		   (44px) is a comfortable tap target by default; tightened on wider pointer
+		   viewports via the min-width override in this layer. */
+		--filter-control-height: 2.75rem;
 		--focus-ring: var(--hex-red);
 		/* :focus-visible outline colour */
 
@@ -533,6 +538,13 @@
 		--widget-spring-easing-wobbly: var(--ease-spring-wobbly);
 		--widget-reorganise-duration: 0.8s;
 		--widget-reorganise-stagger: 0.15s;
+	}
+
+	/* Tighter filter-control chrome where pointer precision allows. */
+	@media (min-width: 640px) {
+		:root {
+			--filter-control-height: 2.25rem;
+		}
 	}
 
 	/* ==========================================================================
