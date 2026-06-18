@@ -122,7 +122,7 @@
 		--card-border-bottom: var(--card-border);
 		/* light: rgba(60, 50, 40, 0.12) */
 		--card-radius: 0.75rem;
-		--card-blur: 10px;
+		--card-blur: 3.5px;
 		--card-padding: var(--space-6);
 		--card-padding-sm: var(--space-5);
 
