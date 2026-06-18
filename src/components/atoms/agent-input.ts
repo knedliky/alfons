@@ -36,6 +36,11 @@ export interface AgentInputProps {
 	 *  component, opted into per surface (the homepage hero floats; the Merlin
 	 *  search sits still). */
 	floating?: boolean;
+	/** Cap the field's growth a short gap above the viewport bottom; past that the
+	 *  field scrolls internally (oldest text scrolls off the top) instead of the box
+	 *  extending further, keeping the pill and submit in their corners. Off by
+	 *  default — an in-flow search grows the page instead. */
+	capToViewport?: boolean;
 	/** Active skill pill, shown on the left. Defaults to DEFAULT_SKILL; pass
 	 *  `null` to hide the pill entirely. Today the caller sets it (Merlin locks
 	 *  it to `search_occupations`); a future slash (/) command menu will let

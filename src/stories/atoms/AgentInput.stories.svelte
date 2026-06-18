@@ -72,15 +72,15 @@
 		max-width: 80vw;
 	}
 
-	/* Swap the single surface-radius knob; the inner skill pill and submit button
-	   follow via the concentric-corner formula. --radius-lg tightens the surface
-	   to a rounded square (the button becomes a concentric rounded square);
-	   --radius-pill turns the whole input into a stadium (everything fully round). */
+	/* Override the shared --radius-message that the surface reads. The pill and
+	   submit keep their round identity regardless (they track --radius-pill, not
+	   the surface), so these variants only reshape the container: --radius-lg gives
+	   a tighter rounded square, --radius-pill a full stadium. */
 	:global(.agent-input.tight) {
-		--surface-radius: var(--radius-lg);
+		--radius-message: var(--radius-lg);
 	}
 
 	:global(.agent-input.pill) {
-		--surface-radius: var(--radius-pill);
+		--radius-message: var(--radius-pill);
 	}
 </style>
