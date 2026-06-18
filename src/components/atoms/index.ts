@@ -12,6 +12,12 @@ export type { AgentInputProps, AgentSkill } from './agent-input.js';
 export { default as Surface } from './Surface.svelte';
 export type { SurfaceProps } from './Surface.svelte';
 
+export { default as ToggleGroup } from './ToggleGroup.svelte';
+export type { ToggleGroupProps, ToggleGroupOption } from './ToggleGroup.svelte';
+
+export { default as SelectFilter } from './SelectFilter.svelte';
+export type { SelectFilterProps } from './SelectFilter.svelte';
+
 export { default as Select } from './Select.svelte';
 export type { SelectProps, SelectOption } from './Select.svelte';
 
