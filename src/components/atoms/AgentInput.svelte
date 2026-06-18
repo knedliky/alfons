@@ -34,6 +34,13 @@
 
 	let inputElement: HTMLTextAreaElement | undefined = $state();
 
+	// Inline skill pill: its measured width sets how far the first text line is
+	// indented so the copy clears the absolutely-positioned pill and wraps back
+	// beneath it (see the markup and the .agent-input-skill rule).
+	let skillWidth = $state(0);
+	const SKILL_GAP = 8; // px between the pill and where the first line of text begins
+	const skillIndent = $derived(skill && skillWidth ? skillWidth + SKILL_GAP : 0);
+
 	function handleSubmit() {
 		const trimmed = value.trim();
 		if (!trimmed || disabled) return;
@@ -50,15 +57,18 @@
 </script>
 
 <div class="agent-input {className}" class:is-floating={floating}>
-	<!-- Active-skill pill. The slot a future slash (/) command menu will drive;
-	     for now it is a static label set by the caller. -->
-	{#if skill}
-		<span class="agent-input-skill" data-skill={skill.id}>
-			{#if skill.icon}{@render skill.icon()}{/if}
-			{skill.label.replace(/_/g, ' ')}
-		</span>
-	{/if}
-	<div class="agent-input-field-wrapper">
+	<div class="agent-input-field-wrapper" style="--skill-indent: {skillIndent}px">
+		<!-- Active-skill pill, laid inline at the head of the text: absolutely
+		     positioned at the field's top-left, with the first text line indented
+		     past it (text-indent: --skill-indent) so the copy starts after the pill
+		     and wraps back beneath it. A future slash (/) command menu will drive
+		     this slot; for now it is a static label set by the caller. -->
+		{#if skill}
+			<span class="agent-input-skill" data-skill={skill.id} bind:offsetWidth={skillWidth}>
+				{#if skill.icon}{@render skill.icon()}{/if}
+				{skill.label.replace(/_/g, ' ')}
+			</span>
+		{/if}
 		<!-- svelte-ignore a11y_autofocus — primary interaction point on its surface -->
 		<textarea
 			bind:this={inputElement}
@@ -101,12 +111,24 @@
 	   shadow) is replicated from the FloatingPill primitive in token form so
 	   this component carries no Atlas-only dependency. */
 	.agent-input {
+		/* Container corner radius. Tuned to the largest value at which a single-line
+		   surface keeps straight edges instead of clamping to a pill, so it matches
+		   the chat message bubbles that share this radius in Atlas. */
+		--surface-radius: 1.25rem;
+		/* Uniform gap between the surface edge and its inner controls on every side,
+		   so the fully-round pill and submit sit balanced in the corners (even
+		   margins — they keep their round identity rather than matching the
+		   container's corner). This is also the vertical breathing room, so it
+		   doubles as the box's height knob — dial it to taste. */
+		--surface-inset: 0.85rem;
 		display: flex;
 		align-items: center;
 		gap: var(--space-2);
 		width: 100%;
-		border-radius: var(--radius-bubble);
-		padding: 0.75rem 1.25rem;
+		border-radius: var(--surface-radius);
+		/* Equal padding on all sides — this is the uniform corner gap that lets the
+		   pill and submit nest concentrically. */
+		padding: var(--surface-inset);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
 		transition: border-color var(--transition-normal, 0.2s ease);
@@ -187,7 +209,12 @@
 		);
 		background-size: 220% 220%;
 		border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-		border-radius: 999px;
+		/* Always fully round — a true stadium on the label, a circle on the square
+		   button — whatever the surface's own corner radius. The accent affordances
+		   keep their round identity rather than tracking the container (a deliberate
+		   break from concentric nesting, which would square them off); the clean,
+		   balanced look comes from the uniform --surface-inset spacing instead. */
+		border-radius: var(--radius-pill, 999px);
 		animation: agent-input-shimmer 6s ease-in-out infinite alternate;
 	}
 
@@ -208,19 +235,39 @@
 	}
 
 	.agent-input-skill {
-		flex-shrink: 0;
+		/* Inline at the head of the text: pinned to the field's top-left, vertically
+		   centred on the first line. The first line clears it via the field/mirror
+		   text-indent, then lines 2+ wrap back underneath. */
+		position: absolute;
+		left: 0;
+		/* Just past half the field's line box (font-size 1rem x line-height 1.7 =
+		   1.7rem) so the chunky pill sits centred-to-slightly-low on the first line —
+		   settled on the text rather than riding high above it. */
+		top: 0.9rem;
+		transform: translateY(-50%);
+		z-index: 1;
+		/* Clicks fall through to the textarea beneath — the pill is a label today. */
+		pointer-events: none;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.3rem;
-		/* Breathing room between the pill and where the typed text begins. */
-		margin-right: 0.4rem;
 		font-family: var(--font-mono);
-		font-size: 0.6875rem;
+		font-size: 0.75rem;
 		letter-spacing: 0.04em;
+		/* Pin an explicit line-height so the pill's height is predictable rather than
+		   inherited from the page's body leading. Kept chunky (taller than the slim
+		   variant); the field's leading below is opened up to give the wrapped line
+		   the room this chunk needs. */
+		line-height: 1.4;
 		/* White label for legibility against the tinted, animated background. */
 		color: white;
-		padding: 0.2rem 0.6rem;
+		padding: 0.25rem 0.75rem;
 		white-space: nowrap;
+		/* Rounded-rectangle corners that join the inputs' family rather than the
+		   full stadium it would otherwise share with the submit button. A literal
+		   1.25rem (the container radius) would clamp to a stadium at this height, so
+		   it's scaled to the same proportional roundness instead. */
+		border-radius: 0.6rem;
 	}
 
 	/* Slow diagonal drift of the sheen, with a gentle border pulse. `alternate`
@@ -250,6 +297,8 @@
 	   cursor alignment. */
 	.agent-input-field-wrapper {
 		display: grid;
+		/* Positioning context for the inline skill pill. */
+		position: relative;
 		flex: 1;
 		min-width: 0;
 	}
@@ -259,7 +308,11 @@
 		grid-area: 1 / 1;
 		font-family: var(--font-mono);
 		font-size: 1rem; /* >= 16px prevents iOS Safari auto-zoom on focus */
-		line-height: 1.5;
+		line-height: 1.7; /* roomier leading; also gives the chunky inline pill room before the wrapped line */
+		/* Indent only the first line so it clears the inline skill pill; driven by
+		   the pill's measured width (0 when there is no pill). Applied to the mirror
+		   too so its wrap matches. */
+		text-indent: var(--skill-indent, 0px);
 		padding: 0;
 	}
 
