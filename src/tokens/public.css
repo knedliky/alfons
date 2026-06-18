@@ -35,6 +35,9 @@
 		/* light: rgba(226, 218, 206, 0.9) */
 		--bg-glass-solid: oklch(9% 0.01 30); /* converted from #1a1614 */
 		/* light: #dad2c6 */
+		--surface-glass-bg: color-mix(in srgb, var(--bg-glass-solid) 85%, transparent);
+		/* Frosted-panel fill shared by the agent input and chat bubbles — the solid
+		   glass tone let through slightly so the grid reads behind it. */
 		--bg-primary-rgb: 20, 11, 5;
 		/* light: 240, 232, 221 */
 
@@ -138,6 +141,8 @@
 		/* light: directional warm shadow */
 		--input-shadow: none;
 		/* light: inset pressed */
+		--shadow-glass: 0 4px 16px oklch(0% 0 0 / 20%), 0 2px 4px oklch(0% 0 0 / 10%);
+		/* Frosted-panel drop shadow shared by the agent input and chat bubbles. */
 
 		/* === 8. INPUTS =======================================================
 		   Form field styling — heights match Button size tiers
@@ -202,8 +207,12 @@
 		/* 8px — default */
 		--radius-lg: 1rem;
 		/* 16px — moderate rounding for expanded cards */
+		--radius-message: 1.25rem;
+		/* 20px — chat bubbles and the agent input. The largest radius at which a
+		   single-line surface still reads as a rounded rectangle; above this it
+		   clamps to a stadium on short elements. */
 		--radius-bubble: 1.75rem;
-		/* 28px — chat message bubbles */
+		/* 28px — larger expanded surfaces */
 		--radius-pill: 3rem;
 		/* Fully rounded */
 
@@ -544,6 +553,7 @@
 		--bg-primary: oklch(94% 0.03 55); /* converted from #f7e8d8 */
 		--bg-glass: oklch(88% 0.02 55 / 50%); /* converted from rgba(226, 218, 206, 0.5) */
 		--bg-glass-solid: oklch(85% 0.02 55); /* converted from #dad2c6 */
+		--surface-glass-bg: color-mix(in srgb, var(--card-bg) 90%, transparent);
 
 		/* === 3. BORDERS === */
 		--border-glass: oklch(25% 0.02 55 / 8%); /* converted from rgba(60, 50, 40, 0.08) */
@@ -582,6 +592,7 @@
 		--card-shadow-hover:
 			12px 12px 24px oklch(78% 0.01 55 / 85%), -12px -12px 24px oklch(95% 0.02 55 / 70%); /* converted from rgba(201,193,181,...) */
 		--input-shadow: none; /* flat — matches dark mode; no neumorphic inset */
+		--shadow-glass: var(--card-shadow-hover), 0 6px 20px oklch(78% 0.01 55 / 30%); /* warm raised glow */
 
 		/* === 13. STATE COLOURS === */
 		--colour-success-bg: oklch(46% 0.1 130 / 15%); /* converted from rgba(90, 122, 71, 0.15) */
