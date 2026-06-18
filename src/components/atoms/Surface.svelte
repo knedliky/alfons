@@ -25,8 +25,8 @@
 	 *
 	 * Distinct from Card: Card is a solid, padded content container; Surface is the
 	 * lighter, blurred chat-surface treatment. Consumers add their own layout and
-	 * padding via the class prop, and can override the edge colour there too (the
-	 * agent reply bubble tints the border sky-blue, for example).
+	 * padding via the class prop, and can tint the edge by setting the
+	 * `--surface-edge` custom property (the agent reply bubble sets it sky-blue).
 	 */
 	let {
 		as: Element = 'div',
@@ -49,16 +49,17 @@
 		-webkit-backdrop-filter: blur(12px);
 	}
 
-	/* Dark — a single faint edge. */
+	/* Dark — a single faint edge. Consumers override the colour via --surface-edge. */
 	:global([data-colour-mode='dark']) .surface {
-		border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
+		border: 1px solid var(--surface-edge, color-mix(in srgb, var(--text-primary) 10%, transparent));
 	}
 
-	/* Light — directional borders for the raised, tactile feel (matches Card). */
+	/* Light — directional borders for the raised, tactile feel (matches Card). A set
+	   --surface-edge tints all four into one coloured edge; unset keeps directional. */
 	:global([data-colour-mode='light']) .surface {
-		border-top: 1px solid var(--card-border-top);
-		border-left: 1px solid var(--card-border-left);
-		border-right: 1px solid var(--card-border-right);
-		border-bottom: 1px solid var(--card-border-bottom);
+		border-top: 1px solid var(--surface-edge, var(--card-border-top));
+		border-left: 1px solid var(--surface-edge, var(--card-border-left));
+		border-right: 1px solid var(--surface-edge, var(--card-border-right));
+		border-bottom: 1px solid var(--surface-edge, var(--card-border-bottom));
 	}
 </style>
