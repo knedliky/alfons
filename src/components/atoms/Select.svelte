@@ -3,6 +3,12 @@
 		value: string;
 		label: string;
 		style?: string;
+		/** Optional representative colour (any CSS colour or token). When set, the
+		 *  selected row's background — and the trigger while this option is the
+		 *  current value — tints with this colour instead of the brand --accent.
+		 *  Pass 'transparent' for a deliberately uncoloured option, e.g. an "All"
+		 *  reset that should read as no selection. */
+		accent?: string;
 	}
 
 	export interface SelectProps {
@@ -101,6 +107,18 @@
 	});
 
 	const selectedOption = $derived(options.find((opt) => opt.value === value));
+
+	/**
+	 * Trigger background — tinted with the selected option's `accent` so the
+	 * current value carries its colour at rest (mirroring how a toggle group's
+	 * active segment shows its colour). Falls back to the plain --select-bg when
+	 * the selected option has no accent, or an explicit 'transparent' one.
+	 */
+	const triggerBackground = $derived(
+		selectedOption?.accent && selectedOption.accent !== 'transparent'
+			? `color-mix(in oklch, ${selectedOption.accent} 15%, var(--select-bg))`
+			: 'var(--select-bg)'
+	);
 
 	/**
 	 * Visible options after applying the search filter. When not searchable or
@@ -305,6 +323,7 @@
 		class="select-trigger motif-form-control {size === 'sm' ? 'select-trigger-sm' : ''} {className ?? ''}"
 		style="
 			color: {tokens.text};
+			background: {triggerBackground};
 			--form-ring-bg: var(--select-bg);
 		"
 		{disabled}
@@ -383,7 +402,7 @@
 								{option.style ?? ''}
 								color: {isSelected || isHighlighted ? tokens.text : tokens.textSecondary};
 								background: {isSelected
-									? 'color-mix(in oklch, var(--accent) 15%, transparent)'
+									? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
 									: isHighlighted
 										? 'var(--select-highlighted-bg)'
 										: 'transparent'};
