@@ -548,7 +548,7 @@
 		   light grazes at a shallow angle (faint near the source, brightest in the
 		   distance). Rendered by html::before / html::after in base.css; tuned in the
 		   Merlin depth session. */
-		--ground-rake-strength: 0.07;
+		--ground-rake-strength: 0.14;
 		--ground-glint-strength: 0.04;
 		--ground-glint-colour: oklch(0.9 0.09 85); /* warm gold */
 
