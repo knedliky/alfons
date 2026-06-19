@@ -557,14 +557,6 @@
 		border-color: var(--select-text-muted);
 	}
 
-	.select-trigger:focus-visible {
-		outline: none;
-		border-color: var(--select-text-secondary);
-		box-shadow:
-			0 0 0 2px var(--select-bg),
-			0 0 0 4px var(--accent);
-	}
-
 	.select-trigger:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;

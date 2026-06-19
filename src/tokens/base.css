@@ -347,8 +347,12 @@ body {
 	   FOCUS STATES
 	   ========================================================================== */
 
+	/* A thin accent-tinted edge — the calm focus affordance shared app-wide,
+	   matching AgentInput's focus border. Components inherit this rather than
+	   defining their own ring (error/success states still use the heavier
+	   box-shadow rings in form-states.css). */
 	:focus-visible {
-		outline: 2px solid var(--accent);
+		outline: 1.5px solid color-mix(in srgb, var(--accent) 45%, transparent);
 		outline-offset: 2px;
 	}
 
