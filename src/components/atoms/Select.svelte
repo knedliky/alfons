@@ -318,6 +318,21 @@
 		--select-highlighted-bg: color-mix(in oklch, var(--select-text) 10%, transparent);
 "
 >
+	{#snippet caret()}
+		<svg
+			class="select-arrow"
+			class:open={isOpen}
+			width="12"
+			height="8"
+			viewBox="0 0 12 8"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			style="color: {tokens.textSecondary};"
+		>
+			<path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+		</svg>
+	{/snippet}
+
 	<button
 		bind:this={triggerRef}
 		type="button"
@@ -339,20 +354,13 @@
 			style="{selectedOption?.style ?? ''} background: {valuePillBackground}; color: {!selectedOption ? tokens.textMuted : 'inherit'};"
 		>
 			{selectedOption?.label ?? placeholder}
+			<!-- sm/filter trigger: the caret lives inside the value pill so the accent
+			     tint covers it, matching a single-item toggle group. -->
+			{#if size === 'sm'}{@render caret()}{/if}
 		</span>
 
-		<svg
-			class="select-arrow"
-			class:open={isOpen}
-			width="12"
-			height="8"
-			viewBox="0 0 12 8"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			style="color: {tokens.textSecondary};"
-		>
-			<path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-		</svg>
+		<!-- default trigger: the caret sits at the far right of the trigger. -->
+		{#if size !== 'sm'}{@render caret()}{/if}
 	</button>
 
 	{#if isOpen && isPositioned}
@@ -518,8 +526,12 @@
 
 	/* In the sm/filter trigger the value becomes an inner pill matching the
 	   ToggleGroup's active segment: same padding and full-pill radius, with a
-	   pinned line-height. Its accent tint (or transparent) is set inline. */
+	   pinned line-height. It also holds the caret, so the accent tint (set
+	   inline) covers both the label and the arrow. */
 	.select-trigger-sm .select-value {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
 		padding: 0.2rem 0.6rem;
 		border-radius: var(--radius-pill);
 		line-height: 1.4;
