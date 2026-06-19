@@ -414,7 +414,9 @@
 								background: {isSelected
 									? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
 									: isHighlighted
-										? 'var(--select-highlighted-bg)'
+										? option.accent && option.accent !== 'transparent'
+											? `color-mix(in oklch, ${option.accent} 15%, transparent)`
+											: 'var(--select-highlighted-bg)'
 										: 'transparent'};
 								border-radius: {isFirst && isLast
 									? 'var(--radius-md)'
@@ -501,6 +503,9 @@
 		   toggle group. The chevron keeps the same gap on the right. */
 		padding: 0.25rem;
 		gap: 0.25rem;
+		/* Stretch the value pill to the full inner height, exactly like the
+		   ToggleGroup's active segment (which fills its padded container). */
+		align-items: stretch;
 	}
 
 	.select-trigger:hover:not(:disabled) {
@@ -637,10 +642,11 @@
 	.select-options {
 		overflow-y: auto;
 		min-height: 0;
-		/* A dedicated channel for the scrollbar so the option hover fill stops short
-		   of the thumb. macOS overlay scrollbars draw over content with no reserved
-		   gutter, so without this the thumb floats on top of the fill's right edge. */
-		padding-right: 0.25rem;
+		/* No horizontal padding here, so the option fills keep an equal gap to the
+		   dropdown border on every side (just the dropdown's own 0.375rem padding).
+		   A scrollbar only appears for long option lists; there the thin overlay
+		   thumb (macOS) sits over the fill's right edge while scrolling, or takes
+		   its own column on classic-scrollbar platforms. */
 		scrollbar-width: thin;
 		scrollbar-color: var(--select-border) transparent;
 	}
