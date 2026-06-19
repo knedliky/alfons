@@ -2,6 +2,12 @@
 	export interface ToggleGroupOption<T extends string = string> {
 		value: T;
 		label: string;
+		/** Optional representative colour (any CSS colour or token). When this option
+		 *  is the active one, the sliding thumb tints with this colour instead of the
+		 *  neutral --card-border — the same accent treatment Motif's Select uses for
+		 *  its selected value. Omit (or pass 'transparent') for an uncoloured option,
+		 *  e.g. an "All" reset that should read as no selection. */
+		accent?: string;
 	}
 
 	export interface ToggleGroupProps<T extends string = string> {
@@ -87,6 +93,16 @@
 	// The thumb is hidden until its first real measurement, so a zero-width thumb
 	// never flashes at the container's corner before the active button is read.
 	const thumbVisible = $derived(thumb.width > 0);
+
+	// The active option's accent tints the thumb so the active segment carries the
+	// option's colour, exactly like Select's selected value pill. No accent (or
+	// 'transparent') falls back to the neutral --card-border thumb.
+	const activeAccent = $derived(options.find((option) => option.value === selected)?.accent);
+	const thumbBackground = $derived(
+		activeAccent && activeAccent !== 'transparent'
+			? `color-mix(in oklch, ${activeAccent} 15%, transparent)`
+			: 'var(--card-border)'
+	);
 </script>
 
 <div class="toggle-group {className}" bind:this={container}>
@@ -94,7 +110,7 @@
 		class="toggle-thumb"
 		class:toggle-thumb--visible={thumbVisible}
 		class:toggle-thumb--ready={thumb.ready}
-		style="transform: translate({thumb.left}px, {thumb.top}px); width: {thumb.width}px; height: {thumb.height}px;"
+		style="transform: translate({thumb.left}px, {thumb.top}px); width: {thumb.width}px; height: {thumb.height}px; background: {thumbBackground};"
 		aria-hidden="true"
 	></span>
 	{#each options as option}
@@ -136,6 +152,8 @@
 		left: 0;
 		z-index: 0;
 		border-radius: var(--radius-pill);
+		/* Neutral default — overridden inline with the active option's accent tint
+		   when one is set (see thumbBackground). */
 		background: var(--card-border);
 		opacity: 0;
 		pointer-events: none;
@@ -152,7 +170,8 @@
 		transition:
 			transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
 			width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-			height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+			height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
