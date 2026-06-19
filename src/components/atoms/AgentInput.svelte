@@ -302,11 +302,9 @@
 		align-items: flex-start;
 		gap: var(--space-2);
 		width: 100%;
-		/* Fully-round stadium pill via the shared radius token, so the single-line
-		   surface reads as a true pill (was --radius-message/32px, a softened
-		   rectangle). As the box grows multi-line the left/right ends stay full
-		   semicircles — the intended pill identity. */
-		border-radius: var(--radius-pill);
+		/* Shared message radius — the largest radius at which a single-line surface
+		   keeps straight edges instead of ballooning into a pill. */
+		border-radius: var(--radius-message);
 		/* Equal padding on all sides — the uniform corner gap for the inner controls. */
 		padding: var(--surface-inset);
 		/* Shared frosted-glass surface (mode-aware tokens); only the edge differs per
@@ -446,13 +444,11 @@
 		color: white;
 		padding: 0.25rem 0.75rem;
 		white-space: nowrap;
-		/* Rounded-rectangle corners that join the inputs' family rather than the full
-		   stadium it would otherwise share with the submit button. --radius-md is the
-		   shared inner tier (a concentric step down from the container's
-		   --radius-message); a literal --radius-message would clamp to a stadium at
-		   this height. */
-		border-radius: var(--radius-md);
-		/* Fade out (rather than clip to a sliver) when the capped field scrolls. */
+		/* No radius of its own: the pill inherits the fully-round --radius-pill from
+		   the shared .agent-input-skill/.agent-input-submit rule above, so it reads as
+		   a true stadium — the same pill shape as ToggleGroup — instead of the blockish
+		   --radius-md inner tier it used before.
+		   Fade out (rather than clip to a sliver) when the capped field scrolls. */
 		transition: opacity 0.15s ease;
 	}
 

@@ -263,7 +263,7 @@
 		/* 8px — default */
 		--radius-md: 0.625rem;
 		/* 10px — inner controls nested in a rounded-rectangle surface (dropdown
-		   options, the dropdown search field, the agent-input skill pill). The
+		   options, the dropdown search field). The
 		   concentric step down from --radius-message: an element sitting inside a
 		   20px surface reads as the same family when its own corners are scaled to
 		   roughly half the parent's radius. */
