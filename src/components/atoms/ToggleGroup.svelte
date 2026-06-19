@@ -19,7 +19,7 @@
 	 * A compact glass-backed toolbar filter: each option is a button, the active one
 	 * tinted by a single sliding "thumb" that animates between options (the same
 	 * measure-and-transition technique the site header uses for its nav underline).
-	 * Pinned to --filter-control-height so it lines up with SelectFilter and any
+	 * Pinned to --filter-control-height so it lines up with the sm Select and any
 	 * other filter control in the same toolbar, even when the row wraps.
 	 */
 	import { untrack } from 'svelte';
@@ -175,7 +175,7 @@
 		font-size: 0.6875rem;
 		/* Pin the line-height so the label can't inherit the page's taller body
 		   line-height and push the button past the shared --filter-control-height
-		   (which left the group ~3.6px taller than sibling SelectFilters). */
+		   (which left the group ~3.6px taller than sibling sm Selects). */
 		line-height: 1.4;
 		border: none;
 		border-radius: var(--radius-pill);

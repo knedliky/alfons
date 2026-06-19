@@ -1,7 +1,7 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import ToggleGroup from '../../components/atoms/ToggleGroup.svelte';
-	import SelectFilter from '../../components/atoms/SelectFilter.svelte';
+	import Select from '../../components/atoms/Select.svelte';
 
 	const { Story } = defineMeta({
 		title: 'Atoms/ToggleGroup',
@@ -33,11 +33,11 @@
 	</div>
 </Story>
 
-<!-- ToggleGroup and SelectFilter share --filter-control-height, so they line up. -->
+<!-- ToggleGroup and a sm Select share --filter-control-height, so they line up. -->
 <Story name="Filter row" asChild>
 	<div class="frame row">
 		<ToggleGroup options={facets} selected={facet} onchange={(v) => (facet = v)} />
-		<SelectFilter options={industries} value={industry} onchange={(v) => (industry = v)} />
+		<Select size="sm" options={industries} value={industry} onchange={(v) => (industry = v)} />
 	</div>
 </Story>
 

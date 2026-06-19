@@ -454,8 +454,8 @@
 	}
 
 	/* Filter/sm size — tracks the ToggleGroup type ramp exactly (0.6875rem, lifting
-	   to 0.75rem on wider viewports) so a SelectFilter and a ToggleGroup sitting in
-	   the same toolbar read as one family rather than three different text sizes. */
+	   to 0.75rem on wider viewports) so a sm Select and a ToggleGroup sitting in
+	   the same toolbar read as one family rather than two different text sizes. */
 	.select-container-sm {
 		--select-font-size: 0.6875rem;
 	}
@@ -492,12 +492,14 @@
 		white-space: nowrap;
 	}
 
-	/* Small variant — the filter-row size: a shorter track (var(--input-height-sm),
-	   which SelectFilter redirects to --filter-control-height) and tighter padding,
-	   lining up with the toggle-group / bracket-filter tracks and the AgentInput
-	   skill pill. Text size is governed by --select-font-size on the container. */
+	/* Small variant — the filter-row size: pinned to the shared
+	   --filter-control-height so it lines up with the ToggleGroup, bracket filter,
+	   and AgentInput skill pill in the same toolbar, with tighter padding. (This is
+	   the height the former SelectFilter wrapper used to inject; folded in here so a
+	   bare sm Select is a toolbar filter out of the box.) Text size is governed by
+	   --select-font-size on the container. */
 	.select-trigger-sm {
-		min-height: var(--input-height-sm);
+		min-height: var(--filter-control-height);
 		/* Pad like the ToggleGroup container (0.25rem) so the value reads as an
 		   inner pill with a gap to the border — the trigger becomes a single-item
 		   toggle group. The chevron keeps the same gap on the right. */

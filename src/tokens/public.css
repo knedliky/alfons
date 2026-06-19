@@ -250,7 +250,7 @@
 		--header-height: 80px;
 		--back-link-height: 0px;
 		/* Overridden to 46px by BackLink component when fixed mode is active */
-		/* Shared height for toolbar filter controls (ToggleGroup, SelectFilter, and
+		/* Shared height for toolbar filter controls (ToggleGroup, the sm Select, and
 		   their siblings) so cross-row controls stay the same outer height. 2.75rem
 		   (44px) is a comfortable tap target by default; tightened on wider pointer
 		   viewports via the min-width override in this layer. */
