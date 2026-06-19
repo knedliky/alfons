@@ -378,8 +378,8 @@
 	}
 
 	/* Animated accent surface shared by the skill pill and the submit button, so the
-	   input's two accent affordances read as a matched pair: the same tint, the same
-	   drifting diagonal sheen, and the same border pulse. */
+	   input's two accent affordances read as a matched pair: the same height, the same
+	   tint, the same drifting diagonal sheen, and the same border pulse. */
 	.agent-input-skill,
 	.agent-input-submit {
 		background-color: color-mix(in srgb, var(--accent) 16%, transparent);
@@ -391,6 +391,11 @@
 		);
 		background-size: 220% 220%;
 		border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+		/* Matched size — the pill and the submit share a height so they read as the
+		   same control. border-box keeps the 1px border inside the 2rem (the submit is
+		   also 2rem), so both render at exactly the same height. */
+		box-sizing: border-box;
+		height: 2rem;
 		/* Always fully round — a true stadium on the label, a circle on the square
 		   button — whatever the surface's own corner radius. The accent affordances
 		   keep their round identity rather than tracking the container; the clean,
