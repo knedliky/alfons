@@ -137,33 +137,20 @@
 	const isPositioned = $derived(dropdownPosition.minWidth > 0);
 
 	/**
-	 * Find the nearest ancestor that establishes a containing block for
-	 * position: fixed descendants. A transform, filter, backdrop-filter,
-	 * perspective, qualifying will-change, paint/layout containment, or a
-	 * container-type all take fixed positioning out of the viewport and into
-	 * that ancestor's coordinate space. When that happens the dropdown's
-	 * viewport coordinates must be offset by the ancestor's box, or the menu
-	 * lands far from its trigger — e.g. the merlin occupation page, whose
-	 * fade-up sections keep a transform applied after the animation finishes.
+	 * Render the dropdown at <body> instead of where it sits in the markup. The
+	 * menu is position: fixed, but a transformed / filtered / contained ancestor
+	 * would otherwise become its containing block — reparenting it away from the
+	 * trigger and disabling its backdrop-filter (the frosted surface collapses to
+	 * a flat tint). Portaling to the document root keeps the menu anchored to the
+	 * viewport with its frosted surface intact wherever the Select is used.
 	 */
-	function getFixedContainingBlock(start: HTMLElement | null): HTMLElement | null {
-		let node = start?.parentElement ?? null;
-		while (node) {
-			const cs = getComputedStyle(node);
-			if (
-				cs.transform !== 'none' ||
-				cs.perspective !== 'none' ||
-				cs.filter !== 'none' ||
-				cs.backdropFilter !== 'none' ||
-				(cs.willChange !== 'auto' && /transform|perspective|filter/.test(cs.willChange)) ||
-				(cs.contain !== 'none' && /strict|content|paint|layout/.test(cs.contain)) ||
-				(cs.containerType !== undefined && cs.containerType !== 'normal' && cs.containerType !== '')
-			) {
-				return node;
+	function portalToBody(node: HTMLElement) {
+		document.body.appendChild(node);
+		return {
+			destroy() {
+				node.remove();
 			}
-			node = node.parentElement;
-		}
-		return null;
+		};
 	}
 
 	function calculateDropdownPosition() {
@@ -177,18 +164,12 @@
 		// Flip above when there is more room above than below
 		const showAbove = spaceBelow < DROPDOWN_MAX_HEIGHT && spaceAbove > spaceBelow;
 
-		// The dropdown is position: fixed, but a transformed/contained ancestor can
-		// turn it into that ancestor's coordinate space rather than the viewport.
-		// Offset the viewport coordinates by the containing block's box so the menu
-		// always lands at the trigger regardless of ancestor transforms.
-		const containingBlock = getFixedContainingBlock(triggerRef);
-		const cbRect = containingBlock ? containingBlock.getBoundingClientRect() : null;
-		const offsetTop = cbRect ? cbRect.top : 0;
-		const offsetLeft = cbRect ? cbRect.left : 0;
-
+		// The menu is portaled to <body>, so these viewport coordinates from the
+		// trigger's rect place it correctly regardless of any transformed ancestor
+		// around the trigger.
 		dropdownPosition = {
-			top: (showAbove ? rect.top - DROPDOWN_GAP : rect.bottom + DROPDOWN_GAP) - offsetTop,
-			left: rect.left - offsetLeft,
+			top: showAbove ? rect.top - DROPDOWN_GAP : rect.bottom + DROPDOWN_GAP,
+			left: rect.left,
 			minWidth: rect.width,
 			showAbove
 		};
@@ -418,7 +399,9 @@
 	{#if isOpen && isPositioned}
 		<div
 			bind:this={listRef}
+			use:portalToBody
 			class="select-dropdown"
+			class:select-dropdown-sm={size === 'sm'}
 			class:select-dropdown-above={dropdownPosition.showAbove}
 			role="listbox"
 			tabindex="-1"
@@ -429,6 +412,14 @@
 				min-width: {dropdownPosition.minWidth}px;
 				background: {tokens.backgroundElevated};
 				border: 1px solid {tokens.border};
+				--select-text: {tokens.text};
+				--select-text-secondary: {tokens.textSecondary};
+				--select-text-muted: {tokens.textMuted};
+				--select-border: {tokens.border};
+				--select-bg: {tokens.background};
+				--select-bg-elevated: {tokens.backgroundElevated};
+				--select-input-bg: {tokens.inputBg};
+				--select-highlighted-bg: color-mix(in oklch, var(--select-text) 10%, transparent);
 			"
 		>
 			{#if searchable}
@@ -614,6 +605,15 @@
 	.select-dropdown {
 		/* Fixed positioning escapes overflow containers */
 		z-index: var(--z-dropdown);
+		/* Portaled to <body>, the dropdown no longer inherits from .select-container,
+		   so it restates the container's typography: the monospace family (search,
+		   options and empty state all inherit it) and the --select-font-size ramp
+		   (default size here; the sm/filter size and its 640px step live on
+		   .select-dropdown-sm below). The trigger and the menu render the same
+		   labels, so they must match or the label appears to change the instant the
+		   menu opens. */
+		font-family: var(--font-mono);
+		--select-font-size: 0.875rem;
 		display: flex;
 		flex-direction: column;
 		width: max-content;
@@ -634,6 +634,19 @@
 		-webkit-backdrop-filter: blur(var(--frost-3));
 		/* Fade in to prevent position-calculation flicker */
 		animation: selectDropdownFadeIn 0.1s ease;
+	}
+
+	/* sm/filter size — match the container's type ramp (0.6875rem, lifting to
+	   0.75rem on wider viewports) so a portaled menu reads at the same size as
+	   its sm trigger. */
+	.select-dropdown-sm {
+		--select-font-size: 0.6875rem;
+	}
+
+	@media (min-width: 640px) {
+		.select-dropdown-sm {
+			--select-font-size: 0.75rem;
+		}
 	}
 
 	@keyframes selectDropdownFadeIn {
