@@ -109,15 +109,16 @@
 	const selectedOption = $derived(options.find((opt) => opt.value === value));
 
 	/**
-	 * Trigger background — tinted with the selected option's `accent` so the
-	 * current value carries its colour at rest (mirroring how a toggle group's
-	 * active segment shows its colour). Falls back to the plain --select-bg when
-	 * the selected option has no accent, or an explicit 'transparent' one.
+	 * Value-pill background — tinted with the selected option's `accent` so the
+	 * current value reads as an inner pill carrying its colour, exactly like a
+	 * toggle group's active segment. Mixed into transparent (not the trigger bg)
+	 * so the trigger's own surface shows through the gap around the pill. An
+	 * accent of 'transparent', or none, leaves the pill uncoloured.
 	 */
-	const triggerBackground = $derived(
+	const valuePillBackground = $derived(
 		selectedOption?.accent && selectedOption.accent !== 'transparent'
-			? `color-mix(in oklch, ${selectedOption.accent} 15%, var(--select-bg))`
-			: 'var(--select-bg)'
+			? `color-mix(in oklch, ${selectedOption.accent} 15%, transparent)`
+			: 'transparent'
 	);
 
 	/**
@@ -323,7 +324,6 @@
 		class="select-trigger motif-form-control {size === 'sm' ? 'select-trigger-sm' : ''} {className ?? ''}"
 		style="
 			color: {tokens.text};
-			background: {triggerBackground};
 			--form-ring-bg: var(--select-bg);
 		"
 		{disabled}
@@ -336,7 +336,7 @@
 	>
 		<span
 			class="select-value"
-			style="{selectedOption?.style ?? ''} color: {!selectedOption ? tokens.textMuted : 'inherit'};"
+			style="{selectedOption?.style ?? ''} background: {valuePillBackground}; color: {!selectedOption ? tokens.textMuted : 'inherit'};"
 		>
 			{selectedOption?.label ?? placeholder}
 		</span>
@@ -394,6 +394,8 @@
 					{#each visibleOptions as option, index (option.value)}
 						{@const isSelected = option.value === value}
 						{@const isHighlighted = index === highlightedIndex}
+							{@const isFirst = index === 0}
+							{@const isLast = index === visibleOptions.length - 1}
 						<button
 							type="button"
 							class="select-option"
@@ -406,6 +408,13 @@
 									: isHighlighted
 										? 'var(--select-highlighted-bg)'
 										: 'transparent'};
+								border-radius: {isFirst && isLast
+									? 'var(--radius-md)'
+									: isFirst
+										? 'var(--radius-md) var(--radius-md) 0 0'
+										: isLast
+											? '0 0 var(--radius-md) var(--radius-md)'
+											: '0'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}
@@ -479,7 +488,11 @@
 	   skill pill. Text size is governed by --select-font-size on the container. */
 	.select-trigger-sm {
 		min-height: var(--input-height-sm);
-		padding: 0 1rem;
+		/* Pad like the ToggleGroup container (0.25rem) so the value reads as an
+		   inner pill with a gap to the border — the trigger becomes a single-item
+		   toggle group. The chevron keeps the same gap on the right. */
+		padding: 0.25rem;
+		gap: 0.25rem;
 	}
 
 	.select-trigger:hover:not(:disabled) {
@@ -501,6 +514,21 @@
 
 	.select-value {
 		white-space: nowrap;
+	}
+
+	/* In the sm/filter trigger the value becomes an inner pill matching the
+	   ToggleGroup's active segment: same padding and full-pill radius, with a
+	   pinned line-height. Its accent tint (or transparent) is set inline. */
+	.select-trigger-sm .select-value {
+		padding: 0.2rem 0.6rem;
+		border-radius: var(--radius-pill);
+		line-height: 1.4;
+	}
+
+	@media (min-width: 640px) {
+		.select-trigger-sm .select-value {
+			padding: 0.25rem 0.75rem;
+		}
 	}
 
 	.select-arrow {
@@ -615,14 +643,16 @@
 
 	/* Options match the old CustomSelect: full-width, left-aligned, mono, with
 	   long labels wrapping rather than truncating. The selected row is marked by
-	   an accent-tinted background (set inline), not a trailing check icon. */
+	   an accent-tinted background (set inline), not a trailing check icon. The
+	   corner radius is also set inline per position so the rows read as one
+	   connected list: only the first option rounds its top corners and the last
+	   its bottom corners; the middle rows are square. */
 	.select-option {
 		display: block;
 		width: 100%;
 		padding: 0.5rem 0.75rem;
 		background: transparent;
 		border: none;
-		border-radius: var(--radius-md);
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
