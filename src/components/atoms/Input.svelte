@@ -58,7 +58,7 @@
 		transition:
 			border-color var(--transition-normal),
 			box-shadow var(--transition-normal);
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 	}
 
 	.input:focus {

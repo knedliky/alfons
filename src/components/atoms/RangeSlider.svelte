@@ -54,7 +54,7 @@
 	.range-slider {
 		width: 100%;
 		height: 4px;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		appearance: none;
 		background-color: var(--border-glass);
 		cursor: pointer;

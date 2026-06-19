@@ -146,7 +146,7 @@
 	/* Circle variant */
 	.skeleton-circle {
 		display: block;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 	}
 
 	/* Text variant — stacked lines with spacing */

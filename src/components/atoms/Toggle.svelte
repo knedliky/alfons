@@ -77,7 +77,7 @@
 		height: 24px;
 		padding: 3px;
 		background-color: var(--border-glass-hover);
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		transition: background-color var(--transition-fast);
 	}
 

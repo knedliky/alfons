@@ -170,7 +170,7 @@
 		min-width: 20px;
 		height: 20px;
 		padding: 0 4px;
-		border-radius: 9999px;
+		border-radius: var(--radius-pill);
 		background: var(--accent-red);
 		font-size: 0.75rem;
 		font-weight: 500;

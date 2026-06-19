@@ -15,30 +15,12 @@
 </script>
 
 <!-- The input fills its container, so each story is framed at a representative
-     surface width. The radii stories (Rounded square / Tight square / Pill) vary
-     only --surface-radius to show the inner pill and button staying concentric. -->
+     surface width. The surface is a full stadium pill (--radius-pill); the skill
+     pill and submit button keep their own round identity via the same token. -->
 
 <Story name="Default" asChild>
 	<div class="frame">
 		<AgentInput placeholder="ask me anything" />
-	</div>
-</Story>
-
-<Story name="Rounded square" asChild>
-	<div class="frame">
-		<AgentInput placeholder="ask me anything" />
-	</div>
-</Story>
-
-<Story name="Tight square" asChild>
-	<div class="frame">
-		<AgentInput class="tight" placeholder="ask me anything" />
-	</div>
-</Story>
-
-<Story name="Pill" asChild>
-	<div class="frame">
-		<AgentInput class="pill" placeholder="ask me anything" />
 	</div>
 </Story>
 
@@ -70,17 +52,5 @@
 	.frame {
 		width: 420px;
 		max-width: 80vw;
-	}
-
-	/* Override the shared --radius-message that the surface reads. The pill and
-	   submit keep their round identity regardless (they track --radius-pill, not
-	   the surface), so these variants only reshape the container: --radius-lg gives
-	   a tighter rounded square, --radius-pill a full stadium. */
-	:global(.agent-input.tight) {
-		--radius-message: var(--radius-lg);
-	}
-
-	:global(.agent-input.pill) {
-		--radius-message: var(--radius-pill);
 	}
 </style>

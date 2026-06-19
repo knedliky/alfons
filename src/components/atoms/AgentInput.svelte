@@ -302,9 +302,11 @@
 		align-items: flex-start;
 		gap: var(--space-2);
 		width: 100%;
-		/* Shared message radius — the largest radius at which a single-line surface
-		   keeps straight edges instead of ballooning into a pill. */
-		border-radius: var(--radius-message);
+		/* Fully-round stadium pill via the shared radius token, so the single-line
+		   surface reads as a true pill (was --radius-message/32px, a softened
+		   rectangle). As the box grows multi-line the left/right ends stay full
+		   semicircles — the intended pill identity. */
+		border-radius: var(--radius-pill);
 		/* Equal padding on all sides — the uniform corner gap for the inner controls. */
 		padding: var(--surface-inset);
 		/* Shared frosted-glass surface (mode-aware tokens); only the edge differs per
@@ -395,7 +397,7 @@
 		   button — whatever the surface's own corner radius. The accent affordances
 		   keep their round identity rather than tracking the container; the clean,
 		   balanced look comes from the uniform --surface-inset spacing instead. */
-		border-radius: var(--radius-pill, 999px);
+		border-radius: var(--radius-pill);
 		animation: agent-input-shimmer 6s ease-in-out infinite alternate;
 	}
 

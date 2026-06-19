@@ -278,8 +278,13 @@
 		   reads off against this. */
 		--radius-bubble: 1.75rem;
 		/* 28px — larger expanded surfaces */
-		--radius-pill: 3rem;
-		/* Fully rounded */
+		--radius-pill: 999px;
+		/* Fully rounded — clamps to a true stadium (short control) or circle (square)
+		   at any height, since 999px always exceeds half the smaller side. The single
+		   token every pill surface references: Button, Badge, Toggle, Input,
+		   RangeSlider, ToggleGroup, Select, and the agent input. Was 3rem (48px),
+		   which only read as a full pill up to ~96px tall — taller surfaces fell short,
+		   which is why consumers used to hardcode 9999px. */
 
 		/* Page layout spacing */
 		--page-top-padding: var(--space-8);
