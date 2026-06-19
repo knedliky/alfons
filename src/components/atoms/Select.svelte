@@ -136,6 +136,36 @@
 	// Only show dropdown once position has been calculated
 	const isPositioned = $derived(dropdownPosition.minWidth > 0);
 
+	/**
+	 * Find the nearest ancestor that establishes a containing block for
+	 * position: fixed descendants. A transform, filter, backdrop-filter,
+	 * perspective, qualifying will-change, paint/layout containment, or a
+	 * container-type all take fixed positioning out of the viewport and into
+	 * that ancestor's coordinate space. When that happens the dropdown's
+	 * viewport coordinates must be offset by the ancestor's box, or the menu
+	 * lands far from its trigger — e.g. the merlin occupation page, whose
+	 * fade-up sections keep a transform applied after the animation finishes.
+	 */
+	function getFixedContainingBlock(start: HTMLElement | null): HTMLElement | null {
+		let node = start?.parentElement ?? null;
+		while (node) {
+			const cs = getComputedStyle(node);
+			if (
+				cs.transform !== 'none' ||
+				cs.perspective !== 'none' ||
+				cs.filter !== 'none' ||
+				cs.backdropFilter !== 'none' ||
+				(cs.willChange !== 'auto' && /transform|perspective|filter/.test(cs.willChange)) ||
+				(cs.contain !== 'none' && /strict|content|paint|layout/.test(cs.contain)) ||
+				(cs.containerType !== undefined && cs.containerType !== 'normal' && cs.containerType !== '')
+			) {
+				return node;
+			}
+			node = node.parentElement;
+		}
+		return null;
+	}
+
 	function calculateDropdownPosition() {
 		if (!triggerRef) return;
 		const rect = triggerRef.getBoundingClientRect();
@@ -147,9 +177,18 @@
 		// Flip above when there is more room above than below
 		const showAbove = spaceBelow < DROPDOWN_MAX_HEIGHT && spaceAbove > spaceBelow;
 
+		// The dropdown is position: fixed, but a transformed/contained ancestor can
+		// turn it into that ancestor's coordinate space rather than the viewport.
+		// Offset the viewport coordinates by the containing block's box so the menu
+		// always lands at the trigger regardless of ancestor transforms.
+		const containingBlock = getFixedContainingBlock(triggerRef);
+		const cbRect = containingBlock ? containingBlock.getBoundingClientRect() : null;
+		const offsetTop = cbRect ? cbRect.top : 0;
+		const offsetLeft = cbRect ? cbRect.left : 0;
+
 		dropdownPosition = {
-			top: showAbove ? rect.top - DROPDOWN_GAP : rect.bottom + DROPDOWN_GAP,
-			left: rect.left,
+			top: (showAbove ? rect.top - DROPDOWN_GAP : rect.bottom + DROPDOWN_GAP) - offsetTop,
+			left: rect.left - offsetLeft,
 			minWidth: rect.width,
 			showAbove
 		};
@@ -292,14 +331,27 @@
 		}
 	});
 
-	// Scroll highlighted option into view during keyboard navigation
+	// Keep the highlighted option visible during keyboard navigation by scrolling
+	// the options list directly, rather than calling scrollIntoView. The dropdown is
+	// position: fixed, and scrollIntoView is fooled by that — it scrolls the whole
+	// document to the option's in-flow position. On a select that sits far down a
+	// long page that jumps the window hundreds of px, which trips the scroll-to-close
+	// handler below, so the menu opens and instantly closes. Scoping the scroll to
+	// .select-options moves only the menu's own list and never touches the window.
 	$effect(() => {
 		if (isOpen && highlightedIndex >= 0 && listRef) {
+			const optionsContainer = listRef.querySelector('.select-options');
 			const highlightedElement = listRef.querySelector(
 				`[data-index="${highlightedIndex}"]`
-			) as HTMLElement;
-			if (highlightedElement) {
-				highlightedElement.scrollIntoView({ block: 'nearest' });
+			) as HTMLElement | null;
+			if (optionsContainer && highlightedElement) {
+				const containerRect = optionsContainer.getBoundingClientRect();
+				const elementRect = highlightedElement.getBoundingClientRect();
+				if (elementRect.top < containerRect.top) {
+					optionsContainer.scrollTop -= containerRect.top - elementRect.top;
+				} else if (elementRect.bottom > containerRect.bottom) {
+					optionsContainer.scrollTop += elementRect.bottom - containerRect.bottom;
+				}
 			}
 		}
 	});
