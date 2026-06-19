@@ -287,7 +287,7 @@
 </script>
 
 <div
-	class="select-container"
+	class="select-container {size === 'sm' ? 'select-container-sm' : ''}"
 	style="
 		--select-text: {tokens.text};
 		--select-text-secondary: {tokens.textSecondary};
@@ -409,6 +409,23 @@
 		/* Monospace pill treatment — the canonical Select look (absorbed from the
 		   Merlin CustomSelect). Trigger, value, options and search all inherit. */
 		font-family: var(--font-mono);
+		/* One source of truth for the text size shared by the trigger value and the
+		   dropdown options. They render the same labels, so they must never differ
+		   in size — otherwise the label appears to resize the instant the menu opens. */
+		--select-font-size: 0.875rem;
+	}
+
+	/* Filter/sm size — tracks the ToggleGroup type ramp exactly (0.6875rem, lifting
+	   to 0.75rem on wider viewports) so a SelectFilter and a ToggleGroup sitting in
+	   the same toolbar read as one family rather than three different text sizes. */
+	.select-container-sm {
+		--select-font-size: 0.6875rem;
+	}
+
+	@media (min-width: 640px) {
+		.select-container-sm {
+			--select-font-size: 0.75rem;
+		}
 	}
 
 	.select-trigger {
@@ -423,7 +440,7 @@
 		   reads as one family with the search box, the dropdown panel and any card
 		   surface beside it rather than as a lone stadium. */
 		border-radius: var(--radius-message);
-		font-size: 0.875rem;
+		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
 		/* Glassy card-bg surface, matching the toggle group and old CustomSelect
@@ -437,13 +454,13 @@
 		white-space: nowrap;
 	}
 
-	/* Small variant — the filter-row size: 40px tall (var(--input-height-sm)),
-	   compact mono text, lining up with the toggle-group / bracket-filter
-	   tracks and the AgentInput skill pill. */
+	/* Small variant — the filter-row size: a shorter track (var(--input-height-sm),
+	   which SelectFilter redirects to --filter-control-height) and tighter padding,
+	   lining up with the toggle-group / bracket-filter tracks and the AgentInput
+	   skill pill. Text size is governed by --select-font-size on the container. */
 	.select-trigger-sm {
 		min-height: var(--input-height-sm);
 		padding: 0 1rem;
-		font-size: 0.6875rem;
 	}
 
 	.select-trigger:hover:not(:disabled) {
@@ -484,10 +501,14 @@
 		width: max-content;
 		max-height: 280px;
 		overflow: hidden;
-		padding: 0.25rem;
-		/* Matches the trigger and the search box on the --radius-message tier; the
-		   options inside step down to --radius-md to nest concentrically. */
-		border-radius: var(--radius-message);
+		padding: 0.375rem;
+		/* Panel sits one tier below the trigger: --radius-lg (16px) nests
+		   concentrically with the --radius-md (10px) options — 10px option +
+		   0.375rem (6px) padding = the 16px panel corner, so the option hover fill
+		   echoes the panel edge instead of leaving empty arcs in oversized corners.
+		   (The trigger keeps the rounder --radius-message stadium to match the pill
+		   ToggleGroup beside it; the menu is a panel, not a pill.) */
+		border-radius: var(--radius-lg);
 		box-shadow: var(--select-dropdown-shadow);
 		/* L3 frosted glass — the ladder's floating-level blur keeps the translucent
 		   --elevation-3-bg dropdown legible over busy content. */
@@ -531,7 +552,7 @@
 		width: 100%;
 		padding: 0.5rem 0.75rem;
 		margin-bottom: 0.25rem;
-		font-size: 0.8125rem;
+		font-size: var(--select-font-size);
 		font-family: inherit;
 		background: transparent;
 		border: 1px solid var(--select-border);
@@ -557,6 +578,10 @@
 	.select-options {
 		overflow-y: auto;
 		min-height: 0;
+		/* A dedicated channel for the scrollbar so the option hover fill stops short
+		   of the thumb. macOS overlay scrollbars draw over content with no reserved
+		   gutter, so without this the thumb floats on top of the fill's right edge. */
+		padding-right: 0.25rem;
 		scrollbar-width: thin;
 		scrollbar-color: var(--select-border) transparent;
 	}
@@ -565,7 +590,7 @@
 	.select-empty {
 		margin: 0;
 		padding: 0.75rem 1.25rem;
-		font-size: 0.8125rem;
+		font-size: var(--select-font-size);
 		text-align: center;
 	}
 
@@ -579,7 +604,7 @@
 		background: transparent;
 		border: none;
 		border-radius: var(--radius-md);
-		font-size: 0.8125rem;
+		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
 		text-align: left;
