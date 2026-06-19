@@ -387,7 +387,6 @@
 		letter-spacing: 0.05em;
 		color: var(--admin-text-secondary, #9ca3af);
 		text-align: left;
-		border-bottom: 1px solid var(--admin-border, #374151);
 		white-space: nowrap;
 	}
 
@@ -395,7 +394,6 @@
 		padding: 0.5rem 1rem;
 		font-size: 0.8125rem;
 		color: var(--admin-text, #f3f4f6);
-		border-bottom: 1px solid var(--admin-border, #374151);
 		vertical-align: middle;
 	}
 
