@@ -343,6 +343,12 @@
 	/* Optional floating motion — a gentle vertical bob, with a soft accent wash
 	   layered on while focused. Opted into via the `floating` prop. */
 	.agent-input.is-floating {
+		/* Float via `top`, not `transform`. This surface has a backdrop-filter, and an
+		   animated transform makes Chromium composite it into a layer whose backdrop
+		   texture is clipped to a rectangle — slicing the rounded corners mid-animation
+		   (the janky border cut-off). A positioned `top` bob repaints cleanly each frame
+		   without that compositing clip. */
+		position: relative;
 		animation: agent-input-float 4s ease-in-out infinite;
 	}
 
@@ -358,10 +364,10 @@
 	@keyframes agent-input-float {
 		0%,
 		100% {
-			transform: translateY(0);
+			top: 0;
 		}
 		50% {
-			transform: translateY(-3px);
+			top: -3px;
 		}
 	}
 
