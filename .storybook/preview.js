@@ -4,7 +4,10 @@
 // Import the distributed token files directly so every story canvas receives
 // the same design tokens that library consumers will receive. These are the
 // source-of-truth files — do NOT import src/app.css here.
+// admin.css must follow public.css (it references brand tokens defined there)
+// and is included so the Admin colour swatches resolve in the catalogue.
 import '../src/tokens/public.css';
+import '../src/tokens/admin.css';
 import '../src/tokens/base.css';
 
 // Apply a global decorator to every story.

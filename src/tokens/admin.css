@@ -66,7 +66,7 @@
 		--chart-grid-subtle-admin: oklch(100% 0 0 / 5%); /* converted from rgba(255, 255, 255, 0.05) */
 	}
 
-	/* Admin heading override — all admin headings use Hanken Grotesk (body font)
+	/* Admin heading override — all admin headings use the body font (Switzer)
 	   instead of IBM Plex Serif (display font) used on public pages.
 	   Colour is pinned to --admin-text so headings never inherit the
 	   light-mode --text-primary value from the base h1-h6 rules. */

@@ -1,8 +1,19 @@
 <script lang="ts">
-	let { tokenName, fontFamily, label }: { tokenName: string; fontFamily: string; label: string } =
-		$props();
+	let { tokenName, label }: { tokenName: string; label: string } = $props();
 
+	let previewEl = $state<HTMLDivElement>();
+	let resolvedFamily = $state('');
 	let copied = $state(false);
+
+	// Read the font-family from the live token rather than hardcoding a string.
+	// The preview renders with `var(--font-*)`, and we read the resolved value
+	// back out, so this catalogue can never drift from the actual tokens when the
+	// brand font changes (e.g. the move to Switzer).
+	$effect(() => {
+		if (!previewEl) return;
+		const styles = getComputedStyle(previewEl);
+		resolvedFamily = styles.getPropertyValue(tokenName).trim() || styles.fontFamily;
+	});
 
 	async function copyToken() {
 		await navigator.clipboard.writeText(`var(${tokenName})`);
@@ -12,13 +23,13 @@
 </script>
 
 <button class="type-sample" onclick={copyToken} title="Click to copy var({tokenName})">
-	<div class="type-preview" style="font-family: {fontFamily};">
+	<div class="type-preview" bind:this={previewEl} style="font-family: var({tokenName});">
 		The quick brown fox jumps over the lazy dog
 	</div>
 	<div class="type-info">
 		<span class="type-label">{label}</span>
 		<code class="type-token">{tokenName}</code>
-		<code class="type-family">{fontFamily}</code>
+		<code class="type-family">{resolvedFamily}</code>
 		{#if copied}
 			<span class="type-copied">Copied!</span>
 		{/if}
