@@ -453,7 +453,7 @@
 		line-height: 1.4;
 		/* White label for legibility against the tinted, animated background. */
 		color: white;
-		padding: 0.25rem 0.75rem;
+		padding: var(--space-1) var(--space-3);
 		white-space: nowrap;
 		/* No radius of its own: the pill inherits the fully-round --radius-pill from
 		   the shared .agent-input-skill/.agent-input-submit rule above, so it reads as

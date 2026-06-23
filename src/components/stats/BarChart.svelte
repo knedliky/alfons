@@ -129,8 +129,8 @@
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		margin-bottom: 1rem;
-		gap: 0.5rem;
+		margin-bottom: var(--space-4);
+		gap: var(--space-2);
 	}
 
 	.chart-title {
@@ -148,14 +148,14 @@
 	.bar-chart {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+		gap: var(--space-2);
 	}
 
 	.chart-header-row {
 		display: grid;
 		grid-template-columns: 1fr minmax(100px, 200px) auto;
-		gap: 1rem;
-		padding: 0.5rem 0;
+		gap: var(--space-4);
+		padding: var(--space-2) 0;
 		border-bottom: 1px solid var(--chart-border-admin);
 		font-size: var(--chart-label-size);
 		font-weight: 500;
@@ -165,7 +165,7 @@
 	}
 
 	.header-label {
-		padding-left: 2rem;
+		padding-left: var(--space-6);
 	}
 
 	.header-value {
@@ -176,9 +176,9 @@
 	.bar-row {
 		display: grid;
 		grid-template-columns: 1fr minmax(100px, 200px) auto;
-		gap: 1rem;
+		gap: var(--space-4);
 		align-items: center;
-		padding: 0.5rem 0;
+		padding: var(--space-2) 0;
 		animation: fadeInUp 0.3s ease forwards;
 		opacity: 0;
 	}
@@ -198,7 +198,7 @@
 	.bar-label {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: var(--space-3);
 		min-width: 0;
 	}
 
@@ -246,7 +246,7 @@
 	.bar-value {
 		display: flex;
 		align-items: baseline;
-		gap: 0.25rem;
+		gap: var(--space-1);
 		justify-content: flex-end;
 		min-width: 80px;
 	}
@@ -267,14 +267,14 @@
 	.chart-loading {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-		padding: 1rem 0;
+		gap: var(--space-4);
+		padding: var(--space-4) 0;
 	}
 
 	.loading-row {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: var(--space-4);
 	}
 
 	.loading-label {
@@ -319,8 +319,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
-		padding: 3rem 1rem;
+		gap: var(--space-4);
+		padding: var(--space-7) var(--space-4);
 		color: var(--chart-axis-colour-admin);
 		font-size: var(--chart-value-size);
 	}
@@ -331,7 +331,7 @@
 
 	@media (max-width: 768px) {
 		.bar-chart-container {
-			padding: 1rem;
+			padding: var(--space-4);
 		}
 
 		.chart-header-row {

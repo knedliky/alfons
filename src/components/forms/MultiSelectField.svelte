@@ -353,8 +353,8 @@
 	.tag {
 		display: flex;
 		align-items: center;
-		gap: 4px;
-		padding: 4px 8px;
+		gap: var(--space-1);
+		padding: var(--space-1) var(--space-2);
 		font-size: 0.8125rem;
 		background-color: rgba(var(--accent-rgb), 0.15);
 		color: var(--accent);

@@ -95,7 +95,7 @@
 	.divider-labelled {
 		display: flex;
 		align-items: center;
-		gap: 0.75rem;
+		gap: var(--space-3);
 		width: 100%;
 	}
 

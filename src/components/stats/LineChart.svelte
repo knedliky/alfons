@@ -244,7 +244,7 @@
 		font-size: var(--chart-title-size);
 		font-weight: 600;
 		color: var(--admin-text);
-		margin: 0 0 1rem 0;
+		margin: 0 0 var(--space-4) 0;
 	}
 
 	.line-chart-wrapper {
@@ -352,7 +352,7 @@
 		background-color: var(--chart-tooltip-bg-admin);
 		border: 1px solid var(--chart-tooltip-border-admin);
 		border-radius: 8px;
-		padding: 0.75rem;
+		padding: var(--space-3);
 		pointer-events: none;
 		z-index: var(--z-dropdown);
 		box-shadow: var(--shadow-tooltip-cast);
@@ -376,7 +376,7 @@
 	.tooltip-label {
 		font-size: var(--chart-label-size);
 		color: var(--chart-axis-colour-admin);
-		margin-bottom: 0.25rem;
+		margin-bottom: var(--space-1);
 	}
 
 	.tooltip-value {
@@ -395,7 +395,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
+		gap: var(--space-4);
 		color: var(--chart-axis-colour-admin);
 		font-size: var(--chart-value-size);
 	}
@@ -422,7 +422,7 @@
 
 	@media (max-width: 640px) {
 		.line-chart-container {
-			padding: 1rem;
+			padding: var(--space-4);
 		}
 
 		.chart-title {

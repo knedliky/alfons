@@ -82,12 +82,12 @@
 
 	.button[data-size='default'] {
 		height: 3rem;
-		padding: 0.75rem 2rem;
+		padding: var(--space-3) var(--space-6);
 	}
 
 	.button[data-size='sm'] {
 		height: 2.5rem;
-		padding: 0.5rem 1.5rem;
+		padding: var(--space-2) var(--space-5);
 		font-size: 0.875rem;
 	}
 
@@ -132,8 +132,8 @@
 		background: transparent;
 		border: 1px solid var(--card-border);
 		color: var(--text-primary);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(var(--frost-3));
+		-webkit-backdrop-filter: blur(var(--frost-3));
 	}
 
 	.button[data-theme='public'][data-variant='secondary']:hover {

@@ -169,7 +169,7 @@
 		justify-content: center;
 		min-width: 20px;
 		height: 20px;
-		padding: 0 4px;
+		padding: 0 var(--space-1);
 		border-radius: var(--radius-pill);
 		background: var(--accent-red);
 		font-size: 0.75rem;

@@ -341,7 +341,7 @@
 	:global(.card-compact .badge) {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--space-1);
 		padding: 0.125rem 0.5rem;
 		border-radius: 0.25rem;
 		font-size: 0.6875rem;

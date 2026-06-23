@@ -295,8 +295,8 @@
 	.toolbar-button {
 		display: flex;
 		align-items: center;
-		gap: 4px;
-		padding: 4px 8px;
+		gap: var(--space-1);
+		padding: var(--space-1) var(--space-2);
 		font-size: 0.75rem;
 		font-family: inherit;
 		color: var(--admin-text-secondary);

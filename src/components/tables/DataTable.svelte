@@ -318,7 +318,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
+		gap: var(--space-4);
 		height: 100%;
 		min-height: 200px;
 		color: var(--admin-text-secondary);
@@ -353,10 +353,10 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
+		gap: var(--space-4);
 		height: 100%;
 		min-height: 200px;
-		padding: 1.5rem;
+		padding: var(--space-5);
 		color: var(--admin-text-muted);
 		text-align: center;
 	}
@@ -380,7 +380,7 @@
 	}
 
 	.data-table th {
-		padding: 0.5rem 1rem;
+		padding: var(--space-2) var(--space-4);
 		font-size: 0.75rem;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -391,7 +391,7 @@
 	}
 
 	.data-table td {
-		padding: 0.5rem 1rem;
+		padding: var(--space-2) var(--space-4);
 		font-size: 0.8125rem;
 		color: var(--admin-text);
 		vertical-align: middle;
@@ -417,7 +417,7 @@
 	.checkbox-cell {
 		width: 48px;
 		text-align: left;
-		padding-left: 1rem;
+		padding-left: var(--space-4);
 		vertical-align: middle;
 	}
 
@@ -442,7 +442,7 @@
 	.column-header {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: var(--space-1);
 	}
 
 	.sort-indicator {

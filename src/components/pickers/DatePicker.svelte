@@ -181,8 +181,8 @@
 	.date-picker-trigger {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 1rem;
+		gap: var(--space-2);
+		padding: var(--space-2) var(--space-4);
 		font-size: 0.875rem;
 		font-weight: 400;
 		color: var(--dp-text);
@@ -220,7 +220,7 @@
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		padding-top: 1rem;
+		padding-top: var(--space-4);
 		animation: fadeIn 0.15s ease;
 	}
 
@@ -235,7 +235,7 @@
 
 	.popover-content {
 		position: relative;
-		padding: 1rem;
+		padding: var(--space-4);
 		background-color: var(--dp-bg-elevated);
 		border: 1px solid var(--dp-border);
 		border-radius: var(--card-radius);

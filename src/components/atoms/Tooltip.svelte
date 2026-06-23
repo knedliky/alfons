@@ -44,7 +44,7 @@
 	.tooltip-content {
 		position: absolute;
 		z-index: var(--z-toast);
-		padding: 0.5rem 0.75rem;
+		padding: var(--space-2) var(--space-3);
 		border-radius: var(--radius);
 		font-size: 0.75rem;
 		font-weight: 500;

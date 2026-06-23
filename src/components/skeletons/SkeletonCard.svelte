@@ -38,7 +38,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 12px;
+		margin-bottom: var(--space-3);
 	}
 
 	.skeleton-dot {
@@ -63,7 +63,7 @@
 		width: 85%;
 		border-radius: 4px;
 		background: var(--border-glass);
-		margin-bottom: 8px;
+		margin-bottom: var(--space-2);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.2s;
 	}
@@ -71,8 +71,8 @@
 	.skeleton-excerpt {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		margin-bottom: 16px;
+		gap: var(--space-2);
+		margin-bottom: var(--space-4);
 		flex: 1;
 	}
 

@@ -513,7 +513,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
+		gap: var(--space-3);
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
@@ -546,8 +546,8 @@
 		/* Pad like the ToggleGroup container (0.25rem) so the value reads as an
 		   inner pill with a gap to the border — the trigger becomes a single-item
 		   toggle group. The chevron keeps the same gap on the right. */
-		padding: 0.25rem;
-		gap: 0.25rem;
+		padding: var(--space-1);
+		gap: var(--space-1);
 		/* Stretch the value pill to the full inner height, exactly like the
 		   ToggleGroup's active segment (which fills its padded container). */
 		align-items: stretch;
@@ -581,7 +581,7 @@
 
 	@media (min-width: 640px) {
 		.select-trigger-sm .select-value {
-			padding: 0.25rem 0.75rem;
+			padding: var(--space-1) var(--space-3);
 		}
 	}
 
@@ -673,8 +673,8 @@
 	.select-search {
 		flex-shrink: 0;
 		width: 100%;
-		padding: 0.5rem 0.75rem;
-		margin-bottom: 0.25rem;
+		padding: var(--space-2) var(--space-3);
+		margin-bottom: var(--space-1);
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		background: transparent;
@@ -727,7 +727,7 @@
 	.select-option {
 		display: block;
 		width: 100%;
-		padding: 0.5rem 0.75rem;
+		padding: var(--space-2) var(--space-3);
 		background: transparent;
 		border: none;
 		font-size: var(--select-font-size);

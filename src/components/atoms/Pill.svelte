@@ -167,7 +167,7 @@
 	}
 	.pill-md {
 		font-size: 0.6875rem;
-		padding: 0.25rem 0.5rem;
+		padding: var(--space-1) var(--space-2);
 	}
 
 	/* outline keeps its legacy sizing + letter-spacing so the blog is unchanged.

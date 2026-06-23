@@ -87,7 +87,7 @@
 
 	.input[data-size='sm'] {
 		height: var(--input-height-sm);
-		padding: 0.5rem 1rem;
+		padding: var(--space-2) var(--space-4);
 		font-size: 0.875rem;
 	}
 

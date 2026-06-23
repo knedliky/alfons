@@ -136,7 +136,7 @@
 		align-items: stretch;
 		min-height: var(--filter-control-height);
 		gap: 0.0625rem;
-		padding: 0.25rem;
+		padding: var(--space-1);
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
 		/* Full pill. */
@@ -220,7 +220,7 @@
 	@media (min-width: 640px) {
 		.toggle-btn {
 			font-size: 0.75rem;
-			padding: 0.25rem 0.75rem;
+			padding: var(--space-1) var(--space-3);
 		}
 	}
 </style>

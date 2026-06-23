@@ -318,7 +318,7 @@
 		display: flex;
 		align-items: flex-start;
 		justify-content: center;
-		padding-top: 1rem;
+		padding-top: var(--space-4);
 		animation: fadeIn 0.15s ease;
 	}
 
@@ -333,7 +333,7 @@
 
 	.popover-content {
 		position: relative;
-		padding: 1rem;
+		padding: var(--space-4);
 		background-color: var(--drp-bg-elevated);
 		border: 1px solid var(--drp-border);
 		border-radius: var(--card-radius);
@@ -365,7 +365,7 @@
 
 		.popover-content {
 			max-width: calc(100vw - 2rem);
-			margin: 0 1rem;
+			margin: 0 var(--space-4);
 		}
 	}
 </style>
