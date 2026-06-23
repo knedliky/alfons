@@ -136,21 +136,21 @@
 		border-radius: 8px;
 	}
 
-	/* Colour theme backgrounds — rgba because no token covers icon bg opacity */
+	/* Colour theme backgrounds — faint status washes behind the stat icon */
 	.colour-red {
-		background: rgba(var(--accent-rgb), 0.2);
+		background: var(--stat-icon-bg-red);
 	}
 
 	.colour-green {
-		background: rgba(34, 197, 94, 0.2);
+		background: var(--stat-icon-bg-green);
 	}
 
 	.colour-blue {
-		background: rgba(59, 130, 246, 0.2);
+		background: var(--stat-icon-bg-blue);
 	}
 
 	.colour-purple {
-		background: rgba(168, 85, 247, 0.2);
+		background: var(--stat-icon-bg-purple);
 	}
 
 	.icon-svg {

@@ -64,6 +64,15 @@
 
 		/* Subtle grid overlay for admin chart backgrounds */
 		--chart-grid-subtle-admin: oklch(100% 0 0 / 5%); /* converted from rgba(255, 255, 255, 0.05) */
+
+		/* === STAT CARD ICON BACKGROUNDS =====================================
+		   Faint colour washes behind StatCard icons. Red reuses the brand accent
+		   channel; the others sit outside the brand palette as semantic status
+		   hues, pinned to the admin dark surface. ============================ */
+		--stat-icon-bg-red: oklch(45% 0.22 25 / 20%); /* converted from rgba(206, 32, 41, 0.2) */
+		--stat-icon-bg-green: oklch(72.3% 0.192 150 / 20%); /* converted from rgba(34, 197, 94, 0.2) */
+		--stat-icon-bg-blue: oklch(62.3% 0.188 260 / 20%); /* converted from rgba(59, 130, 246, 0.2) */
+		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%); /* converted from rgba(168, 85, 247, 0.2) */
 	}
 
 	/* Admin heading override — all admin headings use the body font (Switzer)

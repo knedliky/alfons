@@ -337,7 +337,7 @@
 		background-color: var(--drp-bg-elevated);
 		border: 1px solid var(--drp-border);
 		border-radius: var(--card-radius);
-		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+		box-shadow: var(--shadow-popover);
 		animation: scaleIn 0.15s ease;
 	}
 

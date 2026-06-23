@@ -115,7 +115,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: rgba(0, 0, 0, 0.6); /* overlay — no token equivalent */
+		background: var(--overlay-scrim);
 		backdrop-filter: blur(4px);
 		-webkit-backdrop-filter: blur(4px);
 		animation: fadeIn var(--transition-fast);
@@ -139,7 +139,7 @@
 		background: var(--admin-bg);
 		border: 1px solid var(--admin-border);
 		border-radius: var(--card-radius);
-		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* deep overlay shadow */
+		box-shadow: var(--shadow-modal);
 		overflow: hidden;
 		animation: scaleIn var(--transition-fast);
 	}

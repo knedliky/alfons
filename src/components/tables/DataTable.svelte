@@ -321,14 +321,14 @@
 		gap: 1rem;
 		height: 100%;
 		min-height: 200px;
-		color: var(--admin-text-secondary, #9ca3af);
+		color: var(--admin-text-secondary);
 	}
 
 	.loading-spinner {
 		width: 32px;
 		height: 32px;
-		border: 3px solid var(--admin-border, #374151);
-		border-top-color: var(--accent, #e74c3c);
+		border: 3px solid var(--admin-border);
+		border-top-color: var(--accent);
 		border-radius: 50%;
 		animation: spin 1s linear infinite;
 	}
@@ -339,7 +339,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: rgba(0, 0, 0, 0.3);
+		background-color: var(--surface-overlay-subtle);
 	}
 
 	@keyframes spin {
@@ -357,7 +357,7 @@
 		height: 100%;
 		min-height: 200px;
 		padding: 1.5rem;
-		color: var(--admin-text-muted, #6b7280);
+		color: var(--admin-text-muted);
 		text-align: center;
 	}
 
@@ -376,7 +376,7 @@
 		position: sticky;
 		top: 0;
 		z-index: 1;
-		background-color: var(--admin-bg, #1a1a2e);
+		background-color: var(--admin-bg);
 	}
 
 	.data-table th {
@@ -385,7 +385,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--admin-text-secondary, #9ca3af);
+		color: var(--admin-text-secondary);
 		text-align: left;
 		white-space: nowrap;
 	}
@@ -393,7 +393,7 @@
 	.data-table td {
 		padding: 0.5rem 1rem;
 		font-size: 0.8125rem;
-		color: var(--admin-text, #f3f4f6);
+		color: var(--admin-text);
 		vertical-align: middle;
 	}
 
@@ -402,15 +402,15 @@
 	}
 
 	.data-table tbody tr:hover {
-		background-color: var(--admin-bg, #1a1a2e);
+		background-color: var(--admin-bg);
 	}
 
 	.data-table tbody tr.selected {
-		background-color: color-mix(in srgb, var(--accent, #e74c3c) 10%, transparent);
+		background-color: color-mix(in srgb, var(--accent) 10%, transparent);
 	}
 
 	.data-table tbody tr.selected:hover {
-		background-color: color-mix(in srgb, var(--accent, #e74c3c) 15%, transparent);
+		background-color: color-mix(in srgb, var(--accent) 15%, transparent);
 	}
 
 	.checkbox-column,
@@ -426,7 +426,7 @@
 		height: 16px;
 		margin: 0;
 		cursor: pointer;
-		accent-color: var(--accent, #e74c3c);
+		accent-color: var(--accent);
 		vertical-align: middle;
 	}
 
@@ -436,7 +436,7 @@
 	}
 
 	.sortable-column:hover {
-		color: var(--admin-text, #f3f4f6);
+		color: var(--admin-text);
 	}
 
 	.column-header {
@@ -478,15 +478,15 @@
 	}
 
 	.table-scroll::-webkit-scrollbar-track {
-		background: var(--admin-bg-elevated, #1e1e3a);
+		background: var(--admin-bg-elevated);
 	}
 
 	.table-scroll::-webkit-scrollbar-thumb {
-		background: var(--admin-border, #374151);
+		background: var(--admin-border);
 		border-radius: 4px;
 	}
 
 	.table-scroll::-webkit-scrollbar-thumb:hover {
-		background: var(--admin-text-muted, #6b7280);
+		background: var(--admin-text-muted);
 	}
 </style>

@@ -181,7 +181,7 @@
 		border-radius: var(--radius);
 		border: 1px solid transparent;
 		backdrop-filter: blur(12px);
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		box-shadow: var(--shadow-toast);
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		pointer-events: none;
 	}

@@ -50,7 +50,7 @@
 		min-height: 200px;
 		border-radius: 8px;
 		/* Subtle gradient placeholder for illustration area */
-		background: linear-gradient(135deg, rgba(127, 57, 251, 0.05) 0%, rgba(206, 32, 41, 0.05) 100%);
+		background: var(--gradient-placeholder);
 	}
 
 	.skeleton-visual-dot {

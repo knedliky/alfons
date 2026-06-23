@@ -91,7 +91,7 @@
 		background-color: var(--text-primary);
 		border-radius: 50%;
 		transition: transform var(--transition-fast);
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		box-shadow: var(--shadow-subtle);
 	}
 
 	.toggle-switch.checked .toggle-thumb {

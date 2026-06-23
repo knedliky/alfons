@@ -74,7 +74,7 @@
 	}
 
 	:global([data-colour-mode='light']) .range-slider {
-		background-color: rgba(0, 0, 0, 0.1);
+		background-color: var(--surface-dark-subtle);
 	}
 
 	/* Webkit Slider Thumb */

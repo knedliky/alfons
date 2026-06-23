@@ -454,14 +454,9 @@
 	/* Per-letter pixelate: SVG glitch + colour-mode flicker per char     */
 	/* ------------------------------------------------------------------ */
 
-	/* Scope the colour-mode flicker variable for child .pixelate-char spans */
-	.pixelate-title {
-		--text-flicker-alt: #2d2a26;
-	}
-
-	:global([data-colour-mode='light']) .pixelate-title {
-		--text-flicker-alt: oklch(0.93 0.02 68);
-	}
+	/* The per-letter flicker colour (--text-flicker-alt) is a public.css token: it
+	   resolves to the opposite colour-mode's primary text and flips automatically
+	   with [data-colour-mode], so no literal is declared here. */
 
 	.pixelate-char {
 		display: inline;

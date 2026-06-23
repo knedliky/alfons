@@ -392,7 +392,7 @@
 		background-color: var(--admin-bg);
 		border: 1px solid var(--admin-border);
 		border-radius: var(--radius);
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+		box-shadow: var(--shadow-dropdown);
 	}
 
 	.dropdown-option {

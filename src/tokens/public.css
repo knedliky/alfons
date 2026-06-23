@@ -49,11 +49,20 @@
 		--border-glass-hover: oklch(97% 0 0 / 20%); /* converted from rgba(243, 243, 243, 0.2) */
 		/* light: rgba(60, 50, 40, 0.15) */
 
+		/* Subtle surface washes — faint fills for hover states and recessed tracks */
+		--surface-hover-subtle: oklch(97% 0 0 / 5%); /* converted from rgba(243, 243, 243, 0.05) */
+		--surface-dark-subtle: oklch(0% 0 0 / 10%); /* converted from rgba(0, 0, 0, 0.1) */
+
 		/* === 4. TEXT =========================================================
 		   Hierarchy: primary > secondary > muted
 		   ==================================================================== */
 		--text-primary: var(--powder-sand);
 		/* light: #2d2a26 */
+		/* Opposite-mode primary text — the "wrong" colour the per-letter pixelate
+		   flicker (PageHeader) stutters through before locking onto --text-primary.
+		   In dark mode it is the LIGHT-mode primary; the light override below flips
+		   it to the dark-mode primary (--powder-sand). */
+		--text-flicker-alt: oklch(20% 0.01 55); /* converted from #2d2a26 — matches light-mode --text-primary */
 		--text-secondary: oklch(0.7 0.02 68);
 		/* light: #4a4540 */
 		--text-muted: oklch(0.6 0.02 68);
@@ -90,6 +99,9 @@
 		/* Secondary accent opacity variants */
 		--accent-secondary-bg: oklch(58% 0.15 46 / 10%); /* converted from rgba(217, 101, 43, 0.1) */
 		--accent-secondary-border: oklch(58% 0.15 46 / 30%); /* converted from rgba(217, 101, 43, 0.3) */
+		/* Warm sunset hover edges — card border tints on hover */
+		--accent-secondary-hover: oklch(58% 0.15 46 / 20%); /* converted from rgba(217, 101, 43, 0.2) */
+		--accent-secondary-hover-subtle: oklch(58% 0.15 46 / 15%); /* converted from rgba(217, 101, 43, 0.15) */
 
 		/* Depth accent opacity variants */
 		--accent-depth-bg: oklch(38% 0.1 310 / 10%); /* converted from rgba(109, 63, 121, 0.1) */
@@ -103,6 +115,12 @@
 		--gradient-sunset: linear-gradient(135deg, var(--hex-red), var(--hex-sunset));
 		--gradient-depth: linear-gradient(135deg, var(--hex-navy), var(--hex-aubergine));
 		--gradient-warmth: linear-gradient(135deg, var(--hex-sunset), var(--hex-amber));
+		/* Faint illustration placeholder wash for skeleton hero visuals */
+		--gradient-placeholder: linear-gradient(
+			135deg,
+			oklch(55.6% 0.262 292 / 5%) 0%,
+			var(--accent-bg-subtle) 100%
+		); /* converted from rgba(127, 57, 251, 0.05) -> rgba(206, 32, 41, 0.05) */
 
 		/* === 6. CARDS ========================================================
 		   Card styling (glassmorphic dark, tactile light)
@@ -141,6 +159,11 @@
 		/* light: inset pressed */
 		--shadow-glass: var(--elevation-2); /* agent input + chat bubbles sit at L2 */
 		/* Frosted-panel drop shadow shared by the agent input and chat bubbles. */
+		--shadow-subtle: 0 1px 3px oklch(0% 0 0 / 30%); /* converted from 0 1px 3px rgba(0, 0, 0, 0.3) */
+
+		/* Shimmer highlight passes for skeleton loading bones */
+		--shimmer-highlight-dim: oklch(100% 0 0 / 6%); /* converted from rgba(255, 255, 255, 0.06) */
+		--shimmer-highlight-bright: oklch(100% 0 0 / 50%); /* converted from rgba(255, 255, 255, 0.5) */
 
 		/* === 8. INPUTS =======================================================
 		   Form field styling — heights match Button size tiers
@@ -155,6 +178,16 @@
 		   Shadows for overlaying components
 		   ==================================================================== */
 		--shadow-header: 0 1px 2px oklch(0% 0 0 / 10%); /* converted from rgba(0, 0, 0, 0.1) */
+
+		/* Neutral scrim + drop shadows for floating overlays (modals, dropdowns,
+		   popovers, toasts). Pure-black alphas, not brand-coloured. */
+		--overlay-scrim: oklch(0% 0 0 / 60%); /* converted from rgba(0, 0, 0, 0.6) */
+		--shadow-toast: 0 8px 32px oklch(0% 0 0 / 20%); /* converted from 0 8px 32px rgba(0, 0, 0, 0.2) */
+		--shadow-dropdown: 0 8px 24px oklch(0% 0 0 / 40%); /* converted from 0 8px 24px rgba(0, 0, 0, 0.4) */
+		--shadow-popover: 0 10px 40px oklch(0% 0 0 / 50%); /* converted from 0 10px 40px rgba(0, 0, 0, 0.5) */
+		--shadow-modal: 0 25px 50px -12px oklch(0% 0 0 / 50%); /* converted from 0 25px 50px -12px rgba(0, 0, 0, 0.5) */
+		--shadow-tooltip-cast: 0 4px 12px oklch(0% 0 0 / 30%); /* converted from 0 4px 12px rgba(0, 0, 0, 0.3) */
+		--surface-overlay-subtle: oklch(0% 0 0 / 30%); /* converted from rgba(0, 0, 0, 0.3) — loading overlays */
 
 		/* Select component tokens */
 		--select-selected-bg: oklch(45% 0.22 25 / 15%); /* converted from rgba(206, 32, 41, 0.15) */
@@ -649,6 +682,8 @@
 		--text-primary: oklch(20% 0.01 55); /* converted from #2d2a26 */
 		--text-secondary: oklch(32% 0.01 55); /* converted from #4a4540 */
 		--text-muted: oklch(50% 0.01 55); /* converted from #7a746c */
+		/* Flicker-alt flips to the dark-mode primary (--powder-sand) in light mode. */
+		--text-flicker-alt: oklch(0.93 0.02 68); /* matches dark-mode --text-primary (--powder-sand) */
 
 		/* === 5. ACCENT === */
 		--accent-hover: oklch(37% 0.18 28); /* converted from #b51b23 */
@@ -661,6 +696,11 @@
 		--card-border-left: oklch(100% 0 0 / 50%); /* converted from rgba(255, 255, 255, 0.5) */
 		--card-border-right: oklch(25% 0.02 55 / 8%); /* converted from rgba(60, 50, 40, 0.08) */
 		--card-border-bottom: oklch(25% 0.02 55 / 12%); /* converted from rgba(60, 50, 40, 0.12) */
+
+		/* Hovered card directional edges — warmer top, brighter lit edges than rest */
+		--card-border-left-hover: oklch(100% 0 0 / 60%); /* converted from rgba(255, 255, 255, 0.6) */
+		--card-border-right-hover: oklch(25% 0.02 55 / 12%); /* converted from rgba(60, 50, 40, 0.12) */
+		--card-border-bottom-hover: oklch(25% 0.02 55 / 16%); /* converted from rgba(60, 50, 40, 0.16) */
 
 		/* === 8. INPUT === */
 		--input-bg: oklch(94% 0.015 55); /* opaque warm tint — flat like dark mode, no transparency bleed */

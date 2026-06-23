@@ -137,7 +137,7 @@
 	}
 
 	.button[data-theme='public'][data-variant='secondary']:hover {
-		background: rgba(243, 243, 243, 0.05);
+		background: var(--surface-hover-subtle);
 		border-color: var(--card-border-hover);
 	}
 
@@ -157,7 +157,7 @@
 	}
 
 	.button[data-theme='public'][data-variant='ghost']:hover {
-		background: rgba(243, 243, 243, 0.05);
+		background: var(--surface-hover-subtle);
 		color: var(--text-primary);
 	}
 

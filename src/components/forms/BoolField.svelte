@@ -135,7 +135,7 @@
 		background-color: var(--admin-text);
 		border-radius: 50%;
 		transition: transform 0.2s ease;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+		box-shadow: var(--shadow-subtle);
 	}
 
 	.toggle-switch.checked .toggle-thumb {

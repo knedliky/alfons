@@ -108,7 +108,7 @@
 		background: linear-gradient(
 			90deg,
 			var(--card-bg) 0%,
-			rgba(255, 255, 255, 0.06) 50%,
+			var(--shimmer-highlight-dim) 50%,
 			var(--card-bg) 100%
 		);
 		background-size: 400% 100%;
@@ -120,7 +120,7 @@
 		background: linear-gradient(
 			90deg,
 			var(--card-bg) 0%,
-			rgba(255, 255, 255, 0.5) 50%,
+			var(--shimmer-highlight-bright) 50%,
 			var(--card-bg) 100%
 		);
 		background-size: 400% 100%;
@@ -131,7 +131,7 @@
 		background: linear-gradient(
 			90deg,
 			var(--admin-bg) 0%,
-			rgba(255, 255, 255, 0.06) 50%,
+			var(--shimmer-highlight-dim) 50%,
 			var(--admin-bg) 100%
 		);
 		background-size: 400% 100%;

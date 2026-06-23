@@ -122,7 +122,7 @@
 
 	/* Dark mode: warm sunset glow on hover */
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default']:hover {
-		border-color: rgba(217, 101, 43, 0.2);
+		border-color: var(--accent-secondary-hover);
 	}
 
 	/* Light mode: directional borders for tactile neumorphic appearance */
@@ -136,10 +136,10 @@
 
 	/* Light mode: warm sunset tint on top edge when hovered */
 	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='default']:hover {
-		border-top: 1px solid rgba(217, 101, 43, 0.15);
-		border-left: 1px solid rgba(255, 255, 255, 0.6);
-		border-right: 1px solid rgba(60, 50, 40, 0.12);
-		border-bottom: 1px solid rgba(60, 50, 40, 0.16);
+		border-top: 1px solid var(--accent-secondary-hover-subtle);
+		border-left: 1px solid var(--card-border-left-hover);
+		border-right: 1px solid var(--card-border-right-hover);
+		border-bottom: 1px solid var(--card-border-bottom-hover);
 	}
 
 	/* === Admin theme — solid surface === */
@@ -242,10 +242,10 @@
 	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='interactive']:hover {
 		transform: translateY(-2px);
 		box-shadow: var(--card-shadow-hover);
-		border-top: 1px solid rgba(217, 101, 43, 0.15);
-		border-left: 1px solid rgba(255, 255, 255, 0.6);
-		border-right: 1px solid rgba(60, 50, 40, 0.12);
-		border-bottom: 1px solid rgba(60, 50, 40, 0.16);
+		border-top: 1px solid var(--accent-secondary-hover-subtle);
+		border-left: 1px solid var(--card-border-left-hover);
+		border-right: 1px solid var(--card-border-right-hover);
+		border-bottom: 1px solid var(--card-border-bottom-hover);
 	}
 
 	/* Admin theme: elevated background with pointer affordance */
