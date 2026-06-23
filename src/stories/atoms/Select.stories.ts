@@ -8,8 +8,9 @@ const sampleOptions = [
 ];
 
 const fontOptions = [
-	{ value: 'hanken', label: 'Hanken Grotesk', style: "font-family: 'Hanken Grotesk'" },
-	{ value: 'azeret', label: 'Azeret Mono', style: "font-family: 'Azeret Mono'" },
+	{ value: 'switzer', label: 'Switzer', style: "font-family: 'Switzer'" },
+	{ value: 'ibm-plex-serif', label: 'IBM Plex Serif', style: "font-family: 'IBM Plex Serif'" },
+	{ value: 'azeret', label: 'Azeret Mono', style: "font-family: 'Azeret Mono Variable'" },
 	{ value: 'rock-salt', label: 'Rock Salt', style: "font-family: 'Rock Salt'" }
 ];
 
