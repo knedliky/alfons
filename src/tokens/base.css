@@ -360,8 +360,18 @@ body {
 	   LINK STYLES
 	   ========================================================================== */
 
+	/* Links read as body text — same colour, underlined — and pick up the accent
+	   only on hover. Lives in @layer base, so any component that sets its own link
+	   colour or text-decoration (nav, footer, cards) overrides this; it reaches
+	   only bare prose links. */
 	a {
 		text-underline-position: from-font;
+		color: inherit;
+		text-decoration: underline;
+	}
+
+	a:hover {
+		color: var(--accent);
 	}
 
 }
