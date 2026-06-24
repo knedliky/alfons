@@ -508,6 +508,14 @@
 		grid-template-columns: minmax(0, 1fr);
 		flex: 1;
 		min-width: 0;
+		/* Floor the wrapper at the pill's own height. A single line of field text is
+		   shorter than the 2rem skill pill, so without this the pill — absolutely
+		   placed inside this overflow-y:auto scroll container — has its rounded
+		   bottom clipped by the wrapper's box (most visible in the tall hero input,
+		   where the wrapper stays one line at the top). The JS measure effect sets a
+		   larger height for multi-line content, so this only floors the single-line
+		   case and never fights the growth animation. */
+		min-height: 2rem;
 		/* THE scroll container once the box is capped — the textarea is full content
 		   height (the grid row sizes to the mirror), so it never scrolls itself; the
 		   wrapper must, or nothing is user-scrollable. The absolute caret is a child,
