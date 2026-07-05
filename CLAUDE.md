@@ -6,6 +6,9 @@
 component atoms for all externally-facing SvelteKit projects. It is built with Vite library
 mode and consumed via local path (dev) or git URL (CI).
 
+This is the `packages/` primitive. See the root `CLAUDE.md` for shared conventions and where
+Motif sits in the ecosystem; `SURFACES.md` for how instruments consume it.
+
 ## Build Commands
 
 ```bash
@@ -41,10 +44,16 @@ bun run build-storybook
 - Token files: lowercase with hyphens (`public.css`, `admin.css`, `base.css`)
 - All CSS custom properties use OKLCH for colour values
 
-## Source of truth for tokens
+## Source of truth
 
-Tokens are extracted from `~/Code/motivka/apps/web/src/app.css`.
-Atoms are extracted from `~/Code/motivka/apps/web/src/lib/ui/atoms/`.
+Motif is now the canonical source of truth for tokens and atoms — Atlas
+(`instruments/atlas/`) consumes them via `@motif/design`, not the reverse. The library
+originated by extraction from the pre-reorg motivka web app (that source path,
+`~/Code/motivka/apps/web/`, no longer exists — the web surface is now Atlas). Change a token
+or atom here, then propagate to Atlas by push + `bun update`.
+
+**Never `bun link` Motif into Atlas** — it drags Motif's dev `node_modules` in and corrupts
+Atlas's esbuild signature (SIGKILL 137 / EPIPE). Repair by re-fetching esbuild.
 
 ## Package structure
 
