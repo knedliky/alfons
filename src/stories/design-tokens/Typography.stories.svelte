@@ -12,8 +12,8 @@
 	<div class="type-list">
 		<TypeSample
 			tokenName="--font-body"
-			fontFamily="'Hanken Grotesk', system-ui, sans-serif"
-			label="Body (Hanken Grotesk)"
+			fontFamily="'Switzer', system-ui, sans-serif"
+			label="Body (Switzer)"
 		/>
 		<TypeSample
 			tokenName="--font-display"

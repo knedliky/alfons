@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@fontsource-variable/azeret-mono": "^5.2.11",
-    "@fontsource-variable/hanken-grotesk": "^5.2.8",
     "@fontsource/ibm-plex-serif": "^5.0.0",
     "@fontsource/rock-salt": "^5.0.0",
     "@internationalized/date": "^3.8.0",
