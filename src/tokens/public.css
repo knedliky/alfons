@@ -215,7 +215,7 @@
 		   renders it correctly:
 		     edge   -> a crisp directional border  (--el-edge-light / --el-edge-shade)
 		     cast   -> box-shadow                  (--elevation-1/2/3), down-and-right
-		     frost  -> backdrop-blur               (--frost-1/2/3)
+		     frost  -> backdrop-blur               (--frost-1..4)
 		     fill   -> background                  (--elevation-1/2/3-bg), thinned per level
 		   L1 resting (cards) · L2 raised (inputs, agent input, hovered cards) ·
 		   L3 floating (dropdowns, tooltips, toasts, modals). The scattered shadow
@@ -228,9 +228,10 @@
 		--el-cast-depth: 0.22; /* cast-shadow alpha at L1 */
 		--el-cast-spread: 4; /* cast-shadow blur in px at L1 */
 		--el-fill: 0.58; /* L1 surface-fill alpha; higher levels step DOWN toward frosted glass */
-		--frost-1: 0px;
-		--frost-2: 5px;
-		--frost-3: 10px;
+		--frost-1: 0px; /* none */
+		--frost-2: 4px; /* subtle — modal backdrop (repurposed: 5px step was unused) */
+		--frost-3: 10px; /* medium — frosted controls (Select, Button) */
+		--frost-4: 12px; /* heavy — frosted panels (Surface, AgentInput, Toast) */
 
 		/* Lit EDGE — a crisp directional border (NOT an inset shadow, which can only
 		   render soft and reads as a blurry inner band). Top + left catch the light;
