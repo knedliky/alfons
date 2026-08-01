@@ -16,10 +16,10 @@
 -->
 
 <Story name="Default — Full Chrome" asChild>
-	<div style="height:420px;border:1px dashed var(--border-subtle);border-radius:var(--radius);overflow:hidden">
+	<div style="height:420px;border:1px dashed var(--border-glass);border-radius:var(--radius);overflow:hidden">
 		<PageLayout>
 			{#snippet header()}
-				<div style="padding:1rem 2rem;background:var(--surface-raised);border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;gap:1.5rem">
+				<div style="padding:1rem 2rem;background:var(--surface-raised-bg);border-bottom:1px solid var(--border-glass);display:flex;align-items:center;gap:1.5rem">
 					<span style="font-weight:700;color:var(--text-primary)">Atlas</span>
 					<nav style="display:flex;gap:1.25rem">
 						<span style="font-size:0.875rem;color:var(--text-primary)">Home</span>
@@ -29,7 +29,7 @@
 				</div>
 			{/snippet}
 			{#snippet footer()}
-				<div style="padding:1rem 2rem;background:var(--surface-subtle);border-top:1px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center">
+				<div style="padding:1rem 2rem;background:var(--surface-rest-bg);border-top:1px solid var(--border-glass);display:flex;justify-content:space-between;align-items:center">
 					<span style="font-size:0.8125rem;color:var(--text-secondary)">Atlas — all rights reserved</span>
 					<span style="font-size:0.8125rem;color:var(--text-secondary)">Privacy · Terms</span>
 				</div>
@@ -45,10 +45,10 @@
 </Story>
 
 <Story name="Header Only" asChild>
-	<div style="height:300px;border:1px dashed var(--border-subtle);border-radius:var(--radius);overflow:hidden">
+	<div style="height:300px;border:1px dashed var(--border-glass);border-radius:var(--radius);overflow:hidden">
 		<PageLayout>
 			{#snippet header()}
-				<div style="padding:1rem 2rem;background:var(--surface-raised);border-bottom:1px solid var(--border-subtle)">
+				<div style="padding:1rem 2rem;background:var(--surface-raised-bg);border-bottom:1px solid var(--border-glass)">
 					<span style="font-weight:700;color:var(--text-primary)">Brand</span>
 				</div>
 			{/snippet}
@@ -62,7 +62,7 @@
 </Story>
 
 <Story name="No Chrome" asChild>
-	<div style="height:250px;border:1px dashed var(--border-subtle);border-radius:var(--radius);overflow:hidden">
+	<div style="height:250px;border:1px dashed var(--border-glass);border-radius:var(--radius);overflow:hidden">
 		<PageLayout>
 			<div style="padding:2rem">
 				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
@@ -74,15 +74,15 @@
 </Story>
 
 <Story name="Multiple Sections" asChild>
-	<div style="height:500px;border:1px dashed var(--border-subtle);border-radius:var(--radius);overflow:auto">
+	<div style="height:500px;border:1px dashed var(--border-glass);border-radius:var(--radius);overflow:auto">
 		<PageLayout>
 			{#snippet header()}
-				<div style="padding:1rem 2rem;background:var(--surface-raised);border-bottom:1px solid var(--border-subtle)">
+				<div style="padding:1rem 2rem;background:var(--surface-raised-bg);border-bottom:1px solid var(--border-glass)">
 					<span style="font-weight:700;color:var(--text-primary)">Brand</span>
 				</div>
 			{/snippet}
 			{#snippet footer()}
-				<div style="padding:1rem 2rem;background:var(--surface-subtle);border-top:1px solid var(--border-subtle);font-size:0.8125rem;color:var(--text-secondary);text-align:center">
+				<div style="padding:1rem 2rem;background:var(--surface-rest-bg);border-top:1px solid var(--border-glass);font-size:0.8125rem;color:var(--text-secondary);text-align:center">
 					Footer
 				</div>
 			{/snippet}

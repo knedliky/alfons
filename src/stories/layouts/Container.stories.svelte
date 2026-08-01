@@ -18,7 +18,7 @@
 </script>
 
 <Story name="Default" asChild args={{ maxWidth: 'lg', padding: true, centered: true }}>
-	<div style="background:var(--surface-subtle);padding:1rem 0">
+	<div style="background:var(--surface-rest-bg);padding:1rem 0">
 		<Container maxWidth="lg" padding={true} centered={true}>
 			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
 				Max-width lg (1024px) · padded · centred
@@ -28,7 +28,7 @@
 </Story>
 
 <Story name="Small" asChild args={{ maxWidth: 'sm', padding: true, centered: true }}>
-	<div style="background:var(--surface-subtle);padding:1rem 0">
+	<div style="background:var(--surface-rest-bg);padding:1rem 0">
 		<Container maxWidth="sm" padding={true} centered={true}>
 			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
 				Max-width sm (640px) — narrow prose or form
@@ -38,7 +38,7 @@
 </Story>
 
 <Story name="Extra Large" asChild args={{ maxWidth: 'xl', padding: true, centered: true }}>
-	<div style="background:var(--surface-subtle);padding:1rem 0">
+	<div style="background:var(--surface-rest-bg);padding:1rem 0">
 		<Container maxWidth="xl" padding={true} centered={true}>
 			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
 				Max-width xl (1280px) — wide dashboard
@@ -48,7 +48,7 @@
 </Story>
 
 <Story name="Full Width, No Padding" asChild args={{ maxWidth: 'full', padding: false, centered: false }}>
-	<div style="background:var(--surface-subtle);padding:1rem 0">
+	<div style="background:var(--surface-rest-bg);padding:1rem 0">
 		<Container maxWidth="full" padding={false} centered={false}>
 			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
 				Full width · no padding · not centred

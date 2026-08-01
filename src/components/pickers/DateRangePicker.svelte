@@ -253,7 +253,7 @@
 		--drp-text-secondary: var(--text-secondary);
 		--drp-text-muted: var(--text-muted);
 		--drp-border: var(--card-border);
-		--drp-accent: var(--accent-red);
+		--drp-accent: var(--accent);
 	}
 
 	.date-range-picker.disabled {

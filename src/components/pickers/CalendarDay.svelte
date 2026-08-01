@@ -101,7 +101,7 @@
 		--day-text: var(--text-primary);
 		--day-text-muted: var(--text-muted);
 		--day-bg-hover: var(--card-bg);
-		--day-accent: var(--accent-red);
+		--day-accent: var(--accent);
 	}
 
 	.calendar-day:hover:not(.disabled) {

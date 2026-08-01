@@ -171,7 +171,7 @@
 		height: 20px;
 		padding: 0 var(--space-1);
 		border-radius: var(--radius-pill);
-		background: var(--accent-red);
+		background: var(--accent);
 		font-size: 0.75rem;
 		font-weight: 500;
 		/* white is correct here — badge text on coloured background */
@@ -203,7 +203,7 @@
 
 	/* Sub-value colour themes */
 	.colour-red-text {
-		color: var(--accent-red);
+		color: var(--accent);
 	}
 
 	.colour-green-text {
