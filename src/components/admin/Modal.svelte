@@ -138,7 +138,7 @@
 		margin: var(--space-4);
 		background: var(--admin-bg);
 		border: 1px solid var(--admin-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		box-shadow: var(--shadow-modal);
 		overflow: hidden;
 		animation: scaleIn var(--transition-fast);

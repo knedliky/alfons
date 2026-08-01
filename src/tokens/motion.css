@@ -1,0 +1,101 @@
+/**
+ * Motif Design Library — Motion & interaction tokens
+ *
+ * Calm, spring-flavoured motion. Durations are short by default; the two custom
+ * spring easings are reused across components. Interaction states are
+ * opacity-led (hover dims, active dims less, disabled halves). Widget-bar
+ * motion tokens retained from the previous public.css §23.
+ */
+
+@layer base {
+	:root {
+		/* === INTERACTION STATES ========================================== */
+		--state-hover-opacity: 0.8;
+		--state-active-opacity: 0.9;
+		--state-disabled-opacity: 0.5;
+
+		/* === DURATIONS =================================================== */
+		--duration-instant: 100ms;
+		--duration-fast: 200ms;
+		--duration-normal: 350ms;
+		--duration-slow: 500ms;
+		--duration-spring: 600ms;
+
+		/* === TRANSITIONS — composed from durations ======================= */
+		--transition-fast: var(--duration-fast) ease;
+		--transition-normal: var(--duration-fast) ease;
+		--transition-slow: var(--duration-normal) ease;
+
+		/* Colour mode transition (dark/light switching). `fill` retained for
+		   SVG surfaces that transition with the mode. */
+		--colour-mode-transition:
+			background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+			fill 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+		/* === SPRING EASINGS — reusable across the system ================= */
+		--ease-spring: linear(
+			0,
+			0.006,
+			0.025 2.8%,
+			0.101 6.1%,
+			0.539 18.9%,
+			0.721 25.3%,
+			0.849 31.5%,
+			0.937 38.1%,
+			0.981 43.8%,
+			1.007 50.4%,
+			1.022 57%,
+			1.024 62%,
+			1.015 68%,
+			1.007 76%,
+			1.003 84%,
+			1
+		);
+		--ease-spring-wobbly: linear(
+			0,
+			0.004,
+			0.016 2.5%,
+			0.063 5%,
+			0.25 10%,
+			0.563 17.5%,
+			0.806 22.5%,
+			0.938 27.5%,
+			1.026 32.5%,
+			1.078 37.5%,
+			1.096 42.5%,
+			1.086 47.5%,
+			1.056 52.5%,
+			1.026 57.5%,
+			1.006 62.5%,
+			0.994 67.5%,
+			0.99 72.5%,
+			0.994 77.5%,
+			0.998 82.5%,
+			1.001 87.5%,
+			1.001 92.5%,
+			1
+		);
+
+		/* === WIDGET SYSTEM — retained (homepage floating widget bar) ===== */
+		--widget-icon-size: 40px;
+		--widget-transition-duration: 0.5s;
+		--widget-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+		--widget-pulse-duration: 2.5s;
+		--widget-spring-easing: var(--ease-spring);
+		--widget-spring-duration: 0.6s;
+		--widget-spring-easing-wobbly: var(--ease-spring-wobbly);
+		--widget-reorganise-duration: 0.8s;
+		--widget-reorganise-stagger: 0.15s;
+	}
+
+	/* Reduced motion — collapse springs and widget FLIP animations */
+	@media (prefers-reduced-motion: reduce) {
+		:root {
+			--duration-spring: 0.01ms;
+			--widget-spring-duration: 0.01ms;
+			--widget-reorganise-duration: 0.01ms;
+			--widget-reorganise-stagger: 0ms;
+		}
+	}
+}

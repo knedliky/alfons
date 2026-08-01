@@ -29,18 +29,18 @@
 		<input
 			type="email"
 			placeholder="colleague@example.com.au"
-			style="display: block; width: 100%; box-sizing: border-box; padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); margin-bottom: 1rem;"
+			style="display: block; width: 100%; box-sizing: border-box; padding: 0.5rem 0.75rem; border-radius: 0; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); margin-bottom: 1rem;"
 		/>
 		<div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
 			<button
 				type="button"
-				style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); cursor: pointer;"
+				style="padding: 0.5rem 1rem; border-radius: 0; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); cursor: pointer;"
 			>
 				Cancel
 			</button>
 			<button
 				type="button"
-				style="padding: 0.5rem 1.25rem; border-radius: 6px; border: none; background: var(--accent); color: white; cursor: pointer;"
+				style="padding: 0.5rem 1.25rem; border-radius: 0; border: none; background: var(--accent); color: white; cursor: pointer;"
 			>
 				Send Invitation
 			</button>
@@ -59,7 +59,7 @@
 		<div style="display: flex; justify-content: flex-end;">
 			<button
 				type="button"
-				style="padding: 0.5rem 1.25rem; border-radius: 6px; border: none; background: var(--accent); color: white; cursor: pointer;"
+				style="padding: 0.5rem 1.25rem; border-radius: 0; border: none; background: var(--accent); color: white; cursor: pointer;"
 			>
 				Done
 			</button>
@@ -76,13 +76,13 @@
 		<div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
 			<button
 				type="button"
-				style="padding: 0.5rem 1rem; border-radius: 6px; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); cursor: pointer;"
+				style="padding: 0.5rem 1rem; border-radius: 0; border: 1px solid var(--card-border); background: transparent; color: var(--text-primary); cursor: pointer;"
 			>
 				Cancel
 			</button>
 			<button
 				type="button"
-				style="padding: 0.5rem 1rem; border-radius: 6px; border: none; background: oklch(52% 0.22 25); color: white; cursor: pointer;"
+				style="padding: 0.5rem 1rem; border-radius: 0; border: none; background: oklch(52% 0.22 25); color: white; cursor: pointer;"
 			>
 				Remove Organisation
 			</button>

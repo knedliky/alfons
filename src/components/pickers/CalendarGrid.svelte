@@ -281,7 +281,7 @@
 		color: var(--cal-text-secondary);
 		background-color: transparent;
 		border: 1px solid var(--cal-border);
-		border-radius: 6px;
+		border-radius: 0;
 		cursor: pointer;
 		transition: all var(--transition-fast);
 	}

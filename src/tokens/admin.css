@@ -2,8 +2,15 @@
  * Motif Design Library — Admin UI Tokens
  *
  * CSS custom properties for admin/internal UI.
- * Requires public.css to be imported first (references brand colour tokens).
+ * Requires public.css to be imported first.
  * Admin tokens are pinned to the dark palette and do not change with colour mode.
+ *
+ * UPDATED: the admin CORE tokens (--admin-bg, --admin-bg-elevated,
+ * --admin-border, --admin-text*) now live in tokens/colours.css and the admin
+ * shadows in tokens/elevation.css, so public consumers (e.g. StatusBadge on a
+ * public page) resolve them without importing this file. This file keeps the
+ * admin-ONLY extras: header typography, chart variants, stat-icon washes, and
+ * the admin heading override.
  *
  * Usage:
  *   @import '@motif/design/public';
@@ -12,23 +19,6 @@
 
 @layer base {
 	:root {
-		/* === 16. ADMIN =======================================================
-		   Admin-specific colour scheme and styling.
-		   Pinned to stable palette values — these never change with colour mode.
-		   References brand colour tokens from public.css (--charcoal-ember,
-		   --powder-sand) so public.css must be imported first.
-		   ==================================================================== */
-
-		--admin-bg: var(--charcoal-ember);
-		--admin-bg-page: var(--admin-bg); /* Alias for layout consistency */
-		--admin-bg-elevated: oklch(6% 0 0); /* converted from rgb(15, 15, 15) */
-		--admin-border: oklch(97% 0 0 / 10%); /* converted from rgba(243, 243, 243, 0.1) */
-		--admin-text: var(--powder-sand);
-		--admin-text-secondary: oklch(0.7 0.02 68);
-		--admin-text-muted: oklch(0.6 0.02 68);
-		--admin-shadow: 0 1px 2px oklch(0% 0 0 / 5%); /* converted from rgba(0, 0, 0, 0.05) */
-		--admin-shadow-elevated: 0 4px 6px -1px oklch(0% 0 0 / 10%), 0 2px 4px -2px oklch(0% 0 0 / 10%); /* converted from rgba(0, 0, 0, 0.1) */
-
 		/* Admin page header typography (smaller than public pages) */
 		--admin-header-size: 1.75rem;
 		--admin-header-size-mobile: 1.5rem;
@@ -36,49 +26,37 @@
 		--admin-subheader-size: 1.125rem;
 		--admin-subheader-size-mobile: 1rem;
 
-		/* === 17. CHART ADMIN VARIANTS ========================================
-		   Chart tokens scoped to admin pages.
-		   All admin chart variants reference --admin-* tokens defined above,
-		   so they remain pinned to the dark palette regardless of colour mode.
-		   ==================================================================== */
-
-		/* Data Series Colours (Admin Pages) — references public series tokens */
+		/* === CHART ADMIN VARIANTS ========================================
+		   All admin chart variants reference --admin-* tokens so they remain
+		   pinned to the dark palette regardless of colour mode. */
 		--chart-admin-series-1: var(--chart-series-1);
 		--chart-admin-series-2: var(--chart-series-2);
 		--chart-admin-series-3: var(--chart-series-3);
 		--chart-admin-series-4: var(--chart-series-4);
 		--chart-admin-series-5: var(--chart-series-5);
 
-		/* Chart structural tokens (admin variants) */
 		--chart-axis-colour-admin: var(--admin-text-muted);
 		--chart-grid-colour-admin: var(--admin-border);
-
-		/* Chart background tokens (admin variants) */
 		--chart-bg-admin: var(--admin-bg);
 		--chart-border-admin: var(--admin-border);
-
-		/* Tooltip tokens (admin variants) */
 		--chart-tooltip-bg-admin: var(--admin-bg-elevated);
 		--chart-tooltip-border-admin: var(--admin-border);
 		--chart-tooltip-text-admin: var(--admin-text);
+		--chart-grid-subtle-admin: oklch(100% 0 0 / 5%);
 
-		/* Subtle grid overlay for admin chart backgrounds */
-		--chart-grid-subtle-admin: oklch(100% 0 0 / 5%); /* converted from rgba(255, 255, 255, 0.05) */
-
-		/* === STAT CARD ICON BACKGROUNDS =====================================
-		   Faint colour washes behind StatCard icons. Red reuses the brand accent
-		   channel; the others sit outside the brand palette as semantic status
-		   hues, pinned to the admin dark surface. ============================ */
-		--stat-icon-bg-red: oklch(45% 0.22 25 / 20%); /* converted from rgba(206, 32, 41, 0.2) */
-		--stat-icon-bg-green: oklch(72.3% 0.192 150 / 20%); /* converted from rgba(34, 197, 94, 0.2) */
-		--stat-icon-bg-blue: oklch(62.3% 0.188 260 / 20%); /* converted from rgba(59, 130, 246, 0.2) */
-		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%); /* converted from rgba(168, 85, 247, 0.2) */
+		/* === STAT CARD ICON BACKGROUNDS =================================
+		   Faint colour washes behind StatCard icons. Red reuses the brand
+		   accent channel; the others sit outside the brand palette as semantic
+		   status hues, pinned to the admin dark surface. */
+		--stat-icon-bg-red: oklch(45% 0.22 25 / 20%);
+		--stat-icon-bg-green: oklch(72.3% 0.192 150 / 20%);
+		--stat-icon-bg-blue: oklch(62.3% 0.188 260 / 20%);
+		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%);
 	}
 
 	/* Admin heading override — all admin headings use the body font (Switzer)
-	   instead of IBM Plex Serif (display font) used on public pages.
-	   Colour is pinned to --admin-text so headings never inherit the
-	   light-mode --text-primary value from the base h1-h6 rules. */
+	   instead of IBM Plex Serif. Colour pinned to --admin-text so headings
+	   never inherit the public --text-primary. */
 	.admin-layout-container :is(h1, h2, h3, h4, h5, h6) {
 		font-family: var(--font-body);
 		color: var(--admin-text);

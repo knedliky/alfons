@@ -35,7 +35,7 @@
 					id="org-name"
 					type="text"
 					placeholder="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<div>
@@ -46,12 +46,12 @@
 					id="contact-email"
 					type="email"
 					placeholder="hello@example.com.au"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -74,12 +74,12 @@
 					id="org-name-s"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -102,12 +102,12 @@
 					id="org-name-e"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -130,7 +130,7 @@
 					id="full-name-p"
 					type="text"
 					placeholder="Jane Smith"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 6px;"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 0;"
 				/>
 			</div>
 			<div>
@@ -141,12 +141,12 @@
 					id="email-p"
 					type="email"
 					placeholder="jane@example.com.au"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 6px;"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 0;"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--colour-primary, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--colour-primary, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Get started
 			</button>

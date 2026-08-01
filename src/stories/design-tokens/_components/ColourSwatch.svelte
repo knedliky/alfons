@@ -6,8 +6,7 @@
 	let computedValue = $state('');
 
 	// Resolve the token from the swatch's OWN element rather than the document
-	// root, so a swatch placed inside a local data-colour-mode wrapper (the
-	// Light Mode story) reports the value it actually renders, not the canvas's.
+	// root, so a swatch reports the value it actually renders in its own context.
 	$effect(() => {
 		if (!swatchEl) return;
 		computedValue = getComputedStyle(swatchEl).getPropertyValue(tokenName).trim();
@@ -50,7 +49,7 @@
 		gap: 8px;
 		padding: 12px;
 		border: 1px solid var(--card-border);
-		border-radius: 8px;
+		border-radius: 0;
 		background: var(--card-bg);
 		cursor: pointer;
 		transition: all 0.2s ease;
@@ -67,7 +66,7 @@
 		position: relative;
 		width: 64px;
 		height: 64px;
-		border-radius: 8px;
+		border-radius: 0;
 		border: 1px solid var(--border-glass);
 		overflow: hidden;
 		/* Checkerboard so any alpha in the token shows through as translucency.

@@ -1,0 +1,110 @@
+/**
+ * Motif Design Library — Elevation, shadow & z-index tokens
+ *
+ * One light source: an off-screen upper-left rake. Surfaces stack on a coherent
+ * ladder — L1 resting (cards), L2 raised (inputs, agent input, hovered cards),
+ * L3 floating (dropdowns, tooltips, toasts, modals). Each level composes a crisp
+ * directional edge, a down-and-right cast shadow, a backdrop blur, and a thinned
+ * fill. Tunable scalars move the whole ladder coherently.
+ *
+ * NEW in this revision: SURFACE TIERS — rest / raised / float bundles so a
+ * component picks a tier, never blur/opacity by hand. Frost scale retuned
+ * (0 / 3px / 6px) so the technical grid always reads through the glass.
+ */
+
+@layer base {
+	:root {
+		/* === Z-INDEX — semantic scale, back to front =================== */
+		--z-base: 0;
+		--z-raised: 1;
+		--z-dropdown: 10;
+		--z-sticky: 20;
+		--z-overlay: 30;
+		--z-toast: 40;
+		--z-widget: 50;
+
+		/* === ELEVATION LADDER — tunable scalars ========================= */
+		--el-rim: 0.055; /* lit-edge alpha at L1 */
+		--el-cast-depth: 0.22; /* cast-shadow alpha at L1 */
+		--el-cast-spread: 4; /* cast-shadow blur (px) at L1 */
+		--el-fill: 0.58; /* L1 surface-fill alpha */
+		/* Frost — RETUNED: deliberately light (rest 0 · raised 3px · float 6px)
+		   so the grid reads through. Previous 10px/12px steps collapse into 6px. */
+		--frost-1: 0px;
+		--frost-2: 3px;
+		--frost-3: 6px;
+
+		/* Lit EDGE — crisp directional border (top/left lit, bottom/right shade) */
+		--el-shade: calc(var(--el-rim) * 3);
+		--el-edge-light: oklch(1 0 0 / var(--el-rim));
+		--el-edge-shade: oklch(0 0 0 / var(--el-shade));
+
+		/* CAST shadow per level — box-shadow only, thrown down-and-right */
+		--elevation-1:
+			1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px)
+				oklch(0 0 0 / var(--el-cast-depth));
+		--elevation-2:
+			2px calc(var(--el-cast-spread) * 1.3px) calc(var(--el-cast-spread) * 2px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08)),
+			3px calc(var(--el-cast-spread) * 2.7px) calc(var(--el-cast-spread) * 5.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 0.85));
+		--elevation-3:
+			4px calc(var(--el-cast-spread) * 2px) calc(var(--el-cast-spread) * 3.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.35)),
+			8px calc(var(--el-cast-spread) * 6px) calc(var(--el-cast-spread) * 13.3px)
+				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.43));
+
+		/* SURFACE fill per level — thinned toward frosted glass */
+		--elevation-1-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 100%), transparent);
+		--elevation-2-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 78%), transparent);
+		--elevation-3-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 62%), transparent);
+
+		/* === SURFACE TIERS — NEW ========================================
+		   Three tiers, named by how the surface sits relative to the page.
+		   Each tier is ONE bundle — fill + frost + shadow (+ the lit edge) — so a
+		   component never picks blur/opacity by hand; it picks a tier.
+		     rest   — sits ON the page (cards, tiles): opaque, no blur, soft shadow
+		     raised — lifts off it (inputs, chat, agent surface, portraits): light frost
+		     float  — detached above everything (menus, popovers, modals): glassy, deep shadow
+		   rest = the SAME warm tone as the fixed Header (--bg-primary) so cards
+		   and the surface primitive match it exactly and track together. */
+		--surface-rest-bg: color-mix(in oklch, var(--bg-primary) 96%, transparent);
+		--surface-rest-frost: var(--frost-1);
+		--surface-rest-shadow: var(--elevation-1);
+		--surface-raised-bg: var(--elevation-2-bg);
+		--surface-raised-frost: var(--frost-2);
+		--surface-raised-shadow: var(--elevation-2);
+		--surface-float-bg: var(--elevation-3-bg);
+		--surface-float-frost: var(--frost-3);
+		--surface-float-shadow: var(--elevation-3);
+
+		/* === SEMANTIC SHADOW ALIASES =================================== */
+		--card-shadow: var(--elevation-1);
+		--card-shadow-hover: var(--elevation-2);
+		--shadow-glass: var(--elevation-2); /* agent input + chat bubbles */
+		--shadow-subtle: 0 1px 3px oklch(0% 0 0 / 30%);
+		--shadow-header: 0 1px 2px oklch(0% 0 0 / 10%);
+		--input-shadow: none;
+		/* Focus ring — the single quiet system focus state lives in base.css as a
+		   global :focus-visible outline; form controls only shift their border. */
+		--button-shadow: none;
+		--button-shadow-hover: 0 4px 12px oklch(45% 0.22 25 / 30%);
+		--button-shadow-active: inset 0 2px 4px oklch(0% 0 0 / 10%);
+
+		/* Floating overlays — neutral black scrims, not brand-tinted */
+		--overlay-scrim: oklch(0% 0 0 / 60%);
+		--shadow-toast: 0 8px 32px oklch(0% 0 0 / 20%);
+		--toast-shadow: var(--elevation-3); /* toasts float at L3 (both modes) */
+		--shadow-dropdown: 0 8px 24px oklch(0% 0 0 / 40%);
+		--shadow-popover: 0 10px 40px oklch(0% 0 0 / 50%);
+		--shadow-modal: 0 25px 50px -12px oklch(0% 0 0 / 50%);
+		--shadow-tooltip-cast: 0 4px 12px oklch(0% 0 0 / 30%); /* retained */
+		--surface-overlay-subtle: oklch(0% 0 0 / 30%); /* retained — loading overlays */
+		--tooltip-shadow: var(--elevation-3);
+		--select-dropdown-shadow: var(--elevation-3);
+
+		/* === ADMIN SHADOWS — consolidated here from admin.css ============ */
+		--admin-shadow: 0 1px 2px oklch(0% 0 0 / 5%);
+		--admin-shadow-elevated: 0 4px 6px -1px oklch(0% 0 0 / 10%), 0 2px 4px -2px oklch(0% 0 0 / 10%);
+	}
+}

@@ -236,7 +236,7 @@
 		position: relative;
 		background-color: var(--chart-bg-admin);
 		border: 1px solid var(--chart-border-admin);
-		border-radius: 12px;
+		border-radius: 0;
 		padding: var(--chart-padding);
 	}
 
@@ -351,7 +351,7 @@
 		position: absolute;
 		background-color: var(--chart-tooltip-bg-admin);
 		border: 1px solid var(--chart-tooltip-border-admin);
-		border-radius: 8px;
+		border-radius: 0;
 		padding: var(--space-3);
 		pointer-events: none;
 		z-index: var(--z-dropdown);

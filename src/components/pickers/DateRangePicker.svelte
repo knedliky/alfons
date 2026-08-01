@@ -278,7 +278,7 @@
 		color: var(--drp-text-secondary);
 		background-color: var(--drp-bg);
 		border: 1px solid var(--drp-border);
-		border-radius: 6px;
+		border-radius: 0;
 		cursor: pointer;
 		transition: all var(--transition-fast);
 		white-space: nowrap;
@@ -336,7 +336,7 @@
 		padding: var(--space-4);
 		background-color: var(--drp-bg-elevated);
 		border: 1px solid var(--drp-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		box-shadow: var(--shadow-popover);
 		animation: scaleIn 0.15s ease;
 	}

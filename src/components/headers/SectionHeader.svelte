@@ -69,7 +69,7 @@
 		height: 3px;
 		margin-bottom: var(--space-3);
 		background: var(--gradient-sunset);
-		border-radius: 2px;
+		border-radius: 0;
 	}
 
 	/* Aubergine-to-navy gradient for depth accent */

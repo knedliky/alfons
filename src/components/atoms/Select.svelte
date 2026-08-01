@@ -445,8 +445,6 @@
 					{#each visibleOptions as option, index (option.value)}
 						{@const isSelected = option.value === value}
 						{@const isHighlighted = index === highlightedIndex}
-							{@const isFirst = index === 0}
-							{@const isLast = index === visibleOptions.length - 1}
 						<button
 							type="button"
 							class="select-option"
@@ -461,13 +459,6 @@
 											? `color-mix(in oklch, ${option.accent} 15%, transparent)`
 											: 'var(--select-highlighted-bg)'
 										: 'transparent'};
-								border-radius: {isFirst && isLast
-									? 'var(--radius-md)'
-									: isFirst
-										? 'var(--radius-md) var(--radius-md) 0 0'
-										: isLast
-											? '0 0 var(--radius-md) var(--radius-md)'
-											: '0'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}
@@ -612,13 +603,10 @@
 		max-height: 280px;
 		overflow: hidden;
 		padding: 0.375rem;
-		/* Panel sits one tier below the trigger: --radius-lg (16px) nests
-		   concentrically with the --radius-md (10px) options — 10px option +
-		   0.375rem (6px) padding = the 16px panel corner, so the option hover fill
-		   echoes the panel edge instead of leaving empty arcs in oversized corners.
-		   (The trigger keeps the rounder --radius-message stadium to match the pill
-		   ToggleGroup beside it; the menu is a panel, not a pill.) */
-		border-radius: var(--radius-lg);
+		/* Square panel — the menu is a floating surface, not a pill, so it takes
+		   the sharp non-agentic corner. (The trigger keeps the rounder
+		   --radius-message stadium to match the pill ToggleGroup beside it.) */
+		border-radius: 0;
 		box-shadow: var(--select-dropdown-shadow);
 		/* L3 frosted glass — the ladder's floating-level blur keeps the translucent
 		   --elevation-3-bg dropdown legible over busy content. */
@@ -679,7 +667,7 @@
 		font-family: inherit;
 		background: transparent;
 		border: 1px solid var(--select-border);
-		border-radius: var(--radius-md);
+		border-radius: var(--radius);
 		outline: none;
 		transition: border-color var(--transition-fast);
 	}
@@ -720,16 +708,15 @@
 
 	/* Options match the old CustomSelect: full-width, left-aligned, mono, with
 	   long labels wrapping rather than truncating. The selected row is marked by
-	   an accent-tinted background (set inline), not a trailing check icon. The
-	   corner radius is also set inline per position so the rows read as one
-	   connected list: only the first option rounds its top corners and the last
-	   its bottom corners; the middle rows are square. */
+	   an accent-tinted background (set inline), not a trailing check icon.
+	   Square rows in a square panel — the whole menu reads as one sharp block. */
 	.select-option {
 		display: block;
 		width: 100%;
 		padding: var(--space-2) var(--space-3);
 		background: transparent;
 		border: none;
+		border-radius: 0;
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
@@ -752,7 +739,7 @@
 
 	.select-options::-webkit-scrollbar-thumb {
 		background: var(--select-border);
-		border-radius: 3px;
+		border-radius: 0;
 	}
 
 	.select-options::-webkit-scrollbar-thumb:hover {

@@ -36,7 +36,7 @@
 			type="text"
 			placeholder="Acme Pty Ltd"
 			aria-describedby="org-name-fg-description"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 		/>
 	</FormGroup>
 </Story>
@@ -57,7 +57,7 @@
 			type="text"
 			placeholder="Jane Smith"
 			aria-describedby="full-name-fg-description"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 		/>
 	</FormGroup>
 </Story>
@@ -80,7 +80,7 @@
 			value="not-an-email"
 			aria-invalid="true"
 			aria-describedby="email-fg-description"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--colour-error, #ef4444); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--colour-error, #ef4444); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 		/>
 	</FormGroup>
 </Story>
@@ -99,7 +99,7 @@
 			id="department-fg"
 			type="text"
 			placeholder="Engineering"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 		/>
 	</FormGroup>
 </Story>
@@ -120,7 +120,7 @@
 			type="text"
 			placeholder="Jane Smith"
 			aria-describedby="name-pub-description"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 6px;"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 0;"
 		/>
 	</FormGroup>
 </Story>
@@ -142,7 +142,7 @@
 			type="text"
 			value="51 824 753 556"
 			aria-describedby="abn-fg-description"
-			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+			style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 		/>
 	</FormGroup>
 </Story>

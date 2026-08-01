@@ -1,9 +1,10 @@
 /**
  * Motif Design Library — Base Global Styles
  *
- * Global typography scale, body defaults, scrollbar styling, focus states,
- * and utility classes.
- * Requires public.css to be imported first.
+ * Global typography scale, body defaults, the two-layer technical grid
+ * background with its warm rake-light depth ground, scrollbar styling, focus
+ * states, and utility classes. Font loading moved to tokens/fonts.css
+ * (imported via public.css). Requires public.css to be imported first.
  *
  * Usage:
  *   @import '@motif/design/public';
@@ -17,52 +18,10 @@
 @import './form-states.css';
 
 /* ==========================================================================
-   TYPOGRAPHY — Self-hosted via @fontsource (latin subset only, no external CDN)
-   ========================================================================== */
-
-@import '@fontsource-variable/azeret-mono/wght.css';
-@import '@fontsource/ibm-plex-serif/latin-400.css';
-@import '@fontsource/ibm-plex-serif/latin-500.css';
-@import '@fontsource/ibm-plex-serif/latin-600.css';
-@import '@fontsource/ibm-plex-serif/latin-700.css';
-@import '@fontsource/rock-salt/latin-400.css';
-
-/* Switzer (Fontshare / Indian Type Foundry) — the default body sans
-   (--font-body). Not published on Fontsource, so the latin weights are
-   self-hosted under src/fonts/ and referenced relatively; consumers bundle
-   them through their own build when they import @motif/design/base. */
-@font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-400.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-500.woff2') format('woff2');
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-600.woff2') format('woff2');
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-700.woff2') format('woff2');
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
-
-/* ==========================================================================
    TYPOGRAPHY SCALE — IBM Plex Serif for all headings and display text
-   (technical aesthetic)
+   (technical aesthetic). NOTE: unlayered on purpose (beats Tailwind preflight);
+   do NOT add margin resets here — unlayered margins would defeat the layered
+   .article-prose-global margins.
    ========================================================================== */
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -110,13 +69,7 @@ h6 {
 	line-height: 1.4;
 }
 
-/* ==========================================================================
-   RESPONSIVE TYPOGRAPHY — Mobile (below 768px)
-   Headings stay a touch larger on mobile than a strict compression scale would
-   give. Large headings still step down most, but keep enough presence to anchor
-   a hero; small headings barely change from desktop.
-   ========================================================================== */
-
+/* Responsive typography — mobile (below 768px) */
 @media (max-width: 767px) {
 	h1 {
 		font-size: 3rem;
@@ -143,13 +96,8 @@ h6 {
 	}
 }
 
-/* ==========================================================================
-   Tailwind v4 preflight override
-   Tailwind v4's preflight (inside @layer base) sets body { overflow: hidden }.
-   Unlayered rules always beat layered rules in the CSS cascade, so
-   placing this outside @layer ensures the body remains scrollable.
-   ========================================================================== */
-
+/* Tailwind v4 preflight override — body must remain scrollable (unlayered
+   rules always beat layered rules in the cascade). */
 body {
 	overflow-y: auto;
 }
@@ -161,41 +109,33 @@ body {
 @layer base {
 	html {
 		scroll-behavior: smooth;
-		/* Reserve scrollbar gutter so navigating between long and short
-		   routes does not cause a horizontal layout shift. Without this,
-		   short pages render at full viewport width and long pages render
-		   ~15 px narrower (whatever the OS scrollbar width is), making
-		   the content jump sideways on every route change. */
+		/* Reserve scrollbar gutter so route changes between long and short
+		   pages don't cause a horizontal layout shift. */
 		scrollbar-gutter: stable;
 	}
 
 	body {
 		background-color: var(--bg-primary);
 		color: var(--text-primary);
-		/* Drive the body font from the token so --font-body actually applies.
-		   Previously hardcoded 'Hanken Grotesk' here, which silently ignored
-		   the token (and the bare name matched no loaded face anyway). */
 		font-family: var(--font-body);
-		font-size: 1.125rem;
-		/* 18px base — more readable than default 16px */
+		font-size: 1.125rem; /* 18px base */
 		font-weight: 400;
 		line-height: 1.8;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		transition: var(--colour-mode-transition);
 	}
 
 	/* ==========================================================================
-	   GLOBAL GRID BACKGROUND
-	   Two-layer grid pattern that sits between background and content.
-	   Fine grid (40px) + accent grid (160px) for technical aesthetic.
+	   GLOBAL GRID BACKGROUND — two-layer technical grid + rake-light ground
 	   ========================================================================== */
 
-	/* Fine grid layer */
+	/* Fine grid layer (40px) */
 	body::after {
 		content: '';
 		position: fixed;
 		inset: 0;
-		z-index: -1; /* ground layer — sits behind content, not in front (was z:0) */
+		z-index: -1;
 		pointer-events: none;
 		background-image:
 			linear-gradient(var(--grid-colour) 1px, transparent 1px),
@@ -210,7 +150,7 @@ body {
 		content: '';
 		position: fixed;
 		inset: 0;
-		z-index: -1; /* ground layer — sits behind content, not in front (was z:0) */
+		z-index: -1;
 		pointer-events: none;
 		background-image:
 			linear-gradient(var(--grid-colour-accent) 1px, transparent 1px),
@@ -221,8 +161,7 @@ body {
 	}
 
 	/* Depth ground (L0) — rake light: a warm graze radiating from off-screen
-	   upper-left (20% in, 25% above the top), as if a low sun crosses the drafting
-	   surface. Sits behind the grid and content. See design-system DEPTH.md. */
+	   upper-left, as if a low sun crosses the drafting surface. */
 	html::before {
 		content: '';
 		position: fixed;
@@ -234,12 +173,8 @@ body {
 		transition: var(--colour-mode-transition);
 	}
 
-	/* Depth ground (L0) — glint: the main gridlines (every 4th, 160px) catch the rake
-	   light like a chain-link fence under a streetlight — a grazing metallic sheen,
-	   faint near the source and brightest in the distance (the mask ramps
-	   transparent→opaque with distance from the light). Composited additively
-	   (screen) so it brightens rather than dulls. Dark-mode effect; in light mode the
-	   gridlines become grooves instead (see the light overrides below). */
+	/* Depth ground (L0) — glint: the main gridlines (160px) catch the rake light
+	   like a chain-link fence under a streetlight. */
 	html::after {
 		content: '';
 		position: fixed;
@@ -254,43 +189,6 @@ body {
 		mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
 		mix-blend-mode: screen;
 		opacity: var(--ground-glint-strength);
-	}
-
-	/* Depth ground (light) — gridlines as GROOVES, not metal. In light mode the main
-	   lines (html::after) and the in-between lines (body::after) read as incised
-	   channels: a soft recess + a lit lip offset toward the light. Normal blend (the
-	   recess darkens, the lip lightens) and no grazing mask — a groove is a physical
-	   feature present uniformly, not a specular highlight. Structural props (position,
-	   z-index, content, size, opacity) inherit from the base rules above. */
-	html[data-colour-mode='light']::after {
-		background-image:
-			linear-gradient(var(--ground-groove-shadow) 1px, transparent 1px),
-			linear-gradient(90deg, var(--ground-groove-shadow) 1px, transparent 1px),
-			linear-gradient(var(--ground-groove-light) 1px, transparent 1px),
-			linear-gradient(90deg, var(--ground-groove-light) 1px, transparent 1px);
-		background-position:
-			0 0,
-			0 0,
-			0 var(--ground-groove-offset),
-			var(--ground-groove-offset) 0;
-		mix-blend-mode: normal;
-		-webkit-mask-image: none;
-		mask-image: none;
-	}
-
-	html[data-colour-mode='light'] body::after {
-		background-image:
-			linear-gradient(var(--ground-groove-shadow) 1px, transparent 1px),
-			linear-gradient(90deg, var(--ground-groove-shadow) 1px, transparent 1px),
-			linear-gradient(var(--ground-groove-light) 1px, transparent 1px),
-			linear-gradient(90deg, var(--ground-groove-light) 1px, transparent 1px);
-		background-position:
-			0 0,
-			0 0,
-			0 var(--ground-groove-offset),
-			var(--ground-groove-offset) 0;
-		mix-blend-mode: normal;
-		opacity: var(--ground-groove-fine-strength);
 	}
 
 	/* Monospace for metrics and code */
@@ -315,7 +213,7 @@ body {
 
 	::-webkit-scrollbar-thumb {
 		background: var(--accent);
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
@@ -346,12 +244,13 @@ body {
 	   FOCUS STATES
 	   ========================================================================== */
 
-	/* A thin accent-tinted edge — the calm focus affordance shared app-wide,
-	   matching AgentInput's focus border. Components inherit this rather than
-	   defining their own ring (error/success states still use the heavier
-	   box-shadow rings in form-states.css). */
+	/* UPDATED — the single quiet system focus state: a thin NEUTRAL edge
+	   (--focus-ring-color, white-mix in dark / black-mix in light) instead of
+	   the accent-tinted ring. Components inherit this rather than defining
+	   their own ring (error/success states still use the heavier box-shadow
+	   rings in form-states.css). */
 	:focus-visible {
-		outline: 1.5px solid color-mix(in srgb, var(--accent) 45%, transparent);
+		outline: 1.5px solid var(--focus-ring-color);
 		outline-offset: 2px;
 	}
 
@@ -359,20 +258,18 @@ body {
 	   LINK STYLES
 	   ========================================================================== */
 
-	/* Links read as body text — same colour, no underline — and pick up the accent
-	   only on hover. Underline is opt-in for prose contexts (e.g. .article-prose a,
-	   .hero-description a), so navigational chrome (nav, footer, cards, logos) stays
-	   clean without each one having to opt out. */
+	/* Links read as body text — same colour, no underline — and pick up the
+	   accent only on hover. Underline is opt-in for prose contexts. */
 	a {
 		text-underline-position: from-font;
 		color: inherit;
 		text-decoration: none;
+		transition: color var(--transition-fast);
 	}
 
 	a:hover {
 		color: var(--accent);
 	}
-
 }
 
 /* ==========================================================================
@@ -380,7 +277,6 @@ body {
    ========================================================================== */
 
 @layer components {
-	/* Article prose base — for use outside component scope */
 	.article-prose-global {
 		line-height: 1.7;
 		color: var(--text-secondary);
@@ -452,14 +348,7 @@ body {
    ========================================================================== */
 
 @layer utilities {
-	/* ========================================================================
-	   BACKGROUND VARIANT UTILITIES
-	   Control how components interact with the global grid background.
-	   - solid:       Covers the grid completely (default for most components)
-	   - transparent: Grid shows through (for hero sections, etc.)
-	   - blur:        Grid visible but blurred for readability
-	   ======================================================================== */
-
+	/* Background variant utilities — how components interact with the grid */
 	.bg-solid {
 		position: relative;
 		z-index: var(--z-raised);
@@ -489,7 +378,10 @@ body {
 		}
 	}
 
-	/* Glassmorphism utility */
+	/* Glassmorphism utilities — prefer the surface-tier bundles for components:
+	   background var(--surface-<tier>-bg) + backdrop blur var(--surface-<tier>-frost)
+	   + box-shadow var(--surface-<tier>-shadow). These classes remain for
+	   non-component contexts. */
 	.glass {
 		background: var(--bg-glass);
 		backdrop-filter: blur(10px);
@@ -504,14 +396,12 @@ body {
 		border: 1px solid var(--border-glass);
 	}
 
-	/* Card utility — applies all card styles.
-	   Prefer using the Card.svelte component which owns these styles
-	   internally. This global class is kept for non-component contexts
-	   (e.g. SkeletonHero) where a Svelte component wrapper is impractical. */
+	/* Card utility — UPDATED to the square-corner default (--radius-surface).
+	   Prefer the Card component; kept for non-component contexts. */
 	.card-glass {
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		padding: var(--card-padding);
 		box-shadow: var(--card-shadow);
 		transition:
@@ -533,24 +423,6 @@ body {
 	/* Dark mode: solid background for legibility over busy backgrounds */
 	[data-colour-mode='dark'] .card-glass {
 		background: var(--bg-glass-solid);
-	}
-
-	/* Light mode: directional borders for tactile appearance */
-	[data-colour-mode='light'] .card-glass {
-		/* Directional border — top/left highlight, bottom/right shadow */
-		border: none;
-		border-top: 1px solid var(--card-border-top);
-		border-left: 1px solid var(--card-border-left);
-		border-right: 1px solid var(--card-border-right);
-		border-bottom: 1px solid var(--card-border-bottom);
-	}
-
-	[data-colour-mode='light'] .card-glass:hover {
-		/* Warm the highlight edge with a subtle sunset tint */
-		border-top: 1px solid rgba(217, 101, 43, 0.15);
-		border-left: 1px solid rgba(255, 255, 255, 0.6);
-		border-right: 1px solid rgba(60, 50, 40, 0.12);
-		border-bottom: 1px solid rgba(60, 50, 40, 0.16);
 	}
 
 	/* Transition utilities */

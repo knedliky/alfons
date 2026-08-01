@@ -61,13 +61,15 @@
 		border-radius: var(--radius-pill);
 	}
 
-	.input:focus {
-		outline: none;
-	}
-
 	.input:disabled {
 		cursor: not-allowed;
 		opacity: 0.5;
+	}
+
+	/* Bordered control — pull the system outline flush so it merges with the
+	   border into a single ring. */
+	.input:focus-visible {
+		outline-offset: -1.5px;
 	}
 
 	/* file input resets */
@@ -106,11 +108,10 @@
 		color: var(--text-muted);
 	}
 
+	/* Focus keeps a border-colour cue only — the ring is the global neutral
+	   focus-visible outline inherited from base.css. */
 	.input[data-theme='public']:focus {
 		border-color: var(--card-border-hover);
-		box-shadow:
-			0 0 0 2px var(--bg-primary),
-			0 0 0 4px var(--accent);
 	}
 
 	/* Admin theme */
@@ -127,9 +128,6 @@
 
 	.input[data-theme='admin']:focus {
 		border-color: var(--admin-text-muted);
-		box-shadow:
-			0 0 0 2px var(--admin-bg),
-			0 0 0 4px var(--accent);
 	}
 
 	/* Error and success focus-ring states are handled by the shared

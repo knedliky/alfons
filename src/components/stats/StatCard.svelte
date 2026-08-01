@@ -113,7 +113,7 @@
 
 <style>
 	.stat-card {
-		border-radius: 8px;
+		border-radius: 0;
 		border: 1px solid var(--admin-border);
 		background: var(--admin-bg);
 		padding: var(--space-5);
@@ -133,7 +133,7 @@
 		width: 48px;
 		height: 48px;
 		flex-shrink: 0;
-		border-radius: 8px;
+		border-radius: 0;
 	}
 
 	/* Colour theme backgrounds — faint status washes behind the stat icon */
@@ -223,7 +223,7 @@
 		width: 48px;
 		height: 48px;
 		flex-shrink: 0;
-		border-radius: 8px;
+		border-radius: 0;
 		background: var(--admin-border);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
@@ -238,7 +238,7 @@
 	.skeleton-label {
 		height: 16px;
 		width: 96px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--admin-border);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
@@ -246,7 +246,7 @@
 	.skeleton-value {
 		height: 32px;
 		width: 80px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--admin-border);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
@@ -254,7 +254,7 @@
 	.skeleton-sub {
 		height: 16px;
 		width: 64px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--admin-border);
 		animation: pulse 1.5s ease-in-out infinite;
 	}

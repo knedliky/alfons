@@ -48,7 +48,8 @@
 		width: 100%;
 		resize: none;
 		font-size: 1rem;
-		border-radius: var(--radius-lg);
+		/* Square — agentic rounding belongs to the agent input, not plain form fields */
+		border-radius: 0;
 		padding: var(--space-4) var(--space-5);
 		transition:
 			border-color var(--transition-normal),

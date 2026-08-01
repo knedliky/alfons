@@ -35,6 +35,32 @@ export default {
       ...config.resolve.alias,
       '$env/dynamic/public': join(__dirname, 'mocks/env-dynamic-public.js'),
     };
+    // Vite's dependency pre-bundler (esbuild) has no loader for .svelte
+    // files, so any Storybook package that ships raw .svelte internals must
+    // stay OUT of prebundling and compile on demand via vite-plugin-svelte.
+    // Excluding here handles @storybook/svelte, but addon-svelte-csf's
+    // preset force-includes itself (optimizeViteDeps) through a builder
+    // plugin that merges AFTER this hook — so a post-enforced plugin strips
+    // it back out of the include list.
+    config.optimizeDeps = config.optimizeDeps || {};
+    config.optimizeDeps.exclude = [
+      ...(config.optimizeDeps.exclude || []),
+      '@storybook/svelte',
+      '@storybook/addon-svelte-csf',
+    ];
+    config.plugins = config.plugins || [];
+    config.plugins.push({
+      name: 'motif-no-svelte-prebundle',
+      enforce: 'post',
+      config(finalConfig) {
+        const include = finalConfig.optimizeDeps?.include;
+        if (include) {
+          finalConfig.optimizeDeps.include = include.filter(
+            (id) => !id.startsWith('@storybook/addon-svelte-csf'),
+          );
+        }
+      },
+    });
     return config;
   },
 };

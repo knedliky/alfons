@@ -1,0 +1,257 @@
+/**
+ * Motif Design Library — Colour tokens
+ *
+ * Warm sunset palette in OKLCH for perceptual uniformity. Base brand hues, then
+ * semantic surface / text / border / accent aliases. Dark is the sole theme,
+ * pinned via data-colour-mode="dark" on <html>.
+ *
+ * Australian spelling throughout (colour, not color).
+ * UPDATED in this revision: neutral --focus-ring-color, info → sky-blue,
+ * brand-derived industry-group tokens + gradients, consolidated admin core.
+ */
+
+@layer base {
+	:root {
+		/* === 1. BRAND COLOURS — warm sunset palette ======================= */
+		--fire-engine-red: oklch(0.53 0.2 28);
+		--burnt-sunset: oklch(0.64 0.16 44);
+		--aubergine: oklch(0.44 0.11 319);
+		--sky-blue: oklch(0.77 0.11 229);
+		--blush-pink: oklch(0.78 0.15 340);
+		--powder-sand: oklch(0.93 0.02 68);
+		--olive-green: oklch(0.52 0.1 130);
+		--navy-royal: oklch(0.35 0.14 260);
+		--amber: oklch(0.68 0.15 70);
+		--charcoal-ember: oklch(0.16 0.02 60); /* dark background base */
+
+		/* Hex equivalents — 1:1 with the OKLCH brand tokens, for SVG / illustration */
+		--hex-red: #ce2029; /* fire-engine-red */
+		--hex-sunset: #d9652b; /* burnt-sunset */
+		--hex-aubergine: #6d3f79; /* aubergine */
+		--hex-sky: #5bc0eb; /* sky-blue */
+		--hex-blush: #f68fd5; /* blush-pink */
+		--hex-sand: #d4b896; /* powder-sand */
+		--hex-olive: #5a7a47; /* olive-green */
+		--hex-navy: #2e3d6b; /* navy-royal */
+		--hex-amber: #d4a946; /* amber */
+		--hex-dark: #141010; /* charcoal-ember */
+		--hex-light: #f3f3f3; /* light text / labels */
+
+		/* === 2. SURFACES ================================================== */
+		--bg-primary: var(--charcoal-ember);
+		--bg-glass: oklch(10% 0.02 150 / 40%);
+		--bg-glass-solid: oklch(9% 0.01 30);
+		--surface-glass-bg: color-mix(in srgb, var(--bg-glass-solid) 85%, transparent);
+		--bg-primary-rgb: 20, 11, 5;
+
+		/* Subtle surface washes — hover states and recessed tracks */
+		--surface-hover-subtle: oklch(97% 0 0 / 5%);
+		--surface-dark-subtle: oklch(0% 0 0 / 10%);
+
+		/* === 3. BORDERS ================================================== */
+		--border-glass: oklch(97% 0 0 / 10%);
+		--border-glass-hover: oklch(97% 0 0 / 20%);
+		/* NEW — the single global focus-ring colour: quiet and neutral, not
+		   accent-red. Consumed by :focus-visible in base.css. */
+		--focus-ring-color: color-mix(in srgb, white 55%, transparent);
+
+		/* === 4. TEXT — hierarchy: primary > secondary > muted ============ */
+		--text-primary: var(--powder-sand);
+		--text-secondary: oklch(0.7 0.02 68);
+		--text-muted: oklch(0.6 0.02 68);
+		/* Retained — opposite-mode primary text for the PageHeader per-letter
+		   pixelate flicker. */
+		--text-flicker-alt: oklch(20% 0.01 55);
+
+		/* === 5. ACCENT — primary action colour =========================== */
+		--accent: var(--fire-engine-red);
+		--accent-hover: oklch(0.42 0.17 28);
+		--accent-rgb: 206, 32, 41;
+		--accent-bg-subtle: oklch(45% 0.22 25 / 5%);
+		--accent-bg: oklch(45% 0.22 25 / 10%);
+		--accent-bg-emphasis: oklch(45% 0.22 25 / 15%);
+		--accent-border: oklch(45% 0.22 25 / 30%);
+
+		/* === 5b. ACCENT ROLES — surface the full brand palette =========== */
+		--accent-secondary: var(--burnt-sunset); /* hover warmth, secondary highlights */
+		--accent-tertiary: var(--sky-blue); /* informational, workflow indicators */
+		--accent-depth: var(--aubergine); /* synthesis, overlapping regions */
+		--accent-playful: var(--blush-pink); /* tags, notification dots */
+
+		--accent-secondary-bg: oklch(58% 0.15 46 / 10%);
+		--accent-secondary-border: oklch(58% 0.15 46 / 30%);
+		--accent-secondary-hover: oklch(58% 0.15 46 / 20%);
+		--accent-secondary-hover-subtle: oklch(58% 0.15 46 / 15%);
+		--accent-depth-bg: oklch(38% 0.1 310 / 10%);
+		--accent-depth-border: oklch(38% 0.1 310 / 30%);
+
+		/* === 5c. GRADIENTS — accent elements ONLY, never backgrounds ====== */
+		--gradient-sunset: linear-gradient(135deg, var(--hex-red), var(--hex-sunset));
+		--gradient-depth: linear-gradient(135deg, var(--hex-navy), var(--hex-aubergine));
+		--gradient-warmth: linear-gradient(135deg, var(--hex-sunset), var(--hex-amber));
+		/* Retained — faint illustration placeholder wash for skeleton heroes */
+		--gradient-placeholder: linear-gradient(
+			135deg,
+			oklch(55.6% 0.262 292 / 5%) 0%,
+			var(--accent-bg-subtle) 100%
+		);
+
+		/* === 6. CARDS ==================================================== */
+		--card-bg: oklch(8% 0.01 15 / 40%);
+		--card-border: oklch(97% 0 0 / 10%);
+		--card-border-hover: oklch(97% 0 0 / 20%);
+		--card-border-top: var(--card-border);
+		--card-border-left: var(--card-border);
+		--card-border-right: var(--card-border);
+		--card-border-bottom: var(--card-border);
+
+		/* === 7. LOADING SHIMMER — retained ================================ */
+		--shimmer-highlight-dim: oklch(100% 0 0 / 6%);
+		--shimmer-highlight-bright: oklch(100% 0 0 / 50%);
+
+		/* === 8. INPUTS =================================================== */
+		--input-bg: oklch(22% 0.015 30);
+
+		/* === 9. SELECT — retained ========================================= */
+		--select-selected-bg: oklch(45% 0.22 25 / 15%);
+		--select-selected-highlighted-bg: oklch(45% 0.22 25 / 20%);
+
+		/* === 13. STATE COLOURS ========================================== */
+		--colour-success: var(--hex-olive);
+		--colour-success-bg: oklch(46% 0.1 130 / 20%);
+		--colour-warning: var(--hex-amber);
+		--colour-warning-bg: oklch(70% 0.12 80 / 20%);
+		--colour-error: var(--hex-red);
+		--colour-error-bg: oklch(45% 0.22 25 / 20%);
+		/* UPDATED — info is now sky-blue (was navy); its wash mixes from the hue */
+		--colour-info: var(--sky-blue);
+		--colour-info-bg: color-mix(in srgb, var(--sky-blue) 18%, transparent);
+
+		--status-success-text: var(--hex-olive);
+		--status-warning-text: var(--hex-amber);
+		--status-error-text: var(--hex-red);
+		/* UPDATED — info badge text is sky-blue (was blush-pink) */
+		--status-info-text: var(--sky-blue);
+
+		/* === AUTOMATABILITY — the Merlin exposure model =================== */
+		--color-full: var(--fire-engine-red); /* AI — full automation, highest exposure */
+		--color-partial: var(--amber); /* Augmented — AI assists */
+		--color-human: var(--olive-green); /* Human — requires human judgement */
+
+		/* === 17. CHARTS — retained (D3 visualisations) ==================== */
+		--chart-series-1: var(--hex-red);
+		--chart-series-2: var(--hex-sunset);
+		--chart-series-3: var(--hex-amber);
+		--chart-series-4: var(--hex-olive);
+		--chart-series-5: var(--hex-navy);
+		--chart-series-6: var(--hex-sky);
+		--chart-series-7: var(--hex-aubergine);
+		--chart-series-8: var(--hex-blush);
+
+		--chart-axis-colour: var(--text-muted);
+		--chart-grid-colour: var(--card-border);
+		--chart-bg: var(--card-bg);
+		--chart-border: var(--card-border);
+		--chart-tooltip-bg: var(--bg-glass);
+		--chart-tooltip-border: var(--card-border);
+		--chart-tooltip-text: var(--text-primary);
+		--chart-positive: var(--colour-success);
+		--chart-negative: var(--colour-error);
+		--chart-neutral: var(--text-muted);
+		--chart-warning: var(--colour-warning);
+		--chart-padding: var(--space-5);
+
+		/* Chart margin convention — values MUST be unitless integers (D3 parseInt) */
+		--chart-margin-top: 20;
+		--chart-margin-right: 20;
+		--chart-margin-bottom: 40;
+		--chart-margin-left: 50;
+
+		--chart-label-size: 0.75rem;
+		--chart-title-size: 1rem;
+		--chart-value-size: 0.875rem;
+		--chart-axis-font-size: 0.625rem;
+		--chart-axis-font-weight: 500;
+		--chart-axis-letter-spacing: 0.02em;
+		--chart-transition-duration: 300ms;
+		--chart-transition-easing: ease-out;
+
+		/* === 18. DATA SCIENCE — retained ================================== */
+		--heatmap-cold: var(--hex-sand);
+		--heatmap-neutral: var(--hex-amber);
+		--heatmap-hot: var(--hex-red);
+		--matrix-true-positive: var(--colour-success);
+		--matrix-true-negative: var(--colour-success);
+		--matrix-false-positive: var(--colour-error);
+		--matrix-false-negative: var(--colour-error);
+		--matrix-diagonal-opacity: 0.8;
+		--matrix-off-diagonal-opacity: 0.4;
+		--experiment-baseline: var(--text-muted);
+		--experiment-variant-a: var(--chart-series-1);
+		--experiment-variant-b: var(--chart-series-2);
+		--experiment-variant-c: var(--chart-series-3);
+
+		/* === 20. GRID PATTERN — technical background ===================== */
+		--grid-size: 40px;
+		--grid-colour: oklch(97% 0 0 / 3%);
+		--grid-colour-accent: oklch(97% 0 0 / 6%);
+		--grid-opacity: 0.5;
+		--grid-opacity-accent: 0.6;
+		--ground-rake-strength: 0.14;
+		--ground-glint-strength: 0.04;
+		--ground-glint-colour: oklch(0.9 0.09 85); /* warm gold */
+
+		/* === 21. BLOG CATEGORY COLOURS ================================== */
+		--category-agents: var(--fire-engine-red);
+		--category-workflows: var(--sky-blue);
+		--category-synthesis: var(--burnt-sunset);
+		--category-data: var(--navy-royal);
+		--category-design: var(--blush-pink);
+		--category-infra: var(--olive-green);
+
+		/* === 21b. INDUSTRY GROUPS — occupation explorer ================= */
+		/* UPDATED — strictly brand-palette. Each group carries a 2–3 stop
+		   horizontal gradient (its real identity) plus a solid brand hue as a
+		   legible fallback. Gradients lean on the non-automatability brand hues
+		   (sunset, sky, navy, aubergine, blush, sand) so an industry never reads
+		   as an exposure level. Replaces the previous off-palette hue set. */
+		--industry-finance: var(--sky-blue);
+		--industry-technology: var(--aubergine);
+		--industry-healthcare-education: var(--blush-pink);
+		--industry-legal: var(--ind-aubergine);
+		--industry-engineering-trades: var(--navy-royal);
+		--industry-marketing-communications: var(--blush-pink);
+		--industry-operations-admin: var(--powder-sand);
+
+		/* The two dark brand hues lifted to a legible lightness (still
+		   brand-derived) so they read as gradient TEXT on the charcoal ground. */
+		--ind-navy: color-mix(in oklch, var(--navy-royal), white 42%);
+		--ind-aubergine: color-mix(in oklch, var(--aubergine), white 38%);
+
+		/* Gradients chosen by brand word-association (see Brand palette card). */
+		--industry-finance-gradient: linear-gradient(90deg, var(--ind-navy), var(--sky-blue));
+		--industry-technology-gradient: linear-gradient(90deg, var(--ind-aubergine), var(--sky-blue));
+		--industry-healthcare-education-gradient: linear-gradient(90deg, var(--sky-blue), var(--blush-pink));
+		--industry-legal-gradient: linear-gradient(90deg, var(--ind-navy), var(--ind-aubergine));
+		--industry-engineering-trades-gradient: linear-gradient(90deg, var(--burnt-sunset), var(--ind-navy));
+		--industry-marketing-communications-gradient: linear-gradient(90deg, var(--blush-pink), var(--burnt-sunset));
+		--industry-operations-admin-gradient: linear-gradient(90deg, var(--powder-sand), var(--sky-blue));
+
+		/* === 22. BUTTON VARIANTS — retained (dark defaults) ============== */
+		--button-secondary-hover-bg: transparent;
+		--button-secondary-hover-border: transparent;
+		--button-ghost-hover-bg: transparent;
+		--button-outline-hover-shadow: none;
+
+		/* === ADMIN CORE — consolidated here from admin.css ===============
+		   Pinned dark palette, never changes with colour mode. admin.css keeps
+		   the admin-specific extras (header type, chart variants, stat icons). */
+		--admin-bg: var(--charcoal-ember);
+		--admin-bg-page: var(--admin-bg);
+		--admin-bg-elevated: oklch(6% 0 0);
+		--admin-border: oklch(97% 0 0 / 10%);
+		--admin-text: var(--powder-sand);
+		--admin-text-secondary: oklch(0.7 0.02 68);
+		--admin-text-muted: oklch(0.6 0.02 68);
+	}
+}

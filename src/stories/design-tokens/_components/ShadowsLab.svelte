@@ -172,7 +172,7 @@
 		justify-content: center;
 		gap: 40px;
 		padding: 52px 40px;
-		border-radius: 16px;
+		border-radius: 0;
 		background:
 			radial-gradient(42% 55% at 18% 22%, oklch(62% 0.19 32 / 0.28), transparent 70%),
 			radial-gradient(40% 52% at 82% 72%, oklch(66% 0.12 250 / 0.2), transparent 70%),
@@ -206,7 +206,7 @@
 	   cast (box-shadow) and frost (backdrop-blur); edge is the shared rim border. */
 	.surface {
 		width: 100%;
-		border-radius: 12px;
+		border-radius: 0;
 		border-top: 1px solid var(--el-edge-light);
 		border-left: 1px solid var(--el-edge-light);
 		border-right: 1px solid var(--el-edge-shade);
@@ -285,7 +285,7 @@
 	}
 	.behind span {
 		height: 7px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: oklch(100% 0 0 / 16%);
 	}
 	.behind span:nth-child(odd) {
@@ -303,7 +303,7 @@
 	}
 	.mi {
 		padding: 9px 12px;
-		border-radius: 7px;
+		border-radius: 0;
 		font-size: 13px;
 		color: var(--text-secondary);
 	}

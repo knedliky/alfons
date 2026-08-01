@@ -26,7 +26,7 @@
 	 * Features:
 	 * - Five semantic variants mapped to status colour tokens
 	 * - Two sizes: sm (compact tables) and default (standard contexts)
-	 * - Pill border-radius for all variants
+	 * - Square corners for all variants
 	 * - Supports admin and public themes via data-theme attribute
 	 * - Uses Snippet children for flexible content
 	 */

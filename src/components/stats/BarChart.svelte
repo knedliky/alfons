@@ -121,7 +121,7 @@
 	.bar-chart-container {
 		background-color: var(--chart-bg-admin);
 		border: 1px solid var(--chart-border-admin);
-		border-radius: 12px;
+		border-radius: 0;
 		padding: var(--chart-padding);
 	}
 
@@ -214,7 +214,7 @@
 		font-weight: 600;
 		color: var(--chart-axis-colour-admin);
 		background-color: var(--chart-tooltip-bg-admin);
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	.bar-name {
@@ -228,7 +228,7 @@
 	.bar-container {
 		height: 8px;
 		background-color: var(--chart-grid-colour-admin);
-		border-radius: 4px;
+		border-radius: 0;
 		overflow: hidden;
 	}
 
@@ -239,7 +239,7 @@
 			var(--chart-admin-series-1) 0%,
 			color-mix(in srgb, var(--chart-admin-series-1) 70%, transparent) 100%
 		);
-		border-radius: 4px;
+		border-radius: 0;
 		transition: width var(--chart-transition-duration) var(--chart-transition-easing);
 	}
 
@@ -288,7 +288,7 @@
 		);
 		background-size: 200% 100%;
 		animation: shimmer 1.5s infinite;
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	.loading-bar {
@@ -301,7 +301,7 @@
 		);
 		background-size: 200% 100%;
 		animation: shimmer 1.5s infinite;
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	@keyframes shimmer {

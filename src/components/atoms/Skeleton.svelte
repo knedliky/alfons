@@ -115,17 +115,6 @@
 		animation: shimmer var(--duration-slow) infinite linear;
 	}
 
-	/* Light mode: brighter highlight pass for contrast against warm surfaces */
-	:global([data-colour-mode='light']) .skeleton-bone {
-		background: linear-gradient(
-			90deg,
-			var(--card-bg) 0%,
-			var(--shimmer-highlight-bright) 50%,
-			var(--card-bg) 100%
-		);
-		background-size: 400% 100%;
-	}
-
 	/* Admin theme — uses admin surface tokens instead of public card tokens */
 	.skeleton-wrapper[data-theme='admin'] .skeleton-bone {
 		background: linear-gradient(

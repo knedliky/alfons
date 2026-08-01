@@ -483,7 +483,7 @@
 
 	.table-scroll::-webkit-scrollbar-thumb {
 		background: var(--admin-border);
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	.table-scroll::-webkit-scrollbar-thumb:hover {

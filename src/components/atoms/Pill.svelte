@@ -128,7 +128,7 @@
 		--pill-tint: var(--industry-operations-admin);
 	}
 
-	/* ---- Fills — weight, letter-spacing, radius and colour treatment ---- */
+	/* ---- Fills — weight, letter-spacing and colour treatment ---- */
 
 	/* soft — light tint, coloured text (industry / automatability / kanban). */
 	.pill[data-fill='soft'] {
@@ -137,7 +137,7 @@
 		font-weight: 600;
 		letter-spacing: 0.08em;
 		border: none;
-		border-radius: 0.25rem;
+		border-radius: 0;
 	}
 
 	/* solid — strong tint, neutral text (task category). */
@@ -147,7 +147,7 @@
 		font-weight: 700;
 		letter-spacing: 0.06em;
 		border: none;
-		border-radius: 0.1875rem;
+		border-radius: 0;
 	}
 
 	/* outline — square, bordered, sans-serif (legacy blog look). */

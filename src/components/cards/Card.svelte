@@ -64,9 +64,10 @@
 </svelte:element>
 
 <style>
-	/* Base card surface */
+	/* Base card surface — square by default (the blinking-cursor motif);
+	   rounding is reserved for agentic surfaces */
 	.card {
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		padding: var(--card-padding);
 		transition:
 			box-shadow var(--transition-slow),
@@ -111,7 +112,7 @@
 
 	/* Dark mode: solid background for legibility over busy backgrounds, plus the
 	   elevation ladder's crisp directional lit edge — top/left catch the upper-left
-	   light, bottom/right fall into shade (light mode already does this below). */
+	   light, bottom/right fall into shade. */
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default'] {
 		background: var(--bg-glass-solid);
 		border-top-color: var(--el-edge-light);
@@ -123,23 +124,6 @@
 	/* Dark mode: warm sunset glow on hover */
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default']:hover {
 		border-color: var(--accent-secondary-hover);
-	}
-
-	/* Light mode: directional borders for tactile neumorphic appearance */
-	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='default'] {
-		border: none;
-		border-top: 1px solid var(--card-border-top);
-		border-left: 1px solid var(--card-border-left);
-		border-right: 1px solid var(--card-border-right);
-		border-bottom: 1px solid var(--card-border-bottom);
-	}
-
-	/* Light mode: warm sunset tint on top edge when hovered */
-	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='default']:hover {
-		border-top: 1px solid var(--accent-secondary-hover-subtle);
-		border-left: 1px solid var(--card-border-left-hover);
-		border-right: 1px solid var(--card-border-right-hover);
-		border-bottom: 1px solid var(--card-border-bottom-hover);
 	}
 
 	/* === Admin theme — solid surface === */
@@ -185,11 +169,6 @@
 		border-color: var(--accent);
 	}
 
-	/* Light mode: add subtle accent shadow on hover for tactile depth */
-	:global([data-colour-mode='light']) .card[data-variant='outlined']:hover {
-		box-shadow: var(--button-outline-hover-shadow);
-	}
-
 	/* Admin theme: use admin border token to stay within the admin namespace */
 	.card[data-theme='admin'][data-variant='outlined'] {
 		background: transparent;
@@ -228,24 +207,6 @@
 		transform: scale(1.02);
 		border-color: var(--accent-border);
 		box-shadow: var(--card-shadow-hover);
-	}
-
-	/* Light mode: neumorphic borders matching default, with lift + deeper shadow on hover */
-	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='interactive'] {
-		border: none;
-		border-top: 1px solid var(--card-border-top);
-		border-left: 1px solid var(--card-border-left);
-		border-right: 1px solid var(--card-border-right);
-		border-bottom: 1px solid var(--card-border-bottom);
-	}
-
-	:global([data-colour-mode='light']) .card[data-theme='public'][data-variant='interactive']:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--card-shadow-hover);
-		border-top: 1px solid var(--accent-secondary-hover-subtle);
-		border-left: 1px solid var(--card-border-left-hover);
-		border-right: 1px solid var(--card-border-right-hover);
-		border-bottom: 1px solid var(--card-border-bottom-hover);
 	}
 
 	/* Admin theme: elevated background with pointer affordance */
@@ -299,7 +260,7 @@
 		padding: var(--space-2);
 		flex-shrink: 0;
 		background: linear-gradient(135deg, var(--colour-info-bg) 0%, var(--accent-bg) 100%);
-		border-radius: 8px;
+		border-radius: 0;
 	}
 
 	:global(.card-compact .card-illustration .illustration-svg) {
@@ -314,7 +275,7 @@
 		height: 100%;
 		display: block;
 		object-fit: cover;
-		border-radius: calc(var(--card-radius) - 4px);
+		border-radius: 0;
 	}
 
 	:global(.card-compact .card-illustration.has-raster) {
@@ -343,7 +304,7 @@
 		align-items: center;
 		gap: var(--space-1);
 		padding: 0.125rem 0.5rem;
-		border-radius: 0.25rem;
+		border-radius: 0;
 		font-size: 0.6875rem;
 		font-weight: 600;
 		text-transform: uppercase;

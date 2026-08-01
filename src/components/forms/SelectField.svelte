@@ -353,7 +353,7 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0;
 		color: var(--admin-text-muted);
 		cursor: pointer;
 		transition: all 0.15s ease;
@@ -412,15 +412,15 @@
 	}
 
 	.dropdown-option:first-child {
-		border-radius: 7px 7px 0 0;
+		border-radius: 0;
 	}
 
 	.dropdown-option:last-child {
-		border-radius: 0 0 7px 7px;
+		border-radius: 0;
 	}
 
 	.dropdown-option:only-child {
-		border-radius: 7px;
+		border-radius: 0;
 	}
 
 	.dropdown-option:hover,
@@ -470,6 +470,6 @@
 
 	.dropdown-list::-webkit-scrollbar-thumb {
 		background: var(--admin-border);
-		border-radius: 3px;
+		border-radius: 0;
 	}
 </style>

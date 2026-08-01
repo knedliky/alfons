@@ -152,6 +152,10 @@
 		// When capped, the textarea (sized to this height) scrolls itself; the
 		// browser keeps the native caret in view, so no manual scroll is needed.
 		el.style.height = `${target}px`;
+		// Clip (and scroll) only while growth is capped; relaxed to visible
+		// otherwise so the floating skill pill can rise a few pixels above the
+		// single-line box without being sliced by the wrapper's clip.
+		el.style.overflowY = target < content ? 'auto' : 'visible';
 	}
 
 	// Height re-measures when the text changes, or when the inline-pill indent
@@ -295,6 +299,12 @@
 		   container's corner). Also the vertical breathing room, so it doubles as the
 		   box's height knob — dial it to taste. */
 		--surface-inset: 0.85rem;
+		/* Anchor for the ::before glass layer, and (with z-index) an own stacking
+		   context so that negative-z layer can never slip behind an ancestor's
+		   background. A plain z-index context does not become a backdrop root, so the
+		   glass still samples the whole page behind it. */
+		position: relative;
+		z-index: 0;
 		display: flex;
 		/* Top-anchor the row so the first line of text never shifts as the box grows.
 		   With centre alignment, a single line gets centred against the taller submit
@@ -307,13 +317,25 @@
 		border-radius: var(--radius-message);
 		/* Equal padding on all sides — the uniform corner gap for the inner controls. */
 		padding: var(--surface-inset);
-		/* Shared frosted-glass surface (mode-aware tokens); only the edge differs per
-		   mode, below. */
-		background: var(--surface-glass-bg);
 		box-shadow: var(--shadow-glass);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
 		transition: border-color var(--transition-normal, 0.2s ease);
+	}
+
+	/* The frosted glass (mode-aware tokens) lives on a static child layer, NOT on the
+	   element itself, so animations on the surface (the focus border pulse, any
+	   future motion) can never hit Chromium's backdrop-clip bug — an animated
+	   backdrop-filter element has its backdrop texture clipped to a rectangle,
+	   slicing the rounded corners. inset: 0 keeps the layer inside the border ring
+	   so the hairline border paints undisturbed above it. */
+	.agent-input::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: inherit;
+		background: var(--surface-glass-bg);
+		backdrop-filter: blur(var(--surface-raised-frost));
+		-webkit-backdrop-filter: blur(var(--surface-raised-frost));
 	}
 
 	/* The pill top-anchors with the row (align-items above); the submit button
@@ -322,52 +344,50 @@
 		align-self: flex-end;
 	}
 
-	/* Dark mode — a subtle single edge over the glass. */
+	/* A subtle single edge over the glass. */
 	:global([data-colour-mode='dark']) .agent-input {
 		border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
 	}
 
-	/* Light mode — directional borders for a raised feel. */
-	:global([data-colour-mode='light']) .agent-input {
-		border-top: 1px solid var(--card-border-top);
-		border-left: 1px solid var(--card-border-left);
-		border-right: 1px solid var(--card-border-right);
-		border-bottom: 1px solid var(--card-border-bottom);
-	}
-
-	/* Accent edge when focused — a calm focus affordance for either surface. */
+	/* Accent edge when focused — a calm focus affordance for the surface. */
 	.agent-input:focus-within {
 		border-color: color-mix(in srgb, var(--accent) 45%, transparent);
 	}
 
-	/* Optional floating motion — a gentle vertical bob, with a soft accent wash
-	   layered on while focused. Opted into via the `floating` prop. */
-	.agent-input.is-floating {
-		/* Float via `top`, not `transform`. This surface has a backdrop-filter, and an
-		   animated transform makes Chromium composite it into a layer whose backdrop
-		   texture is clipped to a rectangle — slicing the rounded corners mid-animation
-		   (the janky border cut-off). A positioned `top` bob repaints cleanly each frame
-		   without that compositing clip. */
-		position: relative;
-		animation: agent-input-float 4s ease-in-out infinite;
-	}
-
-	/* On focus the gentle bob continues uninterrupted — the float stays at index 0
-	   of the animation list, so it keeps its timeline and is not restarted — and
-	   the border pulse is layered on at index 1, starting cleanly from its 0%. */
-	.agent-input.is-floating:focus-within {
+	/* Optional floating identity — carried by the skill pill, not the container.
+	   The container itself deliberately holds still: Chromium re-snaps a slow-moving
+	   hairline border to the pixel grid roughly once per CSS pixel of travel, which
+	   reads as random flashing along the full-width top and bottom edges (and a
+	   `top`-based bob steps in whole pixels instead — no better). The pill is
+	   small, filled, and mostly curved, so the same re-snapping is imperceptible
+	   on it. */
+	.agent-input.is-floating .agent-input-skill {
+		/* The shared shimmer must be restated — an animation list replaces the
+		   shared rule's, it does not extend it. The float keyframes carry the -50%
+		   centring baseline for the same reason: they replace the pill's static
+		   centring transform. */
 		animation:
-			agent-input-float 4s ease-in-out infinite,
-			agent-input-border-pulse 5s ease-in-out infinite;
+			agent-input-shimmer 6s ease-in-out infinite alternate,
+			agent-input-skill-float 5s ease-in-out infinite;
+		will-change: transform;
 	}
 
-	@keyframes agent-input-float {
+	/* The focus pulse is the container's only animation — the surface itself never
+	   moves, so the pulse repaints a static border and stays artefact-free. */
+	.agent-input.is-floating:focus-within {
+		animation: agent-input-border-pulse 5s ease-in-out infinite;
+	}
+
+	/* Rise only: above the pill sits the container's padding (the wrapper relaxes
+	   to overflow visible while uncapped), while below sits the first wrapped text
+	   line — dipping would graze its ascenders. */
+	@keyframes agent-input-skill-float {
 		0%,
 		100% {
-			top: 0;
+			transform: translateY(-50%);
 		}
 		50% {
-			top: -3px;
+			transform: translateY(calc(-50% - 3px));
 		}
 	}
 
@@ -379,7 +399,7 @@
 			border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 		}
 		50% {
-			border-color: color-mix(in srgb, var(--accent) 65%, transparent);
+			border-color: color-mix(in srgb, var(--accent) 50%, transparent);
 		}
 	}
 
@@ -408,22 +428,6 @@
 		   balanced look comes from the uniform --surface-inset spacing instead. */
 		border-radius: var(--radius-pill);
 		animation: agent-input-shimmer 6s ease-in-out infinite alternate;
-	}
-
-	/* Light mode — the faint tint that reads as deep red over the dark glass turns
-	   pale pink over the warm light surface, washing out the white label and glyph.
-	   Use a saturated accent fill so white stays legible; the sheen becomes a darker
-	   travelling band rather than a lighter one. */
-	:global([data-colour-mode='light']) .agent-input-skill,
-	:global([data-colour-mode='light']) .agent-input-submit {
-		background-color: var(--accent);
-		background-image: linear-gradient(
-			115deg,
-			color-mix(in srgb, var(--accent) 75%, black) 0%,
-			var(--accent) 50%,
-			color-mix(in srgb, var(--accent) 75%, black) 100%
-		);
-		border-color: color-mix(in srgb, var(--accent) 70%, white);
 	}
 
 	.agent-input-skill {
@@ -484,7 +488,9 @@
 
 	/* Never distracting for those who opt out — hold still, hold a static tint. */
 	@media (prefers-reduced-motion: reduce) {
-		.agent-input.is-floating,
+		/* The pill-float rule is more specific than the bare .agent-input-skill
+		   below, so it must be matched here explicitly or the float survives. */
+		.agent-input.is-floating .agent-input-skill,
 		.agent-input.is-floating:focus-within,
 		.agent-input-skill,
 		.agent-input-submit {
@@ -519,8 +525,11 @@
 		/* THE scroll container once the box is capped — the textarea is full content
 		   height (the grid row sizes to the mirror), so it never scrolls itself; the
 		   wrapper must, or nothing is user-scrollable. The absolute caret is a child,
-		   so it scrolls with the content for free. Scrollbar hidden for a clean look. */
-		overflow-y: auto;
+		   so it scrolls with the content for free. Visible by DEFAULT so the floating
+		   pill can rise past the single-line box without being sliced by the clip;
+		   the measure effect flips this to `auto` (clip + scroll) only while growth
+		   is actually capped. Scrollbar hidden for a clean look. */
+		overflow-y: visible;
 		scrollbar-width: none;
 		/* Ease the height between line counts with the reveal easing, so the box grows
 		   downward and the top/bottom-anchored pill and submit glide rather than
