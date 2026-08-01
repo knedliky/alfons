@@ -14,9 +14,9 @@ import tailwindcss from '@tailwindcss/vite';
 // directly, mirroring the source module scripts faithfully.
 // ---------------------------------------------------------------------------
 
-function motifTypesPlugin() {
+function alfonsTypesPlugin() {
 	return {
-		name: 'motif-types',
+		name: 'alfons-types',
 		// Run after Rollup has finished writing all JS output files.
 		closeBundle() {
 			const distDir = resolve(__dirname, 'dist');
@@ -361,18 +361,18 @@ function motifTypesPlugin() {
 					' * Motif Design Library',
 					' *',
 					' * CSS tokens are separate entry points — import them directly:',
-					' *   @import "@motif/design/public";',
-					' *   @import "@motif/design/admin";',
-					' *   @import "@motif/design/base";',
+					' *   @import "@alfons/design/public";',
+					' *   @import "@alfons/design/admin";',
+					' *   @import "@alfons/design/base";',
 					' *',
 					' * Component usage:',
-					' *   import { Button, Input } from "@motif/design";',
+					' *   import { Button, Input } from "@alfons/design";',
 					' */',
 					"export * from './components/index.js';",
 				].join('\n') + '\n',
 			);
 
-			console.log('[motif-types] Declaration files written to dist/');
+			console.log('[alfons-types] Declaration files written to dist/');
 		},
 	};
 }
@@ -383,9 +383,9 @@ function motifTypesPlugin() {
 export default defineConfig({
 	// Tailwind 4 is added via the official Vite plugin — no separate config file required.
 	// The svelte plugin handles Svelte component compilation as before.
-	// motifTypesPlugin() writes declaration files in closeBundle since vite-plugin-dts
+	// alfonsTypesPlugin() writes declaration files in closeBundle since vite-plugin-dts
 	// cannot resolve named exports from Svelte 5 <script module> blocks.
-	plugins: [tailwindcss(), svelte(), motifTypesPlugin()],
+	plugins: [tailwindcss(), svelte(), alfonsTypesPlugin()],
 
 	build: {
 		lib: {
@@ -404,7 +404,7 @@ export default defineConfig({
 
 			output: {
 				// Preserve the original module structure so each component
-				// file remains individually importable (e.g. @motif/design/Button)
+				// file remains individually importable (e.g. @alfons/design/Button)
 				preserveModules: true,
 				// Strip the src/ prefix so dist/ mirrors the public API surface:
 				// components/atoms/Button.js not src/components/atoms/Button.js.

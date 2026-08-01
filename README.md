@@ -1,34 +1,45 @@
-# Motif Design Library
+# Alfons
 
-`@motif/design` is a standalone Svelte 5 design library providing CSS design tokens and component atoms for all externally-facing SvelteKit projects.
+Alfons is the design system for externally-facing SvelteKit projects: Svelte 5 components,
+CSS design tokens, and the rules that keep them coherent.
+
+It is exposed through three surfaces over one generated manifest — a package consumed at
+build time, an MCP server agents call to discover and check their work, and a Storybook
+catalogue served at `/alfons`.
 
 ## Installation
 
 ```bash
-# Via local path (development)
-bun add ../motif
-
-# Via git URL (CI / production)
+# Via git URL
 bun add git+https://github.com/knedliky/motif
 ```
+
+Do not vendor Alfons into a consuming repository. A copy diverges silently; a dependency
+cannot.
 
 ## Usage
 
 ### Tokens
 
-```svelte
-<script>
-  import '@motif/design/public'; // public UI tokens
-  import '@motif/design/admin';  // admin tokens (requires public)
-  import '@motif/design/base';   // global styles and typography
-</script>
+Import order matters — `public.css` defines what `admin.css` and `base.css` reference.
+
+```css
+@import '@alfons/design/public';
+@import '@alfons/design/admin';
+@import '@alfons/design/base';
+```
+
+Dark is the sole colour mode. Pin it statically on `<html>`:
+
+```html
+<html lang="en" data-colour-mode="dark">
 ```
 
 ### Components
 
 ```svelte
 <script>
-  import { Button, Input, Label, Select, Textarea, Toggle, Tooltip, Pill, Portrait } from '@motif/design';
+  import { Button, Input, Card, PageLayout, PageSection } from '@alfons/design';
 </script>
 ```
 
@@ -36,51 +47,31 @@ bun add git+https://github.com/knedliky/motif
 
 ```
 src/
-  tokens/
-    public.css        — public UI design tokens
-    admin.css         — admin UI tokens (requires public.css)
-    base.css          — global styles, typography, utilities
-  components/
-    atoms/            — public atom components
-      Button.svelte
-      Input.svelte
-      Label.svelte
-      Portrait.svelte
-      Pill.svelte
-      Select.svelte
-      Textarea.svelte
-      Toggle.svelte
-      Tooltip.svelte
-    admin/            — admin atom components
-      BulkActionModal.svelte
-      DeleteConfirmModal.svelte
-      Modal.svelte
-      StatusBadge.svelte
-  index.ts            — root barrel export
+  tokens/       — public.css (import manifest), colours, typography, spacing,
+                  elevation, motion, fonts, admin, base, form-states
+  components/   — atoms, admin, blog, brand, cards, disclosure, feedback, forms,
+                  headers, layouts, modals, navigation, overlays, pickers,
+                  skeletons, stats, tables
+  stories/      — Storybook catalogue, mirroring components/
+  index.ts      — root barrel export
 ```
 
 ## Development
 
 ```bash
-# Install dependencies
 bun install
-
-# Run Storybook dev server (port 6006)
-bun run storybook
-
-# Build the library
-bun run build
-
-# Type-check
-bun run check
-
-# Build static Storybook catalogue
-bun run build-storybook
+bun run storybook        # dev server on port 6006
+bun run build            # library build, emits dist/ with declarations
+bun run check            # svelte-check
+bun run build-storybook  # static catalogue
 ```
+
+If `build-storybook` fails with "the service was stopped", esbuild's signature is corrupt.
+Re-fetch it — `rm -rf node_modules/esbuild && bun install --force`.
 
 ## Tech stack
 
-- **Svelte 5** — runes-only (`$props`, `$state`, `$derived`, `$effect`)
+- **Svelte 5** — runes only (`$props`, `$state`, `$derived`, `$effect`)
 - **TypeScript** — strict mode; all props typed
 - **Tailwind CSS 4** — via `@tailwindcss/vite`
 - **Vite** — library mode with `preserveModules: true`

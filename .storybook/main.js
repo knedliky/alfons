@@ -50,7 +50,7 @@ export default {
     ];
     config.plugins = config.plugins || [];
     config.plugins.push({
-      name: 'motif-no-svelte-prebundle',
+      name: 'alfons-no-svelte-prebundle',
       enforce: 'post',
       config(finalConfig) {
         const include = finalConfig.optimizeDeps?.include;

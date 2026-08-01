@@ -1,9 +1,9 @@
 {
-  "name": "@motif/design",
+  "name": "@alfons/design",
   "version": "0.1.0",
   "type": "module",
   "private": false,
-  "description": "Motif design library — tokens and atoms for externally-facing SvelteKit projects",
+  "description": "Alfons design library — tokens, atoms and the design system agents build against",
   "files": [
     "dist",
     "src"

@@ -9,7 +9,7 @@ import { getContext, setContext } from 'svelte';
 
 export type ThemeVariant = 'admin' | 'public';
 
-const THEME_CONTEXT_KEY = Symbol('motif-theme-context');
+const THEME_CONTEXT_KEY = Symbol('alfons-theme-context');
 
 interface ThemeContext {
 	variant: ThemeVariant;
