@@ -2,6 +2,16 @@
 export { default as Form } from './Form.svelte';
 export type { FormProps, FormStatus } from './Form.svelte';
 
+export { default as Checkbox } from './Checkbox.svelte';
+export type { CheckboxProps } from './Checkbox.svelte';
+
+export { default as Radio } from './Radio.svelte';
+export type { RadioProps } from './Radio.svelte';
+
+export { default as RadioGroup } from './RadioGroup.svelte';
+export type { RadioGroupProps } from './RadioGroup.svelte';
+export type { RadioOption } from './radio-group.js';
+
 export { default as FormGroup } from './FormGroup.svelte';
 export type { FormGroupProps } from './FormGroup.svelte';
 
