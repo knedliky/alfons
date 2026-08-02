@@ -22,7 +22,10 @@
 			"slug": "a3",
 			"title": "Release dossier",
 			"direction": "Renders the journey literally as master-detail — a persistent release index down one side and the selected release's phases, tasks and siblings filling the rest, with no modal drawer at all — pushing layout composition and persistent state in place of overlay.",
-			"deviations": []
+			"deviations": [
+				"Bare <button> used for the release rows, task rows and dependency links rather than the Alfons Button atom; review_markup flags all four as raw-element. Button is a call-to-action with its own padding, fill and focus treatment, and these are full-bleed selectable list rows carrying a selection rail, a two-line identity block and a right-hand meta cluster. Wrapping Button would have meant overriding almost everything it provides. The honest reading is that Alfons has no selectable-list-row primitive, which is reported as a required new component rather than papered over.",
+				"Literal 4px border-radius on the meter's outer data-ends and a literal 9px status glyph. The brief's chart contract specifies 4px rounded data-ends explicitly, and the only radius tokens in the system are --radius, --radius-pill and --radius-surface, all set to 0 by the square-corner doctrine. review_markup suggests --space-1 for 4px, which is a spacing token being borrowed for a radius; that would encode the wrong intent, so the literal was kept and a radius token for data marks is reported as a gap."
+			]
 		},
 		{
 			"slug": "a4",
@@ -34,7 +37,11 @@
 			"slug": "a5",
 			"title": "Structural grid",
 			"direction": "Swiss typography with the twelve-column grid left exposed, heavy rules, a near-monochrome palette and type weight carrying the entire hierarchy, with releases drawn as a phase timeline, pushing the tokens to their extremes and grounding by rule and fill rather than by card.",
-			"deviations": []
+			"deviations": [
+				"raw-element: search result rows are bare <button> elements rather than the Button atom. A result is a full-bleed ledger line with six ruled columns; Button is a pill with its own padding and radius, and wrapping the line in one would have produced a card, which is the single thing this direction refuses. Reported as a component gap rather than hidden.",
+				"The library Input is restyled through :global(.ledger-search-field) — height, border, background and a 2rem face. Input tops out at 3rem with a 1rem face, which is right for a form and wrong for the primary journey of the page. Flagged as a missing display size on Input.",
+				"Display type sizes (3.9rem, 3rem, 2.4rem, 2rem, 1.5rem) are rem literals. The typography tokens stop at --text-lead (1.25rem) and the heading scale lives as hard-coded values in base.css rather than as tokens, so there was nothing to reference above the lead step."
+			]
 		}
 	]
 }
