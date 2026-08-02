@@ -80,7 +80,11 @@
 </script>
 
 {#if pageCount > 1 || summary}
-	<nav class="motif-pg size-{size} {className}" class:is-admin={theme === 'admin'} aria-label={ariaLabel}>
+	<nav
+		class="motif-pg size-{size} {className}"
+		class:is-admin={theme === 'admin'}
+		aria-label={ariaLabel}
+	>
 		{#if summary}<span class="motif-pg-summary">{summary}</span>{/if}
 		<ul class="motif-pg-list">
 			{#if showPrevNext}
@@ -249,5 +253,4 @@
 		border-color: var(--admin-accent, var(--accent));
 		color: oklch(1 0 0);
 	}
-
 </style>

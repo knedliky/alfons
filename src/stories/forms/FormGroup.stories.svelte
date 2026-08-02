@@ -23,7 +23,11 @@
 <Story
 	name="Default — with hint"
 	asChild
-	args={{ label: 'Organisation name', htmlFor: 'org-name-fg', hint: 'Enter the registered legal name of your organisation.' }}
+	args={{
+		label: 'Organisation name',
+		htmlFor: 'org-name-fg',
+		hint: 'Enter the registered legal name of your organisation.'
+	}}
 >
 	<FormGroup
 		label="Organisation name"
@@ -46,12 +50,7 @@
 	asChild
 	args={{ label: 'Full name', htmlFor: 'full-name-fg', required: true }}
 >
-	<FormGroup
-		label="Full name"
-		htmlFor="full-name-fg"
-		required
-		theme="admin"
-	>
+	<FormGroup label="Full name" htmlFor="full-name-fg" required theme="admin">
 		<input
 			id="full-name-fg"
 			type="text"
@@ -65,7 +64,12 @@
 <Story
 	name="Error state"
 	asChild
-	args={{ label: 'Contact email', htmlFor: 'email-fg', required: true, error: 'Please enter a valid email address' }}
+	args={{
+		label: 'Contact email',
+		htmlFor: 'email-fg',
+		required: true,
+		error: 'Please enter a valid email address'
+	}}
 >
 	<FormGroup
 		label="Contact email"
@@ -85,16 +89,8 @@
 	</FormGroup>
 </Story>
 
-<Story
-	name="No description"
-	asChild
-	args={{ label: 'Department', htmlFor: 'department-fg' }}
->
-	<FormGroup
-		label="Department"
-		htmlFor="department-fg"
-		theme="admin"
-	>
+<Story name="No description" asChild args={{ label: 'Department', htmlFor: 'department-fg' }}>
+	<FormGroup label="Department" htmlFor="department-fg" theme="admin">
 		<input
 			id="department-fg"
 			type="text"
@@ -107,7 +103,12 @@
 <Story
 	name="Public theme with hint"
 	asChild
-	args={{ label: 'Your name', htmlFor: 'name-pub', hint: "We'll use this as your display name.", theme: 'public' }}
+	args={{
+		label: 'Your name',
+		htmlFor: 'name-pub',
+		hint: "We'll use this as your display name.",
+		theme: 'public'
+	}}
 >
 	<FormGroup
 		label="Your name"
@@ -128,7 +129,12 @@
 <Story
 	name="Custom success message"
 	asChild
-	args={{ label: 'ABN', htmlFor: 'abn-fg', successMessage: 'ABN verified', hint: 'Your 11-digit Australian Business Number.' }}
+	args={{
+		label: 'ABN',
+		htmlFor: 'abn-fg',
+		successMessage: 'ABN verified',
+		hint: 'Your 11-digit Australian Business Number.'
+	}}
 >
 	<FormGroup
 		label="ABN"

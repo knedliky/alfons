@@ -231,11 +231,27 @@
 		/* Gradients chosen by brand word-association (see Brand palette card). */
 		--industry-finance-gradient: linear-gradient(90deg, var(--ind-navy), var(--sky-blue));
 		--industry-technology-gradient: linear-gradient(90deg, var(--ind-aubergine), var(--sky-blue));
-		--industry-healthcare-education-gradient: linear-gradient(90deg, var(--sky-blue), var(--blush-pink));
+		--industry-healthcare-education-gradient: linear-gradient(
+			90deg,
+			var(--sky-blue),
+			var(--blush-pink)
+		);
 		--industry-legal-gradient: linear-gradient(90deg, var(--ind-navy), var(--ind-aubergine));
-		--industry-engineering-trades-gradient: linear-gradient(90deg, var(--burnt-sunset), var(--ind-navy));
-		--industry-marketing-communications-gradient: linear-gradient(90deg, var(--blush-pink), var(--burnt-sunset));
-		--industry-operations-admin-gradient: linear-gradient(90deg, var(--powder-sand), var(--sky-blue));
+		--industry-engineering-trades-gradient: linear-gradient(
+			90deg,
+			var(--burnt-sunset),
+			var(--ind-navy)
+		);
+		--industry-marketing-communications-gradient: linear-gradient(
+			90deg,
+			var(--blush-pink),
+			var(--burnt-sunset)
+		);
+		--industry-operations-admin-gradient: linear-gradient(
+			90deg,
+			var(--powder-sand),
+			var(--sky-blue)
+		);
 
 		/* === 22. BUTTON VARIANTS — retained (dark defaults) ============== */
 		--button-secondary-hover-bg: transparent;

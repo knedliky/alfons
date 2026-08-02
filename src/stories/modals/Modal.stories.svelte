@@ -20,7 +20,11 @@
 	});
 </script>
 
-<Story name="With Title" asChild args={{ open: true, title: 'Invite Team Member', onclose: () => {} }}>
+<Story
+	name="With Title"
+	asChild
+	args={{ open: true, title: 'Invite Team Member', onclose: () => {} }}
+>
 	<Modal open={true} title="Invite Team Member" onclose={() => {}}>
 		<p style="margin: 0 0 1rem; color: var(--text-secondary);">
 			Send an invitation to a new team member. They will receive an email with instructions to
@@ -67,11 +71,15 @@
 	</Modal>
 </Story>
 
-<Story name="Destructive Action" asChild args={{ open: true, title: 'Remove Organisation', onclose: () => {} }}>
+<Story
+	name="Destructive Action"
+	asChild
+	args={{ open: true, title: 'Remove Organisation', onclose: () => {} }}
+>
 	<Modal open={true} title="Remove Organisation" onclose={() => {}}>
 		<p style="margin: 0 0 1rem; color: var(--text-secondary);">
-			You are about to permanently remove <strong>Acme Pty Ltd</strong> from the platform. All
-			associated data will be deleted and cannot be recovered.
+			You are about to permanently remove <strong>Acme Pty Ltd</strong> from the platform. All associated
+			data will be deleted and cannot be recovered.
 		</p>
 		<div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
 			<button

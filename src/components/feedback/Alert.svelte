@@ -68,7 +68,12 @@
 		{#if action}<div class="motif-alert-action">{@render action()}</div>{/if}
 	</div>
 	{#if onDismiss}
-		<button type="button" class="motif-alert-close" onclick={() => onDismiss()} aria-label="Dismiss">
+		<button
+			type="button"
+			class="motif-alert-close"
+			onclick={() => onDismiss()}
+			aria-label="Dismiss"
+		>
 			<Icon name="close" size="sm" />
 		</button>
 	{/if}

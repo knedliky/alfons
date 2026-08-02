@@ -14,18 +14,18 @@ import '../src/tokens/base.css';
 // Sets data-colour-mode="dark" on the root HTML element so that Motif's
 // CSS custom properties resolve to their dark-mode values by default.
 export const decorators = [
-  (story) => {
-    document.documentElement.setAttribute('data-colour-mode', 'dark');
-    return story();
-  },
+	(story) => {
+		document.documentElement.setAttribute('data-colour-mode', 'dark');
+		return story();
+	}
 ];
 
 export const parameters = {
-  // Centre each story in the canvas so components render with equal
-  // whitespace on all sides regardless of their natural width
-  layout: 'centered',
+	// Centre each story in the canvas so components render with equal
+	// whitespace on all sides regardless of their natural width
+	layout: 'centered',
 
-  // Disable the built-in backgrounds panel — Motif manages its own
-  // background colours through the data-colour-mode attribute above
-  backgrounds: { disable: true },
+	// Disable the built-in backgrounds panel — Motif manages its own
+	// background colours through the data-colour-mode attribute above
+	backgrounds: { disable: true }
 };

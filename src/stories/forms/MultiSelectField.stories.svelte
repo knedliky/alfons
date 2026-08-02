@@ -43,11 +43,7 @@
 	};
 </script>
 
-<Story
-	name="Default — empty"
-	asChild
-	args={{ name: 'skills', label: 'Skills', value: [] }}
->
+<Story name="Default — empty" asChild args={{ name: 'skills', label: 'Skills', value: [] }}>
 	<MultiSelectField
 		name="skills"
 		label="Skills"
@@ -88,7 +84,11 @@
 <Story
 	name="Many selections — overflow display"
 	asChild
-	args={{ name: 'skills', label: 'Skills', value: ['Python', 'SQL', 'Data analysis', 'Machine learning', 'Agile'] }}
+	args={{
+		name: 'skills',
+		label: 'Skills',
+		value: ['Python', 'SQL', 'Data analysis', 'Machine learning', 'Agile']
+	}}
 >
 	<MultiSelectField
 		name="skills"
@@ -118,7 +118,13 @@
 <Story
 	name="With error"
 	asChild
-	args={{ name: 'skills', label: 'Skills', value: [], required: true, error: 'Please select at least one skill' }}
+	args={{
+		name: 'skills',
+		label: 'Skills',
+		value: [],
+		required: true,
+		error: 'Please select at least one skill'
+	}}
 >
 	<MultiSelectField
 		name="skills"

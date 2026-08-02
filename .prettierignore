@@ -1,0 +1,10 @@
+# Generated output. alfons.manifest.json in particular must not be formatted:
+# it is written by scripts/generate-manifest.ts and gated by regenerating and
+# diffing, so letting prettier reformat it would put two checks in permanent
+# conflict — format:check demanding one shape, the drift gate the other.
+alfons.manifest.json
+dist/
+storybook-static/
+screenshots/
+bun.lock
+.svelte-kit/

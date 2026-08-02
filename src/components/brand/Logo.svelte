@@ -52,7 +52,7 @@
 	class:is-blinking={blinking}
 	{width}
 	{height}
-	viewBox={viewBox}
+	{viewBox}
 	fill="none"
 	role="img"
 	aria-label={title}

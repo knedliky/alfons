@@ -17,7 +17,9 @@
 </Story>
 
 <Story name="In Grid Context" asChild args={{}}>
-	<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 680px;">
+	<div
+		style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; max-width: 680px;"
+	>
 		<SkeletonCard />
 		<SkeletonCard />
 		<SkeletonCard />

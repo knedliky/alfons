@@ -254,14 +254,14 @@
 			autocomplete="off"
 			spellcheck="false"
 			class="agent-input-field"
-			aria-label={ariaLabel}
-		></textarea>
+			aria-label={ariaLabel}></textarea>
 		<!-- Hidden mirror duplicates the value (split at the caret) so the field
 		     grows to the wrapped text height AND the marker pins the caret index. -->
-		<div class="agent-input-mirror" aria-hidden="true">{beforeCaret}<span
-				class="agent-input-caret-anchor"
-				bind:this={caretMarker}>{caretAnchorText}</span
-			></div>
+		<div class="agent-input-mirror" aria-hidden="true">
+			{beforeCaret}<span class="agent-input-caret-anchor" bind:this={caretMarker}
+				>{caretAnchorText}</span
+			>
+		</div>
 		<!-- Custom underscore caret — translated to the marker's position. -->
 		<span
 			class="agent-input-caret"

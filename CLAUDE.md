@@ -88,11 +88,11 @@ src/
 
 ```json
 {
-  ".":            { "types": "./src/index.ts", "svelte": "./src/index.ts", "import": "./dist/index.js" },
-  "./public":     "./src/tokens/public.css",
-  "./admin":      "./src/tokens/admin.css",
-  "./base":       "./src/tokens/base.css",
-  "./form-states": "./src/tokens/form-states.css"
+	".": { "types": "./src/index.ts", "svelte": "./src/index.ts", "import": "./dist/index.js" },
+	"./public": "./src/tokens/public.css",
+	"./admin": "./src/tokens/admin.css",
+	"./base": "./src/tokens/base.css",
+	"./form-states": "./src/tokens/form-states.css"
 }
 ```
 

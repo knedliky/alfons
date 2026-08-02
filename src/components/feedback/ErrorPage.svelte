@@ -38,19 +38,10 @@
 
 	import Button from '../atoms/Button.svelte';
 
-	let {
-		status,
-		message,
-		primaryAction,
-		secondaryAction
-	}: ErrorPageProps = $props();
+	let { status, message, primaryAction, secondaryAction }: ErrorPageProps = $props();
 
 	const title = $derived(
-		status === 404
-			? 'Page Not Found'
-			: status === 500
-				? 'Server Error'
-				: 'Something Went Wrong'
+		status === 404 ? 'Page Not Found' : status === 500 ? 'Server Error' : 'Something Went Wrong'
 	);
 </script>
 

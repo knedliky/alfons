@@ -131,7 +131,12 @@
 <header class="motif-hdr" class:is-compact={compact}>
 	<div class="motif-hdr-inner">
 		<div class="motif-hdr-row" class:is-compact={compact}>
-			<a href={brandHref} class="motif-hdr-brand" onclick={(e) => go(e, brandHref)} aria-label="Motivka — home">
+			<a
+				href={brandHref}
+				class="motif-hdr-brand"
+				onclick={(e) => go(e, brandHref)}
+				aria-label="Motivka — home"
+			>
 				{#if brand}
 					{@render brand()}
 				{:else}
@@ -189,9 +194,30 @@
 						stroke-linecap="square"
 						aria-hidden="true"
 					>
-						<line class="motif-hdr-burger-line top" class:is-open={menuOpen} x1="4" y1="6" x2="20" y2="6" />
-						<line class="motif-hdr-burger-line middle" class:is-open={menuOpen} x1="4" y1="12" x2="20" y2="12" />
-						<line class="motif-hdr-burger-line bottom" class:is-open={menuOpen} x1="4" y1="18" x2="20" y2="18" />
+						<line
+							class="motif-hdr-burger-line top"
+							class:is-open={menuOpen}
+							x1="4"
+							y1="6"
+							x2="20"
+							y2="6"
+						/>
+						<line
+							class="motif-hdr-burger-line middle"
+							class:is-open={menuOpen}
+							x1="4"
+							y1="12"
+							x2="20"
+							y2="12"
+						/>
+						<line
+							class="motif-hdr-burger-line bottom"
+							class:is-open={menuOpen}
+							x1="4"
+							y1="18"
+							x2="20"
+							y2="18"
+						/>
 					</svg>
 				</button>
 			{/if}

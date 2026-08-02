@@ -39,14 +39,17 @@
 	}: ProgressBarProps = $props();
 
 	const indeterminate = $derived(value === null || value === undefined);
-	const pct = $derived(indeterminate ? 0 : Math.max(0, Math.min(100, ((value as number) / max) * 100)));
+	const pct = $derived(
+		indeterminate ? 0 : Math.max(0, Math.min(100, ((value as number) / max) * 100))
+	);
 </script>
 
 <div class="motif-progress size-{size} tone-{tone} {className}" class:is-admin={theme === 'admin'}>
 	{#if label || showValue}
 		<div class="motif-progress-head">
 			{#if label}<span class="motif-progress-label">{label}</span>{/if}
-			{#if showValue && !indeterminate}<span class="motif-progress-value">{Math.round(pct)}%</span>{/if}
+			{#if showValue && !indeterminate}<span class="motif-progress-value">{Math.round(pct)}%</span
+				>{/if}
 		</div>
 	{/if}
 	<div

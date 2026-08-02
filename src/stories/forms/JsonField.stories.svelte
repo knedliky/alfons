@@ -34,17 +34,8 @@
 	};
 </script>
 
-<Story
-	name="Default — empty"
-	asChild
-	args={{ name: 'metadata', label: 'Metadata', value: null }}
->
-	<JsonField
-		name="metadata"
-		label="Metadata"
-		value={null}
-		onchange={() => {}}
-	/>
+<Story name="Default — empty" asChild args={{ name: 'metadata', label: 'Metadata', value: null }}>
+	<JsonField name="metadata" label="Metadata" value={null} onchange={() => {}} />
 </Story>
 
 <Story
@@ -52,12 +43,7 @@
 	asChild
 	args={{ name: 'metadata', label: 'Metadata', value: sampleMetadata }}
 >
-	<JsonField
-		name="metadata"
-		label="Metadata"
-		value={sampleMetadata}
-		onchange={() => {}}
-	/>
+	<JsonField name="metadata" label="Metadata" value={sampleMetadata} onchange={() => {}} />
 </Story>
 
 <Story
@@ -65,12 +51,7 @@
 	asChild
 	args={{ name: 'config', label: 'Notification settings', value: sampleConfig }}
 >
-	<JsonField
-		name="config"
-		label="Notification settings"
-		value={sampleConfig}
-		onchange={() => {}}
-	/>
+	<JsonField name="config" label="Notification settings" value={sampleConfig} onchange={() => {}} />
 </Story>
 
 <Story
@@ -78,19 +59,18 @@
 	asChild
 	args={{ name: 'metadata', label: 'Metadata', value: null, required: true }}
 >
-	<JsonField
-		name="metadata"
-		label="Metadata"
-		value={null}
-		required
-		onchange={() => {}}
-	/>
+	<JsonField name="metadata" label="Metadata" value={null} required onchange={() => {}} />
 </Story>
 
 <Story
 	name="With error"
 	asChild
-	args={{ name: 'metadata', label: 'Metadata', value: null, error: 'Invalid JSON — check syntax and try again' }}
+	args={{
+		name: 'metadata',
+		label: 'Metadata',
+		value: null,
+		error: 'Invalid JSON — check syntax and try again'
+	}}
 >
 	<JsonField
 		name="metadata"

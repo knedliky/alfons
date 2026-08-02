@@ -68,6 +68,12 @@
 		onchange
 	}: SelectProps = $props();
 
+	// The trigger declares role="combobox", which requires aria-controls pointing
+	// at the listbox it opens. Svelte's $props.id() gives a stable unique id per
+	// instance, so several selects on one page do not cross-wire.
+	const uid = $props.id();
+	const listboxId = `select-listbox-${uid}`;
+
 	let isOpen = $state(false);
 	let triggerRef = $state<HTMLButtonElement | null>(null);
 	let listRef = $state<HTMLDivElement | null>(null);
@@ -369,7 +375,9 @@
 	<button
 		bind:this={triggerRef}
 		type="button"
-		class="select-trigger motif-form-control {size === 'sm' ? 'select-trigger-sm' : ''} {className ?? ''}"
+		class="select-trigger motif-form-control {size === 'sm'
+			? 'select-trigger-sm'
+			: ''} {className ?? ''}"
 		style="
 			color: {tokens.text};
 			--form-ring-bg: var(--select-bg);
@@ -377,14 +385,19 @@
 		{disabled}
 		onclick={toggleDropdown}
 		onkeydown={handleKeydown}
+		role="combobox"
 		aria-haspopup="listbox"
+		aria-controls={listboxId}
 		aria-expanded={isOpen}
 		aria-invalid={error ? 'true' : undefined}
 		data-valid={valid ? 'true' : undefined}
 	>
 		<span
 			class="select-value"
-			style="{selectedOption?.style ?? ''} background: {valuePillBackground}; color: {!selectedOption ? tokens.textMuted : 'inherit'};"
+			style="{selectedOption?.style ??
+				''} background: {valuePillBackground}; color: {!selectedOption
+				? tokens.textMuted
+				: 'inherit'};"
 		>
 			{selectedOption?.label ?? placeholder}
 			<!-- sm/filter trigger: the caret lives inside the value pill so the accent
@@ -403,6 +416,7 @@
 			class="select-dropdown"
 			class:select-dropdown-sm={size === 'sm'}
 			class:select-dropdown-above={dropdownPosition.showAbove}
+			id={listboxId}
 			role="listbox"
 			tabindex="-1"
 			style="
@@ -453,12 +467,12 @@
 								{option.style ?? ''}
 								color: {isSelected || isHighlighted ? tokens.text : tokens.textSecondary};
 								background: {isSelected
-									? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
-									: isHighlighted
-										? option.accent && option.accent !== 'transparent'
-											? `color-mix(in oklch, ${option.accent} 15%, transparent)`
-											: 'var(--select-highlighted-bg)'
-										: 'transparent'};
+								? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
+								: isHighlighted
+									? option.accent && option.accent !== 'transparent'
+										? `color-mix(in oklch, ${option.accent} 15%, transparent)`
+										: 'var(--select-highlighted-bg)'
+									: 'transparent'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}

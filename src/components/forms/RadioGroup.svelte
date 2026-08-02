@@ -77,7 +77,11 @@
 	});
 </script>
 
-<div class="motif-radiogroup orient-{orientation} {className}" role="radiogroup" aria-label={ariaLabel}>
+<div
+	class="motif-radiogroup orient-{orientation} {className}"
+	role="radiogroup"
+	aria-label={ariaLabel}
+>
 	{#if options}
 		{#each options as option (option.value)}
 			<Radio

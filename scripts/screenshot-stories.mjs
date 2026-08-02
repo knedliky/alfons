@@ -40,7 +40,7 @@ const DEFAULT_STORIES = [
 	'disclosure-accordion--single',
 	'overlays-menu--default',
 	'blog-longread--full-article',
-	'design-tokens-colours--brand-colours',
+	'design-tokens-colours--brand-colours'
 ];
 
 const MIME = {
@@ -50,7 +50,7 @@ const MIME = {
 	'.json': 'application/json',
 	'.svg': 'image/svg+xml',
 	'.woff2': 'font/woff2',
-	'.png': 'image/png',
+	'.png': 'image/png'
 };
 
 /** Serve the built catalogue, so the script needs nothing running beside it. */
@@ -81,14 +81,12 @@ page.on('pageerror', (e) => errors.push(`${String(e).slice(0, 200)}`));
 
 for (const id of stories) {
 	await page.goto(`http://localhost:${PORT}/iframe.html?id=${id}&viewMode=story`, {
-		waitUntil: 'networkidle',
+		waitUntil: 'networkidle'
 	});
 	await page.waitForTimeout(600);
 	await page.screenshot({ path: join(OUT, `${id}.png`) });
 
-	const mode = await page.evaluate(() =>
-		document.documentElement.getAttribute('data-colour-mode'),
-	);
+	const mode = await page.evaluate(() => document.documentElement.getAttribute('data-colour-mode'));
 	console.log(`${id.padEnd(40)} mode=${mode}`);
 }
 

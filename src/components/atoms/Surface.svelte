@@ -36,7 +36,12 @@
 	}: SurfaceProps = $props();
 </script>
 
-<svelte:element this={Element} class="surface {className}" style:border-radius={radius} {...restProps}>
+<svelte:element
+	this={Element}
+	class="surface {className}"
+	style:border-radius={radius}
+	{...restProps}
+>
 	{@render children?.()}
 </svelte:element>
 

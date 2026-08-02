@@ -40,7 +40,13 @@
 	 *     {#snippet trigger()}<Button variant="ghost">Actions</Button>{/snippet}
 	 *   </Menu>
 	 */
-	let { trigger, items = [], align = 'start', theme = 'public', class: className = '' }: MenuProps = $props();
+	let {
+		trigger,
+		items = [],
+		align = 'start',
+		theme = 'public',
+		class: className = ''
+	}: MenuProps = $props();
 
 	let open = $state(false);
 	let coords = $state<{ top: number; left: number } | null>(null);
@@ -163,7 +169,9 @@
 					onclick={() => selectItem(item)}
 					onmouseenter={() => (active = i)}
 				>
-					{#if item.icon}<span class="motif-menu-icon" aria-hidden="true">{@render item.icon()}</span>{/if}
+					{#if item.icon}<span class="motif-menu-icon" aria-hidden="true"
+							>{@render item.icon()}</span
+						>{/if}
 					<span class="motif-menu-label">{item.label}</span>
 					{#if item.shortcut}<span class="motif-menu-shortcut">{item.shortcut}</span>{/if}
 				</button>

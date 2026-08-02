@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
 
-
 // Build configuration for the Alfons design library.
 // Produces an ES module output with each component individually importable,
 // so consumers can import specific atoms without pulling in the entire library.
@@ -18,7 +17,7 @@ export default defineConfig({
 			name: 'AlfonsDesign',
 			// Produce ES module format only — tree-shakeable and compatible
 			// with modern SvelteKit consumers
-			formats: ['es'],
+			formats: ['es']
 		},
 
 		rollupOptions: {
@@ -36,8 +35,8 @@ export default defineConfig({
 				preserveModulesRoot: 'src',
 				// Explicitly fix the output extension — prevents Rollup falling back
 				// to auto-detection as the module graph expands.
-				entryFileNames: '[name].js',
-			},
-		},
-	},
+				entryFileNames: '[name].js'
+			}
+		}
+	}
 });

@@ -21,7 +21,12 @@
 	 *   <Spinner />
 	 *   <Spinner size="lg" colour="var(--sky-blue)" label="Fetching results" />
 	 */
-	let { size = 'default', colour, label = 'Loading', class: className = '' }: SpinnerProps = $props();
+	let {
+		size = 'default',
+		colour,
+		label = 'Loading',
+		class: className = ''
+	}: SpinnerProps = $props();
 
 	const SIZES: Record<string, number> = { sm: 16, default: 24, lg: 40 };
 	const px = $derived(SIZES[size] ?? 24);

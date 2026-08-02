@@ -22,7 +22,7 @@ import type {
 	TokenEntry,
 	PropEntry,
 	PropsSource,
-	Surface,
+	Surface
 } from '../src/manifest/types.ts';
 
 const ROOT = join(import.meta.dirname, '..');
@@ -92,13 +92,17 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 			if (tokens.has(decl.prop)) return;
 			tokens.set(decl.prop, {
 				name: decl.prop,
-				value: decl.value.trim(),
+				// Collapse whitespace: a multi-line value carries its source
+				// indentation, so a purely cosmetic reformat of the token files
+				// would otherwise churn the manifest and trip the drift gate for
+				// no semantic change.
+				value: decl.value.replace(/\s+/g, ' ').trim(),
 				file: relative(TOKENS_DIR, file),
 				category: filename.replace(/\.css$/, ''),
 				surface: surfaceForFile(file),
 				referencedBy: [],
 				usedInTokenLayer: false,
-				usedInStories: false,
+				usedInStories: false
 			});
 		});
 	}
@@ -133,7 +137,7 @@ function propsFromInterface(moduleScript: string): PropEntry[] | null {
 		props = node.members.filter(ts.isPropertySignature).map((member) => ({
 			name: member.name.getText(file),
 			type: member.type?.getText(file),
-			optional: Boolean(member.questionToken),
+			optional: Boolean(member.questionToken)
 		}));
 	});
 	return props;
@@ -163,7 +167,7 @@ function propsFromDestructuring(instanceScript: string): PropEntry[] | null {
 				.map((element) => ({
 					name: (element.propertyName ?? element.name).getText(file),
 					optional: Boolean(element.initializer),
-					defaultValue: element.initializer?.getText(file),
+					defaultValue: element.initializer?.getText(file)
 				}));
 		}
 		ts.forEachChild(node, visit);
@@ -194,7 +198,7 @@ function collectStoryIds(): Map<string, string> {
 		// so first-import-wins only agreed with it by accident of ordering.
 		const declared = source.match(/component:\s*(\w+)/)?.[1];
 		const imported = source.match(
-			/import\s+(\w+)\s+from\s+['"][^'"]*\/components\/[^'"]+\.svelte['"]/,
+			/import\s+(\w+)\s+from\s+['"][^'"]*\/components\/[^'"]+\.svelte['"]/
 		)?.[1];
 
 		const subject = declared ?? imported;
@@ -238,15 +242,15 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
 		}
 
 		const tokensUsed = [
-			...new Set([...source.matchAll(/var\((--[a-z0-9-]+)/g)].map((match) => match[1])),
+			...new Set([...source.matchAll(/var\((--[a-z0-9-]+)/g)].map((match) => match[1]))
 		].sort();
 
 		const composes = [
 			...new Set(
 				[...source.matchAll(/import\s+(\w+)\s+from\s+['"][^'"]*\.svelte['"]/g)].map(
-					(match) => match[1],
-				),
-			),
+					(match) => match[1]
+				)
+			)
 		].sort();
 
 		components.push({
@@ -259,7 +263,7 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
 			composes,
 			importedBy: [],
 			exported: new RegExp(`\\b${name}\\b`).test(barrels),
-			storyId: storyIds.get(name) ?? null,
+			storyId: storyIds.get(name) ?? null
 		});
 	}
 	return { components, unparsed };
@@ -300,7 +304,7 @@ linkConsumers(components, tokens);
 const usedInStories = new Set(
 	walk(STORIES_DIR, (path) => /\.stories\.(svelte|ts|js)$/.test(path))
 		.flatMap((path) => [...readFileSync(path, 'utf8').matchAll(/var\((--[a-z0-9-]+)/g)])
-		.map((match) => match[1]),
+		.map((match) => match[1])
 );
 
 for (const token of tokens) {
@@ -314,18 +318,18 @@ const manifest: Manifest = {
 	schemaVersion: SCHEMA_VERSION,
 	components: components.sort((a, b) => a.name.localeCompare(b.name)),
 	tokens: tokens.sort((a, b) => a.name.localeCompare(b.name)),
-	unparsed: unparsed.sort(),
+	unparsed: unparsed.sort()
 };
 
 writeFileSync(OUT, `${JSON.stringify(manifest, null, 2)}\n`);
 
 const orphanTokens = tokens.filter(
-	(token) => token.referencedBy.length === 0 && !token.usedInTokenLayer && !token.usedInStories,
+	(token) => token.referencedBy.length === 0 && !token.usedInTokenLayer && !token.usedInStories
 ).length;
 const noProps = components.filter((component) => component.propsSource === 'none').length;
 console.log(
 	`manifest: ${components.length} components, ${tokens.length} tokens ` +
-		`(${orphanTokens} with no consumer), ${noProps} with no readable props`,
+		`(${orphanTokens} with no consumer), ${noProps} with no readable props`
 );
 
 if (unparsed.length) {

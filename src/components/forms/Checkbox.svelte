@@ -82,7 +82,13 @@
 	/>
 	<span class="motif-check-box" aria-hidden="true">
 		{#if indeterminate && !checked}
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="3"
+				stroke-linecap="round"
+			>
 				<path d="M6 12h12" />
 			</svg>
 		{:else}
@@ -167,7 +173,9 @@
 		border-color: var(--card-border-hover);
 	}
 
-	.motif-check:hover:not(.is-disabled) .motif-check-input:not(:checked):not(:indeterminate) + .motif-check-box {
+	.motif-check:hover:not(.is-disabled)
+		.motif-check-input:not(:checked):not(:indeterminate)
+		+ .motif-check-box {
 		transform: scale(1.08);
 	}
 

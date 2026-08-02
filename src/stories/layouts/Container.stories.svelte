@@ -47,7 +47,11 @@
 	</div>
 </Story>
 
-<Story name="Full Width, No Padding" asChild args={{ maxWidth: 'full', padding: false, centered: false }}>
+<Story
+	name="Full Width, No Padding"
+	asChild
+	args={{ maxWidth: 'full', padding: false, centered: false }}
+>
 	<div style="background:var(--surface-rest-bg);padding:1rem 0">
 		<Container maxWidth="full" padding={false} centered={false}>
 			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">

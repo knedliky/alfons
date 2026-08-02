@@ -53,10 +53,7 @@
 		message: 'You do not have permission to access this resource.'
 	}}
 >
-	<ErrorPage
-		status={403}
-		message="You do not have permission to access this resource."
-	/>
+	<ErrorPage status={403} message="You do not have permission to access this resource." />
 </Story>
 
 <Story

@@ -28,7 +28,11 @@
 	</div>
 </Story>
 
-<Story name="Labelled" asChild args={{ orientation: 'horizontal', label: 'or continue with', theme: 'public' }}>
+<Story
+	name="Labelled"
+	asChild
+	args={{ orientation: 'horizontal', label: 'or continue with', theme: 'public' }}
+>
 	<div style="padding: 1rem; width: 100%;">
 		<Divider orientation="horizontal" label="or continue with" theme="public" />
 	</div>
@@ -50,7 +54,11 @@
 	</div>
 </Story>
 
-<Story name="Admin Labelled" asChild args={{ orientation: 'horizontal', label: 'Section', theme: 'admin' }}>
+<Story
+	name="Admin Labelled"
+	asChild
+	args={{ orientation: 'horizontal', label: 'Section', theme: 'admin' }}
+>
 	<div style="padding: 1rem; width: 100%;">
 		<Divider orientation="horizontal" label="Section" theme="admin" />
 	</div>

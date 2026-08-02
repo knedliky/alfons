@@ -246,8 +246,7 @@
 			onblur={handleBlur}
 			onkeydown={handleKeydown}
 			aria-invalid={!!displayError}
-			aria-describedby={displayError ? `${name}-error` : undefined}
-		></textarea>
+			aria-describedby={displayError ? `${name}-error` : undefined}></textarea>
 	</div>
 
 	{#if displayError}

@@ -96,9 +96,7 @@
 	const allSelected = $derived(
 		rows.length > 0 && rows.every((row) => selectedKeys.has(rowKey(row)))
 	);
-	const someSelected = $derived(
-		rows.some((row) => selectedKeys.has(rowKey(row))) && !allSelected
-	);
+	const someSelected = $derived(rows.some((row) => selectedKeys.has(rowKey(row))) && !allSelected);
 
 	function toggleRowSelection(key: string) {
 		const newSelection = new SvelteSet(selectedKeys);
@@ -120,8 +118,7 @@
 
 	function handleSortClick(column: DataTableColumn<TRow>) {
 		if (column.sortable === false || !onSortChange) return;
-		const newDirection =
-			sortColumn === column.id && sortDirection === 'asc' ? 'desc' : 'asc';
+		const newDirection = sortColumn === column.id && sortDirection === 'asc' ? 'desc' : 'asc';
 		onSortChange(column.id, newDirection);
 	}
 
@@ -190,8 +187,7 @@
 								<th
 									class:sortable-column={isSortable}
 									onclick={() => isSortable && handleSortClick(column)}
-									onkeydown={(e) =>
-										e.key === 'Enter' && isSortable && handleSortClick(column)}
+									onkeydown={(e) => e.key === 'Enter' && isSortable && handleSortClick(column)}
 									tabindex={isSortable ? 0 : -1}
 									role="columnheader"
 									aria-sort={getSortIndicator(column.id)

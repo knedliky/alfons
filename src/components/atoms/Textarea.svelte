@@ -38,8 +38,7 @@
 	data-theme={activeTheme}
 	style={activeTheme === 'admin' ? '--form-ring-bg: var(--admin-bg)' : undefined}
 	bind:value
-	{...rest}
-></textarea>
+	{...rest}></textarea>
 
 <style>
 	.textarea {

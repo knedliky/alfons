@@ -59,7 +59,10 @@
 		description = "Motivka is Simon's personal agent and growing digital twin. Context, tools, and all the good stuff in between. Melbourne & Prague.",
 		contact = { abn: 'ABN 59 178 907 431', email: 'hello@motivka.com' },
 		columns = DEFAULT_COLUMNS,
-		newsletter = { heading: 'Follow along', subheading: 'Ideas, builds, and the thinking behind Motivka.' },
+		newsletter = {
+			heading: 'Follow along',
+			subheading: 'Ideas, builds, and the thinking behind Motivka.'
+		},
 		legalLinks = [{ label: 'Privacy Policy', href: '#privacy' }],
 		year = new Date().getFullYear(),
 		onNavigate,

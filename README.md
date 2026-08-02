@@ -32,14 +32,14 @@ Import order matters — `public.css` defines what `admin.css` and `base.css` re
 Dark is the sole colour mode. Pin it statically on `<html>`:
 
 ```html
-<html lang="en" data-colour-mode="dark">
+<html lang="en" data-colour-mode="dark"></html>
 ```
 
 ### Components
 
 ```svelte
 <script>
-  import { Button, Input, Card, PageLayout, PageSection } from '@alfons/design';
+	import { Button, Input, Card, PageLayout, PageSection } from '@alfons/design';
 </script>
 ```
 

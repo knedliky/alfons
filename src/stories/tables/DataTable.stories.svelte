@@ -43,11 +43,46 @@
 
 	/** Sample organisations dataset. */
 	const organisationRows = [
-		{ id: 'org-001', name: 'Acme Pty Ltd', status: 'Active', plan: 'Professional', created: '12/01/2026', seats: 24 },
-		{ id: 'org-002', name: 'Blue Horizon Technologies', status: 'Active', plan: 'Enterprise', created: '03/02/2026', seats: 150 },
-		{ id: 'org-003', name: 'Koala Digital', status: 'Pending', plan: 'Starter', created: '28/02/2026', seats: 5 },
-		{ id: 'org-004', name: 'Southbank Analytics', status: 'Suspended', plan: 'Professional', created: '15/03/2026', seats: 12 },
-		{ id: 'org-005', name: 'Ironbark Solutions', status: 'Active', plan: 'Enterprise', created: '02/04/2026', seats: 88 }
+		{
+			id: 'org-001',
+			name: 'Acme Pty Ltd',
+			status: 'Active',
+			plan: 'Professional',
+			created: '12/01/2026',
+			seats: 24
+		},
+		{
+			id: 'org-002',
+			name: 'Blue Horizon Technologies',
+			status: 'Active',
+			plan: 'Enterprise',
+			created: '03/02/2026',
+			seats: 150
+		},
+		{
+			id: 'org-003',
+			name: 'Koala Digital',
+			status: 'Pending',
+			plan: 'Starter',
+			created: '28/02/2026',
+			seats: 5
+		},
+		{
+			id: 'org-004',
+			name: 'Southbank Analytics',
+			status: 'Suspended',
+			plan: 'Professional',
+			created: '15/03/2026',
+			seats: 12
+		},
+		{
+			id: 'org-005',
+			name: 'Ironbark Solutions',
+			status: 'Active',
+			plan: 'Enterprise',
+			created: '02/04/2026',
+			seats: 88
+		}
 	];
 </script>
 

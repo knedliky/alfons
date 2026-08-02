@@ -17,36 +17,23 @@
 	});
 </script>
 
-<Story
-	name="Default"
-	asChild
-	args={{ name: 'headcount', label: 'Headcount', value: null }}
->
-	<NumberField
-		name="headcount"
-		label="Headcount"
-		value={null}
-		onchange={() => {}}
-	/>
+<Story name="Default" asChild args={{ name: 'headcount', label: 'Headcount', value: null }}>
+	<NumberField name="headcount" label="Headcount" value={null} onchange={() => {}} />
 </Story>
 
-<Story
-	name="With value"
-	asChild
-	args={{ name: 'headcount', label: 'Headcount', value: 42 }}
->
-	<NumberField
-		name="headcount"
-		label="Headcount"
-		value={42}
-		onchange={() => {}}
-	/>
+<Story name="With value" asChild args={{ name: 'headcount', label: 'Headcount', value: 42 }}>
+	<NumberField name="headcount" label="Headcount" value={42} onchange={() => {}} />
 </Story>
 
 <Story
 	name="Integer only"
 	asChild
-	args={{ name: 'years_experience', label: 'Years of experience', value: 5, options: { min: 0, max: 50, noDecimal: true } }}
+	args={{
+		name: 'years_experience',
+		label: 'Years of experience',
+		value: 5,
+		options: { min: 0, max: 50, noDecimal: true }
+	}}
 >
 	<NumberField
 		name="years_experience"
@@ -60,7 +47,12 @@
 <Story
 	name="Decimal with range"
 	asChild
-	args={{ name: 'hourly_rate', label: 'Hourly rate (AUD)', value: 95.5, options: { min: 0, max: 500 } }}
+	args={{
+		name: 'hourly_rate',
+		label: 'Hourly rate (AUD)',
+		value: 95.5,
+		options: { min: 0, max: 500 }
+	}}
 >
 	<NumberField
 		name="hourly_rate"
@@ -89,7 +81,13 @@
 <Story
 	name="With error"
 	asChild
-	args={{ name: 'headcount', label: 'Headcount', value: null, required: true, error: 'Headcount must be greater than 0' }}
+	args={{
+		name: 'headcount',
+		label: 'Headcount',
+		value: null,
+		required: true,
+		error: 'Headcount must be greater than 0'
+	}}
 >
 	<NumberField
 		name="headcount"

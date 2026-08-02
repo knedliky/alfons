@@ -20,15 +20,14 @@
 	});
 </script>
 
-<Story
-	name="Default — idle"
-	asChild
-	args={{ theme: 'admin', status: 'idle', statusMessage: '' }}
->
+<Story name="Default — idle" asChild args={{ theme: 'admin', status: 'idle', statusMessage: '' }}>
 	<Form theme="admin" status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
@@ -39,7 +38,10 @@
 				/>
 			</div>
 			<div>
-				<label for="contact-email" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="contact-email"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Contact email
 				</label>
 				<input
@@ -67,7 +69,10 @@
 	<Form theme="admin" status="success" statusMessage="Organisation updated successfully.">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name-s" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name-s"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
@@ -90,12 +95,23 @@
 <Story
 	name="Error state"
 	asChild
-	args={{ theme: 'admin', status: 'error', statusMessage: 'Failed to update organisation. Please try again.' }}
+	args={{
+		theme: 'admin',
+		status: 'error',
+		statusMessage: 'Failed to update organisation. Please try again.'
+	}}
 >
-	<Form theme="admin" status="error" statusMessage="Failed to update organisation. Please try again.">
+	<Form
+		theme="admin"
+		status="error"
+		statusMessage="Failed to update organisation. Please try again."
+	>
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name-e" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name-e"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
@@ -115,15 +131,14 @@
 	</Form>
 </Story>
 
-<Story
-	name="Public theme"
-	asChild
-	args={{ theme: 'public', status: 'idle', statusMessage: '' }}
->
+<Story name="Public theme" asChild args={{ theme: 'public', status: 'idle', statusMessage: '' }}>
 	<Form theme="public" status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="full-name-p" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="full-name-p"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Full name
 				</label>
 				<input
@@ -134,7 +149,10 @@
 				/>
 			</div>
 			<div>
-				<label for="email-p" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="email-p"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Email address
 				</label>
 				<input

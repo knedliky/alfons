@@ -71,7 +71,9 @@
 				onclick={() => !item.disabled && toggle(item.id)}
 			>
 				<span class="motif-accordion-title">{item.title}</span>
-				<span class="motif-accordion-chev" aria-hidden="true"><Icon name="chevron-down" size="sm" /></span>
+				<span class="motif-accordion-chev" aria-hidden="true"
+					><Icon name="chevron-down" size="sm" /></span
+				>
 			</button>
 			<div class="motif-accordion-panel" role="region">
 				<div class="motif-accordion-panel-inner">

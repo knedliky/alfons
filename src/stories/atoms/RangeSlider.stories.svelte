@@ -16,61 +16,37 @@
 	});
 </script>
 
-<Story
-	name="Default"
-	asChild
-	args={{ value: 50, min: 0, max: 100, step: 1, disabled: false }}
->
+<Story name="Default" asChild args={{ value: 50, min: 0, max: 100, step: 1, disabled: false }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={50} min={0} max={100} step={1} onchange={() => {}} />
 	</div>
 </Story>
 
-<Story
-	name="Custom Range"
-	asChild
-	args={{ value: 25, min: 0, max: 200, step: 5, disabled: false }}
->
+<Story name="Custom Range" asChild args={{ value: 25, min: 0, max: 200, step: 5, disabled: false }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={25} min={0} max={200} step={5} onchange={() => {}} />
 	</div>
 </Story>
 
-<Story
-	name="Fine Step"
-	asChild
-	args={{ value: 0.5, min: 0, max: 1, step: 0.01, disabled: false }}
->
+<Story name="Fine Step" asChild args={{ value: 0.5, min: 0, max: 1, step: 0.01, disabled: false }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={0.5} min={0} max={1} step={0.01} onchange={() => {}} />
 	</div>
 </Story>
 
-<Story
-	name="At Minimum"
-	asChild
-	args={{ value: 0, min: 0, max: 100, step: 1, disabled: false }}
->
+<Story name="At Minimum" asChild args={{ value: 0, min: 0, max: 100, step: 1, disabled: false }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={0} min={0} max={100} step={1} onchange={() => {}} />
 	</div>
 </Story>
 
-<Story
-	name="At Maximum"
-	asChild
-	args={{ value: 100, min: 0, max: 100, step: 1, disabled: false }}
->
+<Story name="At Maximum" asChild args={{ value: 100, min: 0, max: 100, step: 1, disabled: false }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={100} min={0} max={100} step={1} onchange={() => {}} />
 	</div>
 </Story>
 
-<Story
-	name="Disabled"
-	asChild
-	args={{ value: 40, min: 0, max: 100, step: 1, disabled: true }}
->
+<Story name="Disabled" asChild args={{ value: 40, min: 0, max: 100, step: 1, disabled: true }}>
 	<div style="padding: 1rem; width: 300px;">
 		<RangeSlider value={40} min={0} max={100} step={1} disabled={true} onchange={() => {}} />
 	</div>

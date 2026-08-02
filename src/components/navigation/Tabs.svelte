@@ -174,7 +174,8 @@
 				class:is-active={tab.id === value}
 				onclick={() => select(tab.id)}
 			>
-				{#if tab.icon}<span class="motif-tabs-icon" aria-hidden="true">{@render tab.icon()}</span>{/if}
+				{#if tab.icon}<span class="motif-tabs-icon" aria-hidden="true">{@render tab.icon()}</span
+					>{/if}
 				<span class="motif-tabs-label">{tab.label}</span>
 				{#if tab.badge != null}<span class="motif-tabs-badge">{tab.badge}</span>{/if}
 			</button>

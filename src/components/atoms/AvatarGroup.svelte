@@ -40,7 +40,11 @@
 		</span>
 	{/each}
 	{#if overflow > 0}
-		<span class="motif-avatars-item motif-avatars-more" style:z-index={0} aria-label="{overflow} more">
+		<span
+			class="motif-avatars-item motif-avatars-more"
+			style:z-index={0}
+			aria-label="{overflow} more"
+		>
 			+{overflow}
 		</span>
 	{/if}

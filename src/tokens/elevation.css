@@ -40,9 +40,8 @@
 		--el-edge-shade: oklch(0 0 0 / var(--el-shade));
 
 		/* CAST shadow per level — box-shadow only, thrown down-and-right */
-		--elevation-1:
-			1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px)
-				oklch(0 0 0 / var(--el-cast-depth));
+		--elevation-1: 1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px)
+			oklch(0 0 0 / var(--el-cast-depth));
 		--elevation-2:
 			2px calc(var(--el-cast-spread) * 1.3px) calc(var(--el-cast-spread) * 2px)
 				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08)),
@@ -55,9 +54,21 @@
 				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.43));
 
 		/* SURFACE fill per level — thinned toward frosted glass */
-		--elevation-1-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 100%), transparent);
-		--elevation-2-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 78%), transparent);
-		--elevation-3-bg: color-mix(in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 62%), transparent);
+		--elevation-1-bg: color-mix(
+			in srgb,
+			var(--bg-glass-solid) calc(var(--el-fill) * 100%),
+			transparent
+		);
+		--elevation-2-bg: color-mix(
+			in srgb,
+			var(--bg-glass-solid) calc(var(--el-fill) * 78%),
+			transparent
+		);
+		--elevation-3-bg: color-mix(
+			in srgb,
+			var(--bg-glass-solid) calc(var(--el-fill) * 62%),
+			transparent
+		);
 
 		/* === SURFACE TIERS — NEW ========================================
 		   Three tiers, named by how the surface sits relative to the page.

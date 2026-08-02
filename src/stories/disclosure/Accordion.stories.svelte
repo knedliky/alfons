@@ -18,7 +18,8 @@
 		{
 			id: 'what',
 			title: 'What is Motivka?',
-			content: 'A personal agent ecosystem — one orchestrator at the centre of a set of domain reasoners.'
+			content:
+				'A personal agent ecosystem — one orchestrator at the centre of a set of domain reasoners.'
 		},
 		{
 			id: 'how',

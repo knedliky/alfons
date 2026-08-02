@@ -36,7 +36,12 @@
 <Story
 	name="With datetime value"
 	asChild
-	args={{ name: 'published_at', label: 'Published at', value: '2026-06-19T09:30:00.000Z', includeTime: true }}
+	args={{
+		name: 'published_at',
+		label: 'Published at',
+		value: '2026-06-19T09:30:00.000Z',
+		includeTime: true
+	}}
 >
 	<DateField
 		name="published_at"
@@ -50,7 +55,12 @@
 <Story
 	name="Date only"
 	asChild
-	args={{ name: 'start_date', label: 'Start date', value: '2026-07-01T00:00:00.000Z', includeTime: false }}
+	args={{
+		name: 'start_date',
+		label: 'Start date',
+		value: '2026-07-01T00:00:00.000Z',
+		includeTime: false
+	}}
 >
 	<DateField
 		name="start_date"
@@ -64,7 +74,12 @@
 <Story
 	name="Required"
 	asChild
-	args={{ name: 'application_deadline', label: 'Application deadline', value: null, required: true }}
+	args={{
+		name: 'application_deadline',
+		label: 'Application deadline',
+		value: null,
+		required: true
+	}}
 >
 	<DateField
 		name="application_deadline"
@@ -79,7 +94,13 @@
 <Story
 	name="With error"
 	asChild
-	args={{ name: 'start_date', label: 'Start date', value: null, required: true, error: 'Start date is required' }}
+	args={{
+		name: 'start_date',
+		label: 'Start date',
+		value: null,
+		required: true,
+		error: 'Start date is required'
+	}}
 >
 	<DateField
 		name="start_date"
@@ -117,7 +138,12 @@
 <Story
 	name="Disabled"
 	asChild
-	args={{ name: 'created_at', label: 'Created at', value: '2026-01-15T08:00:00.000Z', disabled: true }}
+	args={{
+		name: 'created_at',
+		label: 'Created at',
+		value: '2026-01-15T08:00:00.000Z',
+		disabled: true
+	}}
 >
 	<DateField
 		name="created_at"

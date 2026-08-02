@@ -1,0 +1,45 @@
+name: check
+
+# No workflow input is interpolated into any run: step — every command below is
+# a fixed string. Nothing here reads github.event.*, so there is no injection
+# surface to escape.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+
+      # The manifest is generated from the tree and committed, like a lockfile.
+      # If regenerating it changes the file, the committed copy was stale — and
+      # a stale manifest is the one failure mode that cannot be noticed at
+      # runtime, because the MCP server answers from it confidently either way.
+      # This gate has no calibration period by design (D-162): the generator is
+      # deterministic, so a diff can only mean the file did not match the code.
+      - name: manifest is current
+        run: |
+          bun run manifest
+          git diff --exit-code alfons.manifest.json
+
+      - name: types
+        run: bun run check
+
+      - name: lint
+        run: bun run lint
+
+      - name: formatting
+        run: bun run format:check
+
+      - name: build
+        run: bun run build
