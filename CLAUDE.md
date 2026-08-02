@@ -17,8 +17,11 @@ manifest, the MCP answers and the catalogue follow from it.
 ## Build Commands
 
 ```bash
-# Build the library (emits dist/ with JS + .d.ts declarations)
+# Regenerate the manifest, then build the library into dist/
 bun run build
+
+# Regenerate alfons.manifest.json alone
+bun run manifest
 
 # Type-check Svelte components and TypeScript
 bun run check
@@ -36,7 +39,6 @@ bun run build-storybook
 - **TypeScript** — strict mode; all component props typed
 - **Tailwind CSS 4** — via `@tailwindcss/vite`, no `tailwind.config.js`
 - **Vite library mode** — `preserveModules: true`, ES format only
-- **vite-plugin-dts** — generates `dist/index.d.ts` for TypeScript consumers
 - **Storybook 10** — `@storybook/svelte-vite` framework; no `addon-essentials` (bundled in core)
 - **Bun** — package manager for all installs and scripts
 
@@ -86,13 +88,23 @@ src/
 
 ```json
 {
-  ".":            { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
+  ".":            { "types": "./src/index.ts", "svelte": "./src/index.ts", "import": "./dist/index.js" },
   "./public":     "./src/tokens/public.css",
   "./admin":      "./src/tokens/admin.css",
   "./base":       "./src/tokens/base.css",
   "./form-states": "./src/tokens/form-states.css"
 }
 ```
+
+**Types resolve from source, not from `dist`.** Both the `types` and `svelte`
+conditions point at `src/index.ts`, so a consumer reads the components and
+derives prop types through its own svelte2tsx. Every component is fully typed at
+the consumer without the library shipping a single `.d.ts`.
+
+Note that `dist/` is gitignored and consumers install from git, so the package
+they receive has no `dist` at all — the `import` condition resolves to nothing.
+That is harmless for Svelte consumers, which take the `svelte` condition, but a
+non-Svelte importer would fail.
 
 ## Review Checklist
 
