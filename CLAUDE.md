@@ -9,7 +9,12 @@ three surfaces over a single generated manifest.
 - **The MCP server** — what agents call to discover components, scaffold new ones and have
   their markup reviewed. This is the surface that keeps the system consistent, because a
   package can be forked and drifted silently while a service cannot.
-- **The catalogue** — Storybook, served to humans at `/alfons` behind the gateway.
+- **The catalogue** — Storybook, always live at `https://atlas.localhost/alfons`. Served as
+  a static mount by Atlas's local Caddy, not by the gateway (D-170): the gateway's bearer
+  token cannot be supplied by a browser for a static site's own asset requests, and
+  `*.localhost` resolves to 127.0.0.1 on whichever machine asks, so the name is the
+  boundary. `bun run catalogue` republishes — the mount is a bind mount, so there is
+  nothing to restart.
 
 All three read the same generated manifest. Change a token or component in `src/`, and the
 manifest, the MCP answers and the catalogue follow from it.
