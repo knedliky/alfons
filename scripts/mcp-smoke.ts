@@ -17,6 +17,8 @@
 import { spawn } from 'node:child_process';
 import { join } from 'node:path';
 import { loadManifest, storybookBase } from '../src/mcp/manifest.ts';
+import { planPrototypeRound, promotePrototype } from '../src/mcp/prototypes.ts';
+import { review } from '../src/rules/index.ts';
 import {
 	findComponents,
 	getComponent,
@@ -216,6 +218,89 @@ check(
 check('states that dark is the only colour mode', surfaces.colourMode === 'dark');
 
 // ---------------------------------------------------------------------------
+console.log('\nplan_prototype_round');
+const plan = planPrototypeRound(manifest, {
+	page: 'smoke-page',
+	title: 'Smoke page',
+	brief: 'A page that exists to be planned by this test.',
+	approaches: [1, 2, 3, 4, 5].map((n) => ({
+		title: `Direction ${n}`,
+		direction: `Explores angle ${n}.`
+	}))
+});
+check(
+	'plans round.json plus one page per approach',
+	plan.files.length === 6 && plan.files[0]!.path.endsWith('round.json'),
+	plan.files.map((file) => file.path)
+);
+check(
+	'every seeded page passes its own review',
+	plan.files
+		.filter((file) => file.path.endsWith('.svelte'))
+		.every((file) => {
+			const result = review(file.contents, manifest, 'public');
+			return !result.parseError && result.violations.length === 0;
+		})
+);
+check(
+	'seeds compose the live shell rather than a template',
+	plan.componentsUsed.includes('PageFrame'),
+	plan.componentsUsed
+);
+check(
+	'seeds carry the working marker so the glow shows from first render',
+	plan.files
+		.filter((file) => file.path.endsWith('.svelte'))
+		.every((file) => file.contents.includes('data-alfons-working=')),
+	null
+);
+check(
+	'the round lives at /dev/<page-name>',
+	plan.url === 'https://atlas.localhost/dev/smoke-page',
+	plan.url
+);
+check(
+	'four approaches are refused — a round is five',
+	(() => {
+		try {
+			planPrototypeRound(manifest, {
+				page: 'smoke-page',
+				title: 'Smoke page',
+				brief: 'Too few.',
+				approaches: [1, 2, 3, 4].map((n) => ({ title: `D${n}`, direction: 'x' }))
+			});
+			return false;
+		} catch {
+			return true;
+		}
+	})()
+);
+
+// ---------------------------------------------------------------------------
+console.log('\npromote_prototype');
+const promotion = promotePrototype(manifest, {
+	page: 'smoke-page',
+	approach: 'a1',
+	source:
+		'<script lang="ts">\n\timport Hero from \'./Hero.svelte\';\n</script>\n\n<Hero />\n<button>bare</button>\n'
+});
+check(
+	'a local component is named as work the library must absorb',
+	promotion.newComponentsRequired.some((entry) => entry.name === 'Hero'),
+	promotion.newComponentsRequired
+);
+check(
+	'a bare element is named as a missing component, not passed over',
+	promotion.newComponentsRequired.some((entry) => entry.reason.includes('<button>')),
+	promotion.newComponentsRequired
+);
+check(
+	'the checklist closes the round in the ledger',
+	promotion.checklist.some((step) => step.includes('release')),
+	promotion.checklist
+);
+
+// ---------------------------------------------------------------------------
 console.log('\ntombstones');
 const retiredToken = manifest.tombstones.find((entry) => entry.name === '--chart-tooltip-bg');
 check('a retired token is still answerable', Boolean(retiredToken), manifest.tombstones.length);
@@ -304,7 +389,9 @@ for (const expected of [
 	'review_markup',
 	'apply_fixes',
 	'review_library',
-	'scaffold_component'
+	'scaffold_component',
+	'plan_prototype_round',
+	'promote_prototype'
 ]) {
 	check(`exposes ${expected}`, toolNames.includes(expected), toolNames);
 }
