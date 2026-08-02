@@ -115,21 +115,53 @@ they receive has no `dist` at all — the `import` condition resolves to nothing
 That is harmless for Svelte consumers, which take the `svelte` condition, but a
 non-Svelte importer would fail.
 
+## The MCP surface
+
+Nine tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
+`bun run mcp:smoke` exercises every tool and then the server over real stdio.
+
+| Tool                            | For                                             |
+| ------------------------------- | ----------------------------------------------- |
+| `find_components`               | Ranked search in plain language                 |
+| `get_component`                 | Props, slots, variants, usage, story link       |
+| `get_tokens`                    | Tokens legal on a surface                       |
+| `get_layout_recipe`             | Composition order by tier                       |
+| `list_surfaces`                 | What is legal where, before picking a component |
+| `scaffold_component`            | A new component that already passes the rules   |
+| `review_markup` / `apply_fixes` | The rules, over source text                     |
+| `review_library`                | Findings about Alfons itself, not about markup  |
+
+The server **refuses to start** on a manifest that is missing, stale, of the wrong
+schema version, or carrying unparsed components. Silence from a lookup service is
+indistinguishable from a true negative: an agent that gets an empty `find_components`
+concludes the component does not exist and writes its own.
+
 ## Review Checklist
 
-These are the rules the MCP rule engine enforces. Where a rule is listed here and not yet
-implemented, the prose is a placeholder for a check, not a substitute for one.
+These are no longer prose. Each is a rule in `src/rules/`, with a fixture proving it
+fires and a fixture proving it does not fire on correct code — `bun run test:rules`.
+Advisory in v1 (D-159); promotion to blocking waits on a measured false-positive rate,
+which `bun run rules:baseline` records against Atlas.
 
-- No `export let` syntax — must use `$props()` rune
-- No `$:` reactive statements — must use `$derived()` or `$effect()`
-- No `createEventDispatcher` — use callback props or Svelte 5 events
-- All colour values in OKLCH format in CSS files
-- No `--admin-*` tokens in `public.css`
-- No CSS custom property definitions in `base.css`
-- No `var(--name)` reference without a definition or a fallback
-- No token defined without a consumer — retire it explicitly, with a reason, or use it
-- `bun run build` exits 0 with `dist/index.d.ts` present after build
-- `bun run check` exits 0 with no type errors
+| Rule                    | Catches                                                      |
+| ----------------------- | ------------------------------------------------------------ |
+| `raw-value`             | A literal colour or length where a token holds that value    |
+| `admin-token-on-public` | An `--admin-*` token on a public surface                     |
+| `unknown-token`         | A `var()` naming neither a token nor a local property        |
+| `retired-token`         | A retired or deprecated token, with replacement and decision |
+| `tailwind-shadow`       | A token name Tailwind v4's default `@theme` also defines     |
+| `raw-element`           | A bare `<button>`/`<input>`/`<select>` where an atom exists  |
+| `layout-nesting`        | A layout containing one from an outer tier                   |
+| `svelte5-runes`         | `export let`, `$:`, `createEventDispatcher`                  |
+
+**No rule matches source text.** The Svelte compiler parses markup and scripts, postcss
+parses style blocks, postcss-value-parser reads values. This is not fastidiousness: a
+hand-rolled scanner for the same job was wrong twice during AL-001, and all four of its
+failures — tabs, `--border` matching `--border-glass`, component-local properties, and
+`var(--x, 1rem)` fallbacks — are fixtures.
+
+`bun run test:scaffold` scaffolds a component and then reviews it, which is what keeps
+the fast path and the compliant path the same path.
 
 ## Two halves of the manifest
 
