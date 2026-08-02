@@ -1,0 +1,10 @@
+/**
+ * The prototyping surface loads exactly what the catalogue loads, in the same
+ * order (.storybook/preview.js is the precedent): public before admin, base
+ * last. A prototype rendered against a different stylesheet stack would be
+ * accurate to nothing.
+ */
+@import '../tokens/public.css';
+@import '../tokens/admin.css';
+@import '../tokens/base.css';
+@import '../tokens/form-states.css';

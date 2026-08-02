@@ -23,6 +23,7 @@
 		"manifest": "bun run scripts/generate-manifest.ts",
 		"manifest:check": "bun run scripts/generate-manifest.ts --check",
 		"lifecycle:sync": "bun run scripts/sync-lifecycle-entities.ts",
+		"dev": "vite --config vite.dev.config.ts",
 		"mcp": "bun run src/mcp/server.ts",
 		"mcp:smoke": "bun run scripts/mcp-smoke.ts",
 		"build": "bun run manifest && bun run build:lib",
