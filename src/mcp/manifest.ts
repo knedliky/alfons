@@ -101,12 +101,20 @@ export function loadManifest(): Manifest {
 /**
  * Where the catalogue is published, for the story links get_component returns.
  *
- * Defaults to the local Storybook dev server, because that is the one address
- * guaranteed to exist. AL-006 puts the built catalogue behind the gateway at
- * /alfons, and this is the variable that then points at it.
+ * The always-live catalogue, served as a static mount by Atlas's local Caddy
+ * (D-170) — not by the gateway, whose bearer token a browser cannot supply for
+ * a static site's own subresources, and whose 0.0.0.0 bind would have put the
+ * catalogue on the network for reach nobody wanted.
+ *
+ * `*.localhost` resolves to 127.0.0.1 on whichever machine asks, so this
+ * address is meaningful only here. That is the intended reach: the catalogue is
+ * read from this workstation and nowhere else.
+ *
+ * Override with ALFONS_STORYBOOK_URL to point at `bun run storybook` on :6006
+ * while iterating on a story.
  */
 export function storybookBase(): string {
-	return (process.env.ALFONS_STORYBOOK_URL ?? 'http://localhost:6006').replace(/\/$/, '');
+	return (process.env.ALFONS_STORYBOOK_URL ?? 'https://atlas.localhost/alfons').replace(/\/$/, '');
 }
 
 export { dirname };
