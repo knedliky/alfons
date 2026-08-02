@@ -21,7 +21,8 @@
   },
   "scripts": {
     "dev": "echo 'dev script — to be configured in task 002'",
-    "build": "vite build",
+    "manifest": "bun run scripts/generate-manifest.ts",
+    "build": "bun run manifest && vite build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -52,6 +53,7 @@
     "@tweakpane/core": "^2.0.5",
     "@types/node": "^26.0.0",
     "playwright": "^1.62.1",
+    "postcss": "^8.5.25",
     "storybook": "^10.3.5",
     "svelte": "^5.55.3",
     "svelte-check": "^4.4.6",
