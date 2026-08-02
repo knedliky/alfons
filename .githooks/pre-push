@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#
+# Refuse a push that would land a shipped release with no write-up.
+#
+# Tracked rather than written into .git/hooks, and wired with core.hooksPath, so
+# it survives a clone, shows up in review, and changes by the same process as
+# the code it guards. Enable it with:
+#
+#     git config core.hooksPath .githooks
+#
+# THIS FILE IS A CALLER, NOT A COPY. The check itself lives once, in the ledger
+# checkout, because four repositories holding four copies of one rule is the
+# arrangement that produced the *_text column drift and the xml_text
+# resurrection. Read that script's header for the argument; change the rule
+# there and every repository gets it.
+#
+# Fails open on the checker's absence: a missing ledger checkout is not evidence
+# about the push being made, and a hook that refuses on its own machinery
+# teaches --no-verify.
+#
+# Whatever else this repository should check before a push — its own tests, its
+# own linters — belongs here too, and is its own question.
+
+set -uo pipefail
+
+failed=0
+
+printf 'pre-push checks\n'
+
+CHECK="$HOME/Agents/ledger/scripts/release_documented.sh"
+if [ -x "$CHECK" ]; then
+    "$CHECK" "$(git rev-parse --show-toplevel)" || failed=1
+else
+    printf '  %-24s' 'releases documented'
+    printf 'skipped (ledger checkout not found)\n'
+fi
+
+if [ "$failed" -ne 0 ]; then
+    printf '\npush refused. Fix the above, or use --no-verify if you mean it.\n'
+    exit 1
+fi
+
+printf '\nall checks passed\n'
+exit 0
