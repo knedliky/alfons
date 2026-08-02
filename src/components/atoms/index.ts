@@ -50,3 +50,9 @@ export type { RangeSliderProps } from './RangeSlider.svelte';
 
 export { default as Skeleton } from './Skeleton.svelte';
 export type { SkeletonProps } from './Skeleton.svelte';
+
+export { default as Chip } from './Chip.svelte';
+export type { ChipProps } from './Chip.svelte';
+
+export { default as AvatarGroup } from './AvatarGroup.svelte';
+export type { AvatarGroupProps, AvatarPerson } from './AvatarGroup.svelte';

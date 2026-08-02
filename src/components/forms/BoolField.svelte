@@ -121,7 +121,7 @@
 		height: 26px;
 		padding: 2px;
 		background-color: var(--admin-border);
-		border-radius: 13px;
+		border-radius: 0;
 		transition: background-color 0.2s ease;
 	}
 

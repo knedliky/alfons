@@ -17,11 +17,51 @@
 	// The five tunable scalars. `unit: true` carries a 'px' suffix (frost blurs);
 	// the rest are unitless alphas/scales.
 	const SCALARS = [
-		{ prop: '--el-rim', key: 'elRim', label: '--el-rim', min: 0, max: 0.2, step: 0.005, unit: false },
-		{ prop: '--el-cast-depth', key: 'elCastDepth', label: '--el-cast-depth', min: 0, max: 0.6, step: 0.01, unit: false },
-		{ prop: '--el-cast-spread', key: 'elCastSpread', label: '--el-cast-spread', min: 0, max: 20, step: 0.5, unit: false },
-		{ prop: '--el-fill', key: 'elFill', label: '--el-fill', min: 0, max: 1, step: 0.01, unit: false },
-		{ prop: '--frost-2', key: 'frost2', label: '--frost-2', min: 0, max: 20, step: 0.5, unit: true },
+		{
+			prop: '--el-rim',
+			key: 'elRim',
+			label: '--el-rim',
+			min: 0,
+			max: 0.2,
+			step: 0.005,
+			unit: false
+		},
+		{
+			prop: '--el-cast-depth',
+			key: 'elCastDepth',
+			label: '--el-cast-depth',
+			min: 0,
+			max: 0.6,
+			step: 0.01,
+			unit: false
+		},
+		{
+			prop: '--el-cast-spread',
+			key: 'elCastSpread',
+			label: '--el-cast-spread',
+			min: 0,
+			max: 20,
+			step: 0.5,
+			unit: false
+		},
+		{
+			prop: '--el-fill',
+			key: 'elFill',
+			label: '--el-fill',
+			min: 0,
+			max: 1,
+			step: 0.01,
+			unit: false
+		},
+		{
+			prop: '--frost-2',
+			key: 'frost2',
+			label: '--frost-2',
+			min: 0,
+			max: 20,
+			step: 0.5,
+			unit: true
+		},
 		{ prop: '--frost-3', key: 'frost3', label: '--frost-3', min: 0, max: 30, step: 0.5, unit: true }
 	];
 
@@ -56,13 +96,18 @@
 			}
 		};
 
-		const pane = new Pane({ container: tunerEl, title: 'Elevation scalars — one knob moves the whole ladder' });
+		const pane = new Pane({
+			container: tunerEl,
+			title: 'Elevation scalars — one knob moves the whole ladder'
+		});
 		for (const s of SCALARS) {
 			pane.addBinding(params, s.key, { label: s.label, min: s.min, max: s.max, step: s.step });
 		}
 		pane.on('change', apply);
 		pane.addButton({ title: 'Copy CSS' }).on('click', () => {
-			const body = SCALARS.map((s) => `\t${s.prop}: ${s.unit ? `${params[s.key]}px` : params[s.key]};`).join('\n');
+			const body = SCALARS.map(
+				(s) => `\t${s.prop}: ${s.unit ? `${params[s.key]}px` : params[s.key]};`
+			).join('\n');
 			navigator.clipboard?.writeText(`:root {\n${body}\n}`);
 		});
 		apply();
@@ -172,7 +217,7 @@
 		justify-content: center;
 		gap: 40px;
 		padding: 52px 40px;
-		border-radius: 16px;
+		border-radius: 0;
 		background:
 			radial-gradient(42% 55% at 18% 22%, oklch(62% 0.19 32 / 0.28), transparent 70%),
 			radial-gradient(40% 52% at 82% 72%, oklch(66% 0.12 250 / 0.2), transparent 70%),
@@ -206,7 +251,7 @@
 	   cast (box-shadow) and frost (backdrop-blur); edge is the shared rim border. */
 	.surface {
 		width: 100%;
-		border-radius: 12px;
+		border-radius: 0;
 		border-top: 1px solid var(--el-edge-light);
 		border-left: 1px solid var(--el-edge-light);
 		border-right: 1px solid var(--el-edge-shade);
@@ -285,7 +330,7 @@
 	}
 	.behind span {
 		height: 7px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: oklch(100% 0 0 / 16%);
 	}
 	.behind span:nth-child(odd) {
@@ -303,7 +348,7 @@
 	}
 	.mi {
 		padding: 9px 12px;
-		border-radius: 7px;
+		border-radius: 0;
 		font-size: 13px;
 		color: var(--text-secondary);
 	}

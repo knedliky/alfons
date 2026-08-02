@@ -58,6 +58,14 @@
 </script>
 
 <svelte:head>
+	<!--
+		JSON-LD structured data for search engines, which has no expression form
+		other than @html. structuredData is JSON.stringify of the items prop, not
+		user-authored markup, so there is no injection surface. Kept as a targeted
+		exception rather than downgrading the rule, so any other {@html} added to
+		this library still fails the build.
+	-->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html `<${'script'} type="application/ld+json">${structuredData}</${'script'}>`}
 </svelte:head>
 

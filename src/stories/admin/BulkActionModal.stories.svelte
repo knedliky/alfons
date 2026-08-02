@@ -31,7 +31,11 @@
 </script>
 
 <!-- Default delete action with multiple posts selected -->
-<Story name="Default (Delete Posts)" asChild args={{ visible: true, itemCount: 3, itemType: 'post', action: 'delete' }}>
+<Story
+	name="Default (Delete Posts)"
+	asChild
+	args={{ visible: true, itemCount: 3, itemType: 'post', action: 'delete' }}
+>
 	<BulkActionModal
 		visible={true}
 		itemCount={3}
@@ -43,7 +47,11 @@
 </Story>
 
 <!-- Single item selected — verifies singular label -->
-<Story name="Single Item" asChild args={{ visible: true, itemCount: 1, itemType: 'message', action: 'delete' }}>
+<Story
+	name="Single Item"
+	asChild
+	args={{ visible: true, itemCount: 1, itemType: 'message', action: 'delete' }}
+>
 	<BulkActionModal
 		visible={true}
 		itemCount={1}
@@ -55,7 +63,17 @@
 </Story>
 
 <!-- Archive action with primary variant button -->
-<Story name="Archive Action" asChild args={{ visible: true, itemCount: 5, itemType: 'subscriber', action: 'archive', confirmVariant: 'primary' }}>
+<Story
+	name="Archive Action"
+	asChild
+	args={{
+		visible: true,
+		itemCount: 5,
+		itemType: 'subscriber',
+		action: 'archive',
+		confirmVariant: 'primary'
+	}}
+>
 	<BulkActionModal
 		visible={true}
 		itemCount={5}
@@ -68,7 +86,11 @@
 </Story>
 
 <!-- Custom description and confirm label -->
-<Story name="Custom Description" asChild args={{ visible: true, itemCount: 12, itemType: 'post', action: 'publish' }}>
+<Story
+	name="Custom Description"
+	asChild
+	args={{ visible: true, itemCount: 12, itemType: 'post', action: 'publish' }}
+>
 	<BulkActionModal
 		visible={true}
 		itemCount={12}
@@ -83,7 +105,11 @@
 </Story>
 
 <!-- Many items selected — verifies large counts display correctly -->
-<Story name="Many Items Selected" asChild args={{ visible: true, itemCount: 247, itemType: 'message', action: 'delete' }}>
+<Story
+	name="Many Items Selected"
+	asChild
+	args={{ visible: true, itemCount: 247, itemType: 'message', action: 'delete' }}
+>
 	<BulkActionModal
 		visible={true}
 		itemCount={247}
@@ -95,7 +121,11 @@
 </Story>
 
 <!-- Closed state — modal not visible -->
-<Story name="Closed" asChild args={{ visible: false, itemCount: 3, itemType: 'post', action: 'delete' }}>
+<Story
+	name="Closed"
+	asChild
+	args={{ visible: false, itemCount: 3, itemType: 'post', action: 'delete' }}
+>
 	<BulkActionModal
 		visible={false}
 		itemCount={3}

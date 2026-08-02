@@ -29,7 +29,7 @@
 		flex-direction: column;
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		padding: var(--card-padding);
 		height: 100%;
 	}
@@ -52,7 +52,7 @@
 	.skeleton-badge {
 		width: 60px;
 		height: 20px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.1s;
@@ -61,7 +61,7 @@
 	.skeleton-title {
 		height: 24px;
 		width: 85%;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		margin-bottom: var(--space-2);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
@@ -78,7 +78,7 @@
 
 	.skeleton-line {
 		height: 14px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 	}
@@ -104,7 +104,7 @@
 	.skeleton-meta {
 		height: 12px;
 		width: 50%;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		margin-top: auto;
 		animation: skeleton-pulse 1.5s ease-in-out infinite;

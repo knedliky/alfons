@@ -178,9 +178,10 @@
 		max-width: 600px;
 		width: calc(100% - var(--space-4) * 2);
 		padding: var(--space-4) var(--space-5);
-		border-radius: var(--radius);
+		/* Square — toasts are non-agentic surfaces per the radius doctrine. */
+		border-radius: var(--radius-surface);
 		border: 1px solid transparent;
-		backdrop-filter: blur(12px);
+		backdrop-filter: blur(var(--surface-raised-frost));
 		box-shadow: var(--shadow-toast);
 		transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		pointer-events: none;
@@ -226,11 +227,6 @@
 	}
 	.toast-container.type-info .toast-icon {
 		color: var(--colour-info);
-	}
-
-	/* Light mode: neumorphic shadow for tactile raised feel */
-	:global([data-colour-mode='light']) .toast-container {
-		box-shadow: var(--toast-shadow);
 	}
 
 	.toast-content {

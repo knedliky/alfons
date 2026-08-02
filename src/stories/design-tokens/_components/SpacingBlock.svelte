@@ -26,7 +26,7 @@
 		gap: 12px;
 		padding: 8px 12px;
 		border: 1px solid var(--card-border);
-		border-radius: 6px;
+		border-radius: 0;
 		background: var(--card-bg);
 		cursor: pointer;
 		transition: all 0.2s ease;
@@ -49,7 +49,7 @@
 	.spacing-bar {
 		height: 24px;
 		background: var(--hex-red);
-		border-radius: 4px;
+		border-radius: 0;
 		opacity: 0.7;
 	}
 

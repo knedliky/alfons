@@ -17,30 +17,12 @@
 	});
 </script>
 
-<Story
-	name="Default — off"
-	asChild
-	args={{ name: 'published', label: 'Published', value: false }}
->
-	<BoolField
-		name="published"
-		label="Published"
-		value={false}
-		onchange={() => {}}
-	/>
+<Story name="Default — off" asChild args={{ name: 'published', label: 'Published', value: false }}>
+	<BoolField name="published" label="Published" value={false} onchange={() => {}} />
 </Story>
 
-<Story
-	name="On"
-	asChild
-	args={{ name: 'published', label: 'Published', value: true }}
->
-	<BoolField
-		name="published"
-		label="Published"
-		value={true}
-		onchange={() => {}}
-	/>
+<Story name="On" asChild args={{ name: 'published', label: 'Published', value: true }}>
+	<BoolField name="published" label="Published" value={true} onchange={() => {}} />
 </Story>
 
 <Story
@@ -65,7 +47,12 @@
 <Story
 	name="Required"
 	asChild
-	args={{ name: 'terms_agreed', label: 'I agree to the terms of service', value: false, required: true }}
+	args={{
+		name: 'terms_agreed',
+		label: 'I agree to the terms of service',
+		value: false,
+		required: true
+	}}
 >
 	<BoolField
 		name="terms_agreed"

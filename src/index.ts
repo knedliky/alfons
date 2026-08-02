@@ -2,15 +2,15 @@
  * Motif Design Library
  *
  * CSS tokens are separate entry points — import them directly:
- *   @import '@motif/design/public';
- *   @import '@motif/design/admin';
- *   @import '@motif/design/base';
+ *   @import '@alfons/design/public';
+ *   @import '@alfons/design/admin';
+ *   @import '@alfons/design/base';
  *
  * Component usage:
- *   import { Button, Input } from '@motif/design';
+ *   import { Button, Input } from '@alfons/design';
  *
  * Theme context:
- *   import { createThemeContext, getThemeVariant } from '@motif/design';
+ *   import { createThemeContext, getThemeVariant } from '@alfons/design';
  */
 export * from './components/index.js';
 export * from './contexts/theme.js';

@@ -50,7 +50,13 @@
 
 <Story name="Default — Monthly Views" asChild>
 	<div style="width: 640px;">
-		<LineChart data={monthlyData} title="Monthly Page Views" metric="views" width={600} height={300} />
+		<LineChart
+			data={monthlyData}
+			title="Monthly Page Views"
+			metric="views"
+			width={600}
+			height={300}
+		/>
 	</div>
 </Story>
 
@@ -92,7 +98,14 @@
 
 <Story name="Loading" asChild>
 	<div style="width: 640px;">
-		<LineChart data={[]} title="Monthly Page Views" metric="views" width={600} height={300} isLoading={true} />
+		<LineChart
+			data={[]}
+			title="Monthly Page Views"
+			metric="views"
+			width={600}
+			height={300}
+			isLoading={true}
+		/>
 	</div>
 </Story>
 

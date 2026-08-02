@@ -1,0 +1,53 @@
+/**
+ * Motif Design Library — Typography tokens
+ *
+ * IBM Plex Serif drives all display/heading text (the technical-editorial
+ * aesthetic); Switzer is the body sans; Azeret Mono carries metrics, code and
+ * pill labels; Rock Salt is the hand-drawn drop-cap accent; Moderat Bold is the
+ * brand wordmark face. Heading sizes live in base.css; these are the families
+ * and the semantic body sizes.
+ */
+
+@layer base {
+	:root {
+		/* === FAMILIES ===================================================== */
+		/* --font-mono names the 'Azeret Mono Variable' face that Fontsource
+		   actually registers, with the plain name as fallback. */
+		--font-body: 'Switzer', system-ui, -apple-system, sans-serif;
+		--font-mono: 'Azeret Mono Variable', 'Azeret Mono', ui-monospace, monospace;
+		--font-display: 'IBM Plex Serif', Georgia, serif;
+		--font-drop-cap: 'Rock Salt', Georgia, cursive;
+		/* NEW — the Motivka wordmark face (Moderat Bold, self-hosted in fonts.css).
+		   Used by the Wordmark brand component; never for body or headings. */
+		--font-wordmark: 'Moderat', system-ui, sans-serif;
+
+		/* === SEMANTIC BODY SIZES — prefer these over ad-hoc px ============
+		   The scale previously stopped at 12px, which left every control,
+		   axis tick, eyebrow and stepper label below that with no token to
+		   reach for. Surfaces invented their own 8px, 9px and 10px literals
+		   instead, and the dense ones (Merlin's occupation detail) became
+		   unreadable. The two functional steps below close that gap.
+
+		   THE FLOOR RULE: no functional text is set below --text-micro.
+		   If a layout only works when its labels drop under 12px, the layout
+		   is too tight — give it room rather than shrinking the type. */
+		--text-micro: 0.75rem; /* 12px — the floor. mono eyebrows, axis ticks, unit labels */
+		--text-caption: 0.8125rem; /* 13px — small labels, metadata, dense list rows */
+		--text-ui: 0.9375rem; /* 15px — functional UI text: controls, nav, list items */
+		--text-body: 1.125rem; /* 18px — matches body font-size */
+		--text-lead: 1.25rem; /* 20px — subheadlines, intros */
+
+		/* === OPACITY HIERARCHY ============================================ */
+		--opacity-primary: 1;
+		--opacity-secondary: 0.6;
+		--opacity-tertiary: 0.4;
+		--opacity-background: 0.2;
+		--opacity-line: 0.3;
+
+		/* === STROKE WIDTHS — standardised scale for iconography =========== */
+		--stroke-thin: 1;
+		--stroke-normal: 1.5;
+		--stroke-medium: 2;
+		--stroke-thick: 3;
+	}
+}

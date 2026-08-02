@@ -189,7 +189,7 @@
 	.portrait-portrait {
 		width: 100%;
 		aspect-ratio: 3 / 4;
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		border: 1px solid var(--card-border);
 		background: var(--card-bg);
 		transition: border-color var(--transition-normal);

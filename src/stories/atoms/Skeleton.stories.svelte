@@ -23,7 +23,11 @@
 	});
 </script>
 
-<Story name="Rectangle" asChild args={{ variant: 'rectangle', width: '100%', height: '3rem', theme: 'public' }}>
+<Story
+	name="Rectangle"
+	asChild
+	args={{ variant: 'rectangle', width: '100%', height: '3rem', theme: 'public' }}
+>
 	<div style="padding: 1rem; width: 300px;">
 		<Skeleton variant="rectangle" width="100%" height="3rem" theme="public" />
 	</div>
@@ -53,14 +57,22 @@
 	</div>
 </Story>
 
-<Story name="Card Placeholder" asChild args={{ variant: 'rectangle', width: '100%', height: '8rem', theme: 'public' }}>
+<Story
+	name="Card Placeholder"
+	asChild
+	args={{ variant: 'rectangle', width: '100%', height: '8rem', theme: 'public' }}
+>
 	<div style="padding: 1rem; width: 300px; display: flex; flex-direction: column; gap: 0.75rem;">
 		<Skeleton variant="rectangle" width="100%" height="8rem" theme="public" />
 		<Skeleton variant="text" lines={2} theme="public" />
 	</div>
 </Story>
 
-<Story name="Admin Rectangle" asChild args={{ variant: 'rectangle', width: '100%', height: '2rem', theme: 'admin' }}>
+<Story
+	name="Admin Rectangle"
+	asChild
+	args={{ variant: 'rectangle', width: '100%', height: '2rem', theme: 'admin' }}
+>
 	<div style="padding: 1rem; width: 300px;">
 		<Skeleton variant="rectangle" width="100%" height="2rem" theme="admin" />
 	</div>

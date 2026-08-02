@@ -35,19 +35,14 @@
 
 <!-- Default: June 2026 with no selection -->
 <Story name="Default" asChild>
-	<CalendarGrid
-		month={june2026}
-		variant="admin"
-		onMonthChange={() => {}}
-		onSelectDate={() => {}}
-	/>
+	<CalendarGrid month={june2026} variant="admin" onMonthChange={() => {}} onSelectDate={() => {}} />
 </Story>
 
 <!-- With Selected Date: 19/06/2026 highlighted -->
 <Story name="With Selected Date" asChild>
 	<CalendarGrid
 		month={june2026}
-		selectedDate={selectedDate}
+		{selectedDate}
 		variant="admin"
 		onMonthChange={() => {}}
 		onSelectDate={() => {}}
@@ -70,8 +65,8 @@
 <Story name="With Min/Max Constraints" asChild>
 	<CalendarGrid
 		month={june2026}
-		minDate={minDate}
-		maxDate={maxDate}
+		{minDate}
+		{maxDate}
 		variant="admin"
 		onMonthChange={() => {}}
 		onSelectDate={() => {}}
@@ -82,7 +77,7 @@
 <Story name="Public Variant" asChild>
 	<CalendarGrid
 		month={june2026}
-		selectedDate={selectedDate}
+		{selectedDate}
 		variant="public"
 		onMonthChange={() => {}}
 		onSelectDate={() => {}}

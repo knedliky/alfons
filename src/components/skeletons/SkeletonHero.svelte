@@ -30,7 +30,7 @@
 		/* Card surface styles — replaces orphaned .card-glass global class */
 		background: var(--card-bg);
 		border: 1px solid var(--card-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		padding: var(--card-padding);
 		box-shadow: var(--card-shadow);
 		margin-bottom: var(--space-6);
@@ -48,7 +48,7 @@
 		align-items: center;
 		justify-content: center;
 		min-height: 200px;
-		border-radius: 8px;
+		border-radius: 0;
 		/* Subtle gradient placeholder for illustration area */
 		background: var(--gradient-placeholder);
 	}
@@ -65,7 +65,7 @@
 	.skeleton-visual-label {
 		width: 100px;
 		height: 14px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.1s;
@@ -89,7 +89,7 @@
 	.skeleton-hero-title {
 		height: 32px;
 		width: 80%;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		margin-bottom: var(--space-4);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
@@ -105,7 +105,7 @@
 
 	.skeleton-line {
 		height: 16px;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 	}
@@ -122,7 +122,7 @@
 	.skeleton-hero-meta {
 		height: 14px;
 		width: 40%;
-		border-radius: 4px;
+		border-radius: 0;
 		background: var(--border-glass);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.6s;

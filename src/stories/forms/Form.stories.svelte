@@ -20,38 +20,40 @@
 	});
 </script>
 
-<Story
-	name="Default — idle"
-	asChild
-	args={{ theme: 'admin', status: 'idle', statusMessage: '' }}
->
+<Story name="Default — idle" asChild args={{ theme: 'admin', status: 'idle', statusMessage: '' }}>
 	<Form theme="admin" status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
 					id="org-name"
 					type="text"
 					placeholder="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<div>
-				<label for="contact-email" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="contact-email"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Contact email
 				</label>
 				<input
 					id="contact-email"
 					type="email"
 					placeholder="hello@example.com.au"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -67,19 +69,22 @@
 	<Form theme="admin" status="success" statusMessage="Organisation updated successfully.">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name-s" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name-s"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
 					id="org-name-s"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -90,24 +95,35 @@
 <Story
 	name="Error state"
 	asChild
-	args={{ theme: 'admin', status: 'error', statusMessage: 'Failed to update organisation. Please try again.' }}
+	args={{
+		theme: 'admin',
+		status: 'error',
+		statusMessage: 'Failed to update organisation. Please try again.'
+	}}
 >
-	<Form theme="admin" status="error" statusMessage="Failed to update organisation. Please try again.">
+	<Form
+		theme="admin"
+		status="error"
+		statusMessage="Failed to update organisation. Please try again."
+	>
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="org-name-e" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="org-name-e"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Organisation name
 				</label>
 				<input
 					id="org-name-e"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 6px; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--accent, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Save changes
 			</button>
@@ -115,38 +131,40 @@
 	</Form>
 </Story>
 
-<Story
-	name="Public theme"
-	asChild
-	args={{ theme: 'public', status: 'idle', statusMessage: '' }}
->
+<Story name="Public theme" asChild args={{ theme: 'public', status: 'idle', statusMessage: '' }}>
 	<Form theme="public" status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
-				<label for="full-name-p" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="full-name-p"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Full name
 				</label>
 				<input
 					id="full-name-p"
 					type="text"
 					placeholder="Jane Smith"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 6px;"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 0;"
 				/>
 			</div>
 			<div>
-				<label for="email-p" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;">
+				<label
+					for="email-p"
+					style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem;"
+				>
 					Email address
 				</label>
 				<input
 					id="email-p"
 					type="email"
 					placeholder="jane@example.com.au"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 6px;"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border, #ddd); border-radius: 0;"
 				/>
 			</div>
 			<button
 				type="submit"
-				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--colour-primary, #7c3aed); color: #fff; border: none; border-radius: 6px; cursor: pointer;"
+				style="height: 44px; padding: 0 1.5rem; font-size: 0.9375rem; font-weight: 500; background: var(--colour-primary, #7c3aed); color: #fff; border: none; border-radius: 0; cursor: pointer;"
 			>
 				Get started
 			</button>

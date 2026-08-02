@@ -32,9 +32,10 @@ export interface AgentInputProps {
 	/** Focus the field on mount — useful where the input is the primary action. */
 	autofocus?: boolean;
 	ariaLabel?: string;
-	/** Apply the gentle floating bob and the focus-glow pulse. Owned by the
+	/** Float the skill pill and pulse the border while focused. Owned by the
 	 *  component, opted into per surface (the homepage hero floats; the Merlin
-	 *  search sits still). */
+	 *  search sits still). The container itself always holds still — a slow-moving
+	 *  hairline border flashes as the compositor re-snaps it to the pixel grid. */
 	floating?: boolean;
 	/** Cap the field's growth a short gap above the viewport bottom; past that the
 	 *  field scrolls internally (oldest text scrolls off the top) instead of the box

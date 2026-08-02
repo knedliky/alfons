@@ -34,11 +34,7 @@
 	};
 </script>
 
-<Story
-	name="Default — empty"
-	asChild
-	args={{ name: 'department', label: 'Department', value: '' }}
->
+<Story name="Default — empty" asChild args={{ name: 'department', label: 'Department', value: '' }}>
 	<SelectField
 		name="department"
 		label="Department"
@@ -80,7 +76,13 @@
 <Story
 	name="With error"
 	asChild
-	args={{ name: 'department', label: 'Department', value: '', required: true, error: 'Please select a department' }}
+	args={{
+		name: 'department',
+		label: 'Department',
+		value: '',
+		required: true,
+		error: 'Please select a department'
+	}}
 >
 	<SelectField
 		name="department"
@@ -93,11 +95,7 @@
 	/>
 </Story>
 
-<Story
-	name="No options"
-	asChild
-	args={{ name: 'region', label: 'Region', value: '' }}
->
+<Story name="No options" asChild args={{ name: 'region', label: 'Region', value: '' }}>
 	<SelectField
 		name="region"
 		label="Region"

@@ -1,0 +1,71 @@
+/**
+ * Motif Design Library — Spacing, radius & layout tokens
+ *
+ * 10-step spacing scale, the radius family, input heights, and fixed
+ * structural dimensions for page chrome.
+ *
+ * RADIUS PHILOSOPHY (updated): every corner is SQUARE — the blinking-cursor
+ * motif carried to completion. The former agentic-curve reservation (rounded
+ * chat bubbles, pill buttons, rounded form fields) is retired; the whole
+ * radius family resolves to 0. The token names survive so the scale can be
+ * revived by editing values here, and so consumer declarations keep one
+ * source of truth. True circles are shapes, not corner treatments —
+ * border-radius: 50% dots, knobs, thumbs and avatars stay circular.
+ */
+
+@layer base {
+	:root {
+		/* === SPACING — 10-step scale ===================================== */
+		--space-1: 4px;
+		--space-2: 8px;
+		--space-3: 12px;
+		--space-4: 16px;
+		--space-5: 24px;
+		--space-6: 32px;
+		--space-7: 48px;
+		--space-8: 64px;
+		--space-9: 96px;
+		--space-10: 128px;
+
+		/* === RADIUS — uniformly square; names kept for one-edit revival ==== */
+		--radius-surface: 0; /* cards, modals, alerts, tooltips, stats, badges, toasts */
+		--radius: 0; /* form controls */
+		--card-radius: 0; /* form fields (textarea, select menu) */
+		--radius-message: 0; /* chat bubbles + agent input */
+		--radius-pill: 0; /* buttons, text inputs, toggles, pills */
+
+		/* === CARD METRICS ================================================ */
+		--card-padding: var(--space-6);
+		--card-padding-sm: var(--space-5);
+		--card-blur: 3.5px;
+
+		/* === INPUT HEIGHTS — match Button size tiers ===================== */
+		--input-height: 3rem;
+		--input-height-sm: 2.5rem;
+		--input-height-lg: 3.5rem;
+
+		/* === LAYOUT ====================================================== */
+		--header-height: 80px;
+		--back-link-height: 0px; /* overridden to 46px by BackLink in fixed mode */
+		--filter-control-height: 2.75rem;
+		--page-content-max-width: 1280px;
+		--page-padding-x: var(--space-5);
+		--page-padding-x-mobile: var(--space-4);
+		--page-top-padding: var(--space-8);
+		--page-top-padding-mobile: var(--space-8);
+		--section-padding-y: var(--space-10);
+		--section-padding-x: var(--page-padding-x);
+		--section-header-max-width: 36rem;
+		--layout-hero-min-height: calc(80vh - var(--header-height));
+
+		/* Scroll anchor offset — accounts for fixed header + back-link row */
+		--scroll-margin-top: calc(var(--header-height) + var(--back-link-height) + 16px);
+	}
+
+	/* Tighter filter-control chrome where pointer precision allows. */
+	@media (min-width: 640px) {
+		:root {
+			--filter-control-height: 2.25rem;
+		}
+	}
+}

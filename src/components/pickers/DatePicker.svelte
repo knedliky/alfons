@@ -188,7 +188,7 @@
 		color: var(--dp-text);
 		background-color: var(--dp-bg);
 		border: 1px solid var(--dp-border);
-		border-radius: 6px;
+		border-radius: 0;
 		cursor: pointer;
 		transition: all var(--transition-fast);
 		white-space: nowrap;
@@ -238,7 +238,7 @@
 		padding: var(--space-4);
 		background-color: var(--dp-bg-elevated);
 		border: 1px solid var(--dp-border);
-		border-radius: var(--card-radius);
+		border-radius: var(--radius-surface);
 		box-shadow: var(--shadow-popover);
 		animation: scaleIn 0.15s ease;
 	}

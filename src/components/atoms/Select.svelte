@@ -68,6 +68,12 @@
 		onchange
 	}: SelectProps = $props();
 
+	// The trigger declares role="combobox", which requires aria-controls pointing
+	// at the listbox it opens. Svelte's $props.id() gives a stable unique id per
+	// instance, so several selects on one page do not cross-wire.
+	const uid = $props.id();
+	const listboxId = `select-listbox-${uid}`;
+
 	let isOpen = $state(false);
 	let triggerRef = $state<HTMLButtonElement | null>(null);
 	let listRef = $state<HTMLDivElement | null>(null);
@@ -369,7 +375,9 @@
 	<button
 		bind:this={triggerRef}
 		type="button"
-		class="select-trigger motif-form-control {size === 'sm' ? 'select-trigger-sm' : ''} {className ?? ''}"
+		class="select-trigger motif-form-control {size === 'sm'
+			? 'select-trigger-sm'
+			: ''} {className ?? ''}"
 		style="
 			color: {tokens.text};
 			--form-ring-bg: var(--select-bg);
@@ -377,14 +385,19 @@
 		{disabled}
 		onclick={toggleDropdown}
 		onkeydown={handleKeydown}
+		role="combobox"
 		aria-haspopup="listbox"
+		aria-controls={listboxId}
 		aria-expanded={isOpen}
 		aria-invalid={error ? 'true' : undefined}
 		data-valid={valid ? 'true' : undefined}
 	>
 		<span
 			class="select-value"
-			style="{selectedOption?.style ?? ''} background: {valuePillBackground}; color: {!selectedOption ? tokens.textMuted : 'inherit'};"
+			style="{selectedOption?.style ??
+				''} background: {valuePillBackground}; color: {!selectedOption
+				? tokens.textMuted
+				: 'inherit'};"
 		>
 			{selectedOption?.label ?? placeholder}
 			<!-- sm/filter trigger: the caret lives inside the value pill so the accent
@@ -403,6 +416,7 @@
 			class="select-dropdown"
 			class:select-dropdown-sm={size === 'sm'}
 			class:select-dropdown-above={dropdownPosition.showAbove}
+			id={listboxId}
 			role="listbox"
 			tabindex="-1"
 			style="
@@ -445,8 +459,6 @@
 					{#each visibleOptions as option, index (option.value)}
 						{@const isSelected = option.value === value}
 						{@const isHighlighted = index === highlightedIndex}
-							{@const isFirst = index === 0}
-							{@const isLast = index === visibleOptions.length - 1}
 						<button
 							type="button"
 							class="select-option"
@@ -455,19 +467,12 @@
 								{option.style ?? ''}
 								color: {isSelected || isHighlighted ? tokens.text : tokens.textSecondary};
 								background: {isSelected
-									? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
-									: isHighlighted
-										? option.accent && option.accent !== 'transparent'
-											? `color-mix(in oklch, ${option.accent} 15%, transparent)`
-											: 'var(--select-highlighted-bg)'
-										: 'transparent'};
-								border-radius: {isFirst && isLast
-									? 'var(--radius-md)'
-									: isFirst
-										? 'var(--radius-md) var(--radius-md) 0 0'
-										: isLast
-											? '0 0 var(--radius-md) var(--radius-md)'
-											: '0'};
+								? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
+								: isHighlighted
+									? option.accent && option.accent !== 'transparent'
+										? `color-mix(in oklch, ${option.accent} 15%, transparent)`
+										: 'var(--select-highlighted-bg)'
+									: 'transparent'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}
@@ -612,13 +617,10 @@
 		max-height: 280px;
 		overflow: hidden;
 		padding: 0.375rem;
-		/* Panel sits one tier below the trigger: --radius-lg (16px) nests
-		   concentrically with the --radius-md (10px) options — 10px option +
-		   0.375rem (6px) padding = the 16px panel corner, so the option hover fill
-		   echoes the panel edge instead of leaving empty arcs in oversized corners.
-		   (The trigger keeps the rounder --radius-message stadium to match the pill
-		   ToggleGroup beside it; the menu is a panel, not a pill.) */
-		border-radius: var(--radius-lg);
+		/* Square panel — the menu is a floating surface, not a pill, so it takes
+		   the sharp non-agentic corner. (The trigger keeps the rounder
+		   --radius-message stadium to match the pill ToggleGroup beside it.) */
+		border-radius: 0;
 		box-shadow: var(--select-dropdown-shadow);
 		/* L3 frosted glass — the ladder's floating-level blur keeps the translucent
 		   --elevation-3-bg dropdown legible over busy content. */
@@ -679,7 +681,7 @@
 		font-family: inherit;
 		background: transparent;
 		border: 1px solid var(--select-border);
-		border-radius: var(--radius-md);
+		border-radius: var(--radius);
 		outline: none;
 		transition: border-color var(--transition-fast);
 	}
@@ -720,16 +722,15 @@
 
 	/* Options match the old CustomSelect: full-width, left-aligned, mono, with
 	   long labels wrapping rather than truncating. The selected row is marked by
-	   an accent-tinted background (set inline), not a trailing check icon. The
-	   corner radius is also set inline per position so the rows read as one
-	   connected list: only the first option rounds its top corners and the last
-	   its bottom corners; the middle rows are square. */
+	   an accent-tinted background (set inline), not a trailing check icon.
+	   Square rows in a square panel — the whole menu reads as one sharp block. */
 	.select-option {
 		display: block;
 		width: 100%;
 		padding: var(--space-2) var(--space-3);
 		background: transparent;
 		border: none;
+		border-radius: 0;
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
@@ -752,7 +753,7 @@
 
 	.select-options::-webkit-scrollbar-thumb {
 		background: var(--select-border);
-		border-radius: 3px;
+		border-radius: 0;
 	}
 
 	.select-options::-webkit-scrollbar-thumb:hover {

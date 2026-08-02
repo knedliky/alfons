@@ -2,14 +2,9 @@
  * Motif Design Library — Shared Form Control State Styles
  *
  * Error and success focus-ring rules for all form control atoms
- * (Input, Select, Textarea). Eliminates duplication by targeting
- * the shared `.motif-form-control` class that each atom applies
- * to its interactive element.
- *
- * Theme handling:
- * - Public context: inner ring uses var(--bg-primary)
- * - Admin context: inner ring uses var(--admin-bg)
- * - Select overrides this via scoped --select-bg custom property
+ * (Input, Select, Textarea). Unchanged in this revision — the heavier
+ * box-shadow rings remain the error/success affordance; the quiet neutral
+ * :focus-visible outline in base.css is the default focus state.
  *
  * Usage:
  *   @import '@motif/design/form-states';

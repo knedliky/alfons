@@ -278,7 +278,7 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0;
 		color: var(--admin-text-muted);
 		cursor: pointer;
 		transition: all 0.15s ease;

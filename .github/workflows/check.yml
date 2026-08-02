@@ -1,0 +1,75 @@
+name: check
+
+# No workflow input is interpolated into any run: step — every command below is
+# a fixed string. Nothing here reads github.event.*, so there is no injection
+# surface to escape.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - run: bun install --frozen-lockfile
+
+      # The manifest is generated from the tree and committed, like a lockfile.
+      # If regenerating it changes the file, the committed copy was stale — and
+      # a stale manifest is the one failure mode that cannot be noticed at
+      # runtime, because the MCP server answers from it confidently either way.
+      # This gate has no calibration period by design (D-162): the generator is
+      # deterministic, so a diff can only mean the file did not match the code.
+      # `--check` rather than regenerate-and-diff, because half the manifest is
+      # not derived from the tree. Lifecycle comes from the context database
+      # (AL-009), which a runner cannot reach, so a full run here would either
+      # fail on every build or emit an unannotated file and report drift that
+      # is really just the missing database. `--check` recomputes the derived
+      # fields alone and compares those. What it therefore cannot catch is a
+      # lifecycle row edited in Postgres without regenerating; that is caught
+      # by the full run that has to happen to write the row in the first place.
+      - name: manifest is current
+        run: bun run manifest:check
+
+      - name: types
+        run: bun run check
+
+      - name: lint
+        run: bun run lint
+
+      - name: formatting
+        run: bun run format:check
+
+      # build:lib, not build — the latter regenerates the manifest first and so
+      # needs the database. The step above already established that the
+      # committed manifest matches the tree, which is what the build consumes.
+      - name: build
+        run: bun run build:lib
+
+      # The MCP server answers from the committed manifest and reaches no
+      # database, so it runs here unchanged. Worth gating on: the tools are
+      # what other repositories build against, and a wrong answer from them
+      # reads as authoritative rather than as a failure.
+      - name: mcp
+        run: bun run mcp:smoke
+
+      # The rule fixtures, including the four cases that defeated a hand-rolled
+      # scanner during AL-001. They are cheap and they are the only thing
+      # standing between a rule and a silent false negative — retired-token
+      # reported zero across all of Atlas until a fixture pinned down that a
+      # token can be named outside a <style> block.
+      - name: rules
+        run: bun run test:rules
+
+      # Scaffolds a component and then reviews it with the rule engine. This is
+      # what keeps the fast path and the compliant path the same path: a rule
+      # added above that the scaffold does not satisfy fails here.
+      - name: scaffold
+        run: bun run test:scaffold

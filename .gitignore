@@ -12,3 +12,4 @@ storybook-static/
 
 # TypeScript incremental build info — generated during type-checking, not committed
 *.tsbuildinfo
+screenshots/

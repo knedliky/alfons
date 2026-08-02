@@ -73,10 +73,6 @@
 		cursor: not-allowed;
 	}
 
-	:global([data-colour-mode='light']) .range-slider {
-		background-color: var(--surface-dark-subtle);
-	}
-
 	/* Webkit Slider Thumb */
 	.range-slider::-webkit-slider-thumb {
 		-webkit-appearance: none;

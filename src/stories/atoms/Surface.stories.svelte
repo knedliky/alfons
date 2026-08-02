@@ -31,15 +31,17 @@
 
 <Story name="Section Element" asChild args={{ as: 'section' }}>
 	<Surface as="section" class="p-4" style="max-width: 360px;">
-		<h2 style="font-size: var(--text-heading); margin-bottom: 0.5rem;">Panel heading</h2>
+		<h2 style="font-size: var(--text-lead); margin-bottom: 0.5rem;">Panel heading</h2>
 		<p style="font-size: var(--text-body);">Section content rendered inside a surface panel.</p>
 	</Surface>
 </Story>
 
 <Story name="Article Element" asChild args={{ as: 'article' }}>
 	<Surface as="article" class="p-5" style="max-width: 400px;">
-		<h3 style="font-size: var(--text-subheading); margin-bottom: 0.5rem;">Article title</h3>
-		<p style="font-size: var(--text-body);">Article body text inside a frosted surface container.</p>
+		<h3 style="font-size: var(--text-body); margin-bottom: 0.5rem;">Article title</h3>
+		<p style="font-size: var(--text-body);">
+			Article body text inside a frosted surface container.
+		</p>
 	</Surface>
 </Story>
 
@@ -57,6 +59,8 @@
 
 <Story name="Aside Element" asChild args={{ as: 'aside' }}>
 	<Surface as="aside" class="p-4" style="max-width: 280px;">
-		<p style="font-size: var(--text-caption);">Aside note — supplementary information in a surface panel.</p>
+		<p style="font-size: var(--text-caption);">
+			Aside note — supplementary information in a surface panel.
+		</p>
 	</Surface>
 </Story>

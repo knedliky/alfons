@@ -38,7 +38,12 @@
 <Story
 	name="With value"
 	asChild
-	args={{ name: 'organisation_name', label: 'Organisation name', value: 'Acme Pty Ltd', type: 'text' }}
+	args={{
+		name: 'organisation_name',
+		label: 'Organisation name',
+		value: 'Acme Pty Ltd',
+		type: 'text'
+	}}
 >
 	<TextField
 		name="organisation_name"
@@ -68,7 +73,12 @@
 <Story
 	name="Email"
 	asChild
-	args={{ name: 'contact_email', label: 'Contact email', value: 'hello@example.com.au', type: 'email' }}
+	args={{
+		name: 'contact_email',
+		label: 'Contact email',
+		value: 'hello@example.com.au',
+		type: 'email'
+	}}
 >
 	<TextField
 		name="contact_email"
@@ -79,11 +89,7 @@
 	/>
 </Story>
 
-<Story
-	name="URL"
-	asChild
-	args={{ name: 'website', label: 'Website', value: '', type: 'url' }}
->
+<Story name="URL" asChild args={{ name: 'website', label: 'Website', value: '', type: 'url' }}>
 	<TextField
 		name="website"
 		label="Website"
@@ -141,7 +147,13 @@
 <Story
 	name="Disabled"
 	asChild
-	args={{ name: 'username', label: 'Username', value: 'simon.karumbi', type: 'text', disabled: true }}
+	args={{
+		name: 'username',
+		label: 'Username',
+		value: 'simon.karumbi',
+		type: 'text',
+		disabled: true
+	}}
 >
 	<TextField
 		name="username"

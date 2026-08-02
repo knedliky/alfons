@@ -246,8 +246,7 @@
 			onblur={handleBlur}
 			onkeydown={handleKeydown}
 			aria-invalid={!!displayError}
-			aria-describedby={displayError ? `${name}-error` : undefined}
-		></textarea>
+			aria-describedby={displayError ? `${name}-error` : undefined}></textarea>
 	</div>
 
 	{#if displayError}
@@ -302,7 +301,7 @@
 		color: var(--admin-text-secondary);
 		background: transparent;
 		border: 1px solid var(--admin-border);
-		border-radius: 4px;
+		border-radius: 0;
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
@@ -326,7 +325,7 @@
 	.editor-wrapper {
 		display: flex;
 		border: 1px solid var(--admin-border);
-		border-radius: 8px;
+		border-radius: 0;
 		overflow: hidden;
 		background-color: var(--admin-bg);
 		transition: all 0.15s ease;

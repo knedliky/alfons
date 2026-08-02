@@ -69,10 +69,6 @@
 		line-height: 1;
 	}
 
-	.button:focus-visible {
-		outline: none;
-	}
-
 	.button:disabled {
 		pointer-events: none;
 		opacity: 0.5;
@@ -100,20 +96,6 @@
 	.button[data-size='icon'] {
 		height: 3rem;
 		width: 3rem;
-	}
-
-	/* Focus rings — theme-aware offset colour */
-
-	.button[data-theme='public']:focus-visible {
-		box-shadow:
-			0 0 0 2px var(--bg-primary),
-			0 0 0 4px var(--accent);
-	}
-
-	.button[data-theme='admin']:focus-visible {
-		box-shadow:
-			0 0 0 2px var(--admin-bg),
-			0 0 0 4px var(--accent);
 	}
 
 	/* Public theme variants */
@@ -223,20 +205,5 @@
 	.button[data-theme='admin'][data-variant='link']:hover {
 		color: var(--admin-text);
 		text-decoration: underline;
-	}
-
-	/* Light mode enhancements */
-
-	:global([data-colour-mode='light']) .button[data-variant='secondary']:hover {
-		background: var(--button-secondary-hover-bg);
-		border-color: var(--button-secondary-hover-border);
-	}
-
-	:global([data-colour-mode='light']) .button[data-variant='outline']:hover {
-		box-shadow: var(--button-outline-hover-shadow);
-	}
-
-	:global([data-colour-mode='light']) .button[data-variant='ghost']:hover {
-		background: var(--button-ghost-hover-bg);
 	}
 </style>

@@ -86,16 +86,6 @@
 		padding-bottom: calc(var(--page-top-padding) * 0.5);
 	}
 
-	/* Light mode: subtle top highlight for section surface separation */
-	:global([data-colour-mode='light']) .page-section {
-		border-top: 1px solid var(--section-border-top-light);
-	}
-
-	/* First section should not have a top border */
-	:global([data-colour-mode='light']) .page-section:first-child {
-		border-top: none;
-	}
-
 	@media (max-width: 768px) {
 		.page-section {
 			padding-left: var(--page-padding-x-mobile);

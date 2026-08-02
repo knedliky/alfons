@@ -312,7 +312,7 @@
 		color: var(--admin-text);
 		background-color: var(--admin-bg);
 		border: 1px solid var(--admin-border);
-		border-radius: 8px;
+		border-radius: 0;
 		cursor: pointer;
 		text-align: left;
 		transition: all 0.15s ease;
@@ -358,7 +358,7 @@
 		font-size: 0.8125rem;
 		background-color: rgba(var(--accent-rgb), 0.15);
 		color: var(--accent);
-		border-radius: 4px;
+		border-radius: 0;
 	}
 
 	.tag.more {
@@ -379,7 +379,7 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		border-radius: 2px;
+		border-radius: 0;
 		color: inherit;
 		cursor: pointer;
 		opacity: 0.7;
@@ -404,7 +404,7 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0;
 		color: var(--admin-text-muted);
 		cursor: pointer;
 		transition: all 0.15s ease;
@@ -442,7 +442,7 @@
 		overflow-y: auto;
 		background-color: var(--admin-bg);
 		border: 1px solid var(--admin-border);
-		border-radius: 8px;
+		border-radius: 0;
 		box-shadow: var(--shadow-dropdown);
 	}
 
@@ -463,15 +463,15 @@
 	}
 
 	.dropdown-option:first-child {
-		border-radius: 7px 7px 0 0;
+		border-radius: 0;
 	}
 
 	.dropdown-option:last-child {
-		border-radius: 0 0 7px 7px;
+		border-radius: 0;
 	}
 
 	.dropdown-option:only-child {
-		border-radius: 7px;
+		border-radius: 0;
 	}
 
 	.dropdown-option:hover:not(:disabled) {
@@ -495,7 +495,7 @@
 		height: 18px;
 		flex-shrink: 0;
 		border: 1.5px solid var(--admin-border);
-		border-radius: 4px;
+		border-radius: 0;
 		background-color: transparent;
 		transition: all 0.15s ease;
 	}
@@ -538,7 +538,7 @@
 
 	.dropdown-list::-webkit-scrollbar-thumb {
 		background: var(--admin-border);
-		border-radius: 3px;
+		border-radius: 0;
 	}
 
 	.select-trigger-wrapper {

@@ -66,7 +66,7 @@
 		height: 80px;
 		background: var(--card-bg, rgba(20, 16, 16, 0.4));
 		border: 1px solid var(--card-border, rgba(243, 243, 243, 0.1));
-		border-radius: 8px;
+		border-radius: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;

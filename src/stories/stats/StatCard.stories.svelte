@@ -87,13 +87,7 @@
 
 <!-- With badge count — notification-style indicator -->
 <Story name="With Badge" asChild>
-	<StatCard
-		label="Unread Messages"
-		value={84}
-		icon="messages"
-		colour="red"
-		badgeCount={7}
-	/>
+	<StatCard label="Unread Messages" value={84} icon="messages" colour="red" badgeCount={7} />
 </Story>
 
 <Story name="Loading" asChild>
@@ -103,9 +97,33 @@
 <!-- Four-up grid: typical dashboard usage -->
 <Story name="Dashboard Row" asChild>
 	<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 900px;">
-		<StatCard label="Active Users" value={3_847} icon="users" colour="blue" subValue="+9% this month" />
-		<StatCard label="Messages Sent" value={12_640} icon="messages" colour="red" subValue="+22% this month" />
-		<StatCard label="Published Posts" value={92} icon="posts" colour="purple" subValue="3 pending review" />
-		<StatCard label="Applications" value={427} icon="chart" colour="green" subValue="−5% this month" />
+		<StatCard
+			label="Active Users"
+			value={3_847}
+			icon="users"
+			colour="blue"
+			subValue="+9% this month"
+		/>
+		<StatCard
+			label="Messages Sent"
+			value={12_640}
+			icon="messages"
+			colour="red"
+			subValue="+22% this month"
+		/>
+		<StatCard
+			label="Published Posts"
+			value={92}
+			icon="posts"
+			colour="purple"
+			subValue="3 pending review"
+		/>
+		<StatCard
+			label="Applications"
+			value={427}
+			icon="chart"
+			colour="green"
+			subValue="−5% this month"
+		/>
 	</div>
 </Story>

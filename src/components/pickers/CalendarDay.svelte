@@ -32,7 +32,7 @@
 	 *
 	 * Features:
 	 * - States: today, selected, highlighted (in-range), outside-month, disabled
-	 * - Range start/end with directional border-radius
+	 * - Range start/end states
 	 * - Admin and public theme variants via scoped tokens
 	 */
 
@@ -85,7 +85,7 @@
 		font-weight: 400;
 		background-color: transparent;
 		border: none;
-		border-radius: 6px;
+		border-radius: 0;
 		cursor: pointer;
 		transition: all var(--transition-fast);
 
@@ -101,7 +101,7 @@
 		--day-text: var(--text-primary);
 		--day-text-muted: var(--text-muted);
 		--day-bg-hover: var(--card-bg);
-		--day-accent: var(--accent-red);
+		--day-accent: var(--accent);
 	}
 
 	.calendar-day:hover:not(.disabled) {
@@ -129,15 +129,15 @@
 	}
 
 	.calendar-day.range-start {
-		border-radius: 6px 0 0 6px;
+		border-radius: 0;
 	}
 
 	.calendar-day.range-end {
-		border-radius: 0 6px 6px 0;
+		border-radius: 0;
 	}
 
 	.calendar-day.range-start.range-end {
-		border-radius: 6px;
+		border-radius: 0;
 	}
 
 	.calendar-day.disabled {
