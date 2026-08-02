@@ -47,20 +47,21 @@ bun run storybook
 bun run build-storybook
 ```
 
-## Tech stack
+## Stack surprises
 
-- **Svelte 5** — components use `$props()`, `$state()`, `$derived()`, `$effect()` runes only
-- **TypeScript** — strict mode; all component props typed
-- **Tailwind CSS 4** — via `@tailwindcss/vite`, no `tailwind.config.js`
-- **Vite library mode** — `preserveModules: true`, ES format only
-- **Storybook 10** — `@storybook/svelte-vite` framework; no `addon-essentials` (bundled in core)
-- **Bun** — package manager for all installs and scripts
+The versions and dependencies are in `package.json`; only the two things that
+are not written down anywhere else live here.
+
+- **Tailwind 4 has no `tailwind.config.js`.** It is configured through
+  `@tailwindcss/vite` and `@theme` in CSS. Looking for the config file and not
+  finding it is not a sign anything is missing.
+- **Storybook 10 has no `addon-essentials`.** It was folded into core; adding it
+  back breaks the build.
 
 ## Conventions
 
 - **Australian English** in all identifiers, comments, and strings
   (`colour`, `initialise`, `behaviour`, `organise`, etc.)
-- Svelte 5 runes only — no `export let`, no `$:`, no `createEventDispatcher`
 - Component files: `PascalCase.svelte`
 - Token files: lowercase with hyphens (`colours.css`, `spacing.css`, `base.css`)
 - All CSS custom properties use OKLCH for colour values
@@ -147,6 +148,12 @@ These are no longer prose. Each is a rule in `src/rules/`, with a fixture provin
 fires and a fixture proving it does not fire on correct code — `bun run test:rules`.
 Advisory in v1 (D-159); promotion to blocking waits on a measured false-positive rate,
 which `bun run rules:baseline` records against Atlas.
+
+Advisory for consumers, that is. Inside this repo the three `svelte5-runes` cases are
+already blocking: `eslint.config.js` expresses them as `no-restricted-syntax` selectors,
+so `bun run lint` fails on `export let`, `$:` or `createEventDispatcher` here regardless
+of D-159. Note the selector for `$:` is `SvelteReactiveStatement` — `LabeledStatement`
+is what you would reach for and it matches nothing, failing silently.
 
 | Rule                    | Catches                                                      |
 | ----------------------- | ------------------------------------------------------------ |
