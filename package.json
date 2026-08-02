@@ -21,7 +21,10 @@
 	},
 	"scripts": {
 		"manifest": "bun run scripts/generate-manifest.ts",
-		"build": "bun run manifest && vite build",
+		"manifest:check": "bun run scripts/generate-manifest.ts --check",
+		"lifecycle:sync": "bun run scripts/sync-lifecycle-entities.ts",
+		"build": "bun run manifest && bun run build:lib",
+		"build:lib": "vite build",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"lint": "eslint .",
 		"format": "prettier --write .",

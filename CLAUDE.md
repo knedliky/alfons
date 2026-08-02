@@ -20,8 +20,17 @@ manifest, the MCP answers and the catalogue follow from it.
 # Regenerate the manifest, then build the library into dist/
 bun run build
 
-# Regenerate alfons.manifest.json alone
+# Regenerate alfons.manifest.json alone. Needs the context database: the
+# manifest joins authored lifecycle from the alfons schema (D-162).
 bun run manifest
+
+# Verify the derived half of the manifest matches the tree. Needs no database,
+# which is what CI runs — see "Two halves of the manifest" below.
+bun run manifest:check
+
+# Teach the database the token and component names the tree now carries, so a
+# lifecycle replacement has something to reference. Needs a writer connection.
+ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync
 
 # Type-check Svelte components and TypeScript
 bun run check
@@ -122,12 +131,39 @@ implemented, the prose is a placeholder for a check, not a substitute for one.
 - `bun run build` exits 0 with `dist/index.d.ts` present after build
 - `bun run check` exits 0 with no type errors
 
+## Two halves of the manifest
+
+`alfons.manifest.json` carries two classes of fact, and they have opposite failure modes
+(D-162).
+
+**Derived** — components, props, tokens, values, story ids, importers. Recomputable from
+the tree, so the tree is their authority and drift is a diff. `bun run manifest:check`
+recomputes these alone and compares; it needs no database, which is why CI runs it.
+
+**Authored** — whether a token is `live`, `deprecated` or `retired`, what replaced it, and
+the decision that said so. Nothing can recover this from a parse: a retired token and an
+unadopted one look identical. These live in the `alfons` schema in the context database,
+under `migrations/`, and `bun run manifest` joins them on at build time.
+
+Postgres is therefore a **build-time dependency and never a runtime one**. The MCP server
+and every consumer read the emitted file. Never make a consumer reach the database.
+
+A lifecycle row whose subject is gone from the tree is emitted as a **tombstone**, which is
+what makes deletion safe: `var(--chart-tooltip-bg)` gets answered with "retired, use
+`--chart-tooltip-bg-admin`, see D-165" rather than with silence.
+
 ## Retiring a token or component
 
 Removing something is a decision, and the reason has to survive the removal. Three
 retirements — light mode, the accent-tinted focus ring, and the fourth frost level — were
 recorded only as comments in CSS, and a later reader misread all three as accidental loss.
 
-Record the decision in the ledger, then reference it where the thing used to be. Do not
-leave the tokens behind: 111 of 320 currently have no consumer, largely as residue from
-retirements that were never finished.
+The schema now enforces the rule the prose used to only ask for: `alfons.lifecycle` refuses
+a `deprecated` or `retired` row without a foreign key to `ledger.decisions`. So record the
+decision first, then write the row. Do not leave the definition behind unannotated.
+
+All 110 tokens that once had no consumer are now classified, along with the 2 the deletions
+orphaned in turn — 27 were live all along and consumed by Atlas, 49 are deprecated, 36 were
+retired and deleted. Note the first group:
+`referencedBy` is **repo-local**, so a token used only by a consumer repository looks
+orphaned here. Grep the consumers before concluding anything is dead.

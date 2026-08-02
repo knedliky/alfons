@@ -10,19 +10,30 @@
  * declarations there are hand-typed literals in vite.config.ts covering 13 of 83
  * components (AL-011), so reading them would make the manifest a copy of a copy.
  *
- * Run: bun run manifest
+ * Two entry points, because the manifest has two kinds of fact in it (D-162):
+ *
+ *   bun run manifest        parse the tree, join authored lifecycle from the
+ *                           context database, write the file. Needs Postgres.
+ *   bun run manifest:check  parse the tree and compare only the derived fields
+ *                           against the committed file. Needs nothing, which is
+ *                           what CI runs — a runner has no database, and a
+ *                           gate that silently emitted an unannotated manifest
+ *                           would report drift on every build.
  */
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, basename, dirname } from 'node:path';
 import postcss from 'postcss';
 import ts from 'typescript';
+import { rows } from './psql.ts';
 import type {
 	Manifest,
 	ComponentEntry,
 	TokenEntry,
 	PropEntry,
 	PropsSource,
-	Surface
+	Surface,
+	Lifecycle,
+	Tombstone
 } from '../src/manifest/types.ts';
 
 const ROOT = join(import.meta.dirname, '..');
@@ -31,7 +42,7 @@ const TOKENS_DIR = join(ROOT, 'src/tokens');
 const STORIES_DIR = join(ROOT, 'src/stories');
 const OUT = join(ROOT, 'alfons.manifest.json');
 
-const SCHEMA_VERSION = 1;
+const SCHEMA_VERSION = 2;
 
 /** Aggregates rather than defines, so its @import lines are not definitions. */
 const TOKEN_ENTRY_MANIFEST = 'public.css';
@@ -102,7 +113,8 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 				surface: surfaceForFile(file),
 				referencedBy: [],
 				usedInTokenLayer: false,
-				usedInStories: false
+				usedInStories: false,
+				lifecycle: null
 			});
 		});
 	}
@@ -263,7 +275,8 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
 			composes,
 			importedBy: [],
 			exported: new RegExp(`\\b${name}\\b`).test(barrels),
-			storyId: storyIds.get(name) ?? null
+			storyId: storyIds.get(name) ?? null,
+			lifecycle: null
 		});
 	}
 	return { components, unparsed };
@@ -296,44 +309,169 @@ function linkConsumers(components: ComponentEntry[], tokens: TokenEntry[]): void
 }
 
 // ---------------------------------------------------------------------------
+// Derived facts — everything above, assembled
+// ---------------------------------------------------------------------------
 
-const { tokens, usedInTokenLayer } = collectTokens();
-const { components, unparsed } = collectComponents();
-linkConsumers(components, tokens);
+/** Sorted throughout and carrying no timestamp, so an unchanged tree yields an
+ *  identical file and CI can fail on the diff (C7). */
+function buildDerived(): Manifest {
+	const { tokens, usedInTokenLayer } = collectTokens();
+	const { components, unparsed } = collectComponents();
+	linkConsumers(components, tokens);
 
-const usedInStories = new Set(
-	walk(STORIES_DIR, (path) => /\.stories\.(svelte|ts|js)$/.test(path))
-		.flatMap((path) => [...readFileSync(path, 'utf8').matchAll(/var\((--[a-z0-9-]+)/g)])
-		.map((match) => match[1])
-);
+	const usedInStories = new Set(
+		walk(STORIES_DIR, (path) => /\.stories\.(svelte|ts|js)$/.test(path))
+			.flatMap((path) => [...readFileSync(path, 'utf8').matchAll(/var\((--[a-z0-9-]+)/g)])
+			.map((match) => match[1])
+	);
 
-for (const token of tokens) {
-	token.usedInTokenLayer = usedInTokenLayer.has(token.name);
-	token.usedInStories = usedInStories.has(token.name);
+	for (const token of tokens) {
+		token.usedInTokenLayer = usedInTokenLayer.has(token.name);
+		token.usedInStories = usedInStories.has(token.name);
+	}
+
+	return {
+		schemaVersion: SCHEMA_VERSION,
+		components: components.sort((a, b) => a.name.localeCompare(b.name)),
+		tokens: tokens.sort((a, b) => a.name.localeCompare(b.name)),
+		tombstones: [],
+		unparsed: unparsed.sort()
+	};
 }
 
-// Sorted throughout and carrying no timestamp, so an unchanged tree yields an
-// identical file and CI can fail on the diff (C7).
-const manifest: Manifest = {
-	schemaVersion: SCHEMA_VERSION,
-	components: components.sort((a, b) => a.name.localeCompare(b.name)),
-	tokens: tokens.sort((a, b) => a.name.localeCompare(b.name)),
-	unparsed: unparsed.sort()
-};
+// ---------------------------------------------------------------------------
+// Authored facts — the alfons schema in the context database (D-162)
+// ---------------------------------------------------------------------------
 
-writeFileSync(OUT, `${JSON.stringify(manifest, null, 2)}\n`);
+/**
+ * Read every lifecycle row, keyed `kind:name`.
+ *
+ * Postgres is a BUILD-time dependency and never a runtime one. Nothing that
+ * consumes the manifest — the MCP server, Atlas, Field Notes — opens a
+ * connection; they read the emitted file, which is the same reason the gateway
+ * exists. That is also why this throws rather than degrading: a manifest
+ * missing its lifecycle annotations is indistinguishable from one where nothing
+ * has been retired, and would quietly tell an agent that --radius-md is simply
+ * unknown rather than replaced by --radius under D-160.
+ */
+function readLifecycle(): Map<string, Lifecycle> {
+	// recorded_on is a date, and ::text keeps it one — casting through a
+	// timestamp would let a timezone shift churn the manifest by a day.
+	const records = rows<{ kind: string; name: string } & Lifecycle>(`
+		select coalesce(json_agg(row order by row.kind, row.name), '[]')
+		from (
+			select kind::text,
+			       name,
+			       status::text,
+			       replacement_name as replacement,
+			       reason,
+			       decision_id as "decisionId",
+			       recorded_on::text as "recordedOn"
+			from alfons.lifecycle
+		) as row
+	`);
 
-const orphanTokens = tokens.filter(
-	(token) => token.referencedBy.length === 0 && !token.usedInTokenLayer && !token.usedInStories
-).length;
-const noProps = components.filter((component) => component.propsSource === 'none').length;
-console.log(
-	`manifest: ${components.length} components, ${tokens.length} tokens ` +
-		`(${orphanTokens} with no consumer), ${noProps} with no readable props`
-);
+	return new Map(
+		records.map(({ kind, name, ...lifecycle }) => [`${kind}:${name}`, lifecycle as Lifecycle])
+	);
+}
 
-if (unparsed.length) {
-	console.error(`\n${unparsed.length} component(s) could not be parsed:`);
-	for (const path of unparsed) console.error(`  ${path}`);
+/**
+ * Attach each judgement to its subject, and tombstone the ones with none.
+ *
+ * A lifecycle row with no derived counterpart is not an error: it is the normal
+ * end state of a retirement that finished cleaning up. Emitting it keeps the
+ * answer available after the definition is gone.
+ */
+function applyLifecycle(manifest: Manifest, lifecycle: Map<string, Lifecycle>): void {
+	const claimed = new Set<string>();
+
+	for (const token of manifest.tokens) {
+		const key = `token:${token.name}`;
+		token.lifecycle = lifecycle.get(key) ?? null;
+		if (token.lifecycle) claimed.add(key);
+	}
+	for (const component of manifest.components) {
+		const key = `component:${component.name}`;
+		component.lifecycle = lifecycle.get(key) ?? null;
+		if (component.lifecycle) claimed.add(key);
+	}
+
+	manifest.tombstones = [...lifecycle]
+		.filter(([key]) => !claimed.has(key))
+		.map(([key, entry]) => {
+			const [kind, ...rest] = key.split(':');
+			return { kind: kind as Tombstone['kind'], name: rest.join(':'), lifecycle: entry };
+		})
+		.sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name));
+}
+
+// ---------------------------------------------------------------------------
+// Entry points
+// ---------------------------------------------------------------------------
+
+/**
+ * Strip the authored half back out.
+ *
+ * `manifest:check` compares this projection of the committed file against a
+ * fresh parse of the tree, which is what lets CI gate drift on a runner with no
+ * database. It catches a component or token added without regenerating; it
+ * cannot catch a lifecycle row edited in Postgres without regenerating, which
+ * is caught instead by the full run that wrote the row.
+ */
+function derivedOnly(manifest: Manifest): Manifest {
+	return {
+		schemaVersion: manifest.schemaVersion,
+		components: manifest.components.map((entry) => ({ ...entry, lifecycle: null })),
+		tokens: manifest.tokens.map((entry) => ({ ...entry, lifecycle: null })),
+		tombstones: [],
+		unparsed: manifest.unparsed
+	};
+}
+
+function reportUnparsed(manifest: Manifest): void {
+	if (!manifest.unparsed.length) return;
+	console.error(`\n${manifest.unparsed.length} component(s) could not be parsed:`);
+	for (const path of manifest.unparsed) console.error(`  ${path}`);
 	process.exit(1);
+}
+
+const derived = buildDerived();
+
+if (process.argv.includes('--check')) {
+	const committed = JSON.parse(readFileSync(OUT, 'utf8')) as Manifest;
+	const expected = JSON.stringify(derivedOnly(derived), null, 2);
+	const actual = JSON.stringify(derivedOnly(committed), null, 2);
+
+	if (expected !== actual) {
+		console.error(
+			'alfons.manifest.json is stale: its derived facts do not match the source tree.\n' +
+				'Run `bun run manifest` (which needs the context database) and commit the result.'
+		);
+		process.exit(1);
+	}
+	console.log(
+		`manifest: derived facts current — ${derived.components.length} components, ` +
+			`${derived.tokens.length} tokens`
+	);
+	reportUnparsed(derived);
+} else {
+	applyLifecycle(derived, readLifecycle());
+	writeFileSync(OUT, `${JSON.stringify(derived, null, 2)}\n`);
+
+	const unannotatedOrphans = derived.tokens.filter(
+		(token) =>
+			token.referencedBy.length === 0 &&
+			!token.usedInTokenLayer &&
+			!token.usedInStories &&
+			!token.lifecycle
+	).length;
+	const noProps = derived.components.filter((entry) => entry.propsSource === 'none').length;
+
+	console.log(
+		`manifest: ${derived.components.length} components, ${derived.tokens.length} tokens ` +
+			`(${unannotatedOrphans} with no consumer and no lifecycle row), ` +
+			`${derived.tombstones.length} tombstones, ${noProps} with no readable props`
+	);
+	reportUnparsed(derived);
 }

@@ -1,11 +1,17 @@
 /**
  * The shape of alfons.manifest.json.
  *
- * This file holds DERIVED facts only — everything here is recomputable from the
- * source tree, which is why it lives in the repo rather than a database and why
- * drift is detectable by regenerating and diffing (D-162). Authored facts about
- * lifecycle — whether a token is retired, what replaced it, which decision said
- * so — come from Postgres and are joined on at build time by AL-009.
+ * Two classes of fact meet here, and the comments below say which is which.
+ *
+ * DERIVED facts are recomputable from the source tree, which is why they live in
+ * the repo rather than a database and why drift is detectable by regenerating
+ * and diffing (D-162). AUTHORED facts — whether a token is retired, what
+ * replaced it, which decision said so — cannot be recovered from any parse, and
+ * come from the `alfons` schema in Postgres, joined on at build time (AL-009).
+ *
+ * The join direction matters: `bun run manifest:check` recomputes only the
+ * derived fields and compares them, which is how CI gates drift without a
+ * database. Anything marked authored below is invisible to that check.
  */
 
 /** Which UI surface a token is legal on. Determined by the file it is defined
@@ -32,6 +38,41 @@ export interface PropEntry {
 	defaultValue?: string;
 }
 
+/**
+ * Where an entity stands. AUTHORED — no parse can distinguish these.
+ *
+ * `live` is a claim, not a default: an entity with no lifecycle row is
+ * unannotated, which is a different and weaker statement than someone having
+ * looked at an unused token and decided to keep it.
+ */
+export type LifecycleStatus = 'live' | 'deprecated' | 'retired';
+
+/** AUTHORED. One row of alfons.lifecycle, as emitted. */
+export interface Lifecycle {
+	status: LifecycleStatus;
+	/** What to reach for instead. Null for `live`, enforced by the schema. */
+	replacement: string | null;
+	reason: string;
+	/** The decision that made the call. Non-null for anything but `live`. */
+	decisionId: string | null;
+	/** ISO date the judgement was recorded, not the date of the change. */
+	recordedOn: string;
+}
+
+/**
+ * AUTHORED. A lifecycle row whose subject is no longer in the source tree.
+ *
+ * The reason retirement needs a database and not a comment: --radius-md is gone
+ * from spacing.css, so nothing derived can mention it, and an agent writing
+ * `var(--radius-md)` would otherwise be told only that it does not exist. A
+ * tombstone lets review_markup answer with the replacement and D-160 instead.
+ */
+export interface Tombstone {
+	kind: 'token' | 'component';
+	name: string;
+	lifecycle: Lifecycle;
+}
+
 export interface TokenEntry {
 	/** Including the leading double hyphen, as written and as referenced. */
 	name: string;
@@ -52,6 +93,9 @@ export interface TokenEntry {
 	 *  story after Card itself moved to --radius-surface. Orphaned means none
 	 *  of the three (AL-005). */
 	usedInStories: boolean;
+	/** AUTHORED. Null means unannotated — which, for a token with no consumer,
+	 *  is the state AL-009 exists to empty out. */
+	lifecycle: Lifecycle | null;
 }
 
 export interface ComponentEntry {
@@ -75,6 +119,8 @@ export interface ComponentEntry {
 	exported: boolean;
 	/** Storybook story id, derived from the story's title. Null when no story. */
 	storyId: string | null;
+	/** AUTHORED. See TokenEntry.lifecycle. */
+	lifecycle: Lifecycle | null;
 }
 
 export interface Manifest {
@@ -82,6 +128,8 @@ export interface Manifest {
 	schemaVersion: number;
 	components: ComponentEntry[];
 	tokens: TokenEntry[];
+	/** AUTHORED. Names that are gone from the tree but still have an answer. */
+	tombstones: Tombstone[];
 	/** Components that could not be parsed at all. Non-empty fails the build:
 	 *  a component missing from the manifest is worse than a failed build,
 	 *  because the MCP would confidently report it does not exist. */
