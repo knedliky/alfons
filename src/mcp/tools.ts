@@ -10,6 +10,7 @@
  * in server.ts, so they can be exercised without standing a server up. The
  * smoke test does exactly that.
  */
+import { LAYOUT_TIER_ORDER } from '../manifest/types.js';
 import type { ComponentEntry, Manifest, Surface, TokenEntry } from '../manifest/types.js';
 
 // ---------------------------------------------------------------------------
@@ -336,52 +337,51 @@ export function getTokens(
 // ---------------------------------------------------------------------------
 
 /**
- * The composition order for page-level layouts, derived from the compose graph.
+ * The composition order for page-level layouts, from the authored tiers.
  *
- * Not a hand-written list. The layout components already say what they contain
- * by importing it, so ordering them outermost-first is a topological sort of
- * that graph — which means the recipe cannot drift from the components the way
- * a prose ordering in a README would.
+ * This was derived from the compose graph and was wrong (D-168). Eight of the
+ * nine layout components render no other layout, so that graph has a single
+ * edge; sorting it put PageFrame — the outermost shell — last, and the tests
+ * passed because they checked the sort was self-consistent rather than that the
+ * answer was right. A field derived from nothing does not come back empty, it
+ * comes back confident, which is the worse failure for a tool an agent trusts.
  *
- * Depth is "how many layout components render this one, transitively". A shell
- * nothing renders is depth 0 and goes first.
+ * The tiers now come from alfons.layout_tiers, and the layout-nesting rule
+ * reads the same field, so the order an agent is given and the order its markup
+ * is judged against are one fact rather than two that can drift.
  */
 export function getLayoutRecipe(manifest: Manifest) {
 	const layouts = manifest.components.filter((component) => component.category === 'layouts');
 	const names = new Set(layouts.map((component) => component.name));
-
-	const depth = new Map<string, number>(layouts.map((component) => [component.name, 0]));
-	// Iterate to a fixed point rather than recursing, so a cycle in the graph
-	// settles instead of overflowing the stack. Bounded by the layout count.
-	for (let pass = 0; pass < layouts.length; pass++) {
-		let changed = false;
-		for (const component of layouts) {
-			for (const child of component.composes) {
-				if (!names.has(child)) continue;
-				const candidate = (depth.get(component.name) ?? 0) + 1;
-				if (candidate > (depth.get(child) ?? 0)) {
-					depth.set(child, candidate);
-					changed = true;
-				}
-			}
-		}
-		if (!changed) break;
-	}
+	const rank = (component: ComponentEntry) =>
+		component.layoutTier
+			? LAYOUT_TIER_ORDER.indexOf(component.layoutTier)
+			: LAYOUT_TIER_ORDER.length;
 
 	return {
 		note:
-			'Outermost first. Depth is derived from which layout components render which, ' +
-			'so it tracks the source rather than a written-down convention.',
+			'Outermost first, by tier: shell frames the page, region divides it, container ' +
+			'arranges within a region. A component may not contain one from an outer tier. ' +
+			'Within a tier there is no order — a Stack inside a Grid is as correct as the ' +
+			'reverse, and D-168 declines to invent a precedence that nobody intends.',
+		tiers: LAYOUT_TIER_ORDER.filter((tier) =>
+			layouts.some((component) => component.layoutTier === tier)
+		),
 		layouts: layouts
 			.map((component) => ({
 				name: component.name,
-				depth: depth.get(component.name) ?? 0,
+				tier: component.layoutTier,
 				summary: component.summary,
 				renders: component.composes.filter((child) => names.has(child)),
 				usage: component.usage,
 				storyId: component.storyId
 			}))
-			.sort((a, b) => a.depth - b.depth || a.name.localeCompare(b.name))
+			.sort((a, b) => {
+				const byTier =
+					rank(layouts.find((entry) => entry.name === a.name)!) -
+					rank(layouts.find((entry) => entry.name === b.name)!);
+				return byTier || a.name.localeCompare(b.name);
+			})
 	};
 }
 

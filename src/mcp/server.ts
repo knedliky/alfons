@@ -16,6 +16,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 import { loadManifest, storybookBase } from './manifest.js';
+import { applyFixes, libraryFindings, review } from '../rules/index.js';
 import { findComponents, getComponent, getLayoutRecipe, getTokens, listSurfaces } from './tools.js';
 
 // Loaded once, at startup, and deliberately not reloaded per call: a manifest
@@ -122,6 +123,65 @@ server.registerTool(
 		inputSchema: {}
 	},
 	async () => reply(listSurfaces(manifest))
+);
+
+server.registerTool(
+	'review_markup',
+	{
+		title: 'Review markup',
+		description:
+			'Check Svelte source against the Alfons design rules and return every violation with ' +
+			'its rule id, message and position. Call this after writing or editing any component ' +
+			'that uses Alfons, before considering it finished. It catches literal colours and ' +
+			'lengths where a token exists, admin tokens on public surfaces, var() references that ' +
+			'resolve to nothing, retired tokens (answered with their replacement and the decision ' +
+			'that retired them), bare <button>/<input>/<select> where an atom exists, layouts ' +
+			'nested in the wrong order, Svelte 4 idioms, and tokens Tailwind silently shadows. ' +
+			'Findings are ADVISORY: nothing here fails a build or blocks a commit (D-159). Pass ' +
+			'source text, never a path — this server cannot read your filesystem.',
+		inputSchema: {
+			source: z.string().describe('The .svelte source to review, as text.'),
+			surface: z
+				.enum(['public', 'admin'])
+				.optional()
+				.describe('Which surface this markup renders on. Defaults to public.')
+		}
+	},
+	async ({ source, surface }) => reply(review(source, manifest, surface))
+);
+
+server.registerTool(
+	'apply_fixes',
+	{
+		title: 'Apply fixes',
+		description:
+			'Return corrected source for the violations that have an unambiguous fix, plus the ' +
+			'list of those left alone. Only substitutions that are provably value-identical are ' +
+			'applied — a literal replaced by a token holding exactly that value — so the rendered ' +
+			'output does not change. Anything needing a judgement (which token replaces a retired ' +
+			'one, how `$:` becomes $derived or $effect) is reported, not guessed. Write the ' +
+			'returned text yourself; this server does not touch your files.',
+		inputSchema: {
+			source: z.string().describe('The .svelte source to correct, as text.'),
+			surface: z.enum(['public', 'admin']).optional().describe('Defaults to public.')
+		}
+	},
+	async ({ source, surface }) => reply(applyFixes(source, manifest, surface))
+);
+
+server.registerTool(
+	'review_library',
+	{
+		title: 'Review the library',
+		description:
+			'Findings about Alfons itself rather than about a piece of markup: tokens with no ' +
+			'consumer and no lifecycle row, components exported but imported by nothing, and ' +
+			'tokens whose names collide with a Tailwind v4 default. These are questions about the ' +
+			'whole manifest, so they cannot be answered from a snippet the way review_markup ' +
+			'findings can. Use it when auditing the design system, not when writing a component.',
+		inputSchema: {}
+	},
+	async () => reply({ advisory: true, findings: libraryFindings(manifest) })
 );
 
 await server.connect(new StdioServerTransport());

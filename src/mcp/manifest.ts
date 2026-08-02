@@ -13,17 +13,27 @@ import { join, dirname } from 'node:path';
 import type { Manifest } from '../manifest/types.js';
 
 /** Must match SCHEMA_VERSION in scripts/generate-manifest.ts. */
-const EXPECTED_SCHEMA_VERSION = 3;
+const EXPECTED_SCHEMA_VERSION = 4;
 
 export const ROOT = join(import.meta.dirname, '..', '..');
 const MANIFEST_PATH = join(ROOT, 'alfons.manifest.json');
-const SOURCE_DIR = join(ROOT, 'src');
+/**
+ * The directories the generator reads, and therefore the only ones whose
+ * mtimes can make the manifest stale.
+ *
+ * A whitelist rather than a blacklist, because the first version excluded
+ * src/mcp by name and then reported the manifest stale the moment src/rules
+ * appeared — the manifest was fine, and the check was wrong. Listing what is
+ * read cannot go wrong that way: a new directory is not a source of staleness
+ * until the generator is taught to read it, and teaching it means editing this
+ * list too.
+ */
+const WATCHED = ['components', 'tokens', 'stories'].map((name) => join(ROOT, 'src', name));
 
-/** Newest mtime under a directory, ignoring what the generator never reads. */
+/** Newest mtime under a directory. */
 function newestModification(dir: string): number {
 	let newest = 0;
 	for (const entry of readdirSync(dir, { withFileTypes: true })) {
-		if (entry.name === 'mcp' || entry.name === 'node_modules') continue;
 		const full = join(dir, entry.name);
 		newest = Math.max(
 			newest,
@@ -76,14 +86,13 @@ export function loadManifest(): Manifest {
 	// cheap and turns "stale" from a schema check into a real one. Skipped when
 	// the source tree is absent, which is legitimate: a consumer may have only
 	// the published files.
-	if (existsSync(SOURCE_DIR)) {
-		const manifestAge = statSync(MANIFEST_PATH).mtimeMs;
-		if (newestModification(SOURCE_DIR) > manifestAge) {
-			throw new Error(
-				'Manifest is older than the source tree. Run `bun run manifest`. Serving the ' +
-					'stale copy would answer confidently about components as they used to be.'
-			);
-		}
+	const manifestAge = statSync(MANIFEST_PATH).mtimeMs;
+	for (const dir of WATCHED.filter(existsSync)) {
+		if (newestModification(dir) <= manifestAge) continue;
+		throw new Error(
+			`Manifest is older than ${dir}. Run \`bun run manifest\`. Serving the stale copy ` +
+				'would answer confidently about components as they used to be.'
+		);
 	}
 
 	return manifest;

@@ -20,7 +20,7 @@
  *                           gate that silently emitted an unannotated manifest
  *                           would report drift on every build.
  */
-import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, basename, dirname } from 'node:path';
 import postcss from 'postcss';
 import ts from 'typescript';
@@ -33,6 +33,7 @@ import type {
 	PropsSource,
 	Surface,
 	Lifecycle,
+	LayoutTier,
 	Tombstone
 } from '../src/manifest/types.ts';
 
@@ -42,7 +43,7 @@ const TOKENS_DIR = join(ROOT, 'src/tokens');
 const STORIES_DIR = join(ROOT, 'src/stories');
 const OUT = join(ROOT, 'alfons.manifest.json');
 
-const SCHEMA_VERSION = 3;
+const SCHEMA_VERSION = 4;
 
 /** Aggregates rather than defines, so its @import lines are not definitions. */
 const TOKEN_ENTRY_MANIFEST = 'public.css';
@@ -370,7 +371,8 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
 			exported: (barrels.get(dirname(file)) ?? '').includes(`./${name}.svelte`),
 			...docsFromComment(instanceScript ?? moduleScript ?? ''),
 			storyId: storyIds.get(name) ?? null,
-			lifecycle: null
+			lifecycle: null,
+			layoutTier: null
 		});
 	}
 	return { components, unparsed };
@@ -431,6 +433,34 @@ function linkConsumers(components: ComponentEntry[], tokens: TokenEntry[]): void
 }
 
 // ---------------------------------------------------------------------------
+// Tailwind collisions
+// ---------------------------------------------------------------------------
+
+/**
+ * Alfons token names that Tailwind v4 also defines in its default `@theme`.
+ *
+ * Read from the installed tailwindcss rather than written down, because a
+ * hand-kept list would silently rot on the next Tailwind upgrade — and rotting
+ * silently is precisely the failure being guarded against. If the file is not
+ * where it is expected, that is reported and treated as no collisions rather
+ * than failing the build: a wrong empty list is no worse than the status quo
+ * ante, whereas an unbuildable library is.
+ */
+function tailwindShadowedTokens(tokenNames: Set<string>): string[] {
+	const themePath = join(ROOT, 'node_modules/tailwindcss/theme.css');
+	if (!existsSync(themePath)) {
+		console.warn(`warning: no ${relative(ROOT, themePath)}; skipping the shadow check.`);
+		return [];
+	}
+
+	const shadowed: string[] = [];
+	postcss.parse(readFileSync(themePath, 'utf8'), { from: themePath }).walkDecls((decl) => {
+		if (decl.prop.startsWith('--') && tokenNames.has(decl.prop)) shadowed.push(decl.prop);
+	});
+	return [...new Set(shadowed)].sort();
+}
+
+// ---------------------------------------------------------------------------
 // Derived facts — everything above, assembled
 // ---------------------------------------------------------------------------
 
@@ -458,6 +488,7 @@ function buildDerived(): Manifest {
 		components: components.sort((a, b) => a.name.localeCompare(b.name)),
 		tokens: tokens.sort((a, b) => a.name.localeCompare(b.name)),
 		tombstones: [],
+		tailwindShadowed: tailwindShadowedTokens(new Set(tokens.map((token) => token.name))),
 		unparsed: unparsed.sort()
 	};
 }
@@ -500,14 +531,51 @@ function readLifecycle(): Map<string, Lifecycle> {
 }
 
 /**
+ * Read the authored layout composition order (D-168).
+ *
+ * Separate from lifecycle because it answers a different question, and a
+ * component can perfectly well be live and untiered — everything that is not a
+ * layout is.
+ */
+function readLayoutTiers(): Map<string, string> {
+	const records = rows<{ name: string; tier: string }>(`
+		select coalesce(json_agg(row order by row.name), '[]')
+		from (select name, tier::text from alfons.layout_tiers) as row
+	`);
+	return new Map(records.map((record) => [record.name, record.tier]));
+}
+
+/**
  * Attach each judgement to its subject, and tombstone the ones with none.
  *
  * A lifecycle row with no derived counterpart is not an error: it is the normal
  * end state of a retirement that finished cleaning up. Emitting it keeps the
  * answer available after the definition is gone.
  */
-function applyLifecycle(manifest: Manifest, lifecycle: Map<string, Lifecycle>): void {
+function applyLifecycle(
+	manifest: Manifest,
+	lifecycle: Map<string, Lifecycle>,
+	layoutTiers: Map<string, string>
+): void {
 	const claimed = new Set<string>();
+
+	for (const component of manifest.components) {
+		component.layoutTier = (layoutTiers.get(component.name) as LayoutTier) ?? null;
+	}
+
+	// A layout with no tier is a gap in the authored record, not a component
+	// that sits nowhere — and an untiered layout is invisible to the nesting
+	// rule, which fails open and silently. Worth a warning at build time.
+	const untiered = manifest.components.filter(
+		(component) => component.category === 'layouts' && !component.layoutTier
+	);
+	if (untiered.length) {
+		console.warn(
+			`warning: ${untiered.length} layout component(s) have no tier in alfons.layout_tiers ` +
+				`and will not be checked by the nesting rule: ` +
+				`${untiered.map((component) => component.name).join(', ')}`
+		);
+	}
 
 	for (const token of manifest.tokens) {
 		const key = `token:${token.name}`;
@@ -545,9 +613,14 @@ function applyLifecycle(manifest: Manifest, lifecycle: Map<string, Lifecycle>): 
 function derivedOnly(manifest: Manifest): Manifest {
 	return {
 		schemaVersion: manifest.schemaVersion,
-		components: manifest.components.map((entry) => ({ ...entry, lifecycle: null })),
+		components: manifest.components.map((entry) => ({
+			...entry,
+			lifecycle: null,
+			layoutTier: null
+		})),
 		tokens: manifest.tokens.map((entry) => ({ ...entry, lifecycle: null })),
 		tombstones: [],
+		tailwindShadowed: manifest.tailwindShadowed,
 		unparsed: manifest.unparsed
 	};
 }
@@ -579,7 +652,7 @@ if (process.argv.includes('--check')) {
 	);
 	reportUnparsed(derived);
 } else {
-	applyLifecycle(derived, readLifecycle());
+	applyLifecycle(derived, readLifecycle(), readLayoutTiers());
 	writeFileSync(OUT, `${JSON.stringify(derived, null, 2)}\n`);
 
 	const unannotatedOrphans = derived.tokens.filter(

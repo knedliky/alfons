@@ -59,3 +59,11 @@ jobs:
       # reads as authoritative rather than as a failure.
       - name: mcp
         run: bun run mcp:smoke
+
+      # The rule fixtures, including the four cases that defeated a hand-rolled
+      # scanner during AL-001. They are cheap and they are the only thing
+      # standing between a rule and a silent false negative — retired-token
+      # reported zero across all of Atlas until a fixture pinned down that a
+      # token can be named outside a <style> block.
+      - name: rules
+        run: bun run test:rules

@@ -33,7 +33,9 @@
 		"format:check": "prettier --check .",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"shots": "node scripts/screenshot-stories.mjs"
+		"shots": "node scripts/screenshot-stories.mjs",
+		"test:rules": "bun run scripts/test-rules.ts",
+		"rules:baseline": "bun run scripts/rules-baseline.ts"
 	},
 	"dependencies": {
 		"@fontsource-variable/azeret-mono": "^5.2.11",
@@ -68,6 +70,7 @@
 		"globals": "^17.8.0",
 		"playwright": "^1.62.1",
 		"postcss": "^8.5.25",
+		"postcss-value-parser": "^4.2.0",
 		"prettier": "^3.9.6",
 		"prettier-plugin-svelte": "^4.1.1",
 		"storybook": "^10.3.5",

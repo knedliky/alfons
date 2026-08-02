@@ -164,20 +164,42 @@ check(
 console.log('\nget_layout_recipe');
 const recipe = getLayoutRecipe(manifest);
 check('returns the layout components', recipe.layouts.length > 0);
-check('orders outermost first', recipe.layouts[0]!.depth === 0, recipe.layouts.slice(0, 3));
+// Named, not structural. The first version of these assertions checked that
+// the ordering was internally consistent — depth non-decreasing, parents before
+// children — and passed while the recipe listed PageFrame, the outermost shell,
+// last (D-168). Self-consistency is not correctness, and for a derived ordering
+// with nothing to derive from it is not even evidence.
 check(
-	'depth never decreases down the list',
-	recipe.layouts.every((entry, index, all) => index === 0 || entry.depth >= all[index - 1]!.depth)
+	'puts PageFrame in the shell tier',
+	recipe.layouts.find((entry) => entry.name === 'PageFrame')?.tier === 'shell',
+	recipe.layouts.slice(0, 3)
 );
 check(
-	'a shell layout appears before what it renders',
+	'puts Stack in the container tier',
+	recipe.layouts.find((entry) => entry.name === 'Stack')?.tier === 'container'
+);
+check(
+	'lists every shell before every container',
 	(() => {
-		const order = recipe.layouts.map((entry) => entry.name);
-		return recipe.layouts.every((entry) =>
-			entry.renders.every((child) => order.indexOf(child) > order.indexOf(entry.name))
+		const names = recipe.layouts.map((entry) => entry.name);
+		const lastShell = Math.max(
+			...recipe.layouts
+				.filter((entry) => entry.tier === 'shell')
+				.map((entry) => names.indexOf(entry.name))
 		);
+		const firstContainer = Math.min(
+			...recipe.layouts
+				.filter((entry) => entry.tier === 'container')
+				.map((entry) => names.indexOf(entry.name))
+		);
+		return lastShell < firstContainer;
 	})(),
-	recipe.layouts.map((entry) => `${entry.name}:${entry.depth}`)
+	recipe.layouts.map((entry) => `${entry.name}:${entry.tier}`)
+);
+check(
+	'every layout carries a tier',
+	recipe.layouts.every((entry) => entry.tier),
+	recipe.layouts.filter((entry) => !entry.tier)
 );
 
 // ---------------------------------------------------------------------------

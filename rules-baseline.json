@@ -1,0 +1,156 @@
+{
+	"note": "Advisory baseline for D-159. Counts only — which of these are false positives is a reading, not a number, and is deliberately not decided here. A rule is a candidate for promotion to blocking once its findings have been read and its false-positive rate is known.",
+	"componentsReviewed": 246,
+	"unparseable": 0,
+	"perRepo": {
+		"atlas": 948,
+		"field-notes": 0
+	},
+	"rules": [
+		{
+			"rule": "raw-value",
+			"count": 560,
+			"files": 81,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
+					"line": 32,
+					"message": "24px is exactly --space-5. Use var(--space-5)."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
+					"line": 38,
+					"message": "28px is a literal length and no token holds that value. Add one, or use the nearest existing token."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
+					"line": 71,
+					"message": "24px is exactly --space-5. Use var(--space-5)."
+				}
+			]
+		},
+		{
+			"rule": "tailwind-shadow",
+			"count": 144,
+			"files": 48,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
+					"line": 189,
+					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
+					"line": 199,
+					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
+					"line": 233,
+					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+				}
+			]
+		},
+		{
+			"rule": "admin-token-on-public",
+			"count": 91,
+			"files": 7,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
+					"line": 258,
+					"message": "--admin-text-secondary is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
+					"line": 266,
+					"message": "--admin-bg-elevated is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
+					"line": 267,
+					"message": "--admin-text is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
+				}
+			]
+		},
+		{
+			"rule": "raw-element",
+			"count": 75,
+			"files": 49,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/forms/ContactForm.svelte",
+					"line": 274,
+					"message": "<input> is styled from scratch here. Input carries the token styling, the focus behaviour and the admin/public theming."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/TaskItem.svelte",
+					"line": 24,
+					"message": "<button> is styled from scratch here. Button carries the token styling, the focus behaviour and the admin/public theming."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/prototypes/ContributionLedger.svelte",
+					"line": 53,
+					"message": "<button> is styled from scratch here. Button carries the token styling, the focus behaviour and the admin/public theming."
+				}
+			]
+		},
+		{
+			"rule": "unknown-token",
+			"count": 66,
+			"files": 17,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
+					"line": 187,
+					"message": "--shadow-sm is not a design token and is not defined in this component. It will resolve to nothing."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
+					"line": 200,
+					"message": "--shadow-md is not a design token and is not defined in this component. It will resolve to nothing."
+				},
+				{
+					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
+					"line": 219,
+					"message": "--accent-red is not a design token and is not defined in this component. It will resolve to nothing."
+				}
+			]
+		},
+		{
+			"rule": "retired-token",
+			"count": 12,
+			"files": 5,
+			"samples": [
+				{
+					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
+					"line": 65,
+					"message": "--color-human is deprecated: American spelling. Alias of --colour-human; retires when Atlas migrates. Use --colour-human. (D-167)"
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/TaskDotStrip.svelte",
+					"line": 85,
+					"message": "--color-full is deprecated: American spelling. Alias of --colour-full; retires when Atlas migrates. Use --colour-full. (D-167)"
+				},
+				{
+					"file": "atlas/src/lib/ui/components/merlin/TaskDotStrip.svelte",
+					"line": 92,
+					"message": "--color-partial is deprecated: American spelling. Alias of --colour-partial; retires when Atlas migrates. Use --colour-partial. (D-167)"
+				}
+			]
+		},
+		{
+			"rule": "layout-nesting",
+			"count": 0,
+			"files": 0,
+			"samples": []
+		},
+		{
+			"rule": "svelte5-runes",
+			"count": 0,
+			"files": 0,
+			"samples": []
+		}
+	],
+	"libraryFindings": 2
+}

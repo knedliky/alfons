@@ -131,7 +131,22 @@ export interface ComponentEntry {
 	storyId: string | null;
 	/** AUTHORED. See TokenEntry.lifecycle. */
 	lifecycle: Lifecycle | null;
+	/**
+	 * AUTHORED. Where this layout sits in the composition order (D-168).
+	 *
+	 * Null for everything that is not a layout. Authored because it is not in
+	 * the source to be read: eight of nine layouts render no other layout, so
+	 * deriving it from the compose graph produced a recipe that listed the
+	 * outermost shell last and reported no error doing it.
+	 */
+	layoutTier: LayoutTier | null;
 }
+
+/** Outermost first. A component may not contain one from an outer tier. */
+export type LayoutTier = 'shell' | 'region' | 'container' | 'primitive';
+
+/** The order the tiers nest in, outermost first. Index is the comparison. */
+export const LAYOUT_TIER_ORDER: LayoutTier[] = ['shell', 'region', 'container', 'primitive'];
 
 export interface Manifest {
 	/** Bumped when the shape changes, so a consumer can refuse an old file. */
@@ -140,6 +155,16 @@ export interface Manifest {
 	tokens: TokenEntry[];
 	/** AUTHORED. Names that are gone from the tree but still have an answer. */
 	tombstones: Tombstone[];
+	/**
+	 * DERIVED. Alfons tokens whose names collide with a Tailwind v4 `@theme`
+	 * default, so which definition wins depends on import order.
+	 *
+	 * Computed from the installed tailwindcss/theme.css rather than a written
+	 * list, so it tracks the dependency. This is the --font-mono case: Tailwind's
+	 * default silently shadowed the brand face across four Atlas surfaces and was
+	 * noticed by eye, not by any check (AL-005 C11).
+	 */
+	tailwindShadowed: string[];
 	/** Components that could not be parsed at all. Non-empty fails the build:
 	 *  a component missing from the manifest is worse than a failed build,
 	 *  because the MCP would confidently report it does not exist. */

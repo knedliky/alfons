@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "components": [
     {
       "name": "Accordion",
@@ -66,7 +66,8 @@
       "usage": "  <Accordion items={faqs} defaultOpen=\"shipping\" />\n  <Accordion items={faqs} type=\"multiple\" bind:open />",
       "features": [],
       "storyId": "disclosure-accordion",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "AgentInput",
@@ -155,7 +156,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-agentinput",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Alert",
@@ -236,7 +238,8 @@
       "usage": "  <Alert type=\"success\" title=\"Saved\">Your changes are live.</Alert>\n  <Alert type=\"error\" onDismiss={close}>Something went wrong.</Alert>",
       "features": [],
       "storyId": "feedback-alert",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "AvatarGroup",
@@ -280,7 +283,8 @@
       "usage": "  <AvatarGroup people={[{ src: '/a.jpg' }, { initials: 'SK' }]} max={4} />",
       "features": [],
       "storyId": "atoms-avatargroup",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "BackLink",
@@ -333,7 +337,8 @@
         "Design-token-first CSS for both admin and public token namespaces"
       ],
       "storyId": "navigation-backlink",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Badge",
@@ -401,7 +406,8 @@
         "Uses Snippet children for flexible content"
       ],
       "storyId": "atoms-badge",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "BarChart",
@@ -464,7 +470,8 @@
       "usage": null,
       "features": [],
       "storyId": "stats-barchart",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "BoolField",
@@ -536,7 +543,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-boolfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Breadcrumb",
@@ -575,7 +583,8 @@
         "JSON-LD BreadcrumbList structured data for SEO"
       ],
       "storyId": "navigation-breadcrumb",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "BulkActionModal",
@@ -658,7 +667,8 @@
         "Sidebar-offset centring on desktop via CSS"
       ],
       "storyId": "admin-atoms-bulkactionmodal",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Button",
@@ -727,7 +737,8 @@
         "Design-token-first CSS with data-attribute selectors"
       ],
       "storyId": "atoms-button",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "CalendarDay",
@@ -814,7 +825,8 @@
         "Admin and public theme variants via scoped tokens"
       ],
       "storyId": "pickers-calendarday",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "CalendarGrid",
@@ -906,7 +918,8 @@
         "Admin and public theme variants via scoped tokens"
       ],
       "storyId": "pickers-calendargrid",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Card",
@@ -995,7 +1008,8 @@
         "Self-contained styling — no dependency on global .card-glass utility"
       ],
       "storyId": "cards-card",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Center",
@@ -1020,7 +1034,8 @@
         "No visual styling — layout only"
       ],
       "storyId": "layouts-center",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "container"
     },
     {
       "name": "Checkbox",
@@ -1117,7 +1132,8 @@
       "usage": "  <Checkbox bind:checked label=\"Email me updates\" />\n  <Checkbox checked indeterminate label=\"Select all\" description=\"3 of 7 selected\" />",
       "features": [],
       "storyId": "forms-checkbox",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Chip",
@@ -1195,7 +1211,8 @@
       "usage": "  <Chip label=\"Finance\" colour=\"var(--sky-blue)\" fill=\"soft\" onRemove={() => drop('finance')} />\n  <Chip label=\"High exposure\" onClick={toggle} />",
       "features": [],
       "storyId": "atoms-chip",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Container",
@@ -1240,7 +1257,8 @@
         "No visual styling — layout only"
       ],
       "storyId": "layouts-container",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "container"
     },
     {
       "name": "DataTable",
@@ -1337,7 +1355,8 @@
         "Loading overlay and empty state"
       ],
       "storyId": "tables-datatable",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "DateField",
@@ -1426,7 +1445,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-datefield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "DatePicker",
@@ -1506,7 +1526,8 @@
         "Min/max date constraints"
       ],
       "storyId": "pickers-datepicker",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "DateRangePicker",
@@ -1592,7 +1613,8 @@
         "Keyboard navigation (Escape to close popover)"
       ],
       "storyId": "pickers-daterangepicker",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "DeleteConfirmModal",
@@ -1648,7 +1670,8 @@
         "Sidebar-offset centring on desktop via CSS"
       ],
       "storyId": "admin-atoms-deleteconfirmmodal",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Divider",
@@ -1691,7 +1714,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-divider",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "EmptyState",
@@ -1761,7 +1785,8 @@
         "Optional CTA supporting both href navigation and onclick callback"
       ],
       "storyId": "feedback-emptystate",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "ErrorPage",
@@ -1813,7 +1838,8 @@
         "Responsive, centred layout with design token styling"
       ],
       "storyId": "feedback-errorpage",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Footer",
@@ -1904,7 +1930,8 @@
       "usage": "  <Footer onNavigate={goto} onSubscribe={subscribe} />",
       "features": [],
       "storyId": "navigation-footer",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Form",
@@ -1956,7 +1983,8 @@
         "Design-token colours for success/error states"
       ],
       "storyId": "forms-form",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "FormGroup",
@@ -2039,7 +2067,8 @@
         "Theme-aware: supports both admin and public contexts"
       ],
       "storyId": "forms-formgroup",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Grid",
@@ -2091,7 +2120,8 @@
         "Alignment and justification controls"
       ],
       "storyId": "layouts-grid",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "container"
     },
     {
       "name": "Header",
@@ -2163,7 +2193,8 @@
       "usage": "  <Header activePath=\"#experiments\" navItems={items} onNavigate={goto} />",
       "features": [],
       "storyId": "navigation-header",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Icon",
@@ -2214,7 +2245,8 @@
         "data-size attribute for external styling hooks"
       ],
       "storyId": "atoms-icon",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Inline",
@@ -2266,7 +2298,8 @@
         "No visual styling — layout only"
       ],
       "storyId": "layouts-inline",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "container"
     },
     {
       "name": "Input",
@@ -2328,7 +2361,8 @@
         "Success state via data-valid=\"true\" attribute: border changes to --colour-success"
       ],
       "storyId": "atoms-input",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "JsonField",
@@ -2400,7 +2434,8 @@
       "usage": null,
       "features": [],
       "storyId": "forms-jsonfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Label",
@@ -2433,7 +2468,8 @@
         "Passes all HTML label attributes to the element"
       ],
       "storyId": "atoms-label",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LineChart",
@@ -2506,7 +2542,8 @@
       "usage": null,
       "features": [],
       "storyId": "stats-linechart",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Logo",
@@ -2553,7 +2590,8 @@
       "usage": "  <Logo height={32} />\n  <Logo height={28} shape=\"square\" blinking />\n\nRecolour via the --logo-field / --logo-cursor CSS variables for a mono\ntreatment. The fallback literals are the logo artwork's own colours —\ndeliberately independent of the theme palette so the mark renders\nidentically everywhere.",
       "features": [],
       "storyId": "brand-logo",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadArticle",
@@ -2614,7 +2652,8 @@
       "usage": null,
       "features": [],
       "storyId": "blog-longread",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadFigure",
@@ -2656,7 +2695,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadHero",
@@ -2700,7 +2740,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadProse",
@@ -2746,7 +2787,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadProseSection",
@@ -2780,7 +2822,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadSection",
@@ -2817,7 +2860,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "LongreadStatBand",
@@ -2847,7 +2891,8 @@
       "usage": null,
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "MainLayout",
@@ -2901,7 +2946,8 @@
         "Gap supports numeric (1-7) and semantic (xs/sm/md/lg/xl/2xl) values"
       ],
       "storyId": "layouts-mainlayout",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "shell"
     },
     {
       "name": "Menu",
@@ -2965,7 +3011,8 @@
       "usage": "  <Menu items={actions}>\n    {#snippet trigger()}<Button variant=\"ghost\">Actions</Button>{/snippet}\n  </Menu>",
       "features": [],
       "storyId": "overlays-menu",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Modal",
@@ -3027,7 +3074,8 @@
         "Glassmorphism backdrop with scale-in animation"
       ],
       "storyId": "admin-modal",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "MultiSelectField",
@@ -3113,7 +3161,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-multiselectfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "NumberField",
@@ -3196,7 +3245,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-numberfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "PageFrame",
@@ -3260,7 +3310,8 @@
         "Grid column transition for smooth sidebar resize"
       ],
       "storyId": "layouts-pageframe",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "shell"
     },
     {
       "name": "PageHeader",
@@ -3342,7 +3393,8 @@
         "Responsive spacing on mobile"
       ],
       "storyId": "headers-pageheader",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "PageLayout",
@@ -3389,7 +3441,8 @@
         "Transparent background to expose background effects (e.g. sticky chart backgrounds)"
       ],
       "storyId": "layouts-pagelayout",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "shell"
     },
     {
       "name": "PageSection",
@@ -3437,7 +3490,8 @@
         "No visual styling — layout only"
       ],
       "storyId": "layouts-pagesection",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "region"
     },
     {
       "name": "Pagination",
@@ -3523,7 +3577,8 @@
       "usage": "  <Pagination bind:page pageCount={12} summary=\"1–20 of 234\" />",
       "features": [],
       "storyId": "tables-pagination",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Pill",
@@ -3592,7 +3647,8 @@
       "usage": "  <Pill label=\"Creative\" fill=\"solid\" tint=\"var(--burnt-sunset)\" />\n  <Pill label=\"Operations & Admin\" fill=\"soft\" colour=\"operations-admin\" size=\"sm\" />\n  <Pill label=\"Design\" fill=\"outline\" colour=\"design\" />\n\nFills:\n- soft    — light tint background, coloured text (industry, automatability)\n- solid   — strong tint background, neutral text (task category)\n- outline — square corners, tinted background, accent border (blog)\n\nColour:\n- `colour` maps to named --category-* / --industry-* tokens\n- `tint` accepts any CSS colour string for open-ended data (wins over colour)",
       "features": [],
       "storyId": "atoms-pill",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Popover",
@@ -3664,7 +3720,8 @@
       "usage": "  <Popover>\n    {#snippet trigger()}<Button variant=\"ghost\">Details</Button>{/snippet}\n    <p>Any content.</p>\n  </Popover>",
       "features": [],
       "storyId": "overlays-popover",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Portrait",
@@ -3736,7 +3793,8 @@
         "Circle size includes a subtle GSAP SVG radiant glow behind the portrait"
       ],
       "storyId": "atoms-portrait",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "ProgressBar",
@@ -3809,7 +3867,8 @@
       "usage": "  <ProgressBar value={64} label=\"Uploading\" showValue />\n  <ProgressBar tone=\"success\" value={100} />\n  <ProgressBar />",
       "features": [],
       "storyId": "feedback-progressbar",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Radio",
@@ -3892,7 +3951,8 @@
       "usage": "  <Radio value=\"a\" label=\"Option A\" />\n  <Radio value=\"b\" label=\"Standalone\" checked onChange={handle} />",
       "features": [],
       "storyId": null,
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "RadioGroup",
@@ -3969,7 +4029,8 @@
       "usage": "  <RadioGroup bind:value options={[{ value: 'a', label: 'Option A' }]} />\n  <RadioGroup bind:value>\n    <Radio value=\"a\" label=\"Option A\" />\n    <Radio value=\"b\" label=\"Option B\" />\n  </RadioGroup>",
       "features": [],
       "storyId": "forms-radio",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "RangeSlider",
@@ -4034,7 +4095,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-rangeslider",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "SectionHeader",
@@ -4101,7 +4163,8 @@
         "Responsive spacing on mobile"
       ],
       "storyId": "headers-sectionheader",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Select",
@@ -4211,7 +4274,8 @@
         "Success state via data-valid=\"true\" attribute (set from valid prop): border changes to --colour-success"
       ],
       "storyId": "atoms-select",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "SelectField",
@@ -4295,7 +4359,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-selectfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Skeleton",
@@ -4361,7 +4426,8 @@
         "Accessible: aria-hidden with screen-reader-only loading text"
       ],
       "storyId": "atoms-skeleton",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "SkeletonCard",
@@ -4390,7 +4456,8 @@
       "usage": null,
       "features": [],
       "storyId": "skeletons-skeletoncard",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "SkeletonCardGrid",
@@ -4416,7 +4483,8 @@
       "usage": null,
       "features": [],
       "storyId": "skeletons-skeletoncardgrid",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "SkeletonHero",
@@ -4446,7 +4514,8 @@
       "usage": null,
       "features": [],
       "storyId": "skeletons-skeletonhero",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Spinner",
@@ -4488,7 +4557,8 @@
       "usage": "  <Spinner />\n  <Spinner size=\"lg\" colour=\"var(--sky-blue)\" label=\"Fetching results\" />",
       "features": [],
       "storyId": "feedback-spinner",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Stack",
@@ -4540,7 +4610,8 @@
         "No visual styling — layout only"
       ],
       "storyId": "layouts-stack",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": "container"
     },
     {
       "name": "StatCard",
@@ -4629,7 +4700,8 @@
       "usage": null,
       "features": [],
       "storyId": "stats-statcard",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "StatusBadge",
@@ -4680,7 +4752,8 @@
         "Dynamic inline style for background/text — values come from CSS variables"
       ],
       "storyId": "admin-atoms-statusbadge",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Surface",
@@ -4724,7 +4797,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-surface",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Tabs",
@@ -4813,7 +4887,8 @@
       "usage": "  <Tabs tabs={sections} bind:value />\n  <Tabs tabs={sections} variant=\"pill\" size=\"sm\" />",
       "features": [],
       "storyId": "navigation-tabs",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Textarea",
@@ -4870,7 +4945,8 @@
         "Success state via data-valid=\"true\" attribute: border changes to --colour-success"
       ],
       "storyId": "atoms-textarea",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "TextField",
@@ -4958,7 +5034,8 @@
         "Admin token namespace"
       ],
       "storyId": "forms-textfield",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Toast",
@@ -5039,7 +5116,8 @@
         "Render guard prevents mount flicker"
       ],
       "storyId": "feedback-toast",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Toggle",
@@ -5089,7 +5167,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-toggle",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "ToggleGroup",
@@ -5137,7 +5216,8 @@
       "usage": null,
       "features": [],
       "storyId": "atoms-togglegroup",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Tooltip",
@@ -5192,7 +5272,8 @@
         "Scale + opacity transition on show/hide"
       ],
       "storyId": "atoms-tooltip",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     },
     {
       "name": "Wordmark",
@@ -5227,7 +5308,8 @@
       "usage": "  <Wordmark height={24} />",
       "features": [],
       "storyId": "brand-wordmark",
-      "lifecycle": null
+      "lifecycle": null,
+      "layoutTier": null
     }
   ],
   "tokens": [
@@ -10333,6 +10415,10 @@
         "recordedOn": "2026-08-02"
       }
     }
+  ],
+  "tailwindShadowed": [
+    "--font-mono",
+    "--radius"
   ],
   "unparsed": []
 }
