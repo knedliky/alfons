@@ -32,7 +32,7 @@
 	 * - Auto-generates title and description from action + itemType
 	 * - Sidebar-offset centring on desktop via CSS
 	 */
-	import Modal from './Modal.svelte';
+	import Modal from '../modals/Modal.svelte';
 
 	let {
 		visible,

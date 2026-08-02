@@ -117,6 +117,16 @@ export interface ComponentEntry {
 	importedBy: string[];
 	/** Whether a barrel re-exports it, i.e. whether consumers can import it. */
 	exported: boolean;
+	/** DERIVED, from the component's leading doc comment. One sentence, taken
+	 *  from after the em dash on the first line. Null when undocumented. */
+	summary: string | null;
+	/** DERIVED. The `Usage:` block of the doc comment, verbatim markup. This is
+	 *  what get_component hands an agent, and it is the reason the block is
+	 *  worth keeping accurate: it is now an API, not a comment. */
+	usage: string | null;
+	/** DERIVED. The `Features:` bullets, which is where a component states
+	 *  behaviour its prop types cannot — theme detection, token strategy. */
+	features: string[];
 	/** Storybook story id, derived from the story's title. Null when no story. */
 	storyId: string | null;
 	/** AUTHORED. See TokenEntry.lifecycle. */

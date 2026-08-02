@@ -1,6 +1,9 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Modal from '../../components/admin/Modal.svelte';
+	// components/admin/Modal.svelte was a byte-identical copy of this one, left
+	// behind by the AL-001 merge and re-exported by nothing. This story was its
+	// only importer, which is why it survived so long.
+	import Modal from '../../components/modals/Modal.svelte';
 
 	const { Story } = defineMeta({
 		title: 'Admin/Modal',

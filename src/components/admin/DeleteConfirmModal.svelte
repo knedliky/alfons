@@ -25,7 +25,7 @@
 	 * - Emphasises the item label within the message
 	 * - Sidebar-offset centring on desktop via CSS
 	 */
-	import Modal from './Modal.svelte';
+	import Modal from '../modals/Modal.svelte';
 
 	let { visible, itemLabel = 'this item', onConfirm, onCancel }: DeleteConfirmModalProps = $props();
 </script>

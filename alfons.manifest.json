@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "components": [
     {
       "name": "Accordion",
@@ -62,6 +62,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "stacked expand/collapse sections. Pass items ({ id, title, content, disabled }). type=\"single\" (default) keeps one open at a time; type=\"multiple\" allows several. Each header is a button with a rotating chevron; panels animate height via a grid row (0fr → 1fr), which is the CSS-only way to animate to auto height.",
+      "usage": "  <Accordion items={faqs} defaultOpen=\"shipping\" />\n  <Accordion items={faqs} type=\"multiple\" bind:open />",
+      "features": [],
       "storyId": "disclosure-accordion",
       "lifecycle": null
     },
@@ -148,6 +151,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "the canonical surface people use to talk to the agents.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-agentinput",
       "lifecycle": null
     },
@@ -226,6 +232,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "inline, in-flow status message (distinct from the transient Toast). Four types carry a tinted glass fill and a matching icon (the calm, uniform-bordered treatment of the tooltip / skill pill). Pass a title and/or body children; set onDismiss for a close button and an optional action snippet for an inline button/link.",
+      "usage": "  <Alert type=\"success\" title=\"Saved\">Your changes are live.</Alert>\n  <Alert type=\"error\" onDismiss={close}>Something went wrong.</Alert>",
+      "features": [],
       "storyId": "feedback-alert",
       "lifecycle": null
     },
@@ -267,6 +276,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "a row of overlapping Portraits with a trailing \"+N\" overflow chip. Pass people ({ src, initials, alt }); max caps how many show before collapsing into the count. Later avatars sit under earlier ones.",
+      "usage": "  <AvatarGroup people={[{ src: '/a.jpg' }, { initials: 'SK' }]} max={4} />",
+      "features": [],
       "storyId": "atoms-avatargroup",
       "lifecycle": null
     },
@@ -312,6 +324,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "navigational breadcrumb-style link with a left-pointing arrow.",
+      "usage": "  `<BackLink href=\"/blog\" label=\"Back to Blog\" />`\n  `<BackLink href=\"/blog\" label=\"Back to Blog\" fixed />`",
+      "features": [
+        "Auto-detects admin/public theme via context (no explicit theme prop needed)",
+        "Hover micro-interaction: arrow slides left 4px, colour shifts to primary text",
+        "Fixed mode: pins below header, aligned with the site logo (64rem inner container)",
+        "Design-token-first CSS for both admin and public token namespaces"
+      ],
       "storyId": "navigation-backlink",
       "lifecycle": null
     },
@@ -371,6 +391,15 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "theme-aware pill indicator for status labels, counts, and tags.",
+      "usage": "  <Badge variant=\"success\">Published</Badge>\n  <Badge variant=\"warning\" size=\"sm\" theme=\"admin\">In Review</Badge>",
+      "features": [
+        "Five semantic variants mapped to status colour tokens",
+        "Two sizes: sm (compact tables) and default (standard contexts)",
+        "Square corners for all variants",
+        "Supports admin and public themes via data-theme attribute",
+        "Uses Snippet children for flexible content"
+      ],
       "storyId": "atoms-badge",
       "lifecycle": null
     },
@@ -431,6 +460,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "BarChart Usage: `<BarChart data={items} title=\"Top Pages\" valueLabel=\"Views\" />` Features: Horizontal bar chart for ranked data, loading skeleton, empty state, animated bar fill",
+      "usage": null,
+      "features": [],
       "storyId": "stats-barchart",
       "lifecycle": null
     },
@@ -495,6 +527,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "toggle switch for boolean PocketBase record fields.",
+      "usage": "  <BoolField name=\"published\" label=\"Published\" bind:value={record.published} />",
+      "features": [
+        "Toggle switch with keyboard accessibility (Enter, Space)",
+        "Optional description text below the label",
+        "Error state with outline indicator",
+        "Admin token namespace"
+      ],
       "storyId": "forms-boolfield",
       "lifecycle": null
     },
@@ -524,6 +564,16 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "navigation trail with SEO structured data.",
+      "usage": "  <Breadcrumb items={[\n    { label: 'Home', href: '/' },\n    { label: 'Blog', href: '/blog' },\n    { label: 'Current Post' }\n  ]} />",
+      "features": [
+        "Semantic `<nav>` with `aria-label=\"Breadcrumb\"` for accessibility",
+        "Ordered list (`<ol>`) for correct document outline",
+        "Inactive links use `--text-muted` with hover transition to `--text-primary`",
+        "Current item (last, no href) uses `--text-primary` and `aria-current=\"page\"`",
+        "Chevron-right separators via the Icon atom",
+        "JSON-LD BreadcrumbList structured data for SEO"
+      ],
       "storyId": "navigation-breadcrumb",
       "lifecycle": null
     },
@@ -599,6 +649,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "confirmation dialog for bulk operations on multiple items.",
+      "usage": "  <BulkActionModal\n    visible={isOpen}\n    itemCount={selectedIds.length}\n    itemType=\"post\"\n    action=\"delete\"\n    onConfirm={handleBulkDelete}\n    onCancel={() => isOpen = false}\n  />",
+      "features": [
+        "Composes on Modal for backdrop, keyboard, and ARIA handling",
+        "Danger and primary confirm button variants",
+        "Auto-generates title and description from action + itemType",
+        "Sidebar-offset centring on desktop via CSS"
+      ],
       "storyId": "admin-atoms-bulkactionmodal",
       "lifecycle": null
     },
@@ -659,6 +717,15 @@
         "ErrorPage"
       ],
       "exported": true,
+      "summary": "pill-shaped interactive element with theme and variant support.",
+      "usage": "  <Button>Primary CTA</Button>\n  <Button variant=\"secondary\" size=\"sm\">Secondary</Button>\n  <Button variant=\"ghost\" theme=\"admin\">Admin action</Button>",
+      "features": [
+        "Five visual variants: default, secondary, outline, ghost, link",
+        "Three sizes plus icon mode: default, sm, lg, icon",
+        "Automatic theme detection from context (public/admin)",
+        "Glassmorphism on secondary variant in public theme",
+        "Design-token-first CSS with data-attribute selectors"
+      ],
       "storyId": "atoms-button",
       "lifecycle": null
     },
@@ -739,6 +806,13 @@
         "CalendarGrid"
       ],
       "exported": true,
+      "summary": "individual day cell with selection, range, and state styling.",
+      "usage": "  <CalendarDay\n    {date}\n    isToday={true}\n    isSelected={false}\n    variant=\"admin\"\n    {onclick}\n  />",
+      "features": [
+        "States: today, selected, highlighted (in-range), outside-month, disabled",
+        "Range start/end states",
+        "Admin and public theme variants via scoped tokens"
+      ],
       "storyId": "pickers-calendarday",
       "lifecycle": null
     },
@@ -823,6 +897,14 @@
         "DateRangePicker"
       ],
       "exported": true,
+      "summary": "month calendar with navigation, weekday headers, and day cells.",
+      "usage": "  <CalendarGrid\n    {month}\n    {selectedDate}\n    variant=\"admin\"\n    {onMonthChange}\n    {onSelectDate}\n  />",
+      "features": [
+        "Single date and date range selection modes",
+        "Previous/next month navigation",
+        "Monday-first week layout (en-AU locale)",
+        "Admin and public theme variants via scoped tokens"
+      ],
       "storyId": "pickers-calendargrid",
       "lifecycle": null
     },
@@ -903,6 +985,15 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "base surface primitive for content containers.",
+      "usage": "  <Card>Default card</Card>\n  <Card as=\"a\" href=\"/about\" variant=\"elevated\">Linked card</Card>\n  <Card theme=\"admin\" variant=\"ghost\">Admin ghost card</Card>\n  <Card size=\"compact\">Compact padding</Card>\n  <Card size=\"flush\">No padding</Card>",
+      "features": [
+        "Polymorphic element via `as` prop (div, a, section, article, button)",
+        "Five variants: default (glassmorphism), elevated, ghost, outlined, interactive",
+        "Three sizes: default, compact (tighter padding), flush (no padding)",
+        "Automatic theme detection from context (public/admin)",
+        "Self-contained styling — no dependency on global .card-glass utility"
+      ],
       "storyId": "cards-card",
       "lifecycle": null
     },
@@ -922,6 +1013,12 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "flexbox wrapper that centres children both horizontally and vertically.",
+      "usage": "  <Center>\n    <LoginForm />\n  </Center>",
+      "features": [
+        "Full-height flex container using align-items and justify-content center",
+        "No visual styling — layout only"
+      ],
       "storyId": "layouts-center",
       "lifecycle": null
     },
@@ -1016,6 +1113,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "boolean control with a label, an optional description line, an indeterminate state and an error outline. The box fills with the accent on check (square corners per the radius doctrine). Bind checked or drive it via onChange.",
+      "usage": "  <Checkbox bind:checked label=\"Email me updates\" />\n  <Checkbox checked indeterminate label=\"Select all\" description=\"3 of 7 selected\" />",
+      "features": [],
       "storyId": "forms-checkbox",
       "lifecycle": null
     },
@@ -1091,6 +1191,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "a compact, square token for selections, filters and tags. Optional leading icon and a trailing remove button (square corners, echoing the cursor motif). colour tints the border + text from any brand token; fill=\"soft\" adds a faint wash. For uppercase taxonomy labels use Pill; for status use Badge.",
+      "usage": "  <Chip label=\"Finance\" colour=\"var(--sky-blue)\" fill=\"soft\" onRemove={() => drop('finance')} />\n  <Chip label=\"High exposure\" onClick={toggle} />",
+      "features": [],
       "storyId": "atoms-chip",
       "lifecycle": null
     },
@@ -1128,6 +1231,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "responsive max-width wrapper with optional padding.",
+      "usage": "  <Container maxWidth=\"lg\">\n    <PageContent />\n  </Container>",
+      "features": [
+        "Five width presets: sm (640px), md (768px), lg (1024px), xl (1280px), full",
+        "Optional horizontal padding via page padding tokens",
+        "Optional horizontal centering via margin auto",
+        "No visual styling — layout only"
+      ],
       "storyId": "layouts-container",
       "lifecycle": null
     },
@@ -1215,6 +1326,16 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "generic sortable data table with optional row selection.",
+      "usage": "  <DataTable\n    columns={[{ id: 'name', header: 'Name', accessor: 'name' }]}\n    rows={data}\n    rowKey={(row) => row.id}\n    sortColumn=\"name\"\n    sortDirection=\"asc\"\n    {onSortChange}\n  />",
+      "features": [
+        "Generic column/row definitions with typed accessors",
+        "Sortable column headers with direction indicators",
+        "Optional row selection with select-all toggle",
+        "Custom cell formatters per column",
+        "Row actions via snippet prop",
+        "Loading overlay and empty state"
+      ],
       "storyId": "tables-datatable",
       "lifecycle": null
     },
@@ -1296,6 +1417,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "date and datetime input for PocketBase record forms.",
+      "usage": "  <DateField name=\"publishedAt\" label=\"Published at\" bind:value={record.published_at} />",
+      "features": [
+        "Date and datetime-local input support",
+        "Australian date format display (DD MMM YYYY HH:mm)",
+        "Clear button for nullable date fields",
+        "Admin token namespace"
+      ],
       "storyId": "forms-datefield",
       "lifecycle": null
     },
@@ -1368,6 +1497,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "single date selection with popover calendar.",
+      "usage": "  <DatePicker\n    value=\"2026-02-18\"\n    placeholder=\"Select date\"\n    variant=\"admin\"\n    onchange={(date) => console.log(date)}\n  />",
+      "features": [
+        "Australian date format (DD/MM/YYYY) for display",
+        "Popover calendar with keyboard navigation (Escape to close)",
+        "Admin and public theme variants via scoped tokens",
+        "Min/max date constraints"
+      ],
       "storyId": "pickers-datepicker",
       "lifecycle": null
     },
@@ -1446,6 +1583,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "preset and custom date range selector with two-month calendar.",
+      "usage": "  <DateRangePicker\n    selectedPreset=\"7d\"\n    variant=\"admin\"\n    {onPresetChange}\n    onCustomRangeChange={(start, end) => console.log(start, end)}\n  />",
+      "features": [
+        "Preset buttons (Today, 7 Days, 30 Days, 90 Days)",
+        "Custom range selection via two-month calendar popover",
+        "Admin and public theme variants via scoped tokens",
+        "Keyboard navigation (Escape to close popover)"
+      ],
       "storyId": "pickers-daterangepicker",
       "lifecycle": null
     },
@@ -1494,6 +1639,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "confirmation dialog for deleting a single item.",
+      "usage": "  <DeleteConfirmModal\n    visible={isOpen}\n    itemLabel=\"this post\"\n    onConfirm={handleDelete}\n    onCancel={() => isOpen = false}\n  />",
+      "features": [
+        "Composes on Modal for backdrop, keyboard, and ARIA handling",
+        "Warning icon styled with error state tokens",
+        "Emphasises the item label within the message",
+        "Sidebar-offset centring on desktop via CSS"
+      ],
       "storyId": "admin-atoms-deleteconfirmmodal",
       "lifecycle": null
     },
@@ -1534,6 +1687,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "a visual separator for content sections.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-divider",
       "lifecycle": null
     },
@@ -1596,6 +1752,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "centred empty state with icon, heading, message, and optional CTA.",
+      "usage": "  <EmptyState title=\"No posts found\" message=\"Try adjusting your filters\" icon=\"posts\" variant=\"admin\" />",
+      "features": [
+        "Five built-in icon variants: users, messages, posts, search, data",
+        "Custom icon via snippet for full control",
+        "Admin and public token namespaces",
+        "Optional CTA supporting both href navigation and onclick callback"
+      ],
       "storyId": "feedback-emptystate",
       "lifecycle": null
     },
@@ -1639,6 +1803,15 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "generic error display shell for SvelteKit error pages.",
+      "usage": "  <ErrorPage\n    status={404}\n    message=\"Page Not Found\"\n    primaryAction={{ label: 'Go Back', onclick: () => history.back() }}\n    secondaryAction={{ label: 'Go Home', onclick: () => goto('/') }}\n  />",
+      "features": [
+        "Displays status code as the prominent heading",
+        "Derives a title from the status code (404, 500, or generic)",
+        "Optional primary and secondary action buttons",
+        "No external dependencies — consumer provides all navigation callbacks",
+        "Responsive, centred layout with design token styling"
+      ],
       "storyId": "feedback-errorpage",
       "lifecycle": null
     },
@@ -1727,6 +1900,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "site-wide footer over a radial gradient that lifts the page ground for text readability (transparent background, so the flat page shows through). A brand column (wordmark + blurb + contact), configurable link columns, an optional newsletter row, and a bottom bar with copyright and legal links.",
+      "usage": "  <Footer onNavigate={goto} onSubscribe={subscribe} />",
+      "features": [],
       "storyId": "navigation-footer",
       "lifecycle": null
     },
@@ -1771,6 +1947,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "base form primitive for composing form experiences.",
+      "usage": "  <Form onsubmit={handleSubmit} status={formStatus} statusMessage={message}>\n    <Input type=\"email\" bind:value={email} required />\n    <Button type=\"submit\">Send</Button>\n  </Form>",
+      "features": [
+        "Theme-aware via context (public/admin)",
+        "Status feedback with screen reader announcements (aria-live)",
+        "Passes through all native form attributes (onsubmit, action, method, novalidate)",
+        "Design-token colours for success/error states"
+      ],
       "storyId": "forms-form",
       "lifecycle": null
     },
@@ -1839,6 +2023,21 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "vertical wrapper that composes label + input + hint/error text.",
+      "usage": "  <FormGroup label=\"Email\" htmlFor=\"email\" required>\n    <Input id=\"email\" type=\"email\" aria-invalid={!!errors.email}\n           aria-describedby=\"email-description\" />\n  </FormGroup>\n\n  <FormGroup label=\"Name\" error=\"Name is required\" htmlFor=\"name\">\n    <Input id=\"name\" aria-invalid={!!errors.name}\n           aria-describedby=\"name-description\" />\n  </FormGroup>\n\nAccessibility contract (aria-describedby wiring):\n  FormGroup generates a description element with the ID `{htmlFor}-description`.\n  This element holds the hint text, error message, or success confirmation.\n  Consumers MUST wire `aria-describedby=\"{htmlFor}-description\"` on their\n  input element so that screen readers associate the description with the field.\n\n  The generated ID follows the pattern: `{htmlFor}-description`\n  For example, if htmlFor=\"email\", the description ID is \"email-description\".\n\n  The description element always exists in the DOM (not conditionally rendered)\n  so the aria-describedby reference is always valid. Its content changes\n  between hint, error, and success states. The container has aria-live=\"polite\"\n  so screen readers announce state transitions without interrupting the user.\n\n  The generated hintId is exposed as a read-only derived value via the\n  `descriptionId` export on FormGroupProps for consumers who need\n  programmatic access rather than hard-coding the ID pattern.\n\nValidation pattern:\n  FormGroup manages the error/success display (text, icons, transitions).\n  The input atom manages its own border colour via aria-invalid and data-valid\n  attributes. Connect them using aria-describedby on the input pointing to\n  the FormGroup's generated description ID ({htmlFor}-description).",
+      "features": [
+        "Consistent vertical spacing (--space-2 gap) across all form fields",
+        "Label atom with required indicator (*)",
+        "Hint text below the input for guidance",
+        "Error text slides in with max-height transition, styled with --colour-error",
+        "Error icon (circle-x) prepended to error messages",
+        "Success checkmark shown briefly when transitioning from error to valid",
+        "CSS-driven state visibility — no DOM thrashing on state transitions",
+        "Screen reader announcements via aria-live=\"polite\"",
+        "Connects error text to input via aria-describedby pattern",
+        "Configurable success message via the successMessage prop",
+        "Theme-aware: supports both admin and public contexts"
+      ],
       "storyId": "forms-formgroup",
       "lifecycle": null
     },
@@ -1883,6 +2082,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "responsive CSS Grid container for multi-column layouts.",
+      "usage": "  <Grid columns={3} gap=\"xl\">\n    <Card>One</Card>\n    <Card>Two</Card>\n    <Card>Three</Card>\n  </Grid>\n\n  <Grid columns={{ base: 1, md: 2, lg: 3 }} gap={4}>\n    {#each items as item}<Card>{item}</Card>{/each}\n  </Grid>",
+      "features": [
+        "Simple number for fixed columns, or breakpoint object for responsive",
+        "Same gap system as Stack (numeric 1-7 or semantic xs/sm/md/lg/xl/2xl)",
+        "Pre-generated responsive breakpoint classes for 1-6 columns",
+        "Alignment and justification controls"
+      ],
       "storyId": "layouts-grid",
       "lifecycle": null
     },
@@ -1952,6 +2159,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "fixed floating glass navigation bar. A sliding accent indicator tracks the active nav item; below 768px the links collapse into a hamburger that opens a full-screen mobile menu. variant=\"compact\" shrinks the bar and keeps the links inline (for article/admin chrome). Renders a brand lockup (Logo + Wordmark) on the left",
+      "usage": "  <Header activePath=\"#experiments\" navItems={items} onNavigate={goto} />",
+      "features": [],
       "storyId": "navigation-header",
       "lifecycle": null
     },
@@ -1993,6 +2203,16 @@
         "Chip"
       ],
       "exported": true,
+      "summary": "inline SVG icon atom with size and colour support.",
+      "usage": "  <Icon name=\"arrow-left\" />\n  <Icon name=\"check\" size=\"lg\" colour=\"var(--colour-success)\" />\n  <Icon name=\"close\" size=\"sm\" />",
+      "features": [
+        "~20 inline SVG icons across navigation, action, status, and visibility categories",
+        "Four size variants: sm (16px), md (20px), lg (24px), xl (32px)",
+        "Default colour inherits from parent via currentColor",
+        "Stroke width uses --stroke-normal design token (1.5)",
+        "aria-hidden=\"true\" by default (decorative; pair with text for accessibility)",
+        "data-size attribute for external styling hooks"
+      ],
       "storyId": "atoms-icon",
       "lifecycle": null
     },
@@ -2037,6 +2257,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "horizontal flexbox container for flowing content with consistent spacing.",
+      "usage": "  <Inline gap=\"md\" align=\"center\">\n    <Tag>Svelte</Tag>\n    <Tag>TypeScript</Tag>\n    <Tag>Tailwind</Tag>\n  </Inline>",
+      "features": [
+        "Row direction with optional wrapping (default: wraps)",
+        "Same gap system as Stack and Grid (numeric 1-7 or semantic xs/sm/md/lg/xl/2xl)",
+        "Cross-axis alignment and main-axis distribution controls",
+        "No visual styling — layout only"
+      ],
       "storyId": "layouts-inline",
       "lifecycle": null
     },
@@ -2088,6 +2316,17 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "text input field with theme and size support.",
+      "usage": "  <Input bind:value={name} placeholder=\"Your name\" />\n  <Input type=\"email\" size=\"sm\" theme=\"admin\" />",
+      "features": [
+        "Two sizes: default (h-12) and sm (h-10)",
+        "Automatic theme detection from context (public/admin)",
+        "Public theme: glassmorphic background with card border",
+        "Admin theme: transparent background with admin border",
+        "Design-token-first CSS with data-attribute selectors",
+        "Error state via aria-invalid=\"true\": border changes to --colour-error",
+        "Success state via data-valid=\"true\" attribute: border changes to --colour-success"
+      ],
       "storyId": "atoms-input",
       "lifecycle": null
     },
@@ -2157,6 +2396,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "syntax-editable JSON textarea for JSON fields. Usage: `<JsonField name=\"meta\" label=\"Metadata\" bind:value={meta} />` Features: JSON validation on blur, format/prettify, minify, copy to clipboard, line numbers, tab-key indentation support, error display.",
+      "usage": null,
+      "features": [],
       "storyId": "forms-jsonfield",
       "lifecycle": null
     },
@@ -2183,6 +2425,13 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "form field label with peer-disabled support.",
+      "usage": "  <Label for=\"email\">Email address</Label>",
+      "features": [
+        "0.875rem semi-bold text at line-height 1",
+        "Visually dims when a peer input is disabled",
+        "Passes all HTML label attributes to the element"
+      ],
       "storyId": "atoms-label",
       "lifecycle": null
     },
@@ -2253,6 +2502,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "LineChart Usage: `<LineChart data={timeseries} metric=\"views\" title=\"Page Views\" />` Features: Pure SVG time series chart, interactive tooltips, area fill, loading state, responsive design",
+      "usage": null,
+      "features": [],
       "storyId": "stats-linechart",
       "lifecycle": null
     },
@@ -2297,6 +2549,9 @@
         "Header"
       ],
       "exported": true,
+      "summary": "the Motivka brand mark: a red field with a light underscore bar (the cursor motif). A 3:4 portrait block by default; shape=\"square\" fits the same mark, centred, inside a square footprint (for tight header/avatar use). Sized by height (px). The underscore is the same blinking-cursor language as the wordmark and nav.",
+      "usage": "  <Logo height={32} />\n  <Logo height={28} shape=\"square\" blinking />\n\nRecolour via the --logo-field / --logo-cursor CSS variables for a mono\ntreatment. The fallback literals are the logo artwork's own colours —\ndeliberately independent of the theme palette so the mark renders\nidentically everywhere.",
+      "features": [],
       "storyId": "brand-logo",
       "lifecycle": null
     },
@@ -2355,6 +2610,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "orchestrator for the editorial longread template.",
+      "usage": null,
+      "features": [],
       "storyId": "blog-longread",
       "lifecycle": null
     },
@@ -2394,6 +2652,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "an evidence panel on the Motif elevation ladder.",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2435,6 +2696,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "the article opener: mono kicker, display title, lead standfirst and a mono meta row. Centred on the article axis. The standfirst is body copy, so it carries --text-primary; only the kicker and meta row use supporting greys.",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2478,6 +2742,9 @@
         "LongreadProseSection"
       ],
       "exported": true,
+      "summary": "the flat longread body: the template's serif reading styles applied over sanitised article HTML.",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2509,6 +2776,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "one heading-derived passage of a DB-backed article (ADH-033, amending D-111).",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2543,6 +2813,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "one passage of a LongreadArticle.",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2570,6 +2843,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "a row of headline figures in display serif with a warm glow, labelled in mono microtype. For the two or three numbers a piece stakes its credibility on; anything more belongs in a table.",
+      "usage": null,
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -2616,6 +2892,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "two-column layout with a sticky aside and scrolling main content.",
+      "usage": "  <MainLayout asideWidth=\"18rem\" gap=\"xl\">\n    {#snippet aside()}<TableOfContents />{/snippet}\n    {#snippet main()}<ArticleBody />{/snippet}\n  </MainLayout>",
+      "features": [
+        "Aside sticks to viewport top while main scrolls with the page",
+        "Aside can be positioned left or right without changing DOM order (preserves screen reader order)",
+        "Stacks vertically on mobile (aside always appears first)",
+        "Gap supports numeric (1-7) and semantic (xs/sm/md/lg/xl/2xl) values"
+      ],
       "storyId": "layouts-mainlayout",
       "lifecycle": null
     },
@@ -2677,58 +2961,10 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "a dropdown action menu anchored to a trigger. Pass the trigger snippet and an items array (each { label, icon, onSelect, danger, disabled, shortcut }, or the string 'separator'). Opens on click, closes on outside-click, Escape or selection; arrow keys move the highlight. Floats on the L3 layer with a portal so it escapes overflow.",
+      "usage": "  <Menu items={actions}>\n    {#snippet trigger()}<Button variant=\"ghost\">Actions</Button>{/snippet}\n  </Menu>",
+      "features": [],
       "storyId": "overlays-menu",
-      "lifecycle": null
-    },
-    {
-      "name": "Modal",
-      "category": "admin",
-      "path": "src/components/admin/Modal.svelte",
-      "propsSource": "interface",
-      "props": [
-        {
-          "name": "children",
-          "type": "Snippet",
-          "optional": false
-        },
-        {
-          "name": "onclose",
-          "type": "() => void",
-          "optional": false
-        },
-        {
-          "name": "open",
-          "type": "boolean",
-          "optional": false
-        },
-        {
-          "name": "title",
-          "type": "string",
-          "optional": true
-        }
-      ],
-      "tokensUsed": [
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
-        "--overlay-scrim",
-        "--radius",
-        "--radius-surface",
-        "--shadow-modal",
-        "--space-2",
-        "--space-4",
-        "--space-5",
-        "--space-6",
-        "--transition-fast",
-        "--transition-normal",
-        "--z-overlay"
-      ],
-      "composes": [],
-      "importedBy": [],
-      "exported": true,
-      "storyId": "admin-modal",
       "lifecycle": null
     },
     {
@@ -2782,6 +3018,14 @@
         "DeleteConfirmModal"
       ],
       "exported": true,
+      "summary": "accessible dialog overlay with backdrop and keyboard support.",
+      "usage": "  <Modal open={isOpen} onclose={() => isOpen = false} title=\"Confirm\">\n    <p>Are you sure?</p>\n  </Modal>",
+      "features": [
+        "Backdrop click and Escape key to dismiss",
+        "Focus-trapping via aria-modal",
+        "Optional title with header bar",
+        "Glassmorphism backdrop with scale-in animation"
+      ],
       "storyId": "admin-modal",
       "lifecycle": null
     },
@@ -2857,6 +3101,17 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "checkbox-based multi-select for PocketBase select fields.",
+      "usage": "  <MultiSelectField name=\"tags\" label=\"Tags\" bind:value={tags} {options} />",
+      "features": [
+        "Tag display of selected items with individual removal",
+        "Max-selection limit with counter",
+        "Clear-all button",
+        "Dropdown with checkboxes",
+        "Click-outside close",
+        "Keyboard navigation (Enter, Space, Escape)",
+        "Admin token namespace"
+      ],
       "storyId": "forms-multiselectfield",
       "lifecycle": null
     },
@@ -2932,6 +3187,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "numeric input with increment/decrement controls for PocketBase record forms.",
+      "usage": "  <NumberField name=\"count\" label=\"Count\" bind:value={record.count} />",
+      "features": [
+        "Min/max constraint enforcement from PocketBase schema options",
+        "Integer or decimal support via noDecimal schema option",
+        "Step increment/decrement buttons",
+        "Admin token namespace"
+      ],
       "storyId": "forms-numberfield",
       "lifecycle": null
     },
@@ -2986,6 +3249,16 @@
         "PageLayout"
       ],
       "exported": true,
+      "summary": "unified layout shell for both public and admin contexts.",
+      "usage": null,
+      "features": [
+        "No sidebar: flex column (header > main > footer) — mirrors PageLayout",
+        "With sidebar: CSS Grid (sidebarWidth | 1fr) — mirrors admin layout",
+        "Stateless: sidebar collapse/expand state stays in consuming layout",
+        "Optional theme context creation via theme prop",
+        "Header and footer are optional snippet props — omit for embedded/iframe scenarios",
+        "Grid column transition for smooth sidebar resize"
+      ],
       "storyId": "layouts-pageframe",
       "lifecycle": null
     },
@@ -3058,6 +3331,16 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "page-level h1 with optional subtitle.",
+      "usage": "  <PageHeader\n    title=\"The AI Builders Field Guide\"\n    subtitle=\"Practical wisdom for building intelligent systems.\"\n    align=\"center\"\n    spacing=\"standard\"\n    glitch\n  />",
+      "features": [
+        "Alignment variants: left, center, right",
+        "Spacing variants: compact, standard, spacious",
+        "Admin variant uses admin token namespace",
+        "Optional per-word glitch SVG filter on the title",
+        "Optional per-letter pixelate glitch with colour-mode flicker on load",
+        "Responsive spacing on mobile"
+      ],
       "storyId": "headers-pageheader",
       "lifecycle": null
     },
@@ -3097,6 +3380,14 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "full-page shell with optional header, main content, and footer.",
+      "usage": "  <PageLayout>\n    {#snippet header()}<Header settings={data.settings} />{/snippet}\n    {#snippet footer()}<Footer settings={data.settings} />{/snippet}\n    <HeroSection />\n    <ContentSection />\n  </PageLayout>",
+      "features": [
+        "Convenience wrapper around PageFrame for public pages",
+        "Header and footer are optional snippet props — the consuming app provides its own chrome",
+        "Omitting header/footer renders without chrome (useful for embedded/iframe scenarios)",
+        "Transparent background to expose background effects (e.g. sticky chart backgrounds)"
+      ],
       "storyId": "layouts-pagelayout",
       "lifecycle": null
     },
@@ -3137,6 +3428,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "full-width section with consistent horizontal padding and variant spacing.",
+      "usage": "  <PageSection variant=\"hero\">\n    <HeroContent />\n  </PageSection>",
+      "features": [
+        "Three spacing variants: standard (equal padding), hero (1.5x with min-height), cta (reduced bottom)",
+        "Centres content via max-width container with margin auto",
+        "Responsive padding via mobile-specific tokens",
+        "No visual styling — layout only"
+      ],
       "storyId": "layouts-pagesection",
       "lifecycle": null
     },
@@ -3220,6 +3519,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "mono page navigator for DataTable and any paged list. Renders first/last boundary pages, a sibling window around the current page, and collapses the gaps to ellipses. Previous / Next stroke arrows clamp at the ends. Bind page or handle onPageChange.",
+      "usage": "  <Pagination bind:page pageCount={12} summary=\"1–20 of 234\" />",
+      "features": [],
       "storyId": "tables-pagination",
       "lifecycle": null
     },
@@ -3286,6 +3588,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "compact, uppercase label chip for categories, industries, automatability levels, and tags. The canonical look is the warm, tinted, mono treatment; the square bordered `outline` fill is retained for the blog. (For status indicators",
+      "usage": "  <Pill label=\"Creative\" fill=\"solid\" tint=\"var(--burnt-sunset)\" />\n  <Pill label=\"Operations & Admin\" fill=\"soft\" colour=\"operations-admin\" size=\"sm\" />\n  <Pill label=\"Design\" fill=\"outline\" colour=\"design\" />\n\nFills:\n- soft    — light tint background, coloured text (industry, automatability)\n- solid   — strong tint background, neutral text (task category)\n- outline — square corners, tinted background, accent border (blog)\n\nColour:\n- `colour` maps to named --category-* / --industry-* tokens\n- `tint` accepts any CSS colour string for open-ended data (wins over colour)",
+      "features": [],
       "storyId": "atoms-pill",
       "lifecycle": null
     },
@@ -3355,6 +3660,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "an anchored floating panel with arbitrary content (richer than a Tooltip, which is hover-only text). Click the trigger to toggle; closes on outside-click or Escape. Floats on the L3 layer via a portal. Bind open for controlled use.",
+      "usage": "  <Popover>\n    {#snippet trigger()}<Button variant=\"ghost\">Details</Button>{/snippet}\n    <p>Any content.</p>\n  </Popover>",
+      "features": [],
       "storyId": "overlays-popover",
       "lifecycle": null
     },
@@ -3417,6 +3725,16 @@
         "AvatarGroup"
       ],
       "exported": true,
+      "summary": "avatar and portrait display with three size variants.",
+      "usage": "  <Portrait size=\"avatar\" src=\"/me.jpg\" alt=\"Steph\" />\n  <Portrait size=\"circle\" initials=\"SM\" interactive />\n  <Portrait size=\"portrait\" src=\"/about.jpg\" alt=\"About photo\" />",
+      "features": [
+        "avatar: 48px circle (nav headers, login)",
+        "circle: 240px circle (about teaser, profile cards)",
+        "portrait: 3:4 aspect ratio rectangle (full about page)",
+        "Initials fallback when no image source provided",
+        "Optional hover effects via the interactive prop",
+        "Circle size includes a subtle GSAP SVG radiant glow behind the portrait"
+      ],
       "storyId": "atoms-portrait",
       "lifecycle": null
     },
@@ -3487,6 +3805,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "horizontal progress track. Determinate when value (0–100) is given; omit it (or pass null) for an indeterminate sliding bar. The fill uses the accent by default; tone switches it to a state colour. An optional label row shows the caption and the percentage.",
+      "usage": "  <ProgressBar value={64} label=\"Uploading\" showValue />\n  <ProgressBar tone=\"success\" value={100} />\n  <ProgressBar />",
+      "features": [],
       "storyId": "feedback-progressbar",
       "lifecycle": null
     },
@@ -3567,6 +3888,9 @@
         "RadioGroup"
       ],
       "exported": true,
+      "summary": "one option inside a RadioGroup. Reads selection from the group context; can also be driven standalone via checked + onChange. The dot stays circular",
+      "usage": "  <Radio value=\"a\" label=\"Option A\" />\n  <Radio value=\"b\" label=\"Standalone\" checked onChange={handle} />",
+      "features": [],
       "storyId": null,
       "lifecycle": null
     },
@@ -3641,6 +3965,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "single-choice container. Bind value (or provide onChange) and nest Radio children, or pass an options array. Arrow keys move between radios (native radio behaviour via the shared name). Lays the radios out vertically by default; orientation=\"horizontal\" for an inline row.",
+      "usage": "  <RadioGroup bind:value options={[{ value: 'a', label: 'Option A' }]} />\n  <RadioGroup bind:value>\n    <Radio value=\"a\" label=\"Option A\" />\n    <Radio value=\"b\" label=\"Option B\" />\n  </RadioGroup>",
+      "features": [],
       "storyId": "forms-radio",
       "lifecycle": null
     },
@@ -3703,6 +4030,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "native slider input for precise configuration panels, built for public usage.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-rangeslider",
       "lifecycle": null
     },
@@ -3762,6 +4092,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "section-level h2 with optional subtitle.",
+      "usage": "  <SectionHeader\n    title=\"The AI Builders Field Guide\"\n    subtitle=\"Practical wisdom for building intelligent systems.\"\n    align=\"center\"\n    spacing=\"standard\"\n  />",
+      "features": [
+        "Alignment variants: left, center, right",
+        "Spacing variants: compact, standard, spacious",
+        "Admin variant uses admin token namespace",
+        "Responsive spacing on mobile"
+      ],
       "storyId": "headers-sectionheader",
       "lifecycle": null
     },
@@ -3860,6 +4198,18 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "custom floating dropdown with keyboard navigation.",
+      "usage": "  <Select\n    value={selectedFont}\n    options={fontOptions}\n    onchange={(v) => (selectedFont = v)}\n  />",
+      "features": [
+        "Floating fixed-position dropdown (escapes overflow containers)",
+        "Flips above trigger when insufficient space below viewport",
+        "Full keyboard navigation (arrows, enter, escape, home/end)",
+        "Admin and public theme contexts via CSS custom properties",
+        "Closes on outside click and page scroll",
+        "Optional `searchable` filter input with a \"No matches\" empty state",
+        "Error state via aria-invalid=\"true\" (set from error prop): border changes to --colour-error",
+        "Success state via data-valid=\"true\" attribute (set from valid prop): border changes to --colour-success"
+      ],
       "storyId": "atoms-select",
       "lifecycle": null
     },
@@ -3936,6 +4286,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "custom single-select dropdown for PocketBase record forms.",
+      "usage": "  <SelectField name=\"status\" label=\"Status\" bind:value={record.status} {options} />",
+      "features": [
+        "Custom dropdown with keyboard navigation (arrow keys, Enter, Escape)",
+        "Clear selection button for optional fields",
+        "Scroll-into-view for highlighted options",
+        "Admin token namespace"
+      ],
       "storyId": "forms-selectfield",
       "lifecycle": null
     },
@@ -3994,6 +4352,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "token-driven loading placeholder with shimmer animation.",
+      "usage": "  <Skeleton />\n  <Skeleton variant=\"circle\" size=\"48px\" />\n  <Skeleton variant=\"text\" lines={3} />\n  <Skeleton width=\"200px\" height=\"1.5rem\" theme=\"admin\" />",
+      "features": [
+        "Three variants: rectangle (block), circle, and multi-line text",
+        "Shimmer animation using design token durations",
+        "Supports admin and public theme contexts",
+        "Accessible: aria-hidden with screen-reader-only loading text"
+      ],
       "storyId": "atoms-skeleton",
       "lifecycle": null
     },
@@ -4020,6 +4386,9 @@
         "SkeletonCardGrid"
       ],
       "exported": true,
+      "summary": "SkeletonCard Usage: `<SkeletonCard />` Features: Loading placeholder matching compact card dimensions with staggered pulse animation",
+      "usage": null,
+      "features": [],
       "storyId": "skeletons-skeletoncard",
       "lifecycle": null
     },
@@ -4043,6 +4412,9 @@
       ],
       "importedBy": [],
       "exported": true,
+      "summary": "SkeletonCardGrid Usage: `<SkeletonCardGrid count={6} />` Features: Responsive grid of skeleton cards matching blog/lab page layouts",
+      "usage": null,
+      "features": [],
       "storyId": "skeletons-skeletoncardgrid",
       "lifecycle": null
     },
@@ -4070,6 +4442,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "SkeletonHero Usage: `<SkeletonHero />` Features: Loading placeholder for featured hero section with visual and content columns",
+      "usage": null,
+      "features": [],
       "storyId": "skeletons-skeletonhero",
       "lifecycle": null
     },
@@ -4109,6 +4484,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "indeterminate loading indicator: a 2×2 grid of squares that pulses one corner at a time (travelling clockwise), each square changing size and opacity. Sizes from sm to lg; colour overrides the squares. Respects prefers-reduced-motion (settles to a static dimmed grid).",
+      "usage": "  <Spinner />\n  <Spinner size=\"lg\" colour=\"var(--sky-blue)\" label=\"Fetching results\" />",
+      "features": [],
       "storyId": "feedback-spinner",
       "lifecycle": null
     },
@@ -4153,6 +4531,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "flexbox container for arranging children with consistent spacing.",
+      "usage": "  <Stack direction=\"vertical\" gap={3}>\n    <Card>First</Card>\n    <Card>Second</Card>\n  </Stack>\n\n  <Stack gap=\"lg\" align=\"center\">\n    <Card>Semantic gap</Card>\n  </Stack>",
+      "features": [
+        "Vertical (column) or horizontal (row) direction",
+        "Gap sizes: numeric (1-7) mapped to --space-N, or semantic (xs/sm/md/lg/xl/2xl)",
+        "Cross-axis alignment and main-axis distribution controls",
+        "No visual styling — layout only"
+      ],
       "storyId": "layouts-stack",
       "lifecycle": null
     },
@@ -4239,6 +4625,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "StatCard Usage: `<StatCard label=\"Total Messages\" value={42} icon=\"messages\" colour=\"red\" />` Features: Key metric display with icon, badge count, sub-value, loading skeleton, four colour themes",
+      "usage": null,
+      "features": [],
       "storyId": "stats-statcard",
       "lifecycle": null
     },
@@ -4282,6 +4671,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "unified status indicator for admin tables and lists.",
+      "usage": "  <StatusBadge status=\"published\" config={POST_STATUS_COLOURS} />\n  <StatusBadge status=\"new\" config={MESSAGE_STATUS_COLOURS} size=\"md\" />",
+      "features": [
+        "Maps semantic colour names to state design tokens",
+        "Two size variants: sm (default) and md",
+        "Falls back to neutral styling for unknown status values",
+        "Dynamic inline style for background/text — values come from CSS variables"
+      ],
       "storyId": "admin-atoms-statusbadge",
       "lifecycle": null
     },
@@ -4323,6 +4720,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "the frosted glass panel shared by the agent input and the chat message bubbles: a translucent fill (--surface-glass-bg), a blurred backdrop, a thin faint edge, and the shared --shadow-glass drop shadow.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-surface",
       "lifecycle": null
     },
@@ -4409,6 +4809,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "horizontal section switcher with a sliding accent indicator. Two variants: line (underline that slides under the active tab, echoing the Header) and pill (a subtle glass stadium behind the active tab, matching ToggleGroup's thumb",
+      "usage": "  <Tabs tabs={sections} bind:value />\n  <Tabs tabs={sections} variant=\"pill\" size=\"sm\" />",
+      "features": [],
       "storyId": "navigation-tabs",
       "lifecycle": null
     },
@@ -4455,6 +4858,17 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "multi-line text input with theme variant support.",
+      "usage": "  <Textarea bind:value={message} placeholder=\"Your message\" />\n  <Textarea theme=\"admin\" rows={6} />",
+      "features": [
+        "Automatic theme detection from context (public/admin)",
+        "Public theme: glassmorphic background with card border",
+        "Admin theme: transparent background with admin border",
+        "Non-resizable, min-height 180px",
+        "Design-token-first CSS with data-attribute selectors",
+        "Error state via aria-invalid=\"true\": border changes to --colour-error",
+        "Success state via data-valid=\"true\" attribute: border changes to --colour-success"
+      ],
       "storyId": "atoms-textarea",
       "lifecycle": null
     },
@@ -4535,6 +4949,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "text, email, and URL input field for PocketBase record forms.",
+      "usage": "  <TextField name=\"title\" label=\"Title\" bind:value={record.title} />",
+      "features": [
+        "Supports text, email, and URL input types with contextual icons",
+        "Character counter when schema defines a max length",
+        "Validation error display linked via aria-describedby",
+        "Admin token namespace"
+      ],
       "storyId": "forms-textfield",
       "lifecycle": null
     },
@@ -4607,6 +5029,15 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "fixed-position notification at the bottom of the viewport.",
+      "usage": "  <Toast visible={showToast} type=\"error\" message=\"Save failed\" onDismiss={() => showToast = false} />",
+      "features": [
+        "Slides in from bottom with CSS transform transition",
+        "Four type variants: warning, error, success, info",
+        "Adapts to admin and public theme contexts",
+        "Auto-dismisses after configurable delay",
+        "Render guard prevents mount flicker"
+      ],
       "storyId": "feedback-toast",
       "lifecycle": null
     },
@@ -4654,6 +5085,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "Toggle - a stylized boolean switch designed for public usage, adhering to brand semantics.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-toggle",
       "lifecycle": null
     },
@@ -4699,6 +5133,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "a pill-button segmented control, one value selected at a time.",
+      "usage": null,
+      "features": [],
       "storyId": "atoms-togglegroup",
       "lifecycle": null
     },
@@ -4746,6 +5183,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "hover-triggered label with configurable placement.",
+      "usage": "  <Tooltip text=\"Save changes\">\n    <Button>Save</Button>\n  </Tooltip>",
+      "features": [
+        "Four placement options: top (default), bottom, left, right",
+        "Default variant uses glass tokens (adapts light/dark)",
+        "Admin variant uses admin tokens (dark theme only)",
+        "Scale + opacity transition on show/hide"
+      ],
       "storyId": "atoms-tooltip",
       "lifecycle": null
     },
@@ -4778,6 +5223,9 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
+      "summary": "\"Motivka\" set in Moderat Bold (--font-wordmark), the brand lettering. Sized by height (the cap height in px maps to font-size). Always plain: the underscore-cursor motif belongs to the Logo, which carries it in every lockup (decision 12/07/2026",
+      "usage": "  <Wordmark height={24} />",
+      "features": [],
       "storyId": "brand-wordmark",
       "lifecycle": null
     }
@@ -5086,7 +5534,7 @@
       "value": "var(--charcoal-ember)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "BulkActionModal",
         "CalendarDay",
@@ -5101,7 +5549,6 @@
         "EmptyState",
         "Input",
         "JsonField",
-        "Modal",
         "Modal",
         "MultiSelectField",
         "NumberField",
@@ -5121,7 +5568,7 @@
       "value": "oklch(6% 0 0)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Alert",
         "Badge",
@@ -5133,7 +5580,6 @@
         "DateRangePicker",
         "JsonField",
         "Menu",
-        "Modal",
         "Modal",
         "MultiSelectField",
         "NumberField",
@@ -5153,7 +5599,7 @@
       "value": "var(--admin-bg)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -5170,7 +5616,7 @@
       "value": "oklch(97% 0 0 / 10%)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Accordion",
         "BoolField",
@@ -5189,7 +5635,6 @@
         "Input",
         "JsonField",
         "Menu",
-        "Modal",
         "Modal",
         "MultiSelectField",
         "NumberField",
@@ -5258,7 +5703,7 @@
       "value": "0 1px 2px oklch(0% 0 0 / 5%)",
       "file": "elevation.css",
       "category": "elevation",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Card"
       ],
@@ -5271,7 +5716,7 @@
       "value": "0 4px 6px -1px oklch(0% 0 0 / 10%), 0 2px 4px -2px oklch(0% 0 0 / 10%)",
       "file": "elevation.css",
       "category": "elevation",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Card"
       ],
@@ -5314,7 +5759,7 @@
       "value": "var(--powder-sand)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Accordion",
         "Alert",
@@ -5337,7 +5782,6 @@
         "JsonField",
         "LineChart",
         "Menu",
-        "Modal",
         "Modal",
         "MultiSelectField",
         "NumberField",
@@ -5362,7 +5806,7 @@
       "value": "oklch(0.6 0.02 68)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Badge",
         "Button",
@@ -5392,7 +5836,7 @@
       "value": "oklch(0.7 0.02 68)",
       "file": "colours.css",
       "category": "colours",
-      "surface": "public",
+      "surface": "admin",
       "referencedBy": [
         "Alert",
         "BackLink",
@@ -5407,7 +5851,6 @@
         "DeleteConfirmModal",
         "EmptyState",
         "JsonField",
-        "Modal",
         "Modal",
         "MultiSelectField",
         "NumberField",
@@ -7743,7 +8186,6 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Modal",
         "Modal"
       ],
       "usedInTokenLayer": false,
@@ -7843,7 +8285,6 @@
         "DeleteConfirmModal",
         "EmptyState",
         "Modal",
-        "Modal",
         "NumberField",
         "Select",
         "SelectField",
@@ -7913,7 +8354,6 @@
         "DateRangePicker",
         "LongreadFigure",
         "LongreadProse",
-        "Modal",
         "Modal",
         "Portrait",
         "SkeletonCard",
@@ -8086,7 +8526,6 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Modal",
         "Modal"
       ],
       "usedInTokenLayer": false,
@@ -8281,7 +8720,6 @@
         "LongreadProse",
         "Menu",
         "Modal",
-        "Modal",
         "MultiSelectField",
         "NumberField",
         "PageHeader",
@@ -8369,7 +8807,6 @@
         "LongreadHero",
         "LongreadProse",
         "Modal",
-        "Modal",
         "MultiSelectField",
         "NumberField",
         "PageHeader",
@@ -8408,7 +8845,6 @@
         "LongreadSection",
         "LongreadStatBand",
         "Modal",
-        "Modal",
         "PageHeader",
         "RadioGroup",
         "SectionHeader",
@@ -8439,7 +8875,6 @@
         "LongreadFigure",
         "LongreadProse",
         "LongreadStatBand",
-        "Modal",
         "Modal",
         "PageHeader",
         "SectionHeader",
@@ -9191,7 +9626,6 @@
         "LongreadProse",
         "Menu",
         "Modal",
-        "Modal",
         "Pagination",
         "RangeSlider",
         "Select",
@@ -9219,7 +9653,6 @@
         "FormGroup",
         "Header",
         "Input",
-        "Modal",
         "Modal",
         "Portrait",
         "Select",
@@ -9440,7 +9873,6 @@
         "DatePicker",
         "DateRangePicker",
         "Header",
-        "Modal",
         "Modal"
       ],
       "usedInTokenLayer": false,

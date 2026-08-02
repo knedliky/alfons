@@ -52,3 +52,10 @@ jobs:
       # committed manifest matches the tree, which is what the build consumes.
       - name: build
         run: bun run build:lib
+
+      # The MCP server answers from the committed manifest and reaches no
+      # database, so it runs here unchanged. Worth gating on: the tools are
+      # what other repositories build against, and a wrong answer from them
+      # reads as authoritative rather than as a failure.
+      - name: mcp
+        run: bun run mcp:smoke

@@ -42,7 +42,7 @@ const TOKENS_DIR = join(ROOT, 'src/tokens');
 const STORIES_DIR = join(ROOT, 'src/stories');
 const OUT = join(ROOT, 'alfons.manifest.json');
 
-const SCHEMA_VERSION = 2;
+const SCHEMA_VERSION = 3;
 
 /** Aggregates rather than defines, so its @import lines are not definitions. */
 const TOKEN_ENTRY_MANIFEST = 'public.css';
@@ -62,12 +62,23 @@ function walk(dir: string, predicate: (path: string) => boolean): string[] {
 // ---------------------------------------------------------------------------
 
 /**
- * Surface is decided by the defining file, not by the selector. Both admin.css
- * and the public token files define into `:root` under `@layer base`, so there
- * is nothing in the rule itself to distinguish them.
+ * Surface cannot be read from the selector: admin.css and the public token
+ * files all define into `:root` under `@layer base`, so the rule itself says
+ * nothing. Two weaker signals stand in, and it takes both.
+ *
+ * The defining file was the original rule, and it is still right for the 17
+ * tokens in admin.css that carry no prefix — --chart-bg-admin, the
+ * --stat-icon-bg-* set. But nine --admin-* tokens have since been consolidated
+ * into colours.css and elevation.css, and file alone marked every one of them
+ * legal on a public surface. The name prefix was never sufficient either, for
+ * the same 17. Their union is, and each covers the other's gap.
+ *
+ * Caught by AL-004 C4 rather than by anything in AL-003, which is the argument
+ * for the MCP existing at all: the manifest looked correct until something
+ * asked it a question that depended on this field being right.
  */
-function surfaceForFile(file: string): Surface {
-	return basename(file) === 'admin.css' ? 'admin' : 'public';
+function surfaceFor(file: string, name: string): Surface {
+	return basename(file) === 'admin.css' || name.startsWith('--admin-') ? 'admin' : 'public';
 }
 
 /**
@@ -110,7 +121,7 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 				value: decl.value.replace(/\s+/g, ' ').trim(),
 				file: relative(TOKENS_DIR, file),
 				category: filename.replace(/\.css$/, ''),
-				surface: surfaceForFile(file),
+				surface: surfaceFor(file, decl.prop),
 				referencedBy: [],
 				usedInTokenLayer: false,
 				usedInStories: false,
@@ -188,6 +199,79 @@ function propsFromDestructuring(instanceScript: string): PropEntry[] | null {
 	return props;
 }
 
+/**
+ * Read the leading doc comment, which every component writes to one shape:
+ *
+ *     Name — one-sentence summary.
+ *
+ *     Usage:
+ *       <Markup />
+ *
+ *     Features:
+ *     - behaviour the prop types cannot state
+ *
+ * Extracted rather than left in the file because get_component answers with it.
+ * That promotes the block from a comment to an interface: an agent building
+ * against Alfons sees this text and nothing else about how to compose the
+ * component, so a stale Usage block is now a wrong answer rather than an
+ * out-of-date note.
+ */
+function docsFromComment(instanceScript: string): {
+	summary: string | null;
+	usage: string | null;
+	features: string[];
+} {
+	const block = instanceScript.match(/\/\*\*([\s\S]*?)\*\//)?.[1];
+	if (!block) return { summary: null, usage: null, features: [] };
+
+	// Strip the leading ` * ` gutter without touching indentation inside the
+	// Usage block, which is markup and where nesting carries meaning.
+	const lines = block.split('\n').map((line) => line.replace(/^\s*\* ?/, ''));
+
+	// The block opens with a newline straight after `/**`, so the title starts
+	// at the first line with anything on it — and runs to the blank line after
+	// it, because a long summary wraps. Taking only the first line truncated
+	// LongreadStatBand to "a row of headline figures in display serif with a",
+	// which reads as a complete sentence and is not one.
+	const titleStart = lines.findIndex((line) => line.trim().length > 0);
+	const titleEnd =
+		titleStart === -1
+			? -1
+			: lines.findIndex((line, index) => index > titleStart && line.trim().length === 0);
+
+	const title =
+		titleStart === -1
+			? ''
+			: lines
+					.slice(titleStart, titleEnd === -1 ? titleStart + 1 : titleEnd)
+					.map((line) => line.trim())
+					.join(' ')
+					.trim();
+
+	const summary = title.split('—')[1]?.trim() || title || null;
+
+	const usageStart = lines.findIndex((line) => line.trim() === 'Usage:');
+	const featuresStart = lines.findIndex((line) => line.trim() === 'Features:');
+
+	const usage =
+		usageStart === -1
+			? null
+			: lines
+					.slice(usageStart + 1, featuresStart === -1 ? undefined : featuresStart)
+					.join('\n')
+					.replace(/^\n+|\s+$/g, '') || null;
+
+	const features =
+		featuresStart === -1
+			? []
+			: lines
+					.slice(featuresStart + 1)
+					.filter((line) => line.trim().startsWith('- '))
+					.map((line) => line.trim().slice(2).trim());
+
+	return { summary, usage, features };
+}
+
 /** Storybook derives an id by kebab-casing the title and joining its segments. */
 function storyIdFromTitle(title: string): string {
 	return title
@@ -223,9 +307,18 @@ function collectStoryIds(): Map<string, string> {
 function collectComponents(): { components: ComponentEntry[]; unparsed: string[] } {
 	const files = walk(COMPONENTS_DIR, (path) => path.endsWith('.svelte'));
 	const storyIds = collectStoryIds();
-	const barrels = walk(COMPONENTS_DIR, (path) => path.endsWith('index.ts'))
-		.map((path) => readFileSync(path, 'utf8'))
-		.join('\n');
+
+	// Keyed by directory, not concatenated. A single blob and a \bName\b test
+	// reported src/components/admin/Modal.svelte as exported because the
+	// unrelated modals barrel mentions Modal — and that file is in fact
+	// unreachable, which is the one thing `exported` exists to reveal. Match
+	// the re-export against the barrel sitting beside the component instead.
+	const barrels = new Map(
+		walk(COMPONENTS_DIR, (path) => path.endsWith('index.ts')).map((path) => [
+			dirname(path),
+			readFileSync(path, 'utf8')
+		])
+	);
 
 	const components: ComponentEntry[] = [];
 	const unparsed: string[] = [];
@@ -274,7 +367,8 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
 			tokensUsed,
 			composes,
 			importedBy: [],
-			exported: new RegExp(`\\b${name}\\b`).test(barrels),
+			exported: (barrels.get(dirname(file)) ?? '').includes(`./${name}.svelte`),
+			...docsFromComment(instanceScript ?? moduleScript ?? ''),
 			storyId: storyIds.get(name) ?? null,
 			lifecycle: null
 		});
@@ -291,6 +385,34 @@ function collectComponents(): { components: ComponentEntry[]; unparsed: string[]
  * reverse views cannot disagree. An entry with no consumer is the signal the
  * orphan rules read: 111 tokens had none at the time this was written.
  */
+/**
+ * Two components may not share a name.
+ *
+ * The reverse indexes below are keyed by bare name, because that is all an
+ * `import Modal from './Modal.svelte'` gives you. With two files called
+ * Modal.svelte, one silently wins the key and the other's importers are
+ * credited to it — which is exactly what happened: the manifest reported
+ * src/components/admin/Modal.svelte as imported by nothing while two admin
+ * components were importing it, and it was deleted on the strength of that.
+ * The build caught it; the manifest should have.
+ *
+ * A hard failure rather than a warning, because every wrong answer downstream
+ * looks perfectly well-formed.
+ */
+function refuseDuplicateNames(components: ComponentEntry[]): void {
+	const byName = new Map<string, string[]>();
+	for (const component of components) {
+		byName.set(component.name, [...(byName.get(component.name) ?? []), component.path]);
+	}
+
+	const duplicates = [...byName].filter(([, paths]) => paths.length > 1);
+	if (!duplicates.length) return;
+
+	console.error('\nComponent names must be unique — the reverse indexes are keyed by name:');
+	for (const [name, paths] of duplicates) console.error(`  ${name}: ${paths.join(', ')}`);
+	process.exit(1);
+}
+
 function linkConsumers(components: ComponentEntry[], tokens: TokenEntry[]): void {
 	const tokenIndex = new Map(tokens.map((token) => [token.name, token]));
 	const componentIndex = new Map(components.map((component) => [component.name, component]));
@@ -317,6 +439,7 @@ function linkConsumers(components: ComponentEntry[], tokens: TokenEntry[]): void
 function buildDerived(): Manifest {
 	const { tokens, usedInTokenLayer } = collectTokens();
 	const { components, unparsed } = collectComponents();
+	refuseDuplicateNames(components);
 	linkConsumers(components, tokens);
 
 	const usedInStories = new Set(
