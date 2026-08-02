@@ -466,9 +466,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "BarChart Usage: `<BarChart data={items} title=\"Top Pages\" valueLabel=\"Views\" />` Features: Horizontal bar chart for ranked data, loading skeleton, empty state, animated bar fill",
-      "usage": null,
-      "features": [],
+      "summary": "BarChart",
+      "usage": "`<BarChart data={items} title=\"Top Pages\" valueLabel=\"Views\" />`",
+      "features": [
+        "Horizontal bar chart for ranked data",
+        "loading skeleton",
+        "empty state",
+        "animated bar fill"
+      ],
       "storyId": "stats-barchart",
       "lifecycle": null,
       "layoutTier": null
@@ -2430,9 +2435,14 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "syntax-editable JSON textarea for JSON fields. Usage: `<JsonField name=\"meta\" label=\"Metadata\" bind:value={meta} />` Features: JSON validation on blur, format/prettify, minify, copy to clipboard, line numbers, tab-key indentation support, error display.",
-      "usage": null,
-      "features": [],
+      "summary": "syntax-editable JSON textarea for JSON fields.",
+      "usage": "`<JsonField name=\"meta\" label=\"Metadata\" bind:value={meta} />`",
+      "features": [
+        "JSON validation on blur",
+        "format/prettify",
+        "minify",
+        "copy to clipboard"
+      ],
       "storyId": "forms-jsonfield",
       "lifecycle": null,
       "layoutTier": null
@@ -2538,9 +2548,15 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "LineChart Usage: `<LineChart data={timeseries} metric=\"views\" title=\"Page Views\" />` Features: Pure SVG time series chart, interactive tooltips, area fill, loading state, responsive design",
-      "usage": null,
-      "features": [],
+      "summary": "LineChart",
+      "usage": "`<LineChart data={timeseries} metric=\"views\" title=\"Page Views\" />`",
+      "features": [
+        "Pure SVG time series chart",
+        "interactive tooltips",
+        "area fill",
+        "loading state",
+        "responsive design"
+      ],
       "storyId": "stats-linechart",
       "lifecycle": null,
       "layoutTier": null
@@ -2947,7 +2963,7 @@
       ],
       "storyId": "layouts-mainlayout",
       "lifecycle": null,
-      "layoutTier": "shell"
+      "layoutTier": "container"
     },
     {
       "name": "Menu",
@@ -3300,7 +3316,7 @@
       ],
       "exported": true,
       "summary": "unified layout shell for both public and admin contexts.",
-      "usage": null,
+      "usage": "  <PageFrame>\n    {#snippet header()}<Header />{/snippet}\n    {#snippet footer()}<Footer />{/snippet}\n    <main>Page content</main>\n  </PageFrame>\n\nUsage (admin with sidebar):\n  <PageFrame sidebar={sidebarSnippet} sidebarWidth={280} theme=\"admin\">\n    <main>Admin content</main>\n  </PageFrame>",
       "features": [
         "No sidebar: flex column (header > main > footer) — mirrors PageLayout",
         "With sidebar: CSS Grid (sidebarWidth | 1fr) — mirrors admin layout",
@@ -4452,9 +4468,11 @@
         "SkeletonCardGrid"
       ],
       "exported": true,
-      "summary": "SkeletonCard Usage: `<SkeletonCard />` Features: Loading placeholder matching compact card dimensions with staggered pulse animation",
-      "usage": null,
-      "features": [],
+      "summary": "SkeletonCard",
+      "usage": "`<SkeletonCard />`",
+      "features": [
+        "Loading placeholder matching compact card dimensions with staggered pulse animation"
+      ],
       "storyId": "skeletons-skeletoncard",
       "lifecycle": null,
       "layoutTier": null
@@ -4479,9 +4497,11 @@
       ],
       "importedBy": [],
       "exported": true,
-      "summary": "SkeletonCardGrid Usage: `<SkeletonCardGrid count={6} />` Features: Responsive grid of skeleton cards matching blog/lab page layouts",
-      "usage": null,
-      "features": [],
+      "summary": "SkeletonCardGrid",
+      "usage": "`<SkeletonCardGrid count={6} />`",
+      "features": [
+        "Responsive grid of skeleton cards matching blog/lab page layouts"
+      ],
       "storyId": "skeletons-skeletoncardgrid",
       "lifecycle": null,
       "layoutTier": null
@@ -4510,9 +4530,11 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "SkeletonHero Usage: `<SkeletonHero />` Features: Loading placeholder for featured hero section with visual and content columns",
-      "usage": null,
-      "features": [],
+      "summary": "SkeletonHero",
+      "usage": "`<SkeletonHero />`",
+      "features": [
+        "Loading placeholder for featured hero section with visual and content columns"
+      ],
       "storyId": "skeletons-skeletonhero",
       "lifecycle": null,
       "layoutTier": null
@@ -4696,9 +4718,15 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "StatCard Usage: `<StatCard label=\"Total Messages\" value={42} icon=\"messages\" colour=\"red\" />` Features: Key metric display with icon, badge count, sub-value, loading skeleton, four colour themes",
-      "usage": null,
-      "features": [],
+      "summary": "StatCard",
+      "usage": "`<StatCard label=\"Total Messages\" value={42} icon=\"messages\" colour=\"red\" />`",
+      "features": [
+        "Key metric display with icon",
+        "badge count",
+        "sub-value",
+        "loading skeleton",
+        "four colour themes"
+      ],
       "storyId": "stats-statcard",
       "lifecycle": null,
       "layoutTier": null

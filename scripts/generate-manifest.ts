@@ -229,16 +229,34 @@ function docsFromComment(instanceScript: string): {
 	// Usage block, which is markup and where nesting carries meaning.
 	const lines = block.split('\n').map((line) => line.replace(/^\s*\* ?/, ''));
 
-	// The block opens with a newline straight after `/**`, so the title starts
-	// at the first line with anything on it — and runs to the blank line after
-	// it, because a long summary wraps. Taking only the first line truncated
-	// LongreadStatBand to "a row of headline figures in display serif with a",
-	// which reads as a complete sentence and is not one.
+	// Most components write the shape above, and some do not. StatCard has no em
+	// dash and puts `Usage:` and `Features:` inline with their content, all on
+	// consecutive lines. Assuming the common shape gave it the summary
+	// "StatCard Usage: `<StatCard label=..." — the whole comment, presented to
+	// an agent as a one-line description. Both forms are read here rather than
+	// the outliers being reformatted, because the manifest reads whatever is in
+	// the tree and a rule that only works on tidy input is not a rule.
+	// `[^:]*` after the label, because PageFrame writes `Usage (public):` and
+	// `Usage (admin with sidebar):` to document two arrangements. An exact
+	// `Usage:` match silently gave the one component with two usage examples no
+	// usage at all — the failure mode of a strict parser over prose, which is
+	// always to return nothing rather than to complain.
+	const heading = /^(Usage|Features|Example|Notes?|Props)\b[^:]*:/i;
+	const labelled = (label: string) => new RegExp(`^${label}\\b[^:]*:\\s*(.*)$`, 'i');
+
+	const indexOfHeading = (label: string) =>
+		lines.findIndex((line) => labelled(label).test(line.trim()));
+
+	// The title runs from the first non-empty line to the first blank line OR
+	// the first section heading, whichever comes first.
 	const titleStart = lines.findIndex((line) => line.trim().length > 0);
 	const titleEnd =
 		titleStart === -1
 			? -1
-			: lines.findIndex((line, index) => index > titleStart && line.trim().length === 0);
+			: lines.findIndex(
+					(line, index) =>
+						index > titleStart && (line.trim().length === 0 || heading.test(line.trim()))
+				);
 
 	const title =
 		titleStart === -1
@@ -251,24 +269,44 @@ function docsFromComment(instanceScript: string): {
 
 	const summary = title.split('—')[1]?.trim() || title || null;
 
-	const usageStart = lines.findIndex((line) => line.trim() === 'Usage:');
-	const featuresStart = lines.findIndex((line) => line.trim() === 'Features:');
+	const usageStart = indexOfHeading('Usage');
+	const featuresStart = indexOfHeading('Features');
+
+	// `Usage: <code>` on one line, or `Usage:` followed by an indented block.
+	// The inline remainder is checked first: when it is non-empty that IS the
+	// usage, and the lines below belong to whatever comes next.
+	const usageInline =
+		usageStart === -1 ? '' : (lines[usageStart].trim().match(labelled('Usage'))?.[1] ?? '').trim();
 
 	const usage =
 		usageStart === -1
 			? null
-			: lines
+			: usageInline ||
+				lines
 					.slice(usageStart + 1, featuresStart === -1 ? undefined : featuresStart)
 					.join('\n')
-					.replace(/^\n+|\s+$/g, '') || null;
+					.replace(/^\n+|\s+$/g, '') ||
+				null;
+
+	const featuresInline =
+		featuresStart === -1
+			? ''
+			: (lines[featuresStart].trim().match(labelled('Features'))?.[1] ?? '').trim();
 
 	const features =
 		featuresStart === -1
 			? []
-			: lines
-					.slice(featuresStart + 1)
-					.filter((line) => line.trim().startsWith('- '))
-					.map((line) => line.trim().slice(2).trim());
+			: featuresInline
+				? // A prose list rather than bullets. Split on commas, which is what
+					// the one component writing it this way actually means.
+					featuresInline
+						.split(',')
+						.map((item) => item.trim())
+						.filter(Boolean)
+				: lines
+						.slice(featuresStart + 1)
+						.filter((line) => line.trim().startsWith('- '))
+						.map((line) => line.trim().slice(2).trim());
 
 	return { summary, usage, features };
 }
