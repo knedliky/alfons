@@ -21,7 +21,30 @@ export default defineConfig({
 	root: 'src/dev',
 	base: '/dev/',
 	publicDir: false,
-	plugins: [tailwindcss(), svelte()],
+	plugins: [
+		tailwindcss(),
+		svelte(),
+		{
+			// The watcher follows the Vite root (src/dev), and prototypes/ sits
+			// outside it — without this, a newly provisioned round is invisible
+			// until a restart, which breaks the promise that provisioning is
+			// just writing files. Invalidation is explicit as well: Vite's own
+			// glob invalidation does not fire for adds outside the root, so a
+			// new round would compile against the old glob until restart.
+			name: 'alfons-watch-prototypes',
+			configureServer(server) {
+				server.watcher.add(fromRoot('./prototypes'));
+				const republish = (file: string) => {
+					if (!file.includes('/prototypes/')) return;
+					server.moduleGraph.invalidateAll();
+					server.ws.send({ type: 'full-reload' });
+				};
+				server.watcher.on('add', republish);
+				server.watcher.on('unlink', republish);
+				server.watcher.on('addDir', republish);
+			}
+		}
+	],
 	resolve: {
 		alias: {
 			'@alfons/design/public': fromRoot('./src/tokens/public.css'),
