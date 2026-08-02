@@ -35,7 +35,8 @@
 		"build-storybook": "storybook build",
 		"shots": "node scripts/screenshot-stories.mjs",
 		"test:rules": "bun run scripts/test-rules.ts",
-		"rules:baseline": "bun run scripts/rules-baseline.ts"
+		"rules:baseline": "bun run scripts/rules-baseline.ts",
+		"test:scaffold": "bun run scripts/test-scaffold.ts"
 	},
 	"dependencies": {
 		"@fontsource-variable/azeret-mono": "^5.2.11",

@@ -67,3 +67,9 @@ jobs:
       # token can be named outside a <style> block.
       - name: rules
         run: bun run test:rules
+
+      # Scaffolds a component and then reviews it with the rule engine. This is
+      # what keeps the fast path and the compliant path the same path: a rule
+      # added above that the scaffold does not satisfy fails here.
+      - name: scaffold
+        run: bun run test:scaffold

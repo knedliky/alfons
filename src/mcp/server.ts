@@ -17,6 +17,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import { loadManifest, storybookBase } from './manifest.js';
 import { applyFixes, libraryFindings, review } from '../rules/index.js';
+import { scaffoldComponent } from './scaffold.js';
 import { findComponents, getComponent, getLayoutRecipe, getTokens, listSurfaces } from './tools.js';
 
 // Loaded once, at startup, and deliberately not reloaded per call: a manifest
@@ -104,8 +105,11 @@ server.registerTool(
 			'The composition order for page-level layouts — which Alfons layout component wraps ' +
 			'which, outermost first, with a usage example for each. Call this when building a ' +
 			'page or a screen rather than a single widget, so the shell, the container and the ' +
-			'section nest the way the rest of the system does. The order is derived from what ' +
-			'the components actually render, not from a written convention that can go stale.',
+			'section nest the way the rest of the system does. Ordered by tier — shell frames ' +
+			'the page, region divides it, container arranges within a region — and a component ' +
+			'may not contain one from an outer tier. Within a tier there is no order: a Stack ' +
+			'inside a Grid is as correct as the reverse (D-168). The layout-nesting rule in ' +
+			'review_markup reads this same ordering, so the two cannot disagree.',
 		inputSchema: {}
 	},
 	async () => reply(getLayoutRecipe(manifest))
@@ -167,6 +171,36 @@ server.registerTool(
 		}
 	},
 	async ({ source, surface }) => reply(applyFixes(source, manifest, surface))
+);
+
+server.registerTool(
+	'scaffold_component',
+	{
+		title: 'Scaffold a component',
+		description:
+			'Generate a new Alfons component and its Storybook story, already satisfying every ' +
+			'design rule: tokens legal on the requested surface, Svelte 5 runes, and layouts nested ' +
+			'in the documented order. Call this INSTEAD of writing a component from scratch — ' +
+			'review_markup then has nothing to report, because the generated path was compliant ' +
+			'before it was reviewed. Returns source text and the paths to write it to; the caller ' +
+			'writes the files. If a component of that name already exists, the answer says so ' +
+			'rather than quietly producing a second one.',
+		inputSchema: {
+			name: z.string().describe('PascalCase component name, e.g. SummaryCard.'),
+			category: z
+				.string()
+				.describe('Directory under src/components: atoms, cards, layouts, admin, ...'),
+			surface: z
+				.enum(['public', 'admin'])
+				.describe('Which surface it renders on. Decides which tokens are legal.'),
+			composes: z
+				.array(z.string())
+				.optional()
+				.describe('Library components it should render. Must be exported and live.')
+		}
+	},
+	async ({ name, category, surface, composes }) =>
+		reply(scaffoldComponent(manifest, { name, category, surface, composes }))
 );
 
 server.registerTool(

@@ -300,7 +300,11 @@ for (const expected of [
 	'get_component',
 	'get_tokens',
 	'get_layout_recipe',
-	'list_surfaces'
+	'list_surfaces',
+	'review_markup',
+	'apply_fixes',
+	'review_library',
+	'scaffold_component'
 ]) {
 	check(`exposes ${expected}`, toolNames.includes(expected), toolNames);
 }
