@@ -20,7 +20,6 @@
     "./form-states": "./src/tokens/form-states.css"
   },
   "scripts": {
-    "dev": "echo 'dev script — to be configured in task 002'",
     "manifest": "bun run scripts/generate-manifest.ts",
     "build": "bun run manifest && vite build",
     "check": "svelte-check --tsconfig ./tsconfig.json",
