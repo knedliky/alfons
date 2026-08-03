@@ -10,31 +10,116 @@
 			"slug": "d1",
 			"title": "Contrast ladder",
 			"direction": "Takes the winning approach's own finding and pushes it alone: a deliberate three-step ladder of type family, weight and ink inside one dense table, with every other variable held constant, to find how much hierarchy density can absorb before it stops reading as dense.",
-			"deviations": []
+			"deviations": [
+				{
+					"broke": "Held everything constant against a4 except the ladder — one rule changed anyway: tbody td moved from vertical-align: middle to vertical-align: baseline.",
+					"why": "The ladder forced it. a4's rows are one size throughout, so centring each cell is correct there. Three sizes in one row centred individually gives the row a ragged top edge, which is the quality a dense table is actually read by. Baseline alignment is not an improvement to a4's table; it is the cost of the variable this approach changed, and leaving it out would have tested the ladder against a defect the ladder caused."
+				},
+				{
+					"broke": "Sort and disclosure controls are bare <button>, not the library Button. review_markup reports raw-element on both.",
+					"why": "Confirmed library gap, already established in round one. Button carries its own padding, height and token styling, none of which survive inside a 22px table row or a full-bleed column header. Taking the suggested fix would have changed the row rhythm, which is the one thing this approach may not change."
+				},
+				{
+					"broke": "Font weights are literals (400, 450, 500, 600, 700) rather than tokens.",
+					"why": "There are no weight tokens on the public surface. Weight is one of the four dimensions of the ladder and the only one with nothing to reference, so it is stated once per rung at the page root and never again below it. Recorded here because it is the shape of a token gap, not a licence."
+				}
+			]
 		},
 		{
 			"slug": "d2",
 			"title": "Permanently banded",
 			"direction": "Makes the release banner the primary structural device rather than a sorting artefact, so the page is a sequence of small ruled tables each carrying its release's whole story, answering the question about neighbours structurally instead of by sorting.",
-			"deviations": []
+			"deviations": [
+				{
+					"what": "CompletionMeter declares two literal lengths, --meter-end-radius: 4px and --meter-gap: 2px.",
+					"why": "The chart rules mandate a 4px rounded data-end and a 2px surface gap between stacked segments, and no token supplies either: every radius token in the public surface resolves to 0, and there is no named 2px value. review_markup offers --space-1 for the radius, which is 4px by coincidence of category, not of meaning — taking it would encode a spacing step as a corner radius. Both are declared once in the one component that draws a meter, so sixteen band meters and the corpus meter cannot drift."
+				},
+				{
+					"what": "Three bare <button> elements: the sortable column headers, the band fold control and the row disclosure triangle.",
+					"why": "Button is a pill CTA with its own padding, border and focus treatment. A sort header must fill a table cell and inherit the header's mono microtype; a fold control must sit inline with a release slug at caption size; a disclosure triangle is a 12px glyph. None survives Button's box. Flagged by raw-element three times and reported rather than taken."
+				},
+				{
+					"what": "Fixed rem widths on the banner meter (26rem, narrowing to 15rem below 900px) and a display size derived as calc(var(--text-lead) * 2.2).",
+					"why": "The meters only compare if every track starts and ends on the same two vertical lines, which needs a fixed width, and no token spans component widths. The typography scale stops at --text-lead, so the masthead figure is derived from the largest token rather than guessed at as a literal rem."
+				}
+			]
 		},
 		{
 			"slug": "d3",
 			"title": "Frozen spine",
 			"direction": "Freezes an identity column of id, status and title while the twelve metadata columns scroll horizontally beneath it, attacking the sub-twelve-hundred-pixel collapse directly to test whether a frozen spine buys the laptop back without hiding a single column.",
-			"deviations": []
+			"deviations": [
+				{
+					"what": "The scroll rail is bounded to the viewport (max-height: 100dvh - header - space-8) and scrolls vertically as well as horizontally, so the page now contains a nested vertical scroll region.",
+					"why": "overflow-x: auto forces overflow-y to compute to auto, which scopes a vertically sticky thead to the rail rather than the page. Left unbounded the rail is as tall as its content and the header row has nothing to stick to — measured inert at -640px in round one's a4, which has the same construction. A frozen spine needs a header row that stays legible, and bounding the rail is the only way to get one. The cost is a nested scroller, paid knowingly."
+				},
+				{
+					"what": "Sort headers and the row disclosure use bare <button> rather than the Alfons Button.",
+					"why": "Button is a pill CTA with its own padding and radius scale; a 12px uppercase mono column header inside a 25px row cannot use it without the table ceasing to be dense. review_markup flags all three (raw-element). The column-step controls in the position bar, which are real buttons at a real size, do use Button."
+				},
+				{
+					"what": "Column widths are literal rem values and a clamp() on viewport units (--w-status 6.75rem, --w-id 5.5rem, --w-title clamp(9rem, 22vw, 21rem)).",
+					"why": "The frozen columns need known widths, because each sticky offset is the sum of the ones before it. No spacing token is in the range a text column occupies — --space-8 is 64px and the next step does not exist. Derived from a token would be a fiction."
+				},
+				{
+					"what": "--rail-viewport is a custom property written from JavaScript rather than declared in CSS, and review_markup reports it as unknown-token twice.",
+					"why": "The release banner and the expanded detail row live inside cells that span the full table width, which is wider than the screen. They are pinned left and sized to the rail's measured viewport so they read at the width the reader actually has. That measurement only exists at runtime."
+				}
+			]
 		},
 		{
 			"slug": "d4",
 			"title": "Keyboard terminal",
 			"direction": "Takes the terminal premise to its end and makes the keyboard the primary input, with row movement, incremental search and inline expansion all reachable without a mouse, testing whether a dense table plus a keyboard model beats a command palette at the same journey.",
-			"deviations": []
+			"deviations": [
+				{
+					"what": "The fifteen sort headers and the eighty-seven row carets carry tabindex=\"-1\", so the grid is a single tab stop and none of the controls inside it can be reached by Tab.",
+					"why": "The ARIA grid pattern asks for exactly this, and measuring it settled the argument: left tabbable, the grid contributed a hundred and two stops to the page's tab order, and a headless walk needed forty Tabs without ever arriving at the table. One stop and h, l, s, Enter to reach the controls from inside. The mouse is untouched — every one of them still clicks — but a keyboard user who does not read the legend can no longer Tab onto a sort header, which is the cost."
+				},
+				{
+					"what": "Band movement is bound to { and } rather than the conventional [ and ].",
+					"why": "The dev harness's own approach pager binds [ and ] to walk between the five prototypes, so pressing ] in the review environment navigated to d5 mid-test. A prototype that steals a key from the thing reviewing it cannot be reviewed. Shift-arrow is provided as the second, layout-independent binding. Worth reporting upward: any prototype that wants a full key model has this collision."
+				},
+				{
+					"what": "A single window-level keydown handler claims unmodified letters — j, k, f, n, o, s, h, l, t, p — across the whole page, not only while the grid has focus.",
+					"why": "A model that only arms after you have found and focused the table is a model nobody discovers. The handler stands down completely inside any input or textarea, leaves every meta and alt combination alone, and claims only ctrl-d and ctrl-u, which no browser binds. The cost is real and stated rather than hidden: on a page carrying a text-editing surface this handler would be wrong, and it would have to narrow to the grid's focus."
+				},
+				{
+					"what": "KeyCap is a local <kbd> component rather than the library Chip, and the sort headers, carets and mode toggles are bare <button>. review_markup reports raw-element four times.",
+					"why": "Round one flagged that Chip pressed into service as a keycap reads acceptably for a lone ⌘K; this page shows thirty-three at once, and Chip is a pill of content metadata that reads as a tag rather than as something you press. Button is likewise a pill CTA whose padding and height cannot sit inside a 22px table row. Both are library gaps reported rather than worked around badly."
+				},
+				{
+					"what": "The seek mode does not filter. Typing a term leaves all eighty-seven rows in place, marks the matches and moves the cursor to them.",
+					"why": "This is the approach's whole argument against the command palette and it is a deliberate refusal of the obvious behaviour. The brief says a match must carry enough context to be recognised on sight; a palette answers that by copying release and project into a floating panel, and seek answers it by never leaving the corpus, so the release band, the siblings and the neighbours are simply still on screen. Filter is kept on f for when the surroundings are noise, and the two modes are the comparison."
+				}
+			]
 		},
 		{
 			"slug": "d5",
 			"title": "Graphical density",
 			"direction": "Adds data ink to textual density, giving every release row a phase meter and every task row a small verification-attempt trail, to test whether graphical density answers the first-glance orientation problem or simply overloads the page.",
-			"deviations": []
+			"deviations": [
+				{
+					"what": "Declared --data-gap: 2px and --data-end-radius: 4px as local custom properties on the page root rather than using a library token.",
+					"why": "The chart contract mandates a 2px surface gap between adjacent fills and a 4px rounded data end. No 2px token exists, and every radius token resolves to 0 by the square-corner doctrine, so a token would encode the opposite of what the contract asks. review_markup offers --space-1 for the 4px radius, which matches by value and not by category: --space-1 is spacing, and using it as a radius would make the meaning unrecoverable. Declared once at the page root so the two chart components cannot drift, and named for what they are."
+				},
+				{
+					"what": "The verification trail carries no colour at all — the outcome is encoded by bar height, and the mark that currently stands by ink weight (--text-primary against --text-secondary).",
+					"why": "Stricter than the brief, not looser. A verdict is not a status, so it may not borrow status colour; and every warm hue on this surface is already a status. An attempt's outcome is ordinal anyway (fail got less far than partial, which got less far than pass), so length is the honest encoding and hue would have been a second, redundant one."
+				},
+				{
+					"what": "The corpus copied from round one's a4 was extended with an explicit `attempts: AttemptOutcome[]` history on every task.",
+					"why": "The seed recorded only latestAttempt and latestVerdict. A trail cannot be drawn from a single number, and deriving the earlier attempts inside the view would be the view inventing data it does not have. The history is authored in the data file so what is drawn is what is stored."
+				},
+				{
+					"what": "The wontfix and duplicate segments of the phase meter are drawn with a 45-degree hatch rather than a flat fill.",
+					"why": "The reserved status map sends pending, wontfix and duplicate all to --text-muted. In a stacked meter three identically coloured segments merge into one and the meter reports work-not-started where work was abandoned. The hatch is a pattern, not a fourth colour, so the reserved map is untouched."
+				},
+				{
+					"what": "The table is 16 columns wide and still scrolls sideways below roughly 1500px; adding the Trail column made round one's horizontal-scroll problem measurably worse.",
+					"why": "Hiding a column in a density study defeats the study, and the sub-1200px collapse is d3's question in this round, not this one's. Recorded rather than fixed so the cost of the extra ink is visible in the comparison."
+				}
+			]
 		}
 	]
 }
