@@ -24,22 +24,10 @@
 			"title": "One per screen",
 			"direction": "Gives each running task the full width and height of the phone as a single card the reader moves between, so the depth is the card itself and there is no tap between seeing a task and reading it.",
 			"deviations": [
-				{
-					"what": "Dropped the Footer from the seeded PageFrame shell, and sized the page to exactly one screen (100dvh minus the header).",
-					"why": "The direction forbids a horizontal pager that fights the page scroll. A footer below the fold makes the document vertically scrollable, which is precisely the fight. Removing it means the document does not scroll at all, so the deck is the only pager and a diagonal swipe cannot leak into the page. Verified: document overflow is 0px at 320, 370, 430 and 1280 wide."
-				},
-				{
-					"what": "The card title and the page headline use a literal ceiling inside clamp() — 2.125rem and 1.75rem — rather than a token.",
-					"why": "The public typography scale stops at --text-lead (1.25rem), which is a caption on a card that owns the whole screen. The floor of each clamp is the token; only the ceiling is a literal, and there is no token that would have prevented it. Flagged in the report as a library gap rather than hidden."
-				},
-				{
-					"what": "The position ticks in the rail are bare <button> elements, not Alfons Button. review_markup's raw-element finding on them is declined.",
-					"why": "A tick is a 48px hit area wrapped around a 4px bar. Button's icon size is a fixed 3rem square and its padding, background and border are exactly what would have to be overridden away, leaving a Button in name only. The two arrow controls beside them ARE Alfons Buttons, where the finding was correct and was taken."
-				},
-				{
-					"what": "The page carries an extra bottom padding of calc(var(--space-7) + var(--space-5)) that a production page would not.",
-					"why": "The prototyping harness's own approach pager is fixed to the bottom of every /dev page and would cover the deck's rail, which sits at the bottom because that is where a thumb is. The padding exists to make the design reviewable, not because the design wants it."
-				}
+				"Dropped the Footer from the seeded PageFrame shell, and sized the page to exactly one screen (100dvh minus the header). Why: The direction forbids a horizontal pager that fights the page scroll. A footer below the fold makes the document vertically scrollable, which is precisely the fight. Removing it means the document does not scroll at all, so the deck is the only pager and a diagonal swipe cannot leak into the page. Verified: document overflow is 0px at 320, 370, 430 and 1280 wide.",
+				"The card title and the page headline use a literal ceiling inside clamp() — 2.125rem and 1.75rem — rather than a token. Why: The public typography scale stops at --text-lead (1.25rem), which is a caption on a card that owns the whole screen. The floor of each clamp is the token; only the ceiling is a literal, and there is no token that would have prevented it. Flagged in the report as a library gap rather than hidden.",
+				"The position ticks in the rail are bare <button> elements, not Alfons Button. review_markup's raw-element finding on them is declined. Why: A tick is a 48px hit area wrapped around a 4px bar. Button's icon size is a fixed 3rem square and its padding, background and border are exactly what would have to be overridden away, leaving a Button in name only. The two arrow controls beside them ARE Alfons Buttons, where the finding was correct and was taken.",
+				"The page carries an extra bottom padding of calc(var(--space-7) + var(--space-5)) that a production page would not. Why: The prototyping harness's own approach pager is fixed to the bottom of every /dev page and would cover the deck's rail, which sits at the bottom because that is where a thumb is. The padding exists to make the design reviewable, not because the design wants it."
 			]
 		},
 		{

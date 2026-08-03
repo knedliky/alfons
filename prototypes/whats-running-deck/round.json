@@ -11,30 +11,12 @@
 			"title": "Deck and spine",
 			"direction": "Keeps a persistent compact strip of every runner beside the card at all times, so the overview and the detail are on screen together and the reader never trades one for the other, testing whether a permanent second register is worth the room it takes on a phone.",
 			"deviations": [
-				{
-					"what": "The seeded shell's Footer is dropped and PageSection, Container and PageHeader are not used. The page is a single flex column exactly one viewport tall.",
-					"why": "A horizontal pager inside a vertically scrolling document is the known misery. The document is made exactly one screen tall so the only scroller on the page is the deck's own track. A footer below the fold would reintroduce the vertical scroll the deck must not fight. Inherited from the approach this builds on."
-				},
-				{
-					"what": "The tick rail and the previous/next Buttons are removed. The spine is the deck's only visible control.",
-					"why": "The spine already names every runner and marks the current one, so four identical ticks were a second and poorer answer to a question the spine answers better, and a pair of arrows that can only step is strictly worse than four destinations one tap away. Movement still works three ways: swipe, the spine, and arrow keys with Home and End."
-				},
-				{
-					"what": "A bare <button> per spine entry instead of the Button atom. review_markup reports it as raw-element.",
-					"why": "Button is a padded, backgrounded control with fixed heights. A spine entry is a two-line block that must flex to about a quarter of a 370px screen, carry a status colour on its top edge and hold a 48px touch target. Every one of Button's own decisions would have to be overridden, which is a Button in name only."
-				},
-				{
-					"what": "Inline padding on a spine entry is var(--space-1) rather than matching its block padding, and the spine gap is var(--space-1).",
-					"why": "Measured, not chosen. At var(--space-2) an entry had 58px of content and the word 'verifying' needs 70, so the status word truncated to 'verifyin…' and the spine was left stating state in colour alone. The narrower inline padding is what keeps the word beside the colour at 370px."
-				},
-				{
-					"what": "The card's title clamp has a literal 2.125rem ceiling.",
-					"why": "The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the whole screen. The floor is the token; there is no token that would have prevented the ceiling. Inherited unchanged."
-				},
-				{
-					"what": "padding-bottom on the page is calc(var(--space-7) + var(--space-5)) rather than var(--space-4).",
-					"why": "Clears the prototyping harness's floating pager, which is fixed to the bottom of every /dev page and would otherwise cover the spine — the one control the deck has. A production page would carry var(--space-4) here like every other edge."
-				}
+				"The seeded shell's Footer is dropped and PageSection, Container and PageHeader are not used. The page is a single flex column exactly one viewport tall. Why: A horizontal pager inside a vertically scrolling document is the known misery. The document is made exactly one screen tall so the only scroller on the page is the deck's own track. A footer below the fold would reintroduce the vertical scroll the deck must not fight. Inherited from the approach this builds on.",
+				"The tick rail and the previous/next Buttons are removed. The spine is the deck's only visible control. Why: The spine already names every runner and marks the current one, so four identical ticks were a second and poorer answer to a question the spine answers better, and a pair of arrows that can only step is strictly worse than four destinations one tap away. Movement still works three ways: swipe, the spine, and arrow keys with Home and End.",
+				"A bare <button> per spine entry instead of the Button atom. review_markup reports it as raw-element. Why: Button is a padded, backgrounded control with fixed heights. A spine entry is a two-line block that must flex to about a quarter of a 370px screen, carry a status colour on its top edge and hold a 48px touch target. Every one of Button's own decisions would have to be overridden, which is a Button in name only.",
+				"Inline padding on a spine entry is var(--space-1) rather than matching its block padding, and the spine gap is var(--space-1). Why: Measured, not chosen. At var(--space-2) an entry had 58px of content and the word 'verifying' needs 70, so the status word truncated to 'verifyin…' and the spine was left stating state in colour alone. The narrower inline padding is what keeps the word beside the colour at 370px.",
+				"The card's title clamp has a literal 2.125rem ceiling. Why: The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the whole screen. The floor is the token; there is no token that would have prevented the ceiling. Inherited unchanged.",
+				"padding-bottom on the page is calc(var(--space-7) + var(--space-5)) rather than var(--space-4). Why: Clears the prototyping harness's floating pager, which is fixed to the bottom of every /dev page and would otherwise cover the spine — the one control the deck has. A production page would carry var(--space-4) here like every other edge."
 			]
 		},
 		{
@@ -42,30 +24,12 @@
 			"title": "The contents card",
 			"direction": "Makes the first card of the deck an overview of every runner so the deck begins with the sense check and the reader pages from the whole into the particular, testing whether the overview can simply be another card rather than a separate register.",
 			"deviations": [
-				{
-					"what": "No Footer, and the seeded PageSection/Container/PageHeader shell is dropped. The page is exactly one viewport tall.",
-					"why": "A horizontal pager inside a vertically scrolling document is the known misery. Making the document exactly one screen tall is what removes the conflict, and a footer below the fold would put it straight back. Inherited from n2, which established the same deviation."
-				},
-				{
-					"what": "The rail's leading control is Contents, not a previous arrow. Backwards movement by visible control is a jump to card one plus the directly tappable ticks, rather than a step.",
-					"why": "On a deck whose first card is the overview, the destination behind you that matters is almost never the card immediately behind you. From card four the previous arrow costs three presses to reach contents and this costs one, which is what the round asked to be made trivial. Every tick is tappable so a single step back is still one tap, and ArrowLeft plus the swipe both still walk the deck backwards. It also keeps the tick hit area at 48px; a fifth control in the rail would have squeezed the ticks below the 44px floor at 370px."
-				},
-				{
-					"what": "Bare <button> in three places: the contents rows, the contents rail control, and the position ticks. review_markup reports raw-element on each.",
-					"why": "A contents row is a full-width block of stacked, left-aligned text; a tick is a 48px hit area around a 4px bar. Button is an inline control with fixed sizes, padding and a background, and every one of those properties is what would have to be removed. Overriding all of them leaves a Button in name only."
-				},
-				{
-					"what": "Literal font sizes as the ceiling of three clamps (1.5rem, 1.75rem, 2.125rem) and two literal outline widths.",
-					"why": "The public type scale stops at --text-lead (1.25rem), which is caption-sized on a card that owns the whole screen. The floor of every clamp is the token; only the ceiling is a literal, and no token exists that would have prevented it."
-				},
-				{
-					"what": "--status-building and --status-verifying are declared once on the page root and consumed in StatusMark.svelte, which review_markup reports as unknown-token.",
-					"why": "The two status colours must be declared in exactly one place so a third use is visible as a mistake. The rule cannot see across files; the alternative, var(--status-{status}) interpolation, is opaque to it as well and harder to read."
-				},
-				{
-					"what": "The contents card clamps each row title to one line below 780px of viewport height, instead of two.",
-					"why": "Four rows and a summary sentence do not fit a 370x667 phone at two lines each, and the card refuses to scroll. A row that clips its own status line is worse than a row with a shorter title, and the full title is one tap away on the task's own card."
-				}
+				"No Footer, and the seeded PageSection/Container/PageHeader shell is dropped. The page is exactly one viewport tall. Why: A horizontal pager inside a vertically scrolling document is the known misery. Making the document exactly one screen tall is what removes the conflict, and a footer below the fold would put it straight back. Inherited from n2, which established the same deviation.",
+				"The rail's leading control is Contents, not a previous arrow. Backwards movement by visible control is a jump to card one plus the directly tappable ticks, rather than a step. Why: On a deck whose first card is the overview, the destination behind you that matters is almost never the card immediately behind you. From card four the previous arrow costs three presses to reach contents and this costs one, which is what the round asked to be made trivial. Every tick is tappable so a single step back is still one tap, and ArrowLeft plus the swipe both still walk the deck backwards. It also keeps the tick hit area at 48px; a fifth control in the rail would have squeezed the ticks below the 44px floor at 370px.",
+				"Bare <button> in three places: the contents rows, the contents rail control, and the position ticks. review_markup reports raw-element on each. Why: A contents row is a full-width block of stacked, left-aligned text; a tick is a 48px hit area around a 4px bar. Button is an inline control with fixed sizes, padding and a background, and every one of those properties is what would have to be removed. Overriding all of them leaves a Button in name only.",
+				"Literal font sizes as the ceiling of three clamps (1.5rem, 1.75rem, 2.125rem) and two literal outline widths. Why: The public type scale stops at --text-lead (1.25rem), which is caption-sized on a card that owns the whole screen. The floor of every clamp is the token; only the ceiling is a literal, and no token exists that would have prevented it.",
+				"--status-building and --status-verifying are declared once on the page root and consumed in StatusMark.svelte, which review_markup reports as unknown-token. Why: The two status colours must be declared in exactly one place so a third use is visible as a mistake. The rule cannot see across files; the alternative, var(--status-{status}) interpolation, is opaque to it as well and harder to read.",
+				"The contents card clamps each row title to one line below 780px of viewport height, instead of two. Why: Four rows and a summary sentence do not fit a 370x667 phone at two lines each, and the card refuses to scroll. A row that clips its own status line is worse than a row with a shorter title, and the full title is one tap away on the task's own card."
 			]
 		},
 		{
@@ -73,26 +37,11 @@
 			"title": "Peek",
 			"direction": "Lets the neighbouring cards intrude at both edges so the extent of the deck and the identity of what sits either side are felt physically rather than stated, testing whether a card that is partly visible does the work of a position indicator.",
 			"deviations": [
-				{
-					"what": "The seeded shell is dropped: no Footer, and no PageSection/Container/PageHeader around the deck.",
-					"why": "The page is made exactly one screen tall so a horizontal pager is not nested inside a vertically scrolling document. A footer below the fold reintroduces the scroll the deck must not fight, and the region/container tiers add inline padding the peek needs to spend on the neighbouring cards. Inherited from the winning approach n2, which recorded the same deviation."
-				},
-				{
-					"what": "PeekEdge is a bare <button> rather than the library Button (raw-element).",
-					"why": "The peek is an absolutely positioned full-height 48px rail carrying vertically set text and a status bar pinned to one edge. Button's icon size is a fixed 3rem square, and its padding, background and layout are exactly what would have to be removed. Overriding all of it would be a Button in name only."
-				},
-				{
-					"what": "The position ticks are bare <button> elements (raw-element).",
-					"why": "A tick is a 48px hit area wrapped around a 4px bar. Same reasoning as the peek rail, and inherited unchanged from n2."
-				},
-				{
-					"what": "The peek rails carry tabindex=\"-1\" and are therefore not tab stops, although they are real buttons with full labels.",
-					"why": "The rail below the deck already carries previous, next and one tick per task in the tab order. Adding the two visible slivers would be two extra stops doing the same job on either side of the current card. They stay in the accessibility tree, and they stay tappable, so no route is removed - only the duplicate keyboard route."
-				},
-				{
-					"what": "Literal lengths that no token covers: the type ceilings 2.125rem and 1.75rem, the container threshold 19rem, and the card caps 34rem and 44rem.",
-					"why": "The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the screen, and there is no token for a container-query or max-width breakpoint. Inherited from n2."
-				}
+				"The seeded shell is dropped: no Footer, and no PageSection/Container/PageHeader around the deck. Why: The page is made exactly one screen tall so a horizontal pager is not nested inside a vertically scrolling document. A footer below the fold reintroduces the scroll the deck must not fight, and the region/container tiers add inline padding the peek needs to spend on the neighbouring cards. Inherited from the winning approach n2, which recorded the same deviation.",
+				"PeekEdge is a bare <button> rather than the library Button (raw-element). Why: The peek is an absolutely positioned full-height 48px rail carrying vertically set text and a status bar pinned to one edge. Button's icon size is a fixed 3rem square, and its padding, background and layout are exactly what would have to be removed. Overriding all of it would be a Button in name only.",
+				"The position ticks are bare <button> elements (raw-element). Why: A tick is a 48px hit area wrapped around a 4px bar. Same reasoning as the peek rail, and inherited unchanged from n2.",
+				"The peek rails carry tabindex=\"-1\" and are therefore not tab stops, although they are real buttons with full labels. Why: The rail below the deck already carries previous, next and one tick per task in the tab order. Adding the two visible slivers would be two extra stops doing the same job on either side of the current card. They stay in the accessibility tree, and they stay tappable, so no route is removed - only the duplicate keyboard route.",
+				"Literal lengths that no token covers: the type ceilings 2.125rem and 1.75rem, the container threshold 19rem, and the card caps 34rem and 44rem. Why: The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the screen, and there is no token for a container-query or max-width breakpoint. Inherited from n2."
 			]
 		},
 		{
@@ -100,22 +49,10 @@
 			"title": "Two scales",
 			"direction": "Gives the same content one card at full size and all runners at once in a grid, with a single control moving between the two scales, testing whether an explicit zoom out answers the sense check better than any permanent overview can.",
 			"deviations": [
-				{
-					"what": "The grid is the landing state, so reading a task in full now costs one tap.",
-					"why": "The winning approach's own rule was that there is no tap between seeing a task and reading it, and this breaks it deliberately. The request this round exists to answer is plural — 'the current tasks being worked on so that I can quickly get a sense check of where I am' — and a deck answers a plural question one card at a time. Card-first would have kept the previous bargain intact and put the sense check behind a control, which on a page that is glanced at and is usually empty is a sense check most readers would never open; the round would then have measured the discoverability of a control rather than the idea of two scales."
-				},
-				{
-					"what": "No footer on the page shell, dropped from the seeded PageFrame.",
-					"why": "The document is exactly one screen tall so the horizontal deck does not have to fight a vertical scroll. A footer below the fold would reintroduce it. Carried over from the approach this one builds on."
-				},
-				{
-					"what": "Bare <button> in two places — the grid cell and the deck's position ticks — against the raw-element rule.",
-					"why": "Button is a pill with its own height, padding and centred label. A cell is a 158x258px six-row nameplate and a tick is a 48px hit area around a 4px bar; in both cases everything Button contributes is what would have to be removed. Both are named in the report as components the library does not have."
-				},
-				{
-					"what": "ScaleControl reaches into ToggleGroup's own class names with :global to raise its segments to var(--filter-control-height).",
-					"why": "ToggleGroup pins the 44px to its shell, not to its segments, which are 34px inside it. A 34px target on a page whose whole premise is one-handed phone use is a defect rather than a preference, and it cannot be corrected from the outside without naming the atom's internals. Reported as a library finding so the fix can land in the atom instead."
-				}
+				"The grid is the landing state, so reading a task in full now costs one tap. Why: The winning approach's own rule was that there is no tap between seeing a task and reading it, and this breaks it deliberately. The request this round exists to answer is plural — 'the current tasks being worked on so that I can quickly get a sense check of where I am' — and a deck answers a plural question one card at a time. Card-first would have kept the previous bargain intact and put the sense check behind a control, which on a page that is glanced at and is usually empty is a sense check most readers would never open; the round would then have measured the discoverability of a control rather than the idea of two scales.",
+				"No footer on the page shell, dropped from the seeded PageFrame. Why: The document is exactly one screen tall so the horizontal deck does not have to fight a vertical scroll. A footer below the fold would reintroduce it. Carried over from the approach this one builds on.",
+				"Bare <button> in two places — the grid cell and the deck's position ticks — against the raw-element rule. Why: Button is a pill with its own height, padding and centred label. A cell is a 158x258px six-row nameplate and a tick is a 48px hit area around a 4px bar; in both cases everything Button contributes is what would have to be removed. Both are named in the report as components the library does not have.",
+				"ScaleControl reaches into ToggleGroup's own class names with :global to raise its segments to var(--filter-control-height). Why: ToggleGroup pins the 44px to its shell, not to its segments, which are 34px inside it. A 34px target on a page whose whole premise is one-handed phone use is a defect rather than a preference, and it cannot be corrected from the outside without naming the atom's internals. Reported as a library finding so the fix can land in the atom instead."
 			]
 		},
 		{
@@ -123,22 +60,10 @@
 			"title": "The vertical deck",
 			"direction": "Turns the deck through ninety degrees so full-height cards snap under a vertical scroll, making the reader's own scroll position the sense of where they are and using the gesture a phone reader reaches for first.",
 			"deviations": [
-				{
-					"what": "The seeded shell's Footer is dropped, and PageSection, Container and PageHeader are not used. The page is a sticky count bar over a stack of viewport-tall slots.",
-					"why": "Under scroll-snap-type: y mandatory a footer sits below the last card and is not a snap target, so it is either unreachable or it fights every flick at the end of the deck. PageHeader would put the count in normal flow, which is exactly what this direction cannot afford — the count must survive the scroll. Container's max-width would inset the sticky bar and let cards show past it at the edges."
-				},
-				{
-					"what": "The page writes scroll-snap-type, scroll-padding-block-start and overscroll-behavior-y onto :global(html).",
-					"why": "This approach's scroll container is the document itself, so the snap contract has nowhere else to live. It is scoped to the component's lifetime — Svelte adds and removes the rule with the page — and the scroll padding is read back by the deck rather than duplicated, so the CSS and the index arithmetic cannot disagree."
-				},
-				{
-					"what": "The card title and the empty state's statement carry a literal 2.125rem ceiling in their clamp().",
-					"why": "The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the whole screen. The floor of every clamp is the token; only the ceiling is a literal, and no token exists that would have prevented it. Inherited from the approach this builds on."
-				},
-				{
-					"what": "Movement by control or keyboard walks one snap point at a time rather than scrolling straight to the target.",
-					"why": "Measured in Chromium: under mandatory snapping a programmatic scroll is clamped to a single snap step, so End from the first card moved the page to the second and stopped — smooth or instant, scrollTo or scrollIntoView, and suspending the snap around the jump does not rescue it. A reader's own flick is not clamped, so the rule hits only the two movement routes that are not the swipe. Walking is the only way both of them reach the end of the deck."
-				}
+				"The seeded shell's Footer is dropped, and PageSection, Container and PageHeader are not used. The page is a sticky count bar over a stack of viewport-tall slots. Why: Under scroll-snap-type: y mandatory a footer sits below the last card and is not a snap target, so it is either unreachable or it fights every flick at the end of the deck. PageHeader would put the count in normal flow, which is exactly what this direction cannot afford — the count must survive the scroll. Container's max-width would inset the sticky bar and let cards show past it at the edges.",
+				"The page writes scroll-snap-type, scroll-padding-block-start and overscroll-behavior-y onto :global(html). Why: This approach's scroll container is the document itself, so the snap contract has nowhere else to live. It is scoped to the component's lifetime — Svelte adds and removes the rule with the page — and the scroll padding is read back by the deck rather than duplicated, so the CSS and the index arithmetic cannot disagree.",
+				"The card title and the empty state's statement carry a literal 2.125rem ceiling in their clamp(). Why: The public type scale stops at --text-lead (1.25rem), which is a caption size on a card that owns the whole screen. The floor of every clamp is the token; only the ceiling is a literal, and no token exists that would have prevented it. Inherited from the approach this builds on.",
+				"Movement by control or keyboard walks one snap point at a time rather than scrolling straight to the target. Why: Measured in Chromium: under mandatory snapping a programmatic scroll is clamped to a single snap step, so End from the first card moved the page to the second and stopped — smooth or instant, scrollTo or scrollIntoView, and suspending the snap around the jump does not rescue it. A reader's own flick is not clamped, so the rule hits only the two movement routes that are not the swipe. Walking is the only way both of them reach the end of the deck."
 			]
 		}
 	]
