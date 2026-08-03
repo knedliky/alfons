@@ -1,31 +1,172 @@
 <script lang="ts">
 	/**
-	 * What's running — approach 5 of 5: The live instrument
+	 * What's running — approach 5 of 5: The live instrument.
 	 *
-	 * Direction: Designs the page around the event feed itself so that motion is what is rendered, threading current state with the transitions arriving over SSE so the page reads as an instrument showing work moving rather than as a list of rows that happen to update.
+	 * Direction: design the page around the event feed itself, so what is
+	 * rendered is motion. The other four readings of this brief render current
+	 * state and let the feed patch it; this one renders the feed and lets state
+	 * fall out of it. The consequence that matters is that a task can be shown
+	 * FINISHING rather than merely vanishing, and a finish and a block can be
+	 * told apart — which no state-first page can do at all.
 	 *
-	 * Brief: This is a phone-first page that answers one question in about a second: is anything running right now? In motion means a task an agent is working on at this moment, which is the building and verifying statuses and nothing else. On the corpus today that is four tasks, and it is frequently zero, so the nearly-empty page is the state this design lives in most of the time and the empty state is the primary design rather than an edge case handled last. Emptiness here is information — nothing is running is a complete and useful answer, and it must read as deliberate rather than as a page that failed to load. When something is running, the reader wants to read into the one that matters: one level of depth, showing what the task actually is, which release it belongs to and how far along it has got. There is no second level, no navigation, no filtering, no search, no board, no backlog, and no attempt to show the rest of the corpus. Anything that is not building or verifying does not belong on this page at all. It is designed for a phone held in one hand and read at a glance, so the layout starts at roughly three hundred and seventy pixels wide and grows from there rather than being a desktop dashboard that has been made to fit. Touch targets are generous, nothing depends on hover, and nothing depends on a pointer. The corpus is live over an SSE feed, so a task finishing while the page is open should leave the page in front of you rather than requiring a reload. Dark is the sole colour mode. Status colour is reserved for state and is never decoration. Simplicity and immediacy are the whole brief: every element on the page must earn its place against the one second of attention it is given, and an element that merely could be there should not be.
+	 * Restraint is the whole risk. An instrument that animates is harder to read
+	 * at a glance than a list, so motion is spent only where it carries meaning
+	 * that would otherwise need a word: a channel arriving, a head advancing, a
+	 * departure settling or halting, and — on the empty page — a single sweep
+	 * that says the feed is alive. Nothing else moves.
 	 *
-	 * Owned by one agent. Build from the base layer up — shell, then
-	 * regions, then containers, then components — and keep
-	 * data-alfons-working="what you are composing" on the region under
-	 * construction so the build can be watched live at /dev/whats-running.
-	 * Remove the marker when the region is finished.
+	 * Scenes for watching, chosen by query string because no on-page control
+	 * earns its place against one second of attention:
+	 *   /dev/whats-running/n5                 the full cycle, four draining to none
+	 *   /dev/whats-running/n5?scene=running   four running, held still
+	 *   /dev/whats-running/n5?scene=idle      nothing running, held still
 	 */
-	import { Container, Footer, Header, PageFrame, PageHeader, PageSection } from '@alfons/design';
+	import { Container, Footer, Header, PageFrame, PageSection } from '@alfons/design';
+	import IdleInstrument from './IdleInstrument.svelte';
+	import RunnerChannel from './RunnerChannel.svelte';
+	import Tape from './Tape.svelte';
+	import { countWord, createInstrument, sceneFromLocation } from './feed.svelte.ts';
+
+	const instrument = createInstrument(sceneFromLocation());
+
+	$effect(() => instrument.start());
+
+	const headline = $derived(
+		instrument.liveCount === 0 ? 'Nothing running' : `${countWord(instrument.liveCount)} running`
+	);
 </script>
 
 <PageFrame>
 	{#snippet header()}<Header />{/snippet}
 	{#snippet footer()}<Footer />{/snippet}
-	<main data-alfons-working="The live instrument — seeded shell, composing the base layer">
+
+	<main class="instrument">
 		<PageSection>
-			<Container>
-				<PageHeader
-					title="What's running"
-					subtitle="The live instrument"
-				/>
+			<Container maxWidth="sm">
+				<div class="stack">
+					<header class="verdict">
+						<!-- Only the count is announced. An arrival or a departure changes
+						     it and is worth a word; a task advancing from building to
+						     verifying does not, and announcing every transition would
+						     flood a screen reader with the page's own metronome. -->
+						<h1 aria-live="polite" aria-atomic="true">{headline}</h1>
+
+						{#if instrument.liveCount > 0}
+							<p class="tally">
+								{#if instrument.buildingCount > 0}
+									<span class="part" data-status="building">
+										{instrument.buildingCount} building
+									</span>
+								{/if}
+								{#if instrument.verifyingCount > 0}
+									<span class="part" data-status="verifying">
+										{instrument.verifyingCount} verifying
+									</span>
+								{/if}
+							</p>
+						{/if}
+					</header>
+
+					{#if instrument.runners.length > 0}
+						<div class="channels">
+							{#each instrument.runners as task (task.id)}
+								<RunnerChannel {task} now={instrument.now} />
+							{/each}
+						</div>
+						<Tape entries={instrument.tape} />
+					{:else}
+						<IdleInstrument lastMovement={instrument.lastMovement} now={instrument.now} />
+					{/if}
+				</div>
 			</Container>
 		</PageSection>
 	</main>
 </PageFrame>
+
+<style>
+	/*
+	 * Status colour, declared once for the page. building and verifying are the
+	 * only two states this page can show, and these two hues mean those two
+	 * things and nothing else anywhere on the page — no accent, no atmosphere,
+	 * no gradient. Every place a hue appears, the matching word appears with it.
+	 *
+	 * --sweep-duration is local because the motion scale stops at 500ms and the
+	 * only long token, --widget-pulse-duration, is a breath rather than a
+	 * traverse. It is derived from that token rather than invented, so the page
+	 * still moves on the library's clock.
+	 */
+	.instrument {
+		--status-building: var(--amber);
+		--status-verifying: var(--blush-pink);
+		--sweep-duration: calc(var(--widget-pulse-duration) * 2);
+	}
+
+	.stack {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	.verdict {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	/* The type scale stops at --text-lead, which is not a headline. Derived
+	   from it rather than typed as a literal so it still tracks the scale. */
+	h1 {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: calc(var(--text-lead) * 2);
+		line-height: 1.05;
+		font-weight: 400;
+		color: var(--text-primary);
+	}
+
+	.tally {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-4);
+		margin: 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-micro);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.part {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.part::before {
+		content: '';
+		width: var(--space-2);
+		height: var(--space-2);
+		background: currentcolor;
+	}
+
+	.part[data-status='building'] {
+		color: var(--status-building);
+	}
+
+	.part[data-status='verifying'] {
+		color: var(--status-verifying);
+	}
+
+	.channels {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Wider than a phone, the instrument stays a column. It is not a dashboard
+	   that grew; the extra width goes to the title, which is the thing a reader
+	   actually wants more room for. */
+	@media (min-width: 720px) {
+		h1 {
+			font-size: calc(var(--text-lead) * 2.6);
+		}
+	}
+</style>

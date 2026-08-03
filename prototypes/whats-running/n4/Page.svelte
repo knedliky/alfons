@@ -1,31 +1,130 @@
 <script lang="ts">
 	/**
-	 * What's running — approach 4 of 5: Progress led
+	 * What's running — approach 4 of 5: Progress led.
 	 *
-	 * Direction: Makes each running task's acceptance criteria and sealed verifications the visible content of its row, so which task matters is answered by how near done each one is, and depth is already inline rather than behind a tap.
+	 * The bet: "how far along is it" is the real question hiding inside "what's
+	 * running". So each row leads with its acceptance criteria as marks and a
+	 * one-sentence tally, and the list is ordered by how near done each task is.
+	 * Identity — the title, the release — sits under that rather than over it.
 	 *
-	 * Brief: This is a phone-first page that answers one question in about a second: is anything running right now? In motion means a task an agent is working on at this moment, which is the building and verifying statuses and nothing else. On the corpus today that is four tasks, and it is frequently zero, so the nearly-empty page is the state this design lives in most of the time and the empty state is the primary design rather than an edge case handled last. Emptiness here is information — nothing is running is a complete and useful answer, and it must read as deliberate rather than as a page that failed to load. When something is running, the reader wants to read into the one that matters: one level of depth, showing what the task actually is, which release it belongs to and how far along it has got. There is no second level, no navigation, no filtering, no search, no board, no backlog, and no attempt to show the rest of the corpus. Anything that is not building or verifying does not belong on this page at all. It is designed for a phone held in one hand and read at a glance, so the layout starts at roughly three hundred and seventy pixels wide and grows from there rather than being a desktop dashboard that has been made to fit. Touch targets are generous, nothing depends on hover, and nothing depends on a pointer. The corpus is live over an SSE feed, so a task finishing while the page is open should leave the page in front of you rather than requiring a reload. Dark is the sole colour mode. Status colour is reserved for state and is never decoration. Simplicity and immediacy are the whole brief: every element on the page must earn its place against the one second of attention it is given, and an element that merely could be there should not be.
-	 *
-	 * Owned by one agent. Build from the base layer up — shell, then
-	 * regions, then containers, then components — and keep
-	 * data-alfons-working="what you are composing" on the region under
-	 * construction so the build can be watched live at /dev/whats-running.
-	 * Remove the marker when the region is finished.
+	 * Two states, both designed rather than one handled: four running, and none.
+	 * None is the state the page lives in most of the time, so it is not a notice
+	 * dropped into an otherwise-normal page; it takes the page over.
 	 */
-	import { Container, Footer, Header, PageFrame, PageHeader, PageSection } from '@alfons/design';
+	import { Button, Container, Footer, Header, PageFrame, PageSection } from '@alfons/design';
+	import NothingRunning from './NothingRunning.svelte';
+	import OutcomeLegend from './OutcomeLegend.svelte';
+	import RunningTaskRow from './RunningTaskRow.svelte';
+	import { byNearness, runners } from './runners.ts';
+
+	/**
+	 * Prototype scaffolding, not part of the design. The live page reads its
+	 * runners from the SSE feed and is empty whenever the corpus is; here the two
+	 * states need to be reachable side by side so both can be judged.
+	 */
+	let showEmpty = $state(false);
+
+	const running = $derived(showEmpty ? [] : byNearness(runners));
 </script>
 
 <PageFrame>
 	{#snippet header()}<Header />{/snippet}
 	{#snippet footer()}<Footer />{/snippet}
-	<main data-alfons-working="Progress led — seeded shell, composing the base layer">
+	<main class="page">
 		<PageSection>
-			<Container>
-				<PageHeader
-					title="What's running"
-					subtitle="Progress led"
-				/>
+			<Container maxWidth="sm">
+				{#if running.length === 0}
+					<NothingRunning />
+				{:else}
+					<!--
+						Not PageHeader: its display-serif h1 takes roughly a third of a
+						370px screen before the reader has been told anything, and the
+						answer has to be above the fold. This is the same scale and voice
+						as the empty state's heading, so the two states read as one page.
+					-->
+					<header class="masthead">
+						<h1 class="masthead-title">What's running</h1>
+						<p class="masthead-note">four tasks, nearest done first</p>
+					</header>
+					<ul class="runners">
+						{#each running as task (task.id)}
+							<li><RunningTaskRow {task} /></li>
+						{/each}
+					</ul>
+					<div class="legend">
+						<OutcomeLegend />
+					</div>
+				{/if}
+
+				<div class="scaffolding">
+					<Button variant="outline" onclick={() => (showEmpty = !showEmpty)}>
+						{showEmpty ? 'Show four running' : 'Show the empty state'}
+					</Button>
+					<span class="scaffolding-note">prototype control — not part of the design</span>
+				</div>
 			</Container>
 		</PageSection>
 	</main>
 </PageFrame>
+
+<style>
+	.page {
+		/*
+		 * Status colour, declared once for the page. It encodes task state and
+		 * nothing else: no verification outcome, no chrome, no emphasis. The marks
+		 * in the meter are deliberately hue-free so that this stays the only
+		 * colour on the page that carries meaning.
+		 */
+		--running-building: var(--amber);
+		--running-verifying: var(--blush-pink);
+	}
+
+	.masthead {
+		padding-block: 0 var(--space-5);
+	}
+
+	.masthead-title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 2.25rem;
+		line-height: 1.1;
+		color: var(--text-primary);
+	}
+
+	.masthead-note {
+		margin: var(--space-2) 0 0;
+		font-family: var(--font-mono);
+		font-size: var(--text-micro);
+		color: var(--text-muted);
+	}
+
+	.runners {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.legend {
+		margin-top: var(--space-5);
+	}
+
+	.scaffolding {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-3);
+		margin-top: var(--space-8);
+		padding-top: var(--space-4);
+		border-top: 1px dashed var(--card-border);
+	}
+
+	.scaffolding-note {
+		font-family: var(--font-mono);
+		font-size: var(--text-micro);
+		color: var(--text-muted);
+		opacity: var(--opacity-tertiary);
+	}
+</style>

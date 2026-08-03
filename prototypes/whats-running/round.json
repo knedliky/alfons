@@ -10,31 +10,72 @@
 			"slug": "n1",
 			"title": "The bare list",
 			"direction": "Reduces the page to a single vertical list of what is running and nothing whatsoever besides, with depth reached by expanding a row in place rather than by navigating, to find how little can remain on a page while still answering the question completely.",
-			"deviations": []
+			"deviations": [
+				"Dropped the Footer from the seeded shell. A brand column, link columns and a newsletter row under a page whose whole content is one sentence would outweigh the answer several times over, which is the opposite of what this approach is testing.",
+				"No page title, and so no PageHeader. The list is the answer and the zero state names its own subject; a heading repeating 'What's running' above four rows was removed to see whether the page still reads, and it does.",
+				"No PageSection. Its standard variant puts a 64px band above and below, so the list would start 144px down a phone screen it is meant to be read on in a second. The column is written out on the same page-padding tokens instead.",
+				"min-height: 44px is a literal in RunningRow, flagged by raw-value. It is the accessibility touch-target floor stated in the brief, not a design length; --filter-control-height happens to equal it but naming a row trigger after a filter control would be worse than the literal.",
+				"A bare <button> is the row trigger rather than the Button atom, flagged by raw-element. The trigger is the whole row — full-bleed, two lines, carrying aria-expanded and aria-controls — and none of that is what an atom shaped around a label and a variant does.",
+				"The page simulates the SSE feed on a timer, emptying the list one task at a time and refilling it, so the live behaviour and both states can be seen without a corpus. ?empty pins the zero state for review."
+			]
 		},
 		{
 			"slug": "n2",
 			"title": "One per screen",
 			"direction": "Gives each running task the full width and height of the phone as a single card the reader moves between, so the depth is the card itself and there is no tap between seeing a task and reading it.",
-			"deviations": []
+			"deviations": [
+				{
+					"what": "Dropped the Footer from the seeded PageFrame shell, and sized the page to exactly one screen (100dvh minus the header).",
+					"why": "The direction forbids a horizontal pager that fights the page scroll. A footer below the fold makes the document vertically scrollable, which is precisely the fight. Removing it means the document does not scroll at all, so the deck is the only pager and a diagonal swipe cannot leak into the page. Verified: document overflow is 0px at 320, 370, 430 and 1280 wide."
+				},
+				{
+					"what": "The card title and the page headline use a literal ceiling inside clamp() — 2.125rem and 1.75rem — rather than a token.",
+					"why": "The public typography scale stops at --text-lead (1.25rem), which is a caption on a card that owns the whole screen. The floor of each clamp is the token; only the ceiling is a literal, and there is no token that would have prevented it. Flagged in the report as a library gap rather than hidden."
+				},
+				{
+					"what": "The position ticks in the rail are bare <button> elements, not Alfons Button. review_markup's raw-element finding on them is declined.",
+					"why": "A tick is a 48px hit area wrapped around a 4px bar. Button's icon size is a fixed 3rem square and its padding, background and border are exactly what would have to be overridden away, leaving a Button in name only. The two arrow controls beside them ARE Alfons Buttons, where the finding was correct and was taken."
+				},
+				{
+					"what": "The page carries an extra bottom padding of calc(var(--space-7) + var(--space-5)) that a production page would not.",
+					"why": "The prototyping harness's own approach pager is fixed to the bottom of every /dev page and would cover the deck's rail, which sits at the bottom because that is where a thumb is. The padding exists to make the design reviewable, not because the design wants it."
+				}
+			]
 		},
 		{
 			"slug": "n3",
 			"title": "Lead with the live one",
 			"direction": "Shows the most recently active task in full at the top of the page with the remaining runners as a compact list beneath it, betting that the answer is usually the newest and that the likely question can be answered without any interaction at all.",
-			"deviations": []
+			"deviations": [
+				"Literal font sizes for the lead task title (1.625rem, 2rem above 640px) and the empty state's heading (1.75rem, 2.25rem above 640px). The typography scale stops at --text-lead (1.25rem) and both of these are the page's display voice — the lead task and the sentence that replaces it are the one thing the page exists to say.",
+				"Literal line-heights (1.2, 1.25, 1.5) and letter-spacings (0.04em–0.1em) in the local components. No --line-height-* or --letter-spacing-* tokens exist on the public surface.",
+				"A local visually-hidden utility (.offscreen in Page.svelte) using 1px/-1px literals, because the library exports none. It carries the page's single polite aria-live region.",
+				"The page renders a prototype harness — scenario and feed-event buttons — below the design. The brief admits nothing beyond the running set, so it is fenced off with data-alfons-dev-chrome and labelled as not part of the page. It exists because the empty state and the two feed behaviours cannot otherwise be looked at without a live corpus obliging."
+			]
 		},
 		{
 			"slug": "n4",
 			"title": "Progress led",
 			"direction": "Makes each running task's acceptance criteria and sealed verifications the visible content of its row, so which task matters is answered by how near done each one is, and depth is already inline rather than behind a tap.",
-			"deviations": []
+			"deviations": [
+				"Declined PageHeader for the populated state in favour of a local masthead. Its display-serif h1 takes roughly a third of a 370px screen before the reader has been told anything, and this direction needs the first task's progress above the fold.",
+				"Declined EmptyState for the zero state. It renders an h3 inside a bordered panel with an icon, which is the grammar of a filter that matched nothing — a dead end inside a page that has other content. Here emptiness is the page's whole answer, so it is the h1 with no box around it.",
+				"Local literal lengths in the meter and its legend: 10px mark height, 4px rounded outer data-ends, 2px inter-segment gap, 3px/6px hatch stripes, 18px legend swatch. No stacked categorical meter exists in the library and no radius token matches 4px, so these have no token to reach for. review_markup offers --space-1 for the radius and --frost-2/--frost-3 for the hatch; those are a spacing step and two blur radii, matched by value rather than by category, and were not taken.",
+				"Raw font-weight: 400 on the task title. The type scale exports no --font-weight-* tokens.",
+				"A prototype-only state toggle at the foot of the page, marked as scaffolding. Not part of the design: the live page takes its runners from the SSE feed. It exists so both states can be judged side by side in one round."
+			]
 		},
 		{
 			"slug": "n5",
 			"title": "The live instrument",
 			"direction": "Designs the page around the event feed itself so that motion is what is rendered, threading current state with the transitions arriving over SSE so the page reads as an instrument showing work moving rather than as a list of rows that happen to update.",
-			"deviations": []
+			"deviations": [
+				"No interactive element anywhere on the page, so the 44px touch-target rule is satisfied vacuously rather than met. Deliberate: the brief allows one level of depth and no second one, so any tap target would promise a screen that does not exist. Every channel region is well over 44px tall regardless.",
+				"The headline size is calc(var(--text-lead) * 2), and * 2.6 above 720px. The public type scale stops at --text-lead (1.25rem), which is not a headline size, and this page's whole answer is one short sentence set large. Derived from the token rather than typed as a literal so it still tracks the scale if the scale moves.",
+				"--sweep-duration is declared locally as calc(var(--widget-pulse-duration) * 2). The motion category has nothing between 500ms and the 2.5s pulse, and a pulse is a breath rather than a traverse. Derived rather than invented so the page still moves on the library's clock.",
+				"font-weight is written as a literal (400 on the display headline, 500 on the task title). There are no --font-weight-* tokens on the public surface, so there is nothing to reference.",
+				"The scene is chosen by query string (?scene=idle, ?scene=running) rather than by an on-page control. A control would be an element that could be there rather than one that earns its place, and this page's whole test is what survives one second of attention. Default with no query string is the full cycle, four running draining to none and refilling."
+			]
 		}
 	]
 }
