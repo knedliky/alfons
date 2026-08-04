@@ -56,3 +56,9 @@ export type { ChipProps } from './Chip.svelte';
 
 export { default as AvatarGroup } from './AvatarGroup.svelte';
 export type { AvatarGroupProps, AvatarPerson } from './AvatarGroup.svelte';
+
+export { default as DestinationRow } from './DestinationRow.svelte';
+export type { DestinationRowProps } from './DestinationRow.svelte';
+
+export { default as StatusMark } from './StatusMark.svelte';
+export type { StatusMarkProps } from './StatusMark.svelte';
