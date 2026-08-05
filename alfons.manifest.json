@@ -7536,7 +7536,7 @@
     },
     {
       "name": "--font-body",
-      "value": "'Switzer', system-ui, -apple-system, sans-serif",
+      "value": "'Moderat', system-ui, -apple-system, sans-serif",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -7561,7 +7561,7 @@
     },
     {
       "name": "--font-display",
-      "value": "'IBM Plex Serif', Georgia, serif",
+      "value": "'Moderat', system-ui, -apple-system, sans-serif",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -7579,7 +7579,7 @@
     },
     {
       "name": "--font-drop-cap",
-      "value": "'Rock Salt', Georgia, cursive",
+      "value": "'Moderat', system-ui, -apple-system, sans-serif",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -7596,7 +7596,7 @@
     },
     {
       "name": "--font-mono",
-      "value": "'Azeret Mono Variable', 'Azeret Mono', ui-monospace, monospace",
+      "value": "'GT America Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",

@@ -8,7 +8,7 @@
 	// Read the font-family from the live token rather than hardcoding a string.
 	// The preview renders with `var(--font-*)`, and we read the resolved value
 	// back out, so this catalogue can never drift from the actual tokens when the
-	// brand font changes (e.g. the move to Switzer).
+	// brand font changes (e.g. the Meccano move to Moderat).
 	$effect(() => {
 		if (!previewEl) return;
 		const styles = getComputedStyle(previewEl);

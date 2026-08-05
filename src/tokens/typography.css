@@ -10,15 +10,24 @@
 
 @layer base {
 	:root {
-		/* === FAMILIES ===================================================== */
-		/* --font-mono names the 'Azeret Mono Variable' face that Fontsource
-		   actually registers, with the plain name as fallback. */
-		--font-body: 'Switzer', system-ui, -apple-system, sans-serif;
-		--font-mono: 'Azeret Mono Variable', 'Azeret Mono', ui-monospace, monospace;
-		--font-display: 'IBM Plex Serif', Georgia, serif;
-		--font-drop-cap: 'Rock Salt', Georgia, cursive;
-		/* NEW — the Motivka wordmark face (Moderat Bold, self-hosted in fonts.css).
-		   Used by the Wordmark brand component; never for body or headings. */
+		/* === FAMILIES =====================================================
+		   MECCANO RETUNE: two faces, five names. Moderat answers every
+		   sans role, GT America Mono every mono one. The five family tokens
+		   survive because 33 files across Alfons and Atlas read them; they
+		   now resolve to the two faces rather than to five.
+
+		   --font-display no longer means "serif". It means the face that sets
+		   display and headings, which is Moderat — the readme is explicit that
+		   the system has no serif. --font-drop-cap resolves to the same family;
+		   the Black (900) cut is what makes an oversized initial read as one,
+		   in place of Rock Salt's hand-drawn register. */
+		--font-body: 'Moderat', system-ui, -apple-system, sans-serif;
+		--font-mono: 'GT America Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+		--font-display: 'Moderat', system-ui, -apple-system, sans-serif;
+		--font-drop-cap: 'Moderat', system-ui, -apple-system, sans-serif;
+		/* The Motivka wordmark face. Unchanged in value — the wordmark was
+		   already Moderat Bold, which is why the whole system moving to Moderat
+		   reads as the brand arriving rather than as a substitution. */
 		--font-wordmark: 'Moderat', system-ui, sans-serif;
 
 		/* === SEMANTIC BODY SIZES — prefer these over ad-hoc px ============

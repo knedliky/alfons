@@ -54,9 +54,10 @@
 		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%);
 	}
 
-	/* Admin heading override — all admin headings use the body font (Switzer)
-	   instead of IBM Plex Serif. Colour pinned to --admin-text so headings
-	   never inherit the public --text-primary. */
+	/* Admin heading override — admin headings take the body face rather than
+	   the display one. Under Meccano both resolve to Moderat, so this now only
+	   carries the colour pin: --admin-text, so headings never inherit the
+	   public --text-primary. Kept as the seam for a future admin display face. */
 	.admin-layout-container :is(h1, h2, h3, h4, h5, h6) {
 		font-family: var(--font-body);
 		color: var(--admin-text);

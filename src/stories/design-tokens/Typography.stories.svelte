@@ -10,26 +10,11 @@
 
 <Story name="Font Families">
 	<div class="type-list">
-		<TypeSample
-			tokenName="--font-body"
-			fontFamily="'Switzer', system-ui, sans-serif"
-			label="Body (Switzer)"
-		/>
-		<TypeSample
-			tokenName="--font-display"
-			fontFamily="'Azeret Mono', monospace"
-			label="Display (Azeret Mono)"
-		/>
-		<TypeSample
-			tokenName="--font-mono"
-			fontFamily="'Azeret Mono', monospace"
-			label="Mono (Azeret Mono)"
-		/>
-		<TypeSample
-			tokenName="--font-drop-cap"
-			fontFamily="'Rock Salt', Georgia, cursive"
-			label="Drop Cap (Rock Salt)"
-		/>
+		<TypeSample tokenName="--font-body" label="Body (Moderat)" />
+		<TypeSample tokenName="--font-display" label="Display (Moderat)" />
+		<TypeSample tokenName="--font-mono" label="Mono (GT America Mono)" />
+		<TypeSample tokenName="--font-drop-cap" label="Drop cap (Moderat Black)" />
+		<TypeSample tokenName="--font-wordmark" label="Wordmark (Moderat Bold)" />
 	</div>
 </Story>
 
