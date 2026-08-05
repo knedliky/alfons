@@ -35,6 +35,7 @@ bun run manifest:check
 
 # Teach the database the token and component names the tree now carries, so a
 # lifecycle replacement has something to reference. Needs a writer connection.
+# READS THE MANIFEST, NOT THE TREE — see the ordering note below.
 ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync
 
 # Type-check Svelte components and TypeScript
@@ -46,6 +47,32 @@ bun run storybook
 # Build static Storybook catalogue
 bun run build-storybook
 ```
+
+### The order these run in matters
+
+After changing tokens, run them in exactly this order:
+
+```bash
+bun run format                                                    # 1
+bun run manifest                                                  # 2
+ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync # 3
+psql-18 -d context -f migrations/NNNN_whatever.sql                # 4
+```
+
+Both possible inversions fail confusingly rather than loudly, which is why
+they are written down.
+
+**format before manifest.** Prettier rewrites multi-line CSS values — a long
+`--cap-red` gradient reflows — so formatting after generating leaves the
+manifest describing values the tree no longer has. `manifest:check` then fails
+in CI on a tree that looks untouched.
+
+**manifest before lifecycle:sync.** `sync-lifecycle-entities.ts` reads
+`alfons.manifest.json`, despite its docstring saying it teaches the database
+"the names the tree currently carries". Run it first and it teaches the
+database the _previous_ build's vocabulary. Nothing complains at the time; the
+next migration fails with a foreign-key violation on a token you can see in
+the CSS, which sends you looking at the schema rather than at the order.
 
 ## Stack surprises
 
@@ -64,7 +91,11 @@ are not written down anywhere else live here.
   (`colour`, `initialise`, `behaviour`, `organise`, etc.)
 - Component files: `PascalCase.svelte`
 - Token files: lowercase with hyphens (`colours.css`, `spacing.css`, `base.css`)
-- All CSS custom properties use OKLCH for colour values
+- **Colour is authored once, in hex, and derived in oklab.** The eight part colours and
+  `--foundry-black`/`--ink-900` carry exact brand hex; everything else — ramps, surfaces,
+  tints, borders — is a `color-mix(in oklab, …)` off those. D-004 chose OKLCH for
+  perceptual uniformity and that still holds, because the mixing happens in oklab; what
+  changed under D-179 is only the authoring format of the base hues.
 - **Dark is the sole colour mode.** There is no light theme and no runtime toggle;
   consumers pin `data-colour-mode="dark"` on `<html>` statically.
 
@@ -211,3 +242,34 @@ orphaned in turn — 27 were live all along and consumed by Atlas, 49 are deprec
 retired and deleted. Note the first group:
 `referencedBy` is **repo-local**, so a token used only by a consumer repository looks
 orphaned here. Grep the consumers before concluding anything is dead.
+
+`referencedBy` is also **.svelte-only**, which is the sharper edge of the same knife (D-171,
+finding 4). A token consumed from `base.css`, from Atlas's `app.css` or from a `.ts` module
+reads as orphaned no matter which repository you stand in. Every `--type-*` composite is in
+this position: `base.css` sets `h1` with `font: var(--type-display)` and the manifest still
+counts it unreferenced. Do not treat a zero as evidence.
+
+## The Meccano retune (D-179, D-180)
+
+The current visual language. Alfons was retuned to it on 2026-08-05, and the thing worth
+knowing before reading the token files is that **Meccano is not a foreign system** — it is
+this palette, renamed and re-tuned. `--girder-red` is `--fire-engine-red`; `--pulley-blue`
+is `--sky-blue`; `--foundry-black` is byte-identical to the old `--hex-dark`. That is why
+the whole retune is a value swap at the primitive layer and Atlas re-skinned without a
+component change.
+
+Three rules that are easy to breach because nothing enforces them:
+
+- **A hue is defined once.** The part name carries the hex; the old brand name and the
+  `--hex-*` name are aliases of it. Never reintroduce a second literal for a colour that
+  already has one — that pairing is what D-157 spent a release undoing.
+- **Text on plastic is not a free choice.** Light and mid plastics (pulley, pinion, brass,
+  gantry, toolbox) take `--foundry-black`; girder, flange and boiler take `--ink-900`.
+  Getting it backwards is the most legible way to look off-brand.
+- **Focus is `--focus` (pulley blue), never the accent.** Red is reserved for the thing
+  that acts.
+
+Buttons are panel caps and cards are riveted plates; the material tokens for both live in
+`elevation.css` with the reasoning beside them. There is no glassmorphism outside the dialog
+overlay, so the frost scale is pinned to `0px` rather than retired — see the note on it,
+which is the same argument D-160 made for the radii before D-180 brought them back.
