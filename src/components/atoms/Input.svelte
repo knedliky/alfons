@@ -58,7 +58,7 @@
 		transition:
 			border-color var(--transition-normal),
 			box-shadow var(--transition-normal);
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 	}
 
 	.input:disabled {

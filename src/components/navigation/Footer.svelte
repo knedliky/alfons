@@ -305,7 +305,7 @@
 		color: var(--text-on-accent, oklch(1 0 0));
 		background: var(--accent);
 		border: none;
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 		cursor: pointer;
 		transition: background-color var(--transition-normal);
 	}

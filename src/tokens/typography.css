@@ -1,11 +1,25 @@
 /**
- * Motif Design Library — Typography tokens
+ * Alfons — Typography tokens
  *
- * IBM Plex Serif drives all display/heading text (the technical-editorial
- * aesthetic); Switzer is the body sans; Azeret Mono carries metrics, code and
- * pill labels; Rock Salt is the hand-drawn drop-cap accent; Moderat Bold is the
- * brand wordmark face. Heading sizes live in base.css; these are the families
- * and the semantic body sizes.
+ * Moderat sets everything; GT America Mono carries spec labels, part numbers,
+ * units and table numerics. This file holds the families, the size ladder, the
+ * weights, and the composites that join them. base.css applies the composites
+ * to h1–h6.
+ *
+ * TWO THINGS THE MECCANO LADDER FIXES, both invisible before the retune:
+ *
+ * Weight. Headings were set at 600, and Moderat has no 600 cut, so a browser
+ * would synthesise one or snap to Bold. --fw-semibold therefore maps to Medium
+ * (500) deliberately — it is the weight above regular that the face actually
+ * has. Never ask for 600.
+ *
+ * Register. Meccano calls .9375rem "body" and its blog template sets prose at
+ * that size, which reads as a 3px regression against this library's 1.125rem
+ * body. It is not one. Meccano is a UI kit with a single body size; Alfons
+ * already splits functional UI text from prose, and its two sizes land exactly
+ * on Meccano's --fs-md and --fs-lg rungs. So --type-body carries the UI
+ * register at 15px and --type-prose carries long-form at 18px — the rung
+ * Meccano leaves unassigned by any composite. Neither register changes size.
  */
 
 @layer base {
@@ -29,6 +43,55 @@
 		   already Moderat Bold, which is why the whole system moving to Moderat
 		   reads as the brand arriving rather than as a substitution. */
 		--font-wordmark: 'Moderat', system-ui, sans-serif;
+		/* Meccano's own name for the sans role, so markup authored against the
+		   handoff resolves here without translation. */
+		--font-sans: var(--font-body);
+
+		/* === SIZE LADDER — the 12–60px rungs, in rem at a 16px root ======
+		   Every size in the system is one of these eight. --text-* below are
+		   the semantic names for the four that carry running text. */
+		--fs-xs: 0.75rem; /* 12px */
+		--fs-sm: 0.8125rem; /* 13px */
+		--fs-md: 0.9375rem; /* 15px */
+		--fs-lg: 1.125rem; /* 18px */
+		--fs-xl: 1.5rem; /* 24px */
+		--fs-2xl: 2rem; /* 32px */
+		--fs-3xl: 2.75rem; /* 44px */
+		--fs-display: 3.75rem; /* 60px */
+
+		/* === WEIGHTS — what Moderat actually cuts ========================
+		   There is no 600. --fw-semibold is Medium so that asking for the
+		   weight above regular gets a real cut rather than a synthesised one. */
+		--fw-light: 300;
+		--fw-regular: 400;
+		--fw-medium: 500;
+		--fw-semibold: 500;
+		--fw-bold: 700;
+		--fw-black: 900;
+
+		/* === LINE HEIGHTS & TRACKING ===================================== */
+		--lh-tight: 1.08; /* display and h1 */
+		--lh-snug: 1.3;
+		--lh-body: 1.6;
+		--ls-tight: -0.02em; /* display and h1 */
+		--ls-caps: 0.08em; /* mono spec labels, which are always uppercase */
+
+		/* === COMPOSITES — family, size, weight and leading in one =========
+		   Reach for these over assembling the parts. Display and h1 are Bold
+		   with negative tracking; everything below is Medium. */
+		--type-display: var(--fw-bold) var(--fs-display) / var(--lh-tight) var(--font-display);
+		--type-h1: var(--fw-bold) var(--fs-3xl) / var(--lh-tight) var(--font-display);
+		--type-h2: var(--fw-semibold) var(--fs-2xl) / 1.15 var(--font-display);
+		--type-h3: var(--fw-semibold) var(--fs-xl) / var(--lh-snug) var(--font-display);
+		--type-body: var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body);
+		--type-small: var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body);
+		/* Long-form prose. An Alfons addition — Meccano assigns --fs-lg to no
+		   composite, and a UI kit's single body size is not a reading size. */
+		--type-prose: var(--fw-regular) var(--fs-lg) / var(--lh-body) var(--font-body);
+		/* The signature annotation: mono, uppercase, tracked. Apply --ls-caps
+		   and text-transform alongside it — the font shorthand carries neither.
+		   Mono is regular-only; never synthesise bold. */
+		--type-spec: var(--fw-regular) 0.6875rem / 1 var(--font-mono);
 
 		/* === SEMANTIC BODY SIZES — prefer these over ad-hoc px ============
 		   The scale previously stopped at 12px, which left every control,
@@ -40,11 +103,15 @@
 		   THE FLOOR RULE: no functional text is set below --text-micro.
 		   If a layout only works when its labels drop under 12px, the layout
 		   is too tight — give it room rather than shrinking the type. */
-		--text-micro: 0.75rem; /* 12px — the floor. mono eyebrows, axis ticks, unit labels */
-		--text-caption: 0.8125rem; /* 13px — small labels, metadata, dense list rows */
-		--text-ui: 0.9375rem; /* 15px — functional UI text: controls, nav, list items */
-		--text-body: 1.125rem; /* 18px — matches body font-size */
-		--text-lead: 1.25rem; /* 20px — subheadlines, intros */
+		--text-micro: var(--fs-xs); /* 12px — the floor. mono eyebrows, axis ticks, unit labels */
+		--text-caption: var(--fs-sm); /* 13px — small labels, metadata, dense list rows */
+		--text-ui: var(--fs-md); /* 15px — functional UI text: controls, nav, list items */
+		--text-body: var(--fs-lg); /* 18px — long-form prose */
+		/* 20px. The one size off the ladder, which jumps 18 → 24. A lead
+		   paragraph at 18px does not separate from the body it introduces, and
+		   at 24px it competes with the h3 above it. Kept deliberately rather
+		   than rounded to a rung. */
+		--text-lead: 1.25rem;
 
 		/* === OPACITY HIERARCHY ============================================ */
 		--opacity-primary: 1;

@@ -134,8 +134,8 @@
         "--duration-normal",
         "--font-body",
         "--font-mono",
+        "--radius",
         "--radius-message",
-        "--radius-pill",
         "--shadow-glass",
         "--skill-indent",
         "--space-1",
@@ -385,7 +385,7 @@
         "--colour-success-bg",
         "--colour-warning",
         "--colour-warning-bg",
-        "--radius-pill",
+        "--radius-1",
         "--space-1",
         "--space-2",
         "--status-error-text",
@@ -717,7 +717,7 @@
         "--card-border",
         "--card-border-hover",
         "--frost-3",
-        "--radius-pill",
+        "--radius",
         "--space-2",
         "--space-3",
         "--space-5",
@@ -1911,8 +1911,8 @@
         "--font-mono",
         "--font-wordmark",
         "--input-height",
+        "--radius",
         "--radius-message",
-        "--radius-pill",
         "--space-1",
         "--space-2",
         "--space-3",
@@ -2344,7 +2344,7 @@
         "--input-height",
         "--input-height-sm",
         "--input-shadow",
-        "--radius-pill",
+        "--radius",
         "--space-2",
         "--space-4",
         "--text-muted",
@@ -3576,7 +3576,7 @@
         "--admin-accent",
         "--admin-text-secondary",
         "--font-mono",
-        "--radius-pill",
+        "--radius",
         "--space-1",
         "--space-2",
         "--space-4",
@@ -5451,7 +5451,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Text colour on an accent cap.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--accent-deep",
@@ -5462,7 +5468,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Girder red darkened 16%. Read via --accent-hover.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--accent-depth",
@@ -5670,7 +5682,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Accent wash over the page.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--admin-bg",
@@ -6070,7 +6088,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Workbench ground. Composed by .mcn-bench in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--bench-line",
@@ -6081,7 +6105,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Workbench 40px grid line. Read via --grid-colour.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--bench-line-major",
@@ -6092,7 +6122,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Workbench 160px accent line. Read via --grid-colour-accent.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--bench-rake",
@@ -6103,7 +6139,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The warm gantry rake light grazing from the upper left.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--bg-glass",
@@ -6211,7 +6253,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The 17% line for hover and emphasis. Read via --border-glass-hover.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--border-glass",
@@ -6254,7 +6302,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The 9% bone line that does most of the separating. Read via --border-glass and --card-border.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--border-strong",
@@ -6265,7 +6319,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Full-bone edge for secondary buttons and emphasis.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--brass-amber",
@@ -6602,7 +6662,7 @@
     },
     {
       "name": "--card-radius",
-      "value": "0",
+      "value": "var(--radius-2)",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
@@ -7411,7 +7471,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Girder red. --colour-error aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--danger-deep",
@@ -7422,7 +7488,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Pressed and hover state for danger surfaces.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--danger-tint",
@@ -7433,7 +7505,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Wash over the page. --colour-error-bg aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--duration-fast",
@@ -7759,7 +7837,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Functional blue for focus, never the accent. Read via --focus-ring-color.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--focus-ring-color",
@@ -7784,7 +7868,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Focus wash for selection controls.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--font-body",
@@ -7881,6 +7971,23 @@
       "lifecycle": null
     },
     {
+      "name": "--font-sans",
+      "value": "var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano's own name for the sans role, aliasing --font-body, so markup authored against the handoff resolves without translation.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--font-wordmark",
       "value": "'Moderat', system-ui, sans-serif",
       "file": "typography.css",
@@ -7947,6 +8054,244 @@
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--fs-2xl",
+      "value": "2rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --type-h2 and the h3 rule in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-3xl",
+      "value": "2.75rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --type-h1 and the h2 rule in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-display",
+      "value": "3.75rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --type-display and the h1 rule in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-lg",
+      "value": "1.125rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --text-body and --type-prose — the reading register.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-md",
+      "value": "0.9375rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --text-ui and --type-body — the UI register.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-sm",
+      "value": "0.8125rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --text-caption and --type-small.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-xl",
+      "value": "1.5rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --type-h3 and the h4 rule in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fs-xs",
+      "value": "0.75rem",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Size ladder. Read via --text-micro.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-black",
+      "value": "900",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Moderat cut. Oversized display and the drop cap.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-bold",
+      "value": "700",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Moderat cut. Read via --type-display and --type-h1.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-light",
+      "value": "300",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Moderat cut. Reserved for rare oversized display moments.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-medium",
+      "value": "500",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Moderat cut. The weight above regular that the face actually has.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-regular",
+      "value": "400",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Moderat cut. Read via --type-body, --type-small, --type-prose, --type-spec.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-semibold",
+      "value": "500",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Maps to Medium on purpose — Moderat has no 600 cut, so asking for 600 gets a synthesised weight. Read via --type-h2 and --type-h3.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--gantry-orange",
@@ -8102,7 +8447,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The 160px accent pitch, formalising a value the ground already drew.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--ground-glint-colour",
@@ -8458,7 +8809,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Pulley blue. --colour-info aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--info-tint",
@@ -8469,7 +8826,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Wash over the page. --colour-info-bg aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--ink-300",
@@ -8648,6 +9011,91 @@
         "reason": "No hero layout in this repository sets a minimum height.",
         "decisionId": "D-166",
         "recordedOn": "2026-08-02"
+      }
+    },
+    {
+      "name": "--lh-body",
+      "value": "1.6",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Leading for running text. Read via --type-body and --type-prose.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--lh-snug",
+      "value": "1.3",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Leading for h3 and the small headings in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--lh-tight",
+      "value": "1.08",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Leading for display and h1. Read via the composites.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ls-caps",
+      "value": "0.08em",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Tracking for mono spec labels, which are always uppercase. Also the chart axis tracking.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ls-tight",
+      "value": "-0.02em",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Negative tracking for display and h1. Applied beside the composite — the font shorthand carries no letter-spacing.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
       }
     },
     {
@@ -8905,18 +9353,23 @@
     },
     {
       "name": "--radius",
-      "value": "0",
+      "value": "var(--radius-2)",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
       "referencedBy": [
+        "AgentInput",
         "Alert",
         "BulkActionModal",
+        "Button",
         "DateField",
         "DeleteConfirmModal",
         "EmptyState",
+        "Footer",
+        "Input",
         "Modal",
         "NumberField",
+        "Pagination",
         "Select",
         "SelectField",
         "Skeleton",
@@ -8930,8 +9383,55 @@
       "lifecycle": null
     },
     {
+      "name": "--radius-1",
+      "value": "3px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "referencedBy": [
+        "Badge"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--radius-2",
+      "value": "6px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Machined 6px — the workhorse. Read via --radius, --radius-surface and --card-radius.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--radius-3",
+      "value": "10px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Machined 10px — dialogs and chat. Read via --radius-message.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--radius-message",
-      "value": "0",
+      "value": "var(--radius-3)",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
@@ -8947,18 +9447,12 @@
     },
     {
       "name": "--radius-pill",
-      "value": "0",
+      "value": "var(--radius-round)",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
       "referencedBy": [
-        "AgentInput",
-        "Badge",
-        "Button",
-        "Footer",
-        "Input",
         "LongreadArticle",
-        "Pagination",
         "RangeSlider",
         "Select",
         "Skeleton",
@@ -8973,8 +9467,25 @@
       "lifecycle": null
     },
     {
+      "name": "--radius-round",
+      "value": "999px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "True round for pills and switch tracks. Read via --radius-pill.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--radius-surface",
-      "value": "0",
+      "value": "var(--radius-2)",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
@@ -9874,7 +10385,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Toolbox olive. --colour-success aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--success-tint",
@@ -9885,7 +10402,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Wash over the page. --colour-success-bg aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--surface-card",
@@ -9896,7 +10419,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Plate face. Read via --card-bg and --surface-glass-bg.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--surface-dark-subtle",
@@ -10003,7 +10532,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Bone surface for inverted regions.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--surface-overlay-subtle",
@@ -10027,7 +10562,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The page ground. Read via --bg-primary and every tint that mixes over it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--surface-raised-bg",
@@ -10127,11 +10668,17 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Recessed zones — footers, wells, the card control tray.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--text-body",
-      "value": "1.125rem",
+      "value": "var(--fs-lg)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10146,7 +10693,7 @@
     },
     {
       "name": "--text-caption",
-      "value": "0.8125rem",
+      "value": "var(--fs-sm)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10186,7 +10733,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Foundry black — the text light plastics take.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--text-lead",
@@ -10211,11 +10764,17 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Pulley blue. Links are functional blue, not accent red.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--text-micro",
-      "value": "0.75rem",
+      "value": "var(--fs-xs)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10353,7 +10912,7 @@
     },
     {
       "name": "--text-ui",
-      "value": "0.9375rem",
+      "value": "var(--fs-md)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10488,6 +11047,142 @@
       "lifecycle": null
     },
     {
+      "name": "--type-body",
+      "value": "var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. The UI register at 15px — controls, nav, list items.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-display",
+      "value": "var(--fw-bold) var(--fs-display) / var(--lh-tight) var(--font-display)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Sets h1 in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-h1",
+      "value": "var(--fw-bold) var(--fs-3xl) / var(--lh-tight) var(--font-display)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Sets h2 in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-h2",
+      "value": "var(--fw-semibold) var(--fs-2xl) / 1.15 var(--font-display)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Sets h3 in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-h3",
+      "value": "var(--fw-semibold) var(--fs-xl) / var(--lh-snug) var(--font-display)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Sets h4 in base.css.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-prose",
+      "value": "var(--fw-regular) var(--fs-lg) / var(--lh-body) var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Long-form reading at 18px. An Alfons addition: Meccano assigns --fs-lg to no composite, and a UI kit's single body size is not a reading size.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-small",
+      "value": "var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. Dense metadata and card bodies.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-spec",
+      "value": "var(--fw-regular) 0.6875rem / 1 var(--font-mono)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Composite. The signature annotation — mono, uppercase, tracked. Pair with --ls-caps and text-transform.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--warning",
       "value": "var(--brass-amber)",
       "file": "colours.css",
@@ -10496,7 +11191,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Brass amber. --colour-warning aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--warning-tint",
@@ -10507,7 +11208,13 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Wash over the page. --colour-warning-bg aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--white",
@@ -10518,7 +11225,13 @@
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Mixing primitive for lifting dark hues. Not a surface — the system has no white page.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--widget-icon-size",
@@ -11179,6 +11892,7 @@
   ],
   "tailwindShadowed": [
     "--font-mono",
+    "--font-sans",
     "--radius"
   ],
   "unparsed": []

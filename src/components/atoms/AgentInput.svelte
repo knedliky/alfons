@@ -426,7 +426,7 @@
 		   button — whatever the surface's own corner radius. The accent affordances
 		   keep their round identity rather than tracking the container; the clean,
 		   balanced look comes from the uniform --surface-inset spacing instead. */
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 		animation: agent-input-shimmer 6s ease-in-out infinite alternate;
 	}
 

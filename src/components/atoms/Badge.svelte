@@ -50,7 +50,7 @@
 	.badge {
 		display: inline-flex;
 		align-items: center;
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius-1);
 		font-weight: 500;
 		white-space: nowrap;
 	}

@@ -18,9 +18,18 @@
 @import './form-states.css';
 
 /* ==========================================================================
-   TYPOGRAPHY SCALE — IBM Plex Serif for all headings and display text
-   (technical aesthetic). NOTE: unlayered on purpose (beats Tailwind preflight);
-   do NOT add margin resets here — unlayered margins would defeat the layered
+   TYPOGRAPHY SCALE — Moderat, on the Meccano 12–60px ladder.
+
+   Every heading is a rung: 60 / 44 / 32 / 24 / 18 / 15. The previous scale ran
+   3.9 / 3 / 2.4 / 2 / 1.5 / 1.2rem, which sat between rungs and ran markedly
+   larger; Herman Miller-style restraint is most of what the retune is for.
+
+   Weight is the part that was actually broken. h1–h3 asked for 600 and Moderat
+   has no 600 cut, so the browser synthesised one. --fw-semibold resolves to
+   Medium for exactly this reason — see typography.css.
+
+   NOTE: unlayered on purpose (beats Tailwind preflight); do NOT add margin
+   resets here — unlayered margins would defeat the layered
    .article-prose-global margins.
    ========================================================================== */
 
@@ -30,69 +39,62 @@
 }
 
 h1 {
-	font-size: 3.9rem;
-	font-weight: 600;
-	line-height: 1.3;
-	letter-spacing: -0.02em;
+	font: var(--type-display);
+	letter-spacing: var(--ls-tight);
 }
 
 h2 {
-	font-size: 3rem;
-	font-weight: 600;
-	line-height: 1.3;
-	letter-spacing: -0.02em;
+	font: var(--type-h1);
+	letter-spacing: var(--ls-tight);
 }
 
 h3 {
-	font-size: 2.4rem;
-	font-weight: 600;
-	line-height: 1.3;
-	letter-spacing: -0.01em;
+	font: var(--type-h2);
+	letter-spacing: var(--ls-tight);
 }
 
 h4 {
-	font-size: 2rem;
-	font-weight: 500;
-	line-height: 1.4;
+	font: var(--type-h3);
 	letter-spacing: -0.01em;
 }
 
 h5 {
-	font-size: 1.5rem;
-	font-weight: 500;
-	line-height: 1.4;
+	font-size: var(--fs-lg);
+	font-weight: var(--fw-semibold);
+	line-height: var(--lh-snug);
 }
 
 h6 {
-	font-size: 1.2rem;
-	font-weight: 500;
-	line-height: 1.4;
+	font-size: var(--fs-md);
+	font-weight: var(--fw-semibold);
+	line-height: var(--lh-snug);
 }
 
-/* Responsive typography — mobile (below 768px) */
+/* Responsive typography — mobile (below 768px).
+
+   Each heading drops exactly one rung of the ladder, so the mobile scale is
+   the same scale rather than a second set of sizes. h5 and h6 do not move:
+   they already sit at 18px and 15px, and the rung below is body copy.
+
+   The previous values ran the other way at the bottom — mobile h5 was 1.375rem
+   against a desktop h5 that is now 1.125rem, and mobile h6 1.2rem against
+   0.9375rem — so a narrow viewport rendered the two smallest headings LARGER
+   than a wide one. That was invisible while the desktop scale was oversized. */
 @media (max-width: 767px) {
 	h1 {
-		font-size: 3rem;
+		font-size: var(--fs-3xl);
 	}
 
 	h2 {
-		font-size: 2.3rem;
+		font-size: var(--fs-2xl);
 	}
 
 	h3 {
-		font-size: 2rem;
+		font-size: var(--fs-xl);
 	}
 
 	h4 {
-		font-size: 1.7rem;
-	}
-
-	h5 {
-		font-size: 1.375rem;
-	}
-
-	h6 {
-		font-size: 1.2rem;
+		font-size: var(--fs-lg);
 	}
 }
 

@@ -57,7 +57,7 @@
 		align-items: center;
 		justify-content: center;
 		white-space: nowrap;
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 		font-size: 0.875rem;
 		font-weight: 500;
 		cursor: pointer;
