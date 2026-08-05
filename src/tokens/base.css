@@ -1,14 +1,14 @@
 /**
- * Motif Design Library — Base Global Styles
+ * Alfons — Base Global Styles
  *
- * Global typography scale, body defaults, the two-layer technical grid
- * background with its warm rake-light depth ground, scrollbar styling, focus
- * states, and utility classes. Font loading moved to tokens/fonts.css
- * (imported via public.css). Requires public.css to be imported first.
+ * Global typography scale, body defaults, the workbench ground, scrollbar
+ * styling, focus states, utility classes, and the five Meccano motif classes
+ * (.mcn-spec, .mcn-hairline, .mcn-perf, .mcn-ruler, .mcn-bench). Font loading
+ * lives in tokens/fonts.css. Requires public.css to be imported first.
  *
  * Usage:
- *   @import '@motif/design/public';
- *   @import '@motif/design/base';
+ *   @import '@alfons/design/public';
+ *   @import '@alfons/design/base';
  */
 
 /* ==========================================================================
@@ -120,16 +120,32 @@ body {
 		background-color: var(--bg-primary);
 		color: var(--text-primary);
 		font-family: var(--font-body);
-		font-size: 1.125rem; /* 18px base */
-		font-weight: 400;
-		line-height: 1.8;
+		font-size: var(--text-body); /* 18px — the reading register */
+		font-weight: var(--fw-regular);
+		/* 1.6, the Meccano body leading. Was 1.8, which is a magazine measure
+		   and left running text looking loose against the new tighter headings. */
+		line-height: var(--lh-body);
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		transition: var(--colour-mode-transition);
 	}
 
 	/* ==========================================================================
-	   GLOBAL GRID BACKGROUND — two-layer technical grid + rake-light ground
+	   GLOBAL GRID BACKGROUND — the workbench, as the page ground
+
+	   This is the drafting-desk surface Meccano calls the workbench, and it was
+	   already here: a 40px technical grid with a heavier line every 160px, under
+	   a warm rake grazing from off-screen upper-left at 20% -25%. Meccano's
+	   --bench-rake specifies that same geometry to the percentage point, which
+	   is what a system authored from this site looks like when it comes back.
+
+	   So the retune renames rather than rebuilds. The accent pitch reads
+	   --grid-size-major instead of calc(--grid-size * 4), because 160px is a
+	   decision about how the desk is ruled rather than an arithmetic
+	   consequence of the fine grid.
+
+	   The .mcn-bench class below composes the same ground for any element that
+	   wants the workbench without being the page.
 	   ========================================================================== */
 
 	/* Fine grid layer (40px) */
@@ -157,7 +173,7 @@ body {
 		background-image:
 			linear-gradient(var(--grid-colour-accent) 1px, transparent 1px),
 			linear-gradient(90deg, var(--grid-colour-accent) 1px, transparent 1px);
-		background-size: calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+		background-size: var(--grid-size-major) var(--grid-size-major);
 		opacity: var(--grid-opacity-accent);
 		transition: var(--colour-mode-transition);
 	}
@@ -170,7 +186,7 @@ body {
 		inset: 0;
 		z-index: -1;
 		pointer-events: none;
-		background: radial-gradient(120% 150% at 20% -25%, var(--burnt-sunset), transparent 90%);
+		background: radial-gradient(120% 150% at 20% -25%, var(--gantry-orange), transparent 90%);
 		opacity: var(--ground-rake-strength);
 		transition: var(--colour-mode-transition);
 	}
@@ -186,7 +202,7 @@ body {
 		background-image:
 			linear-gradient(var(--ground-glint-colour) 1px, transparent 1px),
 			linear-gradient(90deg, var(--ground-glint-colour) 1px, transparent 1px);
-		background-size: calc(var(--grid-size) * 4) calc(var(--grid-size) * 4);
+		background-size: var(--grid-size-major) var(--grid-size-major);
 		-webkit-mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
 		mask-image: radial-gradient(120% 150% at 20% -25%, transparent 8%, black 85%);
 		mix-blend-mode: screen;
@@ -417,9 +433,13 @@ body {
 		box-shadow: var(--card-shadow-hover);
 	}
 
-	/* Warm sunset glow on hover — replaces generic border highlight */
+	/* Warm glow on hover — replaces generic border highlight.
+	   Was rgba(217, 101, 43, .2), which is the pre-retune burnt-sunset hex
+	   written as a literal. It survived the palette move because nothing
+	   connects a literal to the token it was copied from, which is the whole
+	   argument for the raw-value rule. */
 	[data-colour-mode='dark'] .card-glass:hover {
-		border-color: rgba(217, 101, 43, 0.2);
+		border-color: color-mix(in oklab, var(--gantry-orange), transparent 80%);
 	}
 
 	/* Dark mode: solid background for legibility over busy backgrounds */
@@ -429,10 +449,93 @@ body {
 
 	/* Transition utilities */
 	.transition-default {
-		transition: all 0.2s ease;
+		transition: all var(--transition-normal);
 	}
 
 	.transition-colour-mode {
 		transition: var(--colour-mode-transition);
+	}
+
+	/* ==========================================================================
+	   MECCANO MOTIFS
+
+	   The five marks that make a surface read as this system rather than as a
+	   generic dark theme. They are utilities rather than components on purpose:
+	   each is a treatment applied to whatever element already exists, and
+	   wrapping a horizontal rule in a Svelte component to draw one line would
+	   be worse than the line.
+	   ========================================================================== */
+
+	/* The signature annotation: mono, caps, tracked. PART Nº 37B, STEP 04. */
+	.mcn-spec {
+		font: var(--type-spec);
+		letter-spacing: var(--ls-caps);
+		text-transform: uppercase;
+		color: var(--text-secondary);
+	}
+
+	/* The 1px line that does most of the separating. */
+	.mcn-hairline {
+		border: 0;
+		border-top: 1px solid var(--border-hairline);
+	}
+
+	/* Perforation: a punched bolt-hole row, cut with a real mask rather than
+	   drawn with dots, so the holes show whatever is behind the strip.
+
+	   The pitch is 28px with 10px holes centred at 14px + 28k. Strip lengths
+	   MUST quantise to the pitch — width = holes × 28px — which is what keeps
+	   the 9px solid margin equal at both ends; an arbitrary width clips the
+	   last hole and the strip reads as broken rather than as manufactured.
+	   Pair with border-radius: var(--radius-round) and a ~28px height.
+
+	   One per view at most: page header, progress, or a divider. */
+	.mcn-perf {
+		-webkit-mask-image: radial-gradient(circle at 14px 50%, transparent 5px, #000 5.5px);
+		-webkit-mask-size: 28px 100%;
+		-webkit-mask-repeat: repeat-x;
+		-webkit-mask-position: 0 0;
+		mask-image: radial-gradient(circle at 14px 50%, transparent 5px, #000 5.5px);
+		mask-size: 28px 100%;
+		mask-repeat: repeat-x;
+		mask-position: 0 0;
+	}
+
+	/* Ruler: a measuring-tape tick strip hanging from its top edge — minor 8px,
+	   mid 40px, major 80px. Pair with mono numbers. */
+	.mcn-ruler {
+		height: 18px;
+		background-image:
+			repeating-linear-gradient(90deg, var(--ink-500) 0 1px, transparent 1px 80px),
+			repeating-linear-gradient(90deg, var(--ink-400) 0 1px, transparent 1px 40px),
+			repeating-linear-gradient(90deg, var(--ink-300) 0 1px, transparent 1px 8px);
+		background-size:
+			100% 100%,
+			100% 65%,
+			100% 35%;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+
+	/* The workbench, for an element that wants the drafting desk without being
+	   the page. The page itself gets this ground from body::before/::after —
+	   do not put this class on <body> as well or the grid draws twice.
+
+	   background-attachment: fixed is what makes content scroll over a still
+	   desk rather than dragging the desk with it. */
+	.mcn-bench {
+		background-color: var(--bench-bg);
+		background-image:
+			var(--bench-rake), linear-gradient(var(--bench-line-major) 1px, transparent 1px),
+			linear-gradient(90deg, var(--bench-line-major) 1px, transparent 1px),
+			linear-gradient(var(--bench-line) 1px, transparent 1px),
+			linear-gradient(90deg, var(--bench-line) 1px, transparent 1px);
+		background-size:
+			100% 100%,
+			var(--grid-size-major) var(--grid-size-major),
+			var(--grid-size-major) var(--grid-size-major),
+			var(--grid-size) var(--grid-size),
+			var(--grid-size) var(--grid-size);
+		background-attachment: fixed;
 	}
 }

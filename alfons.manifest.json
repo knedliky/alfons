@@ -6086,7 +6086,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -6137,7 +6137,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -6354,7 +6354,7 @@
         "LongreadArticle",
         "Pill"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": {
         "status": "deprecated",
@@ -8561,7 +8561,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -8957,7 +8957,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -9204,7 +9204,7 @@
       "category": "typography",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -11041,7 +11041,7 @@
         "LongreadSection",
         "Skeleton"
       ],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": true,
       "lifecycle": null
     },
@@ -11382,7 +11382,7 @@
         "Tabs",
         "Textarea"
       ],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -11526,7 +11526,7 @@
       "category": "typography",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
