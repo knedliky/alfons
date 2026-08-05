@@ -5861,7 +5861,7 @@
     },
     {
       "name": "--admin-shadow",
-      "value": "0 1px 2px oklch(0% 0 0 / 5%)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "admin",
@@ -5874,7 +5874,7 @@
     },
     {
       "name": "--admin-shadow-elevated",
-      "value": "0 4px 6px -1px oklch(0% 0 0 / 10%), 0 2px 4px -2px oklch(0% 0 0 / 10%)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "admin",
@@ -6434,7 +6434,7 @@
     },
     {
       "name": "--button-shadow",
-      "value": "none",
+      "value": "var(--shadow-cap)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -6445,7 +6445,7 @@
     },
     {
       "name": "--button-shadow-active",
-      "value": "inset 0 2px 4px oklch(0% 0 0 / 10%)",
+      "value": "var(--shadow-cap-press)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -6456,7 +6456,7 @@
     },
     {
       "name": "--button-shadow-hover",
-      "value": "0 4px 12px oklch(45% 0.22 25 / 30%)",
+      "value": "var(--shadow-cap)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -6464,6 +6464,40 @@
       "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": null
+    },
+    {
+      "name": "--cap-chrome",
+      "value": "radial-gradient( ellipse 130% 55% at 50% 8%, rgba(var(--sheen-rgb), 0.22), rgba(var(--sheen-rgb), 0.05) 50%, rgba(var(--sheen-rgb), 0) 68% ), linear-gradient(180deg, #ede7db 0%, #d6cec0 50%, #b7af9f 78%, #9c9484 100%)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Chrome dome for secondary buttons.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--cap-red",
+      "value": "radial-gradient( ellipse 130% 55% at 50% 8%, rgba(var(--sheen-rgb), 0.18), rgba(var(--sheen-rgb), 0.04) 50%, rgba(var(--sheen-rgb), 0) 68% ), linear-gradient( 180deg, color-mix(in oklab, var(--accent), white 5%) 0%, var(--accent) 45%, color-mix(in oklab, var(--accent), black 14%) 75%, color-mix(in oklab, var(--accent), black 26%) 100% )",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Anodized dome for primary and danger buttons. Derives from --accent, so a palette move carries it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--card-bg",
@@ -6673,7 +6707,7 @@
     },
     {
       "name": "--card-shadow",
-      "value": "var(--elevation-1)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -6687,7 +6721,7 @@
     },
     {
       "name": "--card-shadow-hover",
-      "value": "var(--elevation-2)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7372,7 +7406,7 @@
     },
     {
       "name": "--colour-mode-transition",
-      "value": "background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), fill 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+      "value": "background-color var(--dur-slow) var(--ease-machined), color var(--dur-slow) var(--ease-machined), border-color var(--dur-slow) var(--ease-machined), box-shadow var(--dur-slow) var(--ease-machined), fill var(--dur-slow) var(--ease-machined)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -7514,7 +7548,24 @@
       }
     },
     {
-      "name": "--duration-fast",
+      "name": "--dur-fast",
+      "value": "120ms",
+      "file": "motion.css",
+      "category": "motion",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "120ms. Read via --duration-instant and --transition-fast.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--dur-med",
       "value": "200ms",
       "file": "motion.css",
       "category": "motion",
@@ -7522,11 +7573,45 @@
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "200ms. Read via --duration-fast and --transition-normal.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--dur-slow",
+      "value": "320ms",
+      "file": "motion.css",
+      "category": "motion",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "320ms. Read via --duration-normal, --duration-slow and --transition-slow.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--duration-fast",
+      "value": "var(--dur-med)",
+      "file": "motion.css",
+      "category": "motion",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--duration-instant",
-      "value": "100ms",
+      "value": "var(--dur-fast)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -7543,20 +7628,20 @@
     },
     {
       "name": "--duration-normal",
-      "value": "350ms",
+      "value": "var(--dur-slow)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
       "referencedBy": [
         "AgentInput"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--duration-slow",
-      "value": "500ms",
+      "value": "var(--dur-slow)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -7587,6 +7672,40 @@
       }
     },
     {
+      "name": "--ease-machined",
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "file": "motion.css",
+      "category": "motion",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The system easing: short, precise, no overshoot. Read via every --transition-* and the widget bar.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ease-out",
+      "value": "cubic-bezier(0, 0, 0.2, 1)",
+      "file": "motion.css",
+      "category": "motion",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Decelerating companion to --ease-machined, for entries.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--ease-spring",
       "value": "linear( 0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.981 43.8%, 1.007 50.4%, 1.022 57%, 1.024 62%, 1.015 68%, 1.007 76%, 1.003 84%, 1 )",
       "file": "motion.css",
@@ -7611,34 +7730,8 @@
       "lifecycle": null
     },
     {
-      "name": "--el-cast-depth",
-      "value": "0.22",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--el-cast-spread",
-      "value": "4",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
       "name": "--el-edge-light",
-      "value": "oklch(1 0 0 / var(--el-rim))",
+      "value": "rgba(var(--sheen-rgb), var(--el-rim))",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7654,7 +7747,7 @@
     },
     {
       "name": "--el-edge-shade",
-      "value": "oklch(0 0 0 / var(--el-shade))",
+      "value": "rgba(var(--shade-rgb), var(--el-shade))",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7669,19 +7762,8 @@
       "lifecycle": null
     },
     {
-      "name": "--el-fill",
-      "value": "0.58",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
       "name": "--el-rim",
-      "value": "0.055",
+      "value": "0.05",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7703,20 +7785,20 @@
     },
     {
       "name": "--elevation-1",
-      "value": "1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px) oklch(0 0 0 / var(--el-cast-depth))",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
         "LongreadFigure"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--elevation-1-bg",
-      "value": "color-mix( in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 100%), transparent )",
+      "value": "var(--surface-card)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7729,20 +7811,20 @@
     },
     {
       "name": "--elevation-2",
-      "value": "2px calc(var(--el-cast-spread) * 1.3px) calc(var(--el-cast-spread) * 2px) oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08)), 3px calc(var(--el-cast-spread) * 2.7px) calc(var(--el-cast-spread) * 5.3px) oklch(0 0 0 / calc(var(--el-cast-depth) * 0.85))",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
         "LongreadFigure"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--elevation-2-bg",
-      "value": "color-mix( in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 78%), transparent )",
+      "value": "var(--steel-150)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7755,18 +7837,18 @@
     },
     {
       "name": "--elevation-3",
-      "value": "4px calc(var(--el-cast-spread) * 2px) calc(var(--el-cast-spread) * 3.3px) oklch(0 0 0 / calc(var(--el-cast-depth) * 1.35)), 8px calc(var(--el-cast-spread) * 6px) calc(var(--el-cast-spread) * 13.3px) oklch(0 0 0 / calc(var(--el-cast-depth) * 1.43))",
+      "value": "var(--shadow-3)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--elevation-3-bg",
-      "value": "color-mix( in srgb, var(--bg-glass-solid) calc(var(--el-fill) * 62%), transparent )",
+      "value": "var(--steel-200)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -7841,6 +7923,23 @@
         "status": "live",
         "replacement": null,
         "reason": "Functional blue for focus, never the accent. Read via --focus-ring-color.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--focus-ring",
+      "value": "0 0 0 1px color-mix(in oklab, var(--focus), white 15%), 0 0 6px 1px color-mix(in oklab, var(--focus), transparent 25%), 0 0 18px 4px color-mix(in oklab, var(--focus), transparent 55%), 0 0 36px 10px color-mix(in oklab, var(--focus), transparent 82%)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The backlit lamp — pulley blue escaping from beneath the element in layered halos.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
       }
@@ -8032,7 +8131,7 @@
     },
     {
       "name": "--frost-2",
-      "value": "3px",
+      "value": "0px",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -8043,7 +8142,7 @@
     },
     {
       "name": "--frost-3",
-      "value": "6px",
+      "value": "0px",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -8323,6 +8422,23 @@
         "status": "live",
         "replacement": null,
         "reason": "Hero accent. The definition; --fire-engine-red aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--gloss",
+      "value": "linear-gradient( 180deg, rgba(var(--sheen-rgb), 0.3), rgba(var(--sheen-rgb), 0.08) 46%, rgba(var(--sheen-rgb), 0) 62% )",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Top sheen for small coloured chips. Layer over a plastic background-colour. Neutrals never get it.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
       }
@@ -9014,6 +9130,23 @@
       }
     },
     {
+      "name": "--led-off",
+      "value": "radial-gradient(circle at 38% 30%, #3a332c, #221d19 72%)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The unlit status lamp. Tokenised so it cannot be redrawn per component.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--lh-body",
       "value": "1.6",
       "file": "typography.css",
@@ -9220,7 +9353,7 @@
     },
     {
       "name": "--overlay-scrim",
-      "value": "oklch(0% 0 0 / 60%)",
+      "value": "rgba(var(--shade-rgb), 0.44)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9507,6 +9640,40 @@
       "lifecycle": null
     },
     {
+      "name": "--rivet-edge",
+      "value": "#2e2922",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Rivet shadow on a card plate.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--rivet-face",
+      "value": "#8a8272",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Rivet head on a card plate.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--scroll-margin-top",
       "value": "calc(var(--header-height) + var(--back-link-height) + 16px)",
       "file": "spacing.css",
@@ -9570,7 +9737,7 @@
     },
     {
       "name": "--select-dropdown-shadow",
-      "value": "var(--elevation-3)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9616,8 +9783,127 @@
       }
     },
     {
+      "name": "--shade-part",
+      "value": "linear-gradient( 180deg, rgba(var(--sheen-rgb), 0.26), rgba(var(--sheen-rgb), 0.06) 38%, rgba(var(--shade-rgb), 0) 55%, rgba(var(--shade-rgb), 0.32) 100% )",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Stronger moulded shading for larger plastic strips and slabs.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shade-rgb",
+      "value": "20, 16, 16",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Channel for shade alphas, matching --foundry-black.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shadow-1",
+      "value": "0 1px 2px rgba(0, 0, 0, 0.4)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Raised. Read via --card-shadow, --shadow-subtle, --shadow-header and the rest tier.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shadow-2",
+      "value": "0 2px 12px rgba(0, 0, 0, 0.5)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Popovers, toasts, dropdowns, tooltips. Read via seven aliases.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shadow-3",
+      "value": "0 20px 48px rgba(0, 0, 0, 0.6)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Dialogs only. Read via --shadow-modal.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shadow-cap",
+      "value": "inset 0 1px 0 rgba(var(--sheen-rgb), 0.18), inset 0 -3px 6px rgba(var(--shade-rgb), 0.35), 0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 2px 4px rgba(0, 0, 0, 0.35)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The dark bezel a cap is seated in. Read via --button-shadow.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--shadow-cap-press",
+      "value": "inset 0 2px 5px rgba(var(--shade-rgb), 0.45), 0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 1px 2px rgba(0, 0, 0, 0.3)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The cap pressed 2px into its collar. Read via --button-shadow-active.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--shadow-dropdown",
-      "value": "0 8px 24px oklch(0% 0 0 / 40%)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9632,7 +9918,7 @@
     },
     {
       "name": "--shadow-glass",
-      "value": "var(--elevation-2)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9645,8 +9931,25 @@
       "lifecycle": null
     },
     {
+      "name": "--shadow-gloss",
+      "value": "inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The seated edge that pairs with --gloss.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--shadow-header",
-      "value": "0 1px 2px oklch(0% 0 0 / 10%)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9663,7 +9966,7 @@
     },
     {
       "name": "--shadow-modal",
-      "value": "0 25px 50px -12px oklch(0% 0 0 / 50%)",
+      "value": "var(--shadow-3)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9675,8 +9978,25 @@
       "lifecycle": null
     },
     {
+      "name": "--shadow-part",
+      "value": "inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45)",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Inset-only depth for moulded parts — inset so it survives the .mcn-perf mask.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--shadow-popover",
-      "value": "0 10px 40px oklch(0% 0 0 / 50%)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9691,7 +10011,7 @@
     },
     {
       "name": "--shadow-subtle",
-      "value": "0 1px 3px oklch(0% 0 0 / 30%)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9705,7 +10025,7 @@
     },
     {
       "name": "--shadow-toast",
-      "value": "0 8px 32px oklch(0% 0 0 / 20%)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9718,7 +10038,7 @@
     },
     {
       "name": "--shadow-tooltip-cast",
-      "value": "0 4px 12px oklch(0% 0 0 / 30%)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -9728,6 +10048,40 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--sheen",
+      "value": "#fffaf2",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Warm white — the light itself, never a surface. The system has no white page.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--sheen-rgb",
+      "value": "255, 250, 242",
+      "file": "elevation.css",
+      "category": "elevation",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Channel for sheen alphas. rgba() cannot take a custom property, so the channel is the token and the alpha is the literal.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--shimmer-highlight-bright",
@@ -10156,7 +10510,7 @@
     },
     {
       "name": "--state-disabled-opacity",
-      "value": "0.5",
+      "value": "0.45",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -10268,7 +10622,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -10285,7 +10639,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -10477,7 +10831,7 @@
     },
     {
       "name": "--surface-float-shadow",
-      "value": "var(--elevation-3)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10542,7 +10896,7 @@
     },
     {
       "name": "--surface-overlay-subtle",
-      "value": "oklch(0% 0 0 / 30%)",
+      "value": "rgba(var(--shade-rgb), 0.3)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10599,7 +10953,7 @@
     },
     {
       "name": "--surface-raised-shadow",
-      "value": "var(--elevation-2)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10616,7 +10970,7 @@
     },
     {
       "name": "--surface-rest-bg",
-      "value": "color-mix(in oklch, var(--bg-primary) 96%, transparent)",
+      "value": "var(--surface-card)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10644,7 +10998,7 @@
     },
     {
       "name": "--surface-rest-shadow",
-      "value": "var(--elevation-1)",
+      "value": "var(--shadow-1)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10929,7 +11283,7 @@
     },
     {
       "name": "--toast-shadow",
-      "value": "var(--elevation-3)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10963,7 +11317,7 @@
     },
     {
       "name": "--tooltip-shadow",
-      "value": "var(--elevation-3)",
+      "value": "var(--shadow-2)",
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
@@ -10976,7 +11330,7 @@
     },
     {
       "name": "--transition-fast",
-      "value": "var(--duration-fast) ease",
+      "value": "var(--dur-fast) var(--ease-machined)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -11009,7 +11363,7 @@
     },
     {
       "name": "--transition-normal",
-      "value": "var(--duration-fast) ease",
+      "value": "var(--dur-med) var(--ease-machined)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -11034,7 +11388,7 @@
     },
     {
       "name": "--transition-slow",
-      "value": "var(--duration-normal) ease",
+      "value": "var(--dur-slow) var(--ease-machined)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -11354,7 +11708,7 @@
     },
     {
       "name": "--widget-transition-duration",
-      "value": "0.5s",
+      "value": "var(--dur-slow)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -11371,7 +11725,7 @@
     },
     {
       "name": "--widget-transition-easing",
-      "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "value": "var(--ease-machined)",
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
@@ -11891,6 +12245,7 @@
     }
   ],
   "tailwindShadowed": [
+    "--ease-out",
     "--font-mono",
     "--font-sans",
     "--radius"

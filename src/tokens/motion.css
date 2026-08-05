@@ -1,10 +1,19 @@
 /**
- * Motif Design Library — Motion & interaction tokens
+ * Alfons — Motion & interaction tokens
  *
- * Calm, spring-flavoured motion. Durations are short by default; the two custom
- * spring easings are reused across components. Interaction states are
- * opacity-led (hover dims, active dims less, disabled halves). Widget-bar
- * motion tokens retained from the previous public.css §23.
+ * MECCANO RETUNE: motion is machined. 120–320ms on --ease-machined, no bounce
+ * and no overshoot. Things slide and seat; they never spring.
+ *
+ * The two spring easings survive, and this is the one place the retune keeps a
+ * value it argues against. They overshoot past 1 by design, which is exactly
+ * what "no bounce" forbids — but they are consumed by the homepage widget bar's
+ * FLIP reorganisation, where the overshoot is the animation rather than a
+ * flourish on top of one. Retuning them to machined would not make that
+ * component calmer, it would make it wrong. The widget bar is the exception,
+ * and it is named here so the next reader knows it was considered.
+ *
+ * Interaction states are opacity-led. Disabled is 45%, matching the Meccano
+ * components, rather than the 50% the previous ladder used.
  */
 
 @layer base {
@@ -12,26 +21,38 @@
 		/* === INTERACTION STATES ========================================== */
 		--state-hover-opacity: 0.8;
 		--state-active-opacity: 0.9;
-		--state-disabled-opacity: 0.5;
+		--state-disabled-opacity: 0.45;
 
-		/* === DURATIONS =================================================== */
-		--duration-instant: 100ms;
-		--duration-fast: 200ms;
-		--duration-normal: 350ms;
-		--duration-slow: 500ms;
-		--duration-spring: 600ms;
+		/* === EASING — machined: short, precise, no overshoot ============= */
+		--ease-machined: cubic-bezier(0.2, 0, 0, 1);
+		--ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+		/* === DURATIONS ===================================================
+		   Meccano's three steps are 120 / 200 / 320ms. The existing five names
+		   keep their consumers and land on those steps; --duration-slow at
+		   500ms had no counterpart and comes down to the top of the range,
+		   because half a second is a transition the eye waits for. */
+		--dur-fast: 120ms;
+		--dur-med: 200ms;
+		--dur-slow: 320ms;
+
+		--duration-instant: var(--dur-fast);
+		--duration-fast: var(--dur-med);
+		--duration-normal: var(--dur-slow);
+		--duration-slow: var(--dur-slow);
+		--duration-spring: 600ms; /* the widget bar's FLIP — see the file header */
 
 		/* === TRANSITIONS — composed from durations ======================= */
-		--transition-fast: var(--duration-fast) ease;
-		--transition-normal: var(--duration-fast) ease;
-		--transition-slow: var(--duration-normal) ease;
+		--transition-fast: var(--dur-fast) var(--ease-machined);
+		--transition-normal: var(--dur-med) var(--ease-machined);
+		--transition-slow: var(--dur-slow) var(--ease-machined);
 
-		/* Colour mode transition (dark/light switching). `fill` retained for
-		   SVG surfaces that transition with the mode. */
+		/* Colour mode transition. `fill` retained for SVG surfaces that
+		   transition with the mode. */
 		--colour-mode-transition:
-			background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-			border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-			fill 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			background-color var(--dur-slow) var(--ease-machined),
+			color var(--dur-slow) var(--ease-machined), border-color var(--dur-slow) var(--ease-machined),
+			box-shadow var(--dur-slow) var(--ease-machined), fill var(--dur-slow) var(--ease-machined);
 
 		/* === SPRING EASINGS — reusable across the system ================= */
 		--ease-spring: linear(
@@ -79,8 +100,8 @@
 
 		/* === WIDGET SYSTEM — retained (homepage floating widget bar) ===== */
 		--widget-icon-size: 40px;
-		--widget-transition-duration: 0.5s;
-		--widget-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+		--widget-transition-duration: var(--dur-slow);
+		--widget-transition-easing: var(--ease-machined);
 		--widget-pulse-duration: 2.5s;
 		--widget-spring-easing: var(--ease-spring);
 		--widget-spring-duration: 0.6s;

@@ -1,15 +1,31 @@
 /**
- * Motif Design Library — Elevation, shadow & z-index tokens
+ * Alfons — Elevation, surface & z-index tokens
  *
- * One light source: an off-screen upper-left rake. Surfaces stack on a coherent
- * ladder — L1 resting (cards), L2 raised (inputs, agent input, hovered cards),
- * L3 floating (dropdowns, tooltips, toasts, modals). Each level composes a crisp
- * directional edge, a down-and-right cast shadow, a backdrop blur, and a thinned
- * fill. Tunable scalars move the whole ladder coherently.
+ * MECCANO RETUNE. Shadows are barely there; 1px hairlines do the separating,
+ * like a technical drawing. Flat plus a hairline is the default, and the three
+ * shadow steps are for the few things that genuinely leave the page: raised
+ * (--shadow-1), popovers and toasts (--shadow-2), dialogs (--shadow-3).
  *
- * NEW in this revision: SURFACE TIERS — rest / raised / float bundles so a
- * component picks a tier, never blur/opacity by hand. Frost scale retuned
- * (0 / 3px / 6px) so the technical grid always reads through the glass.
+ * WHAT REPLACES THE DEPTH. Elevation used to be carried by frosted glass — a
+ * backdrop blur and a thinned fill per level. Meccano has no glassmorphism at
+ * all outside the dialog overlay, so depth is carried by material instead:
+ *
+ *   Plastic. Coloured chips take a top sheen (--gloss + --shadow-gloss);
+ *   larger strips and slabs take stronger moulded shading (--shade-part +
+ *   --shadow-part, inset-only so it survives the perforation mask). Neutrals
+ *   never get gloss.
+ *
+ *   Panel caps. Buttons are control-panel hardware — a domed face (--cap-red
+ *   anodized, --cap-chrome secondary) seated in a dark bezel (--shadow-cap),
+ *   pressing 2px into the panel on active (--shadow-cap-press).
+ *
+ * Everything is lit strictly from above. No bottom bounce light: the panel is
+ * dark. The frost scale therefore collapses to zero rather than being deleted,
+ * because eight files still name it and zero is the correct value — see the
+ * note beside it.
+ *
+ * The alpha effects read primitive channels (--sheen-rgb, --shade-rgb) rather
+ * than raw literals, so a component still contains no raw colour.
  */
 
 @layer base {
@@ -23,99 +39,172 @@
 		--z-toast: 40;
 		--z-widget: 50;
 
-		/* === ELEVATION LADDER — tunable scalars ========================= */
-		--el-rim: 0.055; /* lit-edge alpha at L1 */
-		--el-cast-depth: 0.22; /* cast-shadow alpha at L1 */
-		--el-cast-spread: 4; /* cast-shadow blur (px) at L1 */
-		--el-fill: 0.58; /* L1 surface-fill alpha */
-		/* Frost — RETUNED: deliberately light (rest 0 · raised 3px · float 6px)
-		   so the grid reads through. Previous 10px/12px steps collapse into 6px. */
-		--frost-1: 0px;
-		--frost-2: 3px;
-		--frost-3: 6px;
+		/* === PRIMITIVE CHANNELS =========================================
+		   Alpha effects need a colour they can vary the opacity of, and
+		   rgba() cannot take a token. These are the two channels every
+		   sheen and shade below composes from, so components still hold no
+		   raw colour of their own. */
+		--sheen: #fffaf2; /* warm white — the light, never a surface */
+		--sheen-rgb: 255, 250, 242;
+		--shade-rgb: 20, 16, 16; /* --foundry-black */
 
-		/* Lit EDGE — crisp directional border (top/left lit, bottom/right shade) */
+		/* Recurring atoms, tokenised so they cannot be redrawn per component */
+		--led-off: radial-gradient(circle at 38% 30%, #3a332c, #221d19 72%);
+		--rivet-face: #8a8272;
+		--rivet-edge: #2e2922;
+
+		/* === SHADOW LADDER — barely there =============================== */
+		--shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4); /* raised */
+		--shadow-2: 0 2px 12px rgba(0, 0, 0, 0.5); /* popovers, toasts */
+		--shadow-3: 0 20px 48px rgba(0, 0, 0, 0.6); /* dialogs only */
+
+		/* === PLASTIC — moulded surface language ==========================
+		   Layer --gloss as a background-image over a plastic background-colour
+		   for small chips; use --shade-part for larger strips and slabs. Both
+		   are inset-only in their shadow half so they survive the .mcn-perf
+		   mask. Neutrals never get either. */
+		--gloss: linear-gradient(
+			180deg,
+			rgba(var(--sheen-rgb), 0.3),
+			rgba(var(--sheen-rgb), 0.08) 46%,
+			rgba(var(--sheen-rgb), 0) 62%
+		);
+		--shadow-gloss:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22);
+		--shade-part: linear-gradient(
+			180deg,
+			rgba(var(--sheen-rgb), 0.26),
+			rgba(var(--sheen-rgb), 0.06) 38%,
+			rgba(var(--shade-rgb), 0) 55%,
+			rgba(var(--shade-rgb), 0.32) 100%
+		);
+		--shadow-part:
+			inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45);
+
+		/* === PANEL CAPS — buttons as control-panel hardware ==============
+		   A domed face seated in a dark bezel. Lit strictly from above; there
+		   is no bottom bounce light because the panel is dark. */
+		--cap-red:
+			radial-gradient(
+				ellipse 130% 55% at 50% 8%,
+				rgba(var(--sheen-rgb), 0.18),
+				rgba(var(--sheen-rgb), 0.04) 50%,
+				rgba(var(--sheen-rgb), 0) 68%
+			),
+			linear-gradient(
+				180deg,
+				color-mix(in oklab, var(--accent), white 5%) 0%,
+				var(--accent) 45%,
+				color-mix(in oklab, var(--accent), black 14%) 75%,
+				color-mix(in oklab, var(--accent), black 26%) 100%
+			);
+		--cap-chrome:
+			radial-gradient(
+				ellipse 130% 55% at 50% 8%,
+				rgba(var(--sheen-rgb), 0.22),
+				rgba(var(--sheen-rgb), 0.05) 50%,
+				rgba(var(--sheen-rgb), 0) 68%
+			),
+			linear-gradient(180deg, #ede7db 0%, #d6cec0 50%, #b7af9f 78%, #9c9484 100%);
+		--shadow-cap:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.18), inset 0 -3px 6px rgba(var(--shade-rgb), 0.35),
+			0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 2px 4px rgba(0, 0, 0, 0.35);
+		--shadow-cap-press:
+			inset 0 2px 5px rgba(var(--shade-rgb), 0.45), 0 0 0 2px rgba(var(--shade-rgb), 0.55),
+			0 1px 2px rgba(0, 0, 0, 0.3);
+
+		/* === FOCUS RING — a backlit lamp ================================
+		   Light escaping from beneath the cap and diffusing outward in layered
+		   halos. Pulley blue, never the accent: focus is functional. */
+		--focus-ring:
+			0 0 0 1px color-mix(in oklab, var(--focus), white 15%),
+			0 0 6px 1px color-mix(in oklab, var(--focus), transparent 25%),
+			0 0 18px 4px color-mix(in oklab, var(--focus), transparent 55%),
+			0 0 36px 10px color-mix(in oklab, var(--focus), transparent 82%);
+
+		/* === ELEVATION LADDER — retained names, machined values =========
+		   The rake-light scalars survive because five components compose an
+		   edge from them, but the ladder they drove is now the three-step
+		   shadow scale above. The lit edge is what remains of the rake: a
+		   single hairline of sheen along the top, which is what Meccano's own
+		   card plate does. */
+		--el-rim: 0.05; /* lit-edge alpha */
 		--el-shade: calc(var(--el-rim) * 3);
-		--el-edge-light: oklch(1 0 0 / var(--el-rim));
-		--el-edge-shade: oklch(0 0 0 / var(--el-shade));
+		--el-edge-light: rgba(var(--sheen-rgb), var(--el-rim));
+		--el-edge-shade: rgba(var(--shade-rgb), var(--el-shade));
 
-		/* CAST shadow per level — box-shadow only, thrown down-and-right */
-		--elevation-1: 1px calc(var(--el-cast-spread) * 0.7px) calc(var(--el-cast-spread) * 1px)
-			oklch(0 0 0 / var(--el-cast-depth));
-		--elevation-2:
-			2px calc(var(--el-cast-spread) * 1.3px) calc(var(--el-cast-spread) * 2px)
-				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08)),
-			3px calc(var(--el-cast-spread) * 2.7px) calc(var(--el-cast-spread) * 5.3px)
-				oklch(0 0 0 / calc(var(--el-cast-depth) * 0.85));
-		--elevation-3:
-			4px calc(var(--el-cast-spread) * 2px) calc(var(--el-cast-spread) * 3.3px)
-				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.35)),
-			8px calc(var(--el-cast-spread) * 6px) calc(var(--el-cast-spread) * 13.3px)
-				oklch(0 0 0 / calc(var(--el-cast-depth) * 1.43));
+		--elevation-1: var(--shadow-1);
+		--elevation-2: var(--shadow-2);
+		--elevation-3: var(--shadow-3);
 
-		/* SURFACE fill per level — thinned toward frosted glass */
-		--elevation-1-bg: color-mix(
-			in srgb,
-			var(--bg-glass-solid) calc(var(--el-fill) * 100%),
-			transparent
-		);
-		--elevation-2-bg: color-mix(
-			in srgb,
-			var(--bg-glass-solid) calc(var(--el-fill) * 78%),
-			transparent
-		);
-		--elevation-3-bg: color-mix(
-			in srgb,
-			var(--bg-glass-solid) calc(var(--el-fill) * 62%),
-			transparent
-		);
+		/* Frost — zero at every step. Meccano permits no glassmorphism
+		   outside the dialog overlay, and a backdrop-filter of 0px is a no-op
+		   the browser skips. Kept rather than deleted because eight files name
+		   these and a blur scale is exactly the kind of thing a later brief
+		   asks for again; the retirement would then have to be undone rather
+		   than a value edited. Same reasoning D-160 applied to the radii, and
+		   the radii came back. */
+		--frost-1: 0px;
+		--frost-2: 0px;
+		--frost-3: 0px;
 
-		/* === SURFACE TIERS — NEW ========================================
+		/* Surface fills — flat now, not thinned toward glass. */
+		--elevation-1-bg: var(--surface-card);
+		--elevation-2-bg: var(--steel-150);
+		--elevation-3-bg: var(--steel-200);
+
+		/* === SURFACE TIERS ==============================================
 		   Three tiers, named by how the surface sits relative to the page.
-		   Each tier is ONE bundle — fill + frost + shadow (+ the lit edge) — so a
-		   component never picks blur/opacity by hand; it picks a tier.
-		     rest   — sits ON the page (cards, tiles): opaque, no blur, soft shadow
-		     raised — lifts off it (inputs, chat, agent surface, portraits): light frost
-		     float  — detached above everything (menus, popovers, modals): glassy, deep shadow
-		   rest = the SAME warm tone as the fixed Header (--bg-primary) so cards
-		   and the surface primitive match it exactly and track together. */
-		--surface-rest-bg: color-mix(in oklch, var(--bg-primary) 96%, transparent);
+		   Each is ONE bundle — fill + frost + shadow — so a component picks a
+		   tier rather than picking blur and opacity by hand.
+		     rest   — sits ON the page (cards, tiles)
+		     raised — lifts off it (inputs, chat, agent surface)
+		     float  — detached above everything (menus, popovers, modals) */
+		--surface-rest-bg: var(--surface-card);
 		--surface-rest-frost: var(--frost-1);
-		--surface-rest-shadow: var(--elevation-1);
+		--surface-rest-shadow: var(--shadow-1);
 		--surface-raised-bg: var(--elevation-2-bg);
 		--surface-raised-frost: var(--frost-2);
-		--surface-raised-shadow: var(--elevation-2);
+		--surface-raised-shadow: var(--shadow-1);
 		--surface-float-bg: var(--elevation-3-bg);
 		--surface-float-frost: var(--frost-3);
-		--surface-float-shadow: var(--elevation-3);
+		--surface-float-shadow: var(--shadow-2);
 
-		/* === SEMANTIC SHADOW ALIASES =================================== */
-		--card-shadow: var(--elevation-1);
-		--card-shadow-hover: var(--elevation-2);
-		--shadow-glass: var(--elevation-2); /* agent input + chat bubbles */
-		--shadow-subtle: 0 1px 3px oklch(0% 0 0 / 30%);
-		--shadow-header: 0 1px 2px oklch(0% 0 0 / 10%);
+		/* === SEMANTIC SHADOW ALIASES ===================================
+		   Every one of these resolves to a rung of the three-step ladder.
+		   The previous set was eleven independently-authored shadows — 8px
+		   32px at 20%, 10px 40px at 50%, 25px 50px -12px at 50% — which is
+		   how a system ends up with four subtly different popovers. */
+		--card-shadow: var(--shadow-1);
+		--card-shadow-hover: var(--shadow-2);
+		--shadow-glass: var(--shadow-1); /* agent input + chat bubbles */
+		--shadow-subtle: var(--shadow-1);
+		--shadow-header: var(--shadow-1);
 		--input-shadow: none;
-		/* Focus ring — the single quiet system focus state lives in base.css as a
-		   global :focus-visible outline; form controls only shift their border. */
-		--button-shadow: none;
-		--button-shadow-hover: 0 4px 12px oklch(45% 0.22 25 / 30%);
-		--button-shadow-active: inset 0 2px 4px oklch(0% 0 0 / 10%);
 
-		/* Floating overlays — neutral black scrims, not brand-tinted */
-		--overlay-scrim: oklch(0% 0 0 / 60%);
-		--shadow-toast: 0 8px 32px oklch(0% 0 0 / 20%);
-		--toast-shadow: var(--elevation-3); /* toasts float at L3 (both modes) */
-		--shadow-dropdown: 0 8px 24px oklch(0% 0 0 / 40%);
-		--shadow-popover: 0 10px 40px oklch(0% 0 0 / 50%);
-		--shadow-modal: 0 25px 50px -12px oklch(0% 0 0 / 50%);
-		--shadow-tooltip-cast: 0 4px 12px oklch(0% 0 0 / 30%); /* retained */
-		--surface-overlay-subtle: oklch(0% 0 0 / 30%); /* retained — loading overlays */
-		--tooltip-shadow: var(--elevation-3);
-		--select-dropdown-shadow: var(--elevation-3);
+		/* Buttons are panel caps: the cap shadow IS the button's elevation,
+		   and pressing seats it 2px into the collar. Hover brightens the dome
+		   with a filter rather than growing a shadow, so there is nothing for
+		   --button-shadow-hover to be; it stays as the cap. */
+		--button-shadow: var(--shadow-cap);
+		--button-shadow-hover: var(--shadow-cap);
+		--button-shadow-active: var(--shadow-cap-press);
+
+		/* Floating overlays — neutral scrims, not brand-tinted. The dialog
+		   overlay is the one place the system permits any transparency. */
+		--overlay-scrim: rgba(var(--shade-rgb), 0.44);
+		--shadow-toast: var(--shadow-2);
+		--toast-shadow: var(--shadow-2);
+		--shadow-dropdown: var(--shadow-2);
+		--shadow-popover: var(--shadow-2);
+		--shadow-modal: var(--shadow-3);
+		--shadow-tooltip-cast: var(--shadow-2);
+		--surface-overlay-subtle: rgba(var(--shade-rgb), 0.3); /* loading overlays */
+		--tooltip-shadow: var(--shadow-2);
+		--select-dropdown-shadow: var(--shadow-2);
 
 		/* === ADMIN SHADOWS — consolidated here from admin.css ============ */
-		--admin-shadow: 0 1px 2px oklch(0% 0 0 / 5%);
-		--admin-shadow-elevated: 0 4px 6px -1px oklch(0% 0 0 / 10%), 0 2px 4px -2px oklch(0% 0 0 / 10%);
+		--admin-shadow: var(--shadow-1);
+		--admin-shadow-elevated: var(--shadow-2);
 	}
 }
