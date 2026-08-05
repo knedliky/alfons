@@ -47,73 +47,82 @@
 </span>
 
 <style>
+	/* A moulded plastic chip: solid part colour under a top sheen, set in the
+	   mono spec register. The gloss is what makes it read as a moulded piece
+	   rather than as a coloured rectangle, and it is the small-chip treatment
+	   (--gloss) rather than the slab one (--shade-part). */
 	.badge {
 		display: inline-flex;
 		align-items: center;
 		border-radius: var(--radius-1);
-		font-weight: 500;
+		font-family: var(--font-mono);
+		font-weight: var(--fw-regular);
+		letter-spacing: var(--ls-caps);
+		text-transform: uppercase;
 		white-space: nowrap;
+		background-image: var(--gloss);
+		box-shadow: var(--shadow-gloss);
 	}
 
-	/* --- Size variants --- */
+	/* --- Size variants ---
+	   Mono is regular-only, so size and tracking carry the emphasis. */
 
 	.badge[data-size='sm'] {
-		font-size: 0.75rem;
-		padding: var(--space-1) var(--space-2);
+		font-size: 0.625rem;
+		height: 18px;
+		padding: 0 var(--space-2);
 	}
 
 	.badge[data-size='default'] {
-		font-size: 0.875rem;
-		padding: var(--space-1) calc(var(--space-2) + 2px);
+		font-size: 0.6875rem;
+		height: 20px;
+		padding: 0 var(--space-2);
 	}
 
-	/* --- Colour variants (public theme) --- */
+	/* --- Colour variants ---
+	   Text colour is not decorative: light and mid plastics take foundry black,
+	   the dark ones take bone. Getting this backwards is the single most
+	   legible way to look off-brand, so each variant states which it is. */
 
 	.badge[data-variant='default'] {
-		background-color: var(--accent-bg);
-		color: var(--accent);
+		background-color: var(--girder-red);
+		color: var(--ink-900); /* dark plastic */
 	}
 
 	.badge[data-variant='success'] {
-		background-color: var(--colour-success-bg);
-		color: var(--colour-success);
+		background-color: var(--toolbox-olive);
+		color: var(--foundry-black); /* light plastic */
 	}
 
 	.badge[data-variant='warning'] {
-		background-color: var(--colour-warning-bg);
-		color: var(--colour-warning);
+		background-color: var(--brass-amber);
+		color: var(--foundry-black); /* light plastic */
 	}
 
 	.badge[data-variant='error'] {
-		background-color: var(--colour-error-bg);
-		color: var(--colour-error);
+		background-color: var(--girder-red);
+		color: var(--ink-900); /* dark plastic */
 	}
 
 	.badge[data-variant='info'] {
-		background-color: var(--colour-info-bg);
-		color: var(--colour-info);
+		background-color: var(--pulley-blue);
+		color: var(--foundry-black); /* light plastic */
 	}
 
-	/* --- Admin theme overrides — use status text tokens for readability --- */
+	/* --- Admin theme ---
+	   No colour overrides. They existed because the badge used to be a tint
+	   with the status hue as its TEXT, so admin restated that hue from the
+	   -text tokens for contrast. The chip is a solid plastic now, and those
+	   same tokens are its BACKGROUND — so re-applying them as colour would
+	   have painted olive text on an olive chip and made every admin success
+	   badge unreadable.
 
-	.badge[data-theme='admin'][data-variant='success'] {
-		color: var(--status-success-text);
-	}
-
-	.badge[data-theme='admin'][data-variant='warning'] {
-		color: var(--status-warning-text);
-	}
-
-	.badge[data-theme='admin'][data-variant='error'] {
-		color: var(--status-error-text);
-	}
-
-	.badge[data-theme='admin'][data-variant='info'] {
-		color: var(--status-info-text);
-	}
-
+	   A chip is hardware, like the Button cap: it reads identically whether the
+	   surrounding page is public or admin, so there is nothing left to
+	   override. The neutral variant is the one exception, because a muted chip
+	   is a real need on a dense admin surface and no part colour means neutral. */
 	.badge[data-theme='admin'][data-variant='default'] {
-		background-color: var(--admin-bg-elevated);
-		color: var(--admin-text-muted);
+		background-color: var(--steel-200);
+		color: var(--ink-500);
 	}
 </style>

@@ -373,25 +373,21 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--accent-bg",
-        "--admin-bg-elevated",
-        "--admin-text-muted",
-        "--colour-error",
-        "--colour-error-bg",
-        "--colour-info",
-        "--colour-info-bg",
-        "--colour-success",
-        "--colour-success-bg",
-        "--colour-warning",
-        "--colour-warning-bg",
+        "--brass-amber",
+        "--font-mono",
+        "--foundry-black",
+        "--fw-regular",
+        "--girder-red",
+        "--gloss",
+        "--ink-500",
+        "--ink-900",
+        "--ls-caps",
+        "--pulley-blue",
         "--radius-1",
-        "--space-1",
+        "--shadow-gloss",
         "--space-2",
-        "--status-error-text",
-        "--status-info-text",
-        "--status-success-text",
-        "--status-warning-text"
+        "--steel-200",
+        "--toolbox-olive"
       ],
       "composes": [],
       "importedBy": [],
@@ -708,23 +704,40 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--accent-hover",
+        "--accent-contrast",
         "--admin-bg-elevated",
         "--admin-border",
         "--admin-text",
         "--admin-text-muted",
-        "--card-border",
-        "--card-border-hover",
-        "--frost-3",
+        "--border-strong",
+        "--button-ghost-hover-bg",
+        "--cap-chrome",
+        "--cap-red",
+        "--focus-ring",
+        "--font-body",
+        "--fw-medium",
+        "--ink-700",
+        "--ink-900",
+        "--input-height",
+        "--input-height-lg",
+        "--input-height-sm",
         "--radius",
+        "--shade-rgb",
+        "--shadow-cap",
+        "--shadow-cap-press",
+        "--sheen-rgb",
         "--space-2",
         "--space-3",
+        "--space-4",
         "--space-5",
-        "--space-6",
-        "--surface-hover-subtle",
+        "--state-disabled-opacity",
+        "--steel-100",
+        "--text-caption",
+        "--text-inverse",
+        "--text-link",
         "--text-primary",
-        "--transition-normal"
+        "--text-ui",
+        "--transition-fast"
       ],
       "composes": [],
       "importedBy": [
@@ -732,13 +745,12 @@
         "ErrorPage"
       ],
       "exported": true,
-      "summary": "pill-shaped interactive element with theme and variant support.",
+      "summary": "control-panel hardware: a domed cap seated in a dark bezel.",
       "usage": "  <Button>Primary CTA</Button>\n  <Button variant=\"secondary\" size=\"sm\">Secondary</Button>\n  <Button variant=\"ghost\" theme=\"admin\">Admin action</Button>",
       "features": [
         "Five visual variants: default, secondary, outline, ghost, link",
         "Three sizes plus icon mode: default, sm, lg, icon",
         "Automatic theme detection from context (public/admin)",
-        "Glassmorphism on secondary variant in public theme",
         "Design-token-first CSS with data-attribute selectors"
       ],
       "storyId": "atoms-button",
@@ -972,7 +984,6 @@
         "--accent",
         "--accent-bg",
         "--accent-border",
-        "--accent-secondary-hover",
         "--admin-bg",
         "--admin-bg-elevated",
         "--admin-border",
@@ -991,14 +1002,19 @@
         "--el-edge-light",
         "--el-edge-shade",
         "--radius-surface",
+        "--rivet-edge",
+        "--rivet-face",
+        "--sheen-rgb",
         "--space-1",
         "--space-2",
         "--space-4",
         "--space-5",
+        "--steel-200",
+        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--text-secondary",
-        "--transition-slow"
+        "--transition-normal"
       ],
       "composes": [],
       "importedBy": [],
@@ -1007,7 +1023,7 @@
       "usage": "  <Card>Default card</Card>\n  <Card as=\"a\" href=\"/about\" variant=\"elevated\">Linked card</Card>\n  <Card theme=\"admin\" variant=\"ghost\">Admin ghost card</Card>\n  <Card size=\"compact\">Compact padding</Card>\n  <Card size=\"flush\">No padding</Card>",
       "features": [
         "Polymorphic element via `as` prop (div, a, section, article, button)",
-        "Five variants: default (glassmorphism), elevated, ghost, outlined, interactive",
+        "Five variants: default (control plate), elevated, ghost, outlined, interactive",
         "Three sizes: default, compact (tighter padding), flush (no padding)",
         "Automatic theme detection from context (public/admin)",
         "Self-contained styling — no dependency on global .card-glass utility"
@@ -5350,9 +5366,7 @@
       "referencedBy": [
         "AgentInput",
         "BackLink",
-        "Badge",
         "BoolField",
-        "Button",
         "CalendarDay",
         "Card",
         "Checkbox",
@@ -5394,7 +5408,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "Card"
       ],
       "usedInTokenLayer": false,
@@ -5448,7 +5461,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -5534,7 +5549,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Button",
         "Footer"
       ],
       "usedInTokenLayer": true,
@@ -5635,9 +5649,7 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [
-        "Card"
-      ],
+      "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
@@ -5732,7 +5744,6 @@
       "surface": "admin",
       "referencedBy": [
         "Alert",
-        "Badge",
         "Button",
         "Card",
         "DataTable",
@@ -5969,7 +5980,6 @@
       "category": "colours",
       "surface": "admin",
       "referencedBy": [
-        "Badge",
         "Button",
         "CalendarDay",
         "CalendarGrid",
@@ -6316,7 +6326,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -6333,7 +6345,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -6370,7 +6384,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -6471,7 +6487,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -6488,7 +6506,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -6554,7 +6574,6 @@
       "surface": "public",
       "referencedBy": [
         "Accordion",
-        "Button",
         "CalendarGrid",
         "Card",
         "Checkbox",
@@ -6602,7 +6621,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Button",
         "Checkbox",
         "Footer",
         "Input",
@@ -7305,7 +7323,6 @@
       "surface": "public",
       "referencedBy": [
         "Alert",
-        "Badge",
         "BoolField",
         "BulkActionModal",
         "Checkbox",
@@ -7334,7 +7351,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "BulkActionModal",
         "DateField",
         "DeleteConfirmModal",
@@ -7378,7 +7394,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "BulkActionModal",
         "StatCard",
         "Toast"
@@ -7394,7 +7409,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "BulkActionModal",
         "Card",
         "StatusBadge",
@@ -7437,7 +7451,6 @@
       "surface": "public",
       "referencedBy": [
         "Alert",
-        "Badge",
         "Form",
         "FormGroup",
         "Icon",
@@ -7456,7 +7469,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge",
         "Toast"
       ],
@@ -7472,7 +7484,6 @@
       "surface": "public",
       "referencedBy": [
         "Alert",
-        "Badge",
         "ProgressBar",
         "TextField",
         "Toast"
@@ -7488,7 +7499,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge",
         "Toast"
       ],
@@ -7933,7 +7943,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -7985,6 +7997,7 @@
         "Accordion",
         "AgentInput",
         "Alert",
+        "Button",
         "Checkbox",
         "Chip",
         "Footer",
@@ -8044,6 +8057,7 @@
       "referencedBy": [
         "AgentInput",
         "AvatarGroup",
+        "Badge",
         "BarChart",
         "DateField",
         "Footer",
@@ -8107,7 +8121,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8147,7 +8163,6 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Button",
         "Select"
       ],
       "usedInTokenLayer": true,
@@ -8347,7 +8362,9 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -8364,7 +8381,9 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8415,7 +8434,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8432,7 +8453,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -8990,7 +9013,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9007,7 +9032,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9024,7 +9051,10 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge",
+        "Button"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9054,11 +9084,12 @@
     },
     {
       "name": "--input-height",
-      "value": "3rem",
+      "value": "2.25rem",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
       "referencedBy": [
+        "Button",
         "Footer",
         "Input",
         "Select",
@@ -9070,11 +9101,13 @@
     },
     {
       "name": "--input-height-lg",
-      "value": "3.5rem",
+      "value": "2.75rem",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9087,11 +9120,12 @@
     },
     {
       "name": "--input-height-sm",
-      "value": "2.5rem",
+      "value": "1.75rem",
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
       "referencedBy": [
+        "Button",
         "Input"
       ],
       "usedInTokenLayer": false,
@@ -9203,7 +9237,9 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9473,7 +9509,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9645,7 +9683,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Card"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9662,7 +9702,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Card"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9805,7 +9847,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9873,7 +9917,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9890,7 +9936,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9936,7 +9984,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -10072,7 +10122,10 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button",
+        "Card"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -10143,7 +10196,6 @@
       "referencedBy": [
         "AgentInput",
         "Alert",
-        "Badge",
         "BarChart",
         "Breadcrumb",
         "CalendarGrid",
@@ -10291,6 +10343,7 @@
         "BarChart",
         "BoolField",
         "BulkActionModal",
+        "Button",
         "CalendarGrid",
         "Card",
         "DataTable",
@@ -10369,7 +10422,6 @@
       "surface": "public",
       "referencedBy": [
         "BarChart",
-        "Button",
         "DateRangePicker",
         "EmptyState",
         "Footer",
@@ -10514,7 +10566,9 @@
       "file": "motion.css",
       "category": "motion",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -10549,7 +10603,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge"
       ],
       "usedInTokenLayer": false,
@@ -10563,7 +10616,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge"
       ],
       "usedInTokenLayer": false,
@@ -10577,7 +10629,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge"
       ],
       "usedInTokenLayer": false,
@@ -10591,7 +10642,6 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge",
         "StatusBadge"
       ],
       "usedInTokenLayer": false,
@@ -10604,7 +10654,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -10638,7 +10690,10 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge",
+        "Card"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -10770,7 +10825,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Card"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -10868,7 +10925,6 @@
       "surface": "public",
       "referencedBy": [
         "Alert",
-        "Button",
         "Menu",
         "Pagination",
         "Tabs"
@@ -11053,6 +11109,7 @@
       "surface": "public",
       "referencedBy": [
         "AgentInput",
+        "Button",
         "Divider",
         "Footer",
         "FormGroup",
@@ -11084,7 +11141,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -11115,7 +11174,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -11270,7 +11331,9 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Button"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -11304,7 +11367,9 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Badge"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -11338,6 +11403,7 @@
         "Accordion",
         "Alert",
         "BulkActionModal",
+        "Button",
         "CalendarDay",
         "CalendarGrid",
         "Chip",
@@ -11371,7 +11437,7 @@
         "Accordion",
         "AgentInput",
         "Breadcrumb",
-        "Button",
+        "Card",
         "Footer",
         "FormGroup",
         "Header",
@@ -11393,7 +11459,6 @@
       "category": "motion",
       "surface": "public",
       "referencedBy": [
-        "Card",
         "LongreadArticle"
       ],
       "usedInTokenLayer": true,

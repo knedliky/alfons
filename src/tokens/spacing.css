@@ -60,10 +60,16 @@
 		--card-padding-sm: var(--space-5);
 		--card-blur: 3.5px;
 
-		/* === INPUT HEIGHTS — match Button size tiers ===================== */
-		--input-height: 3rem;
-		--input-height-sm: 2.5rem;
-		--input-height-lg: 3.5rem;
+		/* === CONTROL HEIGHTS — Button size tiers and inputs, together ====
+		   The Meccano ladder: 28 / 36 / 44px, denser than the 40/48/56 it
+		   replaces. Button reads these directly so the two cannot drift.
+
+		   36px clears the WCAG 2.5.8 minimum target of 24px comfortably, but
+		   sits under the 44px AAA figure. Touch-primary surfaces should reach
+		   for size="lg", which is exactly 44px for that reason. */
+		--input-height: 2.25rem; /* 36px */
+		--input-height-sm: 1.75rem; /* 28px */
+		--input-height-lg: 2.75rem; /* 44px */
 
 		/* === LAYOUT ====================================================== */
 		--header-height: 80px;
