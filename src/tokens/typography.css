@@ -17,9 +17,14 @@
  * that size, which reads as a 3px regression against this library's 1.125rem
  * body. It is not one. Meccano is a UI kit with a single body size; Alfons
  * already splits functional UI text from prose, and its two sizes land exactly
- * on Meccano's --fs-md and --fs-lg rungs. So --type-body carries the UI
- * register at 15px and --type-prose carries long-form at 18px — the rung
- * Meccano leaves unassigned by any composite. Neither register changes size.
+ * on Meccano's --fs-md and --fs-lg rungs. That split lives in --text-ui and
+ * --text-body below, which components actually read.
+ *
+ * It briefly also lived in --type-body and --type-prose composites, authored
+ * during the retune against components that did not exist. D-181 removed them:
+ * two ways to say "15px UI text" is the duplication this file is otherwise
+ * careful to avoid. The composites that survive are the four base.css uses to
+ * set h1–h4, plus --type-spec for the mono annotation.
  */
 
 @layer base {
@@ -43,9 +48,6 @@
 		   already Moderat Bold, which is why the whole system moving to Moderat
 		   reads as the brand arriving rather than as a substitution. */
 		--font-wordmark: 'Moderat', system-ui, sans-serif;
-		/* Meccano's own name for the sans role, so markup authored against the
-		   handoff resolves here without translation. */
-		--font-sans: var(--font-body);
 
 		/* === SIZE LADDER — the 12–60px rungs, in rem at a 16px root ======
 		   Every size in the system is one of these eight. --text-* below are
@@ -62,12 +64,10 @@
 		/* === WEIGHTS — what Moderat actually cuts ========================
 		   There is no 600. --fw-semibold is Medium so that asking for the
 		   weight above regular gets a real cut rather than a synthesised one. */
-		--fw-light: 300;
 		--fw-regular: 400;
 		--fw-medium: 500;
 		--fw-semibold: 500;
 		--fw-bold: 700;
-		--fw-black: 900;
 
 		/* === LINE HEIGHTS & TRACKING ===================================== */
 		--lh-tight: 1.08; /* display and h1 */
@@ -83,11 +83,6 @@
 		--type-h1: var(--fw-bold) var(--fs-3xl) / var(--lh-tight) var(--font-display);
 		--type-h2: var(--fw-semibold) var(--fs-2xl) / 1.15 var(--font-display);
 		--type-h3: var(--fw-semibold) var(--fs-xl) / var(--lh-snug) var(--font-display);
-		--type-body: var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body);
-		--type-small: var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body);
-		/* Long-form prose. An Alfons addition — Meccano assigns --fs-lg to no
-		   composite, and a UI kit's single body size is not a reading size. */
-		--type-prose: var(--fw-regular) var(--fs-lg) / var(--lh-body) var(--font-body);
 		/* The signature annotation: mono, uppercase, tracked. Apply --ls-caps
 		   and text-transform alongside it — the font shorthand carries neither.
 		   Mono is regular-only; never synthesise bold. */
@@ -114,16 +109,9 @@
 		--text-lead: 1.25rem;
 
 		/* === OPACITY HIERARCHY ============================================ */
-		--opacity-primary: 1;
-		--opacity-secondary: 0.6;
 		--opacity-tertiary: 0.4;
-		--opacity-background: 0.2;
-		--opacity-line: 0.3;
 
 		/* === STROKE WIDTHS — standardised scale for iconography =========== */
-		--stroke-thin: 1;
 		--stroke-normal: 1.5;
-		--stroke-medium: 2;
-		--stroke-thick: 3;
 	}
 }

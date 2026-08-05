@@ -249,6 +249,27 @@ reads as orphaned no matter which repository you stand in. Every `--type-*` comp
 this position: `base.css` sets `h1` with `font: var(--type-display)` and the manifest still
 counts it unreferenced. Do not treat a zero as evidence.
 
+### Four ways a token is used that a grep will not show you
+
+D-181 deleted 100 tokens and needed three passes to do it safely, because each pass found
+a class of consumer the previous one could not see. Before removing anything, check all
+four — the last two are the ones that would have shipped a silent break, since a `var()`
+naming a deleted token is invalid at computed-value time and simply falls back rather
+than erroring.
+
+1. **A rule in a file that also defines tokens.** `base.css` lives in `src/tokens` and
+   defines nothing. Definition and consumption are properties of a _declaration_, not of
+   a file.
+2. **A component-local property fed by a token.** `--pill-tint: var(--category-agents)`
+   in `Pill.svelte` is consumption; strip it as a "declaration" and all six
+   `--category-*` tokens vanish from the analysis.
+3. **A name in a string literal.** `Select.svelte` calls
+   `getThemeToken('--input-bg', '--admin-bg')`. No `var()` anywhere.
+4. **A name that does not exist until runtime.** `resolveGap` in `components/layouts`
+   builds `var(--space-${n})` from a `Gap` type permitting 1 through 10, so `--space-9`
+   is reachable from a typed public API while appearing in no stylesheet. A rung of a
+   programmatically indexed scale is never unused.
+
 ## The Meccano retune (D-179, D-180)
 
 The current visual language. Alfons was retuned to it on 2026-08-05, and the thing worth
@@ -260,9 +281,10 @@ component change.
 
 Three rules that are easy to breach because nothing enforces them:
 
-- **A hue is defined once.** The part name carries the hex; the old brand name and the
-  `--hex-*` name are aliases of it. Never reintroduce a second literal for a colour that
-  already has one — that pairing is what D-157 spent a release undoing.
+- **A hue is defined once**, under its part name. The `--hex-*` family and the pre-retune
+  brand names were aliases through the migration and are now deleted (D-181). Never
+  reintroduce a second name for a colour that already has one — that pairing is what
+  D-157 spent a release undoing, and what D-181 spent one removing.
 - **Text on plastic is not a free choice.** Light and mid plastics (pulley, pinion, brass,
   gantry, toolbox) take `--foundry-black`; girder, flange and boiler take `--ink-900`.
   Getting it backwards is the most legible way to look off-brand.

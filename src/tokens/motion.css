@@ -19,13 +19,11 @@
 @layer base {
 	:root {
 		/* === INTERACTION STATES ========================================== */
-		--state-hover-opacity: 0.8;
 		--state-active-opacity: 0.9;
 		--state-disabled-opacity: 0.45;
 
 		/* === EASING — machined: short, precise, no overshoot ============= */
 		--ease-machined: cubic-bezier(0.2, 0, 0, 1);
-		--ease-out: cubic-bezier(0, 0, 0.2, 1);
 
 		/* === DURATIONS ===================================================
 		   Meccano's three steps are 120 / 200 / 320ms. The existing five names
@@ -36,11 +34,9 @@
 		--dur-med: 200ms;
 		--dur-slow: 320ms;
 
-		--duration-instant: var(--dur-fast);
 		--duration-fast: var(--dur-med);
 		--duration-normal: var(--dur-slow);
 		--duration-slow: var(--dur-slow);
-		--duration-spring: 600ms; /* the widget bar's FLIP — see the file header */
 
 		/* === TRANSITIONS — composed from durations ======================= */
 		--transition-fast: var(--dur-fast) var(--ease-machined);
@@ -73,50 +69,18 @@
 			1.003 84%,
 			1
 		);
-		--ease-spring-wobbly: linear(
-			0,
-			0.004,
-			0.016 2.5%,
-			0.063 5%,
-			0.25 10%,
-			0.563 17.5%,
-			0.806 22.5%,
-			0.938 27.5%,
-			1.026 32.5%,
-			1.078 37.5%,
-			1.096 42.5%,
-			1.086 47.5%,
-			1.056 52.5%,
-			1.026 57.5%,
-			1.006 62.5%,
-			0.994 67.5%,
-			0.99 72.5%,
-			0.994 77.5%,
-			0.998 82.5%,
-			1.001 87.5%,
-			1.001 92.5%,
-			1
-		);
 
 		/* === WIDGET SYSTEM — retained (homepage floating widget bar) ===== */
 		--widget-icon-size: 40px;
-		--widget-transition-duration: var(--dur-slow);
-		--widget-transition-easing: var(--ease-machined);
 		--widget-pulse-duration: 2.5s;
 		--widget-spring-easing: var(--ease-spring);
 		--widget-spring-duration: 0.6s;
-		--widget-spring-easing-wobbly: var(--ease-spring-wobbly);
-		--widget-reorganise-duration: 0.8s;
-		--widget-reorganise-stagger: 0.15s;
 	}
 
 	/* Reduced motion — collapse springs and widget FLIP animations */
 	@media (prefers-reduced-motion: reduce) {
 		:root {
-			--duration-spring: 0.01ms;
 			--widget-spring-duration: 0.01ms;
-			--widget-reorganise-duration: 0.01ms;
-			--widget-reorganise-stagger: 0ms;
 		}
 	}
 }

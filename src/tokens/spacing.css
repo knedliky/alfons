@@ -19,7 +19,17 @@
 
 @layer base {
 	:root {
-		/* === SPACING — 10-step scale ===================================== */
+		/* === SPACING — 10-step scale =====================================
+		   Every rung stays, including the ones no stylesheet names. This scale
+		   is indexed programmatically: resolveGap() in components/layouts
+		   builds `var(--space-${n})` from a Gap type that permits 1 through 10,
+		   so <Grid gap={9}> is a valid typed call and --space-9 is reachable
+		   even though nothing writes it literally. D-181 nearly deleted it on
+		   the evidence of a grep that cannot see a name built at runtime.
+
+		   The rule: a rung of a complete, programmatically-indexed scale is
+		   never unused. A scale with a hole in it is worse than a scale with
+		   an unadopted step. */
 		--space-1: 4px;
 		--space-2: 8px;
 		--space-3: 12px;
@@ -80,10 +90,8 @@
 		--page-padding-x-mobile: var(--space-4);
 		--page-top-padding: var(--space-8);
 		--page-top-padding-mobile: var(--space-8);
-		--section-padding-y: var(--space-10);
 		--section-padding-x: var(--page-padding-x);
 		--section-header-max-width: 36rem;
-		--layout-hero-min-height: calc(80vh - var(--header-height));
 
 		/* Scroll anchor offset — accounts for fixed header + back-link row */
 		--scroll-margin-top: calc(var(--header-height) + var(--back-link-height) + 16px);

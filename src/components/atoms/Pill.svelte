@@ -42,7 +42,7 @@
 	 * blog. (For status indicators — success/warning/error — use `Badge`.)
 	 *
 	 * Usage:
-	 *   <Pill label="Creative" fill="solid" tint="var(--burnt-sunset)" />
+	 *   <Pill label="Creative" fill="solid" tint="var(--gantry-orange)" />
 	 *   <Pill label="Operations & Admin" fill="soft" colour="operations-admin" size="sm" />
 	 *   <Pill label="Design" fill="outline" colour="design" />
 	 *

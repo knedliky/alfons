@@ -1216,7 +1216,7 @@
       "tokensUsed": [
         "--chip-tint",
         "--font-body",
-        "--sky-blue",
+        "--pulley-blue",
         "--space-1",
         "--space-2",
         "--text-primary",
@@ -1229,7 +1229,7 @@
       "importedBy": [],
       "exported": true,
       "summary": "a compact, square token for selections, filters and tags. Optional leading icon and a trailing remove button (square corners, echoing the cursor motif). colour tints the border + text from any brand token; fill=\"soft\" adds a faint wash. For uppercase taxonomy labels use Pill; for status use Badge.",
-      "usage": "  <Chip label=\"Finance\" colour=\"var(--sky-blue)\" fill=\"soft\" onRemove={() => drop('finance')} />\n  <Chip label=\"High exposure\" onClick={toggle} />",
+      "usage": "  <Chip label=\"Finance\" colour=\"var(--pulley-blue)\" fill=\"soft\" onRemove={() => drop('finance')} />\n  <Chip label=\"High exposure\" onClick={toggle} />",
       "features": [],
       "storyId": "atoms-chip",
       "lifecycle": null,
@@ -2647,33 +2647,32 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--amber",
-        "--aubergine",
         "--bg-glass-solid",
-        "--blush-pink",
-        "--burnt-sunset",
+        "--boiler-navy",
+        "--brass-amber",
         "--dot-colour",
-        "--el-cast-depth",
-        "--el-cast-spread",
-        "--fire-engine-red",
+        "--flange-plum",
         "--font-mono",
+        "--gantry-orange",
+        "--girder-red",
         "--label-ease",
         "--label-steps",
-        "--navy-royal",
-        "--olive-green",
         "--page-padding-x",
         "--page-padding-x-mobile",
+        "--pinion-pink",
+        "--pulley-blue",
         "--radius-pill",
         "--rail-end-pad",
         "--rail-thickness",
         "--rail-type-step",
-        "--sky-blue",
+        "--shade-rgb",
         "--space-1",
         "--space-3",
         "--space-4",
         "--tab-shift-y",
         "--text-muted",
         "--text-secondary",
+        "--toolbox-olive",
         "--transition-slow",
         "--z-sticky"
       ],
@@ -2907,7 +2906,7 @@
         }
       ],
       "tokensUsed": [
-        "--amber",
+        "--brass-amber",
         "--font-display",
         "--font-mono",
         "--space-5",
@@ -3651,7 +3650,6 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--burnt-sunset",
         "--category-agents",
         "--category-data",
         "--category-design",
@@ -3659,6 +3657,7 @@
         "--category-synthesis",
         "--category-workflows",
         "--font-mono",
+        "--gantry-orange",
         "--industry-engineering-trades",
         "--industry-finance",
         "--industry-healthcare-education",
@@ -3676,7 +3675,7 @@
       "importedBy": [],
       "exported": true,
       "summary": "compact, uppercase label chip for categories, industries, automatability levels, and tags. The canonical look is the warm, tinted, mono treatment; the square bordered `outline` fill is retained for the blog. (For status indicators",
-      "usage": "  <Pill label=\"Creative\" fill=\"solid\" tint=\"var(--burnt-sunset)\" />\n  <Pill label=\"Operations & Admin\" fill=\"soft\" colour=\"operations-admin\" size=\"sm\" />\n  <Pill label=\"Design\" fill=\"outline\" colour=\"design\" />\n\nFills:\n- soft    — light tint background, coloured text (industry, automatability)\n- solid   — strong tint background, neutral text (task category)\n- outline — square corners, tinted background, accent border (blog)\n\nColour:\n- `colour` maps to named --category-* / --industry-* tokens\n- `tint` accepts any CSS colour string for open-ended data (wins over colour)",
+      "usage": "  <Pill label=\"Creative\" fill=\"solid\" tint=\"var(--gantry-orange)\" />\n  <Pill label=\"Operations & Admin\" fill=\"soft\" colour=\"operations-admin\" size=\"sm\" />\n  <Pill label=\"Design\" fill=\"outline\" colour=\"design\" />\n\nFills:\n- soft    — light tint background, coloured text (industry, automatability)\n- solid   — strong tint background, neutral text (task category)\n- outline — square corners, tinted background, accent border (blog)\n\nColour:\n- `colour` maps to named --category-* / --industry-* tokens\n- `tint` accepts any CSS colour string for open-ended data (wins over colour)",
       "features": [],
       "storyId": "atoms-pill",
       "lifecycle": null,
@@ -3795,15 +3794,15 @@
       "tokensUsed": [
         "--accent",
         "--accent-border",
+        "--boiler-navy",
+        "--brass-amber",
         "--card-bg",
         "--card-border",
         "--card-border-hover",
         "--font-display",
-        "--hex-amber",
-        "--hex-blush",
-        "--hex-navy",
-        "--hex-sky",
-        "--hex-sunset",
+        "--gantry-orange",
+        "--pinion-pink",
+        "--pulley-blue",
         "--radius-surface",
         "--text-primary",
         "--transition-normal",
@@ -4584,7 +4583,7 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--sky-blue",
+        "--pulley-blue",
         "--spinner-colour",
         "--spinner-size"
       ],
@@ -4592,7 +4591,7 @@
       "importedBy": [],
       "exported": true,
       "summary": "indeterminate loading indicator: a 2×2 grid of squares that pulses one corner at a time (travelling clockwise), each square changing size and opacity. Sizes from sm to lg; colour overrides the squares. Respects prefers-reduced-motion (settles to a static dimmed grid).",
-      "usage": "  <Spinner />\n  <Spinner size=\"lg\" colour=\"var(--sky-blue)\" label=\"Fetching results\" />",
+      "usage": "  <Spinner />\n  <Spinner size=\"lg\" colour=\"var(--pulley-blue)\" label=\"Fetching results\" />",
       "features": [],
       "storyId": "feedback-spinner",
       "lifecycle": null,
@@ -5492,57 +5491,6 @@
       }
     },
     {
-      "name": "--accent-depth",
-      "value": "var(--flange-plum)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--accent-depth-bg",
-      "value": "color-mix(in oklab, var(--flange-plum), var(--surface-page) 86%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--accent-depth-border",
-      "value": "color-mix(in oklab, var(--flange-plum), transparent 60%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads --accent-depth and --accent-depth-bg but never the border.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--accent-hover",
       "value": "var(--accent-deep)",
       "file": "colours.css",
@@ -5554,23 +5502,6 @@
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--accent-playful",
-      "value": "var(--pinion-pink)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Accent role no surface adopted; --blush-pink is reached directly where wanted.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--accent-rgb",
@@ -5610,68 +5541,6 @@
       "lifecycle": null
     },
     {
-      "name": "--accent-secondary-bg",
-      "value": "color-mix(in oklab, var(--gantry-orange), var(--surface-page) 86%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--accent-secondary-border",
-      "value": "color-mix(in oklab, var(--gantry-orange), transparent 60%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--accent-secondary-hover",
-      "value": "color-mix(in oklab, var(--gantry-orange), var(--surface-page) 78%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--accent-secondary-hover-subtle",
-      "value": "color-mix( in oklab, var(--gantry-orange), var(--surface-page) 82% )",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads the -bg and -border of this pair, not the hover tint.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--accent-tertiary",
       "value": "var(--pulley-blue)",
       "file": "colours.css",
@@ -5684,23 +5553,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--accent-tint",
-      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Accent wash over the page.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--admin-bg",
@@ -5824,23 +5676,6 @@
       "lifecycle": null
     },
     {
-      "name": "--admin-header-size",
-      "value": "1.75rem",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Admin type scale nothing adopted; admin headers use the shared --text-* steps.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--admin-header-size-mobile",
       "value": "1.5rem",
       "file": "admin.css",
@@ -5852,23 +5687,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--admin-header-weight",
-      "value": "600",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Admin type scale nothing adopted; admin headers use the shared --text-* steps.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--admin-shadow",
@@ -5895,23 +5713,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--admin-subheader-size",
-      "value": "1.125rem",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Admin type scale nothing adopted; admin headers use the shared --text-* steps.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--admin-subheader-size-mobile",
@@ -6038,45 +5839,6 @@
       "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": null
-    },
-    {
-      "name": "--amber",
-      "value": "var(--brass-amber)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle",
-        "LongreadStatBand"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--brass-amber",
-        "reason": "Renamed and re-tuned to mustard ochre. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--aubergine",
-      "value": "var(--flange-plum)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": true,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--flange-plum",
-        "reason": "Renamed and re-tuned to girard purple. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--back-link-height",
@@ -6219,31 +5981,15 @@
       "lifecycle": null
     },
     {
-      "name": "--blush-pink",
-      "value": "var(--pinion-pink)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--pinion-pink",
-        "reason": "Renamed and re-tuned to hot magenta. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--boiler-navy",
       "value": "#30489c",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle",
+        "Portrait"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -6346,7 +6092,10 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "LongreadArticle",
+        "LongreadStatBand",
+        "Portrait"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6355,26 +6104,6 @@
         "replacement": null,
         "reason": "The definition; --amber aliases it.",
         "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--burnt-sunset",
-      "value": "var(--gantry-orange)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle",
-        "Pill"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": true,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--gantry-orange",
-        "reason": "Renamed and re-tuned to persimmon. Still defined as an alias.",
-        "decisionId": "D-179",
         "recordedOn": "2026-08-05"
       }
     },
@@ -6390,62 +6119,11 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
-        "status": "deprecated",
+        "status": "live",
         "replacement": null,
-        "reason": "Neutralised to transparent when light mode was retired; no component reads it, so the \"retained\" comment above it is inert.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--button-outline-hover-shadow",
-      "value": "none",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Neutralised to none when light mode was retired; no component reads it, so the \"retained\" comment above it is inert.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--button-secondary-hover-bg",
-      "value": "transparent",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Neutralised to transparent when light mode was retired; no component reads it, so the \"retained\" comment above it is inert.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--button-secondary-hover-border",
-      "value": "transparent",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Neutralised to transparent when light mode was retired; no component reads it, so the \"retained\" comment above it is inert.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
+        "reason": "Read by Button since the Meccano retune gave ghost a steel wash.",
+        "decisionId": null,
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -6598,23 +6276,6 @@
       "lifecycle": null
     },
     {
-      "name": "--card-border-bottom",
-      "value": "var(--card-border)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas, which borders cards on one edge at a time.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--card-border-hover",
       "value": "var(--border-default)",
       "file": "colours.css",
@@ -6631,57 +6292,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--card-border-left",
-      "value": "var(--card-border)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas, which borders cards on one edge at a time.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--card-border-right",
-      "value": "var(--card-border)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas, which borders cards on one edge at a time.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--card-border-top",
-      "value": "var(--card-border)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas, which borders cards on one edge at a time.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--card-padding",
@@ -6829,23 +6439,6 @@
       "lifecycle": null
     },
     {
-      "name": "--charcoal-ember",
-      "value": "var(--foundry-black)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--foundry-black",
-        "reason": "The ground is now the pole every neutral derives off, and is named for that role.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--chart-admin-series-1",
       "value": "var(--chart-series-1)",
       "file": "admin.css",
@@ -6858,74 +6451,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--chart-admin-series-2",
-      "value": "var(--chart-series-2)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. BarChart and LineChart plot a single series and read only -1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--chart-admin-series-3",
-      "value": "var(--chart-series-3)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. BarChart and LineChart plot a single series and read only -1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--chart-admin-series-4",
-      "value": "var(--chart-series-4)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. BarChart and LineChart plot a single series and read only -1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--chart-admin-series-5",
-      "value": "var(--chart-series-5)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. BarChart and LineChart plot a single series and read only -1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--chart-axis-colour-admin",
@@ -7074,101 +6599,6 @@
       "lifecycle": null
     },
     {
-      "name": "--chart-series-2",
-      "value": "var(--pulley-blue)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--chart-series-3",
-      "value": "var(--brass-amber)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--chart-series-4",
-      "value": "var(--toolbox-olive)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--chart-series-5",
-      "value": "var(--flange-plum)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--chart-series-6",
-      "value": "var(--gantry-orange)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. Only series 1 reaches a component, via --chart-admin-series-1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--chart-series-7",
-      "value": "var(--boiler-navy)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. Only series 1 reaches a component, via --chart-admin-series-1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--chart-series-8",
-      "value": "var(--pinion-pink)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung. Only series 1 reaches a component, via --chart-admin-series-1.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--chart-title-size",
       "value": "1rem",
       "file": "colours.css",
@@ -7265,57 +6695,6 @@
       "lifecycle": null
     },
     {
-      "name": "--color-full",
-      "value": "var(--colour-full)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--colour-full",
-        "reason": "American spelling. Alias of --colour-full; retires when Atlas migrates.",
-        "decisionId": "D-167",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--color-human",
-      "value": "var(--colour-human)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--colour-human",
-        "reason": "American spelling. Alias of --colour-human; retires when Atlas migrates.",
-        "decisionId": "D-167",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--color-partial",
-      "value": "var(--colour-partial)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--colour-partial",
-        "reason": "American spelling. Alias of --colour-partial; retires when Atlas migrates.",
-        "decisionId": "D-167",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--colour-error",
       "value": "var(--danger)",
       "file": "colours.css",
@@ -7372,7 +6751,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7383,7 +6762,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7439,7 +6818,7 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7524,23 +6903,6 @@
       }
     },
     {
-      "name": "--danger-deep",
-      "value": "color-mix(in oklab, var(--girder-red), black 16%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Pressed and hover state for danger surfaces.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--danger-tint",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
       "file": "colours.css",
@@ -7620,23 +6982,6 @@
       "lifecycle": null
     },
     {
-      "name": "--duration-instant",
-      "value": "var(--dur-fast)",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung of the --duration-* scale.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--duration-normal",
       "value": "var(--dur-slow)",
       "file": "motion.css",
@@ -7665,23 +7010,6 @@
       "lifecycle": null
     },
     {
-      "name": "--duration-spring",
-      "value": "600ms",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung of the --duration-* scale; --ease-spring carries the spring feel.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--ease-machined",
       "value": "cubic-bezier(0.2, 0, 0, 1)",
       "file": "motion.css",
@@ -7699,23 +7027,6 @@
       }
     },
     {
-      "name": "--ease-out",
-      "value": "cubic-bezier(0, 0, 0.2, 1)",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Decelerating companion to --ease-machined, for entries.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--ease-spring",
       "value": "linear( 0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.981 43.8%, 1.007 50.4%, 1.022 57%, 1.024 62%, 1.015 68%, 1.007 76%, 1.003 84%, 1 )",
       "file": "motion.css",
@@ -7724,17 +7035,6 @@
       "referencedBy": [
         "LongreadFigure"
       ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--ease-spring-wobbly",
-      "value": "linear( 0, 0.004, 0.016 2.5%, 0.063 5%, 0.25 10%, 0.563 17.5%, 0.806 22.5%, 0.938 27.5%, 1.026 32.5%, 1.078 37.5%, 1.096 42.5%, 1.086 47.5%, 1.056 52.5%, 1.026 57.5%, 1.006 62.5%, 0.994 67.5%, 0.99 72.5%, 0.994 77.5%, 0.998 82.5%, 1.001 87.5%, 1.001 92.5%, 1 )",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
@@ -7866,7 +7166,7 @@
         "Menu",
         "Popover"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7885,33 +7185,16 @@
       "lifecycle": null
     },
     {
-      "name": "--fire-engine-red",
-      "value": "var(--girder-red)",
+      "name": "--flange-plum",
+      "value": "#83489b",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--girder-red",
-        "reason": "Renamed for the part it resembles and re-tuned to poppy vermilion. Still defined as an alias; 52 files in Atlas read it.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--flange-plum",
-      "value": "#83489b",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -7969,23 +7252,6 @@
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--focus-tint",
-      "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 80%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Focus wash for selection controls.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--font-body",
@@ -8084,23 +7350,6 @@
       "lifecycle": null
     },
     {
-      "name": "--font-sans",
-      "value": "var(--font-body)",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Meccano's own name for the sans role, aliasing --font-body, so markup authored against the handoff resolves without translation.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--font-wordmark",
       "value": "'Moderat', system-ui, sans-serif",
       "file": "typography.css",
@@ -8141,7 +7390,7 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -8306,23 +7555,6 @@
       }
     },
     {
-      "name": "--fw-black",
-      "value": "900",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Moderat cut. Oversized display and the drop cap.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--fw-bold",
       "value": "700",
       "file": "typography.css",
@@ -8335,23 +7567,6 @@
         "status": "live",
         "replacement": null,
         "reason": "Moderat cut. Read via --type-display and --type-h1.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--fw-light",
-      "value": "300",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Moderat cut. Reserved for rare oversized display moments.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
       }
@@ -8417,9 +7632,13 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle",
+        "Pill",
+        "Portrait"
+      ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -8435,7 +7654,8 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "LongreadArticle"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8504,23 +7724,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--gradient-warmth",
-      "value": "linear-gradient(135deg, var(--gantry-orange), var(--brass-amber))",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--grid-colour",
@@ -8639,203 +7842,6 @@
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--hex-amber",
-      "value": "var(--brass-amber)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--brass-amber",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-aubergine",
-      "value": "var(--flange-plum)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--flange-plum",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-blush",
-      "value": "var(--pinion-pink)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--pinion-pink",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-dark",
-      "value": "var(--foundry-black)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--foundry-black",
-        "reason": "Was a second literal for the ground. Now an alias. Atlas reads it for SVG fills.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-light",
-      "value": "var(--ink-900)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--ink-900",
-        "reason": "Was a second literal for bone. Now an alias. Atlas reads it for SVG fills.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-navy",
-      "value": "var(--boiler-navy)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--boiler-navy",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-olive",
-      "value": "var(--toolbox-olive)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--toolbox-olive",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-red",
-      "value": "var(--girder-red)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--girder-red",
-        "reason": "Was a second literal for the same hue. Now an alias. Prefer the part name unless the context genuinely cannot read a derived value.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-sand",
-      "value": "var(--ink-500)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--ink-500",
-        "reason": "Was a second literal for the sand tone. Now an alias of the ramp step that carries it.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-sky",
-      "value": "var(--pulley-blue)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--pulley-blue",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--hex-sunset",
-      "value": "var(--gantry-orange)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--gantry-orange",
-        "reason": "Was a second literal for the same hue. Now an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--ind-aubergine",
@@ -9075,11 +8081,11 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
-        "status": "deprecated",
+        "status": "live",
         "replacement": null,
-        "reason": "Fields set their own background; no component reads the shared one.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
+        "reason": "Read by Select.svelte through getThemeToken('--input-bg', …) — a string literal, invisible to a var() audit.",
+        "decisionId": null,
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -9111,11 +8117,11 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
-        "status": "deprecated",
+        "status": "live",
         "replacement": null,
-        "reason": "Unused rung; no field offers a large size.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
+        "reason": "Read by Button size=lg, which is the 44px touch target.",
+        "decisionId": null,
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -9145,40 +8151,6 @@
       "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": null
-    },
-    {
-      "name": "--layout-hero-min-height",
-      "value": "calc(80vh - var(--header-height))",
-      "file": "spacing.css",
-      "category": "spacing",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "No hero layout in this repository sets a minimum height.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--led-off",
-      "value": "radial-gradient(circle at 38% 30%, #3a332c, #221d19 72%)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "The unlit status lamp. Tokenised so it cannot be redrawn per component.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--lh-body",
@@ -9265,112 +8237,6 @@
         "reason": "Negative tracking for display and h1. Applied beside the composite — the font shorthand carries no letter-spacing.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--navy-royal",
-      "value": "var(--boiler-navy)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--boiler-navy",
-        "reason": "Renamed and re-tuned to cobalt. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--olive-green",
-      "value": "var(--toolbox-olive)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "LongreadArticle"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": true,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--toolbox-olive",
-        "reason": "Renamed and re-tuned to leaf olive. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--opacity-background",
-      "value": "0.2",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--opacity-tertiary",
-        "reason": "Unused rung; only --opacity-tertiary is read, by the skeleton components.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--opacity-line",
-      "value": "0.3",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--opacity-tertiary",
-        "reason": "Unused rung; only --opacity-tertiary is read, by the skeleton components.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--opacity-primary",
-      "value": "1",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--opacity-tertiary",
-        "reason": "Unused rung; only --opacity-tertiary is read, by the skeleton components.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--opacity-secondary",
-      "value": "0.6",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--opacity-tertiary",
-        "reason": "Unused rung; only --opacity-tertiary is read, by the skeleton components.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
       }
     },
     {
@@ -9475,7 +8341,10 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle",
+        "Portrait"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9487,33 +8356,20 @@
       }
     },
     {
-      "name": "--powder-sand",
-      "value": "var(--ink-900)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--ink-900",
-        "reason": "The bone text tone is now the top of a derived neutral ramp rather than a standalone brand hue.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--pulley-blue",
       "value": "#47c2f2",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "Chip",
+        "LongreadArticle",
+        "Portrait",
+        "Spinner"
       ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -9761,23 +8617,6 @@
       }
     },
     {
-      "name": "--section-padding-y",
-      "value": "var(--space-10)",
-      "file": "spacing.css",
-      "category": "spacing",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas page sections.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--select-dropdown-shadow",
       "value": "var(--shadow-2)",
       "file": "elevation.css",
@@ -9800,45 +8639,11 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Select scopes its own --select-* variables locally and never reads these.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--select-selected-highlighted-bg",
-      "value": "color-mix( in oklab, var(--girder-red), var(--surface-page) 72% )",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Select scopes its own --select-* variables locally and never reads these.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--shade-part",
-      "value": "linear-gradient( 180deg, rgba(var(--sheen-rgb), 0.26), rgba(var(--sheen-rgb), 0.06) 38%, rgba(var(--shade-rgb), 0) 55%, rgba(var(--shade-rgb), 0.32) 100% )",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
         "status": "live",
         "replacement": null,
-        "reason": "Stronger moulded shading for larger plastic strips and slabs.",
+        "reason": "Read by Select for the highlighted option.",
         "decisionId": null,
-        "recordedOn": "2026-08-05"
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -9848,7 +8653,8 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Button"
+        "Button",
+        "LongreadArticle"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9998,23 +8804,6 @@
       }
     },
     {
-      "name": "--shadow-header",
-      "value": "var(--shadow-1)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused member of the --shadow-* family; Header casts no shadow.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--shadow-modal",
       "value": "var(--shadow-3)",
       "file": "elevation.css",
@@ -10026,23 +8815,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--shadow-part",
-      "value": "inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Inset-only depth for moulded parts — inset so it survives the .mcn-perf mask.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--shadow-popover",
@@ -10100,23 +8872,6 @@
       "lifecycle": null
     },
     {
-      "name": "--sheen",
-      "value": "#fffaf2",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Warm white — the light itself, never a surface. The system has no white page.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--sheen-rgb",
       "value": "255, 250, 242",
       "file": "elevation.css",
@@ -10137,23 +8892,6 @@
       }
     },
     {
-      "name": "--shimmer-highlight-bright",
-      "value": "color-mix(in oklab, transparent, var(--ink-900) 40%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; the skeletons shimmer with the standard highlight only.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--shimmer-highlight-dim",
       "value": "color-mix(in oklab, transparent, var(--ink-900) 6%)",
       "file": "colours.css",
@@ -10165,27 +8903,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--sky-blue",
-      "value": "var(--pulley-blue)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Chip",
-        "LongreadArticle",
-        "Spinner"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": true,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--pulley-blue",
-        "reason": "Renamed and re-tuned to clear sky. Still defined as an alias.",
-        "decisionId": "D-179",
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--space-1",
@@ -10236,7 +8953,7 @@
         "PageHeader",
         "SectionHeader"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -10484,11 +9201,11 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
-        "status": "deprecated",
+        "status": "live",
         "replacement": null,
-        "reason": "Unused rung of the spacing scale; nothing needs 96px.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
+        "reason": "Rung of a programmatically indexed scale: resolveGap builds the name at runtime from a Gap type permitting 1 through 10.",
+        "decisionId": null,
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -10569,23 +9286,6 @@
       "referencedBy": [
         "Button"
       ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. The interaction-state opacity ladder is used there, not here.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--state-hover-opacity",
-      "value": "0.8",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -10722,23 +9422,6 @@
       }
     },
     {
-      "name": "--stroke-medium",
-      "value": "2",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--stroke-normal",
-        "reason": "Unused rung; Icon reads --stroke-normal and nothing varies stroke weight.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--stroke-normal",
       "value": "1.5",
       "file": "typography.css",
@@ -10750,40 +9433,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--stroke-thick",
-      "value": "3",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--stroke-normal",
-        "reason": "Unused rung; Icon reads --stroke-normal and nothing varies stroke weight.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--stroke-thin",
-      "value": "1",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--stroke-normal",
-        "reason": "Unused rung; Icon reads --stroke-normal and nothing varies stroke weight.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--success",
@@ -10839,40 +9488,6 @@
       }
     },
     {
-      "name": "--surface-dark-subtle",
-      "value": "color-mix(in oklab, transparent, var(--foundry-black) 40%)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--surface-float-bg",
-      "value": "var(--elevation-3-bg)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--elevation-3-bg",
-        "reason": "Semantic alias nothing adopted; components read --elevation-3-bg directly.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--surface-float-frost",
       "value": "var(--frost-3)",
       "file": "elevation.css",
@@ -10885,23 +9500,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--surface-float-shadow",
-      "value": "var(--shadow-2)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--elevation-3",
-        "reason": "Semantic alias nothing adopted; components read --elevation-3 directly.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--surface-glass-bg",
@@ -10932,23 +9530,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--surface-inverse",
-      "value": "var(--ink-900)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Bone surface for inverted regions.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--surface-overlay-subtle",
@@ -11008,23 +9589,6 @@
       "lifecycle": null
     },
     {
-      "name": "--surface-raised-shadow",
-      "value": "var(--shadow-1)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--elevation-2",
-        "reason": "Semantic alias nothing adopted; components read --elevation-2 directly.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--surface-rest-bg",
       "value": "var(--surface-card)",
       "file": "elevation.css",
@@ -11034,57 +9598,6 @@
       "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": null
-    },
-    {
-      "name": "--surface-rest-frost",
-      "value": "var(--frost-1)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--frost-1",
-        "reason": "Semantic alias nothing adopted; components read --frost-1 directly.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--surface-rest-shadow",
-      "value": "var(--shadow-1)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--elevation-1",
-        "reason": "Semantic alias nothing adopted; components read --elevation-1 directly.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--surface-sunken",
-      "value": "var(--foundry-black)",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Recessed zones — footers, wells, the card control tray.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--text-body",
@@ -11345,33 +9858,17 @@
       }
     },
     {
-      "name": "--toast-shadow",
-      "value": "var(--shadow-2)",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--shadow-toast",
-        "reason": "Duplicate name for --shadow-toast, which Toast actually reads. Two names, one honoured.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--toolbox-olive",
       "value": "#5e9141",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "LongreadArticle"
       ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -11466,23 +9963,6 @@
       "lifecycle": null
     },
     {
-      "name": "--type-body",
-      "value": "var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body)",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Composite. The UI register at 15px — controls, nav, list items.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--type-display",
       "value": "var(--fw-bold) var(--fs-display) / var(--lh-tight) var(--font-display)",
       "file": "typography.css",
@@ -11551,40 +10031,6 @@
       }
     },
     {
-      "name": "--type-prose",
-      "value": "var(--fw-regular) var(--fs-lg) / var(--lh-body) var(--font-body)",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Composite. Long-form reading at 18px. An Alfons addition: Meccano assigns --fs-lg to no composite, and a UI kit's single body size is not a reading size.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--type-small",
-      "value": "var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body)",
-      "file": "typography.css",
-      "category": "typography",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Composite. Dense metadata and card bodies.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--type-spec",
       "value": "var(--fw-regular) 0.6875rem / 1 var(--font-mono)",
       "file": "typography.css",
@@ -11636,23 +10082,6 @@
       }
     },
     {
-      "name": "--white",
-      "value": "#ffffff",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Mixing primitive for lifting dark hues. Not a surface — the system has no white page.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--widget-icon-size",
       "value": "40px",
       "file": "motion.css",
@@ -11687,40 +10116,6 @@
       }
     },
     {
-      "name": "--widget-reorganise-duration",
-      "value": "0.8s",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads the four widget tokens marked live and not this one.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--widget-reorganise-stagger",
-      "value": "0.15s",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads the four widget tokens marked live and not this one.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--widget-spring-duration",
       "value": "0.6s",
       "file": "motion.css",
@@ -11750,74 +10145,6 @@
         "status": "live",
         "replacement": null,
         "reason": "Consumed by the Atlas dashboard widgets, which have no counterpart component here.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--widget-spring-easing-wobbly",
-      "value": "var(--ease-spring-wobbly)",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": "--widget-spring-easing",
-        "reason": "Unused rung; the wobbly curve reaches nothing, though --ease-spring-wobbly under it is live.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--widget-transition-duration",
-      "value": "var(--dur-slow)",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads the four widget tokens marked live and not this one.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--widget-transition-easing",
-      "value": "var(--ease-machined)",
-      "file": "motion.css",
-      "category": "motion",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "deprecated",
-        "replacement": null,
-        "reason": "Unused rung; Atlas reads the four widget tokens marked live and not this one.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--z-base",
-      "value": "0",
-      "file": "elevation.css",
-      "category": "elevation",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Floor of the z-index ladder.",
         "decisionId": null,
         "recordedOn": "2026-08-02"
       }
@@ -11912,6 +10239,314 @@
     }
   ],
   "tombstones": [
+    {
+      "kind": "token",
+      "name": "--accent-depth",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--flange-plum",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-depth-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-depth-border",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-playful",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--pinion-pink",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-secondary-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-secondary-border",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-secondary-hover",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-secondary-hover-subtle",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--accent-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--accent-bg",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-header-size",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Admin header typography nothing has read since that header was rebuilt.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-header-weight",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Admin header typography nothing has read since that header was rebuilt.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-subheader-size",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Admin header typography nothing has read since that header was rebuilt.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--amber",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--brass-amber",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--aubergine",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--flange-plum",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--blush-pink",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--pinion-pink",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--burnt-sunset",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--gantry-orange",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--button-outline-hover-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--button-secondary-hover-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--button-secondary-hover-border",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--card-border-bottom",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-border",
+        "reason": "Per-edge alias of --card-border. 0002 recorded Atlas as the consumer; Atlas no longer borders cards one edge at a time.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--card-border-left",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-border",
+        "reason": "Per-edge alias of --card-border. 0002 recorded Atlas as the consumer; Atlas no longer borders cards one edge at a time.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--card-border-right",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-border",
+        "reason": "Per-edge alias of --card-border. 0002 recorded Atlas as the consumer; Atlas no longer borders cards one edge at a time.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--card-border-top",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-border",
+        "reason": "Per-edge alias of --card-border. 0002 recorded Atlas as the consumer; Atlas no longer borders cards one edge at a time.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--charcoal-ember",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--foundry-black",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-admin-series-2",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-admin-series-3",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-admin-series-4",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-admin-series-5",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
     {
       "kind": "token",
       "name": "--chart-axis-colour",
@@ -12035,6 +10670,83 @@
     },
     {
       "kind": "token",
+      "name": "--chart-series-2",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-3",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-4",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-5",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-6",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-7",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-series-8",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-admin-series-1",
+        "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--chart-tooltip-bg",
       "lifecycle": {
         "status": "retired",
@@ -12075,6 +10787,94 @@
         "reason": "Public chart vocabulary no component read, with no -admin counterpart to redirect to.",
         "decisionId": "D-165",
         "recordedOn": "2026-08-02"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--color-full",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-full",
+        "reason": "American spelling, deprecated by D-167 pending an Atlas migration. That migration landed with D-181.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--color-human",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-human",
+        "reason": "American spelling, deprecated by D-167 pending an Atlas migration. That migration landed with D-181.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--color-partial",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-partial",
+        "reason": "American spelling, deprecated by D-167 pending an Atlas migration. That migration landed with D-181.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--danger-deep",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--accent-deep",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--duration-instant",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-fast",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--duration-spring",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-slow",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--ease-out",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ease-machined",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--ease-spring-wobbly",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ease-spring",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -12123,6 +10923,72 @@
     },
     {
       "kind": "token",
+      "name": "--fire-engine-red",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--girder-red",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--focus-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--focus",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--font-sans",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--font-body",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--fw-black",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--fw-light",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--gradient-warmth",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--heatmap-cold",
       "lifecycle": {
         "status": "retired",
@@ -12152,6 +11018,127 @@
         "reason": "No heatmap component exists in this repository or any consumer.",
         "decisionId": "D-165",
         "recordedOn": "2026-08-02"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-amber",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--brass-amber",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-aubergine",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--flange-plum",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-blush",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--pinion-pink",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-dark",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--foundry-black",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-light",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ink-900",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-navy",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--boiler-navy",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-olive",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--toolbox-olive",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-red",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--girder-red",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-sand",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ink-500",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-sky",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--pulley-blue",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--hex-sunset",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--gantry-orange",
+        "reason": "A second literal for a hue that already had one. D-179 made it an alias; D-181 removed the alias, so a hue is written exactly once.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
       }
     },
     {
@@ -12244,6 +11231,28 @@
     },
     {
       "kind": "token",
+      "name": "--layout-hero-min-height",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--led-off",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--matrix-diagonal-opacity",
       "lifecycle": {
         "status": "retired",
@@ -12307,12 +11316,428 @@
         "decisionId": "D-165",
         "recordedOn": "2026-08-02"
       }
+    },
+    {
+      "kind": "token",
+      "name": "--navy-royal",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--boiler-navy",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--olive-green",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--toolbox-olive",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--opacity-background",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--opacity-line",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--opacity-primary",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--opacity-secondary",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--powder-sand",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ink-900",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--section-padding-y",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--select-selected-highlighted-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--shade-part",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--shadow-header",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--shadow-1",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--shadow-part",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--sheen",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--sheen-rgb",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--shimmer-highlight-bright",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--sky-blue",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--pulley-blue",
+        "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--state-hover-opacity",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--stroke-medium",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--stroke-thick",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--stroke-thin",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "A scale authored whole and adopted at one rung. The adopted rung stays.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-dark-subtle",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-float-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--elevation-3-bg",
+        "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-float-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--shadow-2",
+        "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-inverse",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ink-900",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-raised-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--shadow-1",
+        "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-rest-frost",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--frost-1",
+        "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-rest-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--shadow-1",
+        "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-sunken",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--foundry-black",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--toast-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--shadow-2",
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--type-body",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-ui",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--type-prose",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-body",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--type-small",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-caption",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--white",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ink-900",
+        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--widget-reorganise-duration",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Widget-bar motion the FLIP reorganisation never read.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--widget-reorganise-stagger",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "Widget-bar motion the FLIP reorganisation never read.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--widget-spring-easing-wobbly",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ease-spring",
+        "reason": "Widget-bar motion the FLIP reorganisation never read.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--widget-transition-duration",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-slow",
+        "reason": "Widget-bar motion the FLIP reorganisation never read.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--widget-transition-easing",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--ease-machined",
+        "reason": "Widget-bar motion the FLIP reorganisation never read.",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--z-base",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-08-06"
+      }
     }
   ],
   "tailwindShadowed": [
-    "--ease-out",
     "--font-mono",
-    "--font-sans",
     "--radius"
   ],
   "unparsed": []

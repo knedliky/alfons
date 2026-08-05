@@ -50,7 +50,7 @@ export const Soft: Story = {
 };
 
 export const Solid: Story = {
-	args: { label: 'Creative', size: 'md', fill: 'solid', tint: 'var(--burnt-sunset)' }
+	args: { label: 'Creative', size: 'md', fill: 'solid', tint: 'var(--gantry-orange)' }
 };
 
 export const Outline: Story = {

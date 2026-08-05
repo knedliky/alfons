@@ -10,10 +10,11 @@
  * backdrop blur and a thinned fill per level. Meccano has no glassmorphism at
  * all outside the dialog overlay, so depth is carried by material instead:
  *
- *   Plastic. Coloured chips take a top sheen (--gloss + --shadow-gloss);
- *   larger strips and slabs take stronger moulded shading (--shade-part +
- *   --shadow-part, inset-only so it survives the perforation mask). Neutrals
- *   never get gloss.
+ *   Plastic. Coloured chips take a top sheen (--gloss + --shadow-gloss).
+ *   Neutrals never get gloss. A second, stronger treatment for larger strips
+ *   and slabs (--shade-part, --shadow-part) was authored here during the
+ *   retune and removed under D-181 — nothing had a slab to shade. Revive it
+ *   from the lifecycle tombstone when something does.
  *
  *   Panel caps. Buttons are control-panel hardware — a domed face (--cap-red
  *   anodized, --cap-chrome secondary) seated in a dark bezel (--shadow-cap),
@@ -31,7 +32,6 @@
 @layer base {
 	:root {
 		/* === Z-INDEX — semantic scale, back to front =================== */
-		--z-base: 0;
 		--z-raised: 1;
 		--z-dropdown: 10;
 		--z-sticky: 20;
@@ -44,12 +44,10 @@
 		   rgba() cannot take a token. These are the two channels every
 		   sheen and shade below composes from, so components still hold no
 		   raw colour of their own. */
-		--sheen: #fffaf2; /* warm white — the light, never a surface */
 		--sheen-rgb: 255, 250, 242;
 		--shade-rgb: 20, 16, 16; /* --foundry-black */
 
 		/* Recurring atoms, tokenised so they cannot be redrawn per component */
-		--led-off: radial-gradient(circle at 38% 30%, #3a332c, #221d19 72%);
 		--rivet-face: #8a8272;
 		--rivet-edge: #2e2922;
 
@@ -59,10 +57,9 @@
 		--shadow-3: 0 20px 48px rgba(0, 0, 0, 0.6); /* dialogs only */
 
 		/* === PLASTIC — moulded surface language ==========================
-		   Layer --gloss as a background-image over a plastic background-colour
-		   for small chips; use --shade-part for larger strips and slabs. Both
-		   are inset-only in their shadow half so they survive the .mcn-perf
-		   mask. Neutrals never get either. */
+		   Layer --gloss as a background-image over a plastic background-colour.
+		   The shadow half is inset-only so it survives the .mcn-perf mask.
+		   Neutrals never get either. */
 		--gloss: linear-gradient(
 			180deg,
 			rgba(var(--sheen-rgb), 0.3),
@@ -71,15 +68,6 @@
 		);
 		--shadow-gloss:
 			inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22);
-		--shade-part: linear-gradient(
-			180deg,
-			rgba(var(--sheen-rgb), 0.26),
-			rgba(var(--sheen-rgb), 0.06) 38%,
-			rgba(var(--shade-rgb), 0) 55%,
-			rgba(var(--shade-rgb), 0.32) 100%
-		);
-		--shadow-part:
-			inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45);
 
 		/* === PANEL CAPS — buttons as control-panel hardware ==============
 		   A domed face seated in a dark bezel. Lit strictly from above; there
@@ -161,14 +149,9 @@
 		     raised — lifts off it (inputs, chat, agent surface)
 		     float  — detached above everything (menus, popovers, modals) */
 		--surface-rest-bg: var(--surface-card);
-		--surface-rest-frost: var(--frost-1);
-		--surface-rest-shadow: var(--shadow-1);
 		--surface-raised-bg: var(--elevation-2-bg);
 		--surface-raised-frost: var(--frost-2);
-		--surface-raised-shadow: var(--shadow-1);
-		--surface-float-bg: var(--elevation-3-bg);
 		--surface-float-frost: var(--frost-3);
-		--surface-float-shadow: var(--shadow-2);
 
 		/* === SEMANTIC SHADOW ALIASES ===================================
 		   Every one of these resolves to a rung of the three-step ladder.
@@ -179,7 +162,6 @@
 		--card-shadow-hover: var(--shadow-2);
 		--shadow-glass: var(--shadow-1); /* agent input + chat bubbles */
 		--shadow-subtle: var(--shadow-1);
-		--shadow-header: var(--shadow-1);
 		--input-shadow: none;
 
 		/* Buttons are panel caps: the cap shadow IS the button's elevation,
@@ -194,7 +176,6 @@
 		   overlay is the one place the system permits any transparency. */
 		--overlay-scrim: rgba(var(--shade-rgb), 0.44);
 		--shadow-toast: var(--shadow-2);
-		--toast-shadow: var(--shadow-2);
 		--shadow-dropdown: var(--shadow-2);
 		--shadow-popover: var(--shadow-2);
 		--shadow-modal: var(--shadow-3);

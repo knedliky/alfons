@@ -19,7 +19,7 @@
 	 *
 	 * Usage:
 	 *   <Spinner />
-	 *   <Spinner size="lg" colour="var(--sky-blue)" label="Fetching results" />
+	 *   <Spinner size="lg" colour="var(--pulley-blue)" label="Fetching results" />
 	 */
 	let {
 		size = 'default',

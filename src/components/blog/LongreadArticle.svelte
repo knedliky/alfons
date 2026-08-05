@@ -86,14 +86,14 @@
 	 * more sections than colours simply repeat the sequence.
 	 */
 	const brandPalette = [
-		'var(--fire-engine-red)',
-		'var(--burnt-sunset)',
-		'var(--amber)',
-		'var(--olive-green)',
-		'var(--sky-blue)',
-		'var(--navy-royal)',
-		'var(--aubergine)',
-		'var(--blush-pink)'
+		'var(--girder-red)',
+		'var(--gantry-orange)',
+		'var(--brass-amber)',
+		'var(--toolbox-olive)',
+		'var(--pulley-blue)',
+		'var(--boiler-navy)',
+		'var(--flange-plum)',
+		'var(--pinion-pink)'
 	];
 
 	/** Brand colour for the progress square at `index`, cycling the palette. */
@@ -245,14 +245,17 @@
 		gap: var(--space-1);
 		width: var(--rail-thickness);
 		padding: var(--rail-end-pad) var(--space-1);
-		filter: drop-shadow(
-				2px calc(var(--el-cast-spread) * 0.65px) calc(var(--el-cast-spread) * 1px)
-					oklch(0 0 0 / calc(var(--el-cast-depth) * 1.08))
-			)
-			drop-shadow(
-				3px calc(var(--el-cast-spread) * 1.35px) calc(var(--el-cast-spread) * 2.65px)
-					oklch(0 0 0 / calc(var(--el-cast-depth) * 0.85))
-			);
+		/* The rail casts its own shadow because it is an irregular shape and
+		   box-shadow would trace its bounding box. Matches --shadow-2, which
+		   is where a floating rail sits on the ladder; drop-shadow takes no
+		   spread, so it is written out rather than composed from the token.
+
+		   Was two stacked drop-shadows built from --el-cast-spread and
+		   --el-cast-depth, scalars the Meccano retune removed with the old
+		   elevation ladder. calc() against an undefined custom property is
+		   invalid at computed-value time, which discards the whole filter
+		   silently — the rail had no shadow at all and nothing reported it. */
+		filter: drop-shadow(0 2px 12px rgba(var(--shade-rgb), 0.5));
 	}
 
 	/* The capsule surface — a separate layer above the tabs (z-index 1 beats

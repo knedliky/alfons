@@ -12,8 +12,12 @@
  * Previously each ramp step was hand-authored and could drift from its
  * neighbours, and each brand hue was written twice — once in OKLCH and once in
  * hex, with a comment asserting the two matched. They did not, exactly, and
- * nothing checked. The hex value is now the single definition and the --hex-*
- * names are aliases of it, so the two cannot disagree.
+ * nothing checked.
+ *
+ * A hue is now written exactly once, under its part name. The --hex-* family
+ * and the pre-retune brand names were kept as aliases through the migration
+ * and deleted under D-181; nothing in this file points at anything else in it
+ * purely to rename it.
  *
  * ON D-004, which chose OKLCH: its concern was perceptual uniformity across
  * the palette, and that concern is met — every derivation below mixes in
@@ -42,7 +46,6 @@
 		--steel-150: color-mix(in oklab, var(--foundry-black), var(--ink-900) 13%);
 		--steel-100: color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%);
 		--steel-50: color-mix(in oklab, var(--foundry-black), var(--ink-900) 5%);
-		--white: #ffffff;
 
 		/* === 2. PART COLOURS — eight moulded plastics ====================
 		   The brand palette, re-tuned. Each carries the Alfons name it
@@ -57,41 +60,16 @@
 		--boiler-navy: #30489c; /* cobalt · was --navy-royal */
 		--brass-amber: #e5a82e; /* mustard ochre · was --amber */
 
-		/* === 3. BRAND ALIASES — the previous names, still live ===========
-		   94 components here and 52 files in Atlas read these. They are
-		   aliases rather than second definitions so the two vocabularies
-		   cannot drift. Do not reach for one in new markup. */
-		--fire-engine-red: var(--girder-red);
-		--burnt-sunset: var(--gantry-orange);
-		--aubergine: var(--flange-plum);
-		--sky-blue: var(--pulley-blue);
-		--blush-pink: var(--pinion-pink);
-		--olive-green: var(--toolbox-olive);
-		--navy-royal: var(--boiler-navy);
-		--amber: var(--brass-amber);
-		--powder-sand: var(--ink-900);
-		--charcoal-ember: var(--foundry-black);
+		/* The ten pre-retune brand names (--fire-engine-red, --sky-blue, …) and
+		   the eleven --hex-* duplicates lived here as aliases through the
+		   retune, so both repositories could keep building while consumers
+		   migrated. They have, so the aliases are gone under D-181 and a hue
+		   is now written exactly once. The lifecycle rows are the record: an
+		   agent reaching for --hex-red gets --girder-red and a reason. */
 
-		/* Hex aliases — for SVG and illustration, which cannot always read a
-		   derived value. Now aliases of the definitions above rather than a
-		   parallel set of literals. */
-		--hex-red: var(--girder-red);
-		--hex-sunset: var(--gantry-orange);
-		--hex-aubergine: var(--flange-plum);
-		--hex-sky: var(--pulley-blue);
-		--hex-blush: var(--pinion-pink);
-		--hex-sand: var(--ink-500);
-		--hex-olive: var(--toolbox-olive);
-		--hex-navy: var(--boiler-navy);
-		--hex-amber: var(--brass-amber);
-		--hex-dark: var(--foundry-black);
-		--hex-light: var(--ink-900);
-
-		/* === 4. SURFACES ================================================= */
+		/* === 3. SURFACES ================================================= */
 		--surface-page: color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%);
-		--surface-sunken: var(--foundry-black);
 		--surface-card: color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%);
-		--surface-inverse: var(--ink-900);
 
 		--bg-primary: var(--surface-page);
 		--bg-primary-rgb: 20, 16, 16; /* --foundry-black, for alpha composition */
@@ -107,7 +85,6 @@
 		/* Subtle surface washes — hover states and recessed tracks. Neutrals
 		   get a steel wash on hover; they never get gloss. */
 		--surface-hover-subtle: color-mix(in oklab, transparent, var(--ink-900) 5%);
-		--surface-dark-subtle: color-mix(in oklab, transparent, var(--foundry-black) 40%);
 
 		/* === 5. BORDERS — 1px lines do the separating ====================
 		   Like a technical drawing: hairline for most divisions, strong for
@@ -131,7 +108,6 @@
 		/* === 7. ACCENT — girder red is the hero =========================== */
 		--accent: var(--girder-red);
 		--accent-deep: color-mix(in oklab, var(--girder-red), black 16%);
-		--accent-tint: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
 		--accent-contrast: var(--ink-900);
 		--accent-rgb: 226, 45, 46; /* --girder-red */
 
@@ -146,26 +122,12 @@
 		/* === 7b. ACCENT ROLES — the rest of the plastics ================= */
 		--accent-secondary: var(--gantry-orange); /* hover warmth, secondary highlights */
 		--accent-tertiary: var(--pulley-blue); /* informational, workflow indicators */
-		--accent-depth: var(--flange-plum); /* synthesis, overlapping regions */
-		--accent-playful: var(--pinion-pink); /* tags, notification dots */
-
-		--accent-secondary-bg: color-mix(in oklab, var(--gantry-orange), var(--surface-page) 86%);
-		--accent-secondary-border: color-mix(in oklab, var(--gantry-orange), transparent 60%);
-		--accent-secondary-hover: color-mix(in oklab, var(--gantry-orange), var(--surface-page) 78%);
-		--accent-secondary-hover-subtle: color-mix(
-			in oklab,
-			var(--gantry-orange),
-			var(--surface-page) 82%
-		);
-		--accent-depth-bg: color-mix(in oklab, var(--flange-plum), var(--surface-page) 86%);
-		--accent-depth-border: color-mix(in oklab, var(--flange-plum), transparent 60%);
 
 		/* === 7c. FOCUS — functional blue, never the accent ================
 		   Focus is a backlit lamp: pulley-blue light escaping from beneath the
 		   element. The ring geometry is --focus-ring in elevation.css; this is
 		   only its hue. */
 		--focus: var(--pulley-blue);
-		--focus-tint: color-mix(in oklab, var(--pulley-blue), var(--surface-page) 80%);
 		--focus-ring-color: var(--focus);
 
 		/* === 8. GRADIENTS — accent elements ONLY, never backgrounds ======
@@ -174,32 +136,21 @@
 		   than as atmosphere. */
 		--gradient-sunset: linear-gradient(135deg, var(--girder-red), var(--gantry-orange));
 		--gradient-depth: linear-gradient(135deg, var(--boiler-navy), var(--flange-plum));
-		--gradient-warmth: linear-gradient(135deg, var(--gantry-orange), var(--brass-amber));
 		--gradient-placeholder: linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%);
 
 		/* === 9. CARDS — control-panel plates ============================= */
 		--card-bg: var(--surface-card);
 		--card-border: var(--border-hairline);
 		--card-border-hover: var(--border-default);
-		--card-border-top: var(--card-border);
-		--card-border-left: var(--card-border);
-		--card-border-right: var(--card-border);
-		--card-border-bottom: var(--card-border);
 
 		/* === 10. LOADING SHIMMER ========================================= */
 		--shimmer-highlight-dim: color-mix(in oklab, transparent, var(--ink-900) 6%);
-		--shimmer-highlight-bright: color-mix(in oklab, transparent, var(--ink-900) 40%);
 
 		/* === 11. INPUTS ================================================== */
 		--input-bg: var(--steel-100);
 
 		/* === 12. SELECT ================================================== */
 		--select-selected-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 80%);
-		--select-selected-highlighted-bg: color-mix(
-			in oklab,
-			var(--girder-red),
-			var(--surface-page) 72%
-		);
 
 		/* === 13. SEMANTIC — info=pulley, success=toolbox, ================
 		   warning=brass, danger=girder. Tints derive over the page. */
@@ -210,7 +161,6 @@
 		--warning: var(--brass-amber);
 		--warning-tint: color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%);
 		--danger: var(--girder-red);
-		--danger-deep: color-mix(in oklab, var(--girder-red), black 16%);
 		--danger-tint: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
 
 		/* The --colour-* names are what Alfons and Atlas already read. */
@@ -233,13 +183,10 @@
 		--colour-partial: var(--brass-amber); /* Augmented — AI assists */
 		--colour-human: var(--toolbox-olive); /* Human — requires human judgement */
 
-		/* The American spellings are aliases, deprecated under D-167. Atlas
-		   consumes all three, so they cannot simply be renamed here; they retire
-		   once that migration lands. Aliases rather than duplicate definitions,
-		   so the two names cannot drift apart in the meantime. */
-		--color-full: var(--colour-full);
-		--color-partial: var(--colour-partial);
-		--color-human: var(--colour-human);
+		/* The American spellings --color-full/-partial/-human are gone. D-167
+		   deprecated them on 2026-08-02 and said they would retire "once Atlas
+		   has migrated, in a separate change to that repository"; D-181 is that
+		   change, and Atlas now reads the Australian names. */
 
 		/* === 15. CHARTS — the eight plastics, in plotting order ===========
 		   Ordered so adjacent series sit far apart in hue, which is what a
@@ -251,13 +198,6 @@
 		   --chart-margin-* — were retired under D-165. BarChart and LineChart
 		   consume the -admin counterparts and never referenced these. */
 		--chart-series-1: var(--girder-red);
-		--chart-series-2: var(--pulley-blue);
-		--chart-series-3: var(--brass-amber);
-		--chart-series-4: var(--toolbox-olive);
-		--chart-series-5: var(--flange-plum);
-		--chart-series-6: var(--gantry-orange);
-		--chart-series-7: var(--boiler-navy);
-		--chart-series-8: var(--pinion-pink);
 
 		--chart-padding: var(--space-5);
 
@@ -320,10 +260,7 @@
 		--ind-aubergine: color-mix(in oklab, var(--flange-plum), white 38%);
 
 		/* === 19. BUTTON VARIANTS ========================================= */
-		--button-secondary-hover-bg: transparent;
-		--button-secondary-hover-border: transparent;
 		--button-ghost-hover-bg: var(--steel-100);
-		--button-outline-hover-shadow: none;
 
 		/* === ADMIN CORE — pinned dark, never changes with colour mode ==== */
 		--admin-bg: var(--foundry-black);
