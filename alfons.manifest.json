@@ -5343,7 +5343,7 @@
   "tokens": [
     {
       "name": "--accent",
-      "value": "var(--fire-engine-red)",
+      "value": "var(--girder-red)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5389,7 +5389,7 @@
     },
     {
       "name": "--accent-bg",
-      "value": "oklch(45% 0.22 25 / 10%)",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 86%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5403,7 +5403,7 @@
     },
     {
       "name": "--accent-bg-emphasis",
-      "value": "oklch(45% 0.22 25 / 15%)",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 78%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5416,20 +5416,20 @@
     },
     {
       "name": "--accent-bg-subtle",
-      "value": "oklch(45% 0.22 25 / 5%)",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 92%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "Tabs"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--accent-border",
-      "value": "oklch(45% 0.22 25 / 30%)",
+      "value": "color-mix(in oklab, var(--girder-red), transparent 60%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5443,8 +5443,30 @@
       "lifecycle": null
     },
     {
+      "name": "--accent-contrast",
+      "value": "var(--ink-900)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--accent-deep",
+      "value": "color-mix(in oklab, var(--girder-red), black 16%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--accent-depth",
-      "value": "var(--aubergine)",
+      "value": "var(--flange-plum)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5461,7 +5483,7 @@
     },
     {
       "name": "--accent-depth-bg",
-      "value": "oklch(38% 0.1 310 / 10%)",
+      "value": "color-mix(in oklab, var(--flange-plum), var(--surface-page) 86%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5478,7 +5500,7 @@
     },
     {
       "name": "--accent-depth-border",
-      "value": "oklch(38% 0.1 310 / 30%)",
+      "value": "color-mix(in oklab, var(--flange-plum), transparent 60%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5495,7 +5517,7 @@
     },
     {
       "name": "--accent-hover",
-      "value": "oklch(0.42 0.17 28)",
+      "value": "var(--accent-deep)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5509,7 +5531,7 @@
     },
     {
       "name": "--accent-playful",
-      "value": "var(--blush-pink)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5526,7 +5548,7 @@
     },
     {
       "name": "--accent-rgb",
-      "value": "206, 32, 41",
+      "value": "226, 45, 46",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5547,7 +5569,7 @@
     },
     {
       "name": "--accent-secondary",
-      "value": "var(--burnt-sunset)",
+      "value": "var(--gantry-orange)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5563,7 +5585,7 @@
     },
     {
       "name": "--accent-secondary-bg",
-      "value": "oklch(58% 0.15 46 / 10%)",
+      "value": "color-mix(in oklab, var(--gantry-orange), var(--surface-page) 86%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5580,7 +5602,7 @@
     },
     {
       "name": "--accent-secondary-border",
-      "value": "oklch(58% 0.15 46 / 30%)",
+      "value": "color-mix(in oklab, var(--gantry-orange), transparent 60%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5597,7 +5619,7 @@
     },
     {
       "name": "--accent-secondary-hover",
-      "value": "oklch(58% 0.15 46 / 20%)",
+      "value": "color-mix(in oklab, var(--gantry-orange), var(--surface-page) 78%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5610,7 +5632,7 @@
     },
     {
       "name": "--accent-secondary-hover-subtle",
-      "value": "oklch(58% 0.15 46 / 15%)",
+      "value": "color-mix( in oklab, var(--gantry-orange), var(--surface-page) 82% )",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5627,7 +5649,7 @@
     },
     {
       "name": "--accent-tertiary",
-      "value": "var(--sky-blue)",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5640,8 +5662,19 @@
       "lifecycle": null
     },
     {
+      "name": "--accent-tint",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--admin-bg",
-      "value": "var(--charcoal-ember)",
+      "value": "var(--foundry-black)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5675,7 +5708,7 @@
     },
     {
       "name": "--admin-bg-elevated",
-      "value": "oklch(6% 0 0)",
+      "value": "var(--steel-50)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5723,7 +5756,7 @@
     },
     {
       "name": "--admin-border",
-      "value": "oklch(97% 0 0 / 10%)",
+      "value": "var(--border-hairline)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5866,7 +5899,7 @@
     },
     {
       "name": "--admin-text",
-      "value": "var(--powder-sand)",
+      "value": "var(--ink-900)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5913,7 +5946,7 @@
     },
     {
       "name": "--admin-text-muted",
-      "value": "oklch(0.6 0.02 68)",
+      "value": "var(--ink-400)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5943,7 +5976,7 @@
     },
     {
       "name": "--admin-text-secondary",
-      "value": "oklch(0.7 0.02 68)",
+      "value": "var(--ink-500)",
       "file": "colours.css",
       "category": "colours",
       "surface": "admin",
@@ -5980,7 +6013,7 @@
     },
     {
       "name": "--amber",
-      "value": "oklch(0.68 0.15 70)",
+      "value": "var(--brass-amber)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5988,22 +6021,34 @@
         "LongreadArticle",
         "LongreadStatBand"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--brass-amber",
+        "reason": "Renamed and re-tuned to mustard ochre. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--aubergine",
-      "value": "oklch(0.44 0.11 319)",
+      "value": "var(--flange-plum)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": true,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--flange-plum",
+        "reason": "Renamed and re-tuned to girard purple. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--back-link-height",
@@ -6017,8 +6062,52 @@
       "lifecycle": null
     },
     {
+      "name": "--bench-bg",
+      "value": "var(--foundry-black)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--bench-line",
+      "value": "rgba(245, 241, 234, 0.015)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--bench-line-major",
+      "value": "rgba(245, 241, 234, 0.036)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--bench-rake",
+      "value": "radial-gradient( 120% 150% at 20% -25%, color-mix(in oklab, var(--gantry-orange), transparent 86%), transparent 90% )",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--bg-glass",
-      "value": "oklch(10% 0.02 150 / 40%)",
+      "value": "var(--steel-100)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6031,7 +6120,7 @@
     },
     {
       "name": "--bg-glass-solid",
-      "value": "oklch(9% 0.01 30)",
+      "value": "var(--steel-50)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6050,7 +6139,7 @@
     },
     {
       "name": "--bg-primary",
-      "value": "var(--charcoal-ember)",
+      "value": "var(--surface-page)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6068,7 +6157,7 @@
     },
     {
       "name": "--bg-primary-rgb",
-      "value": "20, 11, 5",
+      "value": "20, 16, 16",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6079,20 +6168,54 @@
     },
     {
       "name": "--blush-pink",
-      "value": "oklch(0.78 0.15 340)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--pinion-pink",
+        "reason": "Renamed and re-tuned to hot magenta. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--boiler-navy",
+      "value": "#30489c",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --navy-royal aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--border-default",
+      "value": "color-mix(in oklab, var(--ink-900), transparent 83%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--border-glass",
-      "value": "oklch(97% 0 0 / 10%)",
+      "value": "var(--border-hairline)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6111,7 +6234,7 @@
     },
     {
       "name": "--border-glass-hover",
-      "value": "oklch(97% 0 0 / 20%)",
+      "value": "var(--border-default)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6123,8 +6246,47 @@
       "lifecycle": null
     },
     {
+      "name": "--border-hairline",
+      "value": "color-mix(in oklab, var(--ink-900), transparent 91%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--border-strong",
+      "value": "var(--ink-900)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--brass-amber",
+      "value": "#e5a82e",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --amber aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--burnt-sunset",
-      "value": "oklch(0.64 0.16 44)",
+      "value": "var(--gantry-orange)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6134,11 +6296,17 @@
       ],
       "usedInTokenLayer": true,
       "usedInStories": true,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--gantry-orange",
+        "reason": "Renamed and re-tuned to persimmon. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--button-ghost-hover-bg",
-      "value": "transparent",
+      "value": "var(--steel-100)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6239,7 +6407,7 @@
     },
     {
       "name": "--card-bg",
-      "value": "oklch(8% 0.01 15 / 40%)",
+      "value": "var(--surface-card)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6286,7 +6454,7 @@
     },
     {
       "name": "--card-border",
-      "value": "oklch(97% 0 0 / 10%)",
+      "value": "var(--border-hairline)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6335,7 +6503,7 @@
     },
     {
       "name": "--card-border-hover",
-      "value": "oklch(97% 0 0 / 20%)",
+      "value": "var(--border-default)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6472,7 +6640,7 @@
     },
     {
       "name": "--category-agents",
-      "value": "var(--fire-engine-red)",
+      "value": "var(--girder-red)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6485,7 +6653,7 @@
     },
     {
       "name": "--category-data",
-      "value": "var(--navy-royal)",
+      "value": "var(--boiler-navy)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6498,7 +6666,7 @@
     },
     {
       "name": "--category-design",
-      "value": "var(--blush-pink)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6511,7 +6679,7 @@
     },
     {
       "name": "--category-infra",
-      "value": "var(--olive-green)",
+      "value": "var(--toolbox-olive)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6524,7 +6692,7 @@
     },
     {
       "name": "--category-synthesis",
-      "value": "var(--burnt-sunset)",
+      "value": "var(--gantry-orange)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6537,7 +6705,7 @@
     },
     {
       "name": "--category-workflows",
-      "value": "var(--sky-blue)",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6550,14 +6718,20 @@
     },
     {
       "name": "--charcoal-ember",
-      "value": "oklch(0.16 0.02 60)",
+      "value": "var(--foundry-black)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--foundry-black",
+        "reason": "The ground is now the pole every neutral derives off, and is named for that role.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--chart-admin-series-1",
@@ -6657,7 +6831,7 @@
     },
     {
       "name": "--chart-axis-font-size",
-      "value": "0.625rem",
+      "value": "0.6875rem",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6670,7 +6844,7 @@
     },
     {
       "name": "--chart-axis-font-weight",
-      "value": "500",
+      "value": "400",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6683,7 +6857,7 @@
     },
     {
       "name": "--chart-axis-letter-spacing",
-      "value": "0.02em",
+      "value": "0.08em",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6778,7 +6952,7 @@
     },
     {
       "name": "--chart-series-1",
-      "value": "var(--hex-red)",
+      "value": "var(--girder-red)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6789,7 +6963,7 @@
     },
     {
       "name": "--chart-series-2",
-      "value": "var(--hex-sunset)",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6800,7 +6974,7 @@
     },
     {
       "name": "--chart-series-3",
-      "value": "var(--hex-amber)",
+      "value": "var(--brass-amber)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6811,7 +6985,7 @@
     },
     {
       "name": "--chart-series-4",
-      "value": "var(--hex-olive)",
+      "value": "var(--toolbox-olive)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6822,7 +6996,7 @@
     },
     {
       "name": "--chart-series-5",
-      "value": "var(--hex-navy)",
+      "value": "var(--flange-plum)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6833,7 +7007,7 @@
     },
     {
       "name": "--chart-series-6",
-      "value": "var(--hex-sky)",
+      "value": "var(--gantry-orange)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6850,7 +7024,7 @@
     },
     {
       "name": "--chart-series-7",
-      "value": "var(--hex-aubergine)",
+      "value": "var(--boiler-navy)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6867,7 +7041,7 @@
     },
     {
       "name": "--chart-series-8",
-      "value": "var(--hex-blush)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6938,7 +7112,7 @@
     },
     {
       "name": "--chart-transition-duration",
-      "value": "300ms",
+      "value": "200ms",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -6952,7 +7126,7 @@
     },
     {
       "name": "--chart-transition-easing",
-      "value": "ease-out",
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7031,7 +7205,7 @@
     },
     {
       "name": "--colour-error",
-      "value": "var(--hex-red)",
+      "value": "var(--danger)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7061,7 +7235,7 @@
     },
     {
       "name": "--colour-error-bg",
-      "value": "oklch(45% 0.22 25 / 20%)",
+      "value": "var(--danger-tint)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7083,7 +7257,7 @@
     },
     {
       "name": "--colour-full",
-      "value": "var(--fire-engine-red)",
+      "value": "var(--girder-red)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7094,7 +7268,7 @@
     },
     {
       "name": "--colour-human",
-      "value": "var(--olive-green)",
+      "value": "var(--toolbox-olive)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7105,7 +7279,7 @@
     },
     {
       "name": "--colour-info",
-      "value": "var(--sky-blue)",
+      "value": "var(--info)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7121,7 +7295,7 @@
     },
     {
       "name": "--colour-info-bg",
-      "value": "color-mix(in srgb, var(--sky-blue) 18%, transparent)",
+      "value": "var(--info-tint)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7152,7 +7326,7 @@
     },
     {
       "name": "--colour-partial",
-      "value": "var(--amber)",
+      "value": "var(--brass-amber)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7163,7 +7337,7 @@
     },
     {
       "name": "--colour-success",
-      "value": "var(--hex-olive)",
+      "value": "var(--success)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7183,7 +7357,7 @@
     },
     {
       "name": "--colour-success-bg",
-      "value": "oklch(46% 0.1 130 / 20%)",
+      "value": "var(--success-tint)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7198,7 +7372,7 @@
     },
     {
       "name": "--colour-warning",
-      "value": "var(--hex-amber)",
+      "value": "var(--warning)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7215,7 +7389,7 @@
     },
     {
       "name": "--colour-warning-bg",
-      "value": "oklch(70% 0.12 80 / 20%)",
+      "value": "var(--warning-tint)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7225,6 +7399,39 @@
         "Toast"
       ],
       "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--danger",
+      "value": "var(--girder-red)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--danger-deep",
+      "value": "color-mix(in oklab, var(--girder-red), black 16%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--danger-tint",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7509,20 +7716,54 @@
     },
     {
       "name": "--fire-engine-red",
-      "value": "oklch(0.53 0.2 28)",
+      "value": "var(--girder-red)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--girder-red",
+        "reason": "Renamed for the part it resembles and re-tuned to poppy vermilion. Still defined as an alias; 52 files in Atlas read it.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--flange-plum",
+      "value": "#83489b",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --aubergine aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--focus",
+      "value": "var(--pulley-blue)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
     },
     {
       "name": "--focus-ring-color",
-      "value": "color-mix(in srgb, white 55%, transparent)",
+      "value": "var(--focus)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7531,6 +7772,17 @@
         "Radio"
       ],
       "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--focus-tint",
+      "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 80%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7589,9 +7841,9 @@
       "lifecycle": {
         "status": "live",
         "replacement": null,
-        "reason": "Consumed by Atlas editorial pages. Rock Salt ships as a dependency for it.",
+        "reason": "Consumed by Atlas editorial pages. Resolves to Moderat Black since the Meccano retune; Rock Salt is gone.",
         "decisionId": null,
-        "recordedOn": "2026-08-02"
+        "recordedOn": "2026-08-05"
       }
     },
     {
@@ -7644,6 +7896,23 @@
       "lifecycle": null
     },
     {
+      "name": "--foundry-black",
+      "value": "#141010",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The ground every neutral derives off. --charcoal-ember aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--frost-1",
       "value": "0px",
       "file": "elevation.css",
@@ -7680,8 +7949,42 @@
       "lifecycle": null
     },
     {
+      "name": "--gantry-orange",
+      "value": "#ee7623",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --burnt-sunset aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--girder-red",
+      "value": "#e22d2e",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Hero accent. The definition; --fire-engine-red aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--gradient-depth",
-      "value": "linear-gradient(135deg, var(--hex-navy), var(--hex-aubergine))",
+      "value": "linear-gradient(135deg, var(--boiler-navy), var(--flange-plum))",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7694,7 +7997,7 @@
     },
     {
       "name": "--gradient-placeholder",
-      "value": "linear-gradient( 135deg, oklch(55.6% 0.262 292 / 5%) 0%, var(--accent-bg-subtle) 100% )",
+      "value": "linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7707,7 +8010,7 @@
     },
     {
       "name": "--gradient-sunset",
-      "value": "linear-gradient(135deg, var(--hex-red), var(--hex-sunset))",
+      "value": "linear-gradient(135deg, var(--girder-red), var(--gantry-orange))",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7720,7 +8023,7 @@
     },
     {
       "name": "--gradient-warmth",
-      "value": "linear-gradient(135deg, var(--hex-sunset), var(--hex-amber))",
+      "value": "linear-gradient(135deg, var(--gantry-orange), var(--brass-amber))",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7737,7 +8040,7 @@
     },
     {
       "name": "--grid-colour",
-      "value": "oklch(97% 0 0 / 3%)",
+      "value": "var(--bench-line)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7748,7 +8051,7 @@
     },
     {
       "name": "--grid-colour-accent",
-      "value": "oklch(97% 0 0 / 6%)",
+      "value": "var(--bench-line-major)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7759,7 +8062,7 @@
     },
     {
       "name": "--grid-opacity",
-      "value": "0.5",
+      "value": "1",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7770,7 +8073,7 @@
     },
     {
       "name": "--grid-opacity-accent",
-      "value": "0.6",
+      "value": "1",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7791,8 +8094,19 @@
       "lifecycle": null
     },
     {
+      "name": "--grid-size-major",
+      "value": "160px",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--ground-glint-colour",
-      "value": "oklch(0.9 0.09 85)",
+      "value": "var(--brass-amber)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7838,113 +8152,26 @@
     },
     {
       "name": "--hex-amber",
-      "value": "#d4a946",
+      "value": "var(--brass-amber)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "Portrait"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--brass-amber",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--hex-aubergine",
-      "value": "#6d3f79",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--hex-blush",
-      "value": "#f68fd5",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--hex-dark",
-      "value": "#141010",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Raw hex, needed where oklch() cannot be used.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--hex-light",
-      "value": "#f3f3f3",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Raw hex, needed where oklch() cannot be used.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
-      "name": "--hex-navy",
-      "value": "#2e3d6b",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [
-        "Portrait"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--hex-olive",
-      "value": "#5a7a47",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--hex-red",
-      "value": "#ce2029",
-      "file": "colours.css",
-      "category": "colours",
-      "surface": "public",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--hex-sand",
-      "value": "#d4b896",
+      "value": "var(--flange-plum)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7953,41 +8180,176 @@
       "usedInStories": false,
       "lifecycle": {
         "status": "deprecated",
-        "replacement": null,
-        "reason": "Rung of the raw hex palette, orphaned when --heatmap-cold went under D-165.",
-        "decisionId": "D-166",
-        "recordedOn": "2026-08-02"
+        "replacement": "--flange-plum",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-blush",
+      "value": "var(--pinion-pink)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [
+        "Portrait"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--pinion-pink",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-dark",
+      "value": "var(--foundry-black)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--foundry-black",
+        "reason": "Was a second literal for the ground. Now an alias. Atlas reads it for SVG fills.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-light",
+      "value": "var(--ink-900)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--ink-900",
+        "reason": "Was a second literal for bone. Now an alias. Atlas reads it for SVG fills.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-navy",
+      "value": "var(--boiler-navy)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [
+        "Portrait"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--boiler-navy",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-olive",
+      "value": "var(--toolbox-olive)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--toolbox-olive",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-red",
+      "value": "var(--girder-red)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--girder-red",
+        "reason": "Was a second literal for the same hue. Now an alias. Prefer the part name unless the context genuinely cannot read a derived value.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--hex-sand",
+      "value": "var(--ink-500)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--ink-500",
+        "reason": "Was a second literal for the sand tone. Now an alias of the ramp step that carries it.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
       }
     },
     {
       "name": "--hex-sky",
-      "value": "#5bc0eb",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "Portrait"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--pulley-blue",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--hex-sunset",
-      "value": "#d9652b",
+      "value": "var(--gantry-orange)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "Portrait"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--gantry-orange",
+        "reason": "Was a second literal for the same hue. Now an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--ind-aubergine",
-      "value": "color-mix(in oklch, var(--aubergine), white 38%)",
+      "value": "color-mix(in oklab, var(--flange-plum), white 38%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -7998,7 +8360,7 @@
     },
     {
       "name": "--industry-engineering-trades",
-      "value": "var(--navy-royal)",
+      "value": "var(--boiler-navy)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8011,7 +8373,7 @@
     },
     {
       "name": "--industry-finance",
-      "value": "var(--sky-blue)",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8024,7 +8386,7 @@
     },
     {
       "name": "--industry-healthcare-education",
-      "value": "var(--blush-pink)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8050,7 +8412,7 @@
     },
     {
       "name": "--industry-marketing-communications",
-      "value": "var(--blush-pink)",
+      "value": "var(--pinion-pink)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8063,7 +8425,7 @@
     },
     {
       "name": "--industry-operations-admin",
-      "value": "var(--powder-sand)",
+      "value": "var(--ink-500)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8076,7 +8438,7 @@
     },
     {
       "name": "--industry-technology",
-      "value": "var(--aubergine)",
+      "value": "var(--flange-plum)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8088,8 +8450,115 @@
       "lifecycle": null
     },
     {
+      "name": "--info",
+      "value": "var(--pulley-blue)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--info-tint",
+      "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--ink-300",
+      "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 68%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Neutral ramp, derived. Read through semantic aliases.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ink-400",
+      "value": "#857b6f",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Muted text, via --text-muted.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ink-500",
+      "value": "#a89e8f",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Secondary text, via --text-secondary.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ink-700",
+      "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 20%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Neutral ramp, derived off --foundry-black. Read through semantic aliases.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--ink-900",
+      "value": "#efe8db",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Bone. Primary text and the bright pole of the neutral ramp.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
       "name": "--input-bg",
-      "value": "oklch(22% 0.015 30)",
+      "value": "var(--steel-100)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8183,29 +8652,41 @@
     },
     {
       "name": "--navy-royal",
-      "value": "oklch(0.35 0.14 260)",
+      "value": "var(--boiler-navy)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--boiler-navy",
+        "reason": "Renamed and re-tuned to cobalt. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--olive-green",
-      "value": "oklch(0.52 0.1 130)",
+      "value": "var(--toolbox-olive)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "LongreadArticle"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": true,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--toolbox-olive",
+        "reason": "Renamed and re-tuned to leaf olive. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--opacity-background",
@@ -8372,15 +8853,55 @@
       "lifecycle": null
     },
     {
-      "name": "--powder-sand",
-      "value": "oklch(0.93 0.02 68)",
+      "name": "--pinion-pink",
+      "value": "#f972c6",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --blush-pink aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--powder-sand",
+      "value": "var(--ink-900)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--ink-900",
+        "reason": "The bone text tone is now the top of a derived neutral ramp rather than a standalone brand hue.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--pulley-blue",
+      "value": "#47c2f2",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Functional blue — links, focus, selection. --sky-blue aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--radius",
@@ -8551,7 +9072,7 @@
     },
     {
       "name": "--select-selected-bg",
-      "value": "oklch(45% 0.22 25 / 15%)",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 80%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8568,7 +9089,7 @@
     },
     {
       "name": "--select-selected-highlighted-bg",
-      "value": "oklch(45% 0.22 25 / 20%)",
+      "value": "color-mix( in oklab, var(--girder-red), var(--surface-page) 72% )",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8699,7 +9220,7 @@
     },
     {
       "name": "--shimmer-highlight-bright",
-      "value": "oklch(100% 0 0 / 50%)",
+      "value": "color-mix(in oklab, transparent, var(--ink-900) 40%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8716,7 +9237,7 @@
     },
     {
       "name": "--shimmer-highlight-dim",
-      "value": "oklch(100% 0 0 / 6%)",
+      "value": "color-mix(in oklab, transparent, var(--ink-900) 6%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8729,7 +9250,7 @@
     },
     {
       "name": "--sky-blue",
-      "value": "oklch(0.77 0.11 229)",
+      "value": "var(--pulley-blue)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -8738,9 +9259,15 @@
         "LongreadArticle",
         "Spinner"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": true,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "deprecated",
+        "replacement": "--pulley-blue",
+        "reason": "Renamed and re-tuned to clear sky. Still defined as an alias.",
+        "decisionId": "D-179",
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--space-1",
@@ -9152,7 +9679,7 @@
     },
     {
       "name": "--status-error-text",
-      "value": "var(--hex-red)",
+      "value": "var(--danger)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9166,7 +9693,7 @@
     },
     {
       "name": "--status-info-text",
-      "value": "var(--sky-blue)",
+      "value": "var(--info)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9180,7 +9707,7 @@
     },
     {
       "name": "--status-success-text",
-      "value": "var(--hex-olive)",
+      "value": "var(--success)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9194,7 +9721,7 @@
     },
     {
       "name": "--status-warning-text",
-      "value": "var(--hex-amber)",
+      "value": "var(--warning)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9205,6 +9732,74 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--steel-100",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Surface ramp. Input fill and the neutral hover wash.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--steel-150",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 13%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Surface ramp, derived.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--steel-200",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 19%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Surface ramp, derived. The machined card edge.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--steel-50",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 5%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Surface ramp. Sunken zones — footers, wells.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
+      }
     },
     {
       "name": "--stroke-medium",
@@ -9271,8 +9866,41 @@
       }
     },
     {
+      "name": "--success",
+      "value": "var(--toolbox-olive)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--success-tint",
+      "value": "color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--surface-card",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--surface-dark-subtle",
-      "value": "oklch(0% 0 0 / 10%)",
+      "value": "color-mix(in oklab, transparent, var(--foundry-black) 40%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9337,7 +9965,7 @@
     },
     {
       "name": "--surface-glass-bg",
-      "value": "color-mix(in srgb, var(--bg-glass-solid) 85%, transparent)",
+      "value": "var(--surface-card)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9351,7 +9979,7 @@
     },
     {
       "name": "--surface-hover-subtle",
-      "value": "oklch(97% 0 0 / 5%)",
+      "value": "color-mix(in oklab, transparent, var(--ink-900) 5%)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9367,6 +9995,17 @@
       "lifecycle": null
     },
     {
+      "name": "--surface-inverse",
+      "value": "var(--ink-900)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--surface-overlay-subtle",
       "value": "oklch(0% 0 0 / 30%)",
       "file": "elevation.css",
@@ -9376,6 +10015,17 @@
         "DataTable"
       ],
       "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--surface-page",
+      "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -9469,6 +10119,17 @@
       }
     },
     {
+      "name": "--surface-sunken",
+      "value": "var(--foundry-black)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--text-body",
       "value": "1.125rem",
       "file": "typography.css",
@@ -9505,13 +10166,24 @@
     },
     {
       "name": "--text-flicker-alt",
-      "value": "oklch(20% 0.01 55)",
+      "value": "var(--foundry-black)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
       "referencedBy": [
         "PageHeader"
       ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--text-inverse",
+      "value": "var(--foundry-black)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
@@ -9528,6 +10200,17 @@
       ],
       "usedInTokenLayer": false,
       "usedInStories": true,
+      "lifecycle": null
+    },
+    {
+      "name": "--text-link",
+      "value": "var(--pulley-blue)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
       "lifecycle": null
     },
     {
@@ -9549,7 +10232,7 @@
     },
     {
       "name": "--text-muted",
-      "value": "oklch(0.6 0.02 68)",
+      "value": "var(--ink-400)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9586,7 +10269,7 @@
     },
     {
       "name": "--text-primary",
-      "value": "var(--powder-sand)",
+      "value": "var(--ink-900)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9637,7 +10320,7 @@
     },
     {
       "name": "--text-secondary",
-      "value": "oklch(0.7 0.02 68)",
+      "value": "var(--ink-500)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -9700,6 +10383,23 @@
         "reason": "Duplicate name for --shadow-toast, which Toast actually reads. Two names, one honoured.",
         "decisionId": "D-166",
         "recordedOn": "2026-08-02"
+      }
+    },
+    {
+      "name": "--toolbox-olive",
+      "value": "#5e9141",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The definition; --olive-green aliases it.",
+        "decisionId": null,
+        "recordedOn": "2026-08-05"
       }
     },
     {
@@ -9784,6 +10484,39 @@
         "LongreadArticle"
       ],
       "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--warning",
+      "value": "var(--brass-amber)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--warning-tint",
+      "value": "color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--white",
+      "value": "#ffffff",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
