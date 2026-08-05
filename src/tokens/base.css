@@ -276,17 +276,20 @@ body {
 	   LINK STYLES
 	   ========================================================================== */
 
-	/* Links read as body text — same colour, no underline — and pick up the
-	   accent only on hover. Underline is opt-in for prose contexts. */
-	a {
+	/* A bare anchor is prose, not navigation or a clickable card. Meccano gives
+	   that semantic link pulley blue; component anchors carry a class and retain
+	   their own treatment. */
+	a:not([class]) {
 		text-underline-position: from-font;
-		color: inherit;
+		color: var(--text-link);
 		text-decoration: none;
 		transition: color var(--transition-fast);
 	}
 
-	a:hover {
-		color: var(--accent);
+	a:not([class]):hover {
+		color: var(--ink-900);
+		text-decoration: underline;
+		text-underline-offset: 3px;
 	}
 }
 

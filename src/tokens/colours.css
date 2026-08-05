@@ -67,11 +67,32 @@
 		   is now written exactly once. The lifecycle rows are the record: an
 		   agent reaching for --hex-red gets --girder-red and a reason. */
 
-		/* === 3. SURFACES ================================================= */
+		/* === 3. SURFACES =================================================
+		   READ THE NAMES CAREFULLY — one of them does not mean what it says.
+
+		   --surface-page is NOT the background of the page. The readme is
+		   explicit: "Site pages sit on the workbench (.mcn-bench, charcoal-ember
+		   ground); dense text areas — article bodies, list sheets — float on it
+		   as flat --surface-page panels with a hairline edge and soft shadow."
+		   So --surface-page is the PANEL that floats on the ground, and the
+		   ground itself is --bench-bg, which is --foundry-black.
+
+		   The retune mapped --bg-primary at --surface-page on the strength of
+		   the name, which lifted the entire site five RGB points before the
+		   rake light was added on top, and read as washed out. Corrected here.
+
+		   --surface-page keeps its other job unchanged: it is the base every
+		   tint mixes over, which is what Meccano does too. A tint is a colour
+		   sitting on a panel, so mixing over the panel is right even though
+		   the panel is not the page. */
 		--surface-page: color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%);
 		--surface-card: color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%);
+		/* Recessed zones — footers, wells, and the control tray under a card
+		   plate. Deleted by D-181 as unread, which it was: nothing had built
+		   the tray yet. It has one now. */
+		--surface-sunken: var(--foundry-black);
 
-		--bg-primary: var(--surface-page);
+		--bg-primary: var(--bench-bg);
 		--bg-primary-rgb: 20, 16, 16; /* --foundry-black, for alpha composition */
 
 		/* The glass surfaces predate the retune, and Meccano permits no

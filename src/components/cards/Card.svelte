@@ -123,7 +123,9 @@
 	/* The plate. A vertical sheen down the face, four corner rivets, a machined
 	   steel edge and a light top inset — the whole thing reads as a panel
 	   fastened to something rather than a rectangle floating on it. */
-	.card[data-theme='public'][data-variant='default'] {
+	.card[data-theme='public'][data-variant='default'],
+	.card[data-theme='public'][data-variant='elevated'],
+	.card[data-theme='public'][data-variant='interactive'] {
 		background-color: var(--surface-card);
 		background-image:
 			radial-gradient(
@@ -181,13 +183,10 @@
 	}
 
 	/* === Elevated variant === */
-	.card[data-variant='elevated'] {
-		box-shadow: var(--card-shadow-hover);
-	}
-
 	.card[data-theme='public'][data-variant='elevated'] {
-		background: var(--bg-glass-solid);
-		border: 1px solid var(--card-border);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--shadow-2);
 	}
 
 	.card[data-theme='admin'][data-variant='elevated'] {
@@ -233,26 +232,11 @@
 		cursor: pointer;
 	}
 
-	.card[data-theme='public'][data-variant='interactive'] {
-		background: var(--card-bg);
-		border: 1px solid var(--card-border);
-		box-shadow: var(--card-shadow);
-	}
-
-	/* Dark mode: solid background matching default, with scale + border glow on hover.
-	   Carries the same directional lit edge as the default variant. */
-	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive'] {
-		background: var(--bg-glass-solid);
-		border-top-color: var(--el-edge-light);
-		border-left-color: var(--el-edge-light);
-		border-right-color: var(--el-edge-shade);
-		border-bottom-color: var(--el-edge-shade);
-	}
-
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive']:hover {
-		transform: scale(1.02);
-		border-color: var(--accent-border);
-		box-shadow: var(--card-shadow-hover);
+		transform: translateY(-1px);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--shadow-2);
 	}
 
 	/* Admin theme: elevated background with pointer affordance */

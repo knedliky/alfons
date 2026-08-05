@@ -991,19 +991,15 @@
         "--admin-shadow-elevated",
         "--admin-text",
         "--admin-text-secondary",
-        "--bg-glass-solid",
-        "--card-bg",
-        "--card-border",
         "--card-padding",
         "--card-padding-sm",
         "--card-shadow",
         "--card-shadow-hover",
         "--colour-info-bg",
-        "--el-edge-light",
-        "--el-edge-shade",
         "--radius-surface",
         "--rivet-edge",
         "--rivet-face",
+        "--shadow-2",
         "--sheen-rgb",
         "--space-1",
         "--space-2",
@@ -1131,7 +1127,6 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
         "--admin-bg",
         "--admin-border",
         "--admin-text",
@@ -1140,9 +1135,11 @@
         "--card-border",
         "--card-border-hover",
         "--colour-error",
+        "--focus",
         "--focus-ring-color",
         "--font-body",
         "--space-3",
+        "--text-inverse",
         "--text-muted",
         "--text-primary"
       ],
@@ -2354,15 +2351,16 @@
         "--admin-border",
         "--admin-text",
         "--admin-text-muted",
-        "--card-bg",
-        "--card-border",
-        "--card-border-hover",
+        "--border-default",
+        "--focus",
+        "--focus-ring",
         "--input-height",
         "--input-height-sm",
         "--input-shadow",
         "--radius",
         "--space-2",
         "--space-4",
+        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--transition-normal"
@@ -3959,7 +3957,6 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
         "--admin-bg",
         "--admin-border",
         "--admin-text",
@@ -3967,9 +3964,11 @@
         "--card-bg",
         "--card-border",
         "--card-border-hover",
+        "--focus",
         "--focus-ring-color",
         "--font-body",
         "--space-3",
+        "--text-inverse",
         "--text-muted",
         "--text-primary"
       ],
@@ -4269,22 +4268,21 @@
         "--colour-error",
         "--filter-control-height",
         "--font-mono",
-        "--frost-3",
+        "--fw-medium",
         "--input-height",
         "--radius",
-        "--radius-message",
         "--radius-pill",
         "--select-bg",
         "--select-border",
         "--select-dropdown-shadow",
         "--select-font-size",
-        "--select-highlighted-bg",
         "--select-text",
         "--select-text-muted",
         "--select-text-secondary",
         "--space-1",
         "--space-2",
         "--space-3",
+        "--steel-100",
         "--transition-fast",
         "--transition-normal",
         "--z-dropdown"
@@ -4961,14 +4959,15 @@
         "--admin-border",
         "--admin-text",
         "--admin-text-muted",
-        "--bg-primary",
-        "--card-bg",
-        "--card-border",
-        "--card-border-hover",
+        "--border-default",
+        "--focus",
+        "--focus-ring",
         "--input-height",
         "--input-shadow",
+        "--radius",
         "--space-4",
         "--space-5",
+        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--transition-normal"
@@ -5195,9 +5194,10 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--accent-bg-emphasis",
         "--border-glass-hover",
+        "--focus",
+        "--focus-ring",
+        "--gloss",
         "--radius-pill",
         "--shadow-subtle",
         "--text-primary",
@@ -5368,7 +5368,6 @@
         "BoolField",
         "CalendarDay",
         "Card",
-        "Checkbox",
         "DataTable",
         "DateField",
         "DateRangePicker",
@@ -5384,7 +5383,6 @@
         "Pill",
         "Portrait",
         "ProgressBar",
-        "Radio",
         "RangeSlider",
         "Select",
         "SelectField",
@@ -5393,8 +5391,7 @@
         "Tabs",
         "TextField",
         "Textarea",
-        "Toast",
-        "Toggle"
+        "Toast"
       ],
       "usedInTokenLayer": true,
       "usedInStories": true,
@@ -5419,9 +5416,7 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [
-        "Toggle"
-      ],
+      "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
@@ -5941,7 +5936,6 @@
       "referencedBy": [
         "Alert",
         "AvatarGroup",
-        "Card",
         "LongreadArticle",
         "Menu",
         "Popover",
@@ -5953,7 +5947,7 @@
     },
     {
       "name": "--bg-primary",
-      "value": "var(--surface-page)",
+      "value": "var(--bench-bg)",
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
@@ -5962,8 +5956,7 @@
         "CalendarDay",
         "Footer",
         "Header",
-        "RangeSlider",
-        "Textarea"
+        "RangeSlider"
       ],
       "usedInTokenLayer": true,
       "usedInStories": true,
@@ -6006,7 +5999,10 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Input",
+        "Textarea"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -6206,13 +6202,11 @@
       "referencedBy": [
         "CalendarDay",
         "CalendarGrid",
-        "Card",
         "Checkbox",
         "DatePicker",
         "DateRangePicker",
         "EmptyState",
         "Footer",
-        "Input",
         "LongreadProse",
         "Portrait",
         "Radio",
@@ -6220,7 +6214,6 @@
         "SkeletonCard",
         "SkeletonHero",
         "Tabs",
-        "Textarea",
         "ToggleGroup"
       ],
       "usedInTokenLayer": true,
@@ -6253,13 +6246,11 @@
       "referencedBy": [
         "Accordion",
         "CalendarGrid",
-        "Card",
         "Checkbox",
         "DatePicker",
         "DateRangePicker",
         "EmptyState",
         "Footer",
-        "Input",
         "LongreadProse",
         "Menu",
         "Popover",
@@ -6268,7 +6259,6 @@
         "SkeletonCard",
         "SkeletonHero",
         "Tabs",
-        "Textarea",
         "ToggleGroup"
       ],
       "usedInTokenLayer": true,
@@ -6284,10 +6274,8 @@
       "referencedBy": [
         "Checkbox",
         "Footer",
-        "Input",
         "Portrait",
-        "Radio",
-        "Textarea"
+        "Radio"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7046,7 +7034,6 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Card",
         "LongreadFigure",
         "Menu",
         "Popover"
@@ -7062,7 +7049,6 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Card",
         "LongreadFigure",
         "Menu",
         "Popover"
@@ -7209,7 +7195,13 @@
       "file": "colours.css",
       "category": "colours",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Checkbox",
+        "Input",
+        "Radio",
+        "Textarea",
+        "Toggle"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -7227,7 +7219,10 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Button"
+        "Button",
+        "Input",
+        "Textarea",
+        "Toggle"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7411,9 +7406,7 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [
-        "Select"
-      ],
+      "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": null
@@ -7578,7 +7571,8 @@
       "category": "typography",
       "surface": "public",
       "referencedBy": [
-        "Button"
+        "Button",
+        "Select"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7674,7 +7668,8 @@
       "category": "elevation",
       "surface": "public",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "Toggle"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -8402,6 +8397,7 @@
         "Skeleton",
         "StatusBadge",
         "TextField",
+        "Textarea",
         "Toast",
         "Tooltip"
       ],
@@ -8465,7 +8461,6 @@
       "referencedBy": [
         "AgentInput",
         "Footer",
-        "Select",
         "Surface"
       ],
       "usedInTokenLayer": false,
@@ -8689,7 +8684,9 @@
       "file": "elevation.css",
       "category": "elevation",
       "surface": "public",
-      "referencedBy": [],
+      "referencedBy": [
+        "Card"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9355,7 +9352,8 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Button"
+        "Button",
+        "Select"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9475,7 +9473,9 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Card"
+        "Card",
+        "Input",
+        "Textarea"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9600,6 +9600,23 @@
       "lifecycle": null
     },
     {
+      "name": "--surface-sunken",
+      "value": "var(--foundry-black)",
+      "file": "colours.css",
+      "category": "colours",
+      "surface": "public",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano control-plate tray surface. Restored after the fidelity audit showed the D-181 retirement misread a reference primitive as speculative.",
+        "decisionId": null,
+        "recordedOn": "2026-08-06"
+      }
+    },
+    {
       "name": "--text-body",
       "value": "var(--fs-lg)",
       "file": "typography.css",
@@ -9655,7 +9672,9 @@
       "category": "colours",
       "surface": "public",
       "referencedBy": [
-        "Button"
+        "Button",
+        "Checkbox",
+        "Radio"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -9690,7 +9709,7 @@
       "referencedBy": [
         "Button"
       ],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -11599,17 +11618,6 @@
         "status": "retired",
         "replacement": "--shadow-1",
         "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
-      "name": "--surface-sunken",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": "--foundry-black",
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
       }
