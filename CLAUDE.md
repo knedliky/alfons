@@ -38,6 +38,11 @@ bun run manifest:check
 # READS THE MANIFEST, NOT THE TREE — see the ordering note below.
 ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync
 
+# Normally called by the project hook. Run directly to recover or to refresh
+# after making the same change through a client that does not execute hooks.
+bun run design-memory:refresh --component src/components/cards/Card.svelte
+bun run design-memory:refresh --decision D-182
+
 # Type-check Svelte components and TypeScript
 bun run check
 
@@ -154,11 +159,12 @@ non-Svelte importer would fail.
 
 ## The MCP surface
 
-Nine tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
+Ten tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
 `bun run mcp:smoke` exercises every tool and then the server over real stdio.
 
 | Tool                            | For                                             |
 | ------------------------------- | ----------------------------------------------- |
+| `find_design_memory`            | Components and confirmed decisions for intent   |
 | `find_components`               | Ranked search in plain language                 |
 | `get_component`                 | Props, slots, variants, usage, story link       |
 | `get_tokens`                    | Tokens legal on a surface                       |
@@ -172,6 +178,24 @@ The server **refuses to start** on a manifest that is missing, stale, of the wro
 schema version, or carrying unparsed components. Silence from a lookup service is
 indistinguishable from a true negative: an agent that gets an empty `find_components`
 concludes the component does not exist and writes its own.
+
+### Self-updating design memory
+
+The project hook in `.claude/settings.json` listens after successful file writes and
+ledger calls (D-182). A write under `src/components/**/*.svelte` regenerates the
+manifest and then synchronises the entity vocabulary. A successful
+`mcp__ledger__record_decision` call first admits its allocated decision id to
+`alfons.design_decisions`, then regenerates the manifest. Failed calls, drafts and
+unrelated writes do nothing.
+
+The hook is only an event adapter. `scripts/refresh-design-memory.ts` owns the actual
+ordering, locking and idempotence and can be run directly by clients that do not execute
+Claude project hooks. It never infers a decision: repeated practice becomes searchable
+design knowledge only after someone explicitly records the decision in the ledger.
+
+Manifest replacement is atomic, and the MCP validates and adopts a newer snapshot
+between calls. Runtime tools still read only `alfons.manifest.json`; Postgres remains a
+build-time dependency.
 
 ## Review Checklist
 

@@ -19,6 +19,7 @@ import { join } from 'node:path';
 import { loadManifest, storybookBase } from '../src/mcp/manifest.ts';
 import {
 	findComponents,
+	findDesignMemory,
 	getComponent,
 	getLayoutRecipe,
 	getTokens,
@@ -68,6 +69,20 @@ check(
 check(
 	'an empty query returns nothing rather than everything',
 	findComponents(manifest, '   ').length === 0
+);
+
+// ---------------------------------------------------------------------------
+console.log('\nfind_design_memory');
+const memory = findDesignMemory(manifest, 'self updating hooks confirmed decisions');
+check(
+	'finds the decision governing self-updating design memory',
+	memory.decisions[0]?.id === 'D-182',
+	memory.decisions.slice(0, 3)
+);
+check(
+	'returns the rationale, not only the decision id',
+	Boolean(memory.decisions[0]?.rationale),
+	memory.decisions[0]
 );
 
 // ---------------------------------------------------------------------------
@@ -316,6 +331,7 @@ check('the server starts and answers tools/list', toolNames.length > 0, {
 });
 for (const expected of [
 	'find_components',
+	'find_design_memory',
 	'get_component',
 	'get_tokens',
 	'get_layout_recipe',

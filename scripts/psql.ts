@@ -35,9 +35,9 @@ function resolvePsql(): string {
 }
 
 export function databaseUrl(): string {
-	const url = process.env.ALFONS_DATABASE_URL ?? process.env.LEDGER_DATABASE_URL;
-	if (!url) throw new Error('No ALFONS_DATABASE_URL or LEDGER_DATABASE_URL is set.');
-	return url;
+	return (
+		process.env.ALFONS_DATABASE_URL ?? process.env.LEDGER_DATABASE_URL ?? 'postgresql:///context'
+	);
 }
 
 /** Run `sql` and return whatever single value it selects, unparsed. */
