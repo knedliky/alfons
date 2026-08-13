@@ -195,7 +195,7 @@
 		padding: 0 var(--space-2);
 		background: transparent;
 		border: 1px solid transparent;
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 		font-family: var(--font-mono);
 		font-size: 0.8125rem;
 		font-weight: 600;

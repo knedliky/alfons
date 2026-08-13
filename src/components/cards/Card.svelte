@@ -30,10 +30,21 @@
 	 *
 	 * Features:
 	 * - Polymorphic element via `as` prop (div, a, section, article, button)
-	 * - Five variants: default (glassmorphism), elevated, ghost, outlined, interactive
+	 * - Five variants: default (control plate), elevated, ghost, outlined, interactive
 	 * - Three sizes: default, compact (tighter padding), flush (no padding)
 	 * - Automatic theme detection from context (public/admin)
 	 * - Self-contained styling — no dependency on global .card-glass utility
+	 *
+	 * THE PLATE. The default variant is a control-panel plate: a vertical sheen
+	 * down a brushed charcoal face, a machined --steel-200 edge, a light inset
+	 * along the top, and a rivet in each of the four corners. The rivets are
+	 * painted on the plate as four radial gradients rather than composed as
+	 * elements, so an empty card still has them and no consumer assembles them
+	 * by hand. Each sits 12px in from its corner — inside --card-padding at
+	 * every size, compact included.
+	 *
+	 * No eyebrows, kickers or accent strips. Metadata belongs in the body as
+	 * mono spec text: <p class="mcn-spec">PART Nº 37B</p>.
 	 */
 	import { getThemeVariant } from '../../contexts/theme.js';
 
@@ -64,16 +75,25 @@
 </svelte:element>
 
 <style>
-	/* Base card surface — square by default (the blinking-cursor motif);
-	   rounding is reserved for agentic surfaces */
+	/* Base card surface — a control-panel plate: brushed charcoal face, a
+	   machined --steel-200 edge, a light inset along the top, and a rivet in
+	   each of the four corners.
+
+	   The rivets are drawn as four radial gradients on the plate itself rather
+	   than as elements, so a card with no children still has them and no
+	   consumer has to compose them. Each is 12px in from its corner, which is
+	   inside --card-padding at every size, including compact.
+
+	   No eyebrows, kickers or accent strips: metadata lives in the body as mono
+	   spec text (.mcn-spec). */
 	.card {
 		border-radius: var(--radius-surface);
 		padding: var(--card-padding);
 		transition:
-			box-shadow var(--transition-slow),
-			border-color var(--transition-slow),
-			background-color var(--transition-slow),
-			transform var(--transition-slow);
+			box-shadow var(--transition-normal),
+			border-color var(--transition-normal),
+			background-color var(--transition-normal),
+			transform var(--transition-normal);
 	}
 
 	/* === Size variants ===
@@ -100,30 +120,58 @@
 		color: var(--text-primary);
 	}
 
-	.card[data-theme='public'][data-variant='default'] {
-		background: var(--card-bg);
-		border: 1px solid var(--card-border);
-		box-shadow: var(--card-shadow);
+	/* The plate. A vertical sheen down the face, four corner rivets, a machined
+	   steel edge and a light top inset — the whole thing reads as a panel
+	   fastened to something rather than a rectangle floating on it. */
+	.card[data-theme='public'][data-variant='default'],
+	.card[data-theme='public'][data-variant='elevated'],
+	.card[data-theme='public'][data-variant='interactive'] {
+		background-color: var(--surface-card);
+		background-image:
+			radial-gradient(
+				circle at 12px 12px,
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at calc(100% - 12px) 12px,
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at 12px calc(100% - 12px),
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at calc(100% - 12px) calc(100% - 12px),
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			linear-gradient(
+				180deg,
+				color-mix(in oklab, var(--surface-card), white 4%),
+				var(--surface-card) 55%,
+				color-mix(in oklab, var(--surface-card), black 10%)
+			);
+		border: 1px solid var(--steel-200);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--card-shadow);
 	}
 
 	.card[data-theme='public'][data-variant='default']:hover {
-		box-shadow: var(--card-shadow-hover);
-	}
-
-	/* Dark mode: solid background for legibility over busy backgrounds, plus the
-	   elevation ladder's crisp directional lit edge — top/left catch the upper-left
-	   light, bottom/right fall into shade. */
-	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default'] {
-		background: var(--bg-glass-solid);
-		border-top-color: var(--el-edge-light);
-		border-left-color: var(--el-edge-light);
-		border-right-color: var(--el-edge-shade);
-		border-bottom-color: var(--el-edge-shade);
-	}
-
-	/* Dark mode: warm sunset glow on hover */
-	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='default']:hover {
-		border-color: var(--accent-secondary-hover);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--card-shadow-hover);
 	}
 
 	/* === Admin theme — solid surface === */
@@ -135,13 +183,10 @@
 	}
 
 	/* === Elevated variant === */
-	.card[data-variant='elevated'] {
-		box-shadow: var(--card-shadow-hover);
-	}
-
 	.card[data-theme='public'][data-variant='elevated'] {
-		background: var(--bg-glass-solid);
-		border: 1px solid var(--card-border);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--shadow-2);
 	}
 
 	.card[data-theme='admin'][data-variant='elevated'] {
@@ -187,26 +232,11 @@
 		cursor: pointer;
 	}
 
-	.card[data-theme='public'][data-variant='interactive'] {
-		background: var(--card-bg);
-		border: 1px solid var(--card-border);
-		box-shadow: var(--card-shadow);
-	}
-
-	/* Dark mode: solid background matching default, with scale + border glow on hover.
-	   Carries the same directional lit edge as the default variant. */
-	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive'] {
-		background: var(--bg-glass-solid);
-		border-top-color: var(--el-edge-light);
-		border-left-color: var(--el-edge-light);
-		border-right-color: var(--el-edge-shade);
-		border-bottom-color: var(--el-edge-shade);
-	}
-
 	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive']:hover {
-		transform: scale(1.02);
-		border-color: var(--accent-border);
-		box-shadow: var(--card-shadow-hover);
+		transform: translateY(-1px);
+		box-shadow:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
+			var(--shadow-2);
 	}
 
 	/* Admin theme: elevated background with pointer affordance */

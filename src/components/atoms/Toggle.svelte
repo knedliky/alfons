@@ -67,7 +67,7 @@
 	}
 
 	.toggle-switch:focus-visible .toggle-track {
-		box-shadow: 0 0 0 3px var(--accent-bg-emphasis);
+		box-shadow: var(--focus-ring);
 	}
 
 	.toggle-track {
@@ -82,7 +82,10 @@
 	}
 
 	.toggle-switch.checked .toggle-track {
-		background-color: var(--accent);
+		/* Functional blue, and the gloss that makes an on switch read as a
+		   moulded part rather than a coloured pill. */
+		background-color: var(--focus);
+		background-image: var(--gloss);
 	}
 
 	.toggle-thumb {

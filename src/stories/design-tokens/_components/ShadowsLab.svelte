@@ -72,7 +72,6 @@
 		{ token: '--shadow-glass', maps: '--elevation-2 · L2' },
 		{ token: '--select-dropdown-shadow', maps: '--elevation-3 · L3' },
 		{ token: '--tooltip-shadow', maps: '--elevation-3 · L3' },
-		{ token: '--shadow-header', maps: 'standalone · 0 1px 2px' },
 		{ token: '--button-shadow-hover', maps: 'standalone · sunset glow' },
 		{ token: '--button-shadow-active', maps: 'standalone · inset press' },
 		{ token: '--admin-shadow', maps: 'admin namespace · standalone' }

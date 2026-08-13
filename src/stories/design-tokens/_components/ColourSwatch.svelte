@@ -123,7 +123,7 @@
 
 	.swatch-copied {
 		font-size: 11px;
-		color: var(--hex-olive);
+		color: var(--toolbox-olive);
 		font-weight: 600;
 	}
 </style>

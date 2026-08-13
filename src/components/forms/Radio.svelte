@@ -127,7 +127,7 @@
 		width: 0.46rem;
 		height: 0.46rem;
 		border-radius: 50%;
-		background: var(--accent);
+		background: var(--text-inverse);
 		transform: scale(0);
 		transition: transform 0.32s cubic-bezier(0.34, 1.7, 0.5, 1);
 	}
@@ -142,12 +142,15 @@
 
 	.motif-radio-input:checked + .motif-radio-dot {
 		border-color: transparent;
-		background: var(--accent);
+		/* Functional blue — see Checkbox. */
+		background: var(--focus);
 		animation: motif-radio-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
 	.motif-radio-input:checked + .motif-radio-dot::after {
-		background: var(--text-primary);
+		/* Foundry black on the blue, by the light-plastic ink rule. Bone here
+		   read as a smudge rather than a dot. */
+		background: var(--text-inverse);
 		transform: scale(1);
 	}
 

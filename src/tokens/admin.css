@@ -19,21 +19,16 @@
 
 @layer base {
 	:root {
-		/* Admin page header typography (smaller than public pages) */
-		--admin-header-size: 1.75rem;
+		/* Admin page header typography — the mobile steps only. The desktop
+		   --admin-header-size/-weight and --admin-subheader-size went under
+		   D-181; nothing had read them since the admin header was rebuilt. */
 		--admin-header-size-mobile: 1.5rem;
-		--admin-header-weight: 600;
-		--admin-subheader-size: 1.125rem;
 		--admin-subheader-size-mobile: 1rem;
 
 		/* === CHART ADMIN VARIANTS ========================================
 		   All admin chart variants reference --admin-* tokens so they remain
 		   pinned to the dark palette regardless of colour mode. */
 		--chart-admin-series-1: var(--chart-series-1);
-		--chart-admin-series-2: var(--chart-series-2);
-		--chart-admin-series-3: var(--chart-series-3);
-		--chart-admin-series-4: var(--chart-series-4);
-		--chart-admin-series-5: var(--chart-series-5);
 
 		--chart-axis-colour-admin: var(--admin-text-muted);
 		--chart-grid-colour-admin: var(--admin-border);
@@ -54,9 +49,10 @@
 		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%);
 	}
 
-	/* Admin heading override — all admin headings use the body font (Switzer)
-	   instead of IBM Plex Serif. Colour pinned to --admin-text so headings
-	   never inherit the public --text-primary. */
+	/* Admin heading override — admin headings take the body face rather than
+	   the display one. Under Meccano both resolve to Moderat, so this now only
+	   carries the colour pin: --admin-text, so headings never inherit the
+	   public --text-primary. Kept as the seam for a future admin display face. */
 	.admin-layout-container :is(h1, h2, h3, h4, h5, h6) {
 		font-family: var(--font-body);
 		color: var(--admin-text);

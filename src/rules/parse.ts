@@ -120,7 +120,7 @@ export function walkSvelte(
  * Atlas had three components referencing the deprecated --color-full. They were
  * invisible because a style block is not the only place a token is named:
  *
- *     accent: 'var(--color-full)'          a string in the instance script
+ *     accent: 'var(--colour-full)'          a string in the instance script
  *     <div style="color: var(--x)">        an attribute value
  *
  * Still structural, not textual. The Svelte and ESTree parsers find the string

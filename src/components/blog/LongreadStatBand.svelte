@@ -41,7 +41,7 @@
 		font-family: var(--font-display);
 		font-size: 2.5rem;
 		color: var(--text-primary);
-		text-shadow: 0 0 24px color-mix(in oklch, var(--amber) 30%, transparent);
+		text-shadow: 0 0 24px color-mix(in oklch, var(--brass-amber) 30%, transparent);
 	}
 
 	.stat-label {

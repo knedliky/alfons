@@ -181,11 +181,14 @@
 
 	.motif-check-input:checked + .motif-check-box,
 	.motif-check-input:indeterminate + .motif-check-box {
-		background: var(--accent);
-		border-color: var(--accent);
-		/* White in both modes — the tick must stay legible on the accent fill,
-		   so it does not track the theme's text colour. */
-		color: oklch(1 0 0);
+		/* Functional blue, not the accent. Meccano reserves girder red for the
+		   thing that acts and gives selection controls, links and focus to
+		   pulley blue; its own Checkbox fills with var(--focus). */
+		background: var(--focus);
+		border-color: var(--focus);
+		/* Pulley blue is a light plastic, so the tick is foundry black by the
+		   same rule that governs Badge. It was white against the red fill. */
+		color: var(--text-inverse);
 		animation: motif-check-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 

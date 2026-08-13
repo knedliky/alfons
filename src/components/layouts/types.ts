@@ -7,6 +7,11 @@
  *
  * New intermediate steps available for finer control:
  *   --space-3 (12px), --space-7 (48px), --space-9 (96px), --space-10 (128px)
+ *
+ * resolveGap builds the token name at runtime, so every rung 1-10 must exist
+ * in spacing.css whether or not a stylesheet writes it. A dead-token audit
+ * greps for literal names and cannot see these; spacing.css carries the
+ * matching warning.
  */
 
 export type SemanticGap = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';

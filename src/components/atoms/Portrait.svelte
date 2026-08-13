@@ -83,8 +83,8 @@
 					cx="120"
 					cy="80"
 					r="118"
-					fill="var(--hex-sunset)"
-					stroke="var(--hex-sunset)"
+					fill="var(--gantry-orange)"
+					stroke="var(--gantry-orange)"
 					stroke-width="2"
 				/>
 				<circle
@@ -99,32 +99,32 @@
 					cx="120"
 					cy="80"
 					r="118"
-					fill="var(--hex-amber)"
-					stroke="var(--hex-amber)"
+					fill="var(--brass-amber)"
+					stroke="var(--brass-amber)"
 					stroke-width="2"
 				/>
 				<circle
 					cx="120"
 					cy="80"
 					r="118"
-					fill="var(--hex-blush)"
-					stroke="var(--hex-blush)"
+					fill="var(--pinion-pink)"
+					stroke="var(--pinion-pink)"
 					stroke-width="2"
 				/>
 				<circle
 					cx="120"
 					cy="80"
 					r="118"
-					fill="var(--hex-sky)"
-					stroke="var(--hex-sky)"
+					fill="var(--pulley-blue)"
+					stroke="var(--pulley-blue)"
 					stroke-width="2"
 				/>
 				<circle
 					cx="120"
 					cy="80"
 					r="118"
-					fill="var(--hex-navy)"
-					stroke="var(--hex-navy)"
+					fill="var(--boiler-navy)"
+					stroke="var(--boiler-navy)"
 					stroke-width="2"
 				/>
 			</svg> -->

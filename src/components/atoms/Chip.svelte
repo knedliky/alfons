@@ -10,7 +10,7 @@
 		onRemove?: () => void;
 		/** Makes the whole chip a button */
 		onClick?: () => void;
-		/** Tint token for border/text (any brand colour, e.g. 'var(--sky-blue)') */
+		/** Tint token for border/text (any brand colour, e.g. 'var(--pulley-blue)') */
 		colour?: string;
 		/** Border-only or faint wash */
 		fill?: 'outline' | 'soft';
@@ -32,7 +32,7 @@
 	 * for status use Badge.
 	 *
 	 * Usage:
-	 *   <Chip label="Finance" colour="var(--sky-blue)" fill="soft" onRemove={() => drop('finance')} />
+	 *   <Chip label="Finance" colour="var(--pulley-blue)" fill="soft" onRemove={() => drop('finance')} />
 	 *   <Chip label="High exposure" onClick={toggle} />
 	 */
 	import Icon from './Icon.svelte';

@@ -47,8 +47,8 @@
 		width: 100%;
 		resize: none;
 		font-size: 1rem;
-		/* Square — agentic rounding belongs to the agent input, not plain form fields */
-		border-radius: 0;
+		/* The same machined control corner as Input and Select. */
+		border-radius: var(--radius);
 		padding: var(--space-4) var(--space-5);
 		transition:
 			border-color var(--transition-normal),
@@ -73,10 +73,8 @@
 	/* Public theme */
 
 	.textarea[data-theme='public'] {
-		border: 1px solid var(--card-border);
-		/* Glassy card-bg surface, matching the toggle group and Select (was the
-		   opaque --input-bg). Keeps Textarea consistent with Input. */
-		background: var(--card-bg);
+		border: 1px solid var(--border-default);
+		background: var(--surface-card);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}
@@ -85,11 +83,9 @@
 		color: var(--text-muted);
 	}
 
-	.textarea[data-theme='public']:focus {
-		border-color: var(--card-border-hover);
-		box-shadow:
-			0 0 0 2px var(--bg-primary),
-			0 0 0 4px var(--accent);
+	.textarea[data-theme='public']:focus-visible {
+		border-color: var(--focus);
+		box-shadow: var(--focus-ring);
 	}
 
 	/* Admin theme */

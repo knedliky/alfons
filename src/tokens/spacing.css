@@ -4,18 +4,32 @@
  * 10-step spacing scale, the radius family, input heights, and fixed
  * structural dimensions for page chrome.
  *
- * RADIUS PHILOSOPHY (updated): every corner is SQUARE — the blinking-cursor
- * motif carried to completion. The former agentic-curve reservation (rounded
- * chat bubbles, pill buttons, rounded form fields) is retired; the whole
- * radius family resolves to 0. The token names survive so the scale can be
- * revived by editing values here, and so consumer declarations keep one
- * source of truth. True circles are shapes, not corner treatments —
- * border-radius: 50% dots, knobs, thumbs and avatars stay circular.
+ * RADIUS PHILOSOPHY (Meccano retune, D-180): corners are MACHINED — 3 / 6 /
+ * 10px, nothing softer, plus a true round for pills and switch tracks. This
+ * supersedes the uniformly-square scale, and it is the edit D-160 left the
+ * door open for: it kept the role names precisely so rounding could revive in
+ * one edit per role, and this is that edit.
+ *
+ * The roles alias a four-rung primitive scale rather than carrying values
+ * directly, so new markup can reach for the machined rung it wants while the
+ * role names keep their single source of truth. True circles are still shapes
+ * rather than corner treatments — border-radius: 50% dots, knobs, thumbs and
+ * avatars stay circular.
  */
 
 @layer base {
 	:root {
-		/* === SPACING — 10-step scale ===================================== */
+		/* === SPACING — 10-step scale =====================================
+		   Every rung stays, including the ones no stylesheet names. This scale
+		   is indexed programmatically: resolveGap() in components/layouts
+		   builds `var(--space-${n})` from a Gap type that permits 1 through 10,
+		   so <Grid gap={9}> is a valid typed call and --space-9 is reachable
+		   even though nothing writes it literally. D-181 nearly deleted it on
+		   the evidence of a grep that cannot see a name built at runtime.
+
+		   The rule: a rung of a complete, programmatically-indexed scale is
+		   never unused. A scale with a hole in it is worse than a scale with
+		   an unadopted step. */
 		--space-1: 4px;
 		--space-2: 8px;
 		--space-3: 12px;
@@ -27,22 +41,45 @@
 		--space-9: 96px;
 		--space-10: 128px;
 
-		/* === RADIUS — uniformly square; names kept for one-edit revival ==== */
-		--radius-surface: 0; /* cards, modals, alerts, tooltips, stats, badges, toasts */
-		--radius: 0; /* form controls */
-		--card-radius: 0; /* form fields (textarea, select menu) */
-		--radius-message: 0; /* chat bubbles + agent input */
-		--radius-pill: 0; /* buttons, text inputs, toggles, pills */
+		/* === RADIUS — the machined scale ================================= */
+		--radius-1: 3px; /* chips, badges, ticks — the smallest machined corner */
+		--radius-2: 6px; /* the workhorse: buttons, cards, inputs, panels */
+		--radius-3: 10px; /* larger surfaces: dialogs, chat */
+		--radius-round: 999px; /* pills and switch tracks */
+
+		/* Roles, aliasing the rungs above. The values come from what the
+		   Meccano kit actually sets, not from the role names: its Button,
+		   Input and Card are all --radius-2, its Dialog and chat are
+		   --radius-3, its Badge is --radius-1, its Tag and Switch are round. */
+		--radius-surface: var(--radius-2); /* cards, modals, alerts, tooltips, stats, toasts */
+		--radius: var(--radius-2); /* form controls */
+		--card-radius: var(--radius-2); /* form fields (textarea, select menu) */
+		--radius-message: var(--radius-3); /* chat bubbles + agent input */
+		/* Genuinely round things only. This role was documented as "buttons,
+		   text inputs, toggles, pills", which bundles two different Meccano
+		   treatments — machined 6px for buttons and inputs, fully round for
+		   switch tracks and chips. Pinning everything to 0 made both answers
+		   render identically and hid the overload; reviving the scale forces
+		   the choice. It resolves round, because that is what the name says and
+		   what the majority of its consumers are, and the machined controls
+		   moved to --radius in this same change. */
+		--radius-pill: var(--radius-round);
 
 		/* === CARD METRICS ================================================ */
 		--card-padding: var(--space-6);
 		--card-padding-sm: var(--space-5);
 		--card-blur: 3.5px;
 
-		/* === INPUT HEIGHTS — match Button size tiers ===================== */
-		--input-height: 3rem;
-		--input-height-sm: 2.5rem;
-		--input-height-lg: 3.5rem;
+		/* === CONTROL HEIGHTS — Button size tiers and inputs, together ====
+		   The Meccano ladder: 28 / 36 / 44px, denser than the 40/48/56 it
+		   replaces. Button reads these directly so the two cannot drift.
+
+		   36px clears the WCAG 2.5.8 minimum target of 24px comfortably, but
+		   sits under the 44px AAA figure. Touch-primary surfaces should reach
+		   for size="lg", which is exactly 44px for that reason. */
+		--input-height: 2.25rem; /* 36px */
+		--input-height-sm: 1.75rem; /* 28px */
+		--input-height-lg: 2.75rem; /* 44px */
 
 		/* === LAYOUT ====================================================== */
 		--header-height: 80px;
@@ -53,10 +90,8 @@
 		--page-padding-x-mobile: var(--space-4);
 		--page-top-padding: var(--space-8);
 		--page-top-padding-mobile: var(--space-8);
-		--section-padding-y: var(--space-10);
 		--section-padding-x: var(--page-padding-x);
 		--section-header-max-width: 36rem;
-		--layout-hero-min-height: calc(80vh - var(--header-height));
 
 		/* Scroll anchor offset — accounts for fixed header + back-link row */
 		--scroll-margin-top: calc(var(--header-height) + var(--back-link-height) + 16px);

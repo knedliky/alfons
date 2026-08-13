@@ -1,59 +1,106 @@
 /**
- * Motif Design Library — Font faces
+ * Alfons — Font faces
  *
- * All typeface loading lives here (moved out of base.css in the token split).
- * IBM Plex Serif (display), Azeret Mono (mono/metrics) and Rock Salt (drop cap)
- * are self-hosted via @fontsource (latin subset only, no external CDN).
- * Switzer (body sans) and Moderat Bold (the brand wordmark face) are not on
- * Fontsource, so their weights are self-hosted under src/fonts/ and referenced
- * relatively; consumers bundle them through their own build.
+ * MECCANO RETUNE: the type system is now two families, not five. Moderat
+ * carries everything — display, headings, body, UI — and GT America Mono
+ * carries spec labels, part numbers, units and table numerics. IBM Plex Serif,
+ * Switzer, Azeret Mono and Rock Salt are gone from the language; the family
+ * tokens that named them survive in typography.css and now resolve to Moderat,
+ * so no consumer breaks on the swap.
+ *
+ * Both faces are licensed binaries supplied with the brand, self-hosted under
+ * src/fonts/ and referenced relatively; consumers bundle them through their own
+ * build. Converted from the supplied TrueType to woff2 (~70% smaller); the
+ * TrueType originals are not shipped.
+ *
+ * Moderat has no 600 cut — --fw-semibold maps to Medium (500). Never let a
+ * browser synthesise the missing weight.
+ *
+ * GT America Mono is regular-only. Caps and tracking carry emphasis in mono;
+ * never synthesise bold.
  *
  * Usage: imported by public.css — do not import separately.
  */
 
-@import '@fontsource-variable/azeret-mono/wght.css';
-@import '@fontsource/ibm-plex-serif/latin-400.css';
-@import '@fontsource/ibm-plex-serif/latin-500.css';
-@import '@fontsource/ibm-plex-serif/latin-600.css';
-@import '@fontsource/ibm-plex-serif/latin-700.css';
-@import '@fontsource/rock-salt/latin-400.css';
+/* === MODERAT — the whole sans voice, Light through Black ================= */
 
-/* Switzer (Fontshare / Indian Type Foundry) — the default body sans (--font-body) */
 @font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-400.woff2') format('woff2');
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-LightItalic.woff2') format('woff2');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-500.woff2') format('woff2');
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-RegularItalic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-Medium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-600.woff2') format('woff2');
-	font-weight: 600;
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-MediumItalic.woff2') format('woff2');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-Bold.woff2') format('woff2');
+	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: 'Switzer';
-	src: url('../fonts/Switzer-700.woff2') format('woff2');
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-BoldItalic.woff2') format('woff2');
 	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-Black.woff2') format('woff2');
+	font-weight: 900;
 	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Moderat';
+	src: url('../fonts/Moderat-BlackItalic.woff2') format('woff2');
+	font-weight: 900;
+	font-style: italic;
 	font-display: swap;
 }
 
-/* Moderat Bold — the brand wordmark face (--font-wordmark), self-hosted.
-   NEW: copy fonts/Moderat-Bold.ttf from this handoff into src/fonts/. */
+/* === GT AMERICA MONO — spec labels, part numbers, units, table numerics == */
+
 @font-face {
-	font-family: 'Moderat';
-	src: url('../fonts/Moderat-Bold.ttf') format('truetype');
-	font-weight: 700;
+	font-family: 'GT America Mono';
+	src: url('../fonts/GT-America-Mono-Regular.woff2') format('woff2');
+	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }

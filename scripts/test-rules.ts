@@ -50,12 +50,38 @@ function silent(description: string, rule: string, source: string, surface: Surf
 const wrap = (style: string, markup = '<div class="a"></div>') =>
 	`${markup}\n<style>\n${style}\n</style>`;
 
+/**
+ * A hex literal that exactly one token holds, read out of the manifest.
+ *
+ * The raw-value and apply_fixes fixtures need a literal with a token behind it,
+ * and naming one inline couples the suite to the palette. It did: these four
+ * checks hardcoded #d4b896 and --hex-sand, and the Meccano retune (D-179) broke
+ * all four by making --hex-sand an alias, so no token held that value any more.
+ * The rules were fine — the fixture was asserting a colour rather than a
+ * behaviour.
+ *
+ * Uniqueness matters. apply_fixes picks a token for a value, and if two held
+ * the same one the substitution check would be asserting which of two equally
+ * correct answers came back.
+ */
+const hexLiteral = /^#[0-9a-f]{6}$/i;
+const swatch = manifest.tokens.find(
+	(token) =>
+		hexLiteral.test(token.value.trim()) &&
+		manifest.tokens.filter(
+			(other) => other.value.trim().toLowerCase() === token.value.trim().toLowerCase()
+		).length === 1
+);
+if (!swatch)
+	throw new Error('no token holds a unique hex literal — the raw-value fixtures need one');
+const swatchValue = swatch.value.trim().toLowerCase();
+
 // ---------------------------------------------------------------------------
 console.log('\nraw-value (C1)');
-const rawHits = fires('reports a raw hex', 'raw-value', wrap('.a { background: #d4b896; }'));
+const rawHits = fires('reports a raw hex', 'raw-value', wrap(`.a { background: ${swatchValue}; }`));
 check(
 	'names the token holding that exact value',
-	rawHits.some((hit) => hit.message.includes('--hex-sand')),
+	rawHits.some((hit) => hit.message.includes(swatch.name)),
 	rawHits.map((hit) => hit.message)
 );
 check(
@@ -160,7 +186,7 @@ silent(
 check(
 	'a tab-indented raw value is still found',
 	ruleIds(
-		'<div class="a"></div>\n<style>\n\t.a {\n\t\tbackground: #d4b896;\n\t}\n</style>'
+		`<div class="a"></div>\n<style>\n\t.a {\n\t\tbackground: ${swatchValue};\n\t}\n</style>`
 	).includes('raw-value')
 );
 
@@ -277,14 +303,18 @@ check(
 
 // ---------------------------------------------------------------------------
 console.log('\napply_fixes (C7)');
-const before = wrap('.a { background: #d4b896; padding: 24px; }');
+const before = wrap(`.a { background: ${swatchValue}; padding: 24px; }`);
 const fixed = applyFixes(before, manifest);
-check('rewrites the literal to a token', fixed.source.includes('var(--hex-sand)'), fixed.source);
+check(
+	'rewrites the literal to a token',
+	fixed.source.includes(`var(${swatch.name})`),
+	fixed.source
+);
 check(
 	'removes the fixed violation on a second pass',
 	!ruleIds(fixed.source).includes('raw-value') ||
 		review(fixed.source, manifest).violations.filter(
-			(v) => v.rule === 'raw-value' && v.message.includes('--hex-sand')
+			(v) => v.rule === 'raw-value' && v.message.includes(swatch.name)
 		).length === 0,
 	review(fixed.source, manifest).violations.map((v) => v.message)
 );
@@ -292,12 +322,10 @@ check('reports what it applied', fixed.applied.length > 0, fixed.applied.length)
 check('the fixed source still parses', review(fixed.source, manifest).parseError === null);
 
 // A fix must be value-identical, or "rendered output unchanged" is not true.
-const tokenValue = manifest.tokens
-	.find((token) => token.name === '--hex-sand')
-	?.value.toLowerCase();
+const tokenValue = manifest.tokens.find((token) => token.name === swatch.name)?.value.toLowerCase();
 check(
 	'the substituted token holds exactly the replaced value',
-	tokenValue === '#d4b896',
+	tokenValue === swatchValue,
 	tokenValue
 );
 

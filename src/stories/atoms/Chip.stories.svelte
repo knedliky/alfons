@@ -30,14 +30,14 @@
 </Story>
 
 <Story name="Soft Fill" asChild args={{ label: 'Finance', fill: 'soft' }}>
-	<Chip label="Finance" fill="soft" colour="var(--sky-blue)" />
+	<Chip label="Finance" fill="soft" colour="var(--pulley-blue)" />
 </Story>
 
 <Story name="Removable" asChild>
 	<div style="display: inline-flex; gap: var(--space-2)">
-		<Chip label="Technology" colour="var(--sky-blue)" fill="soft" onRemove={noop} />
-		<Chip label="Healthcare" colour="var(--olive-green)" fill="soft" onRemove={noop} />
-		<Chip label="Legal" colour="var(--aubergine)" fill="soft" onRemove={noop} />
+		<Chip label="Technology" colour="var(--pulley-blue)" fill="soft" onRemove={noop} />
+		<Chip label="Healthcare" colour="var(--toolbox-olive)" fill="soft" onRemove={noop} />
+		<Chip label="Legal" colour="var(--flange-plum)" fill="soft" onRemove={noop} />
 	</div>
 </Story>
 

@@ -7,18 +7,33 @@
 	});
 </script>
 
-<Story name="Brand Colours">
+<Story name="Part Colours">
 	<div class="grid">
-		<ColourSwatch tokenName="--fire-engine-red" label="Fire Engine Red" />
-		<ColourSwatch tokenName="--burnt-sunset" label="Burnt Sunset" />
-		<ColourSwatch tokenName="--aubergine" label="Aubergine" />
-		<ColourSwatch tokenName="--sky-blue" label="Sky Blue" />
-		<ColourSwatch tokenName="--blush-pink" label="Blush Pink" />
-		<ColourSwatch tokenName="--powder-sand" label="Powder Sand" />
-		<ColourSwatch tokenName="--olive-green" label="Olive Green" />
-		<ColourSwatch tokenName="--navy-royal" label="Navy Royal" />
-		<ColourSwatch tokenName="--amber" label="Amber" />
-		<ColourSwatch tokenName="--charcoal-ember" label="Charcoal Ember" />
+		<ColourSwatch tokenName="--girder-red" label="Girder Red" />
+		<ColourSwatch tokenName="--gantry-orange" label="Gantry Orange" />
+		<ColourSwatch tokenName="--brass-amber" label="Brass Amber" />
+		<ColourSwatch tokenName="--toolbox-olive" label="Toolbox Olive" />
+		<ColourSwatch tokenName="--pulley-blue" label="Pulley Blue" />
+		<ColourSwatch tokenName="--boiler-navy" label="Boiler Navy" />
+		<ColourSwatch tokenName="--flange-plum" label="Flange Plum" />
+		<ColourSwatch tokenName="--pinion-pink" label="Pinion Pink" />
+	</div>
+</Story>
+
+<!-- The ground, bone, and every step derived between them. Nothing here is
+     hand-authored except the two poles and the two text tones. -->
+<Story name="Neutrals">
+	<div class="grid">
+		<ColourSwatch tokenName="--ink-900" label="Ink 900 — bone" />
+		<ColourSwatch tokenName="--ink-700" label="Ink 700" />
+		<ColourSwatch tokenName="--ink-500" label="Ink 500" />
+		<ColourSwatch tokenName="--ink-400" label="Ink 400" />
+		<ColourSwatch tokenName="--ink-300" label="Ink 300" />
+		<ColourSwatch tokenName="--steel-200" label="Steel 200" />
+		<ColourSwatch tokenName="--steel-150" label="Steel 150" />
+		<ColourSwatch tokenName="--steel-100" label="Steel 100" />
+		<ColourSwatch tokenName="--steel-50" label="Steel 50" />
+		<ColourSwatch tokenName="--foundry-black" label="Foundry Black — ground" />
 	</div>
 </Story>
 
@@ -48,22 +63,6 @@
 	</div>
 </Story>
 
-<Story name="SVG/Hex Colours">
-	<div class="grid">
-		<ColourSwatch tokenName="--hex-red" label="Hex Red" />
-		<ColourSwatch tokenName="--hex-sunset" label="Hex Sunset" />
-		<ColourSwatch tokenName="--hex-aubergine" label="Hex Aubergine" />
-		<ColourSwatch tokenName="--hex-sky" label="Hex Sky" />
-		<ColourSwatch tokenName="--hex-blush" label="Hex Blush" />
-		<ColourSwatch tokenName="--hex-sand" label="Hex Sand" />
-		<ColourSwatch tokenName="--hex-olive" label="Hex Olive" />
-		<ColourSwatch tokenName="--hex-navy" label="Hex Navy" />
-		<ColourSwatch tokenName="--hex-amber" label="Hex Amber" />
-		<ColourSwatch tokenName="--hex-dark" label="Hex Dark" />
-		<ColourSwatch tokenName="--hex-light" label="Hex Light" />
-	</div>
-</Story>
-
 <Story name="State Colours">
 	<div class="grid">
 		<ColourSwatch tokenName="--colour-success" label="Success" />
@@ -77,15 +76,16 @@
 	</div>
 </Story>
 
-<Story name="Chart Series">
+<!-- One series, because BarChart and LineChart plot one. The eight-colour
+     --chart-series-* scale and the --chart-axis-colour/--chart-grid-colour
+     pair this story used to show were both vocabularies no chart read: the
+     first went under D-181, the second under D-165. -->
+<Story name="Chart">
 	<div class="grid">
-		<ColourSwatch tokenName="--chart-series-1" label="Series 1" />
-		<ColourSwatch tokenName="--chart-series-2" label="Series 2" />
-		<ColourSwatch tokenName="--chart-series-3" label="Series 3" />
-		<ColourSwatch tokenName="--chart-series-4" label="Series 4" />
-		<ColourSwatch tokenName="--chart-series-5" label="Series 5" />
-		<ColourSwatch tokenName="--chart-axis-colour" label="Chart Axis" />
-		<ColourSwatch tokenName="--chart-grid-colour" label="Chart Grid" />
+		<ColourSwatch tokenName="--chart-admin-series-1" label="Series 1" />
+		<ColourSwatch tokenName="--chart-axis-colour-admin" label="Axis" />
+		<ColourSwatch tokenName="--chart-grid-colour-admin" label="Grid" />
+		<ColourSwatch tokenName="--chart-tooltip-bg-admin" label="Tooltip BG" />
 	</div>
 </Story>
 

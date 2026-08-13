@@ -136,23 +136,42 @@ check(
 	'deprecated tokens are hidden by default',
 	publicColours.tokens.every((token) => token.status !== 'deprecated')
 );
+
+/**
+ * These assertions used to name --color-full and expect deprecatedHidden > 0,
+ * which passed only while a deprecation backlog happened to exist. D-181
+ * emptied it — every deprecated token was either migrated and deleted, or
+ * turned out to have a consumer and went back to live — and all three checks
+ * failed on a system that was working correctly.
+ *
+ * So they assert the behaviour instead of a population: the reported count
+ * must equal the real one, whatever that is, and the replacement-and-decision
+ * contract is checked against a tombstone, which is where it now lives and
+ * where 136 rows exercise it.
+ */
+const deprecatedInManifest = manifest.tokens.filter(
+	(token) => token.category === 'colours' && token.lifecycle?.status === 'deprecated'
+).length;
 check(
-	'and reported as hidden rather than silently dropped',
-	publicColours.deprecatedHidden > 0,
-	publicColours.deprecatedHidden
+	'hidden deprecated tokens are counted, not silently dropped',
+	publicColours.deprecatedHidden === deprecatedInManifest,
+	{ reported: publicColours.deprecatedHidden, actual: deprecatedInManifest }
 );
 
-const withDeprecated = getTokens(manifest, { category: 'colours', includeDeprecated: true });
-const deprecated = withDeprecated.tokens.find((token) => token.name === '--color-full') as Record<
-	string,
-	string
->;
-check(
-	'a deprecated token carries its replacement',
-	deprecated?.replacement === '--colour-full',
-	deprecated
+const tombstone = manifest.tombstones.find(
+	(entry) => entry.kind === 'token' && entry.lifecycle.replacement
 );
-check('and the decision that deprecated it', deprecated?.decisionId === 'D-167', deprecated);
+check('a retired token leaves a tombstone', Boolean(tombstone), manifest.tombstones.length);
+check(
+	'the tombstone carries its replacement',
+	Boolean(tombstone?.lifecycle.replacement),
+	tombstone
+);
+check(
+	'and the decision that retired it',
+	/^D-\d+$/.test(tombstone?.lifecycle.decisionId ?? ''),
+	tombstone
+);
 
 check(
 	'categories are listed for discovery',

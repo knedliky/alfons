@@ -103,29 +103,22 @@
 		text: getThemeToken('--text-primary', '--admin-text'),
 		textSecondary: getThemeToken('--text-secondary', '--admin-text-secondary'),
 		textMuted: getThemeToken('--text-muted', '--admin-text-muted'),
-		border: getThemeToken('--card-border', '--admin-border'),
-		background: getThemeToken('--card-bg', '--admin-bg'),
-		// The floating dropdown sits at L3 of the elevation ladder: the public theme
-		// uses the frosted-glass L3 fill (translucent, the dropdown's blur keeps it
-		// legible); admin keeps its solid elevated surface.
-		backgroundElevated: getThemeToken('--elevation-3-bg', '--admin-bg-elevated'),
+		border: getThemeToken('--border-default', '--admin-border'),
+		background: getThemeToken('--surface-card', '--admin-bg'),
+		// The reference makes the floating menu the same opaque control plate as
+		// its trigger; elevation comes from the shadow, never from frosted glass.
+		backgroundElevated: getThemeToken('--surface-card', '--admin-bg-elevated'),
 		inputBg: getThemeToken('--input-bg', '--admin-bg')
 	});
 
 	const selectedOption = $derived(options.find((opt) => opt.value === value));
 
 	/**
-	 * Value-pill background — tinted with the selected option's `accent` so the
-	 * current value reads as an inner pill carrying its colour, exactly like a
-	 * toggle group's active segment. Mixed into transparent (not the trigger bg)
-	 * so the trigger's own surface shows through the gap around the pill. An
-	 * accent of 'transparent', or none, leaves the pill uncoloured.
+	 * The trigger carries its selection through the label, not a coloured inner
+	 * pill. Meccano's Select leaves the field a steel plate; selection is marked
+	 * in the option list by weight while keyboard focus gets a steel wash.
 	 */
-	const valuePillBackground = $derived(
-		selectedOption?.accent && selectedOption.accent !== 'transparent'
-			? `color-mix(in oklch, ${selectedOption.accent} 15%, transparent)`
-			: 'transparent'
-	);
+	const valuePillBackground = $derived('transparent');
 
 	/**
 	 * Visible options after applying the search filter. When not searchable or
@@ -466,13 +459,7 @@
 							style="
 								{option.style ?? ''}
 								color: {isSelected || isHighlighted ? tokens.text : tokens.textSecondary};
-								background: {isSelected
-								? `color-mix(in oklch, ${option.accent ?? 'var(--accent)'} 15%, transparent)`
-								: isHighlighted
-									? option.accent && option.accent !== 'transparent'
-										? `color-mix(in oklch, ${option.accent} 15%, transparent)`
-										: 'var(--select-highlighted-bg)'
-									: 'transparent'};
+								background: {isHighlighted ? 'var(--steel-100)' : 'transparent'};
 							"
 							onclick={() => selectOption(option)}
 							onmouseenter={() => (highlightedIndex = index)}
@@ -522,15 +509,10 @@
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
-		/* Rounded rectangle on the shared --radius-message tier, so the trigger
-		   reads as one family with the search box, the dropdown panel and any card
-		   surface beside it rather than as a lone stadium. */
-		border-radius: var(--radius-message);
+		border-radius: var(--radius);
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
-		/* Glassy card-bg surface, matching the toggle group and old CustomSelect
-		   (was --select-input-bg, the opaque form field background). */
 		background: var(--select-bg);
 		transition:
 			border-color var(--transition-normal),
@@ -617,15 +599,8 @@
 		max-height: 280px;
 		overflow: hidden;
 		padding: 0.375rem;
-		/* Square panel — the menu is a floating surface, not a pill, so it takes
-		   the sharp non-agentic corner. (The trigger keeps the rounder
-		   --radius-message stadium to match the pill ToggleGroup beside it.) */
-		border-radius: 0;
+		border-radius: var(--radius);
 		box-shadow: var(--select-dropdown-shadow);
-		/* L3 frosted glass — the ladder's floating-level blur keeps the translucent
-		   --elevation-3-bg dropdown legible over busy content. */
-		backdrop-filter: blur(var(--frost-3));
-		-webkit-backdrop-filter: blur(var(--frost-3));
 		/* Fade in to prevent position-calculation flicker */
 		animation: selectDropdownFadeIn 0.1s ease;
 	}
@@ -741,6 +716,10 @@
 		transition:
 			background-color var(--transition-fast),
 			color var(--transition-fast);
+	}
+
+	.select-option[aria-selected='true'] {
+		font-weight: var(--fw-medium);
 	}
 
 	.select-options::-webkit-scrollbar {

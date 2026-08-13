@@ -1,248 +1,295 @@
 /**
- * Motif Design Library — Colour tokens
+ * Alfons — Colour tokens
  *
- * Warm sunset palette in OKLCH for perceptual uniformity. Base brand hues, then
- * semantic surface / text / border / accent aliases. Dark is the sole theme,
- * pinned via data-colour-mode="dark" on <html>.
+ * MECCANO RETUNE. The palette is the same eight brand hues it always was,
+ * re-tuned toward Herman Miller vibrance (cleaner, higher chroma, slightly
+ * warm) and renamed for the parts they resemble: moulded plastic punctuation
+ * on a warm ember-charcoal ground under bone ink.
  *
+ * THE STRUCTURE THAT CHANGED, which matters more than the values: every
+ * neutral is now derived, not authored. Each is a step off --foundry-black
+ * toward --ink-900, so moving the ground re-derives every ramp beneath it.
+ * Previously each ramp step was hand-authored and could drift from its
+ * neighbours, and each brand hue was written twice — once in OKLCH and once in
+ * hex, with a comment asserting the two matched. They did not, exactly, and
+ * nothing checked.
+ *
+ * A hue is now written exactly once, under its part name. The --hex-* family
+ * and the pre-retune brand names were kept as aliases through the migration
+ * and deleted under D-181; nothing in this file points at anything else in it
+ * purely to rename it.
+ *
+ * ON D-004, which chose OKLCH: its concern was perceptual uniformity across
+ * the palette, and that concern is met — every derivation below mixes in
+ * oklab. What changes is only the authoring format for the eight base hues,
+ * which are exact brand values and belong written exactly.
+ *
+ * Dark is the sole theme, pinned via data-colour-mode="dark" on <html>.
  * Australian spelling throughout (colour, not color).
- * UPDATED in this revision: neutral --focus-ring-color, info → sky-blue,
- * brand-derived industry-group tokens + gradients, consolidated admin core.
  */
 
 @layer base {
 	:root {
-		/* === 1. BRAND COLOURS — warm sunset palette ======================= */
-		--fire-engine-red: oklch(0.53 0.2 28);
-		--burnt-sunset: oklch(0.64 0.16 44);
-		--aubergine: oklch(0.44 0.11 319);
-		--sky-blue: oklch(0.77 0.11 229);
-		--blush-pink: oklch(0.78 0.15 340);
-		--powder-sand: oklch(0.93 0.02 68);
-		--olive-green: oklch(0.52 0.1 130);
-		--navy-royal: oklch(0.35 0.14 260);
-		--amber: oklch(0.68 0.15 70);
-		--charcoal-ember: oklch(0.16 0.02 60); /* dark background base */
+		/* === 1. GROUND & INK — the two poles everything derives from =====
+		   Foundry black is the ember floor; ink-900 is bone. Every neutral
+		   below is a mix of these two, so the ramps stay in one hue family
+		   and re-derive together. */
+		--foundry-black: #141010; /* charcoal ember — the ground; also text on light plastics */
+		--ink-900: #efe8db; /* bone — primary text, the brightest neutral */
+		--ink-700: color-mix(in oklab, var(--ink-900), var(--foundry-black) 20%);
+		--ink-500: #a89e8f; /* secondary text */
+		--ink-400: #857b6f; /* muted text */
+		--ink-300: color-mix(in oklab, var(--ink-900), var(--foundry-black) 68%);
 
-		/* Hex equivalents — 1:1 with the OKLCH brand tokens, for SVG / illustration */
-		--hex-red: #ce2029; /* fire-engine-red */
-		--hex-sunset: #d9652b; /* burnt-sunset */
-		--hex-aubergine: #6d3f79; /* aubergine */
-		--hex-sky: #5bc0eb; /* sky-blue */
-		--hex-blush: #f68fd5; /* blush-pink */
-		--hex-sand: #d4b896; /* powder-sand */
-		--hex-olive: #5a7a47; /* olive-green */
-		--hex-navy: #2e3d6b; /* navy-royal */
-		--hex-amber: #d4a946; /* amber */
-		--hex-dark: #141010; /* charcoal-ember */
-		--hex-light: #f3f3f3; /* light text / labels */
+		/* Steel — surfaces, lifted off the ground toward bone */
+		--steel-200: color-mix(in oklab, var(--foundry-black), var(--ink-900) 19%);
+		--steel-150: color-mix(in oklab, var(--foundry-black), var(--ink-900) 13%);
+		--steel-100: color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%);
+		--steel-50: color-mix(in oklab, var(--foundry-black), var(--ink-900) 5%);
 
-		/* === 2. SURFACES ================================================== */
-		--bg-primary: var(--charcoal-ember);
-		--bg-glass: oklch(10% 0.02 150 / 40%);
-		--bg-glass-solid: oklch(9% 0.01 30);
-		--surface-glass-bg: color-mix(in srgb, var(--bg-glass-solid) 85%, transparent);
-		--bg-primary-rgb: 20, 11, 5;
+		/* === 2. PART COLOURS — eight moulded plastics ====================
+		   The brand palette, re-tuned. Each carries the Alfons name it
+		   replaces, because that name is still live as an alias below and the
+		   pairing is the whole migration path. */
+		--girder-red: #e22d2e; /* poppy vermilion · was --fire-engine-red */
+		--gantry-orange: #ee7623; /* persimmon · was --burnt-sunset */
+		--flange-plum: #83489b; /* girard purple · was --aubergine */
+		--pulley-blue: #47c2f2; /* clear sky · was --sky-blue */
+		--pinion-pink: #f972c6; /* hot magenta · was --blush-pink */
+		--toolbox-olive: #5e9141; /* leaf olive · was --olive-green */
+		--boiler-navy: #30489c; /* cobalt · was --navy-royal */
+		--brass-amber: #e5a82e; /* mustard ochre · was --amber */
 
-		/* Subtle surface washes — hover states and recessed tracks */
-		--surface-hover-subtle: oklch(97% 0 0 / 5%);
-		--surface-dark-subtle: oklch(0% 0 0 / 10%);
+		/* The ten pre-retune brand names (--fire-engine-red, --sky-blue, …) and
+		   the eleven --hex-* duplicates lived here as aliases through the
+		   retune, so both repositories could keep building while consumers
+		   migrated. They have, so the aliases are gone under D-181 and a hue
+		   is now written exactly once. The lifecycle rows are the record: an
+		   agent reaching for --hex-red gets --girder-red and a reason. */
 
-		/* === 3. BORDERS ================================================== */
-		--border-glass: oklch(97% 0 0 / 10%);
-		--border-glass-hover: oklch(97% 0 0 / 20%);
-		/* NEW — the single global focus-ring colour: quiet and neutral, not
-		   accent-red. Consumed by :focus-visible in base.css. */
-		--focus-ring-color: color-mix(in srgb, white 55%, transparent);
+		/* === 3. SURFACES =================================================
+		   READ THE NAMES CAREFULLY — one of them does not mean what it says.
 
-		/* === 4. TEXT — hierarchy: primary > secondary > muted ============ */
-		--text-primary: var(--powder-sand);
-		--text-secondary: oklch(0.7 0.02 68);
-		--text-muted: oklch(0.6 0.02 68);
-		/* Retained — opposite-mode primary text for the PageHeader per-letter
-		   pixelate flicker. */
-		--text-flicker-alt: oklch(20% 0.01 55);
+		   --surface-page is NOT the background of the page. The readme is
+		   explicit: "Site pages sit on the workbench (.mcn-bench, charcoal-ember
+		   ground); dense text areas — article bodies, list sheets — float on it
+		   as flat --surface-page panels with a hairline edge and soft shadow."
+		   So --surface-page is the PANEL that floats on the ground, and the
+		   ground itself is --bench-bg, which is --foundry-black.
 
-		/* === 5. ACCENT — primary action colour =========================== */
-		--accent: var(--fire-engine-red);
-		--accent-hover: oklch(0.42 0.17 28);
-		--accent-rgb: 206, 32, 41;
-		--accent-bg-subtle: oklch(45% 0.22 25 / 5%);
-		--accent-bg: oklch(45% 0.22 25 / 10%);
-		--accent-bg-emphasis: oklch(45% 0.22 25 / 15%);
-		--accent-border: oklch(45% 0.22 25 / 30%);
+		   The retune mapped --bg-primary at --surface-page on the strength of
+		   the name, which lifted the entire site five RGB points before the
+		   rake light was added on top, and read as washed out. Corrected here.
 
-		/* === 5b. ACCENT ROLES — surface the full brand palette =========== */
-		--accent-secondary: var(--burnt-sunset); /* hover warmth, secondary highlights */
-		--accent-tertiary: var(--sky-blue); /* informational, workflow indicators */
-		--accent-depth: var(--aubergine); /* synthesis, overlapping regions */
-		--accent-playful: var(--blush-pink); /* tags, notification dots */
+		   --surface-page keeps its other job unchanged: it is the base every
+		   tint mixes over, which is what Meccano does too. A tint is a colour
+		   sitting on a panel, so mixing over the panel is right even though
+		   the panel is not the page. */
+		--surface-page: color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%);
+		--surface-card: color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%);
+		/* Recessed zones — footers, wells, and the control tray under a card
+		   plate. Deleted by D-181 as unread, which it was: nothing had built
+		   the tray yet. It has one now. */
+		--surface-sunken: var(--foundry-black);
 
-		--accent-secondary-bg: oklch(58% 0.15 46 / 10%);
-		--accent-secondary-border: oklch(58% 0.15 46 / 30%);
-		--accent-secondary-hover: oklch(58% 0.15 46 / 20%);
-		--accent-secondary-hover-subtle: oklch(58% 0.15 46 / 15%);
-		--accent-depth-bg: oklch(38% 0.1 310 / 10%);
-		--accent-depth-border: oklch(38% 0.1 310 / 30%);
+		--bg-primary: var(--bench-bg);
+		--bg-primary-rgb: 20, 16, 16; /* --foundry-black, for alpha composition */
 
-		/* === 5c. GRADIENTS — accent elements ONLY, never backgrounds ====== */
-		--gradient-sunset: linear-gradient(135deg, var(--hex-red), var(--hex-sunset));
-		--gradient-depth: linear-gradient(135deg, var(--hex-navy), var(--hex-aubergine));
-		--gradient-warmth: linear-gradient(135deg, var(--hex-sunset), var(--hex-amber));
-		/* Retained — faint illustration placeholder wash for skeleton heroes */
-		--gradient-placeholder: linear-gradient(
-			135deg,
-			oklch(55.6% 0.262 292 / 5%) 0%,
-			var(--accent-bg-subtle) 100%
-		);
+		/* The glass surfaces predate the retune, and Meccano permits no
+		   glassmorphism outside the dialog overlay, so these resolve to flat
+		   steel rather than to a blur substrate. The names survive because
+		   consumers read them; the frost does not. */
+		--bg-glass: var(--steel-100);
+		--bg-glass-solid: var(--steel-50);
+		--surface-glass-bg: var(--surface-card);
 
-		/* === 6. CARDS ==================================================== */
-		--card-bg: oklch(8% 0.01 15 / 40%);
-		--card-border: oklch(97% 0 0 / 10%);
-		--card-border-hover: oklch(97% 0 0 / 20%);
-		--card-border-top: var(--card-border);
-		--card-border-left: var(--card-border);
-		--card-border-right: var(--card-border);
-		--card-border-bottom: var(--card-border);
+		/* Subtle surface washes — hover states and recessed tracks. Neutrals
+		   get a steel wash on hover; they never get gloss. */
+		--surface-hover-subtle: color-mix(in oklab, transparent, var(--ink-900) 5%);
 
-		/* === 7. LOADING SHIMMER — retained ================================ */
-		--shimmer-highlight-dim: oklch(100% 0 0 / 6%);
-		--shimmer-highlight-bright: oklch(100% 0 0 / 50%);
+		/* === 5. BORDERS — 1px lines do the separating ====================
+		   Like a technical drawing: hairline for most divisions, strong for
+		   emphasis and secondary buttons. */
+		--border-hairline: color-mix(in oklab, var(--ink-900), transparent 91%);
+		--border-default: color-mix(in oklab, var(--ink-900), transparent 83%);
+		--border-strong: var(--ink-900);
 
-		/* === 8. INPUTS =================================================== */
-		--input-bg: oklch(22% 0.015 30);
+		--border-glass: var(--border-hairline);
+		--border-glass-hover: var(--border-default);
 
-		/* === 9. SELECT — retained ========================================= */
-		--select-selected-bg: oklch(45% 0.22 25 / 15%);
-		--select-selected-highlighted-bg: oklch(45% 0.22 25 / 20%);
+		/* === 6. TEXT — hierarchy: primary > secondary > muted ============ */
+		--text-primary: var(--ink-900);
+		--text-secondary: var(--ink-500);
+		--text-muted: var(--ink-400);
+		--text-inverse: var(--foundry-black); /* on light plastics */
+		--text-link: var(--pulley-blue);
+		/* Opposite-mode primary text for the PageHeader per-letter flicker. */
+		--text-flicker-alt: var(--foundry-black);
 
-		/* === 13. STATE COLOURS ========================================== */
-		--colour-success: var(--hex-olive);
-		--colour-success-bg: oklch(46% 0.1 130 / 20%);
-		--colour-warning: var(--hex-amber);
-		--colour-warning-bg: oklch(70% 0.12 80 / 20%);
-		--colour-error: var(--hex-red);
-		--colour-error-bg: oklch(45% 0.22 25 / 20%);
-		/* UPDATED — info is now sky-blue (was navy); its wash mixes from the hue */
-		--colour-info: var(--sky-blue);
-		--colour-info-bg: color-mix(in srgb, var(--sky-blue) 18%, transparent);
+		/* === 7. ACCENT — girder red is the hero =========================== */
+		--accent: var(--girder-red);
+		--accent-deep: color-mix(in oklab, var(--girder-red), black 16%);
+		--accent-contrast: var(--ink-900);
+		--accent-rgb: 226, 45, 46; /* --girder-red */
 
-		--status-success-text: var(--hex-olive);
-		--status-warning-text: var(--hex-amber);
-		--status-error-text: var(--hex-red);
-		/* UPDATED — info badge text is sky-blue (was blush-pink) */
-		--status-info-text: var(--sky-blue);
+		/* Plastic chips darken to their -deep value on hover; capped buttons
+		   brighten instead, which elevation.css expresses. */
+		--accent-hover: var(--accent-deep);
+		--accent-bg-subtle: color-mix(in oklab, var(--girder-red), var(--surface-page) 92%);
+		--accent-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 86%);
+		--accent-bg-emphasis: color-mix(in oklab, var(--girder-red), var(--surface-page) 78%);
+		--accent-border: color-mix(in oklab, var(--girder-red), transparent 60%);
 
-		/* === AUTOMATABILITY — the Merlin exposure model =================== */
-		--colour-full: var(--fire-engine-red); /* AI — full automation, highest exposure */
-		--colour-partial: var(--amber); /* Augmented — AI assists */
-		--colour-human: var(--olive-green); /* Human — requires human judgement */
+		/* === 7b. ACCENT ROLES — the rest of the plastics ================= */
+		--accent-secondary: var(--gantry-orange); /* hover warmth, secondary highlights */
+		--accent-tertiary: var(--pulley-blue); /* informational, workflow indicators */
 
-		/* The American spellings are aliases, deprecated under D-167. Atlas
-		   consumes all three, so they cannot simply be renamed here; they retire
-		   once that migration lands. Aliases rather than duplicate definitions,
-		   so the two names cannot drift apart in the meantime. */
-		--color-full: var(--colour-full);
-		--color-partial: var(--colour-partial);
-		--color-human: var(--colour-human);
+		/* === 7c. FOCUS — functional blue, never the accent ================
+		   Focus is a backlit lamp: pulley-blue light escaping from beneath the
+		   element. The ring geometry is --focus-ring in elevation.css; this is
+		   only its hue. */
+		--focus: var(--pulley-blue);
+		--focus-ring-color: var(--focus);
 
-		/* === 17. CHARTS — retained (D3 visualisations) ==================== */
-		--chart-series-1: var(--hex-red);
-		--chart-series-2: var(--hex-sunset);
-		--chart-series-3: var(--hex-amber);
-		--chart-series-4: var(--hex-olive);
-		--chart-series-5: var(--hex-navy);
-		--chart-series-6: var(--hex-sky);
-		--chart-series-7: var(--hex-aubergine);
-		--chart-series-8: var(--hex-blush);
+		/* === 8. GRADIENTS — accent elements ONLY, never backgrounds ======
+		   Meccano permits no gradients beyond the plastic sheen, so these are
+		   held to two-stop part pairings that read as moulded colour rather
+		   than as atmosphere. */
+		--gradient-sunset: linear-gradient(135deg, var(--girder-red), var(--gantry-orange));
+		--gradient-depth: linear-gradient(135deg, var(--boiler-navy), var(--flange-plum));
+		--gradient-placeholder: linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%);
 
-		/* The chrome tokens that sat here — --chart-axis-colour, --chart-bg,
+		/* === 9. CARDS — control-panel plates ============================= */
+		--card-bg: var(--surface-card);
+		--card-border: var(--border-hairline);
+		--card-border-hover: var(--border-default);
+
+		/* === 10. LOADING SHIMMER ========================================= */
+		--shimmer-highlight-dim: color-mix(in oklab, transparent, var(--ink-900) 6%);
+
+		/* === 11. INPUTS ================================================== */
+		--input-bg: var(--steel-100);
+
+		/* === 12. SELECT ================================================== */
+		--select-selected-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 80%);
+
+		/* === 13. SEMANTIC — info=pulley, success=toolbox, ================
+		   warning=brass, danger=girder. Tints derive over the page. */
+		--info: var(--pulley-blue);
+		--info-tint: color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%);
+		--success: var(--toolbox-olive);
+		--success-tint: color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%);
+		--warning: var(--brass-amber);
+		--warning-tint: color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%);
+		--danger: var(--girder-red);
+		--danger-tint: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
+
+		/* The --colour-* names are what Alfons and Atlas already read. */
+		--colour-success: var(--success);
+		--colour-success-bg: var(--success-tint);
+		--colour-warning: var(--warning);
+		--colour-warning-bg: var(--warning-tint);
+		--colour-error: var(--danger);
+		--colour-error-bg: var(--danger-tint);
+		--colour-info: var(--info);
+		--colour-info-bg: var(--info-tint);
+
+		--status-success-text: var(--success);
+		--status-warning-text: var(--warning);
+		--status-error-text: var(--danger);
+		--status-info-text: var(--info);
+
+		/* === 14. AUTOMATABILITY — the Merlin exposure model =============== */
+		--colour-full: var(--girder-red); /* AI — full automation, highest exposure */
+		--colour-partial: var(--brass-amber); /* Augmented — AI assists */
+		--colour-human: var(--toolbox-olive); /* Human — requires human judgement */
+
+		/* The American spellings --color-full/-partial/-human are gone. D-167
+		   deprecated them on 2026-08-02 and said they would retire "once Atlas
+		   has migrated, in a separate change to that repository"; D-181 is that
+		   change, and Atlas now reads the Australian names. */
+
+		/* === 15. CHARTS — the eight plastics, in plotting order ===========
+		   Ordered so adjacent series sit far apart in hue, which is what a
+		   categorical scale needs; palette order is not series order.
+
+		   The chrome tokens that sat here — --chart-axis-colour, --chart-bg,
 		   --chart-border, --chart-grid-colour, --chart-tooltip-bg/-border/-text,
 		   --chart-positive/-negative/-neutral/-warning and the four unitless
 		   --chart-margin-* — were retired under D-165. BarChart and LineChart
-		   consume the -admin counterparts below and never referenced these, so
-		   this was a second vocabulary for a surface that already had a working
-		   one. The lifecycle rows carry the replacement where there is one. */
+		   consume the -admin counterparts and never referenced these. */
+		--chart-series-1: var(--girder-red);
+
 		--chart-padding: var(--space-5);
 
 		--chart-label-size: 0.75rem;
 		--chart-title-size: 1rem;
 		--chart-value-size: 0.875rem;
-		--chart-axis-font-size: 0.625rem;
-		--chart-axis-font-weight: 500;
-		--chart-axis-letter-spacing: 0.02em;
-		--chart-transition-duration: 300ms;
-		--chart-transition-easing: ease-out;
+		--chart-axis-font-size: 0.6875rem; /* --type-spec size; axis ticks are mono */
+		--chart-axis-font-weight: 400; /* mono is regular-only — never synthesise */
+		--chart-axis-letter-spacing: 0.08em; /* --ls-caps */
+		--chart-transition-duration: 200ms; /* --dur-med */
+		--chart-transition-easing: cubic-bezier(0.2, 0, 0, 1); /* --ease-machined */
 
-		/* === 18. DATA SCIENCE — retired under D-165 ======================= */
-		/* --heatmap-cold/-neutral/-hot, the six --matrix-* and the four
-		   --experiment-* tokens were designed against components that were
-		   never written, in this repository or any consumer. Their lifecycle
-		   rows are the record; reaching for one now gets a tombstone naming
-		   D-165 rather than silence. */
+		/* === 16. WORKBENCH — the drafting-desk ground =====================
+		   Charcoal-ember ground under a 40px technical grid with a heavier
+		   line every 160px, lit by a warm gantry rake grazing from the upper
+		   left. The .mcn-bench class in base.css composes these; the site
+		   already carried a 40px grid, so this formalises what was there. */
+		--bench-bg: var(--foundry-black);
+		--bench-line: rgba(245, 241, 234, 0.015);
+		--bench-line-major: rgba(245, 241, 234, 0.036);
+		--bench-rake: radial-gradient(
+			120% 150% at 20% -25%,
+			color-mix(in oklab, var(--gantry-orange), transparent 86%),
+			transparent 90%
+		);
 
-		/* === 20. GRID PATTERN — technical background ===================== */
+		/* Grid tokens the existing background components read. */
 		--grid-size: 40px;
-		--grid-colour: oklch(97% 0 0 / 3%);
-		--grid-colour-accent: oklch(97% 0 0 / 6%);
-		--grid-opacity: 0.5;
-		--grid-opacity-accent: 0.6;
+		--grid-size-major: 160px;
+		--grid-colour: var(--bench-line);
+		--grid-colour-accent: var(--bench-line-major);
+		--grid-opacity: 1; /* the alpha now lives in the line colour itself */
+		--grid-opacity-accent: 1;
 		--ground-rake-strength: 0.14;
 		--ground-glint-strength: 0.04;
-		--ground-glint-colour: oklch(0.9 0.09 85); /* warm gold */
+		--ground-glint-colour: var(--brass-amber);
 
-		/* === 21. BLOG CATEGORY COLOURS ================================== */
-		--category-agents: var(--fire-engine-red);
-		--category-workflows: var(--sky-blue);
-		--category-synthesis: var(--burnt-sunset);
-		--category-data: var(--navy-royal);
-		--category-design: var(--blush-pink);
-		--category-infra: var(--olive-green);
+		/* === 17. BLOG CATEGORY COLOURS ================================== */
+		--category-agents: var(--girder-red);
+		--category-workflows: var(--pulley-blue);
+		--category-synthesis: var(--gantry-orange);
+		--category-data: var(--boiler-navy);
+		--category-design: var(--pinion-pink);
+		--category-infra: var(--toolbox-olive);
 
-		/* === 21b. INDUSTRY GROUPS — occupation explorer ================= */
-		/* UPDATED — strictly brand-palette. Each group carries a 2–3 stop
-		   horizontal gradient (its real identity) plus a solid brand hue as a
-		   legible fallback. Gradients lean on the non-automatability brand hues
-		   (sunset, sky, navy, aubergine, blush, sand) so an industry never reads
-		   as an exposure level. Replaces the previous off-palette hue set. */
-		--industry-finance: var(--sky-blue);
-		--industry-technology: var(--aubergine);
-		--industry-healthcare-education: var(--blush-pink);
+		/* === 18. INDUSTRY GROUPS — occupation explorer =================
+		   Strictly brand-palette, and deliberately drawn from the hues that
+		   carry no exposure meaning (§14), so an industry never reads as an
+		   automatability level. */
+		--industry-finance: var(--pulley-blue);
+		--industry-technology: var(--flange-plum);
+		--industry-healthcare-education: var(--pinion-pink);
 		--industry-legal: var(--ind-aubergine);
-		--industry-engineering-trades: var(--navy-royal);
-		--industry-marketing-communications: var(--blush-pink);
-		--industry-operations-admin: var(--powder-sand);
+		--industry-engineering-trades: var(--boiler-navy);
+		--industry-marketing-communications: var(--pinion-pink);
+		--industry-operations-admin: var(--ink-500);
 
 		/* A dark brand hue lifted to a legible lightness (still brand-derived).
-		   --ind-navy sat beside this one and existed only to be a gradient stop;
-		   with the gradients gone under D-165 it had no consumer and no purpose,
-		   so it went with them. --ind-aubergine survives because
-		   --industry-legal reads it directly. */
-		--ind-aubergine: color-mix(in oklch, var(--aubergine), white 38%);
+		   --industry-legal reads it directly, which is why it survives. */
+		--ind-aubergine: color-mix(in oklab, var(--flange-plum), white 38%);
 
-		/* The seven --industry-*-gradient tokens were retired under D-165. The
-		   comment above still describes them as each group's "real identity",
-		   and no component ever rendered one — the solid hues above are what
-		   the occupation explorer consumes. That gap between the stated design
-		   and the shipped one is the reason they went rather than a reason to
-		   keep them; reviving the gradients means reviving the components that
-		   would show them, and D-165 is where that argument gets made. */
+		/* === 19. BUTTON VARIANTS ========================================= */
+		--button-ghost-hover-bg: var(--steel-100);
 
-		/* === 22. BUTTON VARIANTS — retained (dark defaults) ============== */
-		--button-secondary-hover-bg: transparent;
-		--button-secondary-hover-border: transparent;
-		--button-ghost-hover-bg: transparent;
-		--button-outline-hover-shadow: none;
-
-		/* === ADMIN CORE — consolidated here from admin.css ===============
-		   Pinned dark palette, never changes with colour mode. admin.css keeps
-		   the admin-specific extras (header type, chart variants, stat icons). */
-		--admin-bg: var(--charcoal-ember);
+		/* === ADMIN CORE — pinned dark, never changes with colour mode ==== */
+		--admin-bg: var(--foundry-black);
 		--admin-bg-page: var(--admin-bg);
-		--admin-bg-elevated: oklch(6% 0 0);
-		--admin-border: oklch(97% 0 0 / 10%);
-		--admin-text: var(--powder-sand);
-		--admin-text-secondary: oklch(0.7 0.02 68);
-		--admin-text-muted: oklch(0.6 0.02 68);
+		--admin-bg-elevated: var(--steel-50);
+		--admin-border: var(--border-hairline);
+		--admin-text: var(--ink-900);
+		--admin-text-secondary: var(--ink-500);
+		--admin-text-muted: var(--ink-400);
 	}
 }

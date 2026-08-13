@@ -50,7 +50,8 @@
 />
 
 <style>
-	/* Shared input styling — pill shape to match Button */
+	/* Plain fields are machined controls, not pills. Their 6px corner is the
+	   same --radius-2 Meccano gives its input wrapper and select trigger. */
 	.input {
 		display: flex;
 		width: 100%;
@@ -58,7 +59,7 @@
 		transition:
 			border-color var(--transition-normal),
 			box-shadow var(--transition-normal);
-		border-radius: var(--radius-pill);
+		border-radius: var(--radius);
 	}
 
 	.input:disabled {
@@ -96,10 +97,8 @@
 	/* Public theme */
 
 	.input[data-theme='public'] {
-		border: 1px solid var(--card-border);
-		/* Glassy card-bg surface, matching the toggle group and Select (was the
-		   opaque --input-bg — this realises the documented glassmorphic intent). */
-		background: var(--card-bg);
+		border: 1px solid var(--border-default);
+		background: var(--surface-card);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}
@@ -108,10 +107,11 @@
 		color: var(--text-muted);
 	}
 
-	/* Focus keeps a border-colour cue only — the ring is the global neutral
-	   focus-visible outline inherited from base.css. */
-	.input[data-theme='public']:focus {
-		border-color: var(--card-border-hover);
+	/* Focus is the functional pulley-blue lamp. Red remains reserved for the
+	   action that submits the field. */
+	.input[data-theme='public']:focus-visible {
+		border-color: var(--focus);
+		box-shadow: var(--focus-ring);
 	}
 
 	/* Admin theme */

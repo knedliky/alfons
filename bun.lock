@@ -4,9 +4,6 @@
     "": {
       "name": "@motif/design",
       "dependencies": {
-        "@fontsource-variable/azeret-mono": "^5.2.11",
-        "@fontsource/ibm-plex-serif": "^5.0.0",
-        "@fontsource/rock-salt": "^5.0.0",
         "@internationalized/date": "^3.8.0",
         "gsap": "^3.14.2",
       },
@@ -133,12 +130,6 @@
     "@eslint/object-schema": ["@eslint/object-schema@3.0.5", "", {}, "sha512-vqTaUEgxzm+YDSdElad6PiRoX4t8VGDjCtt05zn4nU810UIx/uNEV7/lZJ6KwFThKZOzOxzXy48da+No7HZaMw=="],
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.7.2", "", { "dependencies": { "@eslint/core": "^1.2.1", "levn": "^0.4.1" } }, "sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A=="],
-
-    "@fontsource-variable/azeret-mono": ["@fontsource-variable/azeret-mono@5.2.11", "", {}, "sha512-C2lkE7Pg0yg46ze3+AaJkolyldWBxluGiRG4pB5vHSdQRApOdQME6WbdsfYyy6wFDn/zPNx+1mwRJPnMRnovpA=="],
-
-    "@fontsource/ibm-plex-serif": ["@fontsource/ibm-plex-serif@5.2.7", "", {}, "sha512-04owmc2OQQ/DAMjXjEMJc+7V4dBVmR01aIFOg4cuqS8pQ4HbvtlYs/u6+O0vCt21EMx5M/azIbgx43iKyisEOA=="],
-
-    "@fontsource/rock-salt": ["@fontsource/rock-salt@5.2.8", "", {}, "sha512-nXHZcVqUSRMJt79K5WezYXnZ6PhQHuuF6g4Swc92qcIge1SSkW/3qA3HGXoG+nj9HdD+kxlqi3VSSj6soL0QVA=="],
 
     "@hono/node-server": ["@hono/node-server@2.0.12", "", { "peerDependencies": { "hono": "^4" } }, "sha512-eWpQYr67tqJLeaSUl0Q+TquuYfUdTibpOJlUMV2FfUP7+KqCC5TufnwnlXL6mobZBJbGAYRd7ZvEBDCbLInjhg=="],
 

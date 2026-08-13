@@ -48,7 +48,7 @@
 
 	.spacing-bar {
 		height: 24px;
-		background: var(--hex-red);
+		background: var(--girder-red);
 		border-radius: 0;
 		opacity: 0.7;
 	}
@@ -62,7 +62,7 @@
 
 	.spacing-copied {
 		font-size: 11px;
-		color: var(--hex-olive);
+		color: var(--toolbox-olive);
 		font-weight: 600;
 	}
 </style>
