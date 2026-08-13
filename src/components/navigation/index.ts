@@ -8,6 +8,9 @@ export type { BreadcrumbProps, BreadcrumbItem } from './Breadcrumb.svelte';
 export { default as Header } from './Header.svelte';
 export type { HeaderProps, HeaderNavItem } from './Header.svelte';
 
+export { default as PushedScreen } from './PushedScreen.svelte';
+export type { PushedScreenProps } from './PushedScreen.svelte';
+
 export { default as Tabs } from './Tabs.svelte';
 export type { TabsProps, TabItem } from './Tabs.svelte';
 

@@ -25,6 +25,7 @@
 		"lifecycle:sync": "bun run scripts/sync-lifecycle-entities.ts",
 		"design-memory:refresh": "bun run scripts/refresh-design-memory.ts",
 		"test:design-memory": "bun run scripts/test-design-memory-hooks.ts",
+		"dev": "vite --config vite.dev.config.ts",
 		"mcp": "bun run src/mcp/server.ts",
 		"mcp:smoke": "bun run scripts/mcp-smoke.ts",
 		"build": "bun run manifest && bun run build:lib",

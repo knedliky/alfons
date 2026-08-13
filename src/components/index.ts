@@ -30,5 +30,7 @@ export * from './forms/index.js';
 export * from './stats/index.js';
 // Tables
 export * from './tables/index.js';
+// Tasks
+export * from './tasks/index.js';
 // Admin atoms
 export * from './admin/index.js';

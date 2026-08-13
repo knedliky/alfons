@@ -159,7 +159,7 @@ non-Svelte importer would fail.
 
 ## The MCP surface
 
-Ten tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
+Twelve tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
 `bun run mcp:smoke` exercises every tool and then the server over real stdio.
 
 | Tool                            | For                                             |
@@ -173,6 +173,8 @@ Ten tools over the manifest, in `src/mcp/`. `bun run mcp` starts the server;
 | `scaffold_component`            | A new component that already passes the rules   |
 | `review_markup` / `apply_fixes` | The rules, over source text                     |
 | `review_library`                | Findings about Alfons itself, not about markup  |
+| `plan_prototype_round`          | Five seeded approaches for `/dev/<page-name>`   |
+| `promote_prototype`             | What the library must absorb before a win ships |
 
 The server **refuses to start** on a manifest that is missing, stale, of the wrong
 schema version, or carrying unparsed components. Silence from a lookup service is
@@ -196,6 +198,35 @@ design knowledge only after someone explicitly records the decision in the ledge
 Manifest replacement is atomic, and the MCP validates and adopts a newer snapshot
 between calls. Runtime tools still read only `alfons.manifest.json`; Postgres remains a
 build-time dependency.
+
+## The dev surface — prototyping rounds
+
+`bun run dev` serves `src/dev/` on port 6008 under base `/dev` — a fourth way
+into the system, for exploration rather than consumption. A **round** is five
+distinctly different prototypes of one page, each built by its own agent,
+rendered production-accurately (same stylesheet stack and load order as the
+catalogue) at `/dev/<page-name>/<approach>`. The `/prototype` skill runs the
+whole loop: discovery one question at a time, one ledger release per round
+(`proto-<page-name>`, D-129), five parallel agents, an honest report of the new
+components each approach would require, promotion of the winner.
+
+- **No registry.** Rounds are discovered from the tree:
+  `prototypes/<page>/round.json` plus `prototypes/<page>/<a1..a5>/Page.svelte`,
+  globbed by the dev app, so provisioning is writing files and HMR does the
+  rest. `plan_prototype_round` generates them; do not hand-write the shells.
+- **Prototype markup imports `@alfons/design` by name** — the dev Vite config
+  aliases it to `src/`, so a winning page moves to a real consumer unchanged.
+- **The glow contract**: `data-alfons-working="what you are composing"` on the
+  region under construction draws an animated `--accent` outline with that
+  label, which is how a build is watched live. Remove the marker when done.
+  The floating pager (and the `[` / `]` keys) moves between approaches; both
+  overlays are dev chrome in `src/dev/`, never library components.
+- **The public URL is Atlas's to serve.** `atlas.localhost/dev/*` needs a
+  reverse-proxy block to `localhost:6008` in Atlas's Caddyfile — that file
+  lives in the Atlas repo, same boundary as the catalogue mount (D-170). Until
+  it exists there, use `http://localhost:6008/dev/` directly.
+- `prototypes/` is working space: a round lives on its release branch and is
+  deleted at promotion, its reasoning recorded in the release document.
 
 ## Review Checklist
 

@@ -18,6 +18,7 @@ import { z } from 'zod';
 import { reloadingManifest, storybookBase } from './manifest.js';
 import { applyFixes, libraryFindings, review } from '../rules/index.js';
 import { scaffoldComponent } from './scaffold.js';
+import { planPrototypeRound, promotePrototype } from './prototypes.js';
 import {
 	findComponents,
 	findDesignMemory,
@@ -227,6 +228,76 @@ server.registerTool(
 	},
 	async ({ name, category, surface, composes }) =>
 		reply(scaffoldComponent(manifest(), { name, category, surface, composes }))
+);
+
+server.registerTool(
+	'plan_prototype_round',
+	{
+		title: 'Plan a prototyping round',
+		description:
+			'Provision a round of five distinctly different page prototypes for /dev/<page-name>. ' +
+			'Takes the page brief and five named design directions and returns the files to write: ' +
+			'round.json plus one seeded Page.svelte per approach, each already a production-accurate ' +
+			'shell — live layout tiers, Header and Footer, tokens legal on the surface — that passes ' +
+			'review_markup untouched. Call this INSTEAD of hand-writing prototype scaffolding, and ' +
+			'give each approach to a separate agent: one agent, one approach directory, no conflicts. ' +
+			'The seeds carry a data-alfons-working marker so the dev app glows around work in ' +
+			'progress from the first render. The caller writes the files; this server touches none.',
+		inputSchema: {
+			page: z.string().describe('Kebab-case page slug; becomes the /dev/<page-name> path.'),
+			title: z.string().describe('Human title of the page being prototyped.'),
+			brief: z
+				.string()
+				.describe('The brief distilled from user-journey discovery, in full sentences.'),
+			surface: z.enum(['public', 'admin']).optional().describe('Defaults to public.'),
+			release: z
+				.string()
+				.optional()
+				.describe('The ledger release slug this round runs under, e.g. proto-landing-page.'),
+			approaches: z
+				.array(
+					z.object({
+						slug: z.string().optional().describe('Directory slug; defaults to a1..a5.'),
+						title: z.string().describe('Short name of the design direction.'),
+						direction: z
+							.string()
+							.describe('What this approach explores and which constraint it pushes.')
+					})
+				)
+				.length(5)
+				.describe('Exactly five distinctly different design directions.')
+		}
+	},
+	async ({ page, title, brief, surface, release, approaches }) =>
+		reply(planPrototypeRound(manifest(), { page, title, brief, surface, release, approaches }))
+);
+
+server.registerTool(
+	'promote_prototype',
+	{
+		title: 'Promote the winning prototype',
+		description:
+			'The honest half of promotion: what the library must absorb before the winning ' +
+			'prototype can ship. Pass the winning Page.svelte as text (and any components the ' +
+			'approach created locally) and the answer names every new component that has to be ' +
+			'created to stay component-driven — local .svelte files the library lacks, bare ' +
+			'elements a rule flagged — plus full review findings and the checklist that closes ' +
+			'the round: extract components, regenerate the manifest, record the losing ' +
+			'approaches, merge the round branch. Call this when the user has picked a winner, ' +
+			'before touching src/components. Pass source text, never paths.',
+		inputSchema: {
+			page: z.string().describe('The round’s page slug.'),
+			approach: z.string().describe('The winning approach’s slug, e.g. a3.'),
+			source: z.string().describe('The winning Page.svelte, as text.'),
+			surface: z.enum(['public', 'admin']).optional().describe('Defaults to public.'),
+			localComponents: z
+				.record(z.string(), z.string())
+				.optional()
+				.describe('Sources of components the approach created locally, keyed by file name.')
+		}
+	},
+	async ({ page, approach, source, surface, localComponents }) =>
+		reply(promotePrototype(manifest(), { page, approach, source, surface, localComponents }))
 );
 
 server.registerTool(
