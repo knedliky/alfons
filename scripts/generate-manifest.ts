@@ -20,7 +20,15 @@
  *                           gate that silently emitted an unannotated manifest
  *                           would report drift on every build.
  */
-import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import {
+	existsSync,
+	readFileSync,
+	readdirSync,
+	renameSync,
+	statSync,
+	unlinkSync,
+	writeFileSync
+} from 'node:fs';
 import { join, relative, basename, dirname } from 'node:path';
 import postcss from 'postcss';
 import ts from 'typescript';
@@ -34,7 +42,8 @@ import type {
 	Surface,
 	Lifecycle,
 	LayoutTier,
-	Tombstone
+	Tombstone,
+	DesignDecisionEntry
 } from '../src/manifest/types.ts';
 
 const ROOT = join(import.meta.dirname, '..');
@@ -43,7 +52,7 @@ const TOKENS_DIR = join(ROOT, 'src/tokens');
 const STORIES_DIR = join(ROOT, 'src/stories');
 const OUT = join(ROOT, 'alfons.manifest.json');
 
-const SCHEMA_VERSION = 4;
+const SCHEMA_VERSION = 5;
 
 /** Aggregates rather than defines, so its @import lines are not definitions. */
 const TOKEN_ENTRY_MANIFEST = 'public.css';
@@ -525,6 +534,7 @@ function buildDerived(): Manifest {
 		schemaVersion: SCHEMA_VERSION,
 		components: components.sort((a, b) => a.name.localeCompare(b.name)),
 		tokens: tokens.sort((a, b) => a.name.localeCompare(b.name)),
+		designDecisions: [],
 		tombstones: [],
 		tailwindShadowed: tailwindShadowedTokens(new Set(tokens.map((token) => token.name))),
 		unparsed: unparsed.sort()
@@ -584,6 +594,32 @@ function readLayoutTiers(): Map<string, string> {
 }
 
 /**
+ * Read the current text of every decision explicitly admitted to Alfons.
+ *
+ * The membership row is the authored fact. The prose stays in the ledger, so
+ * an amendment is visible on the next build without copying it into a second
+ * table. Superseded decisions remain searchable because they explain existing
+ * artefacts; callers can see the flag and avoid treating them as current.
+ */
+function readDesignDecisions(): DesignDecisionEntry[] {
+	return rows<DesignDecisionEntry>(`
+		select coalesce(json_agg(row order by row."decidedOn" desc, row.id desc), '[]')
+		from (
+			select decision.id,
+			       decision.decided_on::text as "decidedOn",
+			       decision.level::text,
+			       decision.question,
+			       decision.resolution,
+			       decision.rationale,
+			       decision.is_superseded as superseded
+			from alfons.design_decisions as membership
+			join ledger.decision_current as decision
+			  on decision.id = membership.decision_id
+		) as row
+	`);
+}
+
+/**
  * Attach each judgement to its subject, and tombstone the ones with none.
  *
  * A lifecycle row with no derived counterpart is not an error: it is the normal
@@ -593,9 +629,11 @@ function readLayoutTiers(): Map<string, string> {
 function applyLifecycle(
 	manifest: Manifest,
 	lifecycle: Map<string, Lifecycle>,
-	layoutTiers: Map<string, string>
+	layoutTiers: Map<string, string>,
+	designDecisions: DesignDecisionEntry[]
 ): void {
 	const claimed = new Set<string>();
+	manifest.designDecisions = designDecisions;
 
 	for (const component of manifest.components) {
 		component.layoutTier = (layoutTiers.get(component.name) as LayoutTier) ?? null;
@@ -657,6 +695,7 @@ function derivedOnly(manifest: Manifest): Manifest {
 			layoutTier: null
 		})),
 		tokens: manifest.tokens.map((entry) => ({ ...entry, lifecycle: null })),
+		designDecisions: [],
 		tombstones: [],
 		tailwindShadowed: manifest.tailwindShadowed,
 		unparsed: manifest.unparsed
@@ -690,8 +729,16 @@ if (process.argv.includes('--check')) {
 	);
 	reportUnparsed(derived);
 } else {
-	applyLifecycle(derived, readLifecycle(), readLayoutTiers());
-	writeFileSync(OUT, `${JSON.stringify(derived, null, 2)}\n`);
+	applyLifecycle(derived, readLifecycle(), readLayoutTiers(), readDesignDecisions());
+	const temporary = `${OUT}.${process.pid}.tmp`;
+	try {
+		writeFileSync(temporary, `${JSON.stringify(derived, null, 2)}\n`);
+		// rename(2) replaces the previous file atomically on the supported local
+		// filesystems, so a hot-reloading MCP sees either complete schema version.
+		renameSync(temporary, OUT);
+	} finally {
+		if (existsSync(temporary)) unlinkSync(temporary);
+	}
 
 	const unannotatedOrphans = derived.tokens.filter(
 		(token) =>

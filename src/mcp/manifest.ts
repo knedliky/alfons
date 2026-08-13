@@ -13,10 +13,10 @@ import { join, dirname } from 'node:path';
 import type { Manifest } from '../manifest/types.js';
 
 /** Must match SCHEMA_VERSION in scripts/generate-manifest.ts. */
-const EXPECTED_SCHEMA_VERSION = 4;
+const EXPECTED_SCHEMA_VERSION = 5;
 
 export const ROOT = join(import.meta.dirname, '..', '..');
-const MANIFEST_PATH = join(ROOT, 'alfons.manifest.json');
+export const MANIFEST_PATH = join(ROOT, 'alfons.manifest.json');
 /**
  * The directories the generator reads, and therefore the only ones whose
  * mtimes can make the manifest stale.
@@ -68,6 +68,9 @@ export function loadManifest(): Manifest {
 	if (!manifest.components?.length || !manifest.tokens?.length) {
 		throw new Error('Manifest has no components or no tokens, which cannot be right.');
 	}
+	if (!Array.isArray(manifest.designDecisions)) {
+		throw new Error('Manifest has no designDecisions array for schema version 5.');
+	}
 
 	// A component that failed to parse is absent from the manifest, and absent
 	// is exactly what an agent reads as "does not exist". The generator already
@@ -96,6 +99,33 @@ export function loadManifest(): Manifest {
 	}
 
 	return manifest;
+}
+
+/**
+ * Keep one coherent snapshot per call, but adopt an atomically replaced
+ * manifest between calls. A failed reload is thrown and retried next time;
+ * serving the previous snapshot as though it were current would recreate the
+ * silent-staleness failure this loader exists to prevent.
+ *
+ * Dependency injection keeps the state transition directly testable without
+ * rewriting the real generated file.
+ */
+export function reloadingManifest(
+	load: () => Manifest = loadManifest,
+	version: () => number = () => statSync(MANIFEST_PATH).mtimeMs
+): () => Manifest {
+	let current = load();
+	let loadedVersion = version();
+
+	return () => {
+		const availableVersion = version();
+		if (availableVersion === loadedVersion) return current;
+
+		const replacement = load();
+		current = replacement;
+		loadedVersion = availableVersion;
+		return current;
+	};
 }
 
 /**

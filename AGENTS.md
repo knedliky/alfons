@@ -1,4 +1,4 @@
-# Alfons — CLAUDE.md
+# Alfons — AGENTS.md
 
 ## Project overview
 

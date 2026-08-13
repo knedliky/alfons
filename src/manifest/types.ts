@@ -148,11 +148,28 @@ export type LayoutTier = 'shell' | 'region' | 'container' | 'primitive';
 /** The order the tiers nest in, outermost first. Index is the comparison. */
 export const LAYOUT_TIER_ORDER: LayoutTier[] = ['shell', 'region', 'container', 'primitive'];
 
+/**
+ * AUTHORED MEMBERSHIP, current content. A hook adds the id to
+ * alfons.design_decisions only after ledger.record_decision succeeds; the
+ * generator joins the current amended words from ledger.decision_current.
+ */
+export interface DesignDecisionEntry {
+	id: string;
+	decidedOn: string;
+	level: string;
+	question: string;
+	resolution: string;
+	rationale: string;
+	superseded: boolean;
+}
+
 export interface Manifest {
 	/** Bumped when the shape changes, so a consumer can refuse an old file. */
 	schemaVersion: number;
 	components: ComponentEntry[];
 	tokens: TokenEntry[];
+	/** AUTHORED. Confirmed decisions Alfons can search as design knowledge. */
+	designDecisions: DesignDecisionEntry[];
 	/** AUTHORED. Names that are gone from the tree but still have an answer. */
 	tombstones: Tombstone[];
 	/**

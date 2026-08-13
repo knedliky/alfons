@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "components": [
     {
       "name": "Accordion",
@@ -10255,6 +10255,44 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    }
+  ],
+  "designDecisions": [
+    {
+      "id": "D-182",
+      "decidedOn": "2026-08-12",
+      "level": "implementation",
+      "question": "How should Alfons keep its design knowledge current when components are created or design decisions are explicitly confirmed?",
+      "resolution": "Use deterministic project hooks as event detectors and one idempotent refresh command as the implementation. A component-file write refreshes the derived manifest and synchronises the component vocabulary. A successful ledger record_decision call registers that confirmed decision in Alfons's authored design-memory index and refreshes the manifest. Hooks may record observable facts and confirmed decisions, but must never infer design truth from repetition. The runtime MCP remains read-only over the generated manifest and does not connect to Postgres.",
+      "rationale": "Alfons already serves a generated manifest, but without an automatic refresh loop its self-description can lag behind the work that created it. Keeping hook logic thin makes the behaviour testable outside an agent session, while retaining Postgres as a build-time authoring dependency preserves D-162's deterministic runtime boundary. Requiring a successful ledger result before indexing a decision prevents drafts, failed calls, and accidental repetition from becoming design law.",
+      "superseded": false
+    },
+    {
+      "id": "D-181",
+      "decidedOn": "2026-08-06",
+      "level": "product",
+      "question": "The Meccano retune left Alfons at 386 tokens against the handoff's 109, with 180 of them pure aliases and 76 referenced by nothing anywhere. What comes out, and on what rule?",
+      "resolution": "One rule, applied without exception: a token survives only if something reads it, or if something that is read derives from it. Everything else is retired and deleted, with a lifecycle row so the manifest answers with a tombstone rather than silence. Three consequences follow. The duplicate vocabularies go — the eleven --hex-* names, the ten pre-retune brand names, the three American --color-* spellings D-167 has been waiting on since 2026-08-02, and the short --info/--success/--warning/--danger names added during the retune, which lost to the Australian --colour-* spelling that is the house convention and the one consumers already read. The abandoned scales go — --opacity-*, --stroke-*, the four per-edge --card-border-* aliases, the dead half of the widget family, and the surface-tier aliases nothing composed. And the consumer migration is driven from alfons.lifecycle.replacement_name rather than a hand-written map, because that column exists precisely so the migration path is stated once. A deprecated token that turns out to be consumed is reclassified live rather than deleted; deprecation is a judgement about adoption, and adoption is a fact that can change back.",
+      "rationale": "The 386 was not carelessness, it was accumulation with no counter-pressure: every release added names and none could safely remove them, because before AL-009 there was no way to delete a token without destroying the reason it existed. The tombstone mechanism removed that constraint and nothing had yet spent it. Meccano is what makes the number arguable rather than merely large — it expresses the same visual language, on the same eight hues and the same ground, in 109 tokens, so 386 is not the cost of this design, it is the cost of three vocabularies for it. The alias count is the sharper measure: 180 of 386 definitions are one name pointing at another, which means a reader tracing --hex-red to a value passes through two indirections to reach a hex they could have read directly, and an agent calling get_tokens receives three plausible names for poppy vermilion with nothing to choose between them. That is the exact failure D-165 named for the public chart tokens — an unadopted parallel vocabulary is worse than a speculative one, because both look correct. The retune itself added to the problem and the audit is what surfaced it: --type-prose, --font-sans, --shade-part and the short semantic names were all authored in the last two days against components that do not exist yet, which is the same speculative-token argument D-165 made, applied to my own work. Components are deliberately out of scope. 34 have no consumer, but a design system legitimately ships ahead of its consumer and DataTable, Tabs and DatePicker are standard kit rather than fat; culling them is a different decision with a different rationale and should be made on its own.",
+      "superseded": false
+    },
+    {
+      "id": "D-168",
+      "decidedOn": "2026-08-02",
+      "level": "implementation",
+      "question": "The Alfons layout composition order — which layout wraps which — is recoverable from nothing: eight of nine layout components render no other layout, so the compose graph has one edge and sorting it produces a list that puts the outermost shell last. Where does the ordering live?",
+      "resolution": "In an alfons.layout_tiers table beside alfons.lifecycle, joined into the manifest at build time. Four tiers, outermost first: shell (PageFrame, MainLayout, PageLayout), region (PageSection), container (Container, Grid, Stack, Inline, Center), primitive. The rule is that a component of a given tier may not contain one of an outer tier. get_layout_recipe and the layout-nesting rule both read this single source, so the recipe an agent is given and the rule it is judged against cannot disagree.",
+      "rationale": "This is the same class of fact as lifecycle and it fails the same way, so it gets the same treatment under D-162. Composition order is a design judgement: nothing in a Stack says it belongs inside a PageFrame rather than around one, and the arrangement that is correct is correct because someone decided it. Deriving it anyway produced a confidently wrong answer — get_layout_recipe shipped in AL-004 ordering PageFrame last, and its tests passed because they checked the derivation was internally consistent rather than that the answer was right, which is the specific failure a derived-from-nothing field invites. A doc-comment field was the alternative and was rejected for the reason CLAUDE.md already records: an authored fact in a comment is how light mode, the focus ring and the fourth frost level were lost. Tiers rather than a total order because the real constraint is coarse — five container primitives are freely interchangeable and interchangeable in any order, and a total order would invent precedence between them that no one intends and that the rule would then enforce.",
+      "superseded": false
+    },
+    {
+      "id": "D-165",
+      "decidedOn": "2026-08-02",
+      "level": "product",
+      "question": "Thirty-six Alfons tokens form complete domain families — charting (--chart-*), confusion matrices (--matrix-*), A/B experiments (--experiment-*), heatmaps and seven --industry-*-gradient tokens — for surfaces that exist in no repository. Keep them against a future consumer, or remove them?",
+      "resolution": "Retire and delete them. The definitions come out of colours.css and admin.css, and each name gets an alfons.lifecycle row citing this decision, so the manifest emits a tombstone. An agent reaching for --chart-tooltip-bg is told it was retired and why, rather than that it does not exist.",
+      "rationale": "These are tokens designed against an imagined component rather than a built one, and the cost of keeping them is not storage — it is that they are indistinguishable from residue. The 110-orphan count is only actionable once every entry in it has an answer, and \"speculative, for a chart layer nobody has written\" is an answer that argues for removal: a token designed before its consumer encodes guesses about an API that does not exist, so the family that eventually ships will not match it anyway. AL-009's tombstones are what make deletion safe here in a way it was not for the AL-001 retirements — the judgement outlives the definition, which is precisely what light mode, the focus ring and the fourth frost level lacked when they were removed with only a CSS comment behind them.",
+      "superseded": false
     }
   ],
   "tombstones": [

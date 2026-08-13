@@ -1,0 +1,6 @@
+[mcp_servers.alfons]
+command = "bun"
+args = [
+    "run",
+    "/Users/knedliky/Agents/alfons/src/mcp/server.ts",
+]

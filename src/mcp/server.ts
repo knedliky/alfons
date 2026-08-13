@@ -15,16 +15,21 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { loadManifest, storybookBase } from './manifest.js';
+import { reloadingManifest, storybookBase } from './manifest.js';
 import { applyFixes, libraryFindings, review } from '../rules/index.js';
 import { scaffoldComponent } from './scaffold.js';
-import { findComponents, getComponent, getLayoutRecipe, getTokens, listSurfaces } from './tools.js';
+import {
+	findComponents,
+	findDesignMemory,
+	getComponent,
+	getLayoutRecipe,
+	getTokens,
+	listSurfaces
+} from './tools.js';
 
-// Loaded once, at startup, and deliberately not reloaded per call: a manifest
-// that changed underneath a running server would make two calls in the same
-// conversation disagree. It also means a bad manifest stops the server rather
-// than producing one wrong answer (C6).
-const manifest = loadManifest();
+// One complete manifest per call. Hook refreshes replace the file atomically,
+// and the next call adopts the validated snapshot without restarting stdio.
+const manifest = reloadingManifest();
 
 const server = new McpServer({ name: 'alfons', version: '0.1.0' });
 
@@ -41,14 +46,33 @@ server.registerTool(
 			'Search the Alfons component library by what you need it to do, in plain language — ' +
 			'"something to show a status", "a way to lay out cards in a grid". Returns ranked ' +
 			'matches with a one-line summary each. Call this BEFORE writing any new Svelte ' +
-			'component: Alfons has 82, and building a second one that already exists is the ' +
+			'component: building a second one that already exists is the ' +
 			'failure this server was built to prevent. Follow up with get_component for the props.',
 		inputSchema: {
 			query: z.string().describe('What the component should do, in plain language.'),
 			limit: z.number().int().min(1).max(50).optional().describe('Maximum matches (default 10).')
 		}
 	},
-	async ({ query, limit }) => reply(findComponents(manifest, query, limit))
+	async ({ query, limit }) => reply(findComponents(manifest(), query, limit))
+);
+
+server.registerTool(
+	'find_design_memory',
+	{
+		title: 'Find design memory',
+		description:
+			'Search Alfons before making a design choice. Returns both existing components and ' +
+			'confirmed design decisions matching an intent, including the rationale behind current ' +
+			'patterns. Call this BEFORE creating a component or introducing a new visual or ' +
+			'interaction pattern: it answers not only what exists, but what Alfons has already ' +
+			'decided and why. Results are refreshed by project hooks after component creation and ' +
+			'successful ledger record_decision calls.',
+		inputSchema: {
+			query: z.string().describe('The component, pattern or design question to investigate.'),
+			limit: z.number().int().min(1).max(50).optional().describe('Maximum results per kind.')
+		}
+	},
+	async ({ query, limit }) => reply(findDesignMemory(manifest(), query, limit))
 );
 
 server.registerTool(
@@ -66,7 +90,7 @@ server.registerTool(
 			name: z.string().describe('Component name, e.g. Button. Case-insensitive.')
 		}
 	},
-	async ({ name }) => reply(getComponent(manifest, name, storybookBase()))
+	async ({ name }) => reply(getComponent(manifest(), name, storybookBase()))
 );
 
 server.registerTool(
@@ -94,7 +118,7 @@ server.registerTool(
 		}
 	},
 	async ({ surface, category, includeDeprecated }) =>
-		reply(getTokens(manifest, { surface, category, includeDeprecated }))
+		reply(getTokens(manifest(), { surface, category, includeDeprecated }))
 );
 
 server.registerTool(
@@ -112,7 +136,7 @@ server.registerTool(
 			'review_markup reads this same ordering, so the two cannot disagree.',
 		inputSchema: {}
 	},
-	async () => reply(getLayoutRecipe(manifest))
+	async () => reply(getLayoutRecipe(manifest()))
 );
 
 server.registerTool(
@@ -126,7 +150,7 @@ server.registerTool(
 			'you have picked a component, which is where most misuse begins.',
 		inputSchema: {}
 	},
-	async () => reply(listSurfaces(manifest))
+	async () => reply(listSurfaces(manifest()))
 );
 
 server.registerTool(
@@ -151,7 +175,7 @@ server.registerTool(
 				.describe('Which surface this markup renders on. Defaults to public.')
 		}
 	},
-	async ({ source, surface }) => reply(review(source, manifest, surface))
+	async ({ source, surface }) => reply(review(source, manifest(), surface))
 );
 
 server.registerTool(
@@ -170,7 +194,7 @@ server.registerTool(
 			surface: z.enum(['public', 'admin']).optional().describe('Defaults to public.')
 		}
 	},
-	async ({ source, surface }) => reply(applyFixes(source, manifest, surface))
+	async ({ source, surface }) => reply(applyFixes(source, manifest(), surface))
 );
 
 server.registerTool(
@@ -180,7 +204,9 @@ server.registerTool(
 		description:
 			'Generate a new Alfons component and its Storybook story, already satisfying every ' +
 			'design rule: tokens legal on the requested surface, Svelte 5 runes, and layouts nested ' +
-			'in the documented order. Call this INSTEAD of writing a component from scratch — ' +
+			'in the documented order. Call only after find_design_memory has found no existing ' +
+			'component or confirmed pattern for the intent, and use this INSTEAD of writing a ' +
+			'component from scratch — ' +
 			'review_markup then has nothing to report, because the generated path was compliant ' +
 			'before it was reviewed. Returns source text and the paths to write it to; the caller ' +
 			'writes the files. If a component of that name already exists, the answer says so ' +
@@ -200,7 +226,7 @@ server.registerTool(
 		}
 	},
 	async ({ name, category, surface, composes }) =>
-		reply(scaffoldComponent(manifest, { name, category, surface, composes }))
+		reply(scaffoldComponent(manifest(), { name, category, surface, composes }))
 );
 
 server.registerTool(
@@ -215,7 +241,7 @@ server.registerTool(
 			'findings can. Use it when auditing the design system, not when writing a component.',
 		inputSchema: {}
 	},
-	async () => reply({ advisory: true, findings: libraryFindings(manifest) })
+	async () => reply({ advisory: true, findings: libraryFindings(manifest()) })
 );
 
 await server.connect(new StdioServerTransport());

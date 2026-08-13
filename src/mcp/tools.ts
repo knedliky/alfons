@@ -139,6 +139,46 @@ export function findComponents(manifest: Manifest, query: string, limit = 10): C
 }
 
 // ---------------------------------------------------------------------------
+// find_design_memory
+// ---------------------------------------------------------------------------
+
+function proseScore(text: string, queryTerms: string[], weight: number): number {
+	const words = terms(text);
+	const vocabulary = new Set(words);
+	return queryTerms.reduce((total, term) => {
+		if (vocabulary.has(term)) return total + weight;
+		if (words.some((word) => word.startsWith(term) || term.startsWith(word))) {
+			return total + weight / 2;
+		}
+		return total;
+	}, 0);
+}
+
+/** Search components and confirmed design decisions through one front door. */
+export function findDesignMemory(manifest: Manifest, query: string, limit = 10) {
+	const queryTerms = terms(query);
+	if (!queryTerms.length) return { components: [], decisions: [] };
+
+	const decisions = manifest.designDecisions
+		.map((decision) => {
+			let relevance = proseScore(decision.question, queryTerms, 5);
+			relevance += proseScore(decision.resolution, queryTerms, 4);
+			relevance += proseScore(decision.rationale, queryTerms, 2);
+			if (decision.id.toLowerCase() === query.toLowerCase().trim()) relevance += 20;
+			if (decision.superseded) relevance *= 0.25;
+			return { ...decision, relevance: Math.round(relevance * 10) / 10 };
+		})
+		.filter((decision) => decision.relevance > 0)
+		.sort((a, b) => b.relevance - a.relevance || b.id.localeCompare(a.id))
+		.slice(0, limit);
+
+	return {
+		components: findComponents(manifest, query, limit),
+		decisions
+	};
+}
+
+// ---------------------------------------------------------------------------
 // get_component
 // ---------------------------------------------------------------------------
 

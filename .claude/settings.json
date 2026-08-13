@@ -1,0 +1,18 @@
+{
+	"$schema": "https://json.schemastore.org/claude-code-settings.json",
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Write|Edit|mcp__ledger__record_decision",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "bun run ${CLAUDE_PROJECT_DIR}/scripts/hooks/refresh-design-memory.ts",
+						"timeout": 120,
+						"statusMessage": "Refreshing Alfons design memory"
+					}
+				]
+			}
+		]
+	}
+}
