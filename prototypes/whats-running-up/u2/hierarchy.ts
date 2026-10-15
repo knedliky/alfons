@@ -56,13 +56,13 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		name: 'alfons',
-		repoPath: '~/Agents/alfons',
+		repoPath: '~/Agents/design-system',
 		blurb:
 			'One design system, three surfaces — library, Storybook, and the MCP server agents build against.'
 	},
 	{
 		name: 'ledger',
-		repoPath: '~/Agents/ledger',
+		repoPath: '~/Agents/planning',
 		blurb: 'The single write path into the ledger schema. Tasks, decisions, releases and projects.'
 	},
 	{
@@ -72,7 +72,7 @@ export const projects: Project[] = [
 	},
 	{
 		name: 'gateway',
-		repoPath: '~/Agents/gateway',
+		repoPath: '~/Agents/context-gateway',
 		blurb: 'The edge every external call passes through. Auth, rate limits, and retries.'
 	}
 ];
