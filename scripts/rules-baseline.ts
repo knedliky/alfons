@@ -21,8 +21,8 @@ import { libraryFindings, review, rules } from '../src/rules/index.js';
 import type { Surface } from '../src/manifest/types.js';
 
 const REPOS = [
-	{ name: 'atlas', path: '/Users/knedliky/Agents/atlas' },
-	{ name: 'field-notes', path: '/Users/knedliky/Agents/ios-app' }
+	{ name: 'atlas', path: '/Users/knedliky/Motivka/atlas' },
+	{ name: 'field-notes', path: '/Users/knedliky/Motivka/ios-app' }
 ];
 
 const manifest = loadManifest();
