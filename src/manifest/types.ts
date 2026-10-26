@@ -19,6 +19,19 @@
 export type Surface = 'public' | 'admin';
 
 /**
+ * Which side of the D-238 boundary a token sits on. DERIVED from the file that
+ * defines it, because a file is wholly one layer: that separation is the rule.
+ *
+ * `primitive` is raw material that only other tokens may read: the ground, the
+ * ink and steel ramps, the eight part colours, and the literal channels and
+ * shadow rungs that cannot be written as a mix. `semantic` is everything a
+ * component is meant to read, including the scales components index directly
+ * (`--space-${n}` from resolveGap), which is why spacing and typography are
+ * semantic even though they hold raw lengths.
+ */
+export type TokenLayer = 'primitive' | 'semantic';
+
+/**
  * Where a component's props were recovered from.
  *
  * Recorded rather than inferred because the two paths give different fidelity,
@@ -79,9 +92,12 @@ export interface TokenEntry {
 	value: string;
 	/** The token file it is defined in, relative to src/tokens. */
 	file: string;
-	/** Category taken from the filename: colours, spacing, typography, ... */
+	/** Subject: colours, spacing, typography, elevation, motion, admin. Taken
+	 *  from the filename, or from an `@category` comment in a file that holds
+	 *  several subjects (primitives.css, a theme). */
 	category: string;
 	surface: Surface;
+	layer: TokenLayer;
 	/** Components referencing it. */
 	referencedBy: string[];
 	/** Whether another token or a rule in the token layer references it. A

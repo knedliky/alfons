@@ -1,0 +1,481 @@
+/**
+ * Alfons — Meccano theme
+ *
+ * The default theme (D-238). A theme is a set of values for the semantic
+ * tokens plus a motion preset, applied with data-theme on any element and
+ * inherited by everything inside it. Meccano sits on :root as well, so a page
+ * with no data-theme anywhere is a Meccano page.
+ *
+ * This file sets semantic tokens only. Every colour here is a var() of a
+ * primitive in primitives.css, or a mix over one — never a raw value — so a
+ * second theme is a second set of roles over the same palette, and moving a
+ * base colour moves every theme with it. The keywords black, white and
+ * transparent appear as mix poles, which shade a token rather than name a
+ * colour of their own.
+ *
+ * Dark is the sole colour mode until a second complete theme ships, pinned via
+ * data-colour-mode="dark" on <html> (D-195, which D-238 replaces in time with
+ * data-theme). Australian spelling throughout (colour, not color).
+ *
+ * The @category comments keep each token filed under its subject in the
+ * manifest, since this file's name says which theme it is, not what subject.
+ */
+
+@layer base {
+	:root,
+	[data-theme='meccano'] {
+		/* @category colours */
+
+		/* === SURFACES ====================================================
+		   READ THE NAMES CAREFULLY — one of them does not mean what it says.
+
+		   --surface-page is NOT the background of the page. The readme is
+		   explicit: "Site pages sit on the workbench (.mcn-bench, charcoal-ember
+		   ground); dense text areas — article bodies, list sheets — float on it
+		   as flat --surface-page panels with a hairline edge and soft shadow."
+		   So --surface-page is the PANEL that floats on the ground, and the
+		   ground itself is --bench-bg, which is --foundry-black.
+
+		   The retune mapped --bg-primary at --surface-page on the strength of
+		   the name, which lifted the entire site five RGB points before the
+		   rake light was added on top, and read as washed out. Corrected here.
+
+		   --surface-page keeps its other job unchanged: it is the base every
+		   tint mixes over, which is what Meccano does too. A tint is a colour
+		   sitting on a panel, so mixing over the panel is right even though
+		   the panel is not the page. */
+		--surface-page: color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%);
+		--surface-card: color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%);
+		/* Recessed zones — footers, wells, and the control tray under a card
+		   plate. Deleted by D-181 as unread, which it was: nothing had built
+		   the tray yet. It has one now. */
+		--surface-sunken: var(--foundry-black);
+
+		--bg-primary: var(--bench-bg);
+		--bg-primary-rgb: var(--shade-rgb); /* --foundry-black, for alpha composition */
+
+		/* The glass surfaces predate the retune, and Meccano permits no
+		   glassmorphism outside the dialog overlay, so these resolve to flat
+		   steel rather than to a blur substrate. The names survive because
+		   consumers read them; the frost does not. */
+		--bg-glass: var(--steel-100);
+		--bg-glass-solid: var(--steel-50);
+		--surface-glass-bg: var(--surface-card);
+
+		/* Subtle surface washes — hover states and recessed tracks. Neutrals
+		   get a steel wash on hover; they never get gloss. */
+		--surface-hover-subtle: color-mix(in oklab, transparent, var(--ink-900) 5%);
+
+		/* === BORDERS — 1px lines do the separating =======================
+		   Like a technical drawing: hairline for most divisions, strong for
+		   emphasis and secondary buttons. */
+		--border-hairline: color-mix(in oklab, var(--ink-900), transparent 91%);
+		--border-default: color-mix(in oklab, var(--ink-900), transparent 83%);
+		--border-strong: var(--ink-900);
+
+		--border-glass: var(--border-hairline);
+		--border-glass-hover: var(--border-default);
+
+		/* === TEXT — hierarchy: primary > secondary > muted =============== */
+		--text-primary: var(--ink-900);
+		--text-secondary: var(--ink-500);
+		--text-muted: var(--ink-400);
+		--text-inverse: var(--foundry-black); /* on light plastics */
+		--text-link: var(--pulley-blue);
+		/* Opposite-mode primary text for the PageHeader per-letter flicker. */
+		--text-flicker-alt: var(--foundry-black);
+
+		/* === ACCENT — girder red is the hero ============================== */
+		--accent: var(--girder-red);
+		--accent-deep: color-mix(in oklab, var(--girder-red), black 16%);
+		--accent-contrast: var(--ink-900);
+		--accent-rgb: var(--girder-red-rgb);
+
+		/* Plastic chips darken to their -deep value on hover; capped buttons
+		   brighten instead, which the elevation section expresses. */
+		--accent-hover: var(--accent-deep);
+		--accent-bg-subtle: color-mix(in oklab, var(--girder-red), var(--surface-page) 92%);
+		--accent-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 86%);
+		--accent-bg-emphasis: color-mix(in oklab, var(--girder-red), var(--surface-page) 78%);
+		--accent-border: color-mix(in oklab, var(--girder-red), transparent 60%);
+
+		/* === ACCENT ROLES — the rest of the plastics ===================== */
+		--accent-secondary: var(--gantry-orange); /* hover warmth, secondary highlights */
+		--accent-tertiary: var(--pulley-blue); /* informational, workflow indicators */
+
+		/* === FOCUS — functional blue, never the accent ===================
+		   Focus is a backlit lamp: pulley-blue light escaping from beneath the
+		   element. The ring geometry is --focus-ring in the elevation section;
+		   this is only its hue. */
+		--focus: var(--pulley-blue);
+		--focus-ring-color: var(--focus);
+
+		/* === GRADIENTS — accent elements ONLY, never backgrounds =========
+		   Meccano permits no gradients beyond the plastic sheen, so these are
+		   held to two-stop part pairings that read as moulded colour rather
+		   than as atmosphere. */
+		--gradient-sunset: linear-gradient(135deg, var(--girder-red), var(--gantry-orange));
+		--gradient-depth: linear-gradient(135deg, var(--boiler-navy), var(--flange-plum));
+		--gradient-placeholder: linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%);
+
+		/* === CARDS — control-panel plates ================================ */
+		--card-bg: var(--surface-card);
+		--card-border: var(--border-hairline);
+		--card-border-hover: var(--border-default);
+
+		/* === LOADING SHIMMER ============================================= */
+		--shimmer-highlight-dim: color-mix(in oklab, transparent, var(--ink-900) 6%);
+
+		/* === INPUTS ====================================================== */
+		--input-bg: var(--steel-100);
+
+		/* === SELECT ====================================================== */
+		--select-selected-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 80%);
+
+		/* === SEMANTIC — info=pulley, success=toolbox, ====================
+		   warning=brass, danger=girder. Tints derive over the page. */
+		--info: var(--pulley-blue);
+		--info-tint: color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%);
+		--success: var(--toolbox-olive);
+		--success-tint: color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%);
+		--warning: var(--brass-amber);
+		--warning-tint: color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%);
+		--danger: var(--girder-red);
+		--danger-tint: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
+
+		/* The --colour-* names are what Alfons and Atlas already read. */
+		--colour-success: var(--success);
+		--colour-success-bg: var(--success-tint);
+		--colour-warning: var(--warning);
+		--colour-warning-bg: var(--warning-tint);
+		--colour-error: var(--danger);
+		--colour-error-bg: var(--danger-tint);
+		--colour-info: var(--info);
+		--colour-info-bg: var(--info-tint);
+
+		--status-success-text: var(--success);
+		--status-warning-text: var(--warning);
+		--status-error-text: var(--danger);
+		--status-info-text: var(--info);
+
+		/* === AUTOMATABILITY — the Merlin exposure model =================== */
+		--colour-full: var(--girder-red); /* AI — full automation, highest exposure */
+		--colour-partial: var(--brass-amber); /* Augmented — AI assists */
+		--colour-human: var(--toolbox-olive); /* Human — requires human judgement */
+
+		/* The American spellings --color-full/-partial/-human are gone. D-167
+		   deprecated them on 2026-08-02 and said they would retire "once Atlas
+		   has migrated, in a separate change to that repository"; D-181 is that
+		   change, and Atlas now reads the Australian names. */
+
+		/* === CHARTS — the eight plastics, in plotting order ===============
+		   Ordered so adjacent series sit far apart in hue, which is what a
+		   categorical scale needs; palette order is not series order.
+
+		   The chrome tokens that sat here — --chart-axis-colour, --chart-bg,
+		   --chart-border, --chart-grid-colour, --chart-tooltip-bg/-border/-text,
+		   --chart-positive/-negative/-neutral/-warning and the four unitless
+		   --chart-margin-* — were retired under D-165. BarChart and LineChart
+		   consume the -admin counterparts and never referenced these. */
+		--chart-series-1: var(--girder-red);
+
+		--chart-padding: var(--space-5);
+
+		--chart-label-size: 0.75rem;
+		--chart-title-size: 1rem;
+		--chart-value-size: 0.875rem;
+		--chart-axis-font-size: 0.6875rem; /* --type-spec size; axis ticks are mono */
+		--chart-axis-font-weight: 400; /* mono is regular-only — never synthesise */
+		--chart-axis-letter-spacing: 0.08em; /* --ls-caps */
+		--chart-transition-duration: 200ms; /* --dur-med */
+		--chart-transition-easing: cubic-bezier(0.2, 0, 0, 1); /* --ease-machined */
+
+		/* === WORKBENCH — the drafting-desk ground =========================
+		   Charcoal-ember ground under a 40px technical grid with a heavier
+		   line every 160px, lit by a warm gantry rake grazing from the upper
+		   left. The .mcn-bench class in base.css composes these; the site
+		   already carried a 40px grid, so this formalises what was there.
+		   The two line colours are literal, so they are primitives. */
+		--bench-bg: var(--foundry-black);
+		--bench-rake: radial-gradient(
+			120% 150% at 20% -25%,
+			color-mix(in oklab, var(--gantry-orange), transparent 86%),
+			transparent 90%
+		);
+
+		/* Grid tokens the existing background components read. */
+		--grid-size: 40px;
+		--grid-size-major: 160px;
+		--grid-colour: var(--bench-line);
+		--grid-colour-accent: var(--bench-line-major);
+		--grid-opacity: 1; /* the alpha now lives in the line colour itself */
+		--grid-opacity-accent: 1;
+		--ground-rake-strength: 0.14;
+		--ground-glint-strength: 0.04;
+		--ground-glint-colour: var(--brass-amber);
+
+		/* === BLOG CATEGORY COLOURS ======================================= */
+		--category-agents: var(--girder-red);
+		--category-workflows: var(--pulley-blue);
+		--category-synthesis: var(--gantry-orange);
+		--category-data: var(--boiler-navy);
+		--category-design: var(--pinion-pink);
+		--category-infra: var(--toolbox-olive);
+
+		/* === INDUSTRY GROUPS — occupation explorer =====================
+		   Strictly brand-palette, and deliberately drawn from the hues that
+		   carry no exposure meaning (the automatability section), so an
+		   industry never reads as an automatability level. */
+		--industry-finance: var(--pulley-blue);
+		--industry-technology: var(--flange-plum);
+		--industry-healthcare-education: var(--pinion-pink);
+		--industry-legal: var(--ind-aubergine);
+		--industry-engineering-trades: var(--boiler-navy);
+		--industry-marketing-communications: var(--pinion-pink);
+		--industry-operations-admin: var(--ink-500);
+
+		/* A dark brand hue lifted to a legible lightness (still brand-derived).
+		   --industry-legal reads it directly, which is why it survives. */
+		--ind-aubergine: color-mix(in oklab, var(--flange-plum), white 38%);
+
+		/* === BUTTON VARIANTS ============================================= */
+		--button-ghost-hover-bg: var(--steel-100);
+
+		/* === ADMIN CORE — pinned dark, never changes with colour mode ==== */
+		--admin-bg: var(--foundry-black);
+		--admin-bg-page: var(--admin-bg);
+		--admin-bg-elevated: var(--steel-50);
+		--admin-border: var(--border-hairline);
+		--admin-text: var(--ink-900);
+		--admin-text-secondary: var(--ink-500);
+		--admin-text-muted: var(--ink-400);
+
+		/* @category elevation */
+
+		/* MECCANO RETUNE. Flat plus a hairline is the default; the shadow
+		   rungs in primitives.css are for the few things that genuinely leave
+		   the page: raised (--shadow-1), popovers and toasts (--shadow-2),
+		   dialogs (--shadow-3).
+
+		   WHAT REPLACES THE DEPTH. Elevation used to be carried by frosted
+		   glass — a backdrop blur and a thinned fill per level. Meccano has no
+		   glassmorphism at all outside the dialog overlay, so depth is carried
+		   by material instead:
+
+		     Plastic. Coloured chips take a top sheen (--gloss +
+		     --shadow-gloss). Neutrals never get gloss. A second, stronger
+		     treatment for larger strips and slabs (--shade-part,
+		     --shadow-part) was authored during the retune and removed under
+		     D-181 — nothing had a slab to shade. Revive it from the lifecycle
+		     tombstone when something does.
+
+		     Panel caps. Buttons are control-panel hardware — a domed face
+		     (--cap-red anodized, --cap-chrome secondary) seated in a dark
+		     bezel (--shadow-cap), pressing 2px into the panel on active
+		     (--shadow-cap-press).
+
+		   Everything is lit strictly from above. No bottom bounce light: the
+		   panel is dark. The alpha effects read primitive channels
+		   (--sheen-rgb, --shade-rgb) rather than raw literals, so a component
+		   still contains no raw colour. */
+
+		/* === Z-INDEX — semantic scale, back to front =================== */
+		--z-raised: 1;
+		--z-dropdown: 10;
+		--z-sticky: 20;
+		--z-overlay: 30;
+		--z-toast: 40;
+		--z-widget: 50;
+
+		/* === PLASTIC — moulded surface language ==========================
+		   Layer --gloss as a background-image over a plastic background-colour.
+		   The shadow half is inset-only so it survives the .mcn-perf mask.
+		   Neutrals never get either. */
+		--gloss: linear-gradient(
+			180deg,
+			rgba(var(--sheen-rgb), 0.3),
+			rgba(var(--sheen-rgb), 0.08) 46%,
+			rgba(var(--sheen-rgb), 0) 62%
+		);
+		--shadow-gloss:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22);
+
+		/* === PANEL CAPS — the accent cap =================================
+		   A domed face seated in a dark bezel. The red cap is built from
+		   --accent, so it is a role; the chrome cap and the bezel shadows are
+		   literal stops and live in primitives.css. */
+		--cap-red:
+			radial-gradient(
+				ellipse 130% 55% at 50% 8%,
+				rgba(var(--sheen-rgb), 0.18),
+				rgba(var(--sheen-rgb), 0.04) 50%,
+				rgba(var(--sheen-rgb), 0) 68%
+			),
+			linear-gradient(
+				180deg,
+				color-mix(in oklab, var(--accent), white 5%) 0%,
+				var(--accent) 45%,
+				color-mix(in oklab, var(--accent), black 14%) 75%,
+				color-mix(in oklab, var(--accent), black 26%) 100%
+			);
+
+		/* === FOCUS RING — a backlit lamp ================================
+		   Light escaping from beneath the cap and diffusing outward in layered
+		   halos. Pulley blue, never the accent: focus is functional. */
+		--focus-ring:
+			0 0 0 1px color-mix(in oklab, var(--focus), white 15%),
+			0 0 6px 1px color-mix(in oklab, var(--focus), transparent 25%),
+			0 0 18px 4px color-mix(in oklab, var(--focus), transparent 55%),
+			0 0 36px 10px color-mix(in oklab, var(--focus), transparent 82%);
+
+		/* === ELEVATION LADDER — retained names, machined values =========
+		   The rake-light scalars survive because five components compose an
+		   edge from them, but the ladder they drove is now the three-step
+		   shadow scale. The lit edge is what remains of the rake: a single
+		   hairline of sheen along the top, which is what Meccano's own card
+		   plate does. */
+		--el-edge-light: rgba(var(--sheen-rgb), var(--el-rim));
+		--el-edge-shade: rgba(var(--shade-rgb), var(--el-shade));
+
+		--elevation-1: var(--shadow-1);
+		--elevation-2: var(--shadow-2);
+		--elevation-3: var(--shadow-3);
+
+		/* Surface fills — flat now, not thinned toward glass. */
+		--elevation-1-bg: var(--surface-card);
+		--elevation-2-bg: var(--steel-150);
+		--elevation-3-bg: var(--steel-200);
+
+		/* === SURFACE TIERS ==============================================
+		   Three tiers, named by how the surface sits relative to the page.
+		   Each is ONE bundle — fill + frost + shadow — so a component picks a
+		   tier rather than picking blur and opacity by hand.
+		     rest   — sits ON the page (cards, tiles)
+		     raised — lifts off it (inputs, chat, agent surface)
+		     float  — detached above everything (menus, popovers, modals) */
+		--surface-rest-bg: var(--surface-card);
+		--surface-raised-bg: var(--elevation-2-bg);
+		--surface-raised-frost: var(--frost-2);
+		--surface-float-frost: var(--frost-3);
+
+		/* === SEMANTIC SHADOW ALIASES ===================================
+		   Every one of these resolves to a rung of the three-step ladder.
+		   The previous set was eleven independently-authored shadows — 8px
+		   32px at 20%, 10px 40px at 50%, 25px 50px -12px at 50% — which is
+		   how a system ends up with four subtly different popovers. */
+		--card-shadow: var(--shadow-1);
+		--card-shadow-hover: var(--shadow-2);
+		--shadow-glass: var(--shadow-1); /* agent input + chat bubbles */
+		--shadow-subtle: var(--shadow-1);
+		--input-shadow: none;
+
+		/* Buttons are panel caps: the cap shadow IS the button's elevation,
+		   and pressing seats it 2px into the collar. Hover brightens the dome
+		   with a filter rather than growing a shadow, so there is nothing for
+		   --button-shadow-hover to be; it stays as the cap. */
+		--button-shadow: var(--shadow-cap);
+		--button-shadow-hover: var(--shadow-cap);
+		--button-shadow-active: var(--shadow-cap-press);
+
+		/* Floating overlays — neutral scrims, not brand-tinted. The dialog
+		   overlay is the one place the system permits any transparency. */
+		--overlay-scrim: rgba(var(--shade-rgb), 0.44);
+		--shadow-toast: var(--shadow-2);
+		--shadow-dropdown: var(--shadow-2);
+		--shadow-popover: var(--shadow-2);
+		--shadow-modal: var(--shadow-3);
+		--shadow-tooltip-cast: var(--shadow-2);
+		--surface-overlay-subtle: rgba(var(--shade-rgb), 0.3); /* loading overlays */
+		--tooltip-shadow: var(--shadow-2);
+		--select-dropdown-shadow: var(--shadow-2);
+
+		/* === ADMIN SHADOWS — consolidated here from admin.css ============ */
+		--admin-shadow: var(--shadow-1);
+		--admin-shadow-elevated: var(--shadow-2);
+
+		/* @category motion */
+
+		/* MECCANO MOTION PRESET: motion is machined. 120–320ms on
+		   --ease-machined, no bounce and no overshoot. Things slide and seat;
+		   they never spring. It lives in the theme because it is a brand
+		   choice, not a global law (D-238): another theme can move differently.
+
+		   The spring easing survives, and this is the one place the retune
+		   keeps a value it argues against. It overshoots past 1 by design,
+		   which is exactly what "no bounce" forbids — but it is consumed by the
+		   homepage widget bar's FLIP reorganisation, where the overshoot is the
+		   animation rather than a flourish on top of one. Retuning it to
+		   machined would not make that component calmer, it would make it
+		   wrong. The widget bar is the exception, and it is named here so the
+		   next reader knows it was considered.
+
+		   Interaction states are opacity-led. Disabled is 45%, matching the
+		   Meccano components, rather than the 50% the previous ladder used. */
+
+		/* === INTERACTION STATES ========================================== */
+		--state-active-opacity: 0.9;
+		--state-disabled-opacity: 0.45;
+
+		/* === EASING — machined: short, precise, no overshoot ============= */
+		--ease-machined: cubic-bezier(0.2, 0, 0, 1);
+
+		/* === DURATIONS ===================================================
+		   Meccano's three steps are 120 / 200 / 320ms. The existing five names
+		   keep their consumers and land on those steps; --duration-slow at
+		   500ms had no counterpart and comes down to the top of the range,
+		   because half a second is a transition the eye waits for. */
+		--dur-fast: 120ms;
+		--dur-med: 200ms;
+		--dur-slow: 320ms;
+
+		--duration-fast: var(--dur-med);
+		--duration-normal: var(--dur-slow);
+		--duration-slow: var(--dur-slow);
+
+		/* === TRANSITIONS — composed from durations ======================= */
+		--transition-fast: var(--dur-fast) var(--ease-machined);
+		--transition-normal: var(--dur-med) var(--ease-machined);
+		--transition-slow: var(--dur-slow) var(--ease-machined);
+
+		/* Colour mode transition. `fill` retained for SVG surfaces that
+		   transition with the mode. */
+		--colour-mode-transition:
+			background-color var(--dur-slow) var(--ease-machined),
+			color var(--dur-slow) var(--ease-machined), border-color var(--dur-slow) var(--ease-machined),
+			box-shadow var(--dur-slow) var(--ease-machined), fill var(--dur-slow) var(--ease-machined);
+
+		/* === SPRING EASINGS — reusable across the system ================= */
+		--ease-spring: linear(
+			0,
+			0.006,
+			0.025 2.8%,
+			0.101 6.1%,
+			0.539 18.9%,
+			0.721 25.3%,
+			0.849 31.5%,
+			0.937 38.1%,
+			0.981 43.8%,
+			1.007 50.4%,
+			1.022 57%,
+			1.024 62%,
+			1.015 68%,
+			1.007 76%,
+			1.003 84%,
+			1
+		);
+
+		/* === WIDGET SYSTEM — retained (homepage floating widget bar) ===== */
+		--widget-icon-size: 40px;
+		--widget-pulse-duration: 2.5s;
+		--widget-spring-easing: var(--ease-spring);
+		--widget-spring-duration: 0.6s;
+	}
+
+	/* Reduced motion — collapse springs and widget FLIP animations */
+	@media (prefers-reduced-motion: reduce) {
+		:root,
+		[data-theme='meccano'] {
+			--widget-spring-duration: 0.01ms;
+		}
+	}
+}

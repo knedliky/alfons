@@ -1,0 +1,157 @@
+/**
+ * Alfons — Primitive tokens
+ *
+ * The raw material every theme is built from, and nothing else (D-238 rule 1).
+ * Components never read these directly; they read the semantic tokens a theme
+ * sets over them. A theme file sets semantic tokens only, so this is the one
+ * place a raw colour value is written.
+ *
+ * Two kinds of primitive live here:
+ *
+ *   The palette — the ground, the ink and steel ramps, and the eight part
+ *   colours. MECCANO RETUNE: the same eight brand hues Alfons always had,
+ *   re-tuned toward Herman Miller vibrance (cleaner, higher chroma, slightly
+ *   warm) and renamed for the parts they resemble: moulded plastic punctuation
+ *   on a warm ember-charcoal ground under bone ink.
+ *
+ *   Literal material — the channels, rungs and stops that cannot be written as
+ *   a mix of the palette: alpha channels for rgba(), the shadow ladder, the
+ *   rivet and chrome-cap stops, the drafting-grid lines, the frost scale.
+ *
+ * EVERY NEUTRAL IS DERIVED, NOT AUTHORED. Each is a step off --foundry-black
+ * toward --ink-900, so moving the ground re-derives every ramp beneath it.
+ * Previously each ramp step was hand-authored and could drift from its
+ * neighbours, and each brand hue was written twice — once in OKLCH and once in
+ * hex, with a comment asserting the two matched. They did not, exactly, and
+ * nothing checked. --ink-500 and --ink-400 were the last two hand-authored
+ * steps; AL-025 derived them too.
+ *
+ * A hue is written exactly once, under its part name. The --hex-* family and
+ * the pre-retune brand names were kept as aliases through the migration and
+ * deleted under D-181; nothing in this file points at anything else in it
+ * purely to rename it.
+ *
+ * ON D-004, which chose OKLCH: its concern was perceptual uniformity across
+ * the palette, and that concern is met — every derivation mixes in oklab. What
+ * changed is only the authoring format for the eight base hues, which are
+ * exact brand values and belong written exactly.
+ *
+ * The @category comments keep each token filed under its subject in the
+ * manifest, since this file's name says which layer it is, not what subject.
+ */
+
+@layer base {
+	:root {
+		/* @category colours */
+
+		/* === GROUND & INK — the two poles everything derives from ========
+		   Foundry black is the ember floor; ink-900 is bone. Every neutral
+		   below is a mix of these two, so the ramps stay in one hue family
+		   and re-derive together. */
+		--foundry-black: #141010; /* charcoal ember — the ground; also text on light plastics */
+		--ink-900: #efe8db; /* bone — primary text, the brightest neutral */
+		--ink-700: color-mix(in oklab, var(--ink-900), var(--foundry-black) 20%);
+		/* The two steps below were hex (#a89e8f, #857b6f) until AL-025. These
+		   are the whole-percent mixes closest to them, at deltaE OK 0.011 and
+		   0.010: the old values sat slightly warmer than the bone-to-ember line,
+		   so no mix lands on them exactly. */
+		--ink-500: color-mix(in oklab, var(--ink-900), var(--foundry-black) 30%); /* secondary text */
+		--ink-400: color-mix(in oklab, var(--ink-900), var(--foundry-black) 46%); /* muted text */
+		--ink-300: color-mix(in oklab, var(--ink-900), var(--foundry-black) 68%);
+
+		/* Steel — surfaces, lifted off the ground toward bone */
+		--steel-200: color-mix(in oklab, var(--foundry-black), var(--ink-900) 19%);
+		--steel-150: color-mix(in oklab, var(--foundry-black), var(--ink-900) 13%);
+		--steel-100: color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%);
+		--steel-50: color-mix(in oklab, var(--foundry-black), var(--ink-900) 5%);
+
+		/* === PART COLOURS — eight moulded plastics ======================== */
+		--girder-red: #e22d2e; /* poppy vermilion · was --fire-engine-red */
+		--gantry-orange: #ee7623; /* persimmon · was --burnt-sunset */
+		--flange-plum: #83489b; /* girard purple · was --aubergine */
+		--pulley-blue: #47c2f2; /* clear sky · was --sky-blue */
+		--pinion-pink: #f972c6; /* hot magenta · was --blush-pink */
+		--toolbox-olive: #5e9141; /* leaf olive · was --olive-green */
+		--boiler-navy: #30489c; /* cobalt · was --navy-royal */
+		--brass-amber: #e5a82e; /* mustard ochre · was --amber */
+
+		/* The ten pre-retune brand names (--fire-engine-red, --sky-blue, …) and
+		   the eleven --hex-* duplicates lived here as aliases through the
+		   retune, so both repositories could keep building while consumers
+		   migrated. They have, so the aliases are gone under D-181 and a hue
+		   is now written exactly once. The lifecycle rows are the record: an
+		   agent reaching for --hex-red gets --girder-red and a reason. */
+
+		/* Girder red as channels, for rgba() alpha composition. rgba() cannot
+		   take a colour token, so --accent-rgb reads this rather than writing
+		   the triple itself, which would put a raw colour in the theme. */
+		--girder-red-rgb: 226, 45, 46;
+
+		/* Drafting-grid lines. Their own near-white rather than a mix of
+		   --ink-900, because the grid was tuned against this value and a mix
+		   would move every line on every page. */
+		--bench-line: rgba(245, 241, 234, 0.015);
+		--bench-line-major: rgba(245, 241, 234, 0.036);
+
+		/* @category elevation */
+
+		/* === CHANNELS ====================================================
+		   Alpha effects need a colour they can vary the opacity of, and
+		   rgba() cannot take a token. These are the two channels every
+		   sheen and shade composes from, so components still hold no raw
+		   colour of their own. */
+		--sheen-rgb: 255, 250, 242;
+		--shade-rgb: 20, 16, 16; /* --foundry-black */
+
+		/* Recurring atoms, tokenised so they cannot be redrawn per component */
+		--rivet-face: #8a8272;
+		--rivet-edge: #2e2922;
+
+		/* === SHADOW LADDER — barely there ================================
+		   Shadows are barely there; 1px hairlines do the separating, like a
+		   technical drawing. The three steps are for the few things that
+		   genuinely leave the page. Components read the semantic aliases the
+		   theme builds on these, not the rungs. */
+		--shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4); /* raised */
+		--shadow-2: 0 2px 12px rgba(0, 0, 0, 0.5); /* popovers, toasts */
+		--shadow-3: 0 20px 48px rgba(0, 0, 0, 0.6); /* dialogs only */
+
+		/* === PANEL CAPS — the parts of a cap that are literal ============
+		   Buttons are control-panel hardware: a domed face seated in a dark
+		   bezel, pressing 2px into the panel on active. Lit strictly from
+		   above; there is no bottom bounce light because the panel is dark.
+		   The red cap is built from --accent and lives in the theme; the
+		   chrome stops and the bezel shadows are fixed values. */
+		--cap-chrome:
+			radial-gradient(
+				ellipse 130% 55% at 50% 8%,
+				rgba(var(--sheen-rgb), 0.22),
+				rgba(var(--sheen-rgb), 0.05) 50%,
+				rgba(var(--sheen-rgb), 0) 68%
+			),
+			linear-gradient(180deg, #ede7db 0%, #d6cec0 50%, #b7af9f 78%, #9c9484 100%);
+		--shadow-cap:
+			inset 0 1px 0 rgba(var(--sheen-rgb), 0.18), inset 0 -3px 6px rgba(var(--shade-rgb), 0.35),
+			0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 2px 4px rgba(0, 0, 0, 0.35);
+		--shadow-cap-press:
+			inset 0 2px 5px rgba(var(--shade-rgb), 0.45), 0 0 0 2px rgba(var(--shade-rgb), 0.55),
+			0 1px 2px rgba(0, 0, 0, 0.3);
+
+		/* === RAKE-LIGHT SCALARS ==========================================
+		   Five components compose a lit edge from these. The edge colours
+		   themselves are roles and live in the theme. */
+		--el-rim: 0.05; /* lit-edge alpha */
+		--el-shade: calc(var(--el-rim) * 3);
+
+		/* Frost — zero at every step. Meccano permits no glassmorphism
+		   outside the dialog overlay, and a backdrop-filter of 0px is a no-op
+		   the browser skips. Kept rather than deleted because eight files name
+		   these and a blur scale is exactly the kind of thing a later brief
+		   asks for again; the retirement would then have to be undone rather
+		   than a value edited. Same reasoning D-160 applied to the radii, and
+		   the radii came back. */
+		--frost-1: 0px;
+		--frost-2: 0px;
+		--frost-3: 0px;
+	}
+}

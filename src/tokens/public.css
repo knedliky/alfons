@@ -1,9 +1,9 @@
 /**
  * Motif Design Library — Public UI Tokens (entry manifest)
  *
- * UPDATED: this file is now an @import manifest only — every token lives in
- * the split files below. Import order matters: colours before elevation
- * (elevation fills mix from surface tokens).
+ * An @import manifest only — every token lives in the files below. Primitives
+ * load before the theme, and the theme last, because a theme is the layer of
+ * semantic roles over everything beneath it (D-238).
  *
  * Usage: @import '@motif/design/public';
  * Global styles (headings, grid background, focus, utilities) remain a
@@ -13,8 +13,7 @@
 @import 'tailwindcss';
 
 @import './fonts.css';
-@import './colours.css';
+@import './primitives.css';
 @import './typography.css';
 @import './spacing.css';
-@import './elevation.css';
-@import './motion.css';
+@import './themes/meccano.css';

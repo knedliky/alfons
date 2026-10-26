@@ -40,6 +40,7 @@ import type {
 	PropEntry,
 	PropsSource,
 	Surface,
+	TokenLayer,
 	Lifecycle,
 	LayoutTier,
 	Tombstone,
@@ -91,6 +92,51 @@ function surfaceFor(file: string, name: string): Surface {
 	return basename(file) === 'admin.css' || name.startsWith('--admin-') ? 'admin' : 'public';
 }
 
+/** Every file in a theme directory sets semantic tokens only (D-238 rule 1). */
+const THEMES_DIR = 'themes';
+
+/**
+ * The layer of each token file outside themes/, written out rather than
+ * inferred. A new token file must be added here, and until it is the manifest
+ * refuses to build: a file defaulting silently to either layer would put its
+ * tokens on the wrong side of the boundary rule that reads this field.
+ *
+ * spacing.css and typography.css are semantic although they hold raw lengths:
+ * components index those scales directly (`var(--space-${n})` from resolveGap
+ * is a typed public API), so they are what components read, not what tokens
+ * are built from. admin.css is semantic because it holds the admin roles that
+ * AL-027 moves into an overlay theme.
+ */
+const TOKEN_FILE_LAYERS: Record<string, TokenLayer> = {
+	'primitives.css': 'primitive',
+	'spacing.css': 'semantic',
+	'typography.css': 'semantic',
+	'admin.css': 'semantic'
+};
+
+function layerFor(tokenFile: string): TokenLayer {
+	if (tokenFile.startsWith(`${THEMES_DIR}/`)) return 'semantic';
+	const layer = TOKEN_FILE_LAYERS[tokenFile];
+	if (!layer) {
+		throw new Error(
+			`src/tokens/${tokenFile} defines tokens but has no layer. Add it to ` +
+				'TOKEN_FILE_LAYERS in scripts/generate-manifest.ts, or move it under themes/.'
+		);
+	}
+	return layer;
+}
+
+/**
+ * `/* @category colours *\/` sets the category of the declarations after it, up
+ * to the next marker in the same file. Only files that hold several subjects
+ * need one: primitives.css and a theme carry colour, elevation and motion
+ * tokens side by side, and their filename says which layer they are, not what
+ * subject. Without the marker every token in them would be filed under
+ * "primitives" or "meccano", and get_tokens(category: 'colours') would come
+ * back empty.
+ */
+const CATEGORY_MARKER = /^@category\s+([a-z-]+)$/;
+
 /**
  * Parse the token layer with a real CSS parser rather than by line.
  *
@@ -110,8 +156,18 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 		if (filename === TOKEN_ENTRY_MANIFEST) continue;
 
 		const root = postcss.parse(readFileSync(file, 'utf8'), { from: file });
+		const tokenFile = relative(TOKENS_DIR, file);
+		let category = filename.replace(/\.css$/, '');
 
-		root.walkDecls((decl) => {
+		root.walk((node) => {
+			if (node.type === 'comment') {
+				const marker = node.text.trim().match(CATEGORY_MARKER);
+				if (marker) category = marker[1];
+				return;
+			}
+			if (node.type !== 'decl') return;
+			const decl = node;
+
 			// Every var() in the token layer is a consumer. A token used only by
 			// another token is used — treating it as orphaned reported --frost-1
 			// and the whole elevation ladder as dead.
@@ -129,9 +185,10 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 				// would otherwise churn the manifest and trip the drift gate for
 				// no semantic change.
 				value: decl.value.replace(/\s+/g, ' ').trim(),
-				file: relative(TOKENS_DIR, file),
-				category: filename.replace(/\.css$/, ''),
+				file: tokenFile,
+				category,
 				surface: surfaceFor(file, decl.prop),
+				layer: layerFor(tokenFile),
 				referencedBy: [],
 				usedInTokenLayer: false,
 				usedInStories: false,

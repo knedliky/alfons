@@ -6,8 +6,8 @@
  * Admin tokens are pinned to the dark palette and do not change with colour mode.
  *
  * UPDATED: the admin CORE tokens (--admin-bg, --admin-bg-elevated,
- * --admin-border, --admin-text*) now live in tokens/colours.css and the admin
- * shadows in tokens/elevation.css, so public consumers (e.g. StatusBadge on a
+ * --admin-border, --admin-text*) and the admin shadows now live in
+ * tokens/themes/meccano.css, so public consumers (e.g. StatusBadge on a
  * public page) resolve them without importing this file. This file keeps the
  * admin-ONLY extras: header typography, chart variants, stat-icon washes, and
  * the admin heading override.

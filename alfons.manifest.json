@@ -6097,9 +6097,10 @@
     {
       "name": "--accent",
       "value": "var(--girder-red)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "BackLink",
@@ -6138,9 +6139,10 @@
     {
       "name": "--accent-bg",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 86%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card"
       ],
@@ -6151,9 +6153,10 @@
     {
       "name": "--accent-bg-emphasis",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 78%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -6162,9 +6165,10 @@
     {
       "name": "--accent-bg-subtle",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 92%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Tabs"
       ],
@@ -6175,9 +6179,10 @@
     {
       "name": "--accent-border",
       "value": "color-mix(in oklab, var(--girder-red), transparent 60%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card",
         "Portrait",
@@ -6190,9 +6195,10 @@
     {
       "name": "--accent-contrast",
       "value": "var(--ink-900)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -6209,9 +6215,10 @@
     {
       "name": "--accent-deep",
       "value": "color-mix(in oklab, var(--girder-red), black 16%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6226,9 +6233,10 @@
     {
       "name": "--accent-hover",
       "value": "var(--accent-deep)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Footer"
       ],
@@ -6238,10 +6246,11 @@
     },
     {
       "name": "--accent-rgb",
-      "value": "226, 45, 46",
-      "file": "colours.css",
+      "value": "var(--girder-red-rgb)",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BoolField",
         "DateField",
@@ -6260,9 +6269,10 @@
     {
       "name": "--accent-secondary",
       "value": "var(--gantry-orange)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "Footer",
@@ -6276,9 +6286,10 @@
     {
       "name": "--accent-tertiary",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "ProgressBar"
@@ -6290,9 +6301,10 @@
     {
       "name": "--admin-bg",
       "value": "var(--foundry-black)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BulkActionModal",
         "CalendarDay",
@@ -6324,9 +6336,10 @@
     {
       "name": "--admin-bg-elevated",
       "value": "var(--steel-50)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "Button",
@@ -6354,9 +6367,10 @@
     {
       "name": "--admin-bg-page",
       "value": "var(--admin-bg)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -6371,9 +6385,10 @@
     {
       "name": "--admin-border",
       "value": "var(--border-hairline)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "BoolField",
@@ -6414,6 +6429,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "PageHeader"
       ],
@@ -6424,9 +6440,10 @@
     {
       "name": "--admin-shadow",
       "value": "var(--shadow-1)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Card"
       ],
@@ -6437,9 +6454,10 @@
     {
       "name": "--admin-shadow-elevated",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Card"
       ],
@@ -6453,6 +6471,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "PageHeader"
       ],
@@ -6463,9 +6482,10 @@
     {
       "name": "--admin-text",
       "value": "var(--ink-900)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "Alert",
@@ -6510,9 +6530,10 @@
     {
       "name": "--admin-text-muted",
       "value": "var(--ink-400)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "CalendarDay",
@@ -6539,9 +6560,10 @@
     {
       "name": "--admin-text-secondary",
       "value": "var(--ink-500)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "BackLink",
@@ -6579,6 +6601,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6587,9 +6610,10 @@
     {
       "name": "--bench-bg",
       "value": "var(--foundry-black)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6604,9 +6628,10 @@
     {
       "name": "--bench-line",
       "value": "rgba(245, 241, 234, 0.015)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6621,9 +6646,10 @@
     {
       "name": "--bench-line-major",
       "value": "rgba(245, 241, 234, 0.036)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6638,9 +6664,10 @@
     {
       "name": "--bench-rake",
       "value": "radial-gradient( 120% 150% at 20% -25%, color-mix(in oklab, var(--gantry-orange), transparent 86%), transparent 90% )",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6655,9 +6682,10 @@
     {
       "name": "--bg-glass",
       "value": "var(--steel-100)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Header"
       ],
@@ -6668,9 +6696,10 @@
     {
       "name": "--bg-glass-solid",
       "value": "var(--steel-50)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "AvatarGroup",
@@ -6686,9 +6715,10 @@
     {
       "name": "--bg-primary",
       "value": "var(--bench-bg)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AvatarGroup",
         "CalendarDay",
@@ -6704,10 +6734,11 @@
     },
     {
       "name": "--bg-primary-rgb",
-      "value": "20, 16, 16",
-      "file": "colours.css",
+      "value": "var(--shade-rgb)",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6716,9 +6747,10 @@
     {
       "name": "--boiler-navy",
       "value": "#30489c",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "LongreadArticle",
         "Portrait"
@@ -6736,9 +6768,10 @@
     {
       "name": "--border-default",
       "value": "color-mix(in oklab, var(--ink-900), transparent 83%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Input",
         "Textarea"
@@ -6756,9 +6789,10 @@
     {
       "name": "--border-glass",
       "value": "var(--border-hairline)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Divider",
         "Footer",
@@ -6777,9 +6811,10 @@
     {
       "name": "--border-glass-hover",
       "value": "var(--border-default)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Toggle"
       ],
@@ -6790,9 +6825,10 @@
     {
       "name": "--border-hairline",
       "value": "color-mix(in oklab, var(--ink-900), transparent 91%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6807,9 +6843,10 @@
     {
       "name": "--border-strong",
       "value": "var(--ink-900)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -6826,9 +6863,10 @@
     {
       "name": "--brass-amber",
       "value": "#e5a82e",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "LongreadArticle",
@@ -6848,9 +6886,10 @@
     {
       "name": "--button-ghost-hover-bg",
       "value": "var(--steel-100)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -6867,9 +6906,10 @@
     {
       "name": "--button-shadow",
       "value": "var(--shadow-cap)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -6878,9 +6918,10 @@
     {
       "name": "--button-shadow-active",
       "value": "var(--shadow-cap-press)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -6889,9 +6930,10 @@
     {
       "name": "--button-shadow-hover",
       "value": "var(--shadow-cap)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -6900,9 +6942,10 @@
     {
       "name": "--cap-chrome",
       "value": "radial-gradient( ellipse 130% 55% at 50% 8%, rgba(var(--sheen-rgb), 0.22), rgba(var(--sheen-rgb), 0.05) 50%, rgba(var(--sheen-rgb), 0) 68% ), linear-gradient(180deg, #ede7db 0%, #d6cec0 50%, #b7af9f 78%, #9c9484 100%)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button"
       ],
@@ -6919,9 +6962,10 @@
     {
       "name": "--cap-red",
       "value": "radial-gradient( ellipse 130% 55% at 50% 8%, rgba(var(--sheen-rgb), 0.18), rgba(var(--sheen-rgb), 0.04) 50%, rgba(var(--sheen-rgb), 0) 68% ), linear-gradient( 180deg, color-mix(in oklab, var(--accent), white 5%) 0%, var(--accent) 45%, color-mix(in oklab, var(--accent), black 14%) 75%, color-mix(in oklab, var(--accent), black 26%) 100% )",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -6938,9 +6982,10 @@
     {
       "name": "--card-bg",
       "value": "var(--surface-card)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "CalendarDay",
         "CalendarGrid",
@@ -6972,6 +7017,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -6986,9 +7032,10 @@
     {
       "name": "--card-border",
       "value": "var(--border-hairline)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "CalendarGrid",
@@ -7021,9 +7068,10 @@
     {
       "name": "--card-border-hover",
       "value": "var(--border-default)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Checkbox",
         "Footer",
@@ -7040,6 +7088,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card",
         "SkeletonCard",
@@ -7055,6 +7104,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card",
         "SkeletonCard"
@@ -7069,6 +7119,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -7077,9 +7128,10 @@
     {
       "name": "--card-shadow",
       "value": "var(--shadow-1)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card",
         "SkeletonHero"
@@ -7091,9 +7143,10 @@
     {
       "name": "--card-shadow-hover",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card"
       ],
@@ -7104,9 +7157,10 @@
     {
       "name": "--category-agents",
       "value": "var(--girder-red)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7117,9 +7171,10 @@
     {
       "name": "--category-data",
       "value": "var(--boiler-navy)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7130,9 +7185,10 @@
     {
       "name": "--category-design",
       "value": "var(--pinion-pink)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7143,9 +7199,10 @@
     {
       "name": "--category-infra",
       "value": "var(--toolbox-olive)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7156,9 +7213,10 @@
     {
       "name": "--category-synthesis",
       "value": "var(--gantry-orange)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7169,9 +7227,10 @@
     {
       "name": "--category-workflows",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -7185,6 +7244,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7199,6 +7259,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7210,9 +7271,10 @@
     {
       "name": "--chart-axis-font-size",
       "value": "0.6875rem",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7223,9 +7285,10 @@
     {
       "name": "--chart-axis-font-weight",
       "value": "400",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7236,9 +7299,10 @@
     {
       "name": "--chart-axis-letter-spacing",
       "value": "0.08em",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7252,6 +7316,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7266,6 +7331,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7280,6 +7346,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart"
       ],
@@ -7293,6 +7360,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7303,9 +7371,10 @@
     {
       "name": "--chart-label-size",
       "value": "0.75rem",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7317,9 +7386,10 @@
     {
       "name": "--chart-padding",
       "value": "var(--space-5)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7331,9 +7401,10 @@
     {
       "name": "--chart-series-1",
       "value": "var(--girder-red)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7342,9 +7413,10 @@
     {
       "name": "--chart-title-size",
       "value": "1rem",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7359,6 +7431,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7373,6 +7446,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7386,6 +7460,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -7396,9 +7471,10 @@
     {
       "name": "--chart-transition-duration",
       "value": "200ms",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7410,9 +7486,10 @@
     {
       "name": "--chart-transition-easing",
       "value": "cubic-bezier(0.2, 0, 0, 1)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7424,9 +7501,10 @@
     {
       "name": "--chart-value-size",
       "value": "0.875rem",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "LineChart"
@@ -7438,9 +7516,10 @@
     {
       "name": "--colour-error",
       "value": "var(--danger)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "BoolField",
@@ -7467,9 +7546,10 @@
     {
       "name": "--colour-error-bg",
       "value": "var(--danger-tint)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BulkActionModal",
         "DateField",
@@ -7488,9 +7568,10 @@
     {
       "name": "--colour-full",
       "value": "var(--girder-red)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7499,9 +7580,10 @@
     {
       "name": "--colour-human",
       "value": "var(--toolbox-olive)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7510,9 +7592,10 @@
     {
       "name": "--colour-info",
       "value": "var(--info)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BulkActionModal",
         "StatCard",
@@ -7525,9 +7608,10 @@
     {
       "name": "--colour-info-bg",
       "value": "var(--info-tint)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BulkActionModal",
         "Card",
@@ -7541,9 +7625,10 @@
     {
       "name": "--colour-mode-transition",
       "value": "background-color var(--dur-slow) var(--ease-machined), color var(--dur-slow) var(--ease-machined), border-color var(--dur-slow) var(--ease-machined), box-shadow var(--dur-slow) var(--ease-machined), fill var(--dur-slow) var(--ease-machined)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Form",
         "PageLayout"
@@ -7555,9 +7640,10 @@
     {
       "name": "--colour-partial",
       "value": "var(--brass-amber)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7566,9 +7652,10 @@
     {
       "name": "--colour-success",
       "value": "var(--success)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "Form",
@@ -7585,9 +7672,10 @@
     {
       "name": "--colour-success-bg",
       "value": "var(--success-tint)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge",
         "Toast"
@@ -7599,9 +7687,10 @@
     {
       "name": "--colour-warning",
       "value": "var(--warning)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "ProgressBar",
@@ -7615,9 +7704,10 @@
     {
       "name": "--colour-warning-bg",
       "value": "var(--warning-tint)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge",
         "Toast"
@@ -7629,9 +7719,10 @@
     {
       "name": "--danger",
       "value": "var(--girder-red)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7646,9 +7737,10 @@
     {
       "name": "--danger-tint",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7663,9 +7755,10 @@
     {
       "name": "--dur-fast",
       "value": "120ms",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7680,9 +7773,10 @@
     {
       "name": "--dur-med",
       "value": "200ms",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7697,9 +7791,10 @@
     {
       "name": "--dur-slow",
       "value": "320ms",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7714,9 +7809,10 @@
     {
       "name": "--duration-fast",
       "value": "var(--dur-med)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7725,9 +7821,10 @@
     {
       "name": "--duration-normal",
       "value": "var(--dur-slow)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput"
       ],
@@ -7738,9 +7835,10 @@
     {
       "name": "--duration-slow",
       "value": "var(--dur-slow)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure",
         "LongreadSection",
@@ -7753,9 +7851,10 @@
     {
       "name": "--ease-machined",
       "value": "cubic-bezier(0.2, 0, 0, 1)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7770,9 +7869,10 @@
     {
       "name": "--ease-spring",
       "value": "linear( 0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.981 43.8%, 1.007 50.4%, 1.022 57%, 1.024 62%, 1.015 68%, 1.007 76%, 1.003 84%, 1 )",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure"
       ],
@@ -7783,9 +7883,10 @@
     {
       "name": "--el-edge-light",
       "value": "rgba(var(--sheen-rgb), var(--el-rim))",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure",
         "Menu",
@@ -7798,9 +7899,10 @@
     {
       "name": "--el-edge-shade",
       "value": "rgba(var(--shade-rgb), var(--el-shade))",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure",
         "Menu",
@@ -7813,9 +7915,10 @@
     {
       "name": "--el-rim",
       "value": "0.05",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7824,9 +7927,10 @@
     {
       "name": "--el-shade",
       "value": "calc(var(--el-rim) * 3)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -7835,9 +7939,10 @@
     {
       "name": "--elevation-1",
       "value": "var(--shadow-1)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure"
       ],
@@ -7848,9 +7953,10 @@
     {
       "name": "--elevation-1-bg",
       "value": "var(--surface-card)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure"
       ],
@@ -7861,9 +7967,10 @@
     {
       "name": "--elevation-2",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure"
       ],
@@ -7874,9 +7981,10 @@
     {
       "name": "--elevation-2-bg",
       "value": "var(--steel-150)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadFigure"
       ],
@@ -7887,9 +7995,10 @@
     {
       "name": "--elevation-3",
       "value": "var(--shadow-3)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7898,9 +8007,10 @@
     {
       "name": "--elevation-3-bg",
       "value": "var(--steel-200)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Menu",
         "Popover"
@@ -7915,6 +8025,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Select",
         "ToggleGroup"
@@ -7926,9 +8037,10 @@
     {
       "name": "--flange-plum",
       "value": "#83489b",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "LongreadArticle"
       ],
@@ -7945,9 +8057,10 @@
     {
       "name": "--focus",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Checkbox",
         "Input",
@@ -7968,9 +8081,10 @@
     {
       "name": "--focus-ring",
       "value": "0 0 0 1px color-mix(in oklab, var(--focus), white 15%), 0 0 6px 1px color-mix(in oklab, var(--focus), transparent 25%), 0 0 18px 4px color-mix(in oklab, var(--focus), transparent 55%), 0 0 36px 10px color-mix(in oklab, var(--focus), transparent 82%)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "Input",
@@ -7990,9 +8104,10 @@
     {
       "name": "--focus-ring-color",
       "value": "var(--focus)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Checkbox",
         "DestinationRow",
@@ -8012,6 +8127,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "AgentInput",
@@ -8038,6 +8154,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "LongreadHero",
@@ -8060,6 +8177,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -8077,6 +8195,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "AvatarGroup",
@@ -8121,6 +8240,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Footer",
         "Header",
@@ -8133,9 +8253,10 @@
     {
       "name": "--foundry-black",
       "value": "#141010",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge"
       ],
@@ -8152,9 +8273,10 @@
     {
       "name": "--frost-1",
       "value": "0px",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -8163,9 +8285,10 @@
     {
       "name": "--frost-2",
       "value": "0px",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8174,9 +8297,10 @@
     {
       "name": "--frost-3",
       "value": "0px",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8188,6 +8312,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8205,6 +8330,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8222,6 +8348,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8239,6 +8366,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8256,6 +8384,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8273,6 +8402,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8290,6 +8420,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8307,6 +8438,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8324,6 +8456,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8341,6 +8474,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "Select"
@@ -8361,6 +8495,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Badge"
       ],
@@ -8380,6 +8515,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8394,9 +8530,10 @@
     {
       "name": "--gantry-orange",
       "value": "#ee7623",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "LongreadArticle",
         "Pill",
@@ -8415,9 +8552,10 @@
     {
       "name": "--girder-red",
       "value": "#e22d2e",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "LongreadArticle"
@@ -8433,11 +8571,24 @@
       }
     },
     {
+      "name": "--girder-red-rgb",
+      "value": "226, 45, 46",
+      "file": "primitives.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "primitive",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--gloss",
       "value": "linear-gradient( 180deg, rgba(var(--sheen-rgb), 0.3), rgba(var(--sheen-rgb), 0.08) 46%, rgba(var(--sheen-rgb), 0) 62% )",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Badge",
         "Toggle"
@@ -8455,9 +8606,10 @@
     {
       "name": "--gradient-depth",
       "value": "linear-gradient(135deg, var(--boiler-navy), var(--flange-plum))",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "SectionHeader"
       ],
@@ -8468,9 +8620,10 @@
     {
       "name": "--gradient-placeholder",
       "value": "linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "SkeletonHero"
       ],
@@ -8481,9 +8634,10 @@
     {
       "name": "--gradient-sunset",
       "value": "linear-gradient(135deg, var(--girder-red), var(--gantry-orange))",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "SectionHeader"
       ],
@@ -8494,9 +8648,10 @@
     {
       "name": "--grid-colour",
       "value": "var(--bench-line)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8505,9 +8660,10 @@
     {
       "name": "--grid-colour-accent",
       "value": "var(--bench-line-major)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8516,9 +8672,10 @@
     {
       "name": "--grid-opacity",
       "value": "1",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8527,9 +8684,10 @@
     {
       "name": "--grid-opacity-accent",
       "value": "1",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8538,9 +8696,10 @@
     {
       "name": "--grid-size",
       "value": "40px",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8549,9 +8708,10 @@
     {
       "name": "--grid-size-major",
       "value": "160px",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8566,9 +8726,10 @@
     {
       "name": "--ground-glint-colour",
       "value": "var(--brass-amber)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8577,9 +8738,10 @@
     {
       "name": "--ground-glint-strength",
       "value": "0.04",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8588,9 +8750,10 @@
     {
       "name": "--ground-rake-strength",
       "value": "0.14",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8602,6 +8765,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BackLink"
       ],
@@ -8612,9 +8776,10 @@
     {
       "name": "--ind-aubergine",
       "value": "color-mix(in oklab, var(--flange-plum), white 38%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8623,9 +8788,10 @@
     {
       "name": "--industry-engineering-trades",
       "value": "var(--boiler-navy)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8636,9 +8802,10 @@
     {
       "name": "--industry-finance",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8649,9 +8816,10 @@
     {
       "name": "--industry-healthcare-education",
       "value": "var(--pinion-pink)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8662,9 +8830,10 @@
     {
       "name": "--industry-legal",
       "value": "var(--ind-aubergine)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8675,9 +8844,10 @@
     {
       "name": "--industry-marketing-communications",
       "value": "var(--pinion-pink)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8688,9 +8858,10 @@
     {
       "name": "--industry-operations-admin",
       "value": "var(--ink-500)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8701,9 +8872,10 @@
     {
       "name": "--industry-technology",
       "value": "var(--flange-plum)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Pill"
       ],
@@ -8714,9 +8886,10 @@
     {
       "name": "--info",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8731,9 +8904,10 @@
     {
       "name": "--info-tint",
       "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8748,9 +8922,10 @@
     {
       "name": "--ink-300",
       "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 68%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8764,10 +8939,11 @@
     },
     {
       "name": "--ink-400",
-      "value": "#857b6f",
-      "file": "colours.css",
+      "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 46%)",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8781,10 +8957,11 @@
     },
     {
       "name": "--ink-500",
-      "value": "#a89e8f",
-      "file": "colours.css",
+      "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 30%)",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge"
       ],
@@ -8801,9 +8978,10 @@
     {
       "name": "--ink-700",
       "value": "color-mix(in oklab, var(--ink-900), var(--foundry-black) 20%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button"
       ],
@@ -8820,9 +8998,10 @@
     {
       "name": "--ink-900",
       "value": "#efe8db",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "Button"
@@ -8840,9 +9019,10 @@
     {
       "name": "--input-bg",
       "value": "var(--steel-100)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -8860,6 +9040,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "Footer",
@@ -8877,6 +9058,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -8896,6 +9078,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "Input"
@@ -8907,9 +9090,10 @@
     {
       "name": "--input-shadow",
       "value": "none",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Input",
         "Textarea"
@@ -8924,6 +9108,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8941,6 +9126,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8958,6 +9144,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8975,6 +9162,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Badge"
       ],
@@ -8994,6 +9182,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9011,6 +9200,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "NothingRunning",
         "SkeletonCard",
@@ -9024,9 +9214,10 @@
     {
       "name": "--overlay-scrim",
       "value": "rgba(var(--shade-rgb), 0.44)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Modal",
         "PeekSheet"
@@ -9041,6 +9232,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "PageSection"
       ],
@@ -9054,6 +9246,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Container",
         "LongreadArticle",
@@ -9069,6 +9262,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Container",
         "LongreadArticle",
@@ -9084,6 +9278,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "PageSection"
       ],
@@ -9097,6 +9292,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "PageSection"
       ],
@@ -9107,9 +9303,10 @@
     {
       "name": "--pinion-pink",
       "value": "#f972c6",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "LongreadArticle",
         "Portrait"
@@ -9127,9 +9324,10 @@
     {
       "name": "--pulley-blue",
       "value": "#47c2f2",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "Chip",
@@ -9153,6 +9351,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Alert",
@@ -9185,6 +9384,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Badge"
       ],
@@ -9198,6 +9398,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9215,6 +9416,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9232,6 +9434,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Footer",
@@ -9247,6 +9450,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadArticle",
         "RangeSlider",
@@ -9268,6 +9472,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9285,6 +9490,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "Card",
@@ -9305,9 +9511,10 @@
     {
       "name": "--rivet-edge",
       "value": "#2e2922",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Card"
       ],
@@ -9324,9 +9531,10 @@
     {
       "name": "--rivet-face",
       "value": "#8a8272",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Card"
       ],
@@ -9346,6 +9554,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadProseSection",
         "LongreadSection"
@@ -9360,6 +9569,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "NothingRunning",
         "PageHeader",
@@ -9375,6 +9585,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -9389,9 +9600,10 @@
     {
       "name": "--select-dropdown-shadow",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Select"
       ],
@@ -9402,9 +9614,10 @@
     {
       "name": "--select-selected-bg",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 80%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -9419,9 +9632,10 @@
     {
       "name": "--shade-rgb",
       "value": "20, 16, 16",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button",
         "LongreadArticle"
@@ -9439,9 +9653,10 @@
     {
       "name": "--shadow-1",
       "value": "0 1px 2px rgba(0, 0, 0, 0.4)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9456,9 +9671,10 @@
     {
       "name": "--shadow-2",
       "value": "0 2px 12px rgba(0, 0, 0, 0.5)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Card"
       ],
@@ -9475,9 +9691,10 @@
     {
       "name": "--shadow-3",
       "value": "0 20px 48px rgba(0, 0, 0, 0.6)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9492,9 +9709,10 @@
     {
       "name": "--shadow-cap",
       "value": "inset 0 1px 0 rgba(var(--sheen-rgb), 0.18), inset 0 -3px 6px rgba(var(--shade-rgb), 0.35), 0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 2px 4px rgba(0, 0, 0, 0.35)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button"
       ],
@@ -9511,9 +9729,10 @@
     {
       "name": "--shadow-cap-press",
       "value": "inset 0 2px 5px rgba(var(--shade-rgb), 0.45), 0 0 0 2px rgba(var(--shade-rgb), 0.55), 0 1px 2px rgba(0, 0, 0, 0.3)",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button"
       ],
@@ -9530,9 +9749,10 @@
     {
       "name": "--shadow-dropdown",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Menu",
         "MultiSelectField",
@@ -9545,9 +9765,10 @@
     {
       "name": "--shadow-glass",
       "value": "var(--shadow-1)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Surface"
@@ -9559,9 +9780,10 @@
     {
       "name": "--shadow-gloss",
       "value": "inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Badge"
       ],
@@ -9578,9 +9800,10 @@
     {
       "name": "--shadow-modal",
       "value": "var(--shadow-3)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Modal",
         "PeekSheet"
@@ -9592,9 +9815,10 @@
     {
       "name": "--shadow-popover",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "DatePicker",
         "DateRangePicker",
@@ -9607,9 +9831,10 @@
     {
       "name": "--shadow-subtle",
       "value": "var(--shadow-1)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BoolField",
         "Toggle"
@@ -9621,9 +9846,10 @@
     {
       "name": "--shadow-toast",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Toast"
       ],
@@ -9634,9 +9860,10 @@
     {
       "name": "--shadow-tooltip-cast",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
@@ -9647,9 +9874,10 @@
     {
       "name": "--sheen-rgb",
       "value": "255, 250, 242",
-      "file": "elevation.css",
+      "file": "primitives.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button",
         "Card"
@@ -9667,9 +9895,10 @@
     {
       "name": "--shimmer-highlight-dim",
       "value": "color-mix(in oklab, transparent, var(--ink-900) 6%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Skeleton"
       ],
@@ -9683,6 +9912,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Alert",
@@ -9729,6 +9959,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "PageHeader",
         "SectionHeader",
@@ -9744,6 +9975,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Alert",
@@ -9811,6 +10043,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Alert",
@@ -9854,6 +10087,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "Alert",
@@ -9913,6 +10147,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BackLink",
         "Button",
@@ -9948,6 +10183,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "DateRangePicker",
@@ -9974,6 +10210,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BarChart",
         "DestinationRow",
@@ -9994,6 +10231,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "EmptyState",
         "ErrorPage",
@@ -10012,6 +10250,7 @@
       "file": "spacing.css",
       "category": "spacing",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -10029,6 +10268,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "StatCard"
       ],
@@ -10042,6 +10282,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "StatCard"
       ],
@@ -10055,6 +10296,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "StatCard"
       ],
@@ -10068,6 +10310,7 @@
       "file": "admin.css",
       "category": "admin",
       "surface": "admin",
+      "layer": "semantic",
       "referencedBy": [
         "StatCard"
       ],
@@ -10078,9 +10321,10 @@
     {
       "name": "--state-active-opacity",
       "value": "0.9",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -10095,9 +10339,10 @@
     {
       "name": "--state-disabled-opacity",
       "value": "0.45",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -10114,9 +10359,10 @@
     {
       "name": "--status-error-text",
       "value": "var(--danger)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge"
       ],
@@ -10127,9 +10373,10 @@
     {
       "name": "--status-info-text",
       "value": "var(--info)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge"
       ],
@@ -10140,9 +10387,10 @@
     {
       "name": "--status-success-text",
       "value": "var(--success)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge"
       ],
@@ -10153,9 +10401,10 @@
     {
       "name": "--status-warning-text",
       "value": "var(--warning)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "StatusBadge"
       ],
@@ -10166,9 +10415,10 @@
     {
       "name": "--steel-100",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Button",
         "Select"
@@ -10186,9 +10436,10 @@
     {
       "name": "--steel-150",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 13%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10203,9 +10454,10 @@
     {
       "name": "--steel-200",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 19%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "Card"
@@ -10223,9 +10475,10 @@
     {
       "name": "--steel-50",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 5%)",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10243,6 +10496,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Icon"
       ],
@@ -10253,9 +10507,10 @@
     {
       "name": "--success",
       "value": "var(--toolbox-olive)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10270,9 +10525,10 @@
     {
       "name": "--success-tint",
       "value": "color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10287,9 +10543,10 @@
     {
       "name": "--surface-card",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Card",
         "Input",
@@ -10308,9 +10565,10 @@
     {
       "name": "--surface-float-frost",
       "value": "var(--frost-3)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Menu",
         "Popover"
@@ -10322,9 +10580,10 @@
     {
       "name": "--surface-glass-bg",
       "value": "var(--surface-card)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Surface"
@@ -10336,9 +10595,10 @@
     {
       "name": "--surface-hover-subtle",
       "value": "color-mix(in oklab, transparent, var(--ink-900) 5%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Alert",
         "DestinationRow",
@@ -10354,9 +10614,10 @@
     {
       "name": "--surface-overlay-subtle",
       "value": "rgba(var(--shade-rgb), 0.3)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "DataTable"
       ],
@@ -10367,9 +10628,10 @@
     {
       "name": "--surface-page",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 3%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10384,9 +10646,10 @@
     {
       "name": "--surface-raised-bg",
       "value": "var(--elevation-2-bg)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -10395,9 +10658,10 @@
     {
       "name": "--surface-raised-frost",
       "value": "var(--frost-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Alert",
@@ -10411,9 +10675,10 @@
     {
       "name": "--surface-rest-bg",
       "value": "var(--surface-card)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": true,
@@ -10422,9 +10687,10 @@
     {
       "name": "--surface-sunken",
       "value": "var(--foundry-black)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -10442,6 +10708,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadProse",
         "LongreadSection",
@@ -10457,6 +10724,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "AgentInput",
         "Button",
@@ -10479,9 +10747,10 @@
     {
       "name": "--text-flicker-alt",
       "value": "var(--foundry-black)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "PageHeader"
       ],
@@ -10492,9 +10761,10 @@
     {
       "name": "--text-inverse",
       "value": "var(--foundry-black)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "Checkbox",
@@ -10516,6 +10786,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadHero",
         "LongreadProse",
@@ -10532,9 +10803,10 @@
     {
       "name": "--text-link",
       "value": "var(--pulley-blue)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button"
       ],
@@ -10554,6 +10826,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "DestinationRow",
         "NothingRunning",
@@ -10577,9 +10850,10 @@
     {
       "name": "--text-muted",
       "value": "var(--ink-400)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "AgentInput",
@@ -10622,9 +10896,10 @@
     {
       "name": "--text-primary",
       "value": "var(--ink-900)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "AgentInput",
@@ -10681,9 +10956,10 @@
     {
       "name": "--text-secondary",
       "value": "var(--ink-500)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "Alert",
@@ -10722,6 +10998,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Button",
         "NothingRunning",
@@ -10743,9 +11020,10 @@
     {
       "name": "--toolbox-olive",
       "value": "#5e9141",
-      "file": "colours.css",
+      "file": "primitives.css",
       "category": "colours",
       "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "Badge",
         "LongreadArticle"
@@ -10763,9 +11041,10 @@
     {
       "name": "--tooltip-shadow",
       "value": "var(--shadow-2)",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Tooltip"
       ],
@@ -10776,9 +11055,10 @@
     {
       "name": "--transition-fast",
       "value": "var(--dur-fast) var(--ease-machined)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "Alert",
@@ -10810,9 +11090,10 @@
     {
       "name": "--transition-normal",
       "value": "var(--dur-med) var(--ease-machined)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Accordion",
         "AgentInput",
@@ -10836,9 +11117,10 @@
     {
       "name": "--transition-slow",
       "value": "var(--dur-slow) var(--ease-machined)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LongreadArticle"
       ],
@@ -10852,6 +11134,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10869,6 +11152,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10886,6 +11170,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10903,6 +11188,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10920,6 +11206,7 @@
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10934,9 +11221,10 @@
     {
       "name": "--warning",
       "value": "var(--brass-amber)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10951,9 +11239,10 @@
     {
       "name": "--warning-tint",
       "value": "color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%)",
-      "file": "colours.css",
+      "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10968,9 +11257,10 @@
     {
       "name": "--widget-icon-size",
       "value": "40px",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -10985,9 +11275,10 @@
     {
       "name": "--widget-pulse-duration",
       "value": "2.5s",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "NothingRunning",
         "StatusMark"
@@ -11005,9 +11296,10 @@
     {
       "name": "--widget-spring-duration",
       "value": "0.6s",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -11022,9 +11314,10 @@
     {
       "name": "--widget-spring-easing",
       "value": "var(--ease-spring)",
-      "file": "motion.css",
+      "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -11039,9 +11332,10 @@
     {
       "name": "--z-dropdown",
       "value": "10",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "LineChart",
         "MultiSelectField",
@@ -11055,9 +11349,10 @@
     {
       "name": "--z-overlay",
       "value": "30",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "DatePicker",
         "DateRangePicker",
@@ -11072,9 +11367,10 @@
     {
       "name": "--z-raised",
       "value": "1",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "DateField",
         "PageFrame",
@@ -11087,9 +11383,10 @@
     {
       "name": "--z-sticky",
       "value": "20",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "BackLink",
         "LongreadArticle"
@@ -11101,9 +11398,10 @@
     {
       "name": "--z-toast",
       "value": "40",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Toast",
         "Tooltip"
@@ -11115,9 +11413,10 @@
     {
       "name": "--z-widget",
       "value": "50",
-      "file": "elevation.css",
+      "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",
+      "layer": "semantic",
       "referencedBy": [
         "Header",
         "PeekSheet"
