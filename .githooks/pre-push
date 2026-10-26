@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# Refuse a push that would land a shipped release with no write-up.
+# Refuse a push that would land a shipped release with no write-up, or that
+# raises a design rule's finding count in any checked-out repository.
 #
 # Tracked rather than written into .git/hooks, and wired with core.hooksPath, so
 # it survives a clone, shows up in review, and changes by the same process as
@@ -33,6 +34,26 @@ if [ -x "$CHECK" ]; then
 else
     printf '  %-24s' 'releases documented'
     printf 'skipped (ledger checkout not found)\n'
+fi
+
+# The rules ratchet over Alfons and every consumer checked out on this machine
+# (AL-024); the script itself skips a repository that is not there. Fails open
+# on a missing bun for the same reason as above.
+printf '  %-24s' 'rules ratchet'
+if command -v bun >/dev/null 2>&1; then
+    baseline="$(git rev-parse --show-toplevel)/rules-baseline.json"
+    before="$(git hash-object "$baseline")"
+    if ratchet_output="$(cd "$(git rev-parse --show-toplevel)" && bun run rules:ratchet 2>&1)"; then
+        printf 'passed\n'
+    else
+        printf 'failed\n%s\n' "$ratchet_output"
+        failed=1
+    fi
+    if [ "$(git hash-object "$baseline")" != "$before" ]; then
+        printf '  %-24s%s\n' '' 'counts fell: commit rules-baseline.json to keep them'
+    fi
+else
+    printf 'skipped (bun not found)\n'
 fi
 
 if [ "$failed" -ne 0 ]; then

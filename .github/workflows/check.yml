@@ -73,3 +73,15 @@ jobs:
       # added above that the scaffold does not satisfy fails here.
       - name: scaffold
         run: bun run test:scaffold
+
+      # The rule findings may fall but never rise (AL-024). Over Alfons only:
+      # the runner has no sibling checkouts, and the ratchet skips a repository
+      # it cannot reach rather than reading its absence as zero. The pre-push
+      # hook covers the website and Field Notes on a machine that has them.
+      # A lowered count rewrites rules-baseline.json on the runner, which then
+      # discards it; committing the lower number is a local step.
+      - name: rules ratchet
+        run: bun run rules:ratchet --repo .
+
+      - name: rules ratchet test
+        run: bun run test:ratchet

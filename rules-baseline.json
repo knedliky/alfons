@@ -1,141 +1,181 @@
 {
-	"note": "Advisory baseline for D-159. Counts only — which of these are false positives is a reading, not a number, and is deliberately not decided here. A rule is a candidate for promotion to blocking once its findings have been read and its false-positive rate is known.",
-	"componentsReviewed": 246,
+	"note": "Advisory baseline for D-159. Counts only — which of these are false positives is a reading, not a number, and is deliberately not decided here. A rule is a candidate for promotion to blocking once its findings have been read and its false-positive rate is known. The per-repository rule counts under `repositories` are also a ratchet (AL-024): `bun run rules:ratchet` fails when one rises and lowers it when one falls. The totals under `rules` are from the last full run.",
+	"componentsReviewed": 270,
 	"unparseable": 0,
-	"perRepo": {
-		"atlas": 948,
-		"field-notes": 0
+	"repositories": {
+		"alfons": {
+			"components": 94,
+			"findings": 734,
+			"rules": {
+				"raw-value": 301,
+				"admin-token-on-public": 264,
+				"unknown-token": 28,
+				"retired-token": 0,
+				"tailwind-shadow": 80,
+				"raw-element": 61,
+				"layout-nesting": 0,
+				"svelte5-runes": 0
+			}
+		},
+		"website": {
+			"components": 176,
+			"findings": 1041,
+			"rules": {
+				"raw-value": 493,
+				"admin-token-on-public": 72,
+				"unknown-token": 290,
+				"retired-token": 22,
+				"tailwind-shadow": 92,
+				"raw-element": 72,
+				"layout-nesting": 0,
+				"svelte5-runes": 0
+			}
+		},
+		"field-notes": {
+			"components": 0,
+			"findings": 0,
+			"rules": {
+				"raw-value": 0,
+				"admin-token-on-public": 0,
+				"unknown-token": 0,
+				"retired-token": 0,
+				"tailwind-shadow": 0,
+				"raw-element": 0,
+				"layout-nesting": 0,
+				"svelte5-runes": 0
+			}
+		}
 	},
 	"rules": [
 		{
 			"rule": "raw-value",
-			"count": 560,
-			"files": 81,
+			"count": 794,
+			"files": 120,
 			"samples": [
 				{
-					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
-					"line": 32,
-					"message": "24px is exactly --space-5. Use var(--space-5)."
+					"file": "alfons/src/components/tables/DataTable.svelte",
+					"line": 319,
+					"message": "200px is a literal length and no token holds that value. Add one, or use the nearest existing token."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
-					"line": 38,
-					"message": "28px is a literal length and no token holds that value. Add one, or use the nearest existing token."
+					"file": "alfons/src/components/tables/DataTable.svelte",
+					"line": 324,
+					"message": "32px is exactly --space-6. Use var(--space-6)."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/sections/ProseSection.svelte",
-					"line": 71,
-					"message": "24px is exactly --space-5. Use var(--space-5)."
-				}
-			]
-		},
-		{
-			"rule": "tailwind-shadow",
-			"count": 144,
-			"files": 48,
-			"samples": [
-				{
-					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
-					"line": 189,
-					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
-				},
-				{
-					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
-					"line": 199,
-					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
-				},
-				{
-					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
-					"line": 233,
-					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+					"file": "alfons/src/components/tables/DataTable.svelte",
+					"line": 325,
+					"message": "32px is exactly --space-6. Use var(--space-6)."
 				}
 			]
 		},
 		{
 			"rule": "admin-token-on-public",
-			"count": 91,
-			"files": 7,
+			"count": 336,
+			"files": 43,
 			"samples": [
 				{
-					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
-					"line": 258,
-					"message": "--admin-text-secondary is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
+					"file": "alfons/src/components/disclosure/Accordion.svelte",
+					"line": 182,
+					"message": "--admin-border is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
-					"line": 266,
-					"message": "--admin-bg-elevated is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
+					"file": "alfons/src/components/disclosure/Accordion.svelte",
+					"line": 186,
+					"message": "--admin-border is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/navigation/AdminNavMain.svelte",
-					"line": 267,
+					"file": "alfons/src/components/disclosure/Accordion.svelte",
+					"line": 190,
 					"message": "--admin-text is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
 				}
 			]
 		},
 		{
-			"rule": "raw-element",
-			"count": 75,
-			"files": 49,
+			"rule": "unknown-token",
+			"count": 318,
+			"files": 44,
 			"samples": [
 				{
-					"file": "atlas/src/lib/ui/components/forms/ContactForm.svelte",
-					"line": 274,
-					"message": "<input> is styled from scratch here. Input carries the token styling, the focus behaviour and the admin/public theming."
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 350,
+					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/merlin/TaskItem.svelte",
-					"line": 24,
-					"message": "<button> is styled from scratch here. Button carries the token styling, the focus behaviour and the admin/public theming."
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 376,
+					"message": "--select-bg is not a design token and is not defined in this component. It will resolve to nothing."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/merlin/prototypes/ContributionLedger.svelte",
-					"line": 53,
-					"message": "<button> is styled from scratch here. Button carries the token styling, the focus behaviour and the admin/public theming."
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 429,
+					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
 				}
 			]
 		},
 		{
-			"rule": "unknown-token",
-			"count": 66,
-			"files": 17,
+			"rule": "tailwind-shadow",
+			"count": 172,
+			"files": 86,
 			"samples": [
 				{
-					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
-					"line": 187,
-					"message": "--shadow-sm is not a design token and is not defined in this component. It will resolve to nothing."
+					"file": "alfons/src/components/tables/Pagination.svelte",
+					"line": 167,
+					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
-					"line": 200,
-					"message": "--shadow-md is not a design token and is not defined in this component. It will resolve to nothing."
+					"file": "alfons/src/components/tables/Pagination.svelte",
+					"line": 198,
+					"message": "--radius is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
 				},
 				{
-					"file": "atlas/src/lib/ui/components/sections/TestimonialsSection.svelte",
-					"line": 219,
-					"message": "--accent-red is not a design token and is not defined in this component. It will resolve to nothing."
+					"file": "alfons/src/components/tables/Pagination.svelte",
+					"line": 199,
+					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+				}
+			]
+		},
+		{
+			"rule": "raw-element",
+			"count": 133,
+			"files": 79,
+			"samples": [
+				{
+					"file": "alfons/src/components/disclosure/Accordion.svelte",
+					"line": 66,
+					"message": "<button> is styled from scratch here. Button carries the token styling, the focus behaviour and the admin/public theming."
+				},
+				{
+					"file": "alfons/src/components/tables/DataTable.svelte",
+					"line": 174,
+					"message": "<input> is styled from scratch here. Input carries the token styling, the focus behaviour and the admin/public theming."
+				},
+				{
+					"file": "alfons/src/components/tables/DataTable.svelte",
+					"line": 249,
+					"message": "<input> is styled from scratch here. Input carries the token styling, the focus behaviour and the admin/public theming."
 				}
 			]
 		},
 		{
 			"rule": "retired-token",
-			"count": 12,
-			"files": 5,
+			"count": 22,
+			"files": 13,
 			"samples": [
 				{
-					"file": "atlas/src/lib/ui/components/merlin/SimilarRoles.svelte",
-					"line": 65,
-					"message": "--color-human is deprecated: American spelling. Alias of --colour-human; retires when Atlas migrates. Use --colour-human. (D-167)"
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 277,
+					"message": "--led-off is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. (D-181)"
 				},
 				{
-					"file": "atlas/src/lib/ui/components/merlin/TaskDotStrip.svelte",
-					"line": 85,
-					"message": "--color-full is deprecated: American spelling. Alias of --colour-full; retires when Atlas migrates. Use --colour-full. (D-167)"
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 316,
+					"message": "--type-body is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. Use --text-ui. (D-181)"
 				},
 				{
-					"file": "atlas/src/lib/ui/components/merlin/TaskDotStrip.svelte",
-					"line": 92,
-					"message": "--color-partial is deprecated: American spelling. Alias of --colour-partial; retires when Atlas migrates. Use --colour-partial. (D-167)"
+					"file": "website/src/lib/ui/components/chat/responses/ChatSubmitButton.svelte",
+					"line": 50,
+					"message": "--font-sans is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. Use --font-body. (D-181)"
 				}
 			]
 		},
@@ -152,5 +192,5 @@
 			"samples": []
 		}
 	],
-	"libraryFindings": 2
+	"libraryFindings": 9
 }
