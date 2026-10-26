@@ -2,5 +2,5 @@
 command = "bun"
 args = [
     "run",
-    "/Users/knedliky/Agents/alfons/src/mcp/server.ts",
+    "/Users/knedliky/Motivka/design-system/src/mcp/server.ts",
 ]

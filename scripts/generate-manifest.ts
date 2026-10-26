@@ -613,7 +613,7 @@ function readDesignDecisions(): DesignDecisionEntry[] {
 			       decision.rationale,
 			       decision.is_superseded as superseded
 			from alfons.design_decisions as membership
-			join ledger.decision_current as decision
+			join ledger_api.decisions_v1 as decision
 			  on decision.id = membership.decision_id
 		) as row
 	`);

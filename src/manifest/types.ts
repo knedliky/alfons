@@ -150,8 +150,9 @@ export const LAYOUT_TIER_ORDER: LayoutTier[] = ['shell', 'region', 'container', 
 
 /**
  * AUTHORED MEMBERSHIP, current content. A hook adds the id to
- * alfons.design_decisions only after ledger.record_decision succeeds; the
- * generator joins the current amended words from ledger.decision_current.
+ * alfons.design_decisions only after the ledger's record_decision succeeds; the
+ * generator joins the current amended words from planning's published
+ * ledger_api.decisions_v1 view (D-233).
  */
 export interface DesignDecisionEntry {
 	id: string;

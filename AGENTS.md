@@ -1,4 +1,8 @@
-# Alfons — AGENTS.md
+# Alfons (design-system) — AGENTS.md
+
+Operational rules for any agent working in this repository. `CLAUDE.md` holds the
+domain description the brain reads for routing and imports this file; keep rules
+here and nowhere else.
 
 ## Project overview
 

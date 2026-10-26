@@ -56,23 +56,23 @@ export interface Project {
 export const projects: Project[] = [
 	{
 		name: 'alfons',
-		repoPath: '~/Agents/alfons',
+		repoPath: '~/Motivka/design-system',
 		blurb:
 			'One design system, three surfaces — library, Storybook, and the MCP server agents build against.'
 	},
 	{
 		name: 'ledger',
-		repoPath: '~/Agents/ledger',
+		repoPath: '~/Motivka/planning',
 		blurb: 'The single write path into the ledger schema. Tasks, decisions, releases and projects.'
 	},
 	{
 		name: 'atlas',
-		repoPath: '~/Agents/atlas',
+		repoPath: '~/Motivka/atlas',
 		blurb: 'The machine itself — reverse proxy, local domains, and the services behind them.'
 	},
 	{
 		name: 'gateway',
-		repoPath: '~/Agents/gateway',
+		repoPath: '~/Motivka/context-gateway',
 		blurb: 'The edge every external call passes through. Auth, rate limits, and retries.'
 	}
 ];
