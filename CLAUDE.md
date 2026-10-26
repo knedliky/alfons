@@ -39,7 +39,8 @@ provides:
     summary: Storybook catalogue of every component, live at https://atlas.localhost/alfons
     via: surface
     status: live
-consumes: []
+consumes:
+  - planning.read_ledger
 ---
 
 # Design system
