@@ -53,7 +53,7 @@
 		scroll-margin-top: var(--scroll-margin-top);
 		/* Out-of-focus sections recede; 0.45 settled in prototype round 3. */
 		opacity: 0.45;
-		transition: opacity var(--duration-slow) ease;
+		transition: opacity var(--dur-slow) ease;
 	}
 
 	.longread-section.in-view {

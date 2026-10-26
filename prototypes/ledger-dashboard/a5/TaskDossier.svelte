@@ -135,7 +135,7 @@
 		flex-wrap: wrap;
 		gap: 0;
 		margin: 0;
-		border-block: 1px solid var(--border-glass);
+		border-block: 1px solid var(--border-hairline);
 		padding: 0;
 	}
 
@@ -145,7 +145,7 @@
 		gap: var(--space-2);
 		padding: var(--space-3) var(--space-5) var(--space-3) 0;
 		margin-inline-end: var(--space-5);
-		border-inline-end: 1px solid var(--border-glass);
+		border-inline-end: 1px solid var(--border-hairline);
 		font-family: var(--font-mono);
 		font-size: var(--text-caption);
 		font-weight: 600;
@@ -174,7 +174,7 @@
 
 	.fact {
 		padding: var(--space-4) var(--space-4) var(--space-4) 0;
-		border-block-end: 1px solid var(--border-glass);
+		border-block-end: 1px solid var(--border-hairline);
 	}
 
 	dt {
@@ -225,7 +225,7 @@
 		align-items: baseline;
 		gap: var(--space-4);
 		padding-block: var(--space-3);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 	}
 
 	.dep-id {

@@ -60,7 +60,7 @@
 	/* Glass tokens adapt to light/dark mode automatically */
 	.tooltip-wrapper[data-variant='default'] .tooltip-content {
 		background: var(--bg-glass-solid);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		color: var(--text-primary);
 		box-shadow: var(--tooltip-shadow);
 	}

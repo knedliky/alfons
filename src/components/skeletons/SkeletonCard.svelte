@@ -45,7 +45,7 @@
 		width: 12px;
 		height: 12px;
 		border-radius: 50%;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 	}
 
@@ -53,7 +53,7 @@
 		width: 60px;
 		height: 20px;
 		border-radius: 0;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.1s;
 	}
@@ -62,7 +62,7 @@
 		height: 24px;
 		width: 85%;
 		border-radius: 0;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		margin-bottom: var(--space-2);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.2s;
@@ -79,7 +79,7 @@
 	.skeleton-line {
 		height: 14px;
 		border-radius: 0;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 	}
 
@@ -105,7 +105,7 @@
 		height: 12px;
 		width: 50%;
 		border-radius: 0;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		margin-top: auto;
 		animation: skeleton-pulse 1.5s ease-in-out infinite;
 		animation-delay: 0.6s;

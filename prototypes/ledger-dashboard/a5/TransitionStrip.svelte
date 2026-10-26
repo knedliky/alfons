@@ -110,7 +110,7 @@
 		align-items: center;
 		gap: var(--space-4);
 		padding-block: var(--space-3);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 	}
 
 	li.is-newest {

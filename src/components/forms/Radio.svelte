@@ -167,7 +167,7 @@
 	}
 
 	.motif-radio-input:focus-visible + .motif-radio-dot {
-		outline: 1.5px solid var(--focus-ring-color);
+		outline: 1.5px solid var(--focus);
 		outline-offset: 2px;
 	}
 

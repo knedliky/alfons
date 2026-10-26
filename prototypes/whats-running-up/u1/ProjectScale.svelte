@@ -92,7 +92,7 @@
 	}
 
 	.project:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 
@@ -157,7 +157,7 @@
 		flex-direction: column;
 		gap: var(--space-1);
 		padding: var(--space-3);
-		border-left: 2px solid var(--border-glass);
+		border-left: 2px solid var(--border-hairline);
 	}
 
 	/* Neutral. A release is not a status and takes no status colour. */

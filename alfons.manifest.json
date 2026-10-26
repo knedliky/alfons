@@ -131,7 +131,7 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--duration-normal",
+        "--dur-slow",
         "--font-body",
         "--font-mono",
         "--radius",
@@ -141,7 +141,7 @@
         "--space-1",
         "--space-2",
         "--space-3",
-        "--surface-glass-bg",
+        "--surface-card",
         "--surface-inset",
         "--surface-raised-frost",
         "--text-caption",
@@ -1139,7 +1139,6 @@
         "--card-border-hover",
         "--colour-error",
         "--focus",
-        "--focus-ring-color",
         "--font-body",
         "--space-3",
         "--text-inverse",
@@ -1764,7 +1763,7 @@
       "tokensUsed": [
         "--card-bg",
         "--card-border",
-        "--focus-ring-color",
+        "--focus",
         "--font-mono",
         "--space-1",
         "--space-2",
@@ -1824,7 +1823,7 @@
       ],
       "tokensUsed": [
         "--admin-border",
-        "--border-glass",
+        "--border-hairline",
         "--space-3",
         "--text-caption",
         "--text-muted"
@@ -2020,7 +2019,7 @@
         "--accent-hover",
         "--accent-secondary",
         "--bg-primary",
-        "--border-glass",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--card-border-hover",
@@ -2292,7 +2291,7 @@
         "--accent-secondary",
         "--bg-glass",
         "--bg-primary",
-        "--border-glass",
+        "--border-hairline",
         "--font-body",
         "--font-wordmark",
         "--space-2",
@@ -2808,7 +2807,7 @@
         }
       ],
       "tokensUsed": [
-        "--duration-slow",
+        "--dur-slow",
         "--ease-spring",
         "--el-edge-light",
         "--el-edge-shade",
@@ -2982,7 +2981,7 @@
         }
       ],
       "tokensUsed": [
-        "--duration-slow",
+        "--dur-slow",
         "--font-display",
         "--scroll-margin-top",
         "--space-5",
@@ -3814,9 +3813,9 @@
       ],
       "tokensUsed": [
         "--bg-primary",
-        "--border-glass",
+        "--border-hairline",
         "--card-border",
-        "--focus-ring-color",
+        "--focus",
         "--font-display",
         "--font-mono",
         "--overlay-scrim",
@@ -4222,7 +4221,7 @@
       ],
       "tokensUsed": [
         "--bg-primary",
-        "--focus-ring-color",
+        "--focus",
         "--font-display",
         "--font-mono",
         "--screen-bottom-inset",
@@ -4314,7 +4313,6 @@
         "--card-border",
         "--card-border-hover",
         "--focus",
-        "--focus-ring-color",
         "--font-body",
         "--space-3",
         "--text-inverse",
@@ -4463,7 +4461,7 @@
         "--accent-border",
         "--accent-rgb",
         "--bg-primary",
-        "--border-glass",
+        "--border-hairline",
         "--radius-pill",
         "--transition-fast"
       ],
@@ -4869,7 +4867,7 @@
       "tokensUsed": [
         "--admin-bg",
         "--card-bg",
-        "--duration-slow",
+        "--dur-slow",
         "--radius",
         "--radius-pill",
         "--shimmer-highlight-dim",
@@ -4898,7 +4896,7 @@
       "propsSource": "none",
       "props": [],
       "tokensUsed": [
-        "--border-glass",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--card-padding",
@@ -4959,7 +4957,7 @@
       "propsSource": "none",
       "props": [],
       "tokensUsed": [
-        "--border-glass",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--card-padding",
@@ -5202,17 +5200,17 @@
       "tokensUsed": [
         "--admin-bg-elevated",
         "--admin-text-muted",
+        "--colour-error",
         "--colour-error-bg",
+        "--colour-info",
         "--colour-info-bg",
+        "--colour-success",
         "--colour-success-bg",
+        "--colour-warning",
         "--colour-warning-bg",
         "--radius",
         "--space-1",
-        "--space-2",
-        "--status-error-text",
-        "--status-info-text",
-        "--status-success-text",
-        "--status-warning-text"
+        "--space-2"
       ],
       "composes": [],
       "importedBy": [],
@@ -5309,15 +5307,15 @@
       "tokensUsed": [
         "--radius-message",
         "--shadow-glass",
+        "--surface-card",
         "--surface-edge",
-        "--surface-glass-bg",
         "--surface-raised-frost",
         "--text-primary"
       ],
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "the frosted glass panel shared by the agent input and the chat message bubbles: a translucent fill (--surface-glass-bg), a blurred backdrop, a thin faint edge, and the shared --shadow-glass drop shadow.",
+      "summary": "the frosted glass panel shared by the agent input and the chat message bubbles: the card fill (--surface-card), a blurred backdrop, a thin faint edge, and the shared --shadow-glass drop shadow.",
       "usage": null,
       "features": [],
       "storyId": "atoms-surface",
@@ -5523,7 +5521,7 @@
         "--card-bg",
         "--card-border",
         "--cell-status-colour",
-        "--focus-ring-color",
+        "--focus",
         "--font-mono",
         "--space-1",
         "--space-10",
@@ -5590,8 +5588,8 @@
         }
       ],
       "tokensUsed": [
-        "--border-glass",
-        "--focus-ring-color",
+        "--border-hairline",
+        "--focus",
         "--space-1",
         "--space-2",
         "--space-3",
@@ -5930,7 +5928,7 @@
         }
       ],
       "tokensUsed": [
-        "--border-glass-hover",
+        "--border-default",
         "--focus",
         "--focus-ring",
         "--gloss",
@@ -6032,7 +6030,7 @@
         "--admin-border",
         "--admin-text",
         "--bg-glass-solid",
-        "--border-glass",
+        "--border-hairline",
         "--radius",
         "--space-2",
         "--space-3",
@@ -6365,26 +6363,8 @@
       "lifecycle": null
     },
     {
-      "name": "--admin-bg-page",
-      "value": "var(--admin-bg)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas. Repo-local referencedBy cannot see it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
-    },
-    {
       "name": "--admin-border",
-      "value": "var(--border-hairline)",
+      "value": "var( --border-hairline )",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "admin",
@@ -6774,7 +6754,8 @@
       "layer": "semantic",
       "referencedBy": [
         "Input",
-        "Textarea"
+        "Textarea",
+        "Toggle"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -6787,8 +6768,8 @@
       }
     },
     {
-      "name": "--border-glass",
-      "value": "var(--border-hairline)",
+      "name": "--border-hairline",
+      "value": "color-mix(in oklab, var(--ink-900), transparent 91%)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -6806,32 +6787,6 @@
       ],
       "usedInTokenLayer": true,
       "usedInStories": true,
-      "lifecycle": null
-    },
-    {
-      "name": "--border-glass-hover",
-      "value": "var(--border-default)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "Toggle"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--border-hairline",
-      "value": "color-mix(in oklab, var(--ink-900), transparent 91%)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -7114,18 +7069,6 @@
       "lifecycle": null
     },
     {
-      "name": "--card-radius",
-      "value": "var(--radius-2)",
-      "file": "spacing.css",
-      "category": "spacing",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": true,
-      "lifecycle": null
-    },
-    {
       "name": "--card-shadow",
       "value": "var(--shadow-1)",
       "file": "themes/meccano.css",
@@ -7385,7 +7328,7 @@
     },
     {
       "name": "--chart-padding",
-      "value": "var(--space-5)",
+      "value": "var( --space-5 )",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7515,7 +7458,7 @@
     },
     {
       "name": "--colour-error",
-      "value": "var(--danger)",
+      "value": "var(--girder-red)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7536,6 +7479,7 @@
         "ProgressBar",
         "Select",
         "SelectField",
+        "StatusBadge",
         "TextField",
         "Toast"
       ],
@@ -7545,7 +7489,7 @@
     },
     {
       "name": "--colour-error-bg",
-      "value": "var(--danger-tint)",
+      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7591,7 +7535,7 @@
     },
     {
       "name": "--colour-info",
-      "value": "var(--info)",
+      "value": "var(--pulley-blue)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7599,6 +7543,7 @@
       "referencedBy": [
         "BulkActionModal",
         "StatCard",
+        "StatusBadge",
         "Toast"
       ],
       "usedInTokenLayer": false,
@@ -7607,7 +7552,7 @@
     },
     {
       "name": "--colour-info-bg",
-      "value": "var(--info-tint)",
+      "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7651,7 +7596,7 @@
     },
     {
       "name": "--colour-success",
-      "value": "var(--success)",
+      "value": "var(--toolbox-olive)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7663,6 +7608,7 @@
         "Icon",
         "ProgressBar",
         "StatCard",
+        "StatusBadge",
         "Toast"
       ],
       "usedInTokenLayer": true,
@@ -7671,7 +7617,7 @@
     },
     {
       "name": "--colour-success-bg",
-      "value": "var(--success-tint)",
+      "value": "color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7686,7 +7632,7 @@
     },
     {
       "name": "--colour-warning",
-      "value": "var(--warning)",
+      "value": "var(--brass-amber)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7694,6 +7640,7 @@
       "referencedBy": [
         "Alert",
         "ProgressBar",
+        "StatusBadge",
         "TextField",
         "Toast"
       ],
@@ -7703,7 +7650,7 @@
     },
     {
       "name": "--colour-warning-bg",
-      "value": "var(--warning-tint)",
+      "value": "color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%)",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -7715,42 +7662,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--danger",
-      "value": "var(--girder-red)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Girder red. --colour-error aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--danger-tint",
-      "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 82%)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Wash over the page. --colour-error-bg aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--dur-fast",
@@ -7795,7 +7706,12 @@
       "category": "motion",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "AgentInput",
+        "LongreadFigure",
+        "LongreadSection",
+        "Skeleton"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -7805,48 +7721,6 @@
         "decisionId": null,
         "recordedOn": "2026-08-05"
       }
-    },
-    {
-      "name": "--duration-fast",
-      "value": "var(--dur-med)",
-      "file": "themes/meccano.css",
-      "category": "motion",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--duration-normal",
-      "value": "var(--dur-slow)",
-      "file": "themes/meccano.css",
-      "category": "motion",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "AgentInput"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--duration-slow",
-      "value": "var(--dur-slow)",
-      "file": "themes/meccano.css",
-      "category": "motion",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "LongreadFigure",
-        "LongreadSection",
-        "Skeleton"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
     },
     {
       "name": "--ease-machined",
@@ -7876,7 +7750,7 @@
       "referencedBy": [
         "LongreadFigure"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -8063,8 +7937,13 @@
       "layer": "semantic",
       "referencedBy": [
         "Checkbox",
+        "DestinationRow",
         "Input",
+        "PeekSheet",
+        "PushedScreen",
         "Radio",
+        "TaskCell",
+        "TaskDeck",
         "Textarea",
         "Toggle"
       ],
@@ -8100,26 +7979,6 @@
         "decisionId": null,
         "recordedOn": "2026-08-05"
       }
-    },
-    {
-      "name": "--focus-ring-color",
-      "value": "var(--focus)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "Checkbox",
-        "DestinationRow",
-        "PeekSheet",
-        "PushedScreen",
-        "Radio",
-        "TaskCell",
-        "TaskDeck"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
     },
     {
       "name": "--font-body",
@@ -8781,7 +8640,7 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -8829,7 +8688,7 @@
     },
     {
       "name": "--industry-legal",
-      "value": "var(--ind-aubergine)",
+      "value": "var( --ind-aubergine )",
       "file": "themes/meccano.css",
       "category": "colours",
       "surface": "public",
@@ -8882,42 +8741,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--info",
-      "value": "var(--pulley-blue)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Pulley blue. --colour-info aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--info-tint",
-      "value": "color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Wash over the page. --colour-info-bg aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
     },
     {
       "name": "--ink-300",
@@ -9252,7 +9075,7 @@
         "LongreadArticle",
         "PageSection"
       ],
-      "usedInTokenLayer": true,
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -9578,24 +9401,6 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
-    },
-    {
-      "name": "--section-padding-x",
-      "value": "var(--page-padding-x)",
-      "file": "spacing.css",
-      "category": "spacing",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Consumed by Atlas page sections.",
-        "decisionId": null,
-        "recordedOn": "2026-08-02"
-      }
     },
     {
       "name": "--select-dropdown-shadow",
@@ -10357,62 +10162,6 @@
       }
     },
     {
-      "name": "--status-error-text",
-      "value": "var(--danger)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "StatusBadge"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--status-info-text",
-      "value": "var(--info)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "StatusBadge"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--status-success-text",
-      "value": "var(--success)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "StatusBadge"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--status-warning-text",
-      "value": "var(--warning)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "StatusBadge"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
       "name": "--steel-100",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 9%)",
       "file": "primitives.css",
@@ -10505,42 +10254,6 @@
       "lifecycle": null
     },
     {
-      "name": "--success",
-      "value": "var(--toolbox-olive)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Toolbox olive. --colour-success aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--success-tint",
-      "value": "color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Wash over the page. --colour-success-bg aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--surface-card",
       "value": "color-mix(in oklab, var(--foundry-black), var(--ink-900) 11%)",
       "file": "themes/meccano.css",
@@ -10548,8 +10261,10 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
+        "AgentInput",
         "Card",
         "Input",
+        "Surface",
         "Textarea"
       ],
       "usedInTokenLayer": true,
@@ -10572,21 +10287,6 @@
       "referencedBy": [
         "Menu",
         "Popover"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--surface-glass-bg",
-      "value": "var(--surface-card)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [
-        "AgentInput",
-        "Surface"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -11219,42 +10919,6 @@
       }
     },
     {
-      "name": "--warning",
-      "value": "var(--brass-amber)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Brass amber. --colour-warning aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
-      "name": "--warning-tint",
-      "value": "color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "public",
-      "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": {
-        "status": "live",
-        "replacement": null,
-        "reason": "Wash over the page. --colour-warning-bg aliases it.",
-        "decisionId": null,
-        "recordedOn": "2026-08-05"
-      }
-    },
-    {
       "name": "--widget-icon-size",
       "value": "40px",
       "file": "themes/meccano.css",
@@ -11313,7 +10977,7 @@
     },
     {
       "name": "--widget-spring-easing",
-      "value": "var(--ease-spring)",
+      "value": "var( --ease-spring )",
       "file": "themes/meccano.css",
       "category": "motion",
       "surface": "public",
@@ -11427,6 +11091,15 @@
     }
   ],
   "designDecisions": [
+    {
+      "id": "D-238",
+      "decidedOn": "2026-10-26",
+      "level": "product",
+      "question": "Alfons has one colour mode, Meccano dark, pinned with data-colour-mode=\"dark\" on <html>, and models admin as a ThemeVariant read through Svelte context: nine Alfons components call getThemeVariant and branch on it, and the website sets it with createThemeContext. D-195 records dark as the sole colour mode. Should Alfons support several themes, and how is a theme applied, so that themes, tokens, components and motion can be swapped independently?",
+      "resolution": "Alfons supports several themes. A theme is a set of values for the semantic tokens plus a motion preset, applied with a data-theme attribute on any element and inherited by everything inside it through the CSS cascade. Meccano is the default theme and sits on :root. Five rules ride with it. (1) Primitive tokens (the ground, the ink, the steel ramp and the eight part colours) live in files separate from semantic tokens, and a theme file sets semantic tokens only. (2) Components read semantic or component tokens, never primitive tokens, and never branch on a theme in script; the ThemeVariant context and getThemeVariant are retired. (3) Admin becomes an overlay theme, data-theme=\"admin\", which overrides a subset of semantic tokens and inherits the rest. (4) A complete theme sets every semantic token, and an overlay theme sets only semantic tokens; a build check enforces both. (5) data-theme replaces data-colour-mode. This decision makes a light theme possible but does not commit to one. D-195's dark-only constraint on the resolved palette holds until a second complete theme ships; from then the palette is emitted per theme.",
+      "rationale": "Custom properties inherit, so a theme expressed as token values needs no JavaScript and can restyle one section of a page as easily as the whole page. A theme expressed as a component prop has to be edited into every component for every new theme, which is the opposite of swappable, and it is why admin today needs nine components to branch. Separating primitives from semantics is what lets a theme change roles without touching the raw palette, and the colour derivation in oklab already means most of a new theme is a few base values. Putting motion inside the theme keeps Meccano's machined, no-spring motion a brand choice rather than a global law, so another theme can move differently. Rejected: keeping the ThemeVariant context and adding variants to it (each theme costs an edit per component); a motion layer above all themes (it would force one motion language on every theme); and committing to a light theme now (nothing needs one yet, and D-181 retires what nothing reads).",
+      "superseded": false
+    },
     {
       "id": "D-182",
       "decidedOn": "2026-08-12",
@@ -11566,6 +11239,17 @@
     },
     {
       "kind": "token",
+      "name": "--admin-bg-page",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--admin-bg",
+        "reason": "A second name for --admin-bg with no reader in Alfons; a theme setting one would leave the other behind (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--admin-header-size",
       "lifecycle": {
         "status": "retired",
@@ -11628,6 +11312,28 @@
         "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--border-glass",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--border-hairline",
+        "reason": "A second name for the hairline, kept from before the Meccano retune removed glass (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--border-glass-hover",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--border-default",
+        "reason": "A second name for the default border, kept from before the Meccano retune removed glass (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
       }
     },
     {
@@ -11716,6 +11422,17 @@
         "reason": "Per-edge alias of --card-border. 0002 recorded Atlas as the consumer; Atlas no longer borders cards one edge at a time.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--card-radius",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--radius-surface",
+        "reason": "A third name for --radius-2, documented as form fields and read only by a story drawing a card. Cards take --radius-surface, form controls --radius (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
       }
     },
     {
@@ -12050,6 +11767,17 @@
     },
     {
       "kind": "token",
+      "name": "--danger",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-error",
+        "reason": "Short status name that lost to the --colour-* spelling under D-181; it survived only as the value --colour-error pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--danger-deep",
       "lifecycle": {
         "status": "retired",
@@ -12061,6 +11789,28 @@
     },
     {
       "kind": "token",
+      "name": "--danger-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-error-bg",
+        "reason": "Short status wash that lost to the --colour-* spelling under D-181; it survived only as the value --colour-error-bg pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--duration-fast",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-med",
+        "reason": "A second name for the 200ms step. The replacement is --dur-med, not --dur-fast, because that is the step it resolved to (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--duration-instant",
       "lifecycle": {
         "status": "retired",
@@ -12068,6 +11818,28 @@
         "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--duration-normal",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-slow",
+        "reason": "A second name for the 320ms step (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--duration-slow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--dur-slow",
+        "reason": "A second name for the 320ms step (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
       }
     },
     {
@@ -12156,6 +11928,17 @@
         "reason": "Pre-retune brand name, kept as an alias through the migration so both repositories could keep building. Consumers have migrated.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--focus-ring-color",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--focus",
+        "reason": "A second, American-spelled name for the focus hue, which --focus already names (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
       }
     },
     {
@@ -12457,6 +12240,28 @@
     },
     {
       "kind": "token",
+      "name": "--info",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-info",
+        "reason": "Short status name that lost to the --colour-* spelling under D-181; it survived only as the value --colour-info pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--info-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-info-bg",
+        "reason": "Short status wash that lost to the --colour-* spelling under D-181; it survived only as the value --colour-info-bg pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--layout-hero-min-height",
       "lifecycle": {
         "status": "retired",
@@ -12622,6 +12427,17 @@
     },
     {
       "kind": "token",
+      "name": "--section-padding-x",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--page-padding-x",
+        "reason": "A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--section-padding-y",
       "lifecycle": {
         "status": "retired",
@@ -12721,6 +12537,50 @@
     },
     {
       "kind": "token",
+      "name": "--status-error-text",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-error",
+        "reason": "A third name for the error colour, read only by StatusBadge (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--status-info-text",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-info",
+        "reason": "A third name for the info colour, read only by StatusBadge (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--status-success-text",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-success",
+        "reason": "A third name for the success colour, read only by StatusBadge (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--status-warning-text",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-warning",
+        "reason": "A third name for the warning colour, read only by StatusBadge (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--stroke-medium",
       "lifecycle": {
         "status": "retired",
@@ -12754,6 +12614,28 @@
     },
     {
       "kind": "token",
+      "name": "--success",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-success",
+        "reason": "Short status name that lost to the --colour-* spelling under D-181; it survived only as the value --colour-success pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--success-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-success-bg",
+        "reason": "Short status wash that lost to the --colour-* spelling under D-181; it survived only as the value --colour-success-bg pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--surface-dark-subtle",
       "lifecycle": {
         "status": "retired",
@@ -12783,6 +12665,17 @@
         "reason": "Surface-tier bundle no component composed; the tiers are read through their parts.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--surface-glass-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--surface-card",
+        "reason": "A second name for the card fill, kept from before the Meccano retune removed glass (AL-026).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-26"
       }
     },
     {
@@ -12871,6 +12764,28 @@
         "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--warning",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-warning",
+        "reason": "Short status name that lost to the --colour-* spelling under D-181; it survived only as the value --colour-warning pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--warning-tint",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--colour-warning-bg",
+        "reason": "Short status wash that lost to the --colour-* spelling under D-181; it survived only as the value --colour-warning-bg pointed at (AL-026).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-26"
       }
     },
     {

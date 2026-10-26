@@ -239,7 +239,7 @@
 		justify-content: space-between;
 		gap: var(--space-3);
 		padding-bottom: var(--space-2);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.phase-name {

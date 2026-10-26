@@ -97,7 +97,7 @@
 
 	.segment.empty {
 		flex-grow: 1;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.segment[data-status='pending'] {

@@ -147,7 +147,7 @@
 	}
 
 	.release:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 
@@ -264,7 +264,7 @@
 		align-items: baseline;
 		gap: var(--space-3);
 		padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
-		border-left: 2px solid var(--border-glass);
+		border-left: 2px solid var(--border-hairline);
 	}
 
 	/* Neutral, like the current cell in the grid. Being the task the reader came

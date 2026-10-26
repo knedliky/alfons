@@ -210,7 +210,7 @@
 	}
 
 	.motif-check-input:focus-visible + .motif-check-box {
-		outline: 1.5px solid var(--focus-ring-color);
+		outline: 1.5px solid var(--focus);
 		outline-offset: 2px;
 	}
 

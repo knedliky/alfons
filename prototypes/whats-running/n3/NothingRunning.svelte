@@ -82,11 +82,11 @@
 	/* A dropped feed is the one thing here that is not merely absence, so it is
 	   the one thing allowed to raise its voice. */
 	.feed[data-connected='false'] {
-		color: var(--status-warning-text);
+		color: var(--colour-warning);
 	}
 
 	.feed[data-connected='false'] .mark {
-		background: var(--status-warning-text);
+		background: var(--colour-warning);
 		animation: none;
 	}
 

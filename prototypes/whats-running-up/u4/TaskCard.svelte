@@ -208,7 +208,7 @@
 	}
 
 	.where:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 

@@ -248,7 +248,7 @@
 	.motif-footer-section {
 		margin-top: var(--space-7);
 		padding-top: var(--space-6);
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 	}
 
 	.motif-footer-newsletter {

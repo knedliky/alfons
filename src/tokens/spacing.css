@@ -50,12 +50,17 @@
 		/* Roles, aliasing the rungs above. The values come from what the
 		   Meccano kit actually sets, not from the role names: its Button,
 		   Input and Card are all --radius-2, its Dialog and chat are
-		   --radius-3, its Badge is --radius-1, its Tag and Switch are round. */
-		--radius-surface: var(--radius-2); /* cards, modals, alerts, tooltips, stats, toasts */
-		--radius: var(--radius-2); /* form controls */
-		--card-radius: var(--radius-2); /* form fields (textarea, select menu) */
-		--radius-message: var(--radius-3); /* chat bubbles + agent input */
-		/* Genuinely round things only. This role was documented as "buttons,
+		   --radius-3, its Badge is --radius-1, its Tag and Switch are round.
+		   Two roles may share a rung here and still be two roles: a theme
+		   can round its surfaces without rounding its controls.
+
+		   --card-radius was a third name for --radius-2, documented as form
+		   fields and read only by a story drawing a card. It is retired in
+		   favour of --radius-surface (AL-026). */
+		--radius-surface: var(--radius-2); /* @role cards, modals, alerts, tooltips, stats, toasts */
+		--radius: var(--radius-2); /* @role form controls */
+		--radius-message: var(--radius-3); /* @role chat bubbles + agent input */
+		/* @role Genuinely round things only. This role was documented as "buttons,
 		   text inputs, toggles, pills", which bundles two different Meccano
 		   treatments — machined 6px for buttons and inputs, fully round for
 		   switch tracks and chips. Pinning everything to 0 made both answers
@@ -66,6 +71,8 @@
 		--radius-pill: var(--radius-round);
 
 		/* === CARD METRICS ================================================ */
+		/* @role component tokens: the padding inside a Card plate, which a
+		   theme can change without moving the space scale every gap reads. */
 		--card-padding: var(--space-6);
 		--card-padding-sm: var(--space-5);
 		--card-blur: 3.5px;
@@ -86,11 +93,14 @@
 		--back-link-height: 0px; /* overridden to 46px by BackLink in fixed mode */
 		--filter-control-height: 2.75rem;
 		--page-content-max-width: 1280px;
+		/* @role page gutters: the layout's edge spacing, which a theme can
+		   widen without moving the space scale every gap reads.
+		   --section-padding-x was a second name for --page-padding-x and is
+		   retired (AL-026). */
 		--page-padding-x: var(--space-5);
 		--page-padding-x-mobile: var(--space-4);
 		--page-top-padding: var(--space-8);
 		--page-top-padding-mobile: var(--space-8);
-		--section-padding-x: var(--page-padding-x);
 		--section-header-max-width: 36rem;
 
 		/* Scroll anchor offset — accounts for fixed header + back-link row */

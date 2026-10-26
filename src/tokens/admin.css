@@ -28,8 +28,10 @@
 		/* === CHART ADMIN VARIANTS ========================================
 		   All admin chart variants reference --admin-* tokens so they remain
 		   pinned to the dark palette regardless of colour mode. */
+		/* @role component tokens: what BarChart and LineChart paint, so the
+		   admin overlay can restyle a chart without moving every admin
+		   surface the chart sits on. */
 		--chart-admin-series-1: var(--chart-series-1);
-
 		--chart-axis-colour-admin: var(--admin-text-muted);
 		--chart-grid-colour-admin: var(--admin-border);
 		--chart-bg-admin: var(--admin-bg);

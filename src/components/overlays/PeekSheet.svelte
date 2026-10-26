@@ -209,7 +209,7 @@
 	}
 
 	.sheet:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 
@@ -229,7 +229,7 @@
 		align-self: center;
 		width: var(--space-6);
 		height: var(--space-1);
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.bar {

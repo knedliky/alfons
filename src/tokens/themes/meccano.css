@@ -51,16 +51,21 @@
 		   the tray yet. It has one now. */
 		--surface-sunken: var(--foundry-black);
 
+		/* @role what a component paints to sit flush with the page. The
+		   ground itself is --bench-bg, which .mcn-bench composes with the rake
+		   and the grid; a theme can lay a different ground under the same
+		   flush surfaces. */
 		--bg-primary: var(--bench-bg);
 		--bg-primary-rgb: var(--shade-rgb); /* --foundry-black, for alpha composition */
 
 		/* The glass surfaces predate the retune, and Meccano permits no
 		   glassmorphism outside the dialog overlay, so these resolve to flat
 		   steel rather than to a blur substrate. The names survive because
-		   consumers read them; the frost does not. */
+		   consumers read them; the frost does not. These two are their own
+		   steel steps. --surface-glass-bg was only a second name for
+		   --surface-card and is retired (AL-026). */
 		--bg-glass: var(--steel-100);
 		--bg-glass-solid: var(--steel-50);
-		--surface-glass-bg: var(--surface-card);
 
 		/* Subtle surface washes — hover states and recessed tracks. Neutrals
 		   get a steel wash on hover; they never get gloss. */
@@ -73,8 +78,9 @@
 		--border-default: color-mix(in oklab, var(--ink-900), transparent 83%);
 		--border-strong: var(--ink-900);
 
-		--border-glass: var(--border-hairline);
-		--border-glass-hover: var(--border-default);
+		/* --border-glass and --border-glass-hover were second names for the
+		   hairline and the default border, from before the retune removed
+		   glass. They are retired (AL-026). */
 
 		/* === TEXT — hierarchy: primary > secondary > muted =============== */
 		--text-primary: var(--ink-900);
@@ -92,8 +98,9 @@
 		--accent-rgb: var(--girder-red-rgb);
 
 		/* Plastic chips darken to their -deep value on hover; capped buttons
-		   brighten instead, which the elevation section expresses. */
-		--accent-hover: var(--accent-deep);
+		   brighten instead, which the elevation section expresses. The hover
+		   state is its own role because another theme may brighten instead. */
+		--accent-hover: var(--accent-deep); /* @role the accent's hover state */
 		--accent-bg-subtle: color-mix(in oklab, var(--girder-red), var(--surface-page) 92%);
 		--accent-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 86%);
 		--accent-bg-emphasis: color-mix(in oklab, var(--girder-red), var(--surface-page) 78%);
@@ -106,9 +113,9 @@
 		/* === FOCUS — functional blue, never the accent ===================
 		   Focus is a backlit lamp: pulley-blue light escaping from beneath the
 		   element. The ring geometry is --focus-ring in the elevation section;
-		   this is only its hue. */
+		   this is only its hue. --focus-ring-color was a second, American-
+		   spelled name for it and is retired (AL-026). */
 		--focus: var(--pulley-blue);
-		--focus-ring-color: var(--focus);
 
 		/* === GRADIENTS — accent elements ONLY, never backgrounds =========
 		   Meccano permits no gradients beyond the plastic sheen, so these are
@@ -119,6 +126,8 @@
 		--gradient-placeholder: linear-gradient(135deg, var(--steel-100) 0%, var(--steel-50) 100%);
 
 		/* === CARDS — control-panel plates ================================ */
+		/* @role component tokens: what a Card plate paints, so a theme can
+		   restyle cards without moving every surface and border. */
 		--card-bg: var(--surface-card);
 		--card-border: var(--border-hairline);
 		--card-border-hover: var(--border-default);
@@ -132,31 +141,21 @@
 		/* === SELECT ====================================================== */
 		--select-selected-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 80%);
 
-		/* === SEMANTIC — info=pulley, success=toolbox, ====================
-		   warning=brass, danger=girder. Tints derive over the page. */
-		--info: var(--pulley-blue);
-		--info-tint: color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%);
-		--success: var(--toolbox-olive);
-		--success-tint: color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%);
-		--warning: var(--brass-amber);
-		--warning-tint: color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%);
-		--danger: var(--girder-red);
-		--danger-tint: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
+		/* === STATUS — info=pulley, success=toolbox, ======================
+		   warning=brass, error=girder. Backgrounds derive over the page.
 
-		/* The --colour-* names are what Alfons and Atlas already read. */
-		--colour-success: var(--success);
-		--colour-success-bg: var(--success-tint);
-		--colour-warning: var(--warning);
-		--colour-warning-bg: var(--warning-tint);
-		--colour-error: var(--danger);
-		--colour-error-bg: var(--danger-tint);
-		--colour-info: var(--info);
-		--colour-info-bg: var(--info-tint);
-
-		--status-success-text: var(--success);
-		--status-warning-text: var(--warning);
-		--status-error-text: var(--danger);
-		--status-info-text: var(--info);
+		   One name per role (AL-026). The short names --info, --success,
+		   --warning, --danger, their -tint forms and --status-*-text were
+		   second names for these roles; they are retired, and their lifecycle
+		   rows name the replacement. D-181 chose the --colour-* spelling. */
+		--colour-info: var(--pulley-blue);
+		--colour-info-bg: color-mix(in oklab, var(--pulley-blue), var(--surface-page) 82%);
+		--colour-success: var(--toolbox-olive);
+		--colour-success-bg: color-mix(in oklab, var(--toolbox-olive), var(--surface-page) 76%);
+		--colour-warning: var(--brass-amber);
+		--colour-warning-bg: color-mix(in oklab, var(--brass-amber), var(--surface-page) 82%);
+		--colour-error: var(--girder-red);
+		--colour-error-bg: color-mix(in oklab, var(--girder-red), var(--surface-page) 82%);
 
 		/* === AUTOMATABILITY — the Merlin exposure model =================== */
 		--colour-full: var(--girder-red); /* AI — full automation, highest exposure */
@@ -179,7 +178,9 @@
 		   consume the -admin counterparts and never referenced these. */
 		--chart-series-1: var(--girder-red);
 
-		--chart-padding: var(--space-5);
+		--chart-padding: var(
+			--space-5
+		); /* @role component token: the inset inside BarChart and LineChart */
 
 		--chart-label-size: 0.75rem;
 		--chart-title-size: 1rem;
@@ -229,7 +230,9 @@
 		--industry-finance: var(--pulley-blue);
 		--industry-technology: var(--flange-plum);
 		--industry-healthcare-education: var(--pinion-pink);
-		--industry-legal: var(--ind-aubergine);
+		--industry-legal: var(
+			--ind-aubergine
+		); /* @role an industry group; --ind-aubergine is the lifted hue it happens to use */
 		--industry-engineering-trades: var(--boiler-navy);
 		--industry-marketing-communications: var(--pinion-pink);
 		--industry-operations-admin: var(--ink-500);
@@ -242,10 +245,13 @@
 		--button-ghost-hover-bg: var(--steel-100);
 
 		/* === ADMIN CORE — pinned dark, never changes with colour mode ==== */
+		/* --admin-bg-page was a second name for --admin-bg and is retired
+		   (AL-026). */
 		--admin-bg: var(--foundry-black);
-		--admin-bg-page: var(--admin-bg);
 		--admin-bg-elevated: var(--steel-50);
-		--admin-border: var(--border-hairline);
+		--admin-border: var(
+			--border-hairline
+		); /* @role the admin hairline, which the admin overlay sets apart from the public one */
 		--admin-text: var(--ink-900);
 		--admin-text-secondary: var(--ink-500);
 		--admin-text-muted: var(--ink-400);
@@ -341,7 +347,10 @@
 		--elevation-2: var(--shadow-2);
 		--elevation-3: var(--shadow-3);
 
-		/* Surface fills — flat now, not thinned toward glass. */
+		/* @role the fill ladder, by how far a surface lifts. Rung 1 is the
+		   card fill in Meccano; rungs 2 and 3 are their own steel steps, and a
+		   theme can lift rung 1 off the card without touching cards. Surface
+		   fills are flat now, not thinned toward glass. */
 		--elevation-1-bg: var(--surface-card);
 		--elevation-2-bg: var(--steel-150);
 		--elevation-3-bg: var(--steel-200);
@@ -353,6 +362,8 @@
 		     rest   — sits ON the page (cards, tiles)
 		     raised — lifts off it (inputs, chat, agent surface)
 		     float  — detached above everything (menus, popovers, modals) */
+		/* @role surface tiers: where a surface sits, which a theme can map
+		   onto the fill ladder differently from the cards and rungs. */
 		--surface-rest-bg: var(--surface-card);
 		--surface-raised-bg: var(--elevation-2-bg);
 		--surface-raised-frost: var(--frost-2);
@@ -420,17 +431,14 @@
 		--ease-machined: cubic-bezier(0.2, 0, 0, 1);
 
 		/* === DURATIONS ===================================================
-		   Meccano's three steps are 120 / 200 / 320ms. The existing five names
-		   keep their consumers and land on those steps; --duration-slow at
-		   500ms had no counterpart and comes down to the top of the range,
-		   because half a second is a transition the eye waits for. */
+		   Meccano's three steps are 120 / 200 / 320ms, and they are the only
+		   duration names. The older --duration-fast, -normal and -slow landed
+		   on these steps as second names (fast on 200ms, both others on
+		   320ms) and are retired (AL-026); their lifecycle rows name the step
+		   each one resolved to, so a migration keeps its timing. */
 		--dur-fast: 120ms;
 		--dur-med: 200ms;
 		--dur-slow: 320ms;
-
-		--duration-fast: var(--dur-med);
-		--duration-normal: var(--dur-slow);
-		--duration-slow: var(--dur-slow);
 
 		/* === TRANSITIONS — composed from durations ======================= */
 		--transition-fast: var(--dur-fast) var(--ease-machined);
@@ -467,7 +475,9 @@
 		/* === WIDGET SYSTEM — retained (homepage floating widget bar) ===== */
 		--widget-icon-size: 40px;
 		--widget-pulse-duration: 2.5s;
-		--widget-spring-easing: var(--ease-spring);
+		--widget-spring-easing: var(
+			--ease-spring
+		); /* @role component token: the widget bar's FLIP easing */
 		--widget-spring-duration: 0.6s;
 	}
 

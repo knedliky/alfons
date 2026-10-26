@@ -263,12 +263,12 @@ body {
 	   ========================================================================== */
 
 	/* UPDATED — the single quiet system focus state: a thin NEUTRAL edge
-	   (--focus-ring-color, white-mix in dark / black-mix in light) instead of
+	   (--focus, white-mix in dark / black-mix in light) instead of
 	   the accent-tinted ring. Components inherit this rather than defining
 	   their own ring (error/success states still use the heavier box-shadow
 	   rings in form-states.css). */
 	:focus-visible {
-		outline: 1.5px solid var(--focus-ring-color);
+		outline: 1.5px solid var(--focus);
 		outline-offset: 2px;
 	}
 
@@ -407,14 +407,14 @@ body {
 		background: var(--bg-glass);
 		backdrop-filter: blur(10px);
 		-webkit-backdrop-filter: blur(10px);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 	}
 
 	.glass-heavy {
 		background: var(--bg-glass);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 	}
 
 	/* Card utility — UPDATED to the square-corner default (--radius-surface).

@@ -30,7 +30,7 @@
 	<MainLayout asideWidth="16rem" gap="xl" asidePosition="left" stickyTop="2rem">
 		{#snippet aside()}
 			<div
-				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-glass)"
+				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
 			>
 				<p
 					style="margin:0 0 0.75rem;font-weight:600;font-size:0.875rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em"
@@ -74,7 +74,7 @@
 	<MainLayout asideWidth="14rem" gap="lg" asidePosition="right" stickyTop="2rem">
 		{#snippet aside()}
 			<div
-				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-glass)"
+				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
 			>
 				<p style="margin:0 0 0.5rem;font-weight:600;font-size:0.875rem;color:var(--text-secondary)">
 					Related
@@ -108,7 +108,7 @@
 	<MainLayout asideWidth="22rem" gap="2xl" asidePosition="left" stickyTop="1rem">
 		{#snippet aside()}
 			<div
-				style="padding:1.25rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-glass)"
+				style="padding:1.25rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
 			>
 				<p style="margin:0 0 1rem;font-weight:600;color:var(--text-primary)">Sidebar filters</p>
 				<div style="display:flex;flex-direction:column;gap:0.75rem">

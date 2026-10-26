@@ -74,7 +74,7 @@
 		position: absolute;
 		inset: calc(50% - 1px) 0 auto 0;
 		height: 1px;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	/* One travelling glint, slower than anything a reader is asked to track, so
@@ -135,7 +135,7 @@
 		flex-direction: column;
 		gap: var(--space-2);
 		padding-left: var(--space-4);
-		border-left: 1px solid var(--border-glass);
+		border-left: 1px solid var(--border-hairline);
 	}
 
 	.last-label {
@@ -185,7 +185,7 @@
 		}
 
 		.rule {
-			background: var(--border-glass-hover);
+			background: var(--border-default);
 		}
 
 		.readout {

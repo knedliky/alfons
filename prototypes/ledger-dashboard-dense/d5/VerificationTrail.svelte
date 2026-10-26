@@ -77,7 +77,7 @@
 			y1={HEIGHT - 0.5}
 			x2={WIDTH}
 			y2={HEIGHT - 0.5}
-			stroke="var(--border-glass)"
+			stroke="var(--border-hairline)"
 			stroke-width="1"
 		/>
 		{#each bars as bar, index (index)}

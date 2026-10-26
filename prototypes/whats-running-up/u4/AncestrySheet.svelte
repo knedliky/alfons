@@ -354,7 +354,7 @@
 		/* 30%, not 60%. The card behind has to stay readable — it is the evidence
 		   that the reader never left. */
 		background: var(--surface-overlay-subtle);
-		animation: fade var(--duration-fast) ease;
+		animation: fade var(--dur-med) ease;
 	}
 
 	/* THE MEASUREMENT, and it is stated as a top edge rather than a height on
@@ -380,7 +380,7 @@
 		/* One above the scrim, and both above the site header for the same reason. */
 		z-index: calc(var(--z-widget) + 1);
 		display: flex;
-		animation: rise var(--duration-normal) var(--ease-spring);
+		animation: rise var(--dur-slow) var(--ease-spring);
 	}
 
 	/* The dialog IS the scroll container. Overflow is stated on BOTH axes: an
@@ -406,7 +406,7 @@
 	}
 
 	.sheet:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 
@@ -453,14 +453,14 @@
 	}
 
 	.handle:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 
 	.bar {
 		width: var(--space-8);
 		height: var(--space-1);
-		background: var(--border-glass-hover);
+		background: var(--border-default);
 	}
 
 	.head {

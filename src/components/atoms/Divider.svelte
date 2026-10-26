@@ -70,7 +70,7 @@
 	.divider-horizontal {
 		width: 100%;
 		border: none;
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 		margin: 0;
 	}
 
@@ -83,7 +83,7 @@
 		display: inline-block;
 		height: 100%;
 		width: 0;
-		border-left: 1px solid var(--border-glass);
+		border-left: 1px solid var(--border-hairline);
 		vertical-align: middle;
 	}
 
@@ -102,7 +102,7 @@
 	.divider-line {
 		flex: 1;
 		height: 0;
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 	}
 
 	.divider-labelled[data-theme='admin'] .divider-line {

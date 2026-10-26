@@ -77,7 +77,7 @@
 
 <style>
 	.legend {
-		border-top: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
 	}
 
 	.toggle {
@@ -133,7 +133,7 @@
 		align-items: baseline;
 		gap: var(--space-3);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	dt {

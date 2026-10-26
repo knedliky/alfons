@@ -263,7 +263,7 @@
 	.bar {
 		width: 100%;
 		height: var(--space-1);
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		transition: background var(--transition-normal);
 	}
 
@@ -273,7 +273,7 @@
 
 	.contents:focus-visible,
 	.tick:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 </style>

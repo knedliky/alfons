@@ -196,7 +196,7 @@
 		align-items: baseline;
 		gap: var(--space-2);
 		padding-inline-end: var(--space-5);
-		border-inline-end: 1px solid var(--border-glass);
+		border-inline-end: 1px solid var(--border-hairline);
 	}
 
 	.pair:last-child {
@@ -232,7 +232,7 @@
 		grid-template-columns: 4rem 1fr;
 		gap: var(--space-5);
 		padding-block: var(--space-5);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 	}
 
 	/* Fill, not a card, marks the phase the reader arrived at. */
@@ -324,7 +324,7 @@
 
 	.meter-axis {
 		block-size: 1px;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.siblings {
@@ -339,7 +339,7 @@
 		align-items: baseline;
 		gap: var(--space-4);
 		padding-block: var(--space-2);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 	}
 
 	.sibling.is-highlight .sibling-title {
@@ -370,7 +370,7 @@
 		gap: var(--space-4);
 		margin-block-start: var(--space-5);
 		padding-block-start: var(--space-3);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 	}
 
 	.legend-label {

@@ -56,7 +56,7 @@
 		height: 4px;
 		border-radius: var(--radius-pill);
 		appearance: none;
-		background-color: var(--border-glass);
+		background-color: var(--border-hairline);
 		cursor: pointer;
 		transition: opacity var(--transition-fast);
 		outline: none;

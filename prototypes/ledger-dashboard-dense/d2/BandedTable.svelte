@@ -384,7 +384,7 @@
 <style>
 	.rail {
 		overflow-x: auto;
-		border-block: 2px solid var(--border-glass-hover);
+		border-block: 2px solid var(--border-default);
 		background: var(--surface-rest-bg);
 	}
 
@@ -412,7 +412,7 @@
 	thead th {
 		padding: 0;
 		text-align: left;
-		border-bottom: 2px solid var(--border-glass-hover);
+		border-bottom: 2px solid var(--border-default);
 		background: var(--bg-glass-solid);
 		white-space: nowrap;
 	}
@@ -465,8 +465,8 @@
 		padding: 0;
 		text-align: left;
 		font-weight: 400;
-		border-top: 2px solid var(--border-glass-hover);
-		border-bottom: 1px solid var(--border-glass);
+		border-top: 2px solid var(--border-default);
+		border-bottom: 1px solid var(--border-hairline);
 		background: var(--surface-hover-subtle);
 	}
 
@@ -548,12 +548,12 @@
 	.banner-flag,
 	.banner-tag {
 		padding: 0 var(--space-1);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		letter-spacing: 0.04em;
 	}
 
 	.banner-flag {
-		border-color: var(--border-glass-hover);
+		border-color: var(--border-default);
 		color: var(--text-secondary);
 	}
 
@@ -574,7 +574,7 @@
 
 	tbody td {
 		padding: var(--space-1) var(--space-3);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 		color: var(--text-muted);
 		white-space: nowrap;
 		vertical-align: middle;
@@ -597,7 +597,7 @@
 	/* The feed corrects statuses underneath the view; one flash is the whole
 	   announcement, so a silent change is never silent. */
 	.row.moved td {
-		animation: settle var(--duration-slow) ease-out;
+		animation: settle var(--dur-slow) ease-out;
 	}
 
 	@keyframes settle {
@@ -686,7 +686,7 @@
 	.detail td {
 		padding: 0;
 		background: var(--surface-hover-subtle);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 		white-space: normal;
 	}
 
@@ -719,7 +719,7 @@
 		align-items: baseline;
 		gap: var(--space-2);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.detail-title {
@@ -738,7 +738,7 @@
 	/* A dependency in another band is the only one worth boxing: it is the one
 	   the reader has to leave this band to see. */
 	.detail-elsewhere {
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		color: var(--text-secondary);
 	}
 

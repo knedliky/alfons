@@ -67,16 +67,16 @@
 		width: 64px;
 		height: 64px;
 		border-radius: 0;
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		overflow: hidden;
 		/* Checkerboard so any alpha in the token shows through as translucency.
-		   The squares are drawn with --border-glass so the helper stays tokenised. */
+		   The squares are drawn with --border-hairline so the helper stays tokenised. */
 		background-color: var(--bg-glass-solid);
 		background-image:
-			linear-gradient(45deg, var(--border-glass) 25%, transparent 25%),
-			linear-gradient(-45deg, var(--border-glass) 25%, transparent 25%),
-			linear-gradient(45deg, transparent 75%, var(--border-glass) 75%),
-			linear-gradient(-45deg, transparent 75%, var(--border-glass) 75%);
+			linear-gradient(45deg, var(--border-hairline) 25%, transparent 25%),
+			linear-gradient(-45deg, var(--border-hairline) 25%, transparent 25%),
+			linear-gradient(45deg, transparent 75%, var(--border-hairline) 75%),
+			linear-gradient(-45deg, transparent 75%, var(--border-hairline) 75%);
 		background-size: 12px 12px;
 		background-position:
 			0 0,

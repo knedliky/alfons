@@ -99,7 +99,7 @@
 		padding: var(--space-4) var(--space-5);
 		border: none;
 		border-block-start: var(--space-1) solid var(--text-primary);
-		border-block-end: 1px solid var(--border-glass);
+		border-block-end: 1px solid var(--border-hairline);
 		background: var(--surface-rest-bg);
 		font-family: var(--font-body);
 		font-size: 2rem;
@@ -160,7 +160,7 @@
 	.result {
 		appearance: none;
 		border: none;
-		border-block-end: 1px solid var(--border-glass);
+		border-block-end: 1px solid var(--border-hairline);
 		background: transparent;
 		/* Generous row height is what makes a dense ledger readable — the rule
 		   does the containing, so the row can afford the air. */
@@ -217,7 +217,7 @@
 	.empty {
 		margin: var(--space-5) 0 0;
 		padding-block: var(--space-5);
-		border-block-start: 1px solid var(--border-glass);
+		border-block-start: 1px solid var(--border-hairline);
 		font-family: var(--font-body);
 		font-size: var(--text-ui);
 		color: var(--text-secondary);

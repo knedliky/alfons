@@ -67,7 +67,7 @@
 	}
 
 	li {
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		border-radius: 0.75rem;
 		padding: var(--space-5, 1.5rem);
 		background: var(--card-bg);

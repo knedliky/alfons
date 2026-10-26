@@ -333,7 +333,7 @@
 		inset: 0;
 		z-index: -1;
 		border-radius: inherit;
-		background: var(--surface-glass-bg);
+		background: var(--surface-card);
 		backdrop-filter: blur(var(--surface-raised-frost));
 		-webkit-backdrop-filter: blur(var(--surface-raised-frost));
 	}
@@ -534,7 +534,7 @@
 		/* Ease the height between line counts with the reveal easing, so the box grows
 		   downward and the top/bottom-anchored pill and submit glide rather than
 		   snapping. The height itself is set in pixels by the measure effect. */
-		transition: height var(--duration-normal) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transition: height var(--dur-slow) cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	}
 
 	.agent-input-field-wrapper::-webkit-scrollbar {

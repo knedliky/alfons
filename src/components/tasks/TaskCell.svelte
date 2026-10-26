@@ -175,7 +175,7 @@
 	}
 
 	.plate:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: calc(var(--space-1) * -1);
 	}
 </style>

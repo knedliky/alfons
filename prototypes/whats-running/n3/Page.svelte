@@ -302,7 +302,7 @@
 		gap: var(--space-2);
 		align-items: center;
 		padding-top: var(--space-5);
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 	}
 
 	.harness p {

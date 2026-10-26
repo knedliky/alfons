@@ -35,10 +35,10 @@
 	let { status, config, size = 'sm' }: StatusBadgeProps = $props();
 
 	const COLOUR_MAP = {
-		success: { bg: 'var(--colour-success-bg)', text: 'var(--status-success-text)' },
-		warning: { bg: 'var(--colour-warning-bg)', text: 'var(--status-warning-text)' },
-		error: { bg: 'var(--colour-error-bg)', text: 'var(--status-error-text)' },
-		info: { bg: 'var(--colour-info-bg)', text: 'var(--status-info-text)' },
+		success: { bg: 'var(--colour-success-bg)', text: 'var(--colour-success)' },
+		warning: { bg: 'var(--colour-warning-bg)', text: 'var(--colour-warning)' },
+		error: { bg: 'var(--colour-error-bg)', text: 'var(--colour-error)' },
+		info: { bg: 'var(--colour-info-bg)', text: 'var(--colour-info)' },
 		neutral: { bg: 'var(--admin-bg-elevated)', text: 'var(--admin-text-muted)' }
 	} as const;
 

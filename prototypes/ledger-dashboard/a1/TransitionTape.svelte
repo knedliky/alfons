@@ -145,7 +145,7 @@
 		gap: var(--space-2) var(--space-4);
 		padding-block: var(--space-3);
 		border-bottom: 1px solid var(--card-border);
-		animation: arrive var(--duration-normal) ease-out both;
+		animation: arrive var(--dur-slow) ease-out both;
 	}
 
 	@keyframes arrive {

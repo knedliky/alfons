@@ -214,7 +214,7 @@
 	}
 
 	.guides span {
-		border-inline-start: 1px solid var(--border-glass);
+		border-inline-start: 1px solid var(--border-hairline);
 		margin-inline-start: calc(var(--space-5) / -2);
 	}
 
@@ -286,7 +286,7 @@
 
 	.standfirst {
 		align-self: end;
-		border-block-end: 1px solid var(--border-glass);
+		border-block-end: 1px solid var(--border-hairline);
 		padding-block-end: var(--space-5);
 	}
 
@@ -312,7 +312,7 @@
 
 	.standfirst .scope span {
 		padding-inline-end: var(--space-4);
-		border-inline-end: 1px solid var(--border-glass);
+		border-inline-end: 1px solid var(--border-hairline);
 		color: var(--text-muted);
 	}
 

@@ -60,8 +60,8 @@
 		flex-direction: column;
 		gap: var(--space-4);
 		transition:
-			opacity var(--duration-slow) ease,
-			transform var(--duration-slow) var(--ease-spring),
+			opacity var(--dur-slow) ease,
+			transform var(--dur-slow) var(--ease-spring),
 			box-shadow var(--transition-fast),
 			background var(--transition-fast);
 	}

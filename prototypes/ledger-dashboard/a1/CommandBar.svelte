@@ -257,7 +257,7 @@
 		z-index: var(--z-dropdown);
 		overflow: hidden;
 		box-shadow: var(--shadow-popover);
-		animation: settle var(--duration-fast) var(--ease-spring) both;
+		animation: settle var(--dur-med) var(--ease-spring) both;
 	}
 
 	@keyframes settle {

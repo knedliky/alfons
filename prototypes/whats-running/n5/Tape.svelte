@@ -61,7 +61,7 @@
 		font-family: var(--font-mono);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
-		animation: land var(--duration-normal) ease both;
+		animation: land var(--dur-slow) ease both;
 	}
 
 	@keyframes land {

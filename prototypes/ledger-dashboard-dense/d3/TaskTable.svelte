@@ -580,7 +580,7 @@
 		align-items: center;
 		gap: var(--space-4);
 		padding: var(--space-2) var(--page-padding-x);
-		border-top: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
 		font-family: var(--font-mono);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
@@ -613,7 +613,7 @@
 		flex: 1;
 		min-width: var(--space-8);
 		height: var(--space-1);
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.thumb {
@@ -668,7 +668,7 @@
 		   under it. Keep scrolling by hand past this point and the header row
 		   goes under with the rail — the one place the site Header still wins. */
 		scroll-margin-top: calc(var(--header-height) + var(--space-4));
-		border-block: 2px solid var(--border-glass-hover);
+		border-block: 2px solid var(--border-default);
 		/* Opaque, because the frozen cells sit on this ground and must carry the
 		   identical fill — a spine on its own tint reads as a second table. */
 		background: var(--bg-glass-solid);
@@ -679,7 +679,7 @@
 	}
 
 	.rail:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: -2px;
 	}
 
@@ -715,7 +715,7 @@
 		padding: 0;
 		text-align: left;
 		background: var(--bg-glass-solid);
-		border-bottom: 2px solid var(--border-glass-hover);
+		border-bottom: 2px solid var(--border-default);
 		white-space: nowrap;
 	}
 
@@ -809,16 +809,16 @@
 		that content is hidden when at scroll zero none is.
 	*/
 	.spine-title {
-		border-right: 1px solid var(--border-glass);
+		border-right: 1px solid var(--border-hairline);
 		transition:
 			border-right-color var(--transition-fast),
 			box-shadow var(--transition-fast);
 	}
 
 	.rail.overlapping .spine-title {
-		border-right-color: var(--border-glass-hover);
+		border-right-color: var(--border-default);
 		box-shadow:
-			2px 0 0 0 var(--border-glass-hover),
+			2px 0 0 0 var(--border-default),
 			var(--shadow-subtle);
 	}
 
@@ -828,8 +828,8 @@
 		padding: 0;
 		text-align: left;
 		font-weight: 400;
-		border-top: 2px solid var(--border-glass-hover);
-		border-bottom: 1px solid var(--border-glass);
+		border-top: 2px solid var(--border-default);
+		border-bottom: 1px solid var(--border-hairline);
 		background:
 			linear-gradient(var(--surface-hover-subtle), var(--surface-hover-subtle)),
 			var(--bg-glass-solid);
@@ -867,7 +867,7 @@
 
 	.banner-flag {
 		padding: 0 var(--space-1);
-		border: 1px solid var(--border-glass-hover);
+		border: 1px solid var(--border-default);
 		color: var(--text-secondary);
 	}
 
@@ -888,7 +888,7 @@
 		width: var(--space-8);
 		height: var(--space-1);
 		flex: none;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.meter-fill {
@@ -909,7 +909,7 @@
 	tbody td,
 	tbody th {
 		padding: var(--space-1) var(--space-3);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 		color: var(--text-muted);
 		white-space: nowrap;
 		vertical-align: middle;
@@ -938,7 +938,7 @@
 	   announcement, so a silent change is never silent. */
 	.row.moved > td,
 	.row.moved > th {
-		animation: settle var(--duration-slow) ease-out;
+		animation: settle var(--dur-slow) ease-out;
 	}
 
 	@keyframes settle {
@@ -1026,7 +1026,7 @@
 	.detail td {
 		padding: 0;
 		background: var(--bg-glass-solid);
-		border-bottom: 2px solid var(--border-glass-hover);
+		border-bottom: 2px solid var(--border-default);
 		white-space: normal;
 	}
 
@@ -1073,7 +1073,7 @@
 		align-items: baseline;
 		gap: var(--space-2);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.detail-siblings li.same-phase .detail-title {
@@ -1094,7 +1094,7 @@
 
 	.detail-elsewhere {
 		padding: 0 var(--space-1);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 	}
 
 	.detail-empty {

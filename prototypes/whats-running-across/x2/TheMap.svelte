@@ -143,7 +143,7 @@
 	}
 
 	.territory:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 
@@ -166,13 +166,13 @@
 		text-align: left;
 		background: transparent;
 		border: none;
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 		color: var(--text-primary);
 		cursor: pointer;
 	}
 
 	.head:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 

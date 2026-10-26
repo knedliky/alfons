@@ -307,7 +307,7 @@
 	}
 
 	.axis {
-		stroke: var(--border-glass);
+		stroke: var(--border-hairline);
 		stroke-width: 1;
 	}
 

@@ -221,7 +221,7 @@
 	.trace {
 		flex: none;
 		height: var(--space-1);
-		background: var(--border-glass);
+		background: var(--border-hairline);
 		overflow: clip;
 	}
 

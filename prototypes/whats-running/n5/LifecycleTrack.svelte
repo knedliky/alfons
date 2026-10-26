@@ -74,8 +74,8 @@
 	}
 
 	.segment {
-		background: var(--border-glass);
-		transition: background var(--duration-slow) ease;
+		background: var(--border-hairline);
+		transition: background var(--dur-slow) ease;
 	}
 
 	.segment.filled {

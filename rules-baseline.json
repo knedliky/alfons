@@ -19,12 +19,12 @@
 		},
 		"website": {
 			"components": 176,
-			"findings": 1041,
+			"findings": 1061,
 			"rules": {
 				"raw-value": 493,
 				"admin-token-on-public": 72,
 				"unknown-token": 290,
-				"retired-token": 22,
+				"retired-token": 42,
 				"tailwind-shadow": 92,
 				"raw-element": 72,
 				"layout-nesting": 0,
@@ -159,23 +159,23 @@
 		},
 		{
 			"rule": "retired-token",
-			"count": 22,
-			"files": 13,
+			"count": 42,
+			"files": 24,
 			"samples": [
+				{
+					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
+					"line": 118,
+					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
+				},
+				{
+					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
+					"line": 218,
+					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
+				},
 				{
 					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
 					"line": 277,
 					"message": "--led-off is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. (D-181)"
-				},
-				{
-					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
-					"line": 316,
-					"message": "--type-body is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. Use --text-ui. (D-181)"
-				},
-				{
-					"file": "website/src/lib/ui/components/chat/responses/ChatSubmitButton.svelte",
-					"line": 50,
-					"message": "--font-sans is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. Use --font-body. (D-181)"
 				}
 			]
 		},

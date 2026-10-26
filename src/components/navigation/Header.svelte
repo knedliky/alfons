@@ -272,7 +272,7 @@
 		background: color-mix(in srgb, var(--bg-primary) 60%, transparent);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.motif-hdr-inner {
@@ -460,7 +460,7 @@
 		background: var(--bg-glass);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		opacity: 0;
 		pointer-events: none;
 	}

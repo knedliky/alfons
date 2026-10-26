@@ -112,7 +112,7 @@
 			var(--card-bg) 100%
 		);
 		background-size: 400% 100%;
-		animation: shimmer var(--duration-slow) infinite linear;
+		animation: shimmer var(--dur-slow) infinite linear;
 	}
 
 	/* Admin theme — uses admin surface tokens instead of public card tokens */

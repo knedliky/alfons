@@ -42,7 +42,7 @@
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-5) var(--space-5) var(--space-5) 0;
-		border-inline-start: 1px solid var(--border-glass);
+		border-inline-start: 1px solid var(--border-hairline);
 		padding-inline-start: var(--space-4);
 	}
 

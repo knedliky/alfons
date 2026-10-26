@@ -354,7 +354,7 @@
 		flex: none;
 		width: var(--space-6);
 		height: 1px;
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.live {
@@ -568,11 +568,11 @@
 		grid-template-columns: 3.5rem minmax(0, 1fr);
 		gap: var(--space-3);
 		padding: var(--space-3) 0;
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 	}
 
 	.feed-item.newest {
-		animation: land var(--duration-slow) var(--ease-spring);
+		animation: land var(--dur-slow) var(--ease-spring);
 	}
 
 	@keyframes land {

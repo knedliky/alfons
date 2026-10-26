@@ -1094,14 +1094,14 @@
 		gap: 0;
 		margin: var(--space-5) 0 0;
 		padding: 0;
-		border-top: 2px solid var(--border-glass-hover);
-		border-bottom: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
+		border-bottom: 2px solid var(--border-default);
 	}
 
 	.figure-cell {
 		flex: 1 1 12rem;
 		padding: var(--space-3) var(--space-4);
-		border-left: 1px solid var(--border-glass);
+		border-left: 1px solid var(--border-hairline);
 	}
 
 	.figure-cell:first-child {
@@ -1295,7 +1295,7 @@
 		gap: var(--space-2) var(--space-4);
 		margin: var(--space-4) 0 0;
 		padding-top: var(--space-2);
-		border-top: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
 		font-family: var(--font-mono);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
@@ -1333,7 +1333,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
 		gap: var(--space-6);
 		padding-top: var(--space-5);
-		border-top: 1px solid var(--border-glass);
+		border-top: 1px solid var(--border-hairline);
 	}
 
 	.legend-block h2 {
@@ -1361,7 +1361,7 @@
 		justify-content: space-between;
 		gap: var(--space-3);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.legend-count {
@@ -1380,7 +1380,7 @@
 		display: flex;
 		gap: var(--space-3);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.legend-keys dt {

@@ -45,9 +45,9 @@
 		/* Two-weight rule, as the top and left edge catch light and the bottom
 		   sits in shadow — a key that reads as raised without a radius, which
 		   this system does not have. */
-		border: 1px solid var(--border-glass);
+		border: 1px solid var(--border-hairline);
 		border-bottom-width: 2px;
-		border-bottom-color: var(--border-glass-hover);
+		border-bottom-color: var(--border-default);
 	}
 
 	.cap.active {

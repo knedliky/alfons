@@ -365,7 +365,7 @@
 		margin-inline: calc(var(--space-4) * -1);
 		padding: var(--space-3) var(--space-4);
 		background: var(--bg-primary);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.headline {
@@ -393,7 +393,7 @@
 	}
 
 	.lift:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 
@@ -408,7 +408,7 @@
 	}
 
 	.mapwrap:focus-visible {
-		outline: 2px solid var(--focus-ring-color);
+		outline: 2px solid var(--focus);
 		outline-offset: var(--space-1);
 	}
 

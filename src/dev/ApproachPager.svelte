@@ -100,8 +100,8 @@
 		gap: var(--space-2, 0.5rem);
 		padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
 		border-radius: 999px;
-		border: 1px solid var(--border-glass);
-		background: var(--surface-glass-bg);
+		border: 1px solid var(--border-hairline);
+		background: var(--surface-card);
 		backdrop-filter: blur(12px);
 		color: var(--text-secondary);
 		font-size: 0.8rem;

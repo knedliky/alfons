@@ -57,9 +57,9 @@
 		gap: var(--space-3);
 		padding: var(--space-4) 0 var(--space-4) var(--space-4);
 		border-left: var(--space-1) solid var(--channel-colour);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 		/* A channel arriving is an event, so it is drawn arriving. */
-		animation: arrive var(--duration-slow) var(--ease-spring) both;
+		animation: arrive var(--dur-slow) var(--ease-spring) both;
 	}
 
 	@keyframes arrive {
@@ -78,7 +78,7 @@
 	.channel[data-departing='done'] {
 		border-left-color: var(--text-muted);
 		color: var(--text-muted);
-		animation: settle var(--duration-slow) ease both;
+		animation: settle var(--dur-slow) ease both;
 	}
 
 	@keyframes settle {

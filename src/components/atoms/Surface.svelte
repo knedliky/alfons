@@ -19,7 +19,7 @@
 <script lang="ts">
 	/**
 	 * Surface — the frosted glass panel shared by the agent input and the chat
-	 * message bubbles: a translucent fill (--surface-glass-bg), a blurred backdrop,
+	 * message bubbles: the card fill (--surface-card), a blurred backdrop,
 	 * a thin faint edge, and the shared --shadow-glass drop shadow.
 	 *
 	 * Distinct from Card: Card is a solid, padded content container; Surface is the
@@ -47,7 +47,7 @@
 
 <style>
 	.surface {
-		background: var(--surface-glass-bg);
+		background: var(--surface-card);
 		box-shadow: var(--shadow-glass);
 		/* Raised-tier frost — light enough that the technical grid reads through. */
 		backdrop-filter: blur(var(--surface-raised-frost));

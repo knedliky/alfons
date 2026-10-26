@@ -75,7 +75,7 @@
 
 	.tick {
 		height: var(--space-1);
-		background: var(--border-glass);
+		background: var(--border-hairline);
 	}
 
 	.name {
@@ -94,7 +94,7 @@
 	}
 
 	li[data-state='behind'] .tick {
-		background: var(--border-glass-hover);
+		background: var(--border-default);
 	}
 
 	li[data-state='behind'] .name {

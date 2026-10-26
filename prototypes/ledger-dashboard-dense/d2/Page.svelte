@@ -572,8 +572,8 @@
 		align-items: stretch;
 		gap: var(--space-5);
 		margin-top: var(--space-5);
-		border-top: 2px solid var(--border-glass-hover);
-		border-bottom: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
+		border-bottom: 2px solid var(--border-default);
 	}
 
 	.figures {
@@ -588,7 +588,7 @@
 	.figure-cell {
 		flex: 1 1 11rem;
 		padding: var(--space-3) var(--space-4);
-		border-left: 1px solid var(--border-glass);
+		border-left: 1px solid var(--border-hairline);
 	}
 
 	.figure-cell:first-child {
@@ -631,7 +631,7 @@
 		gap: var(--space-2);
 		flex: 1 1 16rem;
 		padding: var(--space-3) 0 var(--space-3) var(--space-4);
-		border-left: 1px solid var(--border-glass);
+		border-left: 1px solid var(--border-hairline);
 	}
 
 	.corpus-meter-head {
@@ -739,7 +739,7 @@
 		align-items: center;
 		gap: var(--space-2);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.feed-time,
@@ -769,7 +769,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
 		gap: var(--space-6);
 		padding-top: var(--space-5);
-		border-top: 2px solid var(--border-glass-hover);
+		border-top: 2px solid var(--border-default);
 	}
 
 	.legend-block h2 {
@@ -797,7 +797,7 @@
 		justify-content: space-between;
 		gap: var(--space-3);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.legend-count {
@@ -816,7 +816,7 @@
 		display: flex;
 		gap: var(--space-3);
 		padding-block: var(--space-1);
-		border-bottom: 1px solid var(--border-glass);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.legend-keys dt {
