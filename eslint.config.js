@@ -93,5 +93,10 @@ export default ts.config(
 	{
 		// Generated output — the manifest is checked by regenerating it, not linted.
 		ignores: ['alfons.manifest.json', 'storybook-static/', 'screenshots/']
+	},
+	{
+		// Deliberate checklist violations. They must fail lint, so only
+		// scripts/test-lint-checklist.ts lints them, with ignores off.
+		ignores: ['scripts/fixtures/lint-checklist/']
 	}
 );
