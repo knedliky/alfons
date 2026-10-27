@@ -119,8 +119,8 @@
 
 <style>
 	.bar-chart-container {
-		background-color: var(--chart-bg-admin);
-		border: 1px solid var(--chart-border-admin);
+		background-color: var(--chart-bg);
+		border: 1px solid var(--chart-border);
 		border-radius: 0;
 		padding: var(--chart-padding);
 	}
@@ -136,13 +136,13 @@
 	.chart-title {
 		font-size: var(--chart-title-size);
 		font-weight: 600;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		margin: 0;
 	}
 
 	.chart-subtitle {
 		font-size: var(--chart-label-size);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 	}
 
 	.bar-chart {
@@ -156,12 +156,12 @@
 		grid-template-columns: 1fr minmax(100px, 200px) auto;
 		gap: var(--space-4);
 		padding: var(--space-2) 0;
-		border-bottom: 1px solid var(--chart-border-admin);
+		border-bottom: 1px solid var(--chart-border);
 		font-size: var(--chart-label-size);
 		font-weight: 500;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 	}
 
 	.header-label {
@@ -212,14 +212,14 @@
 		font-family: var(--font-mono);
 		font-size: var(--chart-label-size);
 		font-weight: 600;
-		color: var(--chart-axis-colour-admin);
-		background-color: var(--chart-tooltip-bg-admin);
+		color: var(--chart-axis-colour);
+		background-color: var(--chart-tooltip-bg);
 		border-radius: 0;
 	}
 
 	.bar-name {
 		font-size: var(--chart-value-size);
-		color: var(--admin-text);
+		color: var(--text-primary);
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -227,7 +227,7 @@
 
 	.bar-container {
 		height: 8px;
-		background-color: var(--chart-grid-colour-admin);
+		background-color: var(--chart-grid-colour);
 		border-radius: 0;
 		overflow: hidden;
 	}
@@ -236,8 +236,8 @@
 		height: 100%;
 		background: linear-gradient(
 			90deg,
-			var(--chart-admin-series-1) 0%,
-			color-mix(in srgb, var(--chart-admin-series-1) 70%, transparent) 100%
+			var(--chart-series-1) 0%,
+			color-mix(in srgb, var(--chart-series-1) 70%, transparent) 100%
 		);
 		border-radius: 0;
 		transition: width var(--chart-transition-duration) var(--chart-transition-easing);
@@ -255,13 +255,13 @@
 		font-family: var(--font-mono);
 		font-size: var(--chart-value-size);
 		font-weight: 600;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.value-percentage {
 		font-family: var(--font-mono);
 		font-size: var(--chart-label-size);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 	}
 
 	.chart-loading {
@@ -282,9 +282,9 @@
 		height: 16px;
 		background: linear-gradient(
 			90deg,
-			var(--chart-border-admin) 0%,
-			var(--chart-tooltip-bg-admin) 50%,
-			var(--chart-border-admin) 100%
+			var(--chart-border) 0%,
+			var(--chart-tooltip-bg) 50%,
+			var(--chart-border) 100%
 		);
 		background-size: 200% 100%;
 		animation: shimmer 1.5s infinite;
@@ -295,9 +295,9 @@
 		height: 8px;
 		background: linear-gradient(
 			90deg,
-			var(--chart-border-admin) 0%,
-			var(--chart-tooltip-bg-admin) 50%,
-			var(--chart-border-admin) 100%
+			var(--chart-border) 0%,
+			var(--chart-tooltip-bg) 50%,
+			var(--chart-border) 100%
 		);
 		background-size: 200% 100%;
 		animation: shimmer 1.5s infinite;
@@ -321,7 +321,7 @@
 		justify-content: center;
 		gap: var(--space-4);
 		padding: var(--space-7) var(--space-4);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		font-size: var(--chart-value-size);
 	}
 

@@ -83,9 +83,12 @@ const adminScaffold = scaffoldComponent(manifest, {
 	category: 'admin',
 	surface: 'admin'
 });
+// Since AL-027 admin is an overlay theme with no vocabulary of its own, so an
+// admin scaffold takes the same current roles a public one does.
 check(
-	'an admin scaffold prefers the admin vocabulary',
-	adminScaffold.tokensUsed.some((token) => surfaceOf.get(token) === 'admin'),
+	'an admin scaffold uses only current tokens',
+	adminScaffold.tokensUsed.length > 1 &&
+		adminScaffold.tokensUsed.every((token) => known.has(token)),
 	adminScaffold.tokensUsed
 );
 

@@ -4,10 +4,8 @@
 // Import the distributed token files directly so every story canvas receives
 // the same design tokens that library consumers will receive. These are the
 // source-of-truth files — do NOT import src/app.css here.
-// admin.css must follow public.css (it references brand tokens defined there)
-// and is included so the Admin colour swatches resolve in the catalogue.
+// public.css carries every theme, the admin overlay included (D-238).
 import '../src/tokens/public.css';
-import '../src/tokens/admin.css';
 import '../src/tokens/base.css';
 
 // Apply a global decorator to every story.
@@ -16,6 +14,16 @@ import '../src/tokens/base.css';
 export const decorators = [
 	(story) => {
 		document.documentElement.setAttribute('data-colour-mode', 'dark');
+		return story();
+	},
+	// `parameters: { theme: 'admin' }` puts a story on that theme (D-238). It
+	// goes on <html> rather than a wrapper so that menus portalled to <body>
+	// sit inside it too, and it is cleared for every other story because the
+	// canvas document is reused between them.
+	(story, context) => {
+		const theme = context.parameters.theme;
+		if (theme) document.documentElement.setAttribute('data-theme', theme);
+		else document.documentElement.removeAttribute('data-theme');
 		return story();
 	}
 ];

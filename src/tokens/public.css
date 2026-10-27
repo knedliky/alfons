@@ -3,7 +3,9 @@
  *
  * An @import manifest only — every token lives in the files below. Primitives
  * load before the theme, and the theme last, because a theme is the layer of
- * semantic roles over everything beneath it (D-238).
+ * semantic roles over everything beneath it (D-238). Overlay themes load after
+ * the complete theme they sit over, so their values win where both apply; one
+ * costs nothing until an element carries its data-theme.
  *
  * Usage: @import '@motif/design/public';
  * Global styles (headings, grid background, focus, utilities) remain a
@@ -17,3 +19,4 @@
 @import './typography.css';
 @import './spacing.css';
 @import './themes/meccano.css';
+@import './themes/admin.css';

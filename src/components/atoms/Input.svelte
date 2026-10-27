@@ -1,9 +1,7 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
 	import type { HTMLInputAttributes } from 'svelte/elements';
 
 	export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
-		theme?: ThemeVariant;
 		size?: 'default' | 'sm';
 		class?: string;
 		value?: string | number;
@@ -12,42 +10,24 @@
 
 <script lang="ts">
 	/**
-	 * Input — text input field with theme and size support.
+	 * Input — text input field with size support.
 	 *
 	 * Usage:
 	 *   <Input bind:value={name} placeholder="Your name" />
-	 *   <Input type="email" size="sm" theme="admin" />
+	 *   <Input type="email" size="sm" />
 	 *
 	 * Features:
 	 * - Two sizes: default (h-12) and sm (h-10)
-	 * - Automatic theme detection from context (public/admin)
-	 * - Public theme: glassmorphic background with card border
-	 * - Admin theme: transparent background with admin border
+	 * - Themed by tokens alone: --field-bg and --field-border, which the
+	 *   admin overlay sets to a transparent fill behind a hairline
 	 * - Design-token-first CSS with data-attribute selectors
 	 * - Error state via aria-invalid="true": border changes to --colour-error
 	 * - Success state via data-valid="true" attribute: border changes to --colour-success
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
-	let {
-		theme,
-		size = 'default',
-		class: className,
-		value = $bindable(),
-		...rest
-	}: InputProps = $props();
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
+	let { size = 'default', class: className, value = $bindable(), ...rest }: InputProps = $props();
 </script>
 
-<input
-	class="input motif-form-control {className ?? ''}"
-	data-theme={activeTheme}
-	data-size={size}
-	style={activeTheme === 'admin' ? '--form-ring-bg: var(--admin-bg)' : undefined}
-	bind:value
-	{...rest}
-/>
+<input class="input motif-form-control {className ?? ''}" data-size={size} bind:value {...rest} />
 
 <style>
 	/* Plain fields are machined controls, not pills. Their 6px corner is the
@@ -94,43 +74,24 @@
 		font-size: 0.875rem;
 	}
 
-	/* Public theme */
-
-	.input[data-theme='public'] {
-		border: 1px solid var(--border-default);
-		background: var(--surface-card);
+	.input {
+		border: 1px solid var(--field-border);
+		background: var(--field-bg);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}
 
-	.input[data-theme='public']::placeholder {
+	.input::placeholder {
 		color: var(--text-muted);
 	}
 
-	/* Focus is the functional pulley-blue lamp. Red remains reserved for the
-	   action that submits the field. */
-	.input[data-theme='public']:focus-visible {
+	/* Focus is the functional pulley-blue lamp in every theme. Red remains
+	   reserved for the action that submits the field. */
+	.input:focus-visible {
 		border-color: var(--focus);
 		box-shadow: var(--focus-ring);
 	}
 
-	/* Admin theme */
-
-	.input[data-theme='admin'] {
-		border: 1px solid var(--admin-border);
-		background: transparent;
-		color: var(--admin-text);
-	}
-
-	.input[data-theme='admin']::placeholder {
-		color: var(--admin-text-muted);
-	}
-
-	.input[data-theme='admin']:focus {
-		border-color: var(--admin-text-muted);
-	}
-
 	/* Error and success focus-ring states are handled by the shared
-	   .motif-form-control rules in form-states.css (imported via base.css).
-	   The --form-ring-bg custom property is set inline for admin context. */
+	   .motif-form-control rules in form-states.css (imported via base.css). */
 </style>

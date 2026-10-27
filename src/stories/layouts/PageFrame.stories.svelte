@@ -9,7 +9,7 @@
 		argTypes: {
 			theme: {
 				control: { type: 'select' },
-				options: ['public', 'admin']
+				options: [undefined, 'admin']
 			},
 			sidebarWidth: { control: { type: 'number' } }
 		}
@@ -19,15 +19,15 @@
 <!--
 	PageFrame supports four optional named snippets: {#snippet header()}, {#snippet footer()},
 	{#snippet sidebar()}. When sidebar is provided it switches to CSS Grid mode.
-	It also accepts a theme prop ('public' | 'admin') to set a theme context.
-	createThemeContext uses setContext internally — this works fine in Storybook.
+	It also accepts a theme prop, written to the frame as data-theme: theme="admin"
+	puts everything inside on the admin overlay (D-238). Omit it for Meccano.
 -->
 
 <Story name="Column — Header and Footer" asChild>
 	<div
 		style="height:400px;border:1px dashed var(--border-hairline);border-radius:var(--radius);overflow:hidden"
 	>
-		<PageFrame theme="public">
+		<PageFrame>
 			{#snippet header()}
 				<div
 					style="padding:1rem 1.5rem;background:var(--surface-raised-bg);border-bottom:1px solid var(--border-hairline);display:flex;align-items:center;gap:1rem"

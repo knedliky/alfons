@@ -1,5 +1,4 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme';
 	import type { Snippet } from 'svelte';
 
 	export interface PageFrameProps {
@@ -8,7 +7,8 @@
 		footer?: Snippet;
 		sidebar?: Snippet;
 		sidebarWidth?: number;
-		theme?: ThemeVariant;
+		/** A theme to put the whole frame on, written as its data-theme — "admin" for the admin overlay */
+		theme?: string;
 		class?: string;
 	}
 </script>
@@ -33,13 +33,10 @@
 	 * - No sidebar: flex column (header > main > footer) — mirrors PageLayout
 	 * - With sidebar: CSS Grid (sidebarWidth | 1fr) — mirrors admin layout
 	 * - Stateless: sidebar collapse/expand state stays in consuming layout
-	 * - Optional theme context creation via theme prop
+	 * - Optional theme via the theme prop, applied as data-theme on the frame
 	 * - Header and footer are optional snippet props — omit for embedded/iframe scenarios
 	 * - Grid column transition for smooth sidebar resize
 	 */
-	import { untrack } from 'svelte';
-	import { createThemeContext } from '../../contexts/theme';
-
 	let {
 		children,
 		header,
@@ -51,18 +48,13 @@
 	}: PageFrameProps = $props();
 
 	const hasSidebar = $derived(sidebar !== undefined);
-
-	// setContext must run synchronously during init — intentionally captures initial value
-	const initialTheme = untrack(() => theme);
-	if (initialTheme) {
-		createThemeContext(initialTheme);
-	}
 </script>
 
 {#if hasSidebar}
 	<!-- Sidebar mode: CSS Grid layout -->
 	<div
 		class="page-frame page-frame--sidebar {className ?? ''}"
+		data-theme={theme}
 		style="--frame-sidebar-width: {sidebarWidth}px"
 	>
 		<aside class="page-frame__sidebar">
@@ -86,7 +78,7 @@
 	</div>
 {:else}
 	<!-- No sidebar: flex column layout -->
-	<div class="page-frame page-frame--column {className ?? ''}">
+	<div class="page-frame page-frame--column {className ?? ''}" data-theme={theme}>
 		{#if header}
 			<header class="page-frame__header">
 				{@render header()}

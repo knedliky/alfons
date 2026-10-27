@@ -143,9 +143,12 @@ check(
 );
 
 const adminColours = getTokens(manifest, { category: 'colours', surface: 'admin' });
+// Every public token, not more of them: since AL-027 admin is an overlay theme
+// that restates public roles, so the admin surface has no names of its own.
+const adminColourNames = new Set(adminColours.tokens.map((token) => token.name));
 check(
 	'an admin surface also gets the public tokens',
-	adminColours.tokens.length > publicColours.tokens.length,
+	publicColours.tokens.every((token) => adminColourNames.has(token.name)),
 	{ admin: adminColours.tokens.length, public: publicColours.tokens.length }
 );
 
@@ -246,8 +249,8 @@ check(
 	surfaces.surfaces.map((surface) => surface.name).join(',') === 'public,admin'
 );
 check(
-	'admin may use more tokens than public',
-	surfaces.surfaces[1]!.tokenCount > surfaces.surfaces[0]!.tokenCount
+	'admin may use every token public may',
+	surfaces.surfaces[1]!.tokenCount >= surfaces.surfaces[0]!.tokenCount
 );
 check('states that dark is the only colour mode', surfaces.colourMode === 'dark');
 
@@ -336,16 +339,18 @@ check(
 
 // ---------------------------------------------------------------------------
 console.log('\ntombstones');
-const retiredToken = manifest.tombstones.find((entry) => entry.name === '--chart-tooltip-bg');
+// --chart-tooltip-bg was the fixture until AL-027 revived it; its -admin form
+// is the tombstone now, retired the other way.
+const retiredToken = manifest.tombstones.find((entry) => entry.name === '--chart-tooltip-bg-admin');
 check('a retired token is still answerable', Boolean(retiredToken), manifest.tombstones.length);
 check(
 	'and names its replacement',
-	retiredToken?.lifecycle.replacement === '--chart-tooltip-bg-admin',
+	retiredToken?.lifecycle.replacement === '--chart-tooltip-bg',
 	retiredToken
 );
 check(
 	'and the decision that retired it',
-	retiredToken?.lifecycle.decisionId === 'D-165',
+	retiredToken?.lifecycle.decisionId === 'D-238',
 	retiredToken
 );
 

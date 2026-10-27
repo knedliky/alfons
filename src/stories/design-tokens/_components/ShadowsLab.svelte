@@ -73,8 +73,7 @@
 		{ token: '--select-dropdown-shadow', maps: '--elevation-3 · L3' },
 		{ token: '--tooltip-shadow', maps: '--elevation-3 · L3' },
 		{ token: '--button-shadow-hover', maps: 'standalone · sunset glow' },
-		{ token: '--button-shadow-active', maps: 'standalone · inset press' },
-		{ token: '--admin-shadow', maps: 'admin namespace · standalone' }
+		{ token: '--button-shadow-active', maps: 'standalone · inset press' }
 	];
 
 	let tunerEl = $state<HTMLDivElement>();

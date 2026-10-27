@@ -120,7 +120,7 @@
 		width: 48px;
 		height: 26px;
 		padding: 2px;
-		background-color: var(--admin-border);
+		background-color: var(--border-hairline);
 		border-radius: 0;
 		transition: background-color 0.2s ease;
 	}
@@ -132,7 +132,7 @@
 	.toggle-thumb {
 		width: 22px;
 		height: 22px;
-		background-color: var(--admin-text);
+		background-color: var(--text-primary);
 		border-radius: 50%;
 		transition: transform 0.2s ease;
 		box-shadow: var(--shadow-subtle);
@@ -152,7 +152,7 @@
 	.label-text {
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		line-height: 1.4;
 	}
 
@@ -163,7 +163,7 @@
 
 	.description {
 		font-size: 0.8125rem;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		line-height: 1.4;
 	}
 

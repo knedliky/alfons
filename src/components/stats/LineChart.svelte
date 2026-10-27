@@ -234,8 +234,8 @@
 <style>
 	.line-chart-container {
 		position: relative;
-		background-color: var(--chart-bg-admin);
-		border: 1px solid var(--chart-border-admin);
+		background-color: var(--chart-bg);
+		border: 1px solid var(--chart-border);
 		border-radius: 0;
 		padding: var(--chart-padding);
 	}
@@ -243,7 +243,7 @@
 	.chart-title {
 		font-size: var(--chart-title-size);
 		font-weight: 600;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		margin: 0 0 var(--space-4) 0;
 	}
 
@@ -262,7 +262,7 @@
 	}
 
 	.grid-line {
-		stroke: var(--chart-grid-subtle-admin);
+		stroke: var(--chart-grid-subtle);
 		stroke-width: 1;
 	}
 
@@ -273,7 +273,7 @@
 
 	.chart-line {
 		fill: none;
-		stroke: var(--chart-admin-series-1);
+		stroke: var(--chart-series-1);
 		stroke-width: 2;
 		stroke-linecap: round;
 		stroke-linejoin: round;
@@ -285,8 +285,8 @@
 	}
 
 	.data-point {
-		fill: var(--chart-admin-series-1);
-		stroke: var(--chart-bg-admin);
+		fill: var(--chart-series-1);
+		stroke: var(--chart-bg);
 		stroke-width: 2;
 		transition:
 			r var(--chart-transition-duration) var(--chart-transition-easing),
@@ -297,8 +297,8 @@
 	}
 
 	.data-point.hovered {
-		fill: var(--chart-admin-series-1);
-		stroke: var(--admin-text);
+		fill: var(--chart-series-1);
+		stroke: var(--text-primary);
 		stroke-width: 2.5;
 	}
 
@@ -319,7 +319,7 @@
 		font-size: var(--chart-axis-font-size);
 		font-weight: var(--chart-axis-font-weight);
 		letter-spacing: var(--chart-axis-letter-spacing);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		text-align: right;
 		text-transform: uppercase;
 	}
@@ -341,7 +341,7 @@
 		font-size: var(--chart-axis-font-size);
 		font-weight: var(--chart-axis-font-weight);
 		letter-spacing: var(--chart-axis-letter-spacing);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		text-align: center;
 		white-space: nowrap;
 		text-transform: uppercase;
@@ -349,8 +349,8 @@
 
 	.chart-tooltip {
 		position: absolute;
-		background-color: var(--chart-tooltip-bg-admin);
-		border: 1px solid var(--chart-tooltip-border-admin);
+		background-color: var(--chart-tooltip-bg);
+		border: 1px solid var(--chart-tooltip-border);
 		border-radius: 0;
 		padding: var(--space-3);
 		pointer-events: none;
@@ -375,18 +375,18 @@
 
 	.tooltip-label {
 		font-size: var(--chart-label-size);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		margin-bottom: var(--space-1);
 	}
 
 	.tooltip-value {
 		font-size: var(--chart-value-size);
-		color: var(--chart-tooltip-text-admin);
+		color: var(--chart-tooltip-text);
 	}
 
 	.tooltip-value strong {
 		font-family: var(--font-mono);
-		color: var(--chart-admin-series-1);
+		color: var(--chart-series-1);
 	}
 
 	.chart-loading,
@@ -396,15 +396,15 @@
 		align-items: center;
 		justify-content: center;
 		gap: var(--space-4);
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		font-size: var(--chart-value-size);
 	}
 
 	.loading-spinner {
 		width: 32px;
 		height: 32px;
-		border: 3px solid var(--chart-border-admin);
-		border-top-color: var(--chart-admin-series-1);
+		border: 3px solid var(--chart-border);
+		border-top-color: var(--chart-series-1);
 		border-radius: 50%;
 		animation: spin 1s linear infinite;
 	}
@@ -416,7 +416,7 @@
 	}
 
 	.empty-icon {
-		color: var(--chart-axis-colour-admin);
+		color: var(--chart-axis-colour);
 		opacity: 0.5;
 	}
 

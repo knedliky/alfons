@@ -1,9 +1,7 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
 	import type { HTMLTextareaAttributes } from 'svelte/elements';
 
 	export interface TextareaProps extends HTMLTextareaAttributes {
-		theme?: ThemeVariant;
 		class?: string;
 		value?: string;
 	}
@@ -11,34 +9,24 @@
 
 <script lang="ts">
 	/**
-	 * Textarea — multi-line text input with theme variant support.
+	 * Textarea — multi-line text input.
 	 *
 	 * Usage:
 	 *   <Textarea bind:value={message} placeholder="Your message" />
-	 *   <Textarea theme="admin" rows={6} />
+	 *   <Textarea rows={6} />
 	 *
 	 * Features:
-	 * - Automatic theme detection from context (public/admin)
-	 * - Public theme: glassmorphic background with card border
-	 * - Admin theme: transparent background with admin border
+	 * - Themed by tokens alone: --field-bg and --field-border, which the
+	 *   admin overlay sets to a transparent fill behind a hairline
 	 * - Non-resizable, min-height 180px
 	 * - Design-token-first CSS with data-attribute selectors
 	 * - Error state via aria-invalid="true": border changes to --colour-error
 	 * - Success state via data-valid="true" attribute: border changes to --colour-success
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
-	let { theme, class: className, value = $bindable(), ...rest }: TextareaProps = $props();
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
+	let { class: className, value = $bindable(), ...rest }: TextareaProps = $props();
 </script>
 
-<textarea
-	class="textarea motif-form-control {className ?? ''}"
-	data-theme={activeTheme}
-	style={activeTheme === 'admin' ? '--form-ring-bg: var(--admin-bg)' : undefined}
-	bind:value
-	{...rest}></textarea>
+<textarea class="textarea motif-form-control {className ?? ''}" bind:value {...rest}></textarea>
 
 <style>
 	.textarea {
@@ -70,44 +58,23 @@
 		opacity: 0.5;
 	}
 
-	/* Public theme */
-
-	.textarea[data-theme='public'] {
-		border: 1px solid var(--border-default);
-		background: var(--surface-card);
+	.textarea {
+		border: 1px solid var(--field-border);
+		background: var(--field-bg);
 		color: var(--text-primary);
 		box-shadow: var(--input-shadow);
 	}
 
-	.textarea[data-theme='public']::placeholder {
+	.textarea::placeholder {
 		color: var(--text-muted);
 	}
 
-	.textarea[data-theme='public']:focus-visible {
+	/* The pulley-blue lamp in every theme, as Input. */
+	.textarea:focus-visible {
 		border-color: var(--focus);
 		box-shadow: var(--focus-ring);
 	}
 
-	/* Admin theme */
-
-	.textarea[data-theme='admin'] {
-		border: 1px solid var(--admin-border);
-		background: transparent;
-		color: var(--admin-text);
-	}
-
-	.textarea[data-theme='admin']::placeholder {
-		color: var(--admin-text-muted);
-	}
-
-	.textarea[data-theme='admin']:focus {
-		border-color: var(--admin-text-muted);
-		box-shadow:
-			0 0 0 2px var(--admin-bg),
-			0 0 0 4px var(--accent);
-	}
-
 	/* Error and success focus-ring states are handled by the shared
-	   .motif-form-control rules in form-states.css (imported via base.css).
-	   The --form-ring-bg custom property is set inline for admin context. */
+	   .motif-form-control rules in form-states.css (imported via base.css). */
 </style>

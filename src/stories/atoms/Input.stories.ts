@@ -6,10 +6,6 @@ const meta = {
 	component: Input,
 	tags: ['autodocs'],
 	argTypes: {
-		theme: {
-			control: { type: 'select' },
-			options: ['public', 'admin']
-		},
 		size: {
 			control: { type: 'select' },
 			options: ['default', 'sm']
@@ -30,25 +26,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { placeholder: 'Enter text...', theme: 'public' }
+	args: { placeholder: 'Enter text...' }
 };
 
 export const WithValue: Story = {
-	args: { value: 'Hello World', theme: 'public' }
+	args: { value: 'Hello World' }
 };
 
 export const Placeholder: Story = {
-	args: { placeholder: 'Search components...', theme: 'public' }
+	args: { placeholder: 'Search components...' }
 };
 
 export const Small: Story = {
-	args: { placeholder: 'Small input', size: 'sm', theme: 'public' }
+	args: { placeholder: 'Small input', size: 'sm' }
 };
 
 export const Disabled: Story = {
-	args: { value: 'Cannot edit', disabled: true, theme: 'public' }
+	args: { value: 'Cannot edit', disabled: true }
 };
 
+/** Under the admin overlay, which .storybook/preview.js applies from `parameters.theme`. */
 export const AdminTheme: Story = {
-	args: { placeholder: 'Admin input', theme: 'admin' }
+	parameters: { theme: 'admin' },
+	args: { placeholder: 'Admin input' }
 };

@@ -244,11 +244,11 @@
 		gap: var(--space-4);
 
 		/* Scoped tokens — defaults to admin */
-		--cal-bg: var(--admin-bg);
-		--cal-text: var(--admin-text);
-		--cal-text-secondary: var(--admin-text-secondary);
-		--cal-text-muted: var(--admin-text-muted);
-		--cal-border: var(--admin-border);
+		--cal-bg: var(--bg-primary);
+		--cal-text: var(--text-primary);
+		--cal-text-secondary: var(--text-secondary);
+		--cal-text-muted: var(--text-muted);
+		--cal-border: var(--border-hairline);
 	}
 
 	.calendar-grid.public {

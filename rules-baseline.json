@@ -5,10 +5,10 @@
 	"repositories": {
 		"alfons": {
 			"components": 94,
-			"findings": 734,
+			"findings": 445,
 			"rules": {
-				"raw-value": 301,
-				"admin-token-on-public": 264,
+				"raw-value": 276,
+				"admin-token-on-public": 0,
 				"unknown-token": 28,
 				"retired-token": 0,
 				"tailwind-shadow": 80,
@@ -19,12 +19,12 @@
 		},
 		"website": {
 			"components": 176,
-			"findings": 1061,
+			"findings": 1179,
 			"rules": {
 				"raw-value": 493,
-				"admin-token-on-public": 72,
+				"admin-token-on-public": 0,
 				"unknown-token": 290,
-				"retired-token": 42,
+				"retired-token": 232,
 				"tailwind-shadow": 92,
 				"raw-element": 72,
 				"layout-nesting": 0,
@@ -49,8 +49,8 @@
 	"rules": [
 		{
 			"rule": "raw-value",
-			"count": 794,
-			"files": 120,
+			"count": 769,
+			"files": 118,
 			"samples": [
 				{
 					"file": "alfons/src/components/tables/DataTable.svelte",
@@ -70,46 +70,46 @@
 			]
 		},
 		{
-			"rule": "admin-token-on-public",
-			"count": 336,
-			"files": 43,
-			"samples": [
-				{
-					"file": "alfons/src/components/disclosure/Accordion.svelte",
-					"line": 182,
-					"message": "--admin-border is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
-				},
-				{
-					"file": "alfons/src/components/disclosure/Accordion.svelte",
-					"line": 186,
-					"message": "--admin-border is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
-				},
-				{
-					"file": "alfons/src/components/disclosure/Accordion.svelte",
-					"line": 190,
-					"message": "--admin-text is defined for admin surfaces only. It resolves here because admin.css and public.css both define into :root, not because it is legal."
-				}
-			]
-		},
-		{
 			"rule": "unknown-token",
 			"count": 318,
 			"files": 44,
 			"samples": [
 				{
 					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 350,
+					"line": 347,
 					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
 				},
 				{
 					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 376,
+					"line": 373,
 					"message": "--select-bg is not a design token and is not defined in this component. It will resolve to nothing."
 				},
 				{
 					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 429,
+					"line": 427,
 					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
+				}
+			]
+		},
+		{
+			"rule": "retired-token",
+			"count": 232,
+			"files": 44,
+			"samples": [
+				{
+					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
+					"line": 118,
+					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
+				},
+				{
+					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
+					"line": 218,
+					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
+				},
+				{
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 277,
+					"message": "--led-off is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. (D-181)"
 				}
 			]
 		},
@@ -158,26 +158,10 @@
 			]
 		},
 		{
-			"rule": "retired-token",
-			"count": 42,
-			"files": 24,
-			"samples": [
-				{
-					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
-					"line": 118,
-					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
-				},
-				{
-					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
-					"line": 218,
-					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
-				},
-				{
-					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
-					"line": 277,
-					"message": "--led-off is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. (D-181)"
-				}
-			]
+			"rule": "admin-token-on-public",
+			"count": 0,
+			"files": 0,
+			"samples": []
 		},
 		{
 			"rule": "layout-nesting",

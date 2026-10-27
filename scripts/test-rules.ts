@@ -16,7 +16,7 @@
  */
 import { loadManifest } from '../src/mcp/manifest.js';
 import { applyFixes, review } from '../src/rules/index.js';
-import type { Surface } from '../src/manifest/types.js';
+import type { Manifest, Surface } from '../src/manifest/types.js';
 
 const manifest = loadManifest();
 let failures = 0;
@@ -32,18 +32,30 @@ function check(description: string, condition: boolean, detail?: unknown): void 
 		console.error(`        ${JSON.stringify(detail, null, 2).slice(0, 600)}`);
 }
 
-const ruleIds = (source: string, surface: Surface = 'public') =>
-	review(source, manifest, surface).violations.map((entry) => entry.rule);
+const ruleIds = (source: string, surface: Surface = 'public', against: Manifest = manifest) =>
+	review(source, against, surface).violations.map((entry) => entry.rule);
 
 /** Assert a rule fires, and that the message names what the criterion requires. */
-function fires(description: string, rule: string, source: string, surface: Surface = 'public') {
-	const hits = review(source, manifest, surface).violations.filter((entry) => entry.rule === rule);
-	check(description, hits.length > 0, { got: ruleIds(source, surface) });
+function fires(
+	description: string,
+	rule: string,
+	source: string,
+	surface: Surface = 'public',
+	against: Manifest = manifest
+) {
+	const hits = review(source, against, surface).violations.filter((entry) => entry.rule === rule);
+	check(description, hits.length > 0, { got: ruleIds(source, surface, against) });
 	return hits;
 }
 
-function silent(description: string, rule: string, source: string, surface: Surface = 'public') {
-	const hits = review(source, manifest, surface).violations.filter((entry) => entry.rule === rule);
+function silent(
+	description: string,
+	rule: string,
+	source: string,
+	surface: Surface = 'public',
+	against: Manifest = manifest
+) {
+	const hits = review(source, against, surface).violations.filter((entry) => entry.rule === rule);
 	check(description, hits.length === 0, hits);
 }
 
@@ -100,18 +112,28 @@ silent('does not report 0', 'raw-value', wrap('.a { margin: 0; }'));
 
 // ---------------------------------------------------------------------------
 console.log('\nadmin-token-on-public (C2)');
-const adminToken = manifest.tokens.find((token) => token.surface === 'admin')!.name;
+// AL-027 retired the last admin-surface token: admin is an overlay theme, so
+// the tree holds none and this rule has nothing left to find in it. What is
+// under test is the rule's behaviour, so it runs over the manifest with one
+// admin-only token added, as the raw-value fixtures avoid asserting a colour.
+const adminToken = '--fixture-admin-only';
+const withAdminToken: Manifest = {
+	...manifest,
+	tokens: [...manifest.tokens, { ...manifest.tokens[0], name: adminToken, surface: 'admin' }]
+};
 fires(
 	`reports ${adminToken} on a public surface`,
 	'admin-token-on-public',
 	wrap(`.a { color: var(${adminToken}); }`),
-	'public'
+	'public',
+	withAdminToken
 );
 silent(
 	'permits the same token on an admin surface',
 	'admin-token-on-public',
 	wrap(`.a { color: var(${adminToken}); }`),
-	'admin'
+	'admin',
+	withAdminToken
 );
 silent(
 	'does not report a public token',

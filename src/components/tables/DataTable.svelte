@@ -317,13 +317,13 @@
 		gap: var(--space-4);
 		height: 100%;
 		min-height: 200px;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	.loading-spinner {
 		width: 32px;
 		height: 32px;
-		border: 3px solid var(--admin-border);
+		border: 3px solid var(--border-hairline);
 		border-top-color: var(--accent);
 		border-radius: 50%;
 		animation: spin 1s linear infinite;
@@ -353,7 +353,7 @@
 		height: 100%;
 		min-height: 200px;
 		padding: var(--space-5);
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		text-align: center;
 	}
 
@@ -372,7 +372,7 @@
 		position: sticky;
 		top: 0;
 		z-index: 1;
-		background-color: var(--admin-bg);
+		background-color: var(--bg-primary);
 	}
 
 	.data-table th {
@@ -381,7 +381,7 @@
 		font-weight: 600;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		text-align: left;
 		white-space: nowrap;
 	}
@@ -389,7 +389,7 @@
 	.data-table td {
 		padding: var(--space-2) var(--space-4);
 		font-size: 0.8125rem;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		vertical-align: middle;
 	}
 
@@ -398,7 +398,7 @@
 	}
 
 	.data-table tbody tr:hover {
-		background-color: var(--admin-bg);
+		background-color: var(--bg-primary);
 	}
 
 	.data-table tbody tr.selected {
@@ -432,7 +432,7 @@
 	}
 
 	.sortable-column:hover {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.column-header {
@@ -474,15 +474,15 @@
 	}
 
 	.table-scroll::-webkit-scrollbar-track {
-		background: var(--admin-bg-elevated);
+		background: var(--bg-glass-solid);
 	}
 
 	.table-scroll::-webkit-scrollbar-thumb {
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		border-radius: 0;
 	}
 
 	.table-scroll::-webkit-scrollbar-thumb:hover {
-		background: var(--admin-text-muted);
+		background: var(--text-muted);
 	}
 </style>

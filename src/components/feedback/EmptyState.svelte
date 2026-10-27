@@ -40,15 +40,15 @@
 		customIcon
 	}: EmptyStateProps = $props();
 
-	const backgroundColour = $derived(variant === 'admin' ? 'var(--admin-bg)' : 'var(--card-bg)');
-	const borderColour = $derived(variant === 'admin' ? 'var(--admin-border)' : 'var(--card-border)');
-	const titleColour = $derived(variant === 'admin' ? 'var(--admin-text)' : 'var(--text-primary)');
+	const backgroundColour = $derived(variant === 'admin' ? 'var(--bg-primary)' : 'var(--card-bg)');
+	const borderColour = $derived(
+		variant === 'admin' ? 'var(--border-hairline)' : 'var(--card-border)'
+	);
+	const titleColour = $derived(variant === 'admin' ? 'var(--text-primary)' : 'var(--text-primary)');
 	const messageColour = $derived(
-		variant === 'admin' ? 'var(--admin-text-secondary)' : 'var(--text-secondary)'
+		variant === 'admin' ? 'var(--text-secondary)' : 'var(--text-secondary)'
 	);
-	const iconColour = $derived(
-		variant === 'admin' ? 'var(--admin-text-muted)' : 'var(--text-muted)'
-	);
+	const iconColour = $derived(variant === 'admin' ? 'var(--text-muted)' : 'var(--text-muted)');
 </script>
 
 <div class="empty-state" style="background: {backgroundColour}; border-color: {borderColour};">

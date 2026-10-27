@@ -6,10 +6,6 @@ const meta = {
 	component: Textarea,
 	tags: ['autodocs'],
 	argTypes: {
-		theme: {
-			control: { type: 'select' },
-			options: ['public', 'admin']
-		},
 		disabled: {
 			control: { type: 'boolean' }
 		},
@@ -29,21 +25,22 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: { placeholder: 'Enter your message...', theme: 'public' }
+	args: { placeholder: 'Enter your message...' }
 };
 
 export const WithValue: Story = {
 	args: {
 		value:
-			'This is some pre-filled content that demonstrates how the textarea looks with text inside it.',
-		theme: 'public'
+			'This is some pre-filled content that demonstrates how the textarea looks with text inside it.'
 	}
 };
 
 export const Disabled: Story = {
-	args: { value: 'Cannot edit this content', disabled: true, theme: 'public' }
+	args: { value: 'Cannot edit this content', disabled: true }
 };
 
+/** Under the admin overlay, which .storybook/preview.js applies from `parameters.theme`. */
 export const AdminTheme: Story = {
-	args: { placeholder: 'Admin notes...', theme: 'admin' }
+	parameters: { theme: 'admin' },
+	args: { placeholder: 'Admin notes...' }
 };

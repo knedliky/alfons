@@ -1,5 +1,4 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
 	import type { Snippet } from 'svelte';
 
 	export interface FormGroupProps {
@@ -13,8 +12,6 @@
 		required?: boolean;
 		/** Associates the label with a specific input via the HTML for attribute */
 		htmlFor?: string;
-		/** Theme variant — admin uses admin tokens, public uses brand tokens */
-		theme?: ThemeVariant;
 		/** Configurable success message shown on error-to-valid transitions */
 		successMessage?: string;
 		/** Additional CSS classes */
@@ -74,10 +71,9 @@
 	 * - Screen reader announcements via aria-live="polite"
 	 * - Connects error text to input via aria-describedby pattern
 	 * - Configurable success message via the successMessage prop
-	 * - Theme-aware: supports both admin and public contexts
+	 * - Themed by tokens alone; admin reads the same text roles as public
 	 */
 	import { Icon, Label } from '../atoms/index.js';
-	import { getThemeVariant } from '../../contexts/theme.js';
 
 	let {
 		label,
@@ -85,13 +81,10 @@
 		hint,
 		required = false,
 		htmlFor,
-		theme,
 		successMessage = 'Looks good',
 		class: className,
 		children
 	}: FormGroupProps = $props();
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
 
 	/** Unique identifier for the description element, used by aria-describedby on the input */
 	const descriptionId = $derived(htmlFor ? `${htmlFor}-description` : undefined);
@@ -146,11 +139,7 @@
 	);
 </script>
 
-<div
-	class="form-group {className ?? ''}"
-	data-theme={activeTheme}
-	data-error={hasError ? 'true' : undefined}
->
+<div class="form-group {className ?? ''}" data-error={hasError ? 'true' : undefined}>
 	<Label for={htmlFor}>
 		<span class="form-group-label-text">{label}</span>
 		{#if required}
@@ -252,23 +241,5 @@
 
 	.form-group-description-wrapper[data-state='hint'] .form-group-description[data-variant='hint'] {
 		display: flex;
-	}
-
-	/* --- Admin theme overrides --- */
-
-	.form-group[data-theme='admin'] .form-group-description {
-		color: var(--admin-text-muted);
-	}
-
-	.form-group[data-theme='admin']
-		.form-group-description-wrapper[data-state='error']
-		.form-group-description[data-variant='error'] {
-		color: var(--colour-error);
-	}
-
-	.form-group[data-theme='admin']
-		.form-group-description-wrapper[data-state='success']
-		.form-group-description[data-variant='success'] {
-		color: var(--colour-success);
 	}
 </style>

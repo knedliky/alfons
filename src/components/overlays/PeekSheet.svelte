@@ -31,8 +31,8 @@
 	 * reader stands, cheap to raise, cheap to put down, with one pinned
 	 * full-width commit control in the thumb's reach.
 	 *
-	 * This is not Modal. Modal is a centred scale-in confirmation dialog styled
-	 * with --admin-* tokens; a sheet is a public-surface glance at a place, and
+	 * This is not Modal. Modal is a centred scale-in confirmation dialog built
+	 * for admin surfaces; a sheet is a public-surface glance at a place, and
 	 * the prototype round that produced this measured Modal as three ways wrong
 	 * for the job. The library now has both, and they are different answers.
 	 *

@@ -45,8 +45,7 @@
       ],
       "tokensUsed": [
         "--accent-secondary",
-        "--admin-border",
-        "--admin-text",
+        "--border-hairline",
         "--card-border",
         "--font-body",
         "--font-display",
@@ -208,9 +207,6 @@
       ],
       "tokensUsed": [
         "--accent-tertiary",
-        "--admin-bg-elevated",
-        "--admin-text",
-        "--admin-text-secondary",
         "--alert-tint",
         "--bg-glass-solid",
         "--colour-error",
@@ -314,9 +310,8 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--back-link-arrow",
+        "--back-link-arrow-weight",
         "--header-height",
         "--space-2",
         "--space-4",
@@ -331,10 +326,9 @@
       "summary": "navigational breadcrumb-style link with a left-pointing arrow.",
       "usage": "  `<BackLink href=\"/blog\" label=\"Back to Blog\" />`\n  `<BackLink href=\"/blog\" label=\"Back to Blog\" fixed />`",
       "features": [
-        "Auto-detects admin/public theme via context (no explicit theme prop needed)",
+        "Themed by tokens alone: --back-link-arrow and --back-link-arrow-weight,",
         "Hover micro-interaction: arrow slides left 4px, colour shifts to primary text",
-        "Fixed mode: pins below header, aligned with the site logo (64rem inner container)",
-        "Design-token-first CSS for both admin and public token namespaces"
+        "Fixed mode: pins below header, aligned with the site logo (64rem inner container)"
       ],
       "storyId": "navigation-backlink",
       "lifecycle": null,
@@ -438,16 +432,15 @@
         }
       ],
       "tokensUsed": [
-        "--admin-text",
-        "--chart-admin-series-1",
-        "--chart-axis-colour-admin",
-        "--chart-bg-admin",
-        "--chart-border-admin",
-        "--chart-grid-colour-admin",
+        "--chart-axis-colour",
+        "--chart-bg",
+        "--chart-border",
+        "--chart-grid-colour",
         "--chart-label-size",
         "--chart-padding",
+        "--chart-series-1",
         "--chart-title-size",
-        "--chart-tooltip-bg-admin",
+        "--chart-tooltip-bg",
         "--chart-transition-duration",
         "--chart-transition-easing",
         "--chart-value-size",
@@ -457,7 +450,8 @@
         "--space-3",
         "--space-4",
         "--space-6",
-        "--space-7"
+        "--space-7",
+        "--text-primary"
       ],
       "composes": [],
       "importedBy": [],
@@ -524,13 +518,13 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--border-hairline",
         "--colour-error",
         "--shadow-subtle",
         "--space-2",
-        "--space-4"
+        "--space-4",
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -640,10 +634,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--colour-info",
@@ -652,6 +644,8 @@
         "--radius",
         "--space-2",
         "--space-4",
+        "--text-primary",
+        "--text-secondary",
         "--transition-fast"
       ],
       "composes": [
@@ -693,11 +687,6 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "'admin' | 'public'",
-          "optional": true
-        },
-        {
           "name": "variant",
           "type": "'default' | 'secondary' | 'outline' | 'ghost' | 'link'",
           "optional": true
@@ -705,12 +694,10 @@
       ],
       "tokensUsed": [
         "--accent-contrast",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--border-strong",
         "--button-ghost-hover-bg",
+        "--button-outline-border",
+        "--button-outline-hover-bg",
+        "--button-outline-hover-border",
         "--cap-chrome",
         "--cap-red",
         "--focus-ring",
@@ -731,7 +718,6 @@
         "--space-4",
         "--space-5",
         "--state-disabled-opacity",
-        "--steel-100",
         "--text-caption",
         "--text-inverse",
         "--text-link",
@@ -749,11 +735,11 @@
       ],
       "exported": true,
       "summary": "control-panel hardware: a domed cap seated in a dark bezel.",
-      "usage": "  <Button>Primary CTA</Button>\n  <Button variant=\"secondary\" size=\"sm\">Secondary</Button>\n  <Button variant=\"ghost\" theme=\"admin\">Admin action</Button>",
+      "usage": "  <Button>Primary CTA</Button>\n  <Button variant=\"secondary\" size=\"sm\">Secondary</Button>\n  <div data-theme=\"admin\"><Button variant=\"ghost\">Admin action</Button></div>",
       "features": [
         "Five visual variants: default, secondary, outline, ghost, link",
         "Three sizes plus icon mode: default, sm, lg, icon",
-        "Automatic theme detection from context (public/admin)",
+        "Themed by tokens alone: the admin overlay restates the outline and",
         "Design-token-first CSS with data-attribute selectors"
       ],
       "storyId": "atoms-button",
@@ -819,9 +805,6 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-bg",
-        "--admin-text",
-        "--admin-text-muted",
         "--bg-primary",
         "--card-bg",
         "--day-accent",
@@ -901,11 +884,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--cal-bg",
         "--cal-border",
         "--cal-text",
@@ -973,43 +953,32 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
-        },
-        {
           "name": "variant",
           "type": "'default' | 'elevated' | 'ghost' | 'outlined' | 'interactive'",
           "optional": true
         }
       ],
       "tokensUsed": [
-        "--accent",
         "--accent-bg",
-        "--accent-border",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-shadow",
-        "--admin-shadow-elevated",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--card-elevated-fill",
+        "--card-outline",
+        "--card-outline-hover",
         "--card-padding",
         "--card-padding-sm",
+        "--card-plate-edge",
+        "--card-plate-face",
+        "--card-plate-fill",
+        "--card-plate-inset",
+        "--card-plate-lift",
         "--card-shadow",
         "--card-shadow-hover",
         "--colour-info-bg",
         "--radius-surface",
-        "--rivet-edge",
-        "--rivet-face",
         "--shadow-2",
-        "--sheen-rgb",
         "--space-1",
         "--space-2",
         "--space-4",
         "--space-5",
-        "--steel-200",
-        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--text-secondary",
@@ -1019,12 +988,12 @@
       "importedBy": [],
       "exported": true,
       "summary": "base surface primitive for content containers.",
-      "usage": "  <Card>Default card</Card>\n  <Card as=\"a\" href=\"/about\" variant=\"elevated\">Linked card</Card>\n  <Card theme=\"admin\" variant=\"ghost\">Admin ghost card</Card>\n  <Card size=\"compact\">Compact padding</Card>\n  <Card size=\"flush\">No padding</Card>",
+      "usage": "  <Card>Default card</Card>\n  <Card as=\"a\" href=\"/about\" variant=\"elevated\">Linked card</Card>\n  <Card variant=\"ghost\">Ghost card</Card>\n  <Card size=\"compact\">Compact padding</Card>\n  <Card size=\"flush\">No padding</Card>",
       "features": [
         "Polymorphic element via `as` prop (div, a, section, article, button)",
         "Five variants: default (control plate), elevated, ghost, outlined, interactive",
         "Three sizes: default, compact (tighter padding), flush (no padding)",
-        "Automatic theme detection from context (public/admin)",
+        "Themed by tokens alone: the --card-plate-* roles, which the admin",
         "Self-contained styling — no dependency on global .card-glass utility"
       ],
       "storyId": "cards-card",
@@ -1130,10 +1099,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--card-border-hover",
@@ -1143,7 +1110,8 @@
         "--space-3",
         "--text-inverse",
         "--text-muted",
-        "--text-primary"
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -1349,17 +1317,17 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--space-1",
         "--space-2",
         "--space-4",
         "--space-5",
-        "--surface-overlay-subtle"
+        "--surface-overlay-subtle",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -1438,12 +1406,9 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--font-mono",
@@ -1451,6 +1416,9 @@
         "--space-1",
         "--space-2",
         "--space-4",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary",
         "--z-raised"
       ],
       "composes": [],
@@ -1511,11 +1479,9 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--dp-bg",
@@ -1593,12 +1559,9 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--drp-accent",
@@ -1664,16 +1627,16 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--layout-sidebar-width",
         "--radius",
         "--space-2",
         "--space-4",
+        "--text-primary",
+        "--text-secondary",
         "--transition-fast"
       ],
       "composes": [
@@ -1822,7 +1785,6 @@
         }
       ],
       "tokensUsed": [
-        "--admin-border",
         "--border-hairline",
         "--space-3",
         "--text-caption",
@@ -1876,11 +1838,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--radius",
@@ -2079,11 +2038,6 @@
           "name": "statusMessage",
           "type": "string",
           "optional": true
-        },
-        {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
         }
       ],
       "tokensUsed": [
@@ -2098,7 +2052,7 @@
       "summary": "base form primitive for composing form experiences.",
       "usage": "  <Form onsubmit={handleSubmit} status={formStatus} statusMessage={message}>\n    <Input type=\"email\" bind:value={email} required />\n    <Button type=\"submit\">Send</Button>\n  </Form>",
       "features": [
-        "Theme-aware via context (public/admin)",
+        "Themed by tokens alone, through the fields inside it",
         "Status feedback with screen reader announcements (aria-live)",
         "Passes through all native form attributes (onsubmit, action, method, novalidate)",
         "Design-token colours for success/error states"
@@ -2152,15 +2106,9 @@
           "name": "successMessage",
           "type": "string",
           "optional": true
-        },
-        {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
         }
       ],
       "tokensUsed": [
-        "--admin-text-muted",
         "--colour-error",
         "--colour-success",
         "--space-1",
@@ -2185,7 +2133,7 @@
         "Screen reader announcements via aria-live=\"polite\"",
         "Connects error text to input via aria-describedby pattern",
         "Configurable success message via the successMessage prop",
-        "Theme-aware: supports both admin and public contexts"
+        "Themed by tokens alone; admin reads the same text roles as public"
       ],
       "storyId": "forms-formgroup",
       "lifecycle": null,
@@ -2443,22 +2391,14 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
-        },
-        {
           "name": "value",
           "type": "string | number",
           "optional": true
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--border-default",
+        "--field-bg",
+        "--field-border",
         "--focus",
         "--focus-ring",
         "--input-height",
@@ -2467,7 +2407,6 @@
         "--radius",
         "--space-2",
         "--space-4",
-        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--transition-normal"
@@ -2475,13 +2414,11 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "text input field with theme and size support.",
-      "usage": "  <Input bind:value={name} placeholder=\"Your name\" />\n  <Input type=\"email\" size=\"sm\" theme=\"admin\" />",
+      "summary": "text input field with size support.",
+      "usage": "  <Input bind:value={name} placeholder=\"Your name\" />\n  <Input type=\"email\" size=\"sm\" />",
       "features": [
         "Two sizes: default (h-12) and sm (h-10)",
-        "Automatic theme detection from context (public/admin)",
-        "Public theme: glassmorphic background with card border",
-        "Admin theme: transparent background with admin border",
+        "Themed by tokens alone: --field-bg and --field-border, which the",
         "Design-token-first CSS with data-attribute selectors",
         "Error state via aria-invalid=\"true\": border changes to --colour-error",
         "Success state via data-valid=\"true\" attribute: border changes to --colour-success"
@@ -2540,18 +2477,18 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--font-mono",
         "--space-1",
         "--space-2",
-        "--space-4"
+        "--space-4",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -2641,21 +2578,20 @@
       ],
       "tokensUsed": [
         "--accent-rgb",
-        "--admin-text",
-        "--chart-admin-series-1",
-        "--chart-axis-colour-admin",
+        "--chart-axis-colour",
         "--chart-axis-font-size",
         "--chart-axis-font-weight",
         "--chart-axis-letter-spacing",
-        "--chart-bg-admin",
-        "--chart-border-admin",
-        "--chart-grid-subtle-admin",
+        "--chart-bg",
+        "--chart-border",
+        "--chart-grid-subtle",
         "--chart-label-size",
         "--chart-padding",
+        "--chart-series-1",
         "--chart-title-size",
-        "--chart-tooltip-bg-admin",
-        "--chart-tooltip-border-admin",
-        "--chart-tooltip-text-admin",
+        "--chart-tooltip-bg",
+        "--chart-tooltip-border",
+        "--chart-tooltip-text",
         "--chart-transition-duration",
         "--chart-transition-easing",
         "--chart-value-size",
@@ -2664,6 +2600,7 @@
         "--space-1",
         "--space-3",
         "--space-4",
+        "--text-primary",
         "--z-dropdown"
       ],
       "composes": [],
@@ -3118,10 +3055,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
         "--bg-glass-solid",
+        "--border-hairline",
         "--card-border",
         "--colour-error",
         "--el-edge-light",
@@ -3178,11 +3113,9 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--overlay-scrim",
         "--radius",
         "--radius-surface",
@@ -3191,6 +3124,8 @@
         "--space-4",
         "--space-5",
         "--space-6",
+        "--text-primary",
+        "--text-secondary",
         "--transition-fast",
         "--transition-normal",
         "--z-overlay"
@@ -3268,18 +3203,18 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--font-mono",
         "--shadow-dropdown",
         "--space-1",
         "--space-2",
         "--space-4",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary",
         "--z-dropdown"
       ],
       "composes": [],
@@ -3408,19 +3343,19 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--font-mono",
         "--radius",
         "--space-1",
         "--space-2",
-        "--space-4"
+        "--space-4",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -3475,7 +3410,7 @@
         },
         {
           "name": "theme",
-          "type": "ThemeVariant",
+          "type": "string",
           "optional": true
         }
       ],
@@ -3494,7 +3429,7 @@
         "No sidebar: flex column (header > main > footer) — mirrors PageLayout",
         "With sidebar: CSS Grid (sidebarWidth | 1fr) — mirrors admin layout",
         "Stateless: sidebar collapse/expand state stays in consuming layout",
-        "Optional theme context creation via theme prop",
+        "Optional theme via the theme prop, applied as data-theme on the frame",
         "Header and footer are optional snippet props — omit for embedded/iframe scenarios",
         "Grid column transition for smooth sidebar resize"
       ],
@@ -3551,11 +3486,9 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-header-size-mobile",
-        "--admin-subheader-size-mobile",
-        "--admin-text",
-        "--admin-text-secondary",
         "--font-body",
+        "--fs-lg",
+        "--fs-xl",
         "--section-header-max-width",
         "--space-1",
         "--space-10",
@@ -3746,8 +3679,6 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-accent",
-        "--admin-text-secondary",
         "--font-mono",
         "--radius",
         "--space-1",
@@ -3965,10 +3896,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text-secondary",
         "--bg-glass-solid",
+        "--border-hairline",
         "--card-border",
         "--el-edge-light",
         "--el-edge-shade",
@@ -4113,9 +4042,7 @@
       "tokensUsed": [
         "--accent",
         "--accent-tertiary",
-        "--admin-bg-elevated",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
         "--colour-error",
         "--colour-success",
         "--colour-warning",
@@ -4305,10 +4232,8 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--card-border-hover",
@@ -4317,7 +4242,8 @@
         "--space-3",
         "--text-inverse",
         "--text-muted",
-        "--text-primary"
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [
@@ -4597,8 +4523,6 @@
         }
       ],
       "tokensUsed": [
-        "--admin-text",
-        "--admin-text-secondary",
         "--gradient-depth",
         "--gradient-sunset",
         "--section-header-max-width",
@@ -4679,11 +4603,6 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "'admin' | 'public'",
-          "optional": true
-        },
-        {
           "name": "valid",
           "type": "boolean",
           "optional": true
@@ -4695,11 +4614,11 @@
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--colour-error",
+        "--field-border",
         "--filter-control-height",
         "--font-mono",
         "--fw-medium",
+        "--input-bg",
         "--input-height",
         "--radius",
         "--radius-pill",
@@ -4707,13 +4626,18 @@
         "--select-border",
         "--select-dropdown-shadow",
         "--select-font-size",
+        "--select-menu-bg",
         "--select-text",
         "--select-text-muted",
         "--select-text-secondary",
+        "--select-trigger-bg",
         "--space-1",
         "--space-2",
         "--space-3",
         "--steel-100",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary",
         "--transition-fast",
         "--transition-normal",
         "--z-dropdown"
@@ -4727,7 +4651,7 @@
         "Floating fixed-position dropdown (escapes overflow containers)",
         "Flips above trigger when insufficient space below viewport",
         "Full keyboard navigation (arrows, enter, escape, home/end)",
-        "Admin and public theme contexts via CSS custom properties",
+        "Themed by tokens alone (--field-border, --select-trigger-bg,",
         "Closes on outside click and page scroll",
         "Optional `searchable` filter input with a \"No matches\" empty state",
         "Error state via aria-invalid=\"true\" (set from error prop): border changes to --colour-error",
@@ -4792,12 +4716,9 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--admin-text-secondary",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--radius",
@@ -4805,6 +4726,9 @@
         "--space-1",
         "--space-2",
         "--space-4",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary",
         "--z-dropdown"
       ],
       "composes": [],
@@ -4865,7 +4789,7 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg",
+        "--bg-primary",
         "--card-bg",
         "--dur-slow",
         "--radius",
@@ -5143,10 +5067,8 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-secondary",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-info",
         "--colour-success",
         "--radius-pill",
@@ -5157,7 +5079,9 @@
         "--stat-icon-bg-blue",
         "--stat-icon-bg-green",
         "--stat-icon-bg-purple",
-        "--stat-icon-bg-red"
+        "--stat-icon-bg-red",
+        "--text-primary",
+        "--text-secondary"
       ],
       "composes": [],
       "importedBy": [],
@@ -5198,8 +5122,7 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg-elevated",
-        "--admin-text-muted",
+        "--bg-glass-solid",
         "--colour-error",
         "--colour-error-bg",
         "--colour-info",
@@ -5210,7 +5133,8 @@
         "--colour-warning-bg",
         "--radius",
         "--space-1",
-        "--space-2"
+        "--space-2",
+        "--text-muted"
       ],
       "composes": [],
       "importedBy": [],
@@ -5383,8 +5307,7 @@
         "--accent",
         "--accent-bg-subtle",
         "--accent-secondary",
-        "--admin-border",
-        "--admin-text",
+        "--border-hairline",
         "--card-bg",
         "--card-border",
         "--font-body",
@@ -5677,23 +5600,14 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
-        },
-        {
           "name": "value",
           "type": "string",
           "optional": true
         }
       ],
       "tokensUsed": [
-        "--accent",
-        "--admin-bg",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
-        "--border-default",
+        "--field-bg",
+        "--field-border",
         "--focus",
         "--focus-ring",
         "--input-height",
@@ -5701,7 +5615,6 @@
         "--radius",
         "--space-4",
         "--space-5",
-        "--surface-card",
         "--text-muted",
         "--text-primary",
         "--transition-normal"
@@ -5709,12 +5622,10 @@
       "composes": [],
       "importedBy": [],
       "exported": true,
-      "summary": "multi-line text input with theme variant support.",
-      "usage": "  <Textarea bind:value={message} placeholder=\"Your message\" />\n  <Textarea theme=\"admin\" rows={6} />",
+      "summary": "multi-line text input.",
+      "usage": "  <Textarea bind:value={message} placeholder=\"Your message\" />\n  <Textarea rows={6} />",
       "features": [
-        "Automatic theme detection from context (public/admin)",
-        "Public theme: glassmorphic background with card border",
-        "Admin theme: transparent background with admin border",
+        "Themed by tokens alone: --field-bg and --field-border, which the",
         "Non-resizable, min-height 180px",
         "Design-token-first CSS with data-attribute selectors",
         "Error state via aria-invalid=\"true\": border changes to --colour-error",
@@ -5784,11 +5695,9 @@
       "tokensUsed": [
         "--accent",
         "--accent-rgb",
-        "--admin-bg",
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
-        "--admin-text-muted",
+        "--bg-glass-solid",
+        "--bg-primary",
+        "--border-hairline",
         "--colour-error",
         "--colour-error-bg",
         "--colour-warning",
@@ -5796,7 +5705,9 @@
         "--radius",
         "--space-1",
         "--space-2",
-        "--space-4"
+        "--space-4",
+        "--text-muted",
+        "--text-primary"
       ],
       "composes": [],
       "importedBy": [],
@@ -5840,11 +5751,6 @@
           "optional": true
         },
         {
-          "name": "theme",
-          "type": "ThemeVariant",
-          "optional": true
-        },
-        {
           "name": "type",
           "type": "'warning' | 'error' | 'success' | 'info'",
           "optional": true
@@ -5857,8 +5763,6 @@
       ],
       "tokensUsed": [
         "--accent",
-        "--admin-text",
-        "--admin-text-secondary",
         "--colour-error",
         "--colour-error-bg",
         "--colour-info",
@@ -5887,7 +5791,7 @@
       "features": [
         "Slides in from bottom with CSS transform transition",
         "Four type variants: warning, error, success, info",
-        "Adapts to admin and public theme contexts",
+        "Themed by tokens alone; admin reads the same text roles as public",
         "Auto-dismisses after configurable delay",
         "Render guard prevents mount flicker"
       ],
@@ -6026,9 +5930,6 @@
         }
       ],
       "tokensUsed": [
-        "--admin-bg-elevated",
-        "--admin-border",
-        "--admin-text",
         "--bg-glass-solid",
         "--border-hairline",
         "--radius",
@@ -6101,10 +6002,8 @@
       "layer": "semantic",
       "referencedBy": [
         "AgentInput",
-        "BackLink",
         "BoolField",
         "CalendarDay",
-        "Card",
         "DataTable",
         "DateField",
         "DateRangePicker",
@@ -6121,13 +6020,11 @@
         "Portrait",
         "ProgressBar",
         "RangeSlider",
-        "Select",
         "SelectField",
         "Spinner",
         "StatCard",
         "Tabs",
         "TextField",
-        "Textarea",
         "Toast"
       ],
       "usedInTokenLayer": true,
@@ -6182,11 +6079,10 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "Card",
         "Portrait",
         "RangeSlider"
       ],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": true,
       "lifecycle": null
     },
@@ -6297,282 +6193,31 @@
       "lifecycle": null
     },
     {
-      "name": "--admin-bg",
-      "value": "var(--foundry-black)",
+      "name": "--back-link-arrow",
+      "value": "var(--accent)",
       "file": "themes/meccano.css",
       "category": "colours",
-      "surface": "admin",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "BulkActionModal",
-        "CalendarDay",
-        "CalendarGrid",
-        "Card",
-        "Checkbox",
-        "DataTable",
-        "DateField",
-        "DatePicker",
-        "DateRangePicker",
-        "DeleteConfirmModal",
-        "EmptyState",
-        "Input",
-        "JsonField",
-        "Modal",
-        "MultiSelectField",
-        "NumberField",
-        "Radio",
-        "SelectField",
-        "Skeleton",
-        "StatCard",
-        "TextField",
-        "Textarea"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": true,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-bg-elevated",
-      "value": "var(--steel-50)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Alert",
-        "Button",
-        "Card",
-        "DataTable",
-        "DateField",
-        "DatePicker",
-        "DateRangePicker",
-        "JsonField",
-        "Menu",
-        "Modal",
-        "MultiSelectField",
-        "NumberField",
-        "Popover",
-        "ProgressBar",
-        "SelectField",
-        "StatusBadge",
-        "TextField",
-        "Tooltip"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-border",
-      "value": "var( --border-hairline )",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Accordion",
-        "BoolField",
-        "BulkActionModal",
-        "Button",
-        "CalendarGrid",
-        "Card",
-        "Checkbox",
-        "DataTable",
-        "DateField",
-        "DatePicker",
-        "DateRangePicker",
-        "DeleteConfirmModal",
-        "Divider",
-        "EmptyState",
-        "Input",
-        "JsonField",
-        "Menu",
-        "Modal",
-        "MultiSelectField",
-        "NumberField",
-        "Popover",
-        "Radio",
-        "SelectField",
-        "StatCard",
-        "Tabs",
-        "TextField",
-        "Textarea",
-        "Tooltip"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": true,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-header-size-mobile",
-      "value": "1.5rem",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "PageHeader"
+        "BackLink"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
     {
-      "name": "--admin-shadow",
-      "value": "var(--shadow-1)",
-      "file": "themes/meccano.css",
-      "category": "elevation",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Card"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-shadow-elevated",
-      "value": "var(--shadow-2)",
-      "file": "themes/meccano.css",
-      "category": "elevation",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Card"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-subheader-size-mobile",
-      "value": "1rem",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "PageHeader"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-text",
-      "value": "var(--ink-900)",
+      "name": "--back-link-arrow-weight",
+      "value": "2.5",
       "file": "themes/meccano.css",
       "category": "colours",
-      "surface": "admin",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "Accordion",
-        "Alert",
-        "BackLink",
-        "BarChart",
-        "BoolField",
-        "BulkActionModal",
-        "Button",
-        "CalendarDay",
-        "CalendarGrid",
-        "Card",
-        "Checkbox",
-        "DataTable",
-        "DateField",
-        "DatePicker",
-        "DateRangePicker",
-        "DeleteConfirmModal",
-        "EmptyState",
-        "Input",
-        "JsonField",
-        "LineChart",
-        "Menu",
-        "Modal",
-        "MultiSelectField",
-        "NumberField",
-        "PageHeader",
-        "ProgressBar",
-        "Radio",
-        "SectionHeader",
-        "SelectField",
-        "StatCard",
-        "Tabs",
-        "TextField",
-        "Textarea",
-        "Toast",
-        "Tooltip"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": true,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-text-muted",
-      "value": "var(--ink-400)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Button",
-        "CalendarDay",
-        "CalendarGrid",
-        "DataTable",
-        "DateField",
-        "DatePicker",
-        "DateRangePicker",
-        "EmptyState",
-        "FormGroup",
-        "Input",
-        "JsonField",
-        "MultiSelectField",
-        "NumberField",
-        "SelectField",
-        "StatusBadge",
-        "TextField",
-        "Textarea"
-      ],
-      "usedInTokenLayer": true,
-      "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--admin-text-secondary",
-      "value": "var(--ink-500)",
-      "file": "themes/meccano.css",
-      "category": "colours",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "Alert",
-        "BackLink",
-        "BoolField",
-        "BulkActionModal",
-        "CalendarGrid",
-        "Card",
-        "Checkbox",
-        "DataTable",
-        "DateField",
-        "DateRangePicker",
-        "DeleteConfirmModal",
-        "EmptyState",
-        "JsonField",
-        "Modal",
-        "MultiSelectField",
-        "NumberField",
-        "PageHeader",
-        "Pagination",
-        "Popover",
-        "ProgressBar",
-        "Radio",
-        "SectionHeader",
-        "SelectField",
-        "StatCard",
-        "Toast"
+        "BackLink"
       ],
       "usedInTokenLayer": false,
-      "usedInStories": true,
+      "usedInStories": false,
       "lifecycle": null
     },
     {
@@ -6683,9 +6328,21 @@
       "referencedBy": [
         "Alert",
         "AvatarGroup",
+        "DataTable",
+        "DateField",
+        "DatePicker",
+        "DateRangePicker",
+        "JsonField",
         "LongreadArticle",
         "Menu",
+        "Modal",
+        "MultiSelectField",
+        "NumberField",
         "Popover",
+        "ProgressBar",
+        "SelectField",
+        "StatusBadge",
+        "TextField",
         "Tooltip"
       ],
       "usedInTokenLayer": true,
@@ -6701,12 +6358,30 @@
       "layer": "semantic",
       "referencedBy": [
         "AvatarGroup",
+        "BulkActionModal",
         "CalendarDay",
+        "CalendarGrid",
+        "Checkbox",
+        "DataTable",
+        "DateField",
+        "DatePicker",
+        "DateRangePicker",
+        "DeleteConfirmModal",
+        "EmptyState",
         "Footer",
         "Header",
+        "JsonField",
+        "Modal",
+        "MultiSelectField",
+        "NumberField",
         "PeekSheet",
         "PushedScreen",
-        "RangeSlider"
+        "Radio",
+        "RangeSlider",
+        "SelectField",
+        "Skeleton",
+        "StatCard",
+        "TextField"
       ],
       "usedInTokenLayer": true,
       "usedInStories": true,
@@ -6753,8 +6428,6 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "Input",
-        "Textarea",
         "Toggle"
       ],
       "usedInTokenLayer": true,
@@ -6775,14 +6448,36 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
+        "Accordion",
+        "BoolField",
+        "BulkActionModal",
+        "CalendarGrid",
+        "Checkbox",
+        "DataTable",
+        "DateField",
+        "DatePicker",
+        "DateRangePicker",
+        "DeleteConfirmModal",
         "Divider",
+        "EmptyState",
         "Footer",
         "Header",
+        "JsonField",
+        "Menu",
+        "Modal",
+        "MultiSelectField",
+        "NumberField",
         "PeekSheet",
+        "Popover",
+        "Radio",
         "RangeSlider",
+        "SelectField",
         "SkeletonCard",
         "SkeletonHero",
+        "StatCard",
+        "Tabs",
         "TaskDeck",
+        "TextField",
         "Tooltip"
       ],
       "usedInTokenLayer": true,
@@ -6802,10 +6497,8 @@
       "category": "colours",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [
-        "Button"
-      ],
-      "usedInTokenLayer": false,
+      "referencedBy": [],
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -6857,6 +6550,48 @@
         "decisionId": null,
         "recordedOn": "2026-08-06"
       }
+    },
+    {
+      "name": "--button-outline-border",
+      "value": "var(--border-strong)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Button"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--button-outline-hover-bg",
+      "value": "var(--steel-100)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Button"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--button-outline-hover-border",
+      "value": "var(--border-strong)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Button"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
     },
     {
       "name": "--button-shadow",
@@ -7038,6 +6773,48 @@
       "lifecycle": null
     },
     {
+      "name": "--card-elevated-fill",
+      "value": "var(--surface-card)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-outline",
+      "value": "var(--accent-border)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-outline-hover",
+      "value": "var(--accent)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--card-padding",
       "value": "var(--space-6)",
       "file": "spacing.css",
@@ -7063,6 +6840,76 @@
       "referencedBy": [
         "Card",
         "SkeletonCard"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-plate-edge",
+      "value": "var(--steel-200)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-plate-face",
+      "value": "radial-gradient( circle at 12px 12px, rgba(var(--sheen-rgb), 0.38) 0 1px, var(--rivet-face) 1.6px, var(--rivet-edge) 2.6px, transparent 3.4px ), radial-gradient( circle at calc(100% - 12px) 12px, rgba(var(--sheen-rgb), 0.38) 0 1px, var(--rivet-face) 1.6px, var(--rivet-edge) 2.6px, transparent 3.4px ), radial-gradient( circle at 12px calc(100% - 12px), rgba(var(--sheen-rgb), 0.38) 0 1px, var(--rivet-face) 1.6px, var(--rivet-edge) 2.6px, transparent 3.4px ), radial-gradient( circle at calc(100% - 12px) calc(100% - 12px), rgba(var(--sheen-rgb), 0.38) 0 1px, var(--rivet-face) 1.6px, var(--rivet-edge) 2.6px, transparent 3.4px ), linear-gradient( 180deg, color-mix(in oklab, var(--surface-card), white 4%), var(--surface-card) 55%, color-mix(in oklab, var(--surface-card), black 10%) )",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-plate-fill",
+      "value": "var(--surface-card)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-plate-inset",
+      "value": "inset 0 1px 0 rgba(var(--sheen-rgb), 0.05)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--card-plate-lift",
+      "value": "translateY(-1px)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Card"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -7182,11 +7029,11 @@
       "lifecycle": null
     },
     {
-      "name": "--chart-admin-series-1",
-      "value": "var(--chart-series-1)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-axis-colour",
+      "value": "var(--text-muted)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "BarChart",
@@ -7194,22 +7041,13 @@
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
-    },
-    {
-      "name": "--chart-axis-colour-admin",
-      "value": "var(--admin-text-muted)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
-      "referencedBy": [
-        "BarChart",
-        "LineChart"
-      ],
-      "usedInTokenLayer": false,
-      "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: BarChart and LineChart read it, and a theme sets it. D-165 retired it only because the charts read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
       "name": "--chart-axis-font-size",
@@ -7254,11 +7092,11 @@
       "lifecycle": null
     },
     {
-      "name": "--chart-bg-admin",
-      "value": "var(--admin-bg)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-bg",
+      "value": "var(--bg-primary)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "BarChart",
@@ -7266,14 +7104,20 @@
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: BarChart and LineChart read it, and a theme sets it. D-165 retired it only because the charts read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
-      "name": "--chart-border-admin",
-      "value": "var(--admin-border)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-border",
+      "value": "var(--border-hairline)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "BarChart",
@@ -7281,28 +7125,40 @@
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: BarChart and LineChart read it, and a theme sets it. D-165 retired it only because the charts read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
-      "name": "--chart-grid-colour-admin",
-      "value": "var(--admin-border)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-grid-colour",
+      "value": "var(--border-hairline)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "BarChart"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: BarChart reads it, and a theme sets it. D-165 retired it only because the chart read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
-      "name": "--chart-grid-subtle-admin",
-      "value": "oklch(100% 0 0 / 5%)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-grid-subtle",
+      "value": "color-mix(in oklab, white, transparent 95%)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "LineChart"
@@ -7348,8 +7204,11 @@
       "category": "colours",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
-      "usedInTokenLayer": true,
+      "referencedBy": [
+        "BarChart",
+        "LineChart"
+      ],
+      "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
     },
@@ -7369,11 +7228,11 @@
       "lifecycle": null
     },
     {
-      "name": "--chart-tooltip-bg-admin",
-      "value": "var(--admin-bg-elevated)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-tooltip-bg",
+      "value": "var(--bg-glass-solid)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "BarChart",
@@ -7381,35 +7240,53 @@
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: BarChart and LineChart read it, and a theme sets it. D-165 retired it only because the charts read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
-      "name": "--chart-tooltip-border-admin",
-      "value": "var(--admin-border)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-tooltip-border",
+      "value": "var(--border-hairline)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: LineChart reads it, and a theme sets it. D-165 retired it only because the chart read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
-      "name": "--chart-tooltip-text-admin",
-      "value": "var(--admin-text)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
+      "name": "--chart-tooltip-text",
+      "value": "var(--text-primary)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
       "layer": "semantic",
       "referencedBy": [
         "LineChart"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
-      "lifecycle": null
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Revived by AL-027: LineChart reads it, and a theme sets it. D-165 retired it only because the chart read the -admin form.",
+        "decisionId": null,
+        "recordedOn": "2026-10-27"
+      }
     },
     {
       "name": "--chart-transition-duration",
@@ -7477,7 +7354,6 @@
         "MultiSelectField",
         "NumberField",
         "ProgressBar",
-        "Select",
         "SelectField",
         "StatusBadge",
         "TextField",
@@ -7894,6 +7770,37 @@
       "lifecycle": null
     },
     {
+      "name": "--field-bg",
+      "value": "var(--surface-card)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Input",
+        "Textarea"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--field-border",
+      "value": "var(--border-default)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Input",
+        "Select",
+        "Textarea"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--filter-control-height",
       "value": "2.75rem",
       "file": "spacing.css",
@@ -8226,7 +8133,9 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "PageHeader"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8280,7 +8189,9 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "PageHeader"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8846,7 +8757,9 @@
       "category": "colours",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "Select"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9338,10 +9251,8 @@
       "category": "elevation",
       "surface": "public",
       "layer": "primitive",
-      "referencedBy": [
-        "Card"
-      ],
-      "usedInTokenLayer": false,
+      "referencedBy": [],
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -9358,10 +9269,8 @@
       "category": "elevation",
       "surface": "public",
       "layer": "primitive",
-      "referencedBy": [
-        "Card"
-      ],
-      "usedInTokenLayer": false,
+      "referencedBy": [],
+      "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
         "status": "live",
@@ -9417,6 +9326,20 @@
       "lifecycle": null
     },
     {
+      "name": "--select-menu-bg",
+      "value": "var(--surface-card)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Select"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--select-selected-bg",
       "value": "color-mix(in oklab, var(--girder-red), var(--surface-page) 80%)",
       "file": "themes/meccano.css",
@@ -9433,6 +9356,20 @@
         "decisionId": null,
         "recordedOn": "2026-08-06"
       }
+    },
+    {
+      "name": "--select-trigger-bg",
+      "value": "var(--surface-card)",
+      "file": "themes/meccano.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "Select"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
     },
     {
       "name": "--shade-rgb",
@@ -9684,8 +9621,7 @@
       "surface": "public",
       "layer": "primitive",
       "referencedBy": [
-        "Button",
-        "Card"
+        "Button"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10070,10 +10006,10 @@
     {
       "name": "--stat-icon-bg-blue",
       "value": "oklch(62.3% 0.188 260 / 20%)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
+      "file": "primitives.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "StatCard"
       ],
@@ -10084,10 +10020,10 @@
     {
       "name": "--stat-icon-bg-green",
       "value": "oklch(72.3% 0.192 150 / 20%)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
+      "file": "primitives.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "StatCard"
       ],
@@ -10098,10 +10034,10 @@
     {
       "name": "--stat-icon-bg-purple",
       "value": "oklch(62.7% 0.233 304 / 20%)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
+      "file": "primitives.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "StatCard"
       ],
@@ -10112,10 +10048,10 @@
     {
       "name": "--stat-icon-bg-red",
       "value": "oklch(45% 0.22 25 / 20%)",
-      "file": "admin.css",
-      "category": "admin",
-      "surface": "admin",
-      "layer": "semantic",
+      "file": "primitives.css",
+      "category": "colours",
+      "surface": "public",
+      "layer": "primitive",
       "referencedBy": [
         "StatCard"
       ],
@@ -10169,7 +10105,6 @@
       "surface": "public",
       "layer": "primitive",
       "referencedBy": [
-        "Button",
         "Select"
       ],
       "usedInTokenLayer": true,
@@ -10208,8 +10143,7 @@
       "surface": "public",
       "layer": "primitive",
       "referencedBy": [
-        "Badge",
-        "Card"
+        "Badge"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10262,10 +10196,7 @@
       "layer": "semantic",
       "referencedBy": [
         "AgentInput",
-        "Card",
-        "Input",
-        "Surface",
-        "Textarea"
+        "Surface"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -10562,6 +10493,8 @@
         "CalendarGrid",
         "Card",
         "Checkbox",
+        "DataTable",
+        "DateField",
         "DatePicker",
         "DateRangePicker",
         "DestinationRow",
@@ -10570,26 +10503,33 @@
         "Footer",
         "FormGroup",
         "Input",
+        "JsonField",
         "LongreadArticle",
         "LongreadFigure",
         "LongreadHero",
         "LongreadProse",
         "LongreadStatBand",
         "Menu",
+        "MultiSelectField",
         "NothingRunning",
+        "NumberField",
         "Pagination",
         "PeekSheet",
         "ProjectBody",
         "PushedScreen",
         "Radio",
         "ReleaseBody",
+        "Select",
+        "SelectField",
+        "StatusBadge",
         "Tabs",
         "TaskCard",
         "TaskCell",
+        "TextField",
         "Textarea",
         "ToggleGroup"
       ],
-      "usedInTokenLayer": false,
+      "usedInTokenLayer": true,
       "usedInStories": true,
       "lifecycle": null
     },
@@ -10605,28 +10545,39 @@
         "AgentInput",
         "Alert",
         "BackLink",
+        "BarChart",
+        "BoolField",
         "Breadcrumb",
+        "BulkActionModal",
         "Button",
         "CalendarDay",
         "CalendarGrid",
         "Card",
         "Checkbox",
         "Chip",
+        "DataTable",
+        "DateField",
         "DatePicker",
         "DateRangePicker",
+        "DeleteConfirmModal",
         "DestinationRow",
         "EmptyState",
         "ErrorPage",
         "Footer",
         "Header",
         "Input",
+        "JsonField",
         "Label",
+        "LineChart",
         "LongreadHero",
         "LongreadProse",
         "LongreadSection",
         "LongreadStatBand",
         "Menu",
+        "Modal",
+        "MultiSelectField",
         "NothingRunning",
+        "NumberField",
         "PageHeader",
         "PageLayout",
         "Pagination",
@@ -10637,11 +10588,15 @@
         "Radio",
         "ReleaseBody",
         "SectionHeader",
+        "Select",
+        "SelectField",
+        "StatCard",
         "Surface",
         "Tabs",
         "TaskCard",
         "TaskCell",
         "TaskDeck",
+        "TextField",
         "Textarea",
         "Toast",
         "Toggle",
@@ -10665,25 +10620,39 @@
         "Alert",
         "AvatarGroup",
         "BackLink",
+        "BoolField",
+        "BulkActionModal",
         "CalendarGrid",
         "Card",
+        "Checkbox",
         "Chip",
+        "DataTable",
+        "DateField",
         "DateRangePicker",
+        "DeleteConfirmModal",
         "DestinationRow",
         "EmptyState",
         "ErrorPage",
         "Footer",
         "Header",
+        "JsonField",
         "LongreadArticle",
+        "Modal",
+        "MultiSelectField",
         "NothingRunning",
+        "NumberField",
         "PageHeader",
         "Pagination",
         "Pill",
         "Popover",
         "ProgressBar",
         "ProjectBody",
+        "Radio",
         "ReleaseBody",
         "SectionHeader",
+        "Select",
+        "SelectField",
+        "StatCard",
         "Tabs",
         "TaskCard",
         "Toast"
@@ -11239,13 +11208,46 @@
     },
     {
       "kind": "token",
+      "name": "--admin-bg",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--bg-primary",
+        "reason": "The admin ground, which was --foundry-black: the value --bg-primary already gives a surface sitting flush with the page. Admin is an overlay theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-bg-elevated",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--bg-glass-solid",
+        "reason": "The raised admin fill, which was --steel-50: the value --bg-glass-solid already gives Tooltip, Menu and Popover on public pages. Admin is an overlay theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--admin-bg-page",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--admin-bg",
+        "replacement": "--bg-primary",
         "reason": "A second name for --admin-bg with no reader in Alfons; a theme setting one would leave the other behind (AL-026).",
         "decisionId": "D-238",
-        "recordedOn": "2026-10-26"
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-border",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--border-hairline",
+        "reason": "The admin hairline, which resolved to --border-hairline itself. The overlay sets the component edges that differ instead (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11261,6 +11263,17 @@
     },
     {
       "kind": "token",
+      "name": "--admin-header-size-mobile",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--fs-xl",
+        "reason": "The admin PageHeader title on a phone, 1.5rem, which is --fs-xl (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--admin-header-weight",
       "lifecycle": {
         "status": "retired",
@@ -11272,6 +11285,28 @@
     },
     {
       "kind": "token",
+      "name": "--admin-shadow",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-shadow",
+        "reason": "The first shadow rung under an admin name, read only by Card, which reads --card-shadow on every theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-shadow-elevated",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--card-shadow-hover",
+        "reason": "The second shadow rung under an admin name, read only by Card. Card reads --card-shadow-hover, which the admin overlay sets to the resting rung because admin cards do not lift (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--admin-subheader-size",
       "lifecycle": {
         "status": "retired",
@@ -11279,6 +11314,50 @@
         "reason": "Admin header typography nothing has read since that header was rebuilt.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-subheader-size-mobile",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": null,
+        "reason": "The admin PageHeader subtitle on a phone, 1rem. The type scale steps from 15px to 18px and no token holds 16px, so PageHeader writes the length itself (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-text",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-primary",
+        "reason": "Admin primary text, which was --ink-900, as --text-primary is. Admin is an overlay theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-text-muted",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-muted",
+        "reason": "Admin muted text, which was --ink-400, as --text-muted is. Admin is an overlay theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--admin-text-secondary",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--text-secondary",
+        "reason": "Admin secondary text, which was --ink-500, as --text-secondary is. Admin is an overlay theme now (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11448,13 +11527,24 @@
     },
     {
       "kind": "token",
+      "name": "--chart-admin-series-1",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-series-1",
+        "reason": "The admin first series, which was var(--chart-series-1). A theme sets --chart-series-1 itself (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--chart-admin-series-2",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11462,10 +11552,10 @@
       "name": "--chart-admin-series-3",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11473,10 +11563,10 @@
       "name": "--chart-admin-series-4",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11484,54 +11574,65 @@
       "name": "--chart-admin-series-5",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-axis-colour",
+      "name": "--chart-axis-colour-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-axis-colour-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-axis-colour",
+        "reason": "The admin form of the chart axis, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-bg",
+      "name": "--chart-bg-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-bg-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-bg",
+        "reason": "The admin form of the chart ground, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-border",
+      "name": "--chart-border-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-border-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-border",
+        "reason": "The admin form of the chart frame, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-grid-colour",
+      "name": "--chart-grid-colour-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-grid-colour-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-grid-colour",
+        "reason": "The admin form of the chart grid, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--chart-grid-subtle-admin",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--chart-grid-subtle",
+        "reason": "The admin form of the faint LineChart grid, which LineChart now reads under a plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11616,10 +11717,10 @@
       "name": "--chart-series-2",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11627,10 +11728,10 @@
       "name": "--chart-series-3",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11638,10 +11739,10 @@
       "name": "--chart-series-4",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11649,10 +11750,10 @@
       "name": "--chart-series-5",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11660,10 +11761,10 @@
       "name": "--chart-series-6",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11671,10 +11772,10 @@
       "name": "--chart-series-7",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
@@ -11682,43 +11783,43 @@
       "name": "--chart-series-8",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-admin-series-1",
+        "replacement": "--chart-series-1",
         "reason": "BarChart and LineChart plot a single series and read only --chart-admin-series-1. An eight-colour scale for a one-line chart.",
         "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-tooltip-bg",
+      "name": "--chart-tooltip-bg-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-tooltip-bg-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-tooltip-bg",
+        "reason": "The admin form of the chart tooltip fill, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-tooltip-border",
+      "name": "--chart-tooltip-border-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-tooltip-border-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-tooltip-border",
+        "reason": "The admin form of the chart tooltip edge, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {
       "kind": "token",
-      "name": "--chart-tooltip-text",
+      "name": "--chart-tooltip-text-admin",
       "lifecycle": {
         "status": "retired",
-        "replacement": "--chart-tooltip-text-admin",
-        "reason": "Public chart vocabulary no component read; BarChart and LineChart use the -admin family.",
-        "decisionId": "D-165",
-        "recordedOn": "2026-08-02"
+        "replacement": "--chart-tooltip-text",
+        "reason": "The admin form of the chart tooltip text, which the charts now read under its plain name (AL-027).",
+        "decisionId": "D-238",
+        "recordedOn": "2026-10-27"
       }
     },
     {

@@ -93,12 +93,12 @@
 		margin: 0;
 		font-size: 0.875rem;
 		text-align: center;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	.item-label {
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.delete-actions {
@@ -113,17 +113,17 @@
 		padding: var(--space-2) var(--space-4);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		background: transparent;
-		border: 1px solid var(--admin-border);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius);
 		cursor: pointer;
 		transition: all var(--transition-fast);
 	}
 
 	.cancel-btn:hover {
-		background: var(--admin-bg);
-		color: var(--admin-text);
+		background: var(--bg-primary);
+		color: var(--text-primary);
 	}
 
 	.delete-btn {

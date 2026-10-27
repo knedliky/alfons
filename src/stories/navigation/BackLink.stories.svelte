@@ -21,10 +21,9 @@
 </script>
 
 <!--
-	Note: BackLink calls getThemeVariant() which reads from Svelte context.
-	In Storybook without a parent context provider, getThemeVariant() falls
-	back to 'public' gracefully (returns context?.variant ?? 'public').
-	No SvelteKit-only imports are used — this component is safe in Storybook.
+	Note: BackLink reads only tokens, so it takes whichever theme surrounds it;
+	`parameters: { theme: 'admin' }` on a story shows the admin overlay's muted
+	arrow. No SvelteKit-only imports are used — this component is safe in Storybook.
 
 	The `fixed` prop sets a CSS custom property on document.documentElement via
 	$effect. This works in a browser story canvas but has no visible effect in

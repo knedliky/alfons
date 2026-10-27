@@ -87,6 +87,11 @@ function walk(dir: string, predicate: (path: string) => boolean): string[] {
  * Caught by AL-004 C4 rather than by anything in AL-003, which is the argument
  * for the MCP existing at all: the manifest looked correct until something
  * asked it a question that depended on this field being right.
+ *
+ * Since AL-027 neither signal matches a definition, so every token is public:
+ * the --admin-* names are retired, and themes/admin.css is an overlay, whose
+ * declarations collectTokens never records as definitions. The admin surface
+ * is kept for the MCP and the rules that still take one.
  */
 function surfaceFor(file: string, name: string): Surface {
 	return basename(file) === 'admin.css' || name.startsWith('--admin-') ? 'admin' : 'public';
@@ -104,14 +109,13 @@ const THEMES_DIR = 'themes';
  * spacing.css and typography.css are semantic although they hold raw lengths:
  * components index those scales directly (`var(--space-${n})` from resolveGap
  * is a typed public API), so they are what components read, not what tokens
- * are built from. admin.css is semantic because it holds the admin roles that
- * AL-027 moves into an overlay theme.
+ * are built from. They are shared by every theme rather than part of one: a
+ * theme may set them, and a complete theme is not required to.
  */
 const TOKEN_FILE_LAYERS: Record<string, TokenLayer> = {
 	'primitives.css': 'primitive',
 	'spacing.css': 'semantic',
-	'typography.css': 'semantic',
-	'admin.css': 'semantic'
+	'typography.css': 'semantic'
 };
 
 function layerFor(tokenFile: string): TokenLayer {
@@ -124,6 +128,131 @@ function layerFor(tokenFile: string): TokenLayer {
 		);
 	}
 	return layer;
+}
+
+// ---------------------------------------------------------------------------
+// Themes (D-238)
+// ---------------------------------------------------------------------------
+
+type ThemeKind = 'complete' | 'overlay';
+
+/**
+ * A theme file says which kind it is in its header, as `@theme complete` or
+ * `@theme overlay`. Written out rather than inferred from the selector or the
+ * token count, because the kind decides which rule the file is held to, and an
+ * incomplete theme that was inferred to be an overlay would pass both.
+ */
+const THEME_KIND_MARKER = /@theme\s+(complete|overlay)\b/;
+
+interface ThemeFile {
+	file: string;
+	kind: ThemeKind;
+	sets: Set<string>;
+}
+
+function readThemeFile(path: string, tokenFile: string): ThemeFile {
+	const root = postcss.parse(readFileSync(path, 'utf8'), { from: path });
+	let kind: ThemeKind | null = null;
+	const sets = new Set<string>();
+	root.walk((node) => {
+		if (node.type === 'comment') {
+			const marker = node.text.match(THEME_KIND_MARKER);
+			if (marker) kind = marker[1] as ThemeKind;
+		} else if (node.type === 'decl' && node.prop.startsWith('--')) {
+			sets.add(node.prop);
+		}
+	});
+	if (!kind) {
+		throw new Error(
+			`src/tokens/${tokenFile} is a theme but does not say which kind. Put ` +
+				'`@theme complete` or `@theme overlay` in its header comment.'
+		);
+	}
+	return { file: tokenFile, kind, sets };
+}
+
+/** Every theme file under `tokensDir`, sorted by path. */
+function readThemes(tokensDir: string): ThemeFile[] {
+	return walk(tokensDir, (path) => path.endsWith('.css'))
+		.map((path) => ({ path, tokenFile: relative(tokensDir, path) }))
+		.filter(({ tokenFile }) => tokenFile.startsWith(`${THEMES_DIR}/`))
+		.map(({ path, tokenFile }) => readThemeFile(path, tokenFile));
+}
+
+/**
+ * The two D-238 rules a theme is held to, as messages; empty when both hold.
+ *
+ * A complete theme sets every token that any complete theme sets. The required
+ * set is the complete themes' own union rather than "every semantic token",
+ * because spacing.css and typography.css are semantic and shared: a theme may
+ * restate a spacing step, but no theme has to. Taking the union also means a
+ * token added to one complete theme is immediately missing from the others,
+ * which is the point — a second theme that silently fell back to Meccano for
+ * a new role would look finished and be wrong.
+ *
+ * An overlay sets only semantic tokens that already exist, in a complete theme
+ * or a shared semantic file. Setting a primitive would repaint the palette
+ * under every theme beneath it; setting a name nothing defines would be a role
+ * no complete theme gives a value outside the overlay.
+ *
+ * A complete theme may not set a primitive either. It may define tokens of its
+ * own, since that is where every new role is born.
+ *
+ * Exported so scripts/test-theme-completeness.ts can hold it to fixture trees.
+ */
+export function themeViolations(tokensDir: string): string[] {
+	const themes = readThemes(tokensDir);
+	const layerOf = new Map<string, TokenLayer>();
+	for (const path of walk(tokensDir, (path) => path.endsWith('.css'))) {
+		const tokenFile = relative(tokensDir, path);
+		if (basename(path) === TOKEN_ENTRY_MANIFEST || tokenFile.startsWith(`${THEMES_DIR}/`)) continue;
+		postcss.parse(readFileSync(path, 'utf8'), { from: path }).walkDecls((decl) => {
+			// Asked per declaration, as collectTokens does: base.css defines no
+			// token, so it needs no layer.
+			if (decl.prop.startsWith('--')) layerOf.set(decl.prop, layerFor(tokenFile));
+		});
+	}
+
+	const complete = themes.filter((theme) => theme.kind === 'complete');
+	const required = new Set(complete.flatMap((theme) => [...theme.sets]));
+	const violations: string[] = [];
+
+	for (const theme of themes) {
+		const primitives = [...theme.sets].filter((name) => layerOf.get(name) === 'primitive');
+		if (primitives.length) {
+			violations.push(
+				`${theme.file} (${theme.kind}) sets primitive tokens, which no theme may: ` +
+					primitives.sort().join(', ')
+			);
+		}
+		if (theme.kind === 'complete') {
+			const unset = [...required].filter((name) => !theme.sets.has(name));
+			if (unset.length) {
+				violations.push(
+					`${theme.file} is a complete theme but leaves ${unset.length} semantic ` +
+						`token(s) unset: ${unset.sort().join(', ')}`
+				);
+			}
+		} else {
+			const unknown = [...theme.sets].filter((name) => !required.has(name) && !layerOf.has(name));
+			if (unknown.length) {
+				violations.push(
+					`${theme.file} is an overlay but sets tokens no complete theme or shared file ` +
+						`defines: ${unknown.sort().join(', ')}`
+				);
+			}
+		}
+	}
+	if (!complete.length) violations.push(`no complete theme under ${THEMES_DIR}/`);
+	return violations;
+}
+
+function overlayThemeFiles(): Set<string> {
+	return new Set(
+		readThemes(TOKENS_DIR)
+			.filter((theme) => theme.kind === 'overlay')
+			.map((theme) => theme.file)
+	);
 }
 
 /**
@@ -150,6 +279,11 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 	const files = walk(TOKENS_DIR, (path) => path.endsWith('.css'));
 	const tokens = new Map<string, TokenEntry>();
 	const usedInTokenLayer = new Set<string>();
+	// An overlay restates tokens a complete theme defines. Its values are an
+	// override in a narrower scope, so they are consumers here and never the
+	// definition: themes/admin.css sorts before themes/meccano.css, and would
+	// otherwise win "first definition wins" for every token it sets.
+	const overlays = overlayThemeFiles();
 
 	for (const file of files) {
 		const filename = basename(file);
@@ -157,6 +291,7 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 
 		const root = postcss.parse(readFileSync(file, 'utf8'), { from: file });
 		const tokenFile = relative(TOKENS_DIR, file);
+		const isOverlay = overlays.has(tokenFile);
 		let category = filename.replace(/\.css$/, '');
 
 		root.walk((node) => {
@@ -175,7 +310,7 @@ function collectTokens(): { tokens: TokenEntry[]; usedInTokenLayer: Set<string> 
 				usedInTokenLayer.add(match[1]);
 			}
 
-			if (!decl.prop.startsWith('--')) return;
+			if (!decl.prop.startsWith('--') || isOverlay) return;
 			// First definition wins; later ones are overrides in narrower scopes.
 			if (tokens.has(decl.prop)) return;
 			tokens.set(decl.prop, {
@@ -766,50 +901,67 @@ function reportUnparsed(manifest: Manifest): void {
 	process.exit(1);
 }
 
-const derived = buildDerived();
-
-if (process.argv.includes('--check')) {
-	const committed = JSON.parse(readFileSync(OUT, 'utf8')) as Manifest;
-	const expected = JSON.stringify(derivedOnly(derived), null, 2);
-	const actual = JSON.stringify(derivedOnly(committed), null, 2);
-
-	if (expected !== actual) {
-		console.error(
-			'alfons.manifest.json is stale: its derived facts do not match the source tree.\n' +
-				'Run `bun run manifest` (which needs the context database) and commit the result.'
-		);
-		process.exit(1);
-	}
-	console.log(
-		`manifest: derived facts current — ${derived.components.length} components, ` +
-			`${derived.tokens.length} tokens`
-	);
-	reportUnparsed(derived);
-} else {
-	applyLifecycle(derived, readLifecycle(), readLayoutTiers(), readDesignDecisions());
-	const temporary = `${OUT}.${process.pid}.tmp`;
-	try {
-		writeFileSync(temporary, `${JSON.stringify(derived, null, 2)}\n`);
-		// rename(2) replaces the previous file atomically on the supported local
-		// filesystems, so a hot-reloading MCP sees either complete schema version.
-		renameSync(temporary, OUT);
-	} finally {
-		if (existsSync(temporary)) unlinkSync(temporary);
-	}
-
-	const unannotatedOrphans = derived.tokens.filter(
-		(token) =>
-			token.referencedBy.length === 0 &&
-			!token.usedInTokenLayer &&
-			!token.usedInStories &&
-			!token.lifecycle
-	).length;
-	const noProps = derived.components.filter((entry) => entry.propsSource === 'none').length;
-
-	console.log(
-		`manifest: ${derived.components.length} components, ${derived.tokens.length} tokens ` +
-			`(${unannotatedOrphans} with no consumer and no lifecycle row), ` +
-			`${derived.tombstones.length} tombstones, ${noProps} with no readable props`
-	);
-	reportUnparsed(derived);
+/** Refuse a theme that breaks D-238 before anything else, in both modes, so CI
+ *  (which runs only --check) holds every theme to it. */
+function refuseBrokenThemes(): void {
+	const violations = themeViolations(TOKENS_DIR);
+	if (!violations.length) return;
+	console.error(`\n${violations.length} theme rule(s) broken (D-238):`);
+	for (const violation of violations) console.error(`  ${violation}`);
+	process.exit(1);
 }
+
+function main(): void {
+	refuseBrokenThemes();
+	const derived = buildDerived();
+
+	if (process.argv.includes('--check')) {
+		const committed = JSON.parse(readFileSync(OUT, 'utf8')) as Manifest;
+		const expected = JSON.stringify(derivedOnly(derived), null, 2);
+		const actual = JSON.stringify(derivedOnly(committed), null, 2);
+
+		if (expected !== actual) {
+			console.error(
+				'alfons.manifest.json is stale: its derived facts do not match the source tree.\n' +
+					'Run `bun run manifest` (which needs the context database) and commit the result.'
+			);
+			process.exit(1);
+		}
+		console.log(
+			`manifest: derived facts current — ${derived.components.length} components, ` +
+				`${derived.tokens.length} tokens`
+		);
+		reportUnparsed(derived);
+	} else {
+		applyLifecycle(derived, readLifecycle(), readLayoutTiers(), readDesignDecisions());
+		const temporary = `${OUT}.${process.pid}.tmp`;
+		try {
+			writeFileSync(temporary, `${JSON.stringify(derived, null, 2)}\n`);
+			// rename(2) replaces the previous file atomically on the supported local
+			// filesystems, so a hot-reloading MCP sees either complete schema version.
+			renameSync(temporary, OUT);
+		} finally {
+			if (existsSync(temporary)) unlinkSync(temporary);
+		}
+
+		const unannotatedOrphans = derived.tokens.filter(
+			(token) =>
+				token.referencedBy.length === 0 &&
+				!token.usedInTokenLayer &&
+				!token.usedInStories &&
+				!token.lifecycle
+		).length;
+		const noProps = derived.components.filter((entry) => entry.propsSource === 'none').length;
+
+		console.log(
+			`manifest: ${derived.components.length} components, ${derived.tokens.length} tokens ` +
+				`(${unannotatedOrphans} with no consumer and no lifecycle row), ` +
+				`${derived.tombstones.length} tombstones, ${noProps} with no readable props`
+		);
+		reportUnparsed(derived);
+	}
+}
+
+// The theme test imports themeViolations, and importing must not write the
+// manifest.
+if (import.meta.main) main();

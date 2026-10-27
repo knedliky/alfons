@@ -32,10 +32,6 @@ const meta = {
 	component: Select,
 	tags: ['autodocs'],
 	argTypes: {
-		theme: {
-			control: { type: 'select' },
-			options: ['public', 'admin']
-		},
 		size: {
 			control: { type: 'select' },
 			options: ['default', 'sm']
@@ -59,16 +55,14 @@ export const Default: Story = {
 	args: {
 		options: sampleOptions,
 		value: '',
-		placeholder: 'Select status',
-		theme: 'public'
+		placeholder: 'Select status'
 	}
 };
 
 export const WithSelection: Story = {
 	args: {
 		options: sampleOptions,
-		value: 'published',
-		theme: 'public'
+		value: 'published'
 	}
 };
 
@@ -76,8 +70,7 @@ export const WithFontStyles: Story = {
 	args: {
 		options: fontOptions,
 		value: '',
-		placeholder: 'Select font',
-		theme: 'public'
+		placeholder: 'Select font'
 	}
 };
 
@@ -86,8 +79,7 @@ export const Small: Story = {
 		options: sampleOptions,
 		value: '',
 		placeholder: 'Small select',
-		size: 'sm',
-		theme: 'public'
+		size: 'sm'
 	}
 };
 
@@ -96,8 +88,7 @@ export const Error: Story = {
 		options: sampleOptions,
 		value: '',
 		placeholder: 'Select status',
-		error: true,
-		theme: 'public'
+		error: true
 	}
 };
 
@@ -105,17 +96,17 @@ export const Disabled: Story = {
 	args: {
 		options: sampleOptions,
 		value: 'draft',
-		disabled: true,
-		theme: 'public'
+		disabled: true
 	}
 };
 
+/** Under the admin overlay, which .storybook/preview.js applies from `parameters.theme`. */
 export const AdminTheme: Story = {
+	parameters: { theme: 'admin' },
 	args: {
 		options: sampleOptions,
 		value: '',
-		placeholder: 'Select status',
-		theme: 'admin'
+		placeholder: 'Select status'
 	}
 };
 
@@ -125,7 +116,6 @@ export const Searchable: Story = {
 		value: '',
 		placeholder: 'Select an occupation',
 		searchable: true,
-		searchPlaceholder: 'Search occupations...',
-		theme: 'public'
+		searchPlaceholder: 'Search occupations...'
 	}
 };

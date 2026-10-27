@@ -344,11 +344,11 @@
 	}
 
 	.motif-tabs.is-admin .motif-tabs-tab.is-active {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.motif-tabs.is-admin.variant-line .motif-tabs-list {
-		border-bottom-color: var(--admin-border);
+		border-bottom-color: var(--border-hairline);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

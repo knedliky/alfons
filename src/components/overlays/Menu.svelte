@@ -274,12 +274,12 @@
 	}
 
 	.motif-menu.is-admin {
-		background: var(--admin-bg-elevated);
-		border: 1px solid var(--admin-border);
+		background: var(--bg-glass-solid);
+		border: 1px solid var(--border-hairline);
 	}
 
 	.motif-menu.is-admin .motif-menu-item {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

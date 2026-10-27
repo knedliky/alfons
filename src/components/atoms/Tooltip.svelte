@@ -67,9 +67,9 @@
 
 	/* Admin variant — dark theme only */
 	.tooltip-wrapper[data-variant='admin'] .tooltip-content {
-		background: var(--admin-bg-elevated);
-		border: 1px solid var(--admin-border);
-		color: var(--admin-text);
+		background: var(--bg-glass-solid);
+		border: 1px solid var(--border-hairline);
+		color: var(--text-primary);
 		box-shadow: var(--tooltip-shadow);
 	}
 

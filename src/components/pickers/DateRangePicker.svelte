@@ -237,12 +237,12 @@
 		align-items: center;
 
 		/* Scoped tokens — defaults to admin */
-		--drp-bg: var(--admin-bg);
-		--drp-bg-elevated: var(--admin-bg-elevated);
-		--drp-text: var(--admin-text);
-		--drp-text-secondary: var(--admin-text-secondary);
-		--drp-text-muted: var(--admin-text-muted);
-		--drp-border: var(--admin-border);
+		--drp-bg: var(--bg-primary);
+		--drp-bg-elevated: var(--bg-glass-solid);
+		--drp-text: var(--text-primary);
+		--drp-text-secondary: var(--text-secondary);
+		--drp-text-muted: var(--text-muted);
+		--drp-border: var(--border-hairline);
 		--drp-accent: var(--accent);
 	}
 

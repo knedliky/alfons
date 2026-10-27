@@ -163,11 +163,11 @@
 		display: inline-block;
 
 		/* Scoped tokens — defaults to admin */
-		--dp-bg: var(--admin-bg);
-		--dp-bg-elevated: var(--admin-bg-elevated);
-		--dp-text: var(--admin-text);
-		--dp-text-muted: var(--admin-text-muted);
-		--dp-border: var(--admin-border);
+		--dp-bg: var(--bg-primary);
+		--dp-bg-elevated: var(--bg-glass-solid);
+		--dp-text: var(--text-primary);
+		--dp-text-muted: var(--text-muted);
+		--dp-border: var(--border-hairline);
 	}
 
 	.date-picker.public {

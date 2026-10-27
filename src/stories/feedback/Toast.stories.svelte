@@ -14,11 +14,7 @@
 			},
 			message: { control: { type: 'text' } },
 			autoDismiss: { control: { type: 'boolean' } },
-			dismissAfter: { control: { type: 'number' } },
-			theme: {
-				control: { type: 'select' },
-				options: ['public', 'admin']
-			}
+			dismissAfter: { control: { type: 'number' } }
 		}
 	});
 </script>
@@ -30,8 +26,7 @@
 		visible: true,
 		type: 'info',
 		message: 'Your changes have been saved.',
-		autoDismiss: false,
-		theme: 'public'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -39,7 +34,6 @@
 		type="info"
 		message="Your changes have been saved."
 		autoDismiss={false}
-		theme="public"
 		onDismiss={() => {}}
 	/>
 </Story>
@@ -51,8 +45,7 @@
 		visible: true,
 		type: 'success',
 		message: 'Post published successfully.',
-		autoDismiss: false,
-		theme: 'public'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -60,7 +53,6 @@
 		type="success"
 		message="Post published successfully."
 		autoDismiss={false}
-		theme="public"
 		onDismiss={() => {}}
 	/>
 </Story>
@@ -72,8 +64,7 @@
 		visible: true,
 		type: 'warning',
 		message: 'Your session will expire in 5 minutes.',
-		autoDismiss: false,
-		theme: 'public'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -81,7 +72,6 @@
 		type="warning"
 		message="Your session will expire in 5 minutes."
 		autoDismiss={false}
-		theme="public"
 		onDismiss={() => {}}
 	/>
 </Story>
@@ -93,8 +83,7 @@
 		visible: true,
 		type: 'error',
 		message: 'Failed to save changes. Please try again.',
-		autoDismiss: false,
-		theme: 'public'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -102,7 +91,6 @@
 		type="error"
 		message="Failed to save changes. Please try again."
 		autoDismiss={false}
-		theme="public"
 		onDismiss={() => {}}
 	/>
 </Story>
@@ -110,12 +98,12 @@
 <Story
 	name="Admin Theme"
 	asChild
+	parameters={{ theme: 'admin' }}
 	args={{
 		visible: true,
 		type: 'success',
 		message: 'User account updated.',
-		autoDismiss: false,
-		theme: 'admin'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -123,7 +111,6 @@
 		type="success"
 		message="User account updated."
 		autoDismiss={false}
-		theme="admin"
 		onDismiss={() => {}}
 	/>
 </Story>
@@ -135,8 +122,7 @@
 		visible: true,
 		type: 'info',
 		message: 'This notification cannot be manually dismissed.',
-		autoDismiss: false,
-		theme: 'public'
+		autoDismiss: false
 	}}
 >
 	<Toast
@@ -144,6 +130,5 @@
 		type="info"
 		message="This notification cannot be manually dismissed."
 		autoDismiss={false}
-		theme="public"
 	/>
 </Story>

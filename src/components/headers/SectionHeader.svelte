@@ -148,12 +148,12 @@
 
 	/* Admin variant uses admin token namespace */
 	.variant-admin .section-title {
-		color: var(--admin-text);
+		color: var(--text-primary);
 		margin-bottom: var(--space-2);
 	}
 
 	.variant-admin .section-subtitle {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	@media (max-width: 767px) {

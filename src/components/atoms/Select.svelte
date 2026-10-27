@@ -21,7 +21,6 @@
 		/** Briefly highlights the trigger border with --colour-success */
 		valid?: boolean;
 		disabled?: boolean;
-		theme?: 'admin' | 'public';
 		/** When true, render a search input above the options that filters by label. */
 		searchable?: boolean;
 		/** Placeholder shown in the search input. Ignored when `searchable` is false. */
@@ -45,14 +44,14 @@
 	 * - Floating fixed-position dropdown (escapes overflow containers)
 	 * - Flips above trigger when insufficient space below viewport
 	 * - Full keyboard navigation (arrows, enter, escape, home/end)
-	 * - Admin and public theme contexts via CSS custom properties
+	 * - Themed by tokens alone (--field-border, --select-trigger-bg,
+	 *   --select-menu-bg, --input-bg); the
+	 *   portalled menu takes the theme of the element around the trigger
 	 * - Closes on outside click and page scroll
 	 * - Optional `searchable` filter input with a "No matches" empty state
 	 * - Error state via aria-invalid="true" (set from error prop): border changes to --colour-error
 	 * - Success state via data-valid="true" attribute (set from valid prop): border changes to --colour-success
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
 	let {
 		value = '',
 		options = [],
@@ -62,7 +61,6 @@
 		error = false,
 		valid = false,
 		disabled = false,
-		theme,
 		searchable = false,
 		searchPlaceholder = 'Search...',
 		onchange
@@ -86,30 +84,29 @@
 	const DROPDOWN_MAX_HEIGHT = 280;
 	const DROPDOWN_GAP = 8;
 
-	const activeTheme = $derived(theme ?? getThemeVariant());
-
-	function getThemeToken(publicToken: string, adminToken: string): string {
-		return activeTheme === 'admin' ? `var(${adminToken})` : `var(${publicToken})`;
-	}
+	/**
+	 * The roles the trigger and menu paint. Every one is a theme token, so the
+	 * component never asks which theme it is in: the admin overlay sets the
+	 * edge, trigger, menu and search ones (D-238).
+	 */
+	const tokens = {
+		text: 'var(--text-primary)',
+		textSecondary: 'var(--text-secondary)',
+		textMuted: 'var(--text-muted)',
+		border: 'var(--field-border)',
+		background: 'var(--select-trigger-bg)',
+		// The floating menu is the same opaque control plate as its trigger;
+		// elevation comes from the shadow, never from frosted glass.
+		backgroundElevated: 'var(--select-menu-bg)',
+		inputBg: 'var(--input-bg)'
+	};
 
 	/**
-	 * Theme-aware token map — resolves public vs admin CSS custom properties.
-	 * Note: var(--accent) and var(--colour-error/success) are used directly
-	 * in the template because they are context-independent (shared across both
-	 * themes, not overridden in admin.css). Only tokens that differ between
-	 * admin and public contexts need the getThemeToken indirection.
+	 * The menu is portalled to <body>, outside any data-theme around the
+	 * trigger, so it carries the nearest one across. Read when the menu opens
+	 * rather than once, because the theme around a mounted Select can change.
 	 */
-	const tokens = $derived({
-		text: getThemeToken('--text-primary', '--admin-text'),
-		textSecondary: getThemeToken('--text-secondary', '--admin-text-secondary'),
-		textMuted: getThemeToken('--text-muted', '--admin-text-muted'),
-		border: getThemeToken('--border-default', '--admin-border'),
-		background: getThemeToken('--surface-card', '--admin-bg'),
-		// The reference makes the floating menu the same opaque control plate as
-		// its trigger; elevation comes from the shadow, never from frosted glass.
-		backgroundElevated: getThemeToken('--surface-card', '--admin-bg-elevated'),
-		inputBg: getThemeToken('--input-bg', '--admin-bg')
-	});
+	let menuTheme = $state<string | undefined>(undefined);
 
 	const selectedOption = $derived(options.find((opt) => opt.value === value));
 
@@ -176,6 +173,7 @@
 
 	function toggleDropdown() {
 		if (!isOpen) {
+			menuTheme = triggerRef?.closest('[data-theme]')?.getAttribute('data-theme') ?? undefined;
 			// Open first, then calculate position — ensures DOM is ready
 			isOpen = true;
 			highlightedIndex = visibleOptions.findIndex((opt) => opt.value === value);
@@ -409,6 +407,7 @@
 			class="select-dropdown"
 			class:select-dropdown-sm={size === 'sm'}
 			class:select-dropdown-above={dropdownPosition.showAbove}
+			data-theme={menuTheme}
 			id={listboxId}
 			role="listbox"
 			tabindex="-1"
@@ -742,5 +741,5 @@
 	/* Error and success focus-ring states are handled by the shared
 	   .motif-form-control rules in form-states.css (imported via base.css).
 	   The --form-ring-bg custom property is set inline to var(--select-bg)
-	   so the inner ring colour respects the admin/public theme. */
+	   so the inner ring takes the field fill of whichever theme is in force. */
 </style>

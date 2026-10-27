@@ -179,15 +179,15 @@
 	}
 
 	.motif-accordion.is-admin {
-		border-top-color: var(--admin-border);
+		border-top-color: var(--border-hairline);
 	}
 
 	.motif-accordion.is-admin .motif-accordion-item {
-		border-bottom-color: var(--admin-border);
+		border-bottom-color: var(--border-hairline);
 	}
 
 	.motif-accordion.is-admin .motif-accordion-header {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

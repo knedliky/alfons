@@ -136,8 +136,8 @@
 		max-width: 480px;
 		max-height: calc(100vh - var(--space-6));
 		margin: var(--space-4);
-		background: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		background: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius-surface);
 		box-shadow: var(--shadow-modal);
 		overflow: hidden;
@@ -160,14 +160,14 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: var(--space-4) var(--space-5);
-		border-bottom: 1px solid var(--admin-border);
+		border-bottom: 1px solid var(--border-hairline);
 	}
 
 	.modal-title {
 		margin: 0;
 		font-size: 1.125rem;
 		font-weight: 600;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.modal-close {
@@ -178,14 +178,14 @@
 		background: transparent;
 		border: none;
 		border-radius: var(--radius);
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		cursor: pointer;
 		transition: all var(--transition-normal);
 	}
 
 	.modal-close:hover {
-		background: var(--admin-bg-elevated);
-		color: var(--admin-text);
+		background: var(--bg-glass-solid);
+		color: var(--text-primary);
 	}
 
 	.modal-close-standalone {

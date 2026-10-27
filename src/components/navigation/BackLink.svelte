@@ -16,16 +16,12 @@
 	 *   `<BackLink href="/blog" label="Back to Blog" fixed />`
 	 *
 	 * Features:
-	 * - Auto-detects admin/public theme via context (no explicit theme prop needed)
+	 * - Themed by tokens alone: --back-link-arrow and --back-link-arrow-weight,
+	 *   which the admin overlay sets to muted chrome
 	 * - Hover micro-interaction: arrow slides left 4px, colour shifts to primary text
 	 * - Fixed mode: pins below header, aligned with the site logo (64rem inner container)
-	 * - Design-token-first CSS for both admin and public token namespaces
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
 	let { href, label, fixed = false, class: additionalClasses = '' }: BackLinkProps = $props();
-
-	const activeTheme = $derived(getThemeVariant());
 
 	/* When fixed mode is active, override --back-link-height on :root so
 	   sticky elements (TOC, scroll-margin) account for this fixed row.
@@ -40,9 +36,9 @@
 </script>
 
 {#if fixed}
-	<div class="back-link-fixed" data-theme={activeTheme}>
+	<div class="back-link-fixed">
 		<div class="back-link-fixed-inner">
-			<a {href} class="back-link {additionalClasses}" data-theme={activeTheme}>
+			<a {href} class="back-link {additionalClasses}">
 				<svg class="back-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
 					<path
 						d="M10 12L6 8L10 4"
@@ -57,7 +53,7 @@
 		</div>
 	</div>
 {:else}
-	<a {href} class="back-link {additionalClasses}" data-theme={activeTheme}>
+	<a {href} class="back-link {additionalClasses}">
 		<svg class="back-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
 			<path
 				d="M10 12L6 8L10 4"
@@ -108,32 +104,17 @@
 		transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	/* Arrow renders in the brand accent by default so the back affordance
+	/* Arrow renders in the brand accent under Meccano so the back affordance
 	   reads as an action rather than muted chrome. The path inherits
 	   currentColor from the SVG attribute, so this stroke override is what
-	   gives it the accent. Admin theme resets to currentColor below. */
+	   gives it the accent; the admin overlay sets the token to currentColor,
+	   since the accent is a public affordance. */
 	.back-arrow path {
-		stroke: var(--accent);
-		stroke-width: 2.5;
+		stroke: var(--back-link-arrow);
+		stroke-width: var(--back-link-arrow-weight);
 	}
 
 	.back-link:hover .back-arrow {
 		transform: translateX(-4px);
-	}
-
-	/* Admin theme variant */
-	.back-link[data-theme='admin'] {
-		color: var(--admin-text-secondary);
-	}
-
-	.back-link[data-theme='admin']:hover {
-		color: var(--admin-text);
-	}
-
-	/* Admin surfaces keep the muted chrome arrow — the brand accent is a
-	   public-facing affordance, not an admin one. */
-	.back-link[data-theme='admin'] .back-arrow path {
-		stroke: currentColor;
-		stroke-width: 2;
 	}
 </style>

@@ -17,6 +17,8 @@
  * data-colour-mode="dark" on <html> (D-195, which D-238 replaces in time with
  * data-theme). Australian spelling throughout (colour, not color).
  *
+ * @theme complete
+ *
  * The @category comments keep each token filed under its subject in the
  * manifest, since this file's name says which theme it is, not what subject.
  */
@@ -171,12 +173,24 @@
 		   Ordered so adjacent series sit far apart in hue, which is what a
 		   categorical scale needs; palette order is not series order.
 
-		   The chrome tokens that sat here — --chart-axis-colour, --chart-bg,
-		   --chart-border, --chart-grid-colour, --chart-tooltip-bg/-border/-text,
-		   --chart-positive/-negative/-neutral/-warning and the four unitless
-		   --chart-margin-* — were retired under D-165. BarChart and LineChart
-		   consume the -admin counterparts and never referenced these. */
+		   D-165 retired the plain chrome names in favour of -admin
+		   counterparts, because BarChart and LineChart read only those. Under
+		   D-238 a theme says what admin looks like, so AL-027 brought the
+		   plain names back and retired the -admin ones. The status chart
+		   colours and the four unitless --chart-margin-* stay retired. */
 		--chart-series-1: var(--girder-red);
+
+		/* @role component tokens: the chrome BarChart and LineChart paint,
+		   so a theme can restyle a chart without moving every surface the
+		   chart sits on. */
+		--chart-axis-colour: var(--text-muted);
+		--chart-grid-colour: var(--border-hairline);
+		--chart-grid-subtle: color-mix(in oklab, white, transparent 95%);
+		--chart-bg: var(--bg-primary);
+		--chart-border: var(--border-hairline);
+		--chart-tooltip-bg: var(--bg-glass-solid);
+		--chart-tooltip-border: var(--border-hairline);
+		--chart-tooltip-text: var(--text-primary);
 
 		--chart-padding: var(
 			--space-5
@@ -241,20 +255,87 @@
 		   --industry-legal reads it directly, which is why it survives. */
 		--ind-aubergine: color-mix(in oklab, var(--flange-plum), white 38%);
 
-		/* === BUTTON VARIANTS ============================================= */
-		--button-ghost-hover-bg: var(--steel-100);
+		/* === COMPONENT TOKENS — what an overlay theme restates ============
+		   A component reads these rather than a general role where a theme
+		   may want that one component to differ, which is what the admin
+		   overlay does. The --admin-* family they replace is retired
+		   (AL-027): each of its names resolved to a value a general role
+		   already held, and its lifecycle row names that role. */
 
-		/* === ADMIN CORE — pinned dark, never changes with colour mode ==== */
-		/* --admin-bg-page was a second name for --admin-bg and is retired
-		   (AL-026). */
-		--admin-bg: var(--foundry-black);
-		--admin-bg-elevated: var(--steel-50);
-		--admin-border: var(
-			--border-hairline
-		); /* @role the admin hairline, which the admin overlay sets apart from the public one */
-		--admin-text: var(--ink-900);
-		--admin-text-secondary: var(--ink-500);
-		--admin-text-muted: var(--ink-400);
+		/* Buttons. The capped variants are hardware and never change; only
+		   the flat outline and ghost variants have roles a theme can set. */
+		--button-ghost-hover-bg: var(--steel-100);
+		--button-outline-hover-bg: var(--steel-100);
+		/* @role component tokens: the outline button's edge, at rest and
+		   on hover, apart from every other strong border. */
+		--button-outline-border: var(--border-strong);
+		--button-outline-hover-border: var(--border-strong);
+
+		/* Form fields — Input and Textarea, and the Select trigger's edge.
+		   --input-bg is the search box inside an open Select, which predates
+		   these. */
+		/* @role component tokens: a form field's fill and edge, which a theme
+		   can set apart from the card fill and the default border. */
+		--field-bg: var(--surface-card);
+		--field-border: var(--border-default);
+		/* @role component tokens: the Select trigger and its floating menu,
+		   opaque plates a theme can set apart from the open fields. */
+		--select-trigger-bg: var(--surface-card);
+		--select-menu-bg: var(--surface-card);
+
+		/* Card plates. --card-bg and --card-border are read by thirty other
+		   components, so a Card restyle has its own names. The face is the
+		   four corner rivets over a vertical sheen; --card-plate-inset is
+		   the light along the top edge. */
+		/* @role component tokens: what a Card plate paints, so a theme can
+		   restyle Card alone. */
+		--card-plate-fill: var(--surface-card);
+		--card-elevated-fill: var(--surface-card);
+		--card-outline: var(--accent-border);
+		--card-outline-hover: var(--accent);
+		--card-plate-edge: var(--steel-200);
+		--card-plate-inset: inset 0 1px 0 rgba(var(--sheen-rgb), 0.05);
+		--card-plate-lift: translateY(-1px);
+		--card-plate-face:
+			radial-gradient(
+				circle at 12px 12px,
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at calc(100% - 12px) 12px,
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at 12px calc(100% - 12px),
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			radial-gradient(
+				circle at calc(100% - 12px) calc(100% - 12px),
+				rgba(var(--sheen-rgb), 0.38) 0 1px,
+				var(--rivet-face) 1.6px,
+				var(--rivet-edge) 2.6px,
+				transparent 3.4px
+			),
+			linear-gradient(
+				180deg,
+				color-mix(in oklab, var(--surface-card), white 4%),
+				var(--surface-card) 55%,
+				color-mix(in oklab, var(--surface-card), black 10%)
+			);
+
+		/* Back links. The arrow takes the accent, because on a public page
+		   the back affordance reads as an action. */
+		--back-link-arrow: var(--accent); /* @role component token: the back-link arrow */
+		--back-link-arrow-weight: 2.5;
 
 		/* @category elevation */
 
@@ -400,9 +481,10 @@
 		--tooltip-shadow: var(--shadow-2);
 		--select-dropdown-shadow: var(--shadow-2);
 
-		/* === ADMIN SHADOWS — consolidated here from admin.css ============ */
-		--admin-shadow: var(--shadow-1);
-		--admin-shadow-elevated: var(--shadow-2);
+		/* --admin-shadow and --admin-shadow-elevated were the first and
+		   second rungs under admin names; Card reads --card-shadow and
+		   --card-shadow-hover for both now, and the admin overlay sets the
+		   hover rung (AL-027). */
 
 		/* @category motion */
 

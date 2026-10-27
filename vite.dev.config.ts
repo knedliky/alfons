@@ -48,7 +48,6 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@alfons/design/public': fromRoot('./src/tokens/public.css'),
-			'@alfons/design/admin': fromRoot('./src/tokens/admin.css'),
 			'@alfons/design/base': fromRoot('./src/tokens/base.css'),
 			'@alfons/design/form-states': fromRoot('./src/tokens/form-states.css'),
 			'@alfons/design': fromRoot('./src/index.ts')

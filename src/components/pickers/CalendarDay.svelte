@@ -90,9 +90,9 @@
 		transition: all var(--transition-fast);
 
 		/* Scoped tokens — defaults to admin */
-		--day-text: var(--admin-text);
-		--day-text-muted: var(--admin-text-muted);
-		--day-bg-hover: var(--admin-bg);
+		--day-text: var(--text-primary);
+		--day-text-muted: var(--text-muted);
+		--day-bg-hover: var(--bg-primary);
 		--day-accent: var(--accent);
 		color: var(--day-text);
 	}
@@ -115,7 +115,7 @@
 
 	.calendar-day.selected {
 		background-color: var(--day-accent) !important;
-		color: var(--admin-bg) !important;
+		color: var(--bg-primary) !important;
 		font-weight: 500;
 	}
 
@@ -152,7 +152,7 @@
 	}
 
 	.calendar-day.selected.today {
-		color: var(--admin-bg) !important;
+		color: var(--bg-primary) !important;
 	}
 
 	.calendar-day.public.selected.today {

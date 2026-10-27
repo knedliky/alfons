@@ -52,14 +52,19 @@
 	</div>
 </Story>
 
-<Story name="Admin Colours">
+<!-- The colour roles the admin overlay restates, read under it. The --admin-*
+     names this story used to show are retired (AL-027): admin text and
+     surfaces are the general roles, and these are what differs. -->
+<Story name="Admin Colours" parameters={{ theme: 'admin' }}>
 	<div class="grid">
-		<ColourSwatch tokenName="--admin-bg" label="Admin Background" />
-		<ColourSwatch tokenName="--admin-bg-elevated" label="Admin Elevated" />
-		<ColourSwatch tokenName="--admin-border" label="Admin Border" />
-		<ColourSwatch tokenName="--admin-text" label="Admin Text" />
-		<ColourSwatch tokenName="--admin-text-secondary" label="Admin Text Secondary" />
-		<ColourSwatch tokenName="--admin-text-muted" label="Admin Text Muted" />
+		<ColourSwatch tokenName="--card-plate-fill" label="Card Plate" />
+		<ColourSwatch tokenName="--card-plate-edge" label="Card Edge" />
+		<ColourSwatch tokenName="--card-elevated-fill" label="Card Elevated" />
+		<ColourSwatch tokenName="--field-border" label="Field Border" />
+		<ColourSwatch tokenName="--select-menu-bg" label="Select Menu" />
+		<ColourSwatch tokenName="--button-outline-border" label="Outline Button Edge" />
+		<ColourSwatch tokenName="--button-outline-hover-bg" label="Outline Button Hover" />
+		<ColourSwatch tokenName="--card-outline-hover" label="Card Outline Hover" />
 	</div>
 </Story>
 
@@ -76,16 +81,15 @@
 	</div>
 </Story>
 
-<!-- One series, because BarChart and LineChart plot one. The eight-colour
-     --chart-series-* scale and the --chart-axis-colour/--chart-grid-colour
-     pair this story used to show were both vocabularies no chart read: the
-     first went under D-181, the second under D-165. -->
+<!-- One series, because BarChart and LineChart plot one; the rest of the
+     eight-colour --chart-series-* scale went under D-181. The chrome names
+     are the plain ones again: AL-027 retired the -admin forms D-165 chose. -->
 <Story name="Chart">
 	<div class="grid">
-		<ColourSwatch tokenName="--chart-admin-series-1" label="Series 1" />
-		<ColourSwatch tokenName="--chart-axis-colour-admin" label="Axis" />
-		<ColourSwatch tokenName="--chart-grid-colour-admin" label="Grid" />
-		<ColourSwatch tokenName="--chart-tooltip-bg-admin" label="Tooltip BG" />
+		<ColourSwatch tokenName="--chart-series-1" label="Series 1" />
+		<ColourSwatch tokenName="--chart-axis-colour" label="Axis" />
+		<ColourSwatch tokenName="--chart-grid-colour" label="Grid" />
+		<ColourSwatch tokenName="--chart-tooltip-bg" label="Tooltip BG" />
 	</div>
 </Story>
 

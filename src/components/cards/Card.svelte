@@ -1,12 +1,10 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
 	import type { Snippet } from 'svelte';
 
 	type CardElement = 'div' | 'a' | 'section' | 'article' | 'button';
 	type CardSize = 'default' | 'compact' | 'flush';
 
 	export interface CardProps {
-		theme?: ThemeVariant;
 		variant?: 'default' | 'elevated' | 'ghost' | 'outlined' | 'interactive';
 		size?: CardSize;
 		as?: CardElement;
@@ -24,7 +22,7 @@
 	 * Usage:
 	 *   <Card>Default card</Card>
 	 *   <Card as="a" href="/about" variant="elevated">Linked card</Card>
-	 *   <Card theme="admin" variant="ghost">Admin ghost card</Card>
+	 *   <Card variant="ghost">Ghost card</Card>
 	 *   <Card size="compact">Compact padding</Card>
 	 *   <Card size="flush">No padding</Card>
 	 *
@@ -32,7 +30,8 @@
 	 * - Polymorphic element via `as` prop (div, a, section, article, button)
 	 * - Five variants: default (control plate), elevated, ghost, outlined, interactive
 	 * - Three sizes: default, compact (tighter padding), flush (no padding)
-	 * - Automatic theme detection from context (public/admin)
+	 * - Themed by tokens alone: the --card-plate-* roles, which the admin
+	 *   overlay sets to a flat steel panel behind a hairline
 	 * - Self-contained styling — no dependency on global .card-glass utility
 	 *
 	 * THE PLATE. The default variant is a control-panel plate: a vertical sheen
@@ -46,10 +45,7 @@
 	 * No eyebrows, kickers or accent strips. Metadata belongs in the body as
 	 * mono spec text: <p class="mcn-spec">PART Nº 37B</p>.
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
 	let {
-		theme,
 		variant = 'default',
 		size = 'default',
 		as: Element = 'div',
@@ -58,14 +54,11 @@
 		children,
 		...restProps
 	}: CardProps = $props();
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
 </script>
 
 <svelte:element
 	this={Element}
 	class="card {className ?? ''}"
-	data-theme={activeTheme}
 	data-variant={variant}
 	data-size={size}
 	{href}
@@ -113,85 +106,31 @@
 		}
 	}
 
-	/* === Public theme — default variant (self-contained glassmorphism) ===
-	   These styles replace the global .card-glass utility class so Card.svelte
-	   owns its visual treatment without external dependencies. */
-	.card[data-theme='public'] {
+	.card {
 		color: var(--text-primary);
 	}
 
 	/* The plate. A vertical sheen down the face, four corner rivets, a machined
 	   steel edge and a light top inset — the whole thing reads as a panel
-	   fastened to something rather than a rectangle floating on it. */
-	.card[data-theme='public'][data-variant='default'],
-	.card[data-theme='public'][data-variant='elevated'],
-	.card[data-theme='public'][data-variant='interactive'] {
-		background-color: var(--surface-card);
-		background-image:
-			radial-gradient(
-				circle at 12px 12px,
-				rgba(var(--sheen-rgb), 0.38) 0 1px,
-				var(--rivet-face) 1.6px,
-				var(--rivet-edge) 2.6px,
-				transparent 3.4px
-			),
-			radial-gradient(
-				circle at calc(100% - 12px) 12px,
-				rgba(var(--sheen-rgb), 0.38) 0 1px,
-				var(--rivet-face) 1.6px,
-				var(--rivet-edge) 2.6px,
-				transparent 3.4px
-			),
-			radial-gradient(
-				circle at 12px calc(100% - 12px),
-				rgba(var(--sheen-rgb), 0.38) 0 1px,
-				var(--rivet-face) 1.6px,
-				var(--rivet-edge) 2.6px,
-				transparent 3.4px
-			),
-			radial-gradient(
-				circle at calc(100% - 12px) calc(100% - 12px),
-				rgba(var(--sheen-rgb), 0.38) 0 1px,
-				var(--rivet-face) 1.6px,
-				var(--rivet-edge) 2.6px,
-				transparent 3.4px
-			),
-			linear-gradient(
-				180deg,
-				color-mix(in oklab, var(--surface-card), white 4%),
-				var(--surface-card) 55%,
-				color-mix(in oklab, var(--surface-card), black 10%)
-			);
-		border: 1px solid var(--steel-200);
-		box-shadow:
-			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
-			var(--card-shadow);
+	   fastened to something rather than a rectangle floating on it. The face
+	   is one token, so a theme that wants a flat panel sets it to none. */
+	.card[data-variant='default'],
+	.card[data-variant='elevated'],
+	.card[data-variant='interactive'] {
+		background-color: var(--card-plate-fill);
+		background-image: var(--card-plate-face);
+		border: 1px solid var(--card-plate-edge);
+		box-shadow: var(--card-plate-inset), var(--card-shadow);
 	}
 
-	.card[data-theme='public'][data-variant='default']:hover {
-		box-shadow:
-			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
-			var(--card-shadow-hover);
-	}
-
-	/* === Admin theme — solid surface === */
-	.card[data-theme='admin'] {
-		background: var(--admin-bg-elevated);
-		border: 1px solid var(--admin-border);
-		color: var(--admin-text);
-		box-shadow: var(--admin-shadow);
+	.card[data-variant='default']:hover {
+		box-shadow: var(--card-plate-inset), var(--card-shadow-hover);
 	}
 
 	/* === Elevated variant === */
-	.card[data-theme='public'][data-variant='elevated'] {
-		box-shadow:
-			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
-			var(--shadow-2);
-	}
-
-	.card[data-theme='admin'][data-variant='elevated'] {
-		background: var(--admin-bg);
-		box-shadow: var(--admin-shadow-elevated);
+	.card[data-variant='elevated'] {
+		background-color: var(--card-elevated-fill);
+		box-shadow: var(--card-plate-inset), var(--shadow-2);
 	}
 
 	/* === Ghost variant === */
@@ -206,23 +145,12 @@
 	   or when the card needs to stand out without a filled background. */
 	.card[data-variant='outlined'] {
 		background: transparent;
-		border: 1px solid var(--accent-border);
+		border: 1px solid var(--card-outline);
 		box-shadow: none;
 	}
 
 	.card[data-variant='outlined']:hover {
-		border-color: var(--accent);
-	}
-
-	/* Admin theme: use admin border token to stay within the admin namespace */
-	.card[data-theme='admin'][data-variant='outlined'] {
-		background: transparent;
-		border: 1px solid var(--admin-border);
-		box-shadow: none;
-	}
-
-	.card[data-theme='admin'][data-variant='outlined']:hover {
-		border-color: var(--admin-text-secondary);
+		border-color: var(--card-outline-hover);
 	}
 
 	/* === Interactive variant ===
@@ -232,24 +160,9 @@
 		cursor: pointer;
 	}
 
-	:global([data-colour-mode='dark']) .card[data-theme='public'][data-variant='interactive']:hover {
-		transform: translateY(-1px);
-		box-shadow:
-			inset 0 1px 0 rgba(var(--sheen-rgb), 0.05),
-			var(--shadow-2);
-	}
-
-	/* Admin theme: elevated background with pointer affordance */
-	.card[data-theme='admin'][data-variant='interactive'] {
-		cursor: pointer;
-		background: var(--admin-bg-elevated);
-		border: 1px solid var(--admin-border);
-		color: var(--admin-text);
-		box-shadow: var(--admin-shadow);
-	}
-
-	.card[data-theme='admin'][data-variant='interactive']:hover {
-		box-shadow: var(--admin-shadow-elevated);
+	:global([data-colour-mode='dark']) .card[data-variant='interactive']:hover {
+		transform: var(--card-plate-lift);
+		box-shadow: var(--card-plate-inset), var(--shadow-2);
 	}
 
 	/* === Compact card content layout ===

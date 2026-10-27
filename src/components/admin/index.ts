@@ -2,8 +2,8 @@
  * Admin-specific Atomic UI Components
  *
  * Status badges and confirmation modals used exclusively in admin contexts.
- * All components reference --admin-* CSS custom properties defined in the
- * admin token layer (tokens/admin.css).
+ * They read the general text, border and surface roles; what makes a page
+ * admin is the admin overlay theme (tokens/themes/admin.css, D-238).
  */
 
 export { default as StatusBadge } from './StatusBadge.svelte';

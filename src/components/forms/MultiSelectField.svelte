@@ -276,7 +276,7 @@
 		gap: var(--space-1);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.label-text {
@@ -292,7 +292,7 @@
 		margin-left: auto;
 		font-size: 0.75rem;
 		font-weight: 400;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		font-family: var(--font-mono);
 	}
 
@@ -309,9 +309,9 @@
 		padding: 6px var(--space-4);
 		font-size: 0.9375rem;
 		font-family: inherit;
-		color: var(--admin-text);
-		background-color: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		color: var(--text-primary);
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: 0;
 		cursor: pointer;
 		text-align: left;
@@ -319,7 +319,7 @@
 	}
 
 	.select-trigger:hover:not(:disabled) {
-		border-color: var(--admin-text-muted);
+		border-color: var(--text-muted);
 	}
 
 	.select-trigger:focus {
@@ -331,7 +331,7 @@
 	.select-trigger:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.select-trigger.has-error {
@@ -339,7 +339,7 @@
 	}
 
 	.placeholder {
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		flex: 1;
 	}
 
@@ -362,8 +362,8 @@
 	}
 
 	.tag.more {
-		background-color: var(--admin-border);
-		color: var(--admin-text-secondary);
+		background-color: var(--border-hairline);
+		color: var(--text-secondary);
 	}
 
 	.tag-text {
@@ -405,14 +405,14 @@
 		background: transparent;
 		border: none;
 		border-radius: 0;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
 
 	.clear-button:hover {
-		background-color: var(--admin-border);
-		color: var(--admin-text);
+		background-color: var(--border-hairline);
+		color: var(--text-primary);
 	}
 
 	.clear-button svg {
@@ -424,7 +424,7 @@
 		width: 18px;
 		height: 18px;
 		flex-shrink: 0;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		transition: transform 0.2s ease;
 	}
 
@@ -440,8 +440,8 @@
 		z-index: var(--z-dropdown);
 		max-height: 240px;
 		overflow-y: auto;
-		background-color: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: 0;
 		box-shadow: var(--shadow-dropdown);
 	}
@@ -454,7 +454,7 @@
 		padding: 10px var(--space-4);
 		font-size: 0.9375rem;
 		font-family: inherit;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		background: transparent;
 		border: none;
 		cursor: pointer;
@@ -475,7 +475,7 @@
 	}
 
 	.dropdown-option:hover:not(:disabled) {
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.dropdown-option.selected {
@@ -494,7 +494,7 @@
 		width: 18px;
 		height: 18px;
 		flex-shrink: 0;
-		border: 1.5px solid var(--admin-border);
+		border: 1.5px solid var(--border-hairline);
 		border-radius: 0;
 		background-color: transparent;
 		transition: all 0.15s ease;
@@ -509,7 +509,7 @@
 		width: 12px;
 		height: 12px;
 		/* Checked state — icon inherits accent background, needs light stroke */
-		color: var(--admin-bg);
+		color: var(--bg-primary);
 	}
 
 	.option-label {
@@ -519,7 +519,7 @@
 	.empty-message {
 		padding: var(--space-4);
 		font-size: 0.875rem;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		text-align: center;
 	}
 
@@ -537,7 +537,7 @@
 	}
 
 	.dropdown-list::-webkit-scrollbar-thumb {
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		border-radius: 0;
 	}
 

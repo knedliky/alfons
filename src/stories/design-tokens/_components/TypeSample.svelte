@@ -82,7 +82,7 @@
 
 	.type-family {
 		font-size: 11px;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		font-family: monospace;
 	}
 

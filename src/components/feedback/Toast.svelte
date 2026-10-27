@@ -1,6 +1,4 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
-
 	export interface ToastProps {
 		visible: boolean;
 		type?: 'warning' | 'error' | 'success' | 'info';
@@ -8,7 +6,6 @@
 		autoDismiss?: boolean;
 		dismissAfter?: number;
 		onDismiss?: () => void;
-		theme?: ThemeVariant;
 	}
 </script>
 
@@ -22,13 +19,12 @@
 	 * Features:
 	 * - Slides in from bottom with CSS transform transition
 	 * - Four type variants: warning, error, success, info
-	 * - Adapts to admin and public theme contexts
+	 * - Themed by tokens alone; admin reads the same text roles as public
 	 * - Auto-dismisses after configurable delay
 	 * - Render guard prevents mount flicker
 	 */
 
 	import { onMount } from 'svelte';
-	import { getThemeVariant } from '../../contexts/theme.js';
 
 	let {
 		visible = false,
@@ -36,8 +32,7 @@
 		message,
 		autoDismiss = true,
 		dismissAfter = 5000,
-		onDismiss,
-		theme
+		onDismiss
 	}: ToastProps = $props();
 
 	let isReady = $state(false);
@@ -47,8 +42,6 @@
 			isReady = true;
 		});
 	});
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
 
 	$effect(() => {
 		if (visible && autoDismiss) {
@@ -64,7 +57,6 @@
 	<div
 		class="toast-container"
 		class:visible
-		class:theme-admin={activeTheme === 'admin'}
 		class:type-warning={type === 'warning'}
 		class:type-error={type === 'error'}
 		class:type-success={type === 'success'}
@@ -250,11 +242,6 @@
 		flex: 1;
 	}
 
-	/* Admin theme overrides message colour */
-	.toast-container.theme-admin .toast-message {
-		color: var(--admin-text);
-	}
-
 	.toast-close {
 		display: flex;
 		align-items: center;
@@ -277,14 +264,6 @@
 	.toast-close:hover {
 		background-color: color-mix(in srgb, currentColor 10%, transparent);
 		color: var(--text-primary);
-	}
-
-	.toast-container.theme-admin .toast-close {
-		color: var(--admin-text-secondary);
-	}
-
-	.toast-container.theme-admin .toast-close:hover {
-		color: var(--admin-text);
 	}
 
 	.toast-close:focus-visible {

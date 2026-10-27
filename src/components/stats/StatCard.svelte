@@ -114,8 +114,8 @@
 <style>
 	.stat-card {
 		border-radius: 0;
-		border: 1px solid var(--admin-border);
-		background: var(--admin-bg);
+		border: 1px solid var(--border-hairline);
+		background: var(--bg-primary);
 		padding: var(--space-5);
 	}
 
@@ -185,14 +185,14 @@
 
 	.stat-label {
 		font-size: 0.875rem;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		margin: 0;
 	}
 
 	.stat-value {
 		font-size: 1.5rem;
 		font-weight: 700;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		margin: 0;
 	}
 
@@ -224,7 +224,7 @@
 		height: 48px;
 		flex-shrink: 0;
 		border-radius: 0;
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
 
@@ -239,7 +239,7 @@
 		height: 16px;
 		width: 96px;
 		border-radius: 0;
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
 
@@ -247,7 +247,7 @@
 		height: 32px;
 		width: 80px;
 		border-radius: 0;
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
 
@@ -255,7 +255,7 @@
 		height: 16px;
 		width: 64px;
 		border-radius: 0;
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		animation: pulse 1.5s ease-in-out infinite;
 	}
 

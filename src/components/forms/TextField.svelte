@@ -143,7 +143,7 @@
 		gap: var(--space-1);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.label-text {
@@ -168,19 +168,19 @@
 		padding-right: 40px;
 		font-size: 0.9375rem;
 		font-family: inherit;
-		color: var(--admin-text);
-		background-color: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		color: var(--text-primary);
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius);
 		transition: all 0.15s ease;
 	}
 
 	.field-input::placeholder {
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 
 	.field-input:hover:not(:disabled) {
-		border-color: var(--admin-text-muted);
+		border-color: var(--text-muted);
 	}
 
 	.field-input:focus {
@@ -192,7 +192,7 @@
 	.field-input:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.input-wrapper.has-error .field-input {
@@ -208,7 +208,7 @@
 		right: 12px;
 		width: 18px;
 		height: 18px;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		pointer-events: none;
 	}
 
@@ -228,7 +228,7 @@
 		margin-left: auto;
 		font-size: 0.75rem;
 		font-family: var(--font-mono);
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 
 	.character-count.near-limit {

@@ -508,7 +508,7 @@
 
 	/* Admin variant: smaller, more compact header for admin interfaces */
 	.variant-admin h1 {
-		color: var(--admin-text);
+		color: var(--text-primary);
 		margin-bottom: var(--space-1);
 		font-family: var(--font-body);
 		font-weight: 600;
@@ -516,7 +516,7 @@
 	}
 
 	.variant-admin p {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	/* Article variant: lightweight header for blog post pages (ported from HeroDetail) */
@@ -539,7 +539,7 @@
 	.article-excerpt {
 		color: var(--text-secondary);
 		max-width: 900px;
-		font-size: 1.125rem;
+		font-size: var(--fs-lg);
 		line-height: 1.5;
 	}
 
@@ -561,11 +561,11 @@
 		}
 
 		.variant-admin h1 {
-			font-size: var(--admin-header-size-mobile);
+			font-size: var(--fs-xl);
 		}
 
 		.variant-admin p {
-			font-size: var(--admin-subheader-size-mobile);
+			font-size: 1rem;
 		}
 
 		.variant-article h1 {

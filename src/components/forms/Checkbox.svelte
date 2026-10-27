@@ -239,16 +239,16 @@
 	}
 
 	.motif-check.is-admin .motif-check-box {
-		background: var(--admin-bg);
-		border-color: var(--admin-border);
+		background: var(--bg-primary);
+		border-color: var(--border-hairline);
 	}
 
 	.motif-check.is-admin .motif-check-label {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.motif-check.is-admin .motif-check-desc {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

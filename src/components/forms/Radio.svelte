@@ -192,16 +192,16 @@
 	}
 
 	.motif-radio.is-admin .motif-radio-dot {
-		background: var(--admin-bg);
-		border-color: var(--admin-border);
+		background: var(--bg-primary);
+		border-color: var(--border-hairline);
 	}
 
 	.motif-radio.is-admin .motif-radio-label {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.motif-radio.is-admin .motif-radio-desc {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

@@ -10,7 +10,7 @@
 		size?: string;
 		/** Number of text lines to render for the text variant */
 		lines?: number;
-		/** Theme context — admin uses --admin-* tokens, public uses --card-* tokens */
+		/** Admin paints the bone on the page ground, public on the --card-* fill */
 		theme?: 'admin' | 'public';
 		/** Additional CSS classes */
 		class?: string;
@@ -119,9 +119,9 @@
 	.skeleton-wrapper[data-theme='admin'] .skeleton-bone {
 		background: linear-gradient(
 			90deg,
-			var(--admin-bg) 0%,
+			var(--bg-primary) 0%,
 			var(--shimmer-highlight-dim) 50%,
-			var(--admin-bg) 100%
+			var(--bg-primary) 100%
 		);
 		background-size: 400% 100%;
 	}

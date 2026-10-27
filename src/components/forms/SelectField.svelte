@@ -269,7 +269,7 @@
 		gap: var(--space-1);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.label-text {
@@ -300,9 +300,9 @@
 		padding: 0 var(--space-4);
 		font-size: 0.9375rem;
 		font-family: inherit;
-		color: var(--admin-text);
-		background-color: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		color: var(--text-primary);
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius);
 		cursor: pointer;
 		text-align: left;
@@ -310,7 +310,7 @@
 	}
 
 	.select-trigger:hover:not(:disabled) {
-		border-color: var(--admin-text-muted);
+		border-color: var(--text-muted);
 	}
 
 	.select-trigger:focus {
@@ -322,7 +322,7 @@
 	.select-trigger:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.select-trigger.has-error {
@@ -341,7 +341,7 @@
 	}
 
 	.select-value.placeholder {
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 
 	.clear-button {
@@ -354,14 +354,14 @@
 		background: transparent;
 		border: none;
 		border-radius: 0;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
 
 	.clear-button:hover {
-		background-color: var(--admin-border);
-		color: var(--admin-text);
+		background-color: var(--border-hairline);
+		color: var(--text-primary);
 	}
 
 	.clear-button svg {
@@ -373,7 +373,7 @@
 		width: 18px;
 		height: 18px;
 		flex-shrink: 0;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		transition: transform 0.2s ease;
 	}
 
@@ -389,8 +389,8 @@
 		z-index: var(--z-dropdown);
 		max-height: 240px;
 		overflow-y: auto;
-		background-color: var(--admin-bg);
-		border: 1px solid var(--admin-border);
+		background-color: var(--bg-primary);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius);
 		box-shadow: var(--shadow-dropdown);
 	}
@@ -403,7 +403,7 @@
 		padding: 10px var(--space-4);
 		font-size: 0.9375rem;
 		font-family: inherit;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		background: transparent;
 		border: none;
 		cursor: pointer;
@@ -425,7 +425,7 @@
 
 	.dropdown-option:hover,
 	.dropdown-option.highlighted {
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.dropdown-option.selected {
@@ -451,7 +451,7 @@
 	.empty-message {
 		padding: var(--space-4);
 		font-size: 0.875rem;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		text-align: center;
 	}
 
@@ -469,7 +469,7 @@
 	}
 
 	.dropdown-list::-webkit-scrollbar-thumb {
-		background: var(--admin-border);
+		background: var(--border-hairline);
 		border-radius: 0;
 	}
 </style>

@@ -93,6 +93,14 @@
 		--bench-line: rgba(245, 241, 234, 0.015);
 		--bench-line-major: rgba(245, 241, 234, 0.036);
 
+		/* Stat card icon washes. Literal hues outside the part palette, so they
+		   are material rather than roles; they came here from admin.css when
+		   that file was deleted (AL-027), with their values unchanged. */
+		--stat-icon-bg-red: oklch(45% 0.22 25 / 20%);
+		--stat-icon-bg-green: oklch(72.3% 0.192 150 / 20%);
+		--stat-icon-bg-blue: oklch(62.3% 0.188 260 / 20%);
+		--stat-icon-bg-purple: oklch(62.7% 0.233 304 / 20%);
+
 		/* @category elevation */
 
 		/* === CHANNELS ====================================================

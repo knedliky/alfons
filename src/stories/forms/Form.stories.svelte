@@ -2,15 +2,15 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Form from '../../components/forms/Form.svelte';
 
+	// Admin stories run under the admin overlay through `parameters.theme`,
+	// which .storybook/preview.js writes to data-theme on <html> (D-238).
+	const ADMIN = { theme: 'admin' };
+
 	const { Story } = defineMeta({
 		title: 'Forms/Form',
 		component: Form,
 		tags: ['autodocs'],
 		argTypes: {
-			theme: {
-				control: { type: 'select' },
-				options: ['public', 'admin']
-			},
 			status: {
 				control: { type: 'select' },
 				options: ['idle', 'success', 'error']
@@ -20,8 +20,13 @@
 	});
 </script>
 
-<Story name="Default — idle" asChild args={{ theme: 'admin', status: 'idle', statusMessage: '' }}>
-	<Form theme="admin" status="idle">
+<Story
+	name="Default — idle"
+	asChild
+	parameters={ADMIN}
+	args={{ status: 'idle', statusMessage: '' }}
+>
+	<Form status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
 				<label
@@ -34,7 +39,7 @@
 					id="org-name"
 					type="text"
 					placeholder="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border-hairline); border-radius: 0; background: var(--bg-primary); color: var(--text-primary);"
 				/>
 			</div>
 			<div>
@@ -48,7 +53,7 @@
 					id="contact-email"
 					type="email"
 					placeholder="hello@example.com.au"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border-hairline); border-radius: 0; background: var(--bg-primary); color: var(--text-primary);"
 				/>
 			</div>
 			<button
@@ -64,9 +69,10 @@
 <Story
 	name="Success state"
 	asChild
-	args={{ theme: 'admin', status: 'success', statusMessage: 'Organisation updated successfully.' }}
+	parameters={ADMIN}
+	args={{ status: 'success', statusMessage: 'Organisation updated successfully.' }}
 >
-	<Form theme="admin" status="success" statusMessage="Organisation updated successfully.">
+	<Form status="success" statusMessage="Organisation updated successfully.">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
 				<label
@@ -79,7 +85,7 @@
 					id="org-name-s"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border-hairline); border-radius: 0; background: var(--bg-primary); color: var(--text-primary);"
 				/>
 			</div>
 			<button
@@ -95,17 +101,13 @@
 <Story
 	name="Error state"
 	asChild
+	parameters={ADMIN}
 	args={{
-		theme: 'admin',
 		status: 'error',
 		statusMessage: 'Failed to update organisation. Please try again.'
 	}}
 >
-	<Form
-		theme="admin"
-		status="error"
-		statusMessage="Failed to update organisation. Please try again."
-	>
+	<Form status="error" statusMessage="Failed to update organisation. Please try again.">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
 				<label
@@ -118,7 +120,7 @@
 					id="org-name-e"
 					type="text"
 					value="Acme Pty Ltd"
-					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--admin-border, #333); border-radius: 0; background: var(--admin-bg, #1a1a1a); color: var(--admin-text, #fff);"
+					style="width: 100%; height: 44px; padding: 0 1rem; font-size: 0.9375rem; border: 1px solid var(--border-hairline); border-radius: 0; background: var(--bg-primary); color: var(--text-primary);"
 				/>
 			</div>
 			<button
@@ -131,8 +133,8 @@
 	</Form>
 </Story>
 
-<Story name="Public theme" asChild args={{ theme: 'public', status: 'idle', statusMessage: '' }}>
-	<Form theme="public" status="idle">
+<Story name="Public theme" asChild args={{ status: 'idle', statusMessage: '' }}>
+	<Form status="idle">
 		<div style="display: flex; flex-direction: column; gap: 1rem;">
 			<div>
 				<label

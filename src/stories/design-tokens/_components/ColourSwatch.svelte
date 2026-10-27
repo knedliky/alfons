@@ -115,7 +115,7 @@
 
 	.swatch-value {
 		font-size: 10px;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		font-family: monospace;
 		text-align: center;
 		word-break: break-all;

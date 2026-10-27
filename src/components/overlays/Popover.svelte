@@ -165,9 +165,9 @@
 	}
 
 	.motif-popover.is-admin {
-		background: var(--admin-bg-elevated);
-		border: 1px solid var(--admin-border);
-		color: var(--admin-text-secondary);
+		background: var(--bg-glass-solid);
+		border: 1px solid var(--border-hairline);
+		color: var(--text-secondary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

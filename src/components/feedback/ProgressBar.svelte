@@ -149,15 +149,15 @@
 	}
 
 	.motif-progress.is-admin .motif-progress-track {
-		background: var(--admin-bg-elevated);
+		background: var(--bg-glass-solid);
 	}
 
 	.motif-progress.is-admin .motif-progress-label {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	.motif-progress.is-admin .motif-progress-value {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	@media (prefers-reduced-motion: reduce) {

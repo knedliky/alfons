@@ -21,13 +21,16 @@ cannot.
 
 ### Tokens
 
-Import order matters — `public.css` defines what `admin.css` and `base.css` reference.
+Import order matters — `public.css` defines what `base.css` references. It carries every
+theme, the admin overlay included; there is no separate admin entry point.
 
 ```css
 @import '@alfons/design/public';
-@import '@alfons/design/admin';
 @import '@alfons/design/base';
 ```
+
+A theme is applied with `data-theme`, never from script: `<div data-theme="admin">` puts its
+subtree on the admin overlay, which restates only the roles that differ on admin surfaces.
 
 Dark is the sole colour mode. Pin it statically on `<html>`:
 

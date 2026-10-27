@@ -1,0 +1,75 @@
+/**
+ * Alfons — admin overlay theme
+ *
+ * An overlay theme (D-238): it sets only the semantic tokens that differ on
+ * admin surfaces, and everything else is inherited from whichever complete
+ * theme surrounds it. Apply it with data-theme="admin" on the element that
+ * holds an admin surface — a layout root, or <html> for a whole admin app.
+ * Components never ask which theme they are in; they read tokens, and this
+ * file is the whole of what makes them look admin.
+ *
+ * It replaces two things. The --admin-* and --chart-*-admin tokens are retired
+ * (their lifecycle rows name the general role each one resolved to), and the
+ * ThemeVariant context that Button, Input, Select, Textarea, Card, Toast,
+ * Form, FormGroup and BackLink branched on is gone. Admin was mostly the same
+ * values under other names: what genuinely differs is set below.
+ *
+ * Restate a role, never rely on one following another. A custom property
+ * resolves its var() references where it is declared, so a token Meccano
+ * builds from --surface-card at :root keeps Meccano's card fill inside this
+ * overlay even when the overlay changes --surface-card. Set the token the
+ * component reads, as every line here does.
+ *
+ * A complete theme must set every token the complete themes set; an overlay
+ * may set any semantic token and no primitive. `bun run manifest` and
+ * `manifest:check` refuse a theme that breaks either rule.
+ *
+ * Headings once took the body face here, through an .admin-layout-container
+ * rule. Under Meccano both faces are Moderat and the colour pin matched
+ * --text-primary, so the rule painted nothing and is gone with admin.css. A
+ * future admin display face goes here, as --font-display together with the
+ * --type-* composites built from it, for the reason above.
+ *
+ * @theme overlay
+ */
+
+@layer base {
+	[data-theme='admin'] {
+		/* @role admin values: outline and ghost buttons take the hairline and the raised steel
+		   fill; the capped variants are hardware and do not change. */
+		--button-outline-border: var(--border-hairline);
+		--button-outline-hover-bg: var(--bg-glass-solid);
+		--button-outline-hover-border: var(--text-muted);
+		--button-ghost-hover-bg: var(--bg-glass-solid);
+
+		/* @role admin values: open fields sit flush on the admin ground behind
+		   a hairline; the Select trigger stays a filled plate in the ground's
+		   colour, and its open menu lifts onto the raised fill. */
+		--field-bg: transparent;
+		--field-border: var(--border-hairline);
+		--select-trigger-bg: var(--bg-primary);
+		--select-menu-bg: var(--bg-glass-solid);
+		--input-bg: var(--bg-primary);
+
+		/* @role admin values: cards are flat panels: no rivets, no sheen, no lift, and a
+		   hairline in place of the machined steel edge. A transparent zero
+		   shadow stands in for the top inset, since a shadow list cannot
+		   hold an empty entry. */
+		--card-plate-fill: var(--bg-glass-solid);
+		--card-plate-face: none;
+		--card-plate-edge: var(--border-hairline);
+		--card-plate-inset: 0 0 transparent;
+		--card-plate-lift: none;
+		--card-elevated-fill: var(--bg-primary);
+		--card-outline: var(--border-hairline);
+		--card-outline-hover: var(--text-secondary);
+		/* @role admin value: a card does not lift on hover, so its hover rung is
+		   its resting one. */
+		--card-shadow-hover: var(--card-shadow);
+
+		/* @role admin values: the accent arrow is a public affordance, so admin
+		   keeps muted chrome. */
+		--back-link-arrow: currentColor;
+		--back-link-arrow-weight: 2;
+	}
+}

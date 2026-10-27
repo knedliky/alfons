@@ -245,12 +245,12 @@
 	}
 
 	.motif-pg.is-admin .motif-pg-btn {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 
 	.motif-pg.is-admin .motif-pg-btn.is-active {
-		background: var(--admin-accent, var(--accent));
-		border-color: var(--admin-accent, var(--accent));
+		background: var(--accent);
+		border-color: var(--accent);
 		color: oklch(1 0 0);
 	}
 </style>

@@ -31,7 +31,7 @@
 		<div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
 			<button
 				type="button"
-				style="padding: 0.5rem 1rem; border-radius: 0; border: 1px solid var(--admin-border); background: transparent; color: var(--admin-text); cursor: pointer;"
+				style="padding: 0.5rem 1rem; border-radius: 0; border: 1px solid var(--border-hairline); background: transparent; color: var(--text-primary); cursor: pointer;"
 			>
 				Cancel
 			</button>
@@ -47,10 +47,10 @@
 
 <Story name="Without Title" asChild args={{ open: true, onclose: () => {} }}>
 	<Modal open={true} onclose={() => {}}>
-		<h3 style="margin: 0 0 0.75rem; font-size: 1.125rem; color: var(--admin-text);">
+		<h3 style="margin: 0 0 0.75rem; font-size: 1.125rem; color: var(--text-primary);">
 			Session Expired
 		</h3>
-		<p style="margin: 0 0 1.25rem; color: var(--admin-text-secondary);">
+		<p style="margin: 0 0 1.25rem; color: var(--text-secondary);">
 			Your session has expired. Please log in again to continue.
 		</p>
 		<div style="display: flex; justify-content: flex-end;">

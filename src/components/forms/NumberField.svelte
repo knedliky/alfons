@@ -167,7 +167,7 @@
 		gap: var(--space-1);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.label-text {
@@ -182,14 +182,14 @@
 	.input-wrapper {
 		display: flex;
 		align-items: stretch;
-		border: 1px solid var(--admin-border);
+		border: 1px solid var(--border-hairline);
 		border-radius: var(--radius);
 		overflow: hidden;
 		transition: all 0.15s ease;
 	}
 
 	.input-wrapper:hover:not(:has(:disabled)) {
-		border-color: var(--admin-text-muted);
+		border-color: var(--text-muted);
 	}
 
 	.input-wrapper:focus-within {
@@ -212,8 +212,8 @@
 		padding: 0 var(--space-4);
 		font-size: 0.9375rem;
 		font-family: var(--font-mono);
-		color: var(--admin-text);
-		background-color: var(--admin-bg);
+		color: var(--text-primary);
+		background-color: var(--bg-primary);
 		border: none;
 		text-align: center;
 		appearance: textfield;
@@ -227,7 +227,7 @@
 	}
 
 	.field-input::placeholder {
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 
 	.field-input:focus {
@@ -237,7 +237,7 @@
 	.field-input:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.step-button {
@@ -246,16 +246,16 @@
 		justify-content: center;
 		width: 44px;
 		padding: 0;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 		border: none;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
 
 	.step-button:hover:not(:disabled) {
-		background-color: var(--admin-border);
-		color: var(--admin-text);
+		background-color: var(--border-hairline);
+		color: var(--text-primary);
 	}
 
 	.step-button:disabled {
@@ -275,6 +275,6 @@
 
 	.range-hint {
 		font-size: 0.75rem;
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 </style>

@@ -4,7 +4,6 @@
 	export interface ButtonProps extends HTMLButtonAttributes {
 		variant?: 'default' | 'secondary' | 'outline' | 'ghost' | 'link';
 		size?: 'default' | 'sm' | 'lg' | 'icon';
-		theme?: 'admin' | 'public';
 		class?: string;
 		children?: import('svelte').Snippet;
 	}
@@ -17,15 +16,16 @@
 	 * Usage:
 	 *   <Button>Primary CTA</Button>
 	 *   <Button variant="secondary" size="sm">Secondary</Button>
-	 *   <Button variant="ghost" theme="admin">Admin action</Button>
+	 *   <div data-theme="admin"><Button variant="ghost">Admin action</Button></div>
 	 *
 	 * Features:
 	 * - Five visual variants: default, secondary, outline, ghost, link
 	 * - Three sizes plus icon mode: default, sm, lg, icon
-	 * - Automatic theme detection from context (public/admin)
+	 * - Themed by tokens alone: the admin overlay restates the outline and
+	 *   ghost roles (--button-outline-*, --button-ghost-hover-bg)
 	 * - Design-token-first CSS with data-attribute selectors
 	 *
-	 * THE CAP. default and its admin twin take an anodized red dome
+	 * THE CAP. default takes an anodized red dome
 	 * (--cap-red); secondary takes chrome (--cap-chrome). Both are seated by
 	 * --shadow-cap. Hover brightens the dome by 6%, as light catching a curved
 	 * surface — it does not grow the shadow, because the cap has not moved.
@@ -38,27 +38,16 @@
 	 * pulley blue rather than accent red — links are functional, and red is
 	 * reserved for the thing that acts.
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
 	let {
 		variant = 'default',
 		size = 'default',
-		theme,
 		class: className,
 		children,
 		...restProps
 	}: ButtonProps = $props();
-
-	const activeTheme = $derived(theme ?? getThemeVariant());
 </script>
 
-<button
-	class="button {className ?? ''}"
-	data-variant={variant}
-	data-size={size}
-	data-theme={activeTheme}
-	{...restProps}
->
+<button class="button {className ?? ''}" data-variant={variant} data-size={size} {...restProps}>
 	{@render children?.()}
 </button>
 
@@ -141,9 +130,7 @@
 
 	/* === CAPPED VARIANTS — theme-independent ==========================
 	   A panel cap is hardware, and hardware does not change because the
-	   surrounding page is an admin one. default and secondary are therefore
-	   written once for both themes, where previously each theme restated
-	   them and the two had already drifted apart on hover. */
+	   surrounding page is an admin one, so no theme sets a role here. */
 
 	.button[data-variant='default'] {
 		background-image: var(--cap-red);
@@ -183,16 +170,18 @@
 
 	/* === FLAT VARIANTS — no cap, no gloss =============================
 	   outline takes the bone edge the readme reserves for emphasis;
-	   ghost takes a steel wash; link is not hardware at all. */
+	   ghost takes a steel wash; link is not hardware at all. These are the
+	   variants a theme restyles, through the --button-* roles. */
 
 	.button[data-variant='outline'] {
-		border-color: var(--border-strong);
+		border-color: var(--button-outline-border);
 		background: transparent;
 		color: var(--text-primary);
 	}
 
 	.button[data-variant='outline']:hover:not(:disabled) {
-		background: var(--steel-100);
+		background: var(--button-outline-hover-bg);
+		border-color: var(--button-outline-hover-border);
 	}
 
 	.button[data-variant='ghost'] {
@@ -221,29 +210,5 @@
 	/* A link does not seat, because there is nothing to seat. */
 	.button[data-variant='link']:active:not(:disabled) {
 		transform: none;
-	}
-
-	/* === ADMIN THEME — only where admin genuinely differs =============
-	   The capped variants are shared above. What is left is the flat trio,
-	   which reads admin-pinned neutrals so admin surfaces keep their own
-	   text colour regardless of the public palette. */
-
-	.button[data-theme='admin'][data-variant='outline'] {
-		border-color: var(--admin-border);
-		color: var(--admin-text);
-	}
-
-	.button[data-theme='admin'][data-variant='outline']:hover:not(:disabled) {
-		background: var(--admin-bg-elevated);
-		border-color: var(--admin-text-muted);
-	}
-
-	.button[data-theme='admin'][data-variant='ghost']:hover:not(:disabled) {
-		background: var(--admin-bg-elevated);
-		color: var(--admin-text);
-	}
-
-	.button[data-theme='admin'][data-variant='link']:hover:not(:disabled) {
-		color: var(--admin-text);
 	}
 </style>

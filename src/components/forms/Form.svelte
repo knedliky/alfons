@@ -1,11 +1,9 @@
 <script lang="ts" module>
-	import type { ThemeVariant } from '../../contexts/theme.js';
 	import type { Snippet } from 'svelte';
 
 	export type FormStatus = 'idle' | 'success' | 'error';
 
 	export interface FormProps {
-		theme?: ThemeVariant;
 		class?: string;
 		status?: FormStatus;
 		statusMessage?: string;
@@ -25,15 +23,12 @@
 	 *   </Form>
 	 *
 	 * Features:
-	 * - Theme-aware via context (public/admin)
+	 * - Themed by tokens alone, through the fields inside it
 	 * - Status feedback with screen reader announcements (aria-live)
 	 * - Passes through all native form attributes (onsubmit, action, method, novalidate)
 	 * - Design-token colours for success/error states
 	 */
-	import { getThemeVariant } from '../../contexts/theme.js';
-
 	let {
-		theme,
 		status = 'idle',
 		statusMessage = '',
 		class: className,
@@ -41,11 +36,10 @@
 		...restProps
 	}: FormProps = $props();
 
-	const activeTheme = $derived(theme ?? getThemeVariant());
 	const formClasses = $derived(['form', className].filter(Boolean).join(' '));
 </script>
 
-<form class={formClasses} data-theme={activeTheme} {...restProps}>
+<form class={formClasses} {...restProps}>
 	{@render children?.()}
 
 	<div

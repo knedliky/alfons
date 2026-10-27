@@ -195,14 +195,14 @@
 	}
 
 	.motif-alert.is-admin {
-		background: color-mix(in srgb, var(--alert-tint) 10%, var(--admin-bg-elevated));
+		background: color-mix(in srgb, var(--alert-tint) 10%, var(--bg-glass-solid));
 	}
 
 	.motif-alert.is-admin .motif-alert-title {
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.motif-alert.is-admin .motif-alert-message {
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 	}
 </style>

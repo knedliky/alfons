@@ -39,7 +39,7 @@
 		warning: { bg: 'var(--colour-warning-bg)', text: 'var(--colour-warning)' },
 		error: { bg: 'var(--colour-error-bg)', text: 'var(--colour-error)' },
 		info: { bg: 'var(--colour-info-bg)', text: 'var(--colour-info)' },
-		neutral: { bg: 'var(--admin-bg-elevated)', text: 'var(--admin-text-muted)' }
+		neutral: { bg: 'var(--bg-glass-solid)', text: 'var(--text-muted)' }
 	} as const;
 
 	const statusInfo = $derived(

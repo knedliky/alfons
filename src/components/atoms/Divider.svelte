@@ -75,7 +75,7 @@
 	}
 
 	.divider-horizontal[data-theme='admin'] {
-		border-top-color: var(--admin-border);
+		border-top-color: var(--border-hairline);
 	}
 
 	/* Vertical separator — stretches to parent height */
@@ -88,7 +88,7 @@
 	}
 
 	.divider-vertical[data-theme='admin'] {
-		border-left-color: var(--admin-border);
+		border-left-color: var(--border-hairline);
 	}
 
 	/* Labelled divider — centred text flanked by lines */
@@ -106,7 +106,7 @@
 	}
 
 	.divider-labelled[data-theme='admin'] .divider-line {
-		border-top-color: var(--admin-border);
+		border-top-color: var(--border-hairline);
 	}
 
 	.divider-label {

@@ -274,7 +274,7 @@
 		gap: var(--space-1);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--admin-text);
+		color: var(--text-primary);
 	}
 
 	.label-text {
@@ -298,18 +298,18 @@
 		padding: var(--space-1) var(--space-2);
 		font-size: 0.75rem;
 		font-family: inherit;
-		color: var(--admin-text-secondary);
+		color: var(--text-secondary);
 		background: transparent;
-		border: 1px solid var(--admin-border);
+		border: 1px solid var(--border-hairline);
 		border-radius: 0;
 		cursor: pointer;
 		transition: all 0.15s ease;
 	}
 
 	.toolbar-button:hover:not(:disabled) {
-		background-color: var(--admin-bg-elevated);
-		color: var(--admin-text);
-		border-color: var(--admin-text-muted);
+		background-color: var(--bg-glass-solid);
+		color: var(--text-primary);
+		border-color: var(--text-muted);
 	}
 
 	.toolbar-button:disabled {
@@ -324,15 +324,15 @@
 
 	.editor-wrapper {
 		display: flex;
-		border: 1px solid var(--admin-border);
+		border: 1px solid var(--border-hairline);
 		border-radius: 0;
 		overflow: hidden;
-		background-color: var(--admin-bg);
+		background-color: var(--bg-primary);
 		transition: all 0.15s ease;
 	}
 
 	.editor-wrapper:hover:not(:has(:disabled)) {
-		border-color: var(--admin-text-muted);
+		border-color: var(--text-muted);
 	}
 
 	.editor-wrapper:focus-within {
@@ -352,15 +352,15 @@
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-4) var(--space-2);
-		background-color: var(--admin-bg-elevated);
-		border-right: 1px solid var(--admin-border);
+		background-color: var(--bg-glass-solid);
+		border-right: 1px solid var(--border-hairline);
 		user-select: none;
 	}
 
 	.line-number {
 		font-size: 0.75rem;
 		font-family: var(--font-mono);
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 		line-height: 1.6;
 		text-align: right;
 		min-width: 24px;
@@ -373,7 +373,7 @@
 		font-size: 0.8125rem;
 		font-family: var(--font-mono);
 		line-height: 1.6;
-		color: var(--admin-text);
+		color: var(--text-primary);
 		background-color: transparent;
 		border: none;
 		resize: vertical;
@@ -387,13 +387,13 @@
 	}
 
 	.editor-textarea::placeholder {
-		color: var(--admin-text-muted);
+		color: var(--text-muted);
 	}
 
 	.editor-textarea:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
-		background-color: var(--admin-bg-elevated);
+		background-color: var(--bg-glass-solid);
 	}
 
 	.error-message {
