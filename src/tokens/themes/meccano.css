@@ -352,9 +352,8 @@
 		     Plastic. Coloured chips take a top sheen (--gloss +
 		     --shadow-gloss). Neutrals never get gloss. A second, stronger
 		     treatment for larger strips and slabs (--shade-part,
-		     --shadow-part) was authored during the retune and removed under
-		     D-181 — nothing had a slab to shade. Revive it from the lifecycle
-		     tombstone when something does.
+		     --shadow-part) was removed under D-181 and revived in AL-033,
+		     when the website's moulded parts turned out to read it.
 
 		     Panel caps. Buttons are control-panel hardware — a domed face
 		     (--cap-red anodized, --cap-chrome secondary) seated in a dark
@@ -386,6 +385,38 @@
 		);
 		--shadow-gloss:
 			inset 0 1px 0 rgba(var(--sheen-rgb), 0.35), inset 0 -1px 0 rgba(var(--shade-rgb), 0.22);
+
+		/* The stronger treatment for larger strips and slabs, in the same two
+		   halves as gloss. D-181 retired both before anything had a slab to
+		   shade; the website's moulded parts read them, so they are live again
+		   (AL-033). The website lit them with pure white; here they take the
+		   sheen channel, as every other highlight in Alfons does. */
+		--shade-part: linear-gradient(
+			180deg,
+			rgba(var(--sheen-rgb), 0.26),
+			rgba(var(--sheen-rgb), 0.06) 38%,
+			rgba(var(--shade-rgb), 0) 55%,
+			rgba(var(--shade-rgb), 0.32) 100%
+		);
+		--shadow-part:
+			inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45);
+
+		/* === LAMPS AND GROOVES — panel details ===========================
+		   An unlit indicator lamp; a rail lamp that glows in --lamp-colour
+		   (the accent by default) at roughly a third of the editorial glow's
+		   falloff, so a 6px stop reads as the same light source without
+		   flooding its neighbours; and a recessed rule, whose dark upper cut
+		   and faint lower highlight make a one-pixel separator read as a
+		   groove machined into the surface. */
+		--led-off: radial-gradient(circle at 38% 30%, var(--led-off-face), var(--led-off-edge) 72%);
+		--shadow-rail-lamp:
+			0 0 4px 1px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 82%),
+			0 0 11px 3px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 92%),
+			0 0 20px 7px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 97%);
+		--groove-rule: rgba(var(--shade-rgb), 0.82);
+		--shadow-groove:
+			inset 0 1px 1px rgba(var(--shade-rgb), 0.52), 0 1px 0 rgba(var(--sheen-rgb), 0.075),
+			0 2px 3px rgba(var(--shade-rgb), 0.16);
 
 		/* === PANEL CAPS — the accent cap =================================
 		   A domed face seated in a dark bezel. The red cap is built from

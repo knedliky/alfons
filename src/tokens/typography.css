@@ -1,53 +1,66 @@
 /**
  * Alfons — Typography tokens
  *
- * Moderat sets everything; GT America Mono carries spec labels, part numbers,
- * units and table numerics. This file holds the families, the size ladder, the
- * weights, and the composites that join them. base.css applies the composites
- * to h1–h6.
+ * Redaction 35 sets display and headings, Moderat sets body and UI, and GT
+ * America Mono carries spec labels, part numbers, units and table numerics.
+ * This file holds the families, the size ladder, the weights, and the
+ * composites that join them. base.css applies the composites to h1–h6.
  *
- * TWO THINGS THE MECCANO LADDER FIXES, both invisible before the retune:
+ * THE WEBSITE'S TYPOGRAPHY, SINCE AL-033. The website kept its own Meccano
+ * layer, and where it disagreed with this file Simon chose the website's
+ * typography (D-245). Three things moved: headings left Moderat for the
+ * Redaction serif, the family stacks took the website's fallbacks, and the
+ * body and lead sizes dropped a rung each (below). The weights, leading and
+ * tracking already agreed.
  *
  * Weight. Headings were set at 600, and Moderat has no 600 cut, so a browser
  * would synthesise one or snap to Bold. --fw-semibold therefore maps to Medium
  * (500) deliberately — it is the weight above regular that the face actually
- * has. Never ask for 600.
+ * has. Never ask for 600. Redaction declares its Bold across 500–900, so
+ * Medium headings in the serif get real Bold outlines too.
  *
- * Register. Meccano calls .9375rem "body" and its blog template sets prose at
- * that size, which reads as a 3px regression against this library's 1.125rem
- * body. It is not one. Meccano is a UI kit with a single body size; Alfons
- * already splits functional UI text from prose, and its two sizes land exactly
- * on Meccano's --fs-md and --fs-lg rungs. That split lives in --text-ui and
- * --text-body below, which components actually read.
+ * Register. Alfons used to set prose a rung above UI text (18px against
+ * 15px). The Meccano kit, and the website it shipped on, has a single body
+ * size, 15px, with 18px as the lead; under D-245 that is now this file's
+ * register too. --text-ui and --text-body stay two roles on one rung, so a
+ * theme can still lift prose without moving controls.
  *
- * It briefly also lived in --type-body and --type-prose composites, authored
- * during the retune against components that did not exist. D-181 removed them:
- * two ways to say "15px UI text" is the duplication this file is otherwise
- * careful to avoid. The composites that survive are the four base.css uses to
- * set h1–h4, plus --type-spec for the mono annotation.
+ * The --type-body and --type-small composites, retired under D-181 as
+ * speculative, are live again: the website sets its body and small print with
+ * them, and D-181 reclassifies a consumed token live rather than deleting it.
  */
 
 @layer base {
 	:root {
 		/* === FAMILIES =====================================================
-		   MECCANO RETUNE: two faces, five names. Moderat answers every
-		   sans role, GT America Mono every mono one. The five family tokens
-		   survive because 33 files across Alfons and Atlas read them; they
-		   now resolve to the two faces rather than to five.
+		   Three faces. The role tokens are what components read: --font-body
+		   for running text and UI, --font-display for display and headings,
+		   --font-mono for annotation. The fallback stacks are the website's,
+		   which D-245 chose over the shorter ones this file had.
 
-		   --font-display no longer means "serif". It means the face that sets
-		   display and headings, which is Moderat — the readme is explicit that
-		   the system has no serif. --font-drop-cap resolves to the same family;
-		   the Black (900) cut is what makes an oversized initial read as one,
-		   in place of Rock Salt's hand-drawn register. */
-		--font-body: 'Moderat', system-ui, -apple-system, sans-serif;
+		   --font-display means the face that sets display and headings, which
+		   is Redaction grade 35. It meant Moderat between the Meccano retune
+		   and AL-033. --font-drop-cap stays Moderat: the Black (900) cut is
+		   what makes an oversized initial read as one. */
+		--font-body: 'Moderat', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 		--font-mono: 'GT America Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
-		--font-display: 'Moderat', system-ui, -apple-system, sans-serif;
+		--font-display: var(--font-redaction-35); /* @role the display and heading face */
 		--font-drop-cap: 'Moderat', system-ui, -apple-system, sans-serif;
-		/* The Motivka wordmark face. Unchanged in value — the wordmark was
-		   already Moderat Bold, which is why the whole system moving to Moderat
-		   reads as the brand arriving rather than as a substitution. */
-		--font-wordmark: 'Moderat', system-ui, sans-serif;
+		/* @role The Motivka wordmark face. Moderat Bold, so it shares the body
+		   stack, and stays its own role so the wordmark cannot move with it. */
+		--font-wordmark: var(--font-body);
+
+		/* The Redaction grades, one family each (fonts.css). Plain Redaction
+		   is the clean cut and the fallback every grade sits on; components
+		   reach for a grade only deliberately, and otherwise read
+		   --font-display. */
+		--font-redaction: 'Redaction', Georgia, 'Times New Roman', serif;
+		--font-redaction-10: 'Redaction 10', var(--font-redaction);
+		--font-redaction-20: 'Redaction 20', var(--font-redaction);
+		--font-redaction-35: 'Redaction 35', var(--font-redaction);
+		--font-redaction-50: 'Redaction 50', var(--font-redaction);
+		--font-redaction-70: 'Redaction 70', var(--font-redaction);
+		--font-redaction-100: 'Redaction 100', var(--font-redaction);
 
 		/* === SIZE LADDER — the 12–60px rungs, in rem at a 16px root ======
 		   Every size in the system is one of these eight. --text-* below are
@@ -63,11 +76,15 @@
 
 		/* === WEIGHTS — what Moderat actually cuts ========================
 		   There is no 600. --fw-semibold is Medium so that asking for the
-		   weight above regular gets a real cut rather than a synthesised one. */
+		   weight above regular gets a real cut rather than a synthesised one.
+		   Light and Black are cuts fonts.css ships, so they are rungs here
+		   too; D-181 had retired them before anything read them. */
+		--fw-light: 300;
 		--fw-regular: 400;
 		--fw-medium: 500;
 		--fw-semibold: 500;
 		--fw-bold: 700;
+		--fw-black: 900;
 
 		/* === LINE HEIGHTS & TRACKING ===================================== */
 		--lh-tight: 1.08; /* display and h1 */
@@ -87,6 +104,10 @@
 		   and text-transform alongside it — the font shorthand carries neither.
 		   Mono is regular-only; never synthesise bold. */
 		--type-spec: var(--fw-regular) 0.6875rem / 1 var(--font-mono);
+		/* Running text and small print, each in one shorthand. The website
+		   sets <body> with --type-body. */
+		--type-body: var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body);
+		--type-small: var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body);
 
 		/* === SEMANTIC BODY SIZES — prefer these over ad-hoc px ============
 		   The scale previously stopped at 12px, which left every control,
@@ -104,12 +125,11 @@
 		--text-micro: var(--fs-xs); /* @role 12px — the floor. mono eyebrows, axis ticks, unit labels */
 		--text-caption: var(--fs-sm); /* @role 13px — small labels, metadata, dense list rows */
 		--text-ui: var(--fs-md); /* @role 15px — functional UI text: controls, nav, list items */
-		--text-body: var(--fs-lg); /* @role 18px — long-form prose */
-		/* 20px. The one size off the ladder, which jumps 18 → 24. A lead
-		   paragraph at 18px does not separate from the body it introduces, and
-		   at 24px it competes with the h3 above it. Kept deliberately rather
-		   than rounded to a rung. */
-		--text-lead: 1.25rem;
+		--text-body: var(--fs-md); /* @role 15px — long-form prose, on the UI rung since D-245 */
+		/* @role 18px — the lead paragraph, a rung above the body it
+		   introduces. It was 20px, off the ladder, while the body was 18px;
+		   with the body at 15px the next rung up separates it. */
+		--text-lead: var(--fs-lg);
 
 		/* === OPACITY HIERARCHY ============================================ */
 		--opacity-tertiary: 0.4;

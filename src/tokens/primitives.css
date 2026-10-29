@@ -114,6 +114,10 @@
 		/* Recurring atoms, tokenised so they cannot be redrawn per component */
 		--rivet-face: #8a8272;
 		--rivet-edge: #2e2922;
+		/* An unlit indicator lamp: the dull glass highlight and its dark rim.
+		   The theme draws --led-off from these. */
+		--led-off-face: #3a332c;
+		--led-off-edge: #221d19;
 
 		/* === SHADOW LADDER — barely there ================================
 		   Shadows are barely there; 1px hairlines do the separating, like a

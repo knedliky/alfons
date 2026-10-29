@@ -1,17 +1,22 @@
 /**
  * Alfons — Font faces
  *
- * MECCANO RETUNE: the type system is now two families, not five. Moderat
- * carries everything — display, headings, body, UI — and GT America Mono
- * carries spec labels, part numbers, units and table numerics. IBM Plex Serif,
- * Switzer, Azeret Mono and Rock Salt are gone from the language; the family
- * tokens that named them survive in typography.css and now resolve to Moderat,
- * so no consumer breaks on the swap.
+ * Three families. Moderat carries body, UI and the wordmark; Redaction, the
+ * brand serif, sets display and headings; GT America Mono carries spec labels,
+ * part numbers, units and table numerics.
  *
- * Both faces are licensed binaries supplied with the brand, self-hosted under
- * src/fonts/ and referenced relatively; consumers bundle them through their own
- * build. Converted from the supplied TrueType to woff2 (~70% smaller); the
- * TrueType originals are not shipped.
+ * Redaction arrived from the website in AL-033. The Meccano retune had set
+ * headings in Moderat and called the system serif-free, while the website
+ * kept its own Redaction layer and set every heading in grade 35. Simon chose
+ * the website's typography over Alfons's (D-245), so the serif is now
+ * Alfons's, and the website's local copy of these faces can go.
+ *
+ * Moderat and GT America Mono are licensed binaries supplied with the brand,
+ * converted from the supplied TrueType to woff2 (~70% smaller); the TrueType
+ * originals are not shipped. Redaction is MCKL's, under the SIL Open Font
+ * Licence 1.1; its licence ships beside the faces as Redaction-OFL.txt, as the
+ * OFL requires. All three are self-hosted under src/fonts/ and referenced
+ * relatively; consumers bundle them through their own build.
  *
  * Moderat has no 600 cut — --fw-semibold maps to Medium (500). Never let a
  * browser synthesise the missing weight.
@@ -101,6 +106,165 @@
 	font-family: 'GT America Mono';
 	src: url('../fonts/GT-America-Mono-Regular.woff2') format('woff2');
 	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* === REDACTION — the brand serif, display and headings ===================
+   Seven grades of one design, each its own family: plain Redaction is the
+   clean cut, and the numbered grades are progressively pixelated, 10 lightly
+   through 100 heavily. Grade 35 is the default heading face (--font-display);
+   the others are there for deliberate use and are reached through their
+   --font-redaction-* tokens.
+
+   Each grade has three cuts. Bold is declared across 500–900 so that Medium
+   and Black headings resolve to the real Bold outlines rather than to a
+   weight the browser synthesises. */
+
+@font-face {
+	font-family: 'Redaction';
+	src: url('../fonts/Redaction-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction';
+	src: url('../fonts/Redaction-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction';
+	src: url('../fonts/Redaction-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 10';
+	src: url('../fonts/Redaction_10-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 10';
+	src: url('../fonts/Redaction_10-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 10';
+	src: url('../fonts/Redaction_10-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 20';
+	src: url('../fonts/Redaction_20-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 20';
+	src: url('../fonts/Redaction_20-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 20';
+	src: url('../fonts/Redaction_20-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 35';
+	src: url('../fonts/Redaction_35-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 35';
+	src: url('../fonts/Redaction_35-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 35';
+	src: url('../fonts/Redaction_35-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 50';
+	src: url('../fonts/Redaction_50-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 50';
+	src: url('../fonts/Redaction_50-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 50';
+	src: url('../fonts/Redaction_50-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 70';
+	src: url('../fonts/Redaction_70-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 70';
+	src: url('../fonts/Redaction_70-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 70';
+	src: url('../fonts/Redaction_70-Bold.woff2') format('woff2');
+	font-weight: 500 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 100';
+	src: url('../fonts/Redaction_100-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 100';
+	src: url('../fonts/Redaction_100-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Redaction 100';
+	src: url('../fonts/Redaction_100-Bold.woff2') format('woff2');
+	font-weight: 500 900;
 	font-style: normal;
 	font-display: swap;
 }

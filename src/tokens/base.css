@@ -120,7 +120,7 @@ body {
 		background-color: var(--bg-primary);
 		color: var(--text-primary);
 		font-family: var(--font-body);
-		font-size: var(--text-body); /* 18px — the reading register */
+		font-size: var(--text-body); /* 15px — the reading register (D-245) */
 		font-weight: var(--fw-regular);
 		/* 1.6, the Meccano body leading. Was 1.8, which is a magazine measure
 		   and left running text looking loose against the new tighter headings. */

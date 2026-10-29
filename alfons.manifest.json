@@ -7889,7 +7889,7 @@
     },
     {
       "name": "--font-body",
-      "value": "'Moderat', system-ui, -apple-system, sans-serif",
+      "value": "'Moderat', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -7916,7 +7916,7 @@
     },
     {
       "name": "--font-display",
-      "value": "'Moderat', system-ui, -apple-system, sans-serif",
+      "value": "var(--font-redaction-35)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -8001,8 +8001,134 @@
       "lifecycle": null
     },
     {
+      "name": "--font-redaction",
+      "value": "'Redaction', Georgia, 'Times New Roman', serif",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The clean Redaction cut and the fallback stack every grade sits on (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-10",
+      "value": "'Redaction 10', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 10. A grade of a shipped face, for deliberate use (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-100",
+      "value": "'Redaction 100', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 100. A grade of a shipped face, for deliberate use (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-20",
+      "value": "'Redaction 20', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 20. A grade of a shipped face, for deliberate use (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-35",
+      "value": "'Redaction 35', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 35, the heading face --font-display resolves to (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-50",
+      "value": "'Redaction 50', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 50. A grade of a shipped face, for deliberate use (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--font-redaction-70",
+      "value": "'Redaction 70', var(--font-redaction)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Redaction grade 70. A grade of a shipped face, for deliberate use (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
       "name": "--font-wordmark",
-      "value": "'Moderat', system-ui, sans-serif",
+      "value": "var(--font-body)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -8221,6 +8347,24 @@
       }
     },
     {
+      "name": "--fw-black",
+      "value": "900",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The Moderat Black cut that fonts.css ships and --font-drop-cap relies on. D-181 retired it before anything read it (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
       "name": "--fw-bold",
       "value": "700",
       "file": "typography.css",
@@ -8236,6 +8380,24 @@
         "reason": "Moderat cut. Read via --type-display and --type-h1.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--fw-light",
+      "value": "300",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The Moderat Light cut that fonts.css ships. D-181 retired it before anything read it; a weight ladder names every cut it serves (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
       }
     },
     {
@@ -8491,6 +8653,24 @@
         "reason": "The 160px accent pitch, formalising a value the ground already drew.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--groove-rule",
+      "value": "rgba(var(--shade-rgb), 0.82)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The recessed-rule colour the website's separators read (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
       }
     },
     {
@@ -8837,6 +9017,60 @@
       "usedInTokenLayer": false,
       "usedInStories": true,
       "lifecycle": null
+    },
+    {
+      "name": "--led-off",
+      "value": "radial-gradient(circle at 38% 30%, var(--led-off-face), var(--led-off-edge) 72%)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Retired under D-181 as speculative; the website draws its unlit lamps with it, and D-181 reclassifies a consumed token live (AL-033).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--led-off-edge",
+      "value": "#221d19",
+      "file": "primitives.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "primitive",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The literal rim stop --led-off is drawn from (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--led-off-face",
+      "value": "#3a332c",
+      "file": "primitives.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "primitive",
+      "referencedBy": [],
+      "usedInTokenLayer": true,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The literal highlight stop --led-off is drawn from (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
     },
     {
       "name": "--lh-body",
@@ -9372,6 +9606,24 @@
       "lifecycle": null
     },
     {
+      "name": "--shade-part",
+      "value": "linear-gradient( 180deg, rgba(var(--sheen-rgb), 0.26), rgba(var(--sheen-rgb), 0.06) 38%, rgba(var(--shade-rgb), 0) 55%, rgba(var(--shade-rgb), 0.32) 100% )",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Retired under D-181 as speculative; the website shades its moulded parts with it, and D-181 reclassifies a consumed token live (AL-033).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
       "name": "--shade-rgb",
       "value": "20, 16, 16",
       "file": "primitives.css",
@@ -9540,6 +9792,24 @@
       }
     },
     {
+      "name": "--shadow-groove",
+      "value": "inset 0 1px 1px rgba(var(--shade-rgb), 0.52), 0 1px 0 rgba(var(--sheen-rgb), 0.075), 0 2px 3px rgba(var(--shade-rgb), 0.16)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The recessed-rule shadow the website's separators read (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
       "name": "--shadow-modal",
       "value": "var(--shadow-3)",
       "file": "themes/meccano.css",
@@ -9553,6 +9823,24 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--shadow-part",
+      "value": "inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The shadow half of the slab treatment --shade-part is the gradient half of, as --shadow-gloss is to --gloss. Revived with it (AL-033).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-30"
+      }
     },
     {
       "name": "--shadow-popover",
@@ -9569,6 +9857,24 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--shadow-rail-lamp",
+      "value": "0 0 4px 1px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 82%), 0 0 11px 3px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 92%), 0 0 20px 7px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 97%)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "The rail-lamp glow the website's stop rail reads (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
     },
     {
       "name": "--shadow-subtle",
@@ -9646,6 +9952,240 @@
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": null
+    },
+    {
+      "name": "--sp-05",
+      "value": "2px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 2px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-1",
+      "value": "4px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 4px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-10",
+      "value": "40px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 40px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-12",
+      "value": "48px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 48px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-16",
+      "value": "64px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 64px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-2",
+      "value": "8px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 8px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-24",
+      "value": "96px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 96px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-3",
+      "value": "12px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 12px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-32",
+      "value": "128px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 128px. A rung of a complete ladder, kept though nothing reads it yet (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-4",
+      "value": "16px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 16px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-5",
+      "value": "20px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 20px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-6",
+      "value": "24px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 24px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "name": "--sp-8",
+      "value": "32px",
+      "file": "spacing.css",
+      "category": "spacing",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Meccano ladder, 32px. The website reads the ladder directly (AL-033).",
+        "decisionId": "D-246",
+        "recordedOn": "2026-10-30"
+      }
     },
     {
       "name": "--space-1",
@@ -10335,7 +10875,7 @@
     },
     {
       "name": "--text-body",
-      "value": "var(--fs-lg)",
+      "value": "var(--fs-md)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10413,7 +10953,7 @@
     },
     {
       "name": "--text-lead",
-      "value": "1.25rem",
+      "value": "var(--fs-lg)",
       "file": "typography.css",
       "category": "typography",
       "surface": "public",
@@ -10798,6 +11338,24 @@
       "lifecycle": null
     },
     {
+      "name": "--type-body",
+      "value": "var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Retired under D-181 as speculative; the website sets <body> with it, and D-181 reclassifies a consumed token live (AL-033).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
       "name": "--type-display",
       "value": "var(--fw-bold) var(--fs-display) / var(--lh-tight) var(--font-display)",
       "file": "typography.css",
@@ -10867,6 +11425,24 @@
         "reason": "Composite. Sets h4 in base.css.",
         "decisionId": null,
         "recordedOn": "2026-08-05"
+      }
+    },
+    {
+      "name": "--type-small",
+      "value": "var(--fw-regular) var(--fs-sm) / 1.5 var(--font-body)",
+      "file": "typography.css",
+      "category": "typography",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": {
+        "status": "live",
+        "replacement": null,
+        "reason": "Retired under D-181 as speculative; the website sets its small print with it, and D-181 reclassifies a consumed token live (AL-033).",
+        "decisionId": "D-181",
+        "recordedOn": "2026-10-30"
       }
     },
     {
@@ -11060,6 +11636,24 @@
     }
   ],
   "designDecisions": [
+    {
+      "id": "D-246",
+      "decidedOn": "2026-10-29",
+      "level": "product",
+      "question": "D-245 settles typography (website wins) and colour, surfaces, elevation and motion (Alfons wins) for absorbing the website's Meccano layer, but not spacing and layout. The website's compat.css remaps --space-5..10 onto smaller rungs (24/32/48/64/96/128px to 20/24/32/40/48/64px), sets its own card padding, page gutters, header height, content width and --radius-message, and reads its own --sp-* ladder directly. Whose spacing and layout values win?",
+      "resolution": "Alfons's values win for spacing and layout: --space-N, --card-padding and --card-padding-sm, --page-padding-x and its mobile form, --page-top-padding and its mobile form, --header-height, --page-content-max-width and --radius-message keep the values Alfons had before AL-033. Alfons also defines the website's Meccano ladder, --sp-05 to --sp-32 (2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96 and 128px), as live tokens with the website's values, so the website's direct reads of it keep rendering the same. Consequence: when the website deletes its local layer (AT-076), its pages re-space to Alfons's wider scale wherever they read --space-N or the layout roles.",
+      "rationale": "Chosen by Simon on 2026-10-29 (\"Alfons wins (B)\"), extending D-245. Alfons components and Atlas are laid out on Alfons's scale, and Grid's gap prop indexes --space-N as a typed public API, so re-valuing the scale would re-space every consumer to fit one. Keeping the --sp-* ladder live costs nothing and keeps the website's roughly 230 direct reads exact; only the website's remapping of the shared --space-N names gives way.",
+      "superseded": false
+    },
+    {
+      "id": "D-245",
+      "decidedOn": "2026-10-29",
+      "level": "product",
+      "question": "The website loads Alfons and then its own local Meccano layer (src/lib/styles/meccano/), which re-declares 160 Alfons tokens, 63 of them with different values, and adds 51 of its own. When Alfons absorbs that layer so the website can delete it (AL-033, AT-076), whose value wins where the two disagree?",
+      "resolution": "The website's current value wins for typography and fonts: the families (--font-*, including the Redaction faces), the size ladder and its roles (--fs-*, --text-body, --text-lead), weights (--fw-*), leading (--lh-*), tracking and the --type-* composites. Alfons's value wins for colour, surfaces, elevation and motion, including the AL-025 derived ink steps. Website-only tokens come into Alfons in the layer D-238 requires, or are retired with a lifecycle row whose replacement renders identically. Under D-181's reclassification clause, the retired tokens the website still reads (--type-body, --type-small, --led-off, --shade-part) are reclassified live. Alfons serves every face the website uses as woff2, adding Redaction with its OFL licence. Consequence: Alfons headings and display type move from Moderat to Redaction 35, and --text-body drops from 18px to 15px, in every Alfons consumer.",
+      "rationale": "Chosen by Simon on 2026-10-29 for the website restyle. The website is the publishing surface, and its typography (the Redaction serif, the 15px body) is the look he wants to publish. Alfons's colour, surface, elevation and motion values are the D-238 theme work of AL-025 to AL-027, made deliberately and more recently than the website's copies, which predate it. Splitting by subject keeps each half's most recent deliberate work, and the comparison script (scripts/compare-website-layer.ts) lists every difference against this rule so the website task can expect each visual change.",
+      "superseded": false
+    },
     {
       "id": "D-238",
       "decidedOn": "2026-10-26",
@@ -12055,6 +12649,28 @@
     },
     {
       "kind": "token",
+      "name": "--font-heading",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--font-display",
+        "reason": "The website's name for the heading face, which --font-display names and now resolves to the same Redaction 35 stack (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "kind": "token",
+      "name": "--font-reading",
+      "lifecycle": {
+        "status": "retired",
+        "replacement": "--font-body",
+        "reason": "The website's name for the running-text face, which --font-body names and now resolves to the same Moderat stack (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
+      }
+    },
+    {
+      "kind": "token",
       "name": "--font-sans",
       "lifecycle": {
         "status": "retired",
@@ -12066,24 +12682,13 @@
     },
     {
       "kind": "token",
-      "name": "--fw-black",
+      "name": "--font-serif",
       "lifecycle": {
         "status": "retired",
-        "replacement": null,
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
-      "name": "--fw-light",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": null,
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
+        "replacement": "--font-redaction-35",
+        "reason": "The website's name for Redaction grade 35. A name for the face rather than a role; --font-redaction-35 is the face (AL-033).",
+        "decisionId": "D-245",
+        "recordedOn": "2026-10-30"
       }
     },
     {
@@ -12374,17 +12979,6 @@
     },
     {
       "kind": "token",
-      "name": "--led-off",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": null,
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
       "name": "--matrix-diagonal-opacity",
       "lifecycle": {
         "status": "retired",
@@ -12561,33 +13155,11 @@
     },
     {
       "kind": "token",
-      "name": "--shade-part",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": null,
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
       "name": "--shadow-header",
       "lifecycle": {
         "status": "retired",
         "replacement": "--shadow-1",
         "reason": "No rule in either repository reads it, and nothing that is read derives from it (D-181).",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
-      "name": "--shadow-part",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": null,
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"
       }
@@ -12836,32 +13408,10 @@
     },
     {
       "kind": "token",
-      "name": "--type-body",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": "--text-ui",
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
       "name": "--type-prose",
       "lifecycle": {
         "status": "retired",
         "replacement": "--text-body",
-        "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
-        "decisionId": "D-181",
-        "recordedOn": "2026-08-06"
-      }
-    },
-    {
-      "kind": "token",
-      "name": "--type-small",
-      "lifecycle": {
-        "status": "retired",
-        "replacement": "--text-caption",
         "reason": "Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work.",
         "decisionId": "D-181",
         "recordedOn": "2026-08-06"

@@ -41,6 +41,29 @@
 		--space-9: 96px;
 		--space-10: 128px;
 
+		/* === THE MECCANO LADDER — named by pixels/4 ======================
+		   The kit's own spacing, which the website reads directly. It is
+		   finer than --space-N: it has the 2, 20 and 40px rungs, and its
+		   names say the size rather than the position. Kept beside the
+		   indexed scale rather than replacing it (D-246): Grid's gap prop
+		   indexes --space-N, so re-valuing that scale would re-space every
+		   consumer. Where a rung and a --space step agree they are the same
+		   length under two names, which is deliberate here and nowhere else:
+		   one name says "the fifth step", the other "20px". */
+		--sp-05: 2px;
+		--sp-1: 4px;
+		--sp-2: 8px;
+		--sp-3: 12px;
+		--sp-4: 16px;
+		--sp-5: 20px;
+		--sp-6: 24px;
+		--sp-8: 32px;
+		--sp-10: 40px;
+		--sp-12: 48px;
+		--sp-16: 64px;
+		--sp-24: 96px;
+		--sp-32: 128px;
+
 		/* === RADIUS — the machined scale ================================= */
 		--radius-1: 3px; /* chips, badges, ticks — the smallest machined corner */
 		--radius-2: 6px; /* the workhorse: buttons, cards, inputs, panels */

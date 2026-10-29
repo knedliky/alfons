@@ -19,12 +19,12 @@
 		},
 		"website": {
 			"components": 176,
-			"findings": 1179,
+			"findings": 724,
 			"rules": {
 				"raw-value": 493,
 				"admin-token-on-public": 0,
-				"unknown-token": 290,
-				"retired-token": 232,
+				"unknown-token": 56,
+				"retired-token": 11,
 				"tailwind-shadow": 92,
 				"raw-element": 72,
 				"layout-nesting": 0,
