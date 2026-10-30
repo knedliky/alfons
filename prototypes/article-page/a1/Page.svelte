@@ -1,31 +1,179 @@
 <script lang="ts">
 	/**
-	 * Article page — approach 1 of 5: Quiet column
+	 * Article page — approach 1 of 5: Quiet column.
 	 *
-	 * Direction: Reduces the page to one centred reading column with no raised sheet and no fixed elements at all: the contents become an inline list under the standfirst, and the back link sits in the flow, pushing restraint and typography as the whole design.
-	 *
-	 * Brief: This is the page where Simon's published writing is read, at /blog/<slug> on the public website, and its one job is comfortable long-form reading on a 375 pixel phone and on a 1440 pixel desktop. Readers arrive from a shared link, the blog index or the homepage, mostly on a phone, and read one essay of about eight minutes from top to bottom. The page opens with the category, the publication date, the title, a one-line standfirst and the reading time, then an optional cover image, then the body: a lede, then sections that each start with an h2, with paragraphs, links, an ordered list, a blockquote and images. Body paragraphs are body copy and carry the primary text colour; only the kicker, dates and captions use supporting greys, all through Alfons typography tokens. Images arrive as sanitised HTML with natural sizes from 192 by 256 to 2160 square; each one is sized to its content, never upscaled past its natural width, never taller than the viewport, and a caption that follows an image as an emphasised paragraph is shown as that image's caption. The page has two floating companions that must never cover a word of text at either width: the section contents, which today is a fixed left rail of dots with labels, and the site-wide 'ask scheherazade' agent pill, fixed bottom left at roughly 190 by 40 pixels, which this page cannot change and must leave room for. The 'Back to Blog' link is also fixed today and likewise must not cover text. After the body come related articles and comments, which keep their content but may change their layout. The fixture is the real article 'I'm building a personal agent' (fixture.json beside round.json), which on the live site renders its 192 by 256 logo as an 883 pixel red block and lets the rail and pill overlap the opening text on a phone. Dark is the only colour mode, and the page takes its whole look from Alfons tokens and components, with LongreadHero, LongreadProse, LongreadProseSection, LongreadArticle and LongreadFigure as the existing parts to reuse before inventing any.
-	 *
-	 * Owned by one agent. Build from the base layer up — shell, then
-	 * regions, then containers, then components — and keep
-	 * data-alfons-working="what you are composing" on the region under
-	 * construction so the build can be watched live at /dev/article-page.
-	 * Remove the marker when the region is finished.
+	 * One centred reading column and nothing else. No raised sheet, no rail, no
+	 * fixed or sticky element of the page's own: the back link opens the column
+	 * in the flow, the section contents are an inline numbered list under the
+	 * opener, and related articles and comments follow the essay as ruled end
+	 * matter. Restraint and typography carry the whole design; the only thing
+	 * floating is the site's agent pill, which this page cannot move, so the
+	 * column leaves it a clear floor at the end of the page.
 	 */
-	import { Container, Footer, Header, PageFrame, PageHeader, PageSection } from '@alfons/design';
+	import {
+		BackLink,
+		Container,
+		Footer,
+		Header,
+		LongreadHero,
+		LongreadProse,
+		LongreadProseSection,
+		PageFrame,
+		PageSection
+	} from '@alfons/design';
+	import { article } from '../shared/article';
+	import AgentPillStandIn from '../shared/AgentPillStandIn.svelte';
+	import ArticleContents, { type ContentsEntry } from './ArticleContents.svelte';
+	import CommentsPlaceholder from './CommentsPlaceholder.svelte';
+	import RelatedArticles, { type RelatedArticle } from './RelatedArticles.svelte';
+
+	/** Section anchors come from the kicker, which is unique within an article. */
+	function anchorFor(kicker: string): string {
+		return kicker
+			.toLowerCase()
+			.replace(/[’']/g, '')
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-|-$/g, '');
+	}
+
+	const sections = article.sections.map((section) => ({
+		...section,
+		id: anchorFor(section.kicker)
+	}));
+
+	const contents: ContentsEntry[] = sections.map((section) => ({
+		id: section.id,
+		label: section.kicker
+	}));
+
+	// Static stand-ins: the round explores where related articles sit, not
+	// which ones the site picks.
+	const related: RelatedArticle[] = [
+		{
+			slug: 'what-a-motif-is-for',
+			category: 'Essay',
+			title: 'What a motif is for',
+			publishedLabel: '2 February 2026'
+		},
+		{
+			slug: 'the-labour-market-in-one-chart',
+			category: 'Experiment',
+			title: 'The labour market in one chart',
+			publishedLabel: '11 January 2026'
+		},
+		{
+			slug: 'notes-on-local-first-agents',
+			category: 'Notes',
+			title: 'Notes on local-first agents',
+			publishedLabel: '28 November 2025'
+		}
+	];
 </script>
 
 <PageFrame>
 	{#snippet header()}<Header />{/snippet}
 	{#snippet footer()}<Footer />{/snippet}
-	<main data-alfons-working="Quiet column — seeded shell, composing the base layer">
-		<PageSection>
-			<Container>
-				<PageHeader
-					title="Article page"
-					subtitle="Quiet column"
+	<PageSection>
+		<Container maxWidth="sm" padding={false}>
+			<article class="quiet-column">
+				<BackLink href="/blog" label="Back to Blog" />
+
+				<LongreadHero
+					kicker={article.category}
+					title={article.title}
+					standfirst={article.standfirst}
+					meta={[article.publishedLabel, `${article.readingTime} min read`]}
 				/>
-			</Container>
-		</PageSection>
-	</main>
+
+				<ArticleContents entries={contents} />
+
+				<div class="quiet-column__body" data-article-body>
+					<LongreadProse html={article.ledeHtml} />
+					{#each sections as section (section.id)}
+						<div class="quiet-column__anchor" id={section.id}>
+							<LongreadProseSection kicker={section.kicker} html={section.html} />
+						</div>
+					{/each}
+				</div>
+
+				<footer class="quiet-column__end-matter">
+					<RelatedArticles articles={related} />
+					<CommentsPlaceholder count={3} />
+				</footer>
+			</article>
+		</Container>
+	</PageSection>
 </PageFrame>
+
+<AgentPillStandIn />
+
+<style>
+	/* 36rem holds the lead-size serif near 65 characters a line on a desktop. */
+	.quiet-column {
+		max-width: 36rem;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+		/* The agent pill floats at the bottom left of every viewport; the column
+		   ends on a floor tall enough that its last line can scroll clear of it. */
+		padding-bottom: var(--space-9);
+	}
+
+	/* LongreadHero centres itself with its own top padding; in a quiet column the
+	   back link already opens the page, so the opener sits directly below it. */
+	.quiet-column :global(.longread-hero) {
+		padding-top: 0;
+		padding-bottom: 0;
+		margin: 0 auto;
+	}
+
+	.quiet-column__body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Typography is the whole design here, so the body steps up from the
+	   template's body size to lead size: about 45 characters a line on a phone
+	   and near 65 on a desktop, the comfortable range for long-form reading. */
+	.quiet-column__body :global(.longread-prose p),
+	.quiet-column__body :global(.longread-prose li) {
+		font-size: var(--text-lead);
+	}
+
+	.quiet-column__anchor {
+		scroll-margin-top: var(--scroll-margin-top);
+	}
+
+	/* Figures: an image keeps its natural size, never wider than the column,
+	   never taller than most of the viewport, centred with its caption under
+	   it. LongreadProse stretches every image to the full measure, which turns
+	   a 192 by 256 logo into a column-wide block; this restores natural size. */
+	.quiet-column__body :global(figure) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: var(--space-7) 0;
+	}
+
+	.quiet-column__body :global(.longread-prose img) {
+		width: auto;
+		max-width: 100%;
+		height: auto;
+		max-height: 80dvh;
+		margin: 0;
+	}
+
+	.quiet-column__body :global(figcaption) {
+		max-width: 32rem;
+		text-align: center;
+	}
+
+	.quiet-column__end-matter {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+		padding-top: var(--space-7);
+		border-top: 1px solid var(--border-default);
+	}
+</style>
