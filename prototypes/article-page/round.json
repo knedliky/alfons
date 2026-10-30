@@ -95,6 +95,17 @@
 				"Literal layout sizes: an 80rem breakpoint (duplicated in Page and ReadingFloor), a 14rem margin-dock track mirrored on the right, a 42rem measure track matching LongreadProse's own max-width, and a 70dvh image cap. No breakpoint, track or measure tokens exist for these.",
 				"LongreadArticle is used with showProgress={false} only as the article axis; its section-focus observer runs but drives nothing, because the dock needs the active section outside the article (in the floor and in the sheet) and the library context does not expose it. The page runs its own scroll measurement instead."
 			]
+		},
+		{
+			"slug": "a6",
+			"title": "Rail on desktop, dock on phones",
+			"direction": "Simon's choice on 2026-10-30, combining his own lamp rail on today's raised sheet from 80rem up with approach 5's reading dock below it, so the rail is kept as designed where it never touches text and phones get the dock.",
+			"deviations": [
+				"Everything a5 records for the phone dock carries over unchanged: the inner reading viewport below 80rem, the pill-measured floor, the LongreadProse image override and the 80rem breakpoint.",
+				"From 80rem the sheet and the rail's lamp styling are page CSS restyling LongreadArticle's internal .progress-rail, .rail-square and .rail-label through :global, copied from Atlas's EditorialDocument. Why: LongreadArticle has no sheet-edge placement or lamp variant; promotion should give it one so the page stops reaching into its internals.",
+				"The rail's boundary (centred until the sheet's foot reaches it, then travelling with the sheet) is a page effect, as in EditorialDocument. Why: LongreadArticle's rail is fixed to the viewport and knows nothing of the container it belongs to.",
+				"Literal 51.5rem sheet width and 5rem side padding, kept from today's sheet. No measure or sheet-padding tokens exist."
+			]
 		}
 	]
 }
