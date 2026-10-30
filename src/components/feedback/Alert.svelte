@@ -181,7 +181,7 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		color: var(--text-secondary);
 		cursor: pointer;
 		transition:

@@ -333,7 +333,7 @@
 	}
 
 	.figure dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: var(--chart-axis-letter-spacing);
 		text-transform: uppercase;
@@ -374,7 +374,7 @@
 
 	.eyebrow {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: var(--chart-axis-letter-spacing);
 		text-transform: uppercase;
@@ -389,7 +389,7 @@
 	}
 
 	.dossier-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		font-variant-numeric: tabular-nums;
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -419,7 +419,7 @@
 	}
 
 	.fact dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: var(--chart-axis-letter-spacing);
 		text-transform: uppercase;
@@ -428,7 +428,7 @@
 
 	.fact dd {
 		margin: var(--space-1) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-primary);
@@ -450,7 +450,7 @@
 
 	.release-slug {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -474,7 +474,7 @@
 		align-items: center;
 		gap: var(--space-4);
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -502,7 +502,7 @@
 
 	.panel-head {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: var(--chart-axis-letter-spacing);

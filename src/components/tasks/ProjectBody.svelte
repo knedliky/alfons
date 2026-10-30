@@ -62,7 +62,7 @@
 
 	.heading {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;

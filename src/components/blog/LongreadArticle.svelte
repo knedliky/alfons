@@ -485,7 +485,7 @@
 		transform: translateY(var(--tab-shift-y));
 		clip-path: inset(-24px 100% -24px 0);
 		white-space: nowrap;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.8125rem;
 		line-height: 1.2;
 		/* Inherited tracking would break the 1ch-per-character alignment the
@@ -605,7 +605,7 @@
 		}
 
 		.longread-article-sheet .rail-label {
-			font: var(--fw-regular) var(--fs-sm) / 1.2 var(--font-mono);
+			font: var(--fw-regular) var(--fs-sm) / 1.2 var(--font-monospace);
 		}
 	}
 

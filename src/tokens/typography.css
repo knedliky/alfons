@@ -35,15 +35,21 @@
 		/* === FAMILIES =====================================================
 		   Three faces. The role tokens are what components read: --font-body
 		   for running text and UI, --font-display for display and headings,
-		   --font-mono for annotation. The fallback stacks are the website's,
-		   which D-245 chose over the shorter ones this file had.
+		   --font-monospace for annotation. The fallback stacks are the
+		   website's, which D-245 chose over the shorter ones this file had.
+
+		   --font-monospace was --font-mono until AL-035. Tailwind v4's
+		   default @theme declares --font-mono too, so which stack a consumer
+		   got depended on stylesheet order (D-247). Never name a token after
+		   one Tailwind's default theme declares; the tailwind-shadow rule
+		   reports a read of one.
 
 		   --font-display means the face that sets display and headings, which
 		   is Redaction grade 35. It meant Moderat between the Meccano retune
 		   and AL-033. --font-drop-cap stays Moderat: the Black (900) cut is
 		   what makes an oversized initial read as one. */
 		--font-body: 'Moderat', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
-		--font-mono: 'GT America Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+		--font-monospace: 'GT America Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 		--font-display: var(--font-redaction-35); /* @role the display and heading face */
 		--font-drop-cap: 'Moderat', system-ui, -apple-system, sans-serif;
 		/* @role The Motivka wordmark face. Moderat Bold, so it shares the body
@@ -103,7 +109,7 @@
 		/* The signature annotation: mono, uppercase, tracked. Apply --ls-caps
 		   and text-transform alongside it — the font shorthand carries neither.
 		   Mono is regular-only; never synthesise bold. */
-		--type-spec: var(--fw-regular) 0.6875rem / 1 var(--font-mono);
+		--type-spec: var(--fw-regular) 0.6875rem / 1 var(--font-monospace);
 		/* Running text and small print, each in one shorthand. The website
 		   sets <body> with --type-body. */
 		--type-body: var(--fw-regular) var(--fs-md) / var(--lh-body) var(--font-body);

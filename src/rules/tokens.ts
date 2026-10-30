@@ -289,9 +289,14 @@ export const retiredToken: Rule = {
  * A token Tailwind also defines.
  *
  * Reproduces the --font-mono case: Tailwind v4's default @theme defines it,
- * Alfons defines it, and which one a surface gets depends on import order.
+ * Alfons defined it, and which one a surface gets depends on import order.
  * Nothing errors, nothing warns, and the brand face is quietly replaced —
  * which is how it survived across four Atlas surfaces until someone saw it.
+ *
+ * D-247 renamed both collisions (--font-mono to --font-monospace, --radius to
+ * --radius-base), so on the real manifest this fires only if a new token takes
+ * a Tailwind name. A consumer still reading an old name hears from
+ * retired-token instead, which names the replacement.
  */
 export const tailwindShadow: Rule = {
 	id: 'tailwind-shadow',
@@ -308,7 +313,9 @@ export const tailwindShadow: Rule = {
 					context.source,
 					'tailwind-shadow',
 					`${reference.name} is also defined by Tailwind v4's default @theme. Which one ` +
-						`applies depends on import order, so this may not resolve to the Alfons value.`,
+						`applies depends on import order, so this may not resolve to the Alfons value. ` +
+						`Give the Alfons token a name Tailwind does not declare, as D-247 did with ` +
+						`--font-mono (now --font-monospace) and --radius (now --radius-base).`,
 					reference.start,
 					reference.end
 				)

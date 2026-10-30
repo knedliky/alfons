@@ -54,7 +54,7 @@
 		align-items: center;
 		gap: var(--space-2);
 		margin: var(--space-7) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

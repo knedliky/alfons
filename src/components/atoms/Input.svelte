@@ -39,7 +39,7 @@
 		transition:
 			border-color var(--transition-normal),
 			box-shadow var(--transition-normal);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 	}
 
 	.input:disabled {

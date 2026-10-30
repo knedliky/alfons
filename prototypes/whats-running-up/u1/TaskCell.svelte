@@ -130,7 +130,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		line-height: 1.1;
 		letter-spacing: 0.02em;
@@ -141,7 +141,7 @@
 	   horizontal swipe at grid scale, so no gesture is at risk here. */
 	.project,
 	.release {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -162,7 +162,7 @@
 
 	.age {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;
@@ -177,7 +177,7 @@
 
 	.tag {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;

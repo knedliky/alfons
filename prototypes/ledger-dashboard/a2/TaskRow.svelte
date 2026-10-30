@@ -97,7 +97,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		color: var(--text-muted);
@@ -114,7 +114,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -137,7 +137,7 @@
 	}
 
 	.verdict {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

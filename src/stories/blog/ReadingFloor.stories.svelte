@@ -108,7 +108,7 @@
 		place-items: center;
 		border: 1px dashed var(--border-hairline);
 		border-radius: var(--radius-pill);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

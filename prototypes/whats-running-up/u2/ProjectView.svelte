@@ -127,7 +127,7 @@
 
 	.repo {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 	}
@@ -140,7 +140,7 @@
 
 	.block-name {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -175,7 +175,7 @@
 	}
 
 	.slug {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		color: var(--text-primary);
 		letter-spacing: 0.02em;
@@ -193,7 +193,7 @@
 	}
 
 	.counts {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

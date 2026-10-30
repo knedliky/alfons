@@ -141,7 +141,7 @@
 	}
 
 	.fact dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -150,7 +150,7 @@
 
 	.fact dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-primary);
 	}
@@ -188,7 +188,7 @@
 	}
 
 	.rank {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -196,7 +196,7 @@
 	}
 
 	.name {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-primary);
 		overflow: hidden;
@@ -209,7 +209,7 @@
 	}
 
 	.note {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;
@@ -242,7 +242,7 @@
 
 	.phase-heading {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -276,7 +276,7 @@
 	}
 
 	.task-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-secondary);
 	}

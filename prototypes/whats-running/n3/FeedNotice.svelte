@@ -56,7 +56,7 @@
 		margin-bottom: var(--space-4);
 		text-align: left;
 		color: var(--text-secondary);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.5;
 	}

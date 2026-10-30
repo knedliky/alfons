@@ -293,7 +293,7 @@
 		font-size: 0.75rem;
 		font-weight: 400;
 		color: var(--text-muted);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 	}
 
 	.select-container {

@@ -136,7 +136,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		line-height: 1.2;
 		color: var(--text-secondary);
@@ -224,7 +224,7 @@
 	}
 
 	.count dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.2;
 		text-transform: uppercase;
@@ -234,7 +234,7 @@
 
 	.count dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		line-height: 1.2;
 		color: var(--text-primary);
@@ -242,7 +242,7 @@
 
 	.meta {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.3;
 		color: var(--text-muted);

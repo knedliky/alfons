@@ -37,7 +37,7 @@
 	}
 
 	.hero-kicker {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
@@ -63,7 +63,7 @@
 	}
 
 	.hero-meta {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 		margin: 0;

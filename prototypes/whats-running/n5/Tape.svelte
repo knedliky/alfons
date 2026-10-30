@@ -37,7 +37,7 @@
 
 	.label {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 400;
 		letter-spacing: 0.12em;
@@ -58,7 +58,7 @@
 		display: flex;
 		align-items: baseline;
 		gap: var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		animation: land var(--dur-slow) ease both;

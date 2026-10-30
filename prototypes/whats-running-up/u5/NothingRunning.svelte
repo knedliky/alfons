@@ -119,7 +119,7 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -164,7 +164,7 @@
 
 	.recent-title {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -193,7 +193,7 @@
 		min-height: var(--filter-control-height);
 		padding: var(--space-2) var(--space-3);
 		text-align: left;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		background: var(--surface-hover-subtle);
 		border: 1px solid var(--card-border);
 		cursor: pointer;

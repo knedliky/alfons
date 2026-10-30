@@ -30,7 +30,7 @@
 	<MainLayout asideWidth="16rem" gap="xl" asidePosition="left" stickyTop="2rem">
 		{#snippet aside()}
 			<div
-				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
+				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius-base);border:1px solid var(--border-hairline)"
 			>
 				<p
 					style="margin:0 0 0.75rem;font-weight:600;font-size:0.875rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em"
@@ -50,19 +50,19 @@
 		{/snippet}
 		{#snippet main()}
 			<div style="display:flex;flex-direction:column;gap:1rem">
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					<p style="margin:0;font-weight:600;color:var(--text-primary)">Article heading</p>
 					<p style="margin:0.5rem 0 0;color:var(--text-secondary);font-size:0.875rem">
 						Main scrolling content area — grows to fill remaining width after aside takes its fixed
 						allocation.
 					</p>
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					<p style="margin:0;color:var(--text-secondary);font-size:0.875rem">
 						Second content block
 					</p>
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					<p style="margin:0;color:var(--text-secondary);font-size:0.875rem">Third content block</p>
 				</div>
 			</div>
@@ -74,19 +74,19 @@
 	<MainLayout asideWidth="14rem" gap="lg" asidePosition="right" stickyTop="2rem">
 		{#snippet aside()}
 			<div
-				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
+				style="padding:1rem;background:var(--surface-raised-bg);border-radius:var(--radius-base);border:1px solid var(--border-hairline)"
 			>
 				<p style="margin:0 0 0.5rem;font-weight:600;font-size:0.875rem;color:var(--text-secondary)">
 					Related
 				</p>
 				<div style="display:flex;flex-direction:column;gap:0.5rem">
 					<div
-						style="padding:0.5rem;background:var(--accent-bg);border-radius:var(--radius);font-size:0.8125rem;color:var(--text-primary)"
+						style="padding:0.5rem;background:var(--accent-bg);border-radius:var(--radius-base);font-size:0.8125rem;color:var(--text-primary)"
 					>
 						Link one
 					</div>
 					<div
-						style="padding:0.5rem;background:var(--accent-bg);border-radius:var(--radius);font-size:0.8125rem;color:var(--text-primary)"
+						style="padding:0.5rem;background:var(--accent-bg);border-radius:var(--radius-base);font-size:0.8125rem;color:var(--text-primary)"
 					>
 						Link two
 					</div>
@@ -94,7 +94,7 @@
 			</div>
 		{/snippet}
 		{#snippet main()}
-			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+			<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 				<p style="margin:0;font-weight:600;color:var(--text-primary)">Main content</p>
 				<p style="margin:0.5rem 0 0;color:var(--text-secondary);font-size:0.875rem">
 					Aside appears on the right via CSS order — DOM order stays aside-first for screen readers.
@@ -108,22 +108,22 @@
 	<MainLayout asideWidth="22rem" gap="2xl" asidePosition="left" stickyTop="1rem">
 		{#snippet aside()}
 			<div
-				style="padding:1.25rem;background:var(--surface-raised-bg);border-radius:var(--radius);border:1px solid var(--border-hairline)"
+				style="padding:1.25rem;background:var(--surface-raised-bg);border-radius:var(--radius-base);border:1px solid var(--border-hairline)"
 			>
 				<p style="margin:0 0 1rem;font-weight:600;color:var(--text-primary)">Sidebar filters</p>
 				<div style="display:flex;flex-direction:column;gap:0.75rem">
 					<div
-						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);font-size:0.875rem"
+						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);font-size:0.875rem"
 					>
 						Category A
 					</div>
 					<div
-						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);font-size:0.875rem"
+						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);font-size:0.875rem"
 					>
 						Category B
 					</div>
 					<div
-						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);font-size:0.875rem"
+						style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);font-size:0.875rem"
 					>
 						Category C
 					</div>
@@ -132,13 +132,13 @@
 		{/snippet}
 		{#snippet main()}
 			<div style="display:flex;flex-direction:column;gap:1rem">
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					Result one
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					Result two
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					Result three
 				</div>
 			</div>

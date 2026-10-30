@@ -184,7 +184,7 @@
 		padding-inline: var(--space-2);
 		background: none;
 		border: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.02em;
 		color: var(--text-secondary);

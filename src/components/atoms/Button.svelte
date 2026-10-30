@@ -59,7 +59,7 @@
 		justify-content: center;
 		gap: var(--space-2);
 		white-space: nowrap;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		font-family: var(--font-body);
 		font-size: var(--text-caption);
 		font-weight: var(--fw-medium);

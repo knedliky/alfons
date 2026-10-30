@@ -26,13 +26,13 @@
 
 <Story name="Default" asChild args={{ gap: 2, align: 'center', justify: 'start', wrap: true }}>
 	<Inline gap={2} align="center" justify="start" wrap={true}>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Svelte
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			TypeScript
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Tailwind
 		</div>
 	</Inline>
@@ -40,13 +40,13 @@
 
 <Story name="Spaced Between" asChild>
 	<Inline gap={2} align="center" justify="between" wrap={false}>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Logo
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Navigation
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Actions
 		</div>
 	</Inline>
@@ -54,13 +54,13 @@
 
 <Story name="Centred" asChild>
 	<Inline gap={3} align="center" justify="center" wrap={false}>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			One
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Two
 		</div>
-		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:0.5rem 1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Three
 		</div>
 	</Inline>
@@ -100,8 +100,14 @@
 
 <Story name="Large Gap" asChild>
 	<Inline gap="lg" align="start" justify="start" wrap={false}>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">Stat A</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">Stat B</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">Stat C</div>
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
+			Stat A
+		</div>
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
+			Stat B
+		</div>
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
+			Stat C
+		</div>
 	</Inline>
 </Story>

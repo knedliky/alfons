@@ -359,7 +359,7 @@
 
 	.line-number {
 		font-size: 0.75rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-muted);
 		line-height: 1.6;
 		text-align: right;
@@ -371,7 +371,7 @@
 		min-height: 200px;
 		padding: var(--space-4);
 		font-size: 0.8125rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		line-height: 1.6;
 		color: var(--text-primary);
 		background-color: transparent;

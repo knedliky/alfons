@@ -82,7 +82,7 @@
 <style>
 	.field-label {
 		display: block;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.18em;
@@ -114,7 +114,7 @@
 
 	.tally {
 		margin: var(--space-3) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -149,7 +149,7 @@
 	.head {
 		padding-block: var(--space-2);
 		border-block-end: calc(var(--stroke-normal) * 1px) solid var(--text-secondary);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;
@@ -187,7 +187,7 @@
 
 	.id,
 	.phase {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		font-variant-numeric: tabular-nums;
@@ -208,7 +208,7 @@
 
 	.project,
 	.release {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.04em;
 		color: var(--text-secondary);

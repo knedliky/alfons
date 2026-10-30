@@ -36,7 +36,7 @@
 		resize: none;
 		font-size: 1rem;
 		/* The same machined control corner as Input and Select. */
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		padding: var(--space-4) var(--space-5);
 		transition:
 			border-color var(--transition-normal),

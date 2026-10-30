@@ -238,7 +238,7 @@
 	}
 
 	.task-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.08em;
 		color: var(--text-secondary);
@@ -274,7 +274,7 @@
 	}
 
 	.facts dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -283,7 +283,7 @@
 
 	.facts dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-primary);
 		overflow-wrap: anywhere;
@@ -312,7 +312,7 @@
 		align-items: baseline;
 		gap: var(--space-2);
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -346,7 +346,7 @@
 	}
 
 	.criterion-verdict {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--verdict-colour);
 		border-left: 2px solid var(--verdict-colour);
@@ -362,7 +362,7 @@
 
 	.criterion-state {
 		grid-column: 2;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
@@ -380,7 +380,7 @@
 	}
 
 	.step-index {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		font-variant-numeric: tabular-nums;
@@ -391,7 +391,7 @@
 	}
 
 	.paths li {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 		overflow-wrap: anywhere;
@@ -403,7 +403,7 @@
 
 	.relation-label {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -435,7 +435,7 @@
 	}
 
 	.relation-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 	}

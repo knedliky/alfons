@@ -310,7 +310,7 @@
 		margin: 0;
 		flex: 1;
 		text-align: center;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-secondary);
 	}

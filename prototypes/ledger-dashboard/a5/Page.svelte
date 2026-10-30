@@ -259,7 +259,7 @@
 	   at the other end. Nothing between them is needed to establish rank. */
 	.eyebrow {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.24em;
@@ -304,7 +304,7 @@
 		flex-wrap: wrap;
 		gap: var(--space-4);
 		margin-block-start: var(--space-4);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
@@ -322,7 +322,7 @@
 
 	.region-label {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.24em;

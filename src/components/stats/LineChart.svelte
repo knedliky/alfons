@@ -315,7 +315,7 @@
 		position: absolute;
 		right: 5px;
 		transform: translateY(-50%);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-axis-font-size);
 		font-weight: var(--chart-axis-font-weight);
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -337,7 +337,7 @@
 		position: absolute;
 		top: 10px;
 		transform: translateX(-50%);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-axis-font-size);
 		font-weight: var(--chart-axis-font-weight);
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -385,7 +385,7 @@
 	}
 
 	.tooltip-value strong {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--chart-series-1);
 	}
 

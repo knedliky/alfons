@@ -88,7 +88,7 @@
 
 	.kicker {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.18em;
@@ -107,7 +107,7 @@
 	.id {
 		grid-column: 1;
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		letter-spacing: 0.1em;
@@ -146,7 +146,7 @@
 		padding: var(--space-3) var(--space-5) var(--space-3) 0;
 		margin-inline-end: var(--space-5);
 		border-inline-end: 1px solid var(--border-hairline);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		color: var(--text-primary);
@@ -178,7 +178,7 @@
 	}
 
 	dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: 0.12em;
@@ -191,7 +191,7 @@
 	   this narrow, which reads as a wrapping bug rather than as emphasis. */
 	dd {
 		margin: var(--space-1) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		font-weight: 700;
 		font-variant-numeric: tabular-nums;
@@ -205,7 +205,7 @@
 
 	.sub {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.18em;
@@ -229,7 +229,7 @@
 	}
 
 	.dep-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		color: var(--text-primary);

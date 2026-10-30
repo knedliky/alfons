@@ -76,7 +76,7 @@
 
 	.label {
 		margin-block-start: var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;

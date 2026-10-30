@@ -88,7 +88,7 @@
 		padding: var(--space-3) 0;
 		background: none;
 		border: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-align: left;
 		color: var(--text-muted);
@@ -116,7 +116,7 @@
 
 	.group h3 {
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 700;
 		letter-spacing: 0.12em;
@@ -154,7 +154,7 @@
 	}
 
 	.join {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

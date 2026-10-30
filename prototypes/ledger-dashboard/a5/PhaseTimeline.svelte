@@ -166,7 +166,7 @@
 
 	.slug {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;
@@ -204,7 +204,7 @@
 	}
 
 	dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: 0.08em;
@@ -214,7 +214,7 @@
 
 	dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		font-variant-numeric: tabular-nums;
@@ -273,7 +273,7 @@
 
 	.phase-span {
 		margin: var(--space-1) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-muted);
@@ -348,7 +348,7 @@
 	}
 
 	.sibling-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		font-variant-numeric: tabular-nums;
@@ -375,7 +375,7 @@
 
 	.legend-label {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;

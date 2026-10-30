@@ -26,22 +26,22 @@
 <Story name="Two Columns" asChild>
 	<Grid columns={2} gap={4}>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Column A
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Column B
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Column C
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Column D
 		</div>
@@ -51,32 +51,32 @@
 <Story name="Three Columns" asChild>
 	<Grid columns={3} gap={4}>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			One
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Two
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Three
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Four
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Five
 		</div>
 		<div
-			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Six
 		</div>
@@ -85,29 +85,33 @@
 
 <Story name="Responsive Columns" asChild>
 	<Grid columns={{ base: 1, md: 2, lg: 3 }} gap="md">
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Card one — 1 col on mobile, 2 on md, 3 on lg
 		</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">Card two</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
+			Card two
+		</div>
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Card three
 		</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Card four
 		</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Card five
 		</div>
-		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius)">Card six</div>
+		<div style="padding:1rem;background:var(--accent-bg);border-radius:var(--radius-base)">
+			Card six
+		</div>
 	</Grid>
 </Story>
 
 <Story name="Large Gap" asChild>
 	<Grid columns={2} gap="xl">
-		<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Left panel — xl gap
 		</div>
-		<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+		<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 			Right panel — xl gap
 		</div>
 	</Grid>
@@ -116,22 +120,22 @@
 <Story name="Four Columns Small Gap" asChild>
 	<Grid columns={4} gap={2}>
 		<div
-			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Q1
 		</div>
 		<div
-			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Q2
 		</div>
 		<div
-			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Q3
 		</div>
 		<div
-			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius);text-align:center"
+			style="padding:0.75rem;background:var(--accent-bg);border-radius:var(--radius-base);text-align:center"
 		>
 			Q4
 		</div>

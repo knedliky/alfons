@@ -262,7 +262,7 @@
 	}
 
 	.motif-menu-shortcut {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.6875rem;
 		color: var(--text-muted);
 	}

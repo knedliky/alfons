@@ -57,7 +57,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;

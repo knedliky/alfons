@@ -67,7 +67,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -103,7 +103,7 @@
 
 	.attempts {
 		margin: var(--space-3) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

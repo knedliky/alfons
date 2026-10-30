@@ -113,7 +113,7 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -160,7 +160,7 @@
 	.glance-heading {
 		margin: 0;
 		flex: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;

@@ -426,7 +426,7 @@
 		   button — whatever the surface's own corner radius. The accent affordances
 		   keep their round identity rather than tracking the container; the clean,
 		   balanced look comes from the uniform --surface-inset spacing instead. */
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		animation: agent-input-shimmer 6s ease-in-out infinite alternate;
 	}
 
@@ -448,7 +448,7 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.3rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.04em;
 		/* Pin an explicit line-height so the pill's height is predictable rather than

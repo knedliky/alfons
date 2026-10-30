@@ -79,9 +79,15 @@
 
 		   --card-radius was a third name for --radius-2, documented as form
 		   fields and read only by a story drawing a card. It is retired in
-		   favour of --radius-surface (AL-026). */
+		   favour of --radius-surface (AL-026).
+
+		   --radius-base was --radius until AL-035. Tailwind v4's default
+		   @theme declares --radius too, so which corner a consumer got
+		   depended on stylesheet order (D-247). Its readers are controls and
+		   some surfaces, which is why it is the base corner and not a
+		   control role. */
 		--radius-surface: var(--radius-2); /* @role cards, modals, alerts, tooltips, stats, toasts */
-		--radius: var(--radius-2); /* @role form controls */
+		--radius-base: var(--radius-2); /* @role the base corner: form controls */
 		--radius-message: var(--radius-3); /* @role chat bubbles + agent input */
 		/* @role Genuinely round things only. This role was documented as "buttons,
 		   text inputs, toggles, pills", which bundles two different Meccano
@@ -90,7 +96,7 @@
 		   render identically and hid the overload; reviving the scale forces
 		   the choice. It resolves round, because that is what the name says and
 		   what the majority of its consumers are, and the machined controls
-		   moved to --radius in this same change. */
+		   moved to --radius (now --radius-base) in this same change. */
 		--radius-pill: var(--radius-round);
 
 		/* === CARD METRICS ================================================ */

@@ -93,7 +93,7 @@
 
 	.masthead-note {
 		margin: var(--space-2) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -122,7 +122,7 @@
 	}
 
 	.scaffolding-note {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		opacity: var(--opacity-tertiary);

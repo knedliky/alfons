@@ -105,7 +105,7 @@
 
 	.eyebrow {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -116,7 +116,7 @@
 	   scale stops at --text-lead, so the ceiling is a literal. */
 	.slug {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: clamp(var(--text-lead), min(9vw, 5vh), 2.125rem);
 		line-height: 1.1;
 		color: var(--text-primary);
@@ -128,7 +128,7 @@
 		flex-wrap: wrap;
 		align-items: baseline;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 	}
@@ -172,7 +172,7 @@
 		flex-wrap: wrap;
 		align-items: baseline;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-primary);
 	}
@@ -206,7 +206,7 @@
 		flex-wrap: wrap;
 		align-items: baseline;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

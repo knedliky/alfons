@@ -312,7 +312,7 @@
 	}
 
 	.axis-text {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-axis-font-size);
 		font-weight: var(--chart-axis-font-weight);
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -320,7 +320,7 @@
 	}
 
 	.axis-title {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-axis-font-size);
 		letter-spacing: var(--chart-axis-letter-spacing);
 		text-transform: uppercase;
@@ -366,7 +366,7 @@
 	}
 
 	.annotation-detail {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		fill: var(--text-muted);
 	}
@@ -397,7 +397,7 @@
 	}
 
 	.tooltip-week {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -413,7 +413,7 @@
 
 	.tooltip-unit,
 	.tooltip-delta {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 	}
@@ -435,7 +435,7 @@
 
 	.chart-source {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.04em;
 		color: var(--text-muted);

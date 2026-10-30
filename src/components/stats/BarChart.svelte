@@ -209,7 +209,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-label-size);
 		font-weight: 600;
 		color: var(--chart-axis-colour);
@@ -252,14 +252,14 @@
 	}
 
 	.value-number {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-value-size);
 		font-weight: 600;
 		color: var(--text-primary);
 	}
 
 	.value-percentage {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--chart-label-size);
 		color: var(--chart-axis-colour);
 	}

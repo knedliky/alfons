@@ -277,17 +277,43 @@ check(
 	!ruleIds(wrap(`.a { background: var(${retired.name}); }`)).includes('unknown-token')
 );
 
-const shadowed = manifest.tailwindShadowed[0];
+// The real manifest has no collision left: D-247 renamed the last two, and an
+// Alfons token never takes a name Tailwind's default theme declares. So the
+// firing fixture runs against a manifest that records one, and the real
+// manifest is held to having none.
 check(
-	'the manifest records at least one Tailwind collision',
-	Boolean(shadowed),
+	'the manifest records no Tailwind collision (D-247)',
+	manifest.tailwindShadowed.length === 0,
 	manifest.tailwindShadowed
 );
-if (shadowed) {
-	fires(
-		`reports ${shadowed} as Tailwind-shadowed`,
-		'tailwind-shadow',
-		wrap(`.a { font-family: var(${shadowed}); }`)
+const collided: Manifest = { ...manifest, tailwindShadowed: ['--font-monospace'] };
+const shadowHits = fires(
+	'reports a token the manifest records as Tailwind-shadowed',
+	'tailwind-shadow',
+	wrap('.a { font-family: var(--font-monospace); }'),
+	'public',
+	collided
+);
+check(
+	'names the renames D-247 made as the way out',
+	shadowHits.some(
+		(hit) => hit.message.includes('--font-monospace') && hit.message.includes('D-247')
+	),
+	shadowHits.map((hit) => hit.message)
+);
+for (const [retiredName, replacement] of [
+	['--font-mono', '--font-monospace'],
+	['--radius', '--radius-base']
+]) {
+	const hits = fires(
+		`reports ${retiredName} as retired`,
+		'retired-token',
+		wrap(`.a { font-family: var(${retiredName}); }`)
+	);
+	check(
+		`names ${replacement} as its replacement`,
+		hits.some((hit) => hit.message.includes(replacement)),
+		hits.map((hit) => hit.message)
 	);
 }
 silent(

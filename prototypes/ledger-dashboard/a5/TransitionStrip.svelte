@@ -83,7 +83,7 @@
 
 	.heading {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 700;
 		letter-spacing: 0.24em;
@@ -121,7 +121,7 @@
 
 	.at,
 	.task {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-secondary);
@@ -140,7 +140,7 @@
 	}
 
 	.arrow {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 	}

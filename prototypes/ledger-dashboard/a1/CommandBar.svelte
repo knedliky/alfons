@@ -242,7 +242,7 @@
 	}
 
 	.count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-muted);
@@ -289,7 +289,7 @@
 	}
 
 	.group-slug {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: var(--chart-axis-letter-spacing);
 		text-transform: uppercase;
@@ -308,7 +308,7 @@
 	}
 
 	.group-count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-muted);
@@ -320,7 +320,7 @@
 		gap: var(--space-5);
 		margin: 0;
 		padding: var(--space-3) var(--space-5);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

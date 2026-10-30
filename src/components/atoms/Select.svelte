@@ -480,7 +480,7 @@
 		width: fit-content;
 		/* Monospace pill treatment — the canonical Select look (absorbed from the
 		   Merlin CustomSelect). Trigger, value, options and search all inherit. */
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		/* One source of truth for the text size shared by the trigger value and the
 		   dropdown options. They render the same labels, so they must never differ
 		   in size — otherwise the label appears to resize the instant the menu opens. */
@@ -508,7 +508,7 @@
 		min-height: var(--input-height);
 		padding: 0 1.25rem;
 		border: 1px solid var(--select-border);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		font-size: var(--select-font-size);
 		font-family: inherit;
 		cursor: pointer;
@@ -590,7 +590,7 @@
 		   .select-dropdown-sm below). The trigger and the menu render the same
 		   labels, so they must match or the label appears to change the instant the
 		   menu opens. */
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		--select-font-size: 0.875rem;
 		display: flex;
 		flex-direction: column;
@@ -598,7 +598,7 @@
 		max-height: 280px;
 		overflow: hidden;
 		padding: 0.375rem;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		box-shadow: var(--select-dropdown-shadow);
 		/* Fade in to prevent position-calculation flicker */
 		animation: selectDropdownFadeIn 0.1s ease;
@@ -655,7 +655,7 @@
 		font-family: inherit;
 		background: transparent;
 		border: 1px solid var(--select-border);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		outline: none;
 		transition: border-color var(--transition-fast);
 	}

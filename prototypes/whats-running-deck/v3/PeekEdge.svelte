@@ -124,7 +124,7 @@
 		   and an id truncated to three characters answers nothing. */
 		writing-mode: vertical-rl;
 		text-orientation: mixed;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		letter-spacing: 0.08em;
 		/* The card is tall and the legend is short, but a very short viewport must
 		   crop the legend rather than push the rail out of shape. */

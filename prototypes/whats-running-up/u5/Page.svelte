@@ -345,7 +345,7 @@
 	   it qualifies the answer, it is not part of it. */
 	.denominator {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 		overflow: hidden;
@@ -356,7 +356,7 @@
 	.readout {
 		margin: 0;
 		flex: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 		white-space: nowrap;

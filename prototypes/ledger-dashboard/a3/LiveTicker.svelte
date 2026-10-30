@@ -78,7 +78,7 @@
 	}
 
 	.state-label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -102,7 +102,7 @@
 
 	.at,
 	.event-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		font-variant-numeric: tabular-nums;

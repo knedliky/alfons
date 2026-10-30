@@ -105,7 +105,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		color: var(--text-secondary);
 		letter-spacing: 0.04em;
@@ -131,7 +131,7 @@
 		flex-wrap: wrap;
 		align-items: baseline;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 	}
 
@@ -182,7 +182,7 @@
 	}
 
 	.count dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
@@ -191,14 +191,14 @@
 
 	.count dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		color: var(--text-primary);
 	}
 
 	.meta {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

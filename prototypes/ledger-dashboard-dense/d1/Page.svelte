@@ -424,13 +424,13 @@
 		--ledger-rung-1-ink: var(--text-primary);
 		--ledger-rung-1-tracking: 0;
 
-		--ledger-rung-2-family: var(--font-mono);
+		--ledger-rung-2-family: var(--font-monospace);
 		--ledger-rung-2-size: var(--text-caption);
 		--ledger-rung-2-weight: 600;
 		--ledger-rung-2-ink: var(--text-secondary);
 		--ledger-rung-2-tracking: 0.02em;
 
-		--ledger-rung-3-family: var(--font-mono);
+		--ledger-rung-3-family: var(--font-monospace);
 		--ledger-rung-3-size: var(--text-micro);
 		--ledger-rung-3-weight: 450;
 		--ledger-rung-3-ink: var(--text-secondary);
@@ -449,7 +449,7 @@
 			The fourth rung therefore separates by ink and weight alone, which
 			costs nothing and still reads.
 		*/
-		--ledger-rung-4-family: var(--font-mono);
+		--ledger-rung-4-family: var(--font-monospace);
 		--ledger-rung-4-size: var(--text-micro);
 		--ledger-rung-4-weight: 400;
 		--ledger-rung-4-ink: var(--text-muted);
@@ -495,7 +495,7 @@
 	   anything in the table, which is what makes the table read as its result. */
 	.ledger :global(.search-input) {
 		height: calc(var(--input-height) * 1.25);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		border-width: 2px;
 	}
@@ -585,7 +585,7 @@
 	.search-prompt {
 		display: flex;
 		align-items: center;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--ledger-display-prompt);
 		line-height: 1;
 		color: var(--accent);

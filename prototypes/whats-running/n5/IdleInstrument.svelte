@@ -108,7 +108,7 @@
 		align-items: baseline;
 		gap: var(--space-3);
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -139,7 +139,7 @@
 	}
 
 	.last-label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -150,7 +150,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 		letter-spacing: 0.06em;

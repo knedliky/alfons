@@ -77,7 +77,7 @@
 	}
 
 	.name {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: inherit;
 	}
@@ -89,7 +89,7 @@
 	}
 
 	.meta {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

@@ -80,7 +80,7 @@
 		display: inline-block;
 		width: fit-content;
 		text-transform: uppercase;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		white-space: nowrap;
 		/* Single source of the pill's colour. Named colours override it below;
 		   the `tint` prop overrides it inline. Every fill reads from it. */

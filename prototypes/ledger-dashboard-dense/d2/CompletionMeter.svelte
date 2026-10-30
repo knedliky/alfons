@@ -177,7 +177,7 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.4;
 	}

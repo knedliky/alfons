@@ -153,7 +153,7 @@
 	}
 
 	.chip-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		letter-spacing: 0.02em;
 		color: var(--text-primary);
@@ -161,7 +161,7 @@
 
 	.age {
 		margin-left: auto;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;
@@ -200,7 +200,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		color: var(--text-secondary);
 		letter-spacing: 0.04em;
@@ -249,7 +249,7 @@
 	}
 
 	.count dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
@@ -258,14 +258,14 @@
 
 	.count dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		color: var(--text-primary);
 	}
 
 	.meta {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

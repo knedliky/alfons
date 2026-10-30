@@ -171,7 +171,7 @@
 		color: var(--text-primary);
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		transition: all 0.15s ease;
 	}
 
@@ -227,7 +227,7 @@
 	.character-count {
 		margin-left: auto;
 		font-size: 0.75rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-muted);
 	}
 

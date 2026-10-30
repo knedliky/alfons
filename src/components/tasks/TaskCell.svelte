@@ -143,7 +143,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		line-height: 1.1;
 		letter-spacing: 0.02em;
@@ -152,7 +152,7 @@
 
 	.age {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;
@@ -167,7 +167,7 @@
 
 	.tag {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;

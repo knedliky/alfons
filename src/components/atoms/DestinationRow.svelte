@@ -145,7 +145,7 @@
 
 	.rank {
 		flex: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -161,7 +161,7 @@
 	}
 
 	.name {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-primary);
 		overflow: hidden;
@@ -176,7 +176,7 @@
 	}
 
 	.meta {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -185,7 +185,7 @@
 	   not go. Muted, because it is a promise about cost, not a destination. */
 	.cue {
 		flex: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;

@@ -160,7 +160,7 @@
 
 	.facts {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-secondary);
 	}
@@ -175,7 +175,7 @@
 	}
 
 	.tag {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		padding: var(--space-1) var(--space-2);
@@ -190,7 +190,7 @@
 
 	.phase-name {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -235,7 +235,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		color: var(--text-primary);
 		letter-spacing: 0.02em;
@@ -243,7 +243,7 @@
 
 	/* Not running, so no colour at all. The word alone. */
 	.state {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.08em;
 		text-transform: uppercase;

@@ -164,7 +164,7 @@
 	}
 
 	.motif-pg-summary {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.75rem;
 		letter-spacing: 0.03em;
 		color: var(--text-muted);
@@ -195,8 +195,8 @@
 		padding: 0 var(--space-2);
 		background: transparent;
 		border: 1px solid transparent;
-		border-radius: var(--radius);
-		font-family: var(--font-mono);
+		border-radius: var(--radius-base);
+		font-family: var(--font-monospace);
 		font-size: 0.8125rem;
 		font-weight: 600;
 		color: var(--text-secondary);
@@ -240,7 +240,7 @@
 		justify-content: center;
 		min-width: 2rem;
 		height: 2.25rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-muted);
 	}
 

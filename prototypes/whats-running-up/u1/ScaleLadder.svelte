@@ -177,7 +177,7 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-1);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -194,7 +194,7 @@
 	   here for a scroll container to eat. */
 	.name {
 		max-width: 100%;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		line-height: 1.2;
 		color: var(--text-primary);

@@ -190,7 +190,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.6875rem;
 		/* Pin the line-height so the label can't inherit the page's taller body
 		   line-height and push the button past the shared --filter-control-height

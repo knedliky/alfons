@@ -303,7 +303,7 @@
 		border-radius: var(--radius-pill);
 		background: var(--surface-hover-subtle);
 		color: var(--text-muted);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.625rem;
 		font-weight: 600;
 	}

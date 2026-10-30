@@ -17,7 +17,7 @@
 
 <Story name="Default — Full Chrome" asChild>
 	<div
-		style="height:420px;border:1px dashed var(--border-hairline);border-radius:var(--radius);overflow:hidden"
+		style="height:420px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base);overflow:hidden"
 	>
 		<PageLayout>
 			{#snippet header()}
@@ -43,7 +43,7 @@
 				</div>
 			{/snippet}
 			<div style="padding:3rem 2rem">
-				<div style="padding:2rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:2rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					<p style="margin:0;font-size:1.25rem;font-weight:600;color:var(--text-primary)">
 						Hero section placeholder
 					</p>
@@ -58,7 +58,7 @@
 
 <Story name="Header Only" asChild>
 	<div
-		style="height:300px;border:1px dashed var(--border-hairline);border-radius:var(--radius);overflow:hidden"
+		style="height:300px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base);overflow:hidden"
 	>
 		<PageLayout>
 			{#snippet header()}
@@ -69,7 +69,7 @@
 				</div>
 			{/snippet}
 			<div style="padding:2rem">
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					No footer — useful for landing pages with custom footers
 				</div>
 			</div>
@@ -79,11 +79,11 @@
 
 <Story name="No Chrome" asChild>
 	<div
-		style="height:250px;border:1px dashed var(--border-hairline);border-radius:var(--radius);overflow:hidden"
+		style="height:250px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base);overflow:hidden"
 	>
 		<PageLayout>
 			<div style="padding:2rem">
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					No header or footer — embedded or iframe scenario
 				</div>
 			</div>
@@ -93,7 +93,7 @@
 
 <Story name="Multiple Sections" asChild>
 	<div
-		style="height:500px;border:1px dashed var(--border-hairline);border-radius:var(--radius);overflow:auto"
+		style="height:500px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base);overflow:auto"
 	>
 		<PageLayout>
 			{#snippet header()}
@@ -111,13 +111,13 @@
 				</div>
 			{/snippet}
 			<div style="padding:2rem;display:flex;flex-direction:column;gap:1rem">
-				<div style="padding:2rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:2rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					Hero section
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					Feature section
 				</div>
-				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius)">
+				<div style="padding:1.5rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 					CTA section
 				</div>
 			</div>

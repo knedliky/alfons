@@ -139,7 +139,7 @@
 	   it is the aria-live announcement that says the deck moved. */
 	.readout {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 		white-space: nowrap;

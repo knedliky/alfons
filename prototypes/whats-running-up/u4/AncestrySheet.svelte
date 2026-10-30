@@ -482,7 +482,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -507,7 +507,7 @@
 
 	.slug {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -527,7 +527,7 @@
 
 	.level-heading {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.08em;
@@ -536,7 +536,7 @@
 
 	.project-name {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		color: var(--text-primary);
 	}
@@ -554,7 +554,7 @@
 	}
 
 	.fact dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
@@ -563,7 +563,7 @@
 
 	.fact dd {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		color: var(--text-primary);
 	}
@@ -579,7 +579,7 @@
 
 	.documented {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-secondary);
 	}
@@ -598,7 +598,7 @@
 
 	.phase-heading {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
@@ -629,7 +629,7 @@
 	}
 
 	.task-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		letter-spacing: 0.04em;
 		color: var(--text-secondary);
@@ -653,7 +653,7 @@
 	}
 
 	.here {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.06em;

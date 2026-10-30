@@ -177,7 +177,7 @@
 	}
 
 	.project {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-ui);
 		letter-spacing: 0.04em;
 		color: var(--text-primary);
@@ -185,7 +185,7 @@
 
 	.count {
 		margin-left: auto;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;
@@ -209,7 +209,7 @@
 	.none {
 		margin: 0;
 		padding-inline: var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

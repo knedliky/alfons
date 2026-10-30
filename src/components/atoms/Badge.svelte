@@ -55,7 +55,7 @@
 		display: inline-flex;
 		align-items: center;
 		border-radius: var(--radius-1);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-weight: var(--fw-regular);
 		letter-spacing: var(--ls-caps);
 		text-transform: uppercase;

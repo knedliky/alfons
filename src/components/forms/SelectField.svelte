@@ -303,7 +303,7 @@
 		color: var(--text-primary);
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		cursor: pointer;
 		text-align: left;
 		transition: all 0.15s ease;
@@ -391,7 +391,7 @@
 		overflow-y: auto;
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		box-shadow: var(--shadow-dropdown);
 	}
 

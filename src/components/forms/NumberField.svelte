@@ -183,7 +183,7 @@
 		display: flex;
 		align-items: stretch;
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		overflow: hidden;
 		transition: all 0.15s ease;
 	}
@@ -211,7 +211,7 @@
 		height: 44px;
 		padding: 0 var(--space-4);
 		font-size: 0.9375rem;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-primary);
 		background-color: var(--bg-primary);
 		border: none;

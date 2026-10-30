@@ -154,7 +154,7 @@
 
 <style>
 	.empty-state {
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		border: 1px solid;
 		padding: var(--space-8);
 		text-align: center;

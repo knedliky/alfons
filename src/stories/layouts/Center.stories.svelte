@@ -11,10 +11,10 @@
 
 <Story name="Default" asChild>
 	<div
-		style="width:400px;height:200px;border:1px dashed var(--border-hairline);border-radius:var(--radius)"
+		style="width:400px;height:200px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base)"
 	>
 		<Center>
-			<div style="padding:1rem 2rem;background:var(--accent-bg);border-radius:var(--radius)">
+			<div style="padding:1rem 2rem;background:var(--accent-bg);border-radius:var(--radius-base)">
 				Centred content
 			</div>
 		</Center>
@@ -23,7 +23,7 @@
 
 <Story name="Card in Centre" asChild>
 	<div
-		style="width:600px;height:300px;border:1px dashed var(--border-hairline);border-radius:var(--radius)"
+		style="width:600px;height:300px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base)"
 	>
 		<Center>
 			<div
@@ -40,7 +40,7 @@
 
 <Story name="Full Viewport Height" asChild>
 	<div
-		style="width:100%;height:400px;border:1px dashed var(--border-hairline);border-radius:var(--radius)"
+		style="width:100%;height:400px;border:1px dashed var(--border-hairline);border-radius:var(--radius-base)"
 	>
 		<Center>
 			<div

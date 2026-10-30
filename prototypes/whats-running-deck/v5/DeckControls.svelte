@@ -135,7 +135,7 @@
 	.readout {
 		margin: 0;
 		position: relative;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		white-space: nowrap;
 		/* Neutral. Status colour on this page means building or verifying, and a

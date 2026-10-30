@@ -103,7 +103,7 @@
 
 	.row__status {
 		grid-column: 1;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 		line-height: 1;
@@ -159,7 +159,7 @@
 	.row__origin {
 		margin: var(--space-1) 0 var(--space-3);
 		color: var(--text-muted);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 	}
 

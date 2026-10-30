@@ -238,7 +238,7 @@
 		align-items: baseline;
 		gap: var(--space-3);
 		margin: 0 0 var(--space-5);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 500;
 		letter-spacing: 0.1em;
@@ -258,7 +258,7 @@
 		align-items: baseline;
 		gap: var(--space-3);
 		margin: var(--space-6) 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: 0.1em;
@@ -308,7 +308,7 @@
 	.harness p {
 		width: 100%;
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

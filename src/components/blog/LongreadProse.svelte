@@ -145,7 +145,7 @@
 	/* Captions are mono microtype — the one place grey text belongs (mirrors
 	   LongreadFigure's caption). */
 	.longread-prose :global(figcaption) {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 		text-align: center;
@@ -172,7 +172,7 @@
 
 	/* Inline code is mono on a subtle card wash. */
 	.longread-prose :global(code) {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: 0.875em;
 		color: var(--text-primary);
 		background: var(--card-bg);

@@ -45,7 +45,7 @@
 		position: absolute;
 		z-index: var(--z-toast);
 		padding: var(--space-2) var(--space-3);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		font-size: 0.75rem;
 		font-weight: 500;
 		white-space: nowrap;

@@ -64,7 +64,7 @@
 	}
 
 	.label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: 0.06em;

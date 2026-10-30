@@ -343,7 +343,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		gap: var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.18em;
@@ -433,7 +433,7 @@
 	}
 
 	.search-label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -461,7 +461,7 @@
 	}
 
 	.filters-label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -476,7 +476,7 @@
 
 	.result-count {
 		margin: var(--space-5) 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -516,7 +516,7 @@
 	}
 
 	.handoff-mark {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-muted);
 	}
 
@@ -587,7 +587,7 @@
 	}
 
 	.feed-time {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -600,7 +600,7 @@
 	}
 
 	.feed-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-primary);
 	}
@@ -612,7 +612,7 @@
 	}
 
 	.feed-arrow {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

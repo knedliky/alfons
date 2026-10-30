@@ -581,7 +581,7 @@
 		gap: var(--space-4);
 		padding: var(--space-2) var(--page-padding-x);
 		border-top: 2px solid var(--border-default);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -629,7 +629,7 @@
 	}
 
 	.bar :global(.step) {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.06em;
 	}
@@ -692,7 +692,7 @@
 		   than the cell, and it scrolls out from under a sticky cell. */
 		border-collapse: separate;
 		border-spacing: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-variant-numeric: tabular-nums;
 		font-size: var(--text-micro);
 	}
@@ -1046,7 +1046,7 @@
 
 	.detail-block h3 {
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 700;
 		letter-spacing: 0.1em;

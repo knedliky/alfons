@@ -36,7 +36,7 @@
 		min-width: var(--space-5);
 		height: var(--space-5);
 		padding-inline: var(--space-1);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		line-height: 1;

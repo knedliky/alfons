@@ -99,7 +99,7 @@
 	}
 
 	.seal {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -115,13 +115,13 @@
 	}
 
 	.task-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-primary);
 	}
 
 	.belongs {
 		margin: var(--space-1) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -134,7 +134,7 @@
 
 	.frontier-label {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.04em;
 		color: var(--text-muted);

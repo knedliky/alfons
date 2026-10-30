@@ -116,7 +116,7 @@
 		color: var(--text-secondary);
 		background: transparent;
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		cursor: pointer;
 		transition: all var(--transition-fast);
 	}
@@ -134,7 +134,7 @@
 		color: white; /* text on filled accent button — no inverse token */
 		background: var(--colour-error);
 		border: none;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		cursor: pointer;
 		transition: all var(--transition-fast);
 	}

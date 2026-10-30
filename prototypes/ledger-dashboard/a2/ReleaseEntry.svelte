@@ -162,7 +162,7 @@
 	}
 
 	.slug {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.14em;
@@ -205,7 +205,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -244,7 +244,7 @@
 
 	.phase-name {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -264,7 +264,7 @@
 	}
 
 	.tally-count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -284,7 +284,7 @@
 	}
 
 	.dependencies-label {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.1em;
@@ -308,7 +308,7 @@
 	}
 
 	.dependency-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 	}

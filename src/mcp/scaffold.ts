@@ -132,7 +132,7 @@ export function scaffoldComponent(manifest: Manifest, request: ScaffoldRequest):
 	const border = pickToken(manifest, surface, ['--admin-border', '--card-border']);
 	const text = pickToken(manifest, surface, ['--admin-text', '--text-primary']);
 	const padding = pickToken(manifest, surface, ['--space-5', '--space-4']);
-	const radius = pickToken(manifest, surface, ['--radius-surface', '--radius']);
+	const radius = pickToken(manifest, surface, ['--radius-surface', '--radius-base']);
 
 	const tokensUsed = [background, border, text, padding, radius].filter((token): token is string =>
 		Boolean(token)

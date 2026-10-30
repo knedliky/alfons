@@ -131,7 +131,7 @@
 	/* The destination slug takes every pixel the icon leaves; the kind lives in
 	   the arrow and the aria-label. */
 	.dest {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		min-width: 0;
 		overflow: hidden;
@@ -165,7 +165,7 @@
 	}
 
 	.count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		white-space: nowrap;

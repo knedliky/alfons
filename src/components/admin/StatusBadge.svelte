@@ -64,7 +64,7 @@
 	.status-badge {
 		display: inline-flex;
 		align-items: center;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		font-weight: 500;
 	}
 

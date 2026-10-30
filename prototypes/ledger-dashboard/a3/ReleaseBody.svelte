@@ -132,7 +132,7 @@
 		align-items: center;
 		gap: var(--space-2);
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -164,7 +164,7 @@
 		align-items: center;
 		gap: var(--space-2);
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -194,7 +194,7 @@
 	}
 
 	.phase-number {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		text-transform: uppercase;
 		letter-spacing: 0.14em;
@@ -202,7 +202,7 @@
 	}
 
 	.phase-count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		font-variant-numeric: tabular-nums;
@@ -239,7 +239,7 @@
 		background: transparent;
 		border: 0;
 		padding: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		text-decoration: underline;

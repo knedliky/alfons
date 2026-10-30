@@ -232,7 +232,7 @@
 		color: var(--text-primary);
 		background-color: var(--bg-primary);
 		border: 1px solid var(--border-hairline);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		transition: all 0.15s ease;
 		color-scheme: dark;
 	}
@@ -297,7 +297,7 @@
 	.display-value {
 		font-size: 0.8125rem;
 		color: var(--text-secondary);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 	}
 
 	.error-message {

@@ -1,32 +1,32 @@
 {
 	"note": "Advisory baseline for D-159. Counts only — which of these are false positives is a reading, not a number, and is deliberately not decided here. A rule is a candidate for promotion to blocking once its findings have been read and its false-positive rate is known. The per-repository rule counts under `repositories` are also a ratchet (AL-024): `bun run rules:ratchet` fails when one rises and lowers it when one falls. The totals under `rules` are from the last full run.",
-	"componentsReviewed": 270,
+	"componentsReviewed": 275,
 	"unparseable": 0,
 	"repositories": {
 		"alfons": {
-			"components": 94,
-			"findings": 445,
+			"components": 96,
+			"findings": 365,
 			"rules": {
 				"raw-value": 276,
 				"admin-token-on-public": 0,
 				"unknown-token": 28,
 				"retired-token": 0,
-				"tailwind-shadow": 80,
+				"tailwind-shadow": 0,
 				"raw-element": 61,
 				"layout-nesting": 0,
 				"svelte5-runes": 0
 			}
 		},
 		"website": {
-			"components": 176,
-			"findings": 724,
+			"components": 179,
+			"findings": 699,
 			"rules": {
-				"raw-value": 493,
+				"raw-value": 483,
 				"admin-token-on-public": 0,
 				"unknown-token": 56,
-				"retired-token": 11,
-				"tailwind-shadow": 92,
-				"raw-element": 72,
+				"retired-token": 89,
+				"tailwind-shadow": 0,
+				"raw-element": 71,
 				"layout-nesting": 0,
 				"svelte5-runes": 0
 			}
@@ -49,8 +49,8 @@
 	"rules": [
 		{
 			"rule": "raw-value",
-			"count": 769,
-			"files": 118,
+			"count": 759,
+			"files": 116,
 			"samples": [
 				{
 					"file": "alfons/src/components/tables/DataTable.svelte",
@@ -60,85 +60,19 @@
 				{
 					"file": "alfons/src/components/tables/DataTable.svelte",
 					"line": 324,
-					"message": "32px is exactly --space-6. Use var(--space-6)."
+					"message": "32px is exactly --sp-8. Use var(--sp-8)."
 				},
 				{
 					"file": "alfons/src/components/tables/DataTable.svelte",
 					"line": 325,
-					"message": "32px is exactly --space-6. Use var(--space-6)."
-				}
-			]
-		},
-		{
-			"rule": "unknown-token",
-			"count": 318,
-			"files": 44,
-			"samples": [
-				{
-					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 347,
-					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
-				},
-				{
-					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 373,
-					"message": "--select-bg is not a design token and is not defined in this component. It will resolve to nothing."
-				},
-				{
-					"file": "alfons/src/components/atoms/Select.svelte",
-					"line": 427,
-					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
-				}
-			]
-		},
-		{
-			"rule": "retired-token",
-			"count": 232,
-			"files": 44,
-			"samples": [
-				{
-					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
-					"line": 118,
-					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
-				},
-				{
-					"file": "website/src/lib/ui/components/sections/HeroSection.svelte",
-					"line": 218,
-					"message": "--section-padding-x is retired: A second name for --page-padding-x with no reader in Alfons; a theme setting one would leave the other behind (AL-026). Use --page-padding-x. (D-238)"
-				},
-				{
-					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
-					"line": 277,
-					"message": "--led-off is retired: Authored during the Meccano retune against a component that does not exist. The same speculative-token argument D-165 made, applied to that work. (D-181)"
-				}
-			]
-		},
-		{
-			"rule": "tailwind-shadow",
-			"count": 172,
-			"files": 86,
-			"samples": [
-				{
-					"file": "alfons/src/components/tables/Pagination.svelte",
-					"line": 167,
-					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
-				},
-				{
-					"file": "alfons/src/components/tables/Pagination.svelte",
-					"line": 198,
-					"message": "--radius is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
-				},
-				{
-					"file": "alfons/src/components/tables/Pagination.svelte",
-					"line": 199,
-					"message": "--font-mono is also defined by Tailwind v4's default @theme. Which one applies depends on import order, so this may not resolve to the Alfons value."
+					"message": "32px is exactly --sp-8. Use var(--sp-8)."
 				}
 			]
 		},
 		{
 			"rule": "raw-element",
-			"count": 133,
-			"files": 79,
+			"count": 132,
+			"files": 78,
 			"samples": [
 				{
 					"file": "alfons/src/components/disclosure/Accordion.svelte",
@@ -158,7 +92,57 @@
 			]
 		},
 		{
+			"rule": "retired-token",
+			"count": 89,
+			"files": 40,
+			"samples": [
+				{
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 307,
+					"message": "--font-mono is retired: Tailwind v4's default @theme declares --font-mono, so which stack a consumer got depended on stylesheet order. Renamed with the same value (AL-035). Use --font-monospace. (D-247)"
+				},
+				{
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 379,
+					"message": "--font-mono is retired: Tailwind v4's default @theme declares --font-mono, so which stack a consumer got depended on stylesheet order. Renamed with the same value (AL-035). Use --font-monospace. (D-247)"
+				},
+				{
+					"file": "website/src/lib/ui/components/editorial/EditorialDocument.svelte",
+					"line": 384,
+					"message": "--font-mono is retired: Tailwind v4's default @theme declares --font-mono, so which stack a consumer got depended on stylesheet order. Renamed with the same value (AL-035). Use --font-monospace. (D-247)"
+				}
+			]
+		},
+		{
+			"rule": "unknown-token",
+			"count": 84,
+			"files": 24,
+			"samples": [
+				{
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 348,
+					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
+				},
+				{
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 374,
+					"message": "--select-bg is not a design token and is not defined in this component. It will resolve to nothing."
+				},
+				{
+					"file": "alfons/src/components/atoms/Select.svelte",
+					"line": 428,
+					"message": "--select-text is not a design token and is not defined in this component. It will resolve to nothing."
+				}
+			]
+		},
+		{
 			"rule": "admin-token-on-public",
+			"count": 0,
+			"files": 0,
+			"samples": []
+		},
+		{
+			"rule": "tailwind-shadow",
 			"count": 0,
 			"files": 0,
 			"samples": []
@@ -176,5 +160,5 @@
 			"samples": []
 		}
 	],
-	"libraryFindings": 9
+	"libraryFindings": 7
 }

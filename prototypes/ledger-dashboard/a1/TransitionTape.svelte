@@ -96,7 +96,7 @@
 		justify-content: space-between;
 		gap: var(--space-3);
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 500;
 		letter-spacing: var(--chart-axis-letter-spacing);
@@ -158,7 +158,7 @@
 	}
 
 	.at {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-variant-numeric: tabular-nums;
 		color: var(--text-muted);
@@ -181,7 +181,7 @@
 	}
 
 	.arrow {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}

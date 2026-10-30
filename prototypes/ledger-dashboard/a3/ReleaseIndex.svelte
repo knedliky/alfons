@@ -141,7 +141,7 @@
 
 	.search-hint {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -154,7 +154,7 @@
 
 	.index-heading {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		text-transform: uppercase;
 		letter-spacing: 0.12em;
@@ -169,7 +169,7 @@
 
 	.project-name {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.08em;
 		color: var(--text-secondary);
@@ -229,7 +229,7 @@
 	}
 
 	.release-slug {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-primary);
 	}
@@ -262,7 +262,7 @@
 	}
 
 	.release-count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 		font-variant-numeric: tabular-nums;

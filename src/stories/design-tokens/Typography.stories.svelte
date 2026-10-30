@@ -12,7 +12,7 @@
 	<div class="type-list">
 		<TypeSample tokenName="--font-body" label="Body (Moderat)" />
 		<TypeSample tokenName="--font-display" label="Display (Moderat)" />
-		<TypeSample tokenName="--font-mono" label="Mono (GT America Mono)" />
+		<TypeSample tokenName="--font-monospace" label="Mono (GT America Mono)" />
 		<TypeSample tokenName="--font-drop-cap" label="Drop cap (Moderat Black)" />
 		<TypeSample tokenName="--font-wordmark" label="Wordmark (Moderat Bold)" />
 	</div>

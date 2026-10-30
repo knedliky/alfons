@@ -543,7 +543,7 @@
 
 	.ledger :global(.search-input) {
 		height: calc(var(--input-height) * 1.15);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		border-width: 2px;
 	}
@@ -556,7 +556,7 @@
 
 	.kicker {
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.18em;
@@ -597,7 +597,7 @@
 	}
 
 	.figure-cell dt {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.1em;
@@ -636,7 +636,7 @@
 
 	.corpus-meter-head {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.1em;
@@ -659,7 +659,7 @@
 	.ledger :global(.search-label) {
 		display: block;
 		margin-bottom: var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;
@@ -676,7 +676,7 @@
 	.search-prompt {
 		display: flex;
 		align-items: center;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: calc(var(--text-lead) * 1.4);
 		line-height: 1;
 		color: var(--accent);
@@ -684,7 +684,7 @@
 
 	.search-status {
 		margin: var(--space-3) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -703,7 +703,7 @@
 	.folds-head,
 	.feed-head {
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 600;
 		letter-spacing: 0.14em;
@@ -719,7 +719,7 @@
 
 	.folds-note {
 		margin: var(--space-3) 0 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-muted);
 	}
@@ -730,7 +730,7 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 	}
 
@@ -749,7 +749,7 @@
 	}
 
 	.task-id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-weight: 600;
 		color: var(--text-secondary);
 	}
@@ -757,7 +757,7 @@
 	.no-rows {
 		margin: 0;
 		padding: var(--space-6) var(--page-padding-x);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
 	}
@@ -774,7 +774,7 @@
 
 	.legend-block h2 {
 		margin: 0 0 var(--space-3);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 700;
 		letter-spacing: 0.14em;
@@ -801,14 +801,14 @@
 	}
 
 	.legend-count {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--text-secondary);
 	}
 
 	.legend-keys {
 		margin: 0;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 	}
 

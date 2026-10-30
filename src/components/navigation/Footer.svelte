@@ -225,7 +225,7 @@
 
 	.motif-footer-heading {
 		margin: 0 0 var(--space-1);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-caption);
 		font-weight: 600;
 		text-transform: uppercase;
@@ -305,7 +305,7 @@
 		color: var(--text-on-accent, oklch(1 0 0));
 		background: var(--accent);
 		border: none;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 		cursor: pointer;
 		transition: background-color var(--transition-normal);
 	}

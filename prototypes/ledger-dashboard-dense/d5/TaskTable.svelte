@@ -411,7 +411,7 @@
 	table {
 		width: 100%;
 		border-collapse: collapse;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-variant-numeric: tabular-nums;
 		font-size: var(--text-micro);
 	}
@@ -683,7 +683,7 @@
 
 	.detail-block h3 {
 		margin: 0 0 var(--space-2);
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		font-weight: 700;
 		letter-spacing: 0.1em;
@@ -750,7 +750,7 @@
 	}
 
 	.history-outcome {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		color: var(--text-secondary);
 	}
 

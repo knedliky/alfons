@@ -107,6 +107,15 @@ are not written down anywhere else live here.
   changed under D-179 is only the authoring format of the base hues.
 - **Dark is the sole colour mode.** There is no light theme and no runtime toggle;
   consumers pin `data-colour-mode="dark"` on `<html>` statically.
+- **Every Alfons task's verify command ends with `bun run rules:ratchet`.** The
+  pre-push hook runs the ratchet over Alfons, the website and the iOS app, so a
+  seal whose verify command skips it can pass while the push fails. AL-034 did
+  exactly that: three new `--font-mono` reads sealed clean and then blocked the
+  push of `main` (AL-035).
+- **Never name a token after one Tailwind v4's default theme declares** (D-247).
+  The manifest's `tailwindShadowed` list, read from the installed
+  `tailwindcss/theme.css`, must stay empty; `bun run test:rules` fails if it is
+  not.
 
 ## Source of truth
 

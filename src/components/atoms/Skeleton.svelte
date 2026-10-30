@@ -129,7 +129,7 @@
 	/* Rectangle variant */
 	.skeleton-rectangle {
 		display: block;
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 	}
 
 	/* Circle variant */
@@ -148,7 +148,7 @@
 	.skeleton-text-line {
 		display: block;
 		height: var(--text-body);
-		border-radius: var(--radius);
+		border-radius: var(--radius-base);
 	}
 
 	/* Pause animation when user prefers reduced motion */

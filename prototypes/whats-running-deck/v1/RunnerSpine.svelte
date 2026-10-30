@@ -162,7 +162,7 @@
 
 	.id {
 		max-width: 100%;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		letter-spacing: 0.02em;
 		color: var(--text-secondary);
@@ -173,7 +173,7 @@
 
 	.state {
 		max-width: 100%;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		color: var(--status-colour);
 		overflow: clip;

@@ -176,7 +176,7 @@
 	}
 
 	.id {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-lead);
 		line-height: 1.1;
 		letter-spacing: 0.02em;
@@ -186,7 +186,7 @@
 	/* `hidden` rather than `clip` only because text-overflow needs it. There is no
 	   horizontal swipe at grid scale, so no gesture is at risk here. */
 	.context {
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -209,7 +209,7 @@
 
 	.age {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.2;
 		color: var(--text-muted);
@@ -225,7 +225,7 @@
 
 	.tag {
 		align-self: end;
-		font-family: var(--font-mono);
+		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
 		line-height: 1.2;
 		letter-spacing: 0.06em;
