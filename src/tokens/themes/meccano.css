@@ -413,6 +413,16 @@
 			0 0 4px 1px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 82%),
 			0 0 11px 3px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 92%),
 			0 0 20px 7px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 97%);
+		/* The lamp's recessed lens: a sheen catch on the upper lip, shade
+		   pooled in the lower one. Unlit, a dark bezel ring seats it in the
+		   panel; lit, the brighter catch reads as glass over a lit filament,
+		   and the glow takes the bezel's place. Combine the lit lens with
+		   --shadow-rail-lamp in one box-shadow (AL-034). */
+		--shadow-lamp-lens:
+			inset 0 1px 1px rgba(var(--sheen-rgb), 0.14), inset 0 -1px 2px rgba(var(--shade-rgb), 0.45),
+			0 0 0 1px rgba(var(--shade-rgb), 0.35);
+		--shadow-lamp-lens-lit:
+			inset 0 1px 1px rgba(var(--sheen-rgb), 0.4), inset 0 -1px 2px rgba(var(--shade-rgb), 0.45);
 		--groove-rule: rgba(var(--shade-rgb), 0.82);
 		--shadow-groove:
 			inset 0 1px 1px rgba(var(--shade-rgb), 0.52), 0 1px 0 rgba(var(--sheen-rgb), 0.075),

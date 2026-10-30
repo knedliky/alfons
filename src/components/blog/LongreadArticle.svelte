@@ -11,14 +11,27 @@
 	/**
 	 * LongreadArticle — orchestrator for the editorial longread template.
 	 *
-	 * Owns the scroll-position model for its LongreadSection children: one
-	 * IntersectionObserver tracks which section holds focus, driving the
-	 * left-edge progress rail and per-section dimming. The rail is a vertical
-	 * run of brand squares — hover one for its section title, click to scroll
-	 * there. Sections register themselves through context; the article only
-	 * needs the section list for the rail labels. Template selected via
-	 * prototype-explorer rounds 1-3 (Centre Folio → Folio Motion → Motion
-	 * Glow).
+	 * Owns the reading-position model for its LongreadSection and
+	 * LongreadProseSection children: one scroll measurement finds the section
+	 * under the reading line and how far through the sections the reader is,
+	 * driving the left-edge progress rail and per-section dimming. The rail is
+	 * a vertical run of brand squares — hover one for its section title,
+	 * click to scroll there. Sections register themselves through context;
+	 * the article only needs the section list for the rail labels. Template
+	 * selected via prototype-explorer rounds 1-3 (Centre Folio → Folio Motion
+	 * → Motion Glow).
+	 *
+	 * Two presentations. `column` is the plain centred column with the rail
+	 * fixed beside it. `sheet` is the raised reading sheet chosen in the
+	 * article-page round (AL-034, approach a6): from 80rem up the article is a
+	 * panel on the ground, and the rail's stops are console lamps pinned to
+	 * the sheet's left edge, centred until the sheet's foot reaches them and
+	 * then travelling with it. Below 80rem the sheet relaxes to the plain
+	 * column and the rail hides: pair it with ReadingFloor and SectionList
+	 * there, which read the bound activeIndex and progress.
+	 *
+	 * The document is the scroll container. The measurement listens to the
+	 * window, so an article inside its own scrolling element reports nothing.
 	 */
 	import type { Snippet } from 'svelte';
 	import { setLongreadContext } from './context';
@@ -27,51 +40,132 @@
 		sections: LongreadSectionInfo[];
 		/** Hide the progress rail (single-section or plain prose pieces). */
 		showProgress?: boolean;
+		/** `column` (default) or the raised `sheet` with the lamp rail. */
+		presentation?: 'column' | 'sheet';
+		/** Index of the section under the reading line, or -1 while the
+		    reader is still above the first section. Bind it to drive a
+		    contents control outside the article. */
+		activeIndex?: number;
+		/** How far the reading line is through the sections, 0 to 1. Reaches
+		    1 at the last section's foot or at the end of the document. */
+		progress?: number;
 		children: Snippet;
 	}
 
-	let { sections, showProgress = true, children }: Props = $props();
+	let {
+		sections,
+		showProgress = true,
+		presentation = 'column',
+		activeIndex = $bindable(-1),
+		// eslint-disable-next-line no-useless-assignment -- Written for the binding parent; the article itself never reads it.
+		progress = $bindable(0),
+		children
+	}: Props = $props();
 
 	/** Whether the rail renders — also gates the narrow-viewport gutter the
-	    article reserves so prose never slides underneath it. */
+	    column reserves so prose never slides underneath it. */
 	const showRail = $derived(showProgress && sections.length > 1);
+	const isSheet = $derived(presentation === 'sheet');
 
-	let activeIndex = $state(0);
+	/** The rail and dimming light the first section at the opening, as the
+	    rail always has; only the bound activeIndex reports the -1. */
+	const focusIndex = $derived(Math.max(0, activeIndex));
+
+	let articleElement = $state<HTMLElement>();
+	let railElement = $state<HTMLElement>();
+	let railBoundaryOffset = $state(0);
+	let railSheetLeft = $state<number>();
 	const sectionElements: HTMLElement[] = [];
-	let observer: IntersectionObserver | null = null;
+	let measureFrame = 0;
+
+	/** A section becomes current once its top crosses this share of the
+	    viewport: the upper-middle reading eye line, not the viewport edge. */
+	const focusLineRatio = 0.4;
+	/** Progress follows a reading line at mid-screen, so the opening reads
+	    as 0 and the last paragraph as done. */
+	const readingLineRatio = 0.5;
 
 	function register(element: HTMLElement): number {
 		const index = sectionElements.length;
 		sectionElements.push(element);
-		observer?.observe(element);
+		scheduleMeasure();
 		return index;
 	}
 
 	setLongreadContext({
 		register,
-		isActive: (index) => activeIndex === index
+		isActive: (index) => focusIndex === index
 	});
 
+	function scheduleMeasure(): void {
+		if (typeof window === 'undefined' || measureFrame) return;
+		measureFrame = requestAnimationFrame(measure);
+	}
+
+	function measure(): void {
+		measureFrame = 0;
+		if (!articleElement) return;
+		const viewportHeight = window.innerHeight;
+
+		const focusLine = viewportHeight * focusLineRatio;
+		let current = -1;
+		sectionElements.forEach((element, index) => {
+			if (element.getBoundingClientRect().top < focusLine) current = index;
+		});
+		activeIndex = current;
+
+		const articleBounds = articleElement.getBoundingClientRect();
+		const firstSection = sectionElements[0]?.getBoundingClientRect();
+		const lastSection = sectionElements.at(-1)?.getBoundingClientRect();
+		const readingStart = firstSection?.top ?? articleBounds.top;
+		const readingEnd = lastSection?.bottom ?? articleBounds.bottom;
+		const span = readingEnd - readingStart;
+		const readingLine = viewportHeight * readingLineRatio;
+		const atDocumentEnd =
+			window.scrollY + viewportHeight >= document.documentElement.scrollHeight - 2;
+		progress = atDocumentEnd
+			? 1
+			: span > 0
+				? Math.min(1, Math.max(0, (readingLine - readingStart) / span))
+				: 0;
+
+		if (isSheet && railElement) measureRailBoundary(articleBounds, railElement);
+	}
+
+	/**
+	 * Keep the sheet's rail centred until the sheet's foot reaches it, then
+	 * move it with the sheet, so it never hangs over what follows the
+	 * article. The inset comes from the rail's resting top, so the clearance
+	 * at the head and at the foot match. Ported from Atlas's
+	 * EditorialDocument, where the page did this from outside.
+	 */
+	function measureRailBoundary(sheetBounds: DOMRect, rail: HTMLElement): void {
+		const railHeight = rail.offsetHeight;
+		if (railHeight === 0) return;
+		const restingRailTop = (window.innerHeight - railHeight) / 2;
+		const sheetDocumentTop = sheetBounds.top + window.scrollY;
+		const sheetInset = Math.max(0, restingRailTop - sheetDocumentTop);
+		const restingRailBottom = restingRailTop + railHeight;
+		railBoundaryOffset = Math.min(0, sheetBounds.bottom - sheetInset - restingRailBottom);
+		railSheetLeft = sheetBounds.left;
+	}
+
 	$effect(() => {
-		// The focus band sits in the upper-middle of the viewport, matching the
-		// reading eye line rather than the viewport edges.
-		observer = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						const index = sectionElements.indexOf(entry.target as HTMLElement);
-						if (index >= 0) {
-							activeIndex = index;
-						}
-					}
-				}
-			},
-			{ rootMargin: '-30% 0px -50% 0px' }
-		);
-		for (const element of sectionElements) observer.observe(element);
+		const article = articleElement;
+		if (!article) return;
+		// Images loading and fonts swapping move every section, so a resize
+		// of the article re-measures as a scroll does.
+		const resizeObserver = new ResizeObserver(scheduleMeasure);
+		resizeObserver.observe(article);
+		window.addEventListener('scroll', scheduleMeasure, { passive: true });
+		window.addEventListener('resize', scheduleMeasure);
+		scheduleMeasure();
 		return () => {
-			observer?.disconnect();
-			observer = null;
+			resizeObserver.disconnect();
+			window.removeEventListener('scroll', scheduleMeasure);
+			window.removeEventListener('resize', scheduleMeasure);
+			if (measureFrame) cancelAnimationFrame(measureFrame);
+			measureFrame = 0;
 		};
 	});
 
@@ -146,23 +240,30 @@
 	}
 </script>
 
-<article class="longread-article" class:longread-article-railed={showRail}>
+<article
+	bind:this={articleElement}
+	class="longread-article"
+	class:longread-article-railed={showRail && !isSheet}
+	class:longread-article-sheet={isSheet}
+	style:--rail-boundary-offset="{railBoundaryOffset}px"
+	style:--rail-sheet-left={railSheetLeft === undefined ? undefined : `${railSheetLeft}px`}
+>
 	{#if showRail}
 		<!-- Vertical progress rail, fixed to the left edge at mid-viewport.
 		     Idle state shows only the squares; hovering (or keyboard-focusing)
 		     a square flies its section title out to the right; clicking scrolls
 		     to that section. -->
-		<nav class="progress-rail" aria-label="Section progress">
+		<nav bind:this={railElement} class="progress-rail" aria-label="Section progress">
 			{#each sections as section, i (section.kicker)}
 				<button
 					type="button"
 					class="rail-item"
-					class:rail-item-active={activeIndex === i}
+					class:rail-item-active={focusIndex === i}
 					style:--dot-colour={squareColour(i)}
 					style:--label-steps={section.kicker.length + labelPaddingSteps}
 					style:--label-ease={typewriterEasing(section.kicker.length + labelPaddingSteps)}
 					aria-label={section.kicker}
-					aria-current={activeIndex === i ? 'true' : undefined}
+					aria-current={focusIndex === i ? 'true' : undefined}
 					onclick={() => scrollToSection(i)}
 				>
 					<span class="rail-square"></span>
@@ -425,12 +526,96 @@
 		clip-path: inset(-24px 0% -24px 0);
 	}
 
+	/* === Sheet presentation (AL-034) ================================
+	   Below 80rem the sheet is the plain column and the rail hides: phones
+	   read the same position from ReadingFloor, whose breakpoint matches
+	   this one (media queries cannot read a custom property, so the 80rem
+	   is stated in both). */
+	.longread-article-sheet .progress-rail {
+		display: none;
+	}
+
+	@media (min-width: 80rem) {
+		/* Today's raised reading sheet. Its 5rem side padding is the ground
+		   the rail stands on, so the rail and the measure never share a box.
+		   The 51.5rem width and 5rem padding carry over from Atlas's sheet;
+		   no measure or sheet-padding tokens exist yet. */
+		.longread-article-sheet {
+			width: 100%;
+			max-width: 51.5rem;
+			margin-inline: auto;
+			padding: var(--space-9) 5rem var(--space-10);
+			background: var(--surface-page);
+			border: 1px solid var(--border-hairline);
+			border-radius: var(--radius-2);
+			box-shadow: var(--shadow-2);
+		}
+
+		/* Simon's rail: pinned 2px inside the sheet's left edge so it reads
+		   as floating above it, with 20px rows and 8px gaps on the same 28px
+		   rhythm as the perforation motif. The sheet's left edge is measured
+		   (--rail-sheet-left); before the first measurement the fallback
+		   assumes a sheet centred in the viewport, which is where it sits. */
+		.longread-article-sheet .progress-rail {
+			--rail-sheet-inset: 2px;
+			--rail-type-step: 18ms;
+			display: flex;
+			left: calc(
+				var(--rail-sheet-left, max(var(--page-padding-x), calc(50% - 25.75rem))) +
+					var(--rail-sheet-inset)
+			);
+			gap: var(--space-2);
+			transform: translateY(calc(-50% + var(--rail-boundary-offset, 0px)));
+		}
+
+		.longread-article-sheet .progress-rail::before,
+		.longread-article-sheet .rail-label {
+			background: var(--bench-bg);
+		}
+
+		/* Stops keep their compact square and take the console lamp's
+		   recessed lens: unlit glass until hovered, focused or current. */
+		.longread-article-sheet .rail-square {
+			background: var(--led-off);
+			opacity: 1;
+			box-shadow: var(--shadow-lamp-lens);
+			transition:
+				background var(--transition-fast),
+				box-shadow var(--transition-fast);
+		}
+
+		/* A lit lamp is its own section colour, brightest where the lens
+		   catches the light, with the rail-lamp glow around it. The glow is
+		   the accent on every lamp: --shadow-rail-lamp is declared on :root,
+		   so its var(--lamp-colour) resolves there and setting --lamp-colour
+		   here cannot reach it. That matches the a6 rail and Atlas today. */
+		.longread-article-sheet .rail-item:hover .rail-square,
+		.longread-article-sheet .rail-item:focus-visible .rail-square,
+		.longread-article-sheet .rail-item.rail-item-active .rail-square {
+			--lit-lamp-colour: var(--dot-colour, var(--accent));
+
+			background: radial-gradient(
+				circle at 38% 30%,
+				color-mix(in oklab, var(--lit-lamp-colour), white 50%),
+				var(--lit-lamp-colour) 72%
+			);
+			opacity: 1;
+			transform: none;
+			box-shadow: var(--shadow-lamp-lens-lit), var(--shadow-rail-lamp);
+		}
+
+		.longread-article-sheet .rail-label {
+			font: var(--fw-regular) var(--fs-sm) / 1.2 var(--font-mono);
+		}
+	}
+
 	/* Reduced motion — the flyout appears without its typewriter, the
 	   square's hover growth snaps instead of animating, and the click
 	   scroll falls back to an instant jump in scrollToSection. */
 	@media (prefers-reduced-motion: reduce) {
 		.rail-label,
-		.rail-square {
+		.rail-square,
+		.longread-article-sheet .rail-square {
 			transition: none;
 		}
 	}

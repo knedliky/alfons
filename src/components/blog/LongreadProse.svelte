@@ -112,17 +112,29 @@
 		color: var(--accent);
 	}
 
-	/* Article images bleed to the full measure; captions are mono microtype —
-	   the one place grey text belongs (mirrors LongreadFigure's caption). */
+	/* Article images arrive from 192px to 2160px wide. Each keeps its own
+	   size up to the measure: never stretched past its natural width, never
+	   taller than the screen, centred on the column. Stretching every image
+	   to the measure (width: 100%) is what turned a 192x256 logo into an
+	   883px block (AL-034). With both dimensions auto, the two max-* caps
+	   scale a replaced element proportionally, so a tall image narrows
+	   rather than distorts. */
 	.longread-prose :global(img) {
 		display: block;
-		width: 100%;
+		width: auto;
+		max-width: 100%;
 		height: auto;
+		max-height: 80dvh;
 		border-radius: var(--radius-surface);
-		margin: var(--space-6) 0;
+		margin: var(--space-6) auto;
 	}
 
+	/* A figure centres its image and keeps the caption directly under it,
+	   whatever the image's width. */
 	.longread-prose :global(figure) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		margin: var(--space-6) 0;
 	}
 
@@ -130,10 +142,13 @@
 		margin: 0;
 	}
 
+	/* Captions are mono microtype — the one place grey text belongs (mirrors
+	   LongreadFigure's caption). */
 	.longread-prose :global(figcaption) {
 		font-family: var(--font-mono);
 		font-size: var(--text-caption);
 		color: var(--text-muted);
+		text-align: center;
 		margin-top: var(--space-3);
 	}
 

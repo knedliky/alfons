@@ -321,7 +321,9 @@
         "--z-sticky"
       ],
       "composes": [],
-      "importedBy": [],
+      "importedBy": [
+        "ReadingFloor"
+      ],
       "exported": true,
       "summary": "navigational breadcrumb-style link with a left-pointing arrow.",
       "usage": "  `<BackLink href=\"/blog\" label=\"Back to Blog\" />`\n  `<BackLink href=\"/blog\" label=\"Back to Blog\" fixed />`",
@@ -731,6 +733,7 @@
         "ErrorPage",
         "PeekSheet",
         "PushedScreen",
+        "ReadingFloor",
         "TaskDeck"
       ],
       "exported": true,
@@ -2304,6 +2307,7 @@
         "DestinationRow",
         "PeekSheet",
         "PushedScreen",
+        "ReadingFloor",
         "TaskDeck"
       ],
       "exported": true,
@@ -2674,8 +2678,23 @@
       "propsSource": "destructuring",
       "props": [
         {
+          "name": "activeIndex",
+          "optional": true,
+          "defaultValue": "$bindable(-1)"
+        },
+        {
           "name": "children",
           "optional": false
+        },
+        {
+          "name": "presentation",
+          "optional": true,
+          "defaultValue": "'column'"
+        },
+        {
+          "name": "progress",
+          "optional": true,
+          "defaultValue": "$bindable(0)"
         },
         {
           "name": "sections",
@@ -2689,32 +2708,52 @@
       ],
       "tokensUsed": [
         "--accent",
+        "--bench-bg",
         "--bg-glass-solid",
         "--boiler-navy",
+        "--border-hairline",
         "--brass-amber",
         "--dot-colour",
         "--flange-plum",
         "--font-mono",
+        "--fs-sm",
+        "--fw-regular",
         "--gantry-orange",
         "--girder-red",
         "--label-ease",
         "--label-steps",
+        "--lamp-colour",
+        "--led-off",
+        "--lit-lamp-colour",
         "--page-padding-x",
         "--page-padding-x-mobile",
         "--pinion-pink",
         "--pulley-blue",
+        "--radius-2",
         "--radius-pill",
+        "--rail-boundary-offset",
         "--rail-end-pad",
+        "--rail-sheet-inset",
+        "--rail-sheet-left",
         "--rail-thickness",
         "--rail-type-step",
         "--shade-rgb",
+        "--shadow-2",
+        "--shadow-lamp-lens",
+        "--shadow-lamp-lens-lit",
+        "--shadow-rail-lamp",
         "--space-1",
+        "--space-10",
+        "--space-2",
         "--space-3",
         "--space-4",
+        "--space-9",
+        "--surface-page",
         "--tab-shift-y",
         "--text-muted",
         "--text-secondary",
         "--toolbox-olive",
+        "--transition-fast",
         "--transition-slow",
         "--z-sticky"
       ],
@@ -2877,6 +2916,10 @@
           "name": "html",
           "optional": true,
           "defaultValue": "''"
+        },
+        {
+          "name": "id",
+          "optional": false
         },
         {
           "name": "kicker",
@@ -4055,7 +4098,9 @@
         "--text-secondary"
       ],
       "composes": [],
-      "importedBy": [],
+      "importedBy": [
+        "ReadingFloor"
+      ],
       "exported": true,
       "summary": "horizontal progress track. Determinate when value (0–100) is given; omit it (or pass null) for an indeterminate sliding bar. The fill uses the accent by default; tone switches it to a state colour. An optional label row shows the caption and the percentage.",
       "usage": "  <ProgressBar value={64} label=\"Uploading\" showValue />\n  <ProgressBar tone=\"success\" value={100} />\n  <ProgressBar />",
@@ -4402,6 +4447,76 @@
       "layoutTier": null
     },
     {
+      "name": "ReadingFloor",
+      "category": "blog",
+      "path": "src/components/blog/ReadingFloor.svelte",
+      "propsSource": "interface",
+      "props": [
+        {
+          "name": "activeIndex",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "backHref",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "backLabel",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "contentsOpen",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "onOpenContents",
+          "type": "() => void",
+          "optional": false
+        },
+        {
+          "name": "progress",
+          "type": "number",
+          "optional": false
+        },
+        {
+          "name": "sections",
+          "type": "LongreadSectionInfo[]",
+          "optional": false
+        }
+      ],
+      "tokensUsed": [
+        "--bg-primary",
+        "--font-mono",
+        "--reading-floor-clearance",
+        "--reading-floor-height",
+        "--space-2",
+        "--space-3",
+        "--space-8",
+        "--text-micro",
+        "--transition-fast",
+        "--transition-normal",
+        "--z-sticky"
+      ],
+      "composes": [
+        "BackLink",
+        "Button",
+        "Icon",
+        "ProgressBar"
+      ],
+      "importedBy": [],
+      "exported": true,
+      "summary": "the phone's reading dock: a band fixed to the foot of the viewport, shared with the site's agent pill, holding the reading progress, the way back and the contents control.",
+      "usage": "  <ReadingFloor {progress} {activeIndex} {sections} backHref=\"/blog\"\n    {contentsOpen} onOpenContents={() => (contentsOpen = true)} />",
+      "features": [],
+      "storyId": "blog-readingfloor",
+      "lifecycle": null,
+      "layoutTier": null
+    },
+    {
       "name": "ReleaseBody",
       "category": "tasks",
       "path": "src/components/tasks/ReleaseBody.svelte",
@@ -4548,6 +4663,60 @@
         "Responsive spacing on mobile"
       ],
       "storyId": "headers-sectionheader",
+      "lifecycle": null,
+      "layoutTier": null
+    },
+    {
+      "name": "SectionList",
+      "category": "blog",
+      "path": "src/components/blog/SectionList.svelte",
+      "propsSource": "interface",
+      "props": [
+        {
+          "name": "activeIndex",
+          "type": "number",
+          "optional": true
+        },
+        {
+          "name": "class",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "onPick",
+          "type": "(index: number) => void",
+          "optional": true
+        },
+        {
+          "name": "sections",
+          "type": "SectionListEntry[]",
+          "optional": false
+        }
+      ],
+      "tokensUsed": [
+        "--accent",
+        "--border-hairline",
+        "--focus-ring",
+        "--font-body",
+        "--font-mono",
+        "--input-height-lg",
+        "--lh-snug",
+        "--space-2",
+        "--space-6",
+        "--text-caption",
+        "--text-micro",
+        "--text-muted",
+        "--text-primary",
+        "--text-secondary",
+        "--transition-fast"
+      ],
+      "composes": [],
+      "importedBy": [],
+      "exported": true,
+      "summary": "the article's contents as a numbered list of in-page links, with the section under the reading line marked current.",
+      "usage": "  <SectionList {sections} {activeIndex} onPick={jumpTo} />",
+      "features": [],
+      "storyId": "blog-sectionlist",
       "lifecycle": null,
       "layoutTier": null
     },
@@ -6020,6 +6189,7 @@
         "Portrait",
         "ProgressBar",
         "RangeSlider",
+        "SectionList",
         "SelectField",
         "Spinner",
         "StatCard",
@@ -6239,7 +6409,9 @@
       "category": "colours",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -6378,6 +6550,7 @@
         "PushedScreen",
         "Radio",
         "RangeSlider",
+        "ReadingFloor",
         "SelectField",
         "Skeleton",
         "StatCard",
@@ -6463,6 +6636,7 @@
         "Footer",
         "Header",
         "JsonField",
+        "LongreadArticle",
         "Menu",
         "Modal",
         "MultiSelectField",
@@ -6471,6 +6645,7 @@
         "Popover",
         "Radio",
         "RangeSlider",
+        "SectionList",
         "SelectField",
         "SkeletonCard",
         "SkeletonHero",
@@ -7874,6 +8049,7 @@
       "referencedBy": [
         "Button",
         "Input",
+        "SectionList",
         "Textarea",
         "Toggle"
       ],
@@ -7908,6 +8084,7 @@
         "Popover",
         "ProgressBar",
         "Radio",
+        "SectionList",
         "Tabs"
       ],
       "usedInTokenLayer": true,
@@ -7987,7 +8164,9 @@
         "ProgressBar",
         "ProjectBody",
         "PushedScreen",
+        "ReadingFloor",
         "ReleaseBody",
+        "SectionList",
         "Select",
         "StatusMark",
         "Tabs",
@@ -7997,7 +8176,7 @@
         "ToggleGroup"
       ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     },
     {
@@ -8297,7 +8476,9 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -8429,7 +8610,8 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "Badge"
+        "Badge",
+        "LongreadArticle"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -8976,7 +9158,8 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
-        "Button"
+        "Button",
+        "SectionList"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -9025,7 +9208,9 @@
       "category": "elevation",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -9097,7 +9282,9 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "SectionList"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9223,7 +9410,7 @@
         "PageSection"
       ],
       "usedInTokenLayer": false,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     },
     {
@@ -9239,7 +9426,7 @@
         "PageSection"
       ],
       "usedInTokenLayer": false,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     },
     {
@@ -9369,7 +9556,9 @@
       "category": "spacing",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -9670,7 +9859,8 @@
       "surface": "public",
       "layer": "primitive",
       "referencedBy": [
-        "Card"
+        "Card",
+        "LongreadArticle"
       ],
       "usedInTokenLayer": true,
       "usedInStories": false,
@@ -9810,6 +10000,34 @@
       }
     },
     {
+      "name": "--shadow-lamp-lens",
+      "value": "inset 0 1px 1px rgba(var(--sheen-rgb), 0.14), inset 0 -1px 2px rgba(var(--shade-rgb), 0.45), 0 0 0 1px rgba(var(--shade-rgb), 0.35)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "LongreadArticle"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
+      "name": "--shadow-lamp-lens-lit",
+      "value": "inset 0 1px 1px rgba(var(--sheen-rgb), 0.4), inset 0 -1px 2px rgba(var(--shade-rgb), 0.45)",
+      "file": "themes/meccano.css",
+      "category": "elevation",
+      "surface": "public",
+      "layer": "semantic",
+      "referencedBy": [
+        "LongreadArticle"
+      ],
+      "usedInTokenLayer": false,
+      "usedInStories": false,
+      "lifecycle": null
+    },
+    {
       "name": "--shadow-modal",
       "value": "var(--shadow-3)",
       "file": "themes/meccano.css",
@@ -9865,7 +10083,9 @@
       "category": "elevation",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -10242,6 +10462,7 @@
       "surface": "public",
       "layer": "semantic",
       "referencedBy": [
+        "LongreadArticle",
         "PageHeader",
         "SectionHeader",
         "TaskCell"
@@ -10283,6 +10504,7 @@
         "Header",
         "Input",
         "JsonField",
+        "LongreadArticle",
         "LongreadProse",
         "Menu",
         "Modal",
@@ -10296,8 +10518,10 @@
         "ProgressBar",
         "ProjectBody",
         "PushedScreen",
+        "ReadingFloor",
         "ReleaseBody",
         "SectionHeader",
+        "SectionList",
         "Select",
         "SelectField",
         "Skeleton",
@@ -10345,6 +10569,7 @@
         "ProjectBody",
         "Radio",
         "RadioGroup",
+        "ReadingFloor",
         "ReleaseBody",
         "SectionHeader",
         "Select",
@@ -10478,11 +10703,12 @@
         "PageHeader",
         "PeekSheet",
         "SectionHeader",
+        "SectionList",
         "SkeletonHero",
         "Tabs"
       ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     },
     {
@@ -10519,10 +10745,11 @@
         "Footer",
         "MainLayout",
         "PageHeader",
+        "ReadingFloor",
         "SectionHeader"
       ],
       "usedInTokenLayer": true,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     },
     {
@@ -10532,7 +10759,9 @@
       "category": "spacing",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": false,
       "usedInStories": false,
       "lifecycle": {
@@ -10803,7 +11032,9 @@
       "category": "colours",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadArticle"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
@@ -10909,6 +11140,7 @@
         "LongreadStatBand",
         "ReleaseBody",
         "ScaleControl",
+        "SectionList",
         "StatusMark"
       ],
       "usedInTokenLayer": false,
@@ -11004,12 +11236,14 @@
         "PeekSheet",
         "ProjectBody",
         "PushedScreen",
+        "ReadingFloor",
         "ReleaseBody",
+        "SectionList",
         "TaskCard",
         "TaskCell"
       ],
       "usedInTokenLayer": false,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": {
         "status": "live",
         "replacement": null,
@@ -11059,6 +11293,7 @@
         "PushedScreen",
         "Radio",
         "ReleaseBody",
+        "SectionList",
         "Select",
         "SelectField",
         "StatusBadge",
@@ -11128,6 +11363,7 @@
         "Radio",
         "ReleaseBody",
         "SectionHeader",
+        "SectionList",
         "Select",
         "SelectField",
         "StatCard",
@@ -11190,6 +11426,7 @@
         "Radio",
         "ReleaseBody",
         "SectionHeader",
+        "SectionList",
         "Select",
         "SelectField",
         "StatCard",
@@ -11280,12 +11517,15 @@
         "DateRangePicker",
         "DeleteConfirmModal",
         "Header",
+        "LongreadArticle",
         "LongreadFigure",
         "LongreadProse",
         "Menu",
         "Modal",
         "Pagination",
         "RangeSlider",
+        "ReadingFloor",
+        "SectionList",
         "Select",
         "Toast",
         "Toggle",
@@ -11314,6 +11554,7 @@
         "Input",
         "Modal",
         "Portrait",
+        "ReadingFloor",
         "Select",
         "Tabs",
         "TaskDeck",
@@ -11598,7 +11839,8 @@
       "layer": "semantic",
       "referencedBy": [
         "BackLink",
-        "LongreadArticle"
+        "LongreadArticle",
+        "ReadingFloor"
       ],
       "usedInTokenLayer": false,
       "usedInStories": false,
@@ -11631,7 +11873,7 @@
         "PeekSheet"
       ],
       "usedInTokenLayer": false,
-      "usedInStories": false,
+      "usedInStories": true,
       "lifecycle": null
     }
   ],

@@ -6,6 +6,8 @@
 	import LongreadProse from '../../components/blog/LongreadProse.svelte';
 	import LongreadFigure from '../../components/blog/LongreadFigure.svelte';
 	import LongreadStatBand from '../../components/blog/LongreadStatBand.svelte';
+	import LongreadProseSection from '../../components/blog/LongreadProseSection.svelte';
+	import { imagesHtml, readingLede, readingSections } from './readingFixture';
 
 	const { Story } = defineMeta({
 		title: 'Blog/Longread',
@@ -69,3 +71,49 @@
 		</LongreadSection>
 	</LongreadArticle>
 </Story>
+
+<!-- The raised sheet with the lamp rail (AL-034). View it at 1440 wide: from
+     80rem the rail's lamps sit on the sheet's left edge, centred until the
+     sheet's foot reaches them, then travelling with it. Below 80rem the sheet
+     is the plain column and the rail hides, for ReadingFloor to take over. -->
+<Story name="Sheet" asChild>
+	<div class="story-sheet-ground">
+		<LongreadArticle
+			presentation="sheet"
+			sections={readingSections.map(({ kicker }) => ({ kicker }))}
+		>
+			<LongreadHero
+				kicker="Essay"
+				title="I'm building a personal agent"
+				standfirst="Notes on trust, ledgers and the page that explains them."
+				meta={['2026-10-30', '8 min read']}
+			/>
+			<LongreadProse html={readingLede} />
+			{#each readingSections as section (section.id)}
+				<LongreadProseSection id={section.id} kicker={section.kicker} html={section.html} />
+			{/each}
+		</LongreadArticle>
+		<p class="story-after-sheet">Related reading follows the sheet's foot.</p>
+	</div>
+</Story>
+
+<!-- Images keep their natural size up to the measure and never grow taller
+     than the viewport; a figure's caption sits under its image. -->
+<Story name="Images" asChild>
+	<LongreadArticle sections={[{ kicker: 'Images' }]} showProgress={false}>
+		<LongreadProse html={imagesHtml} />
+	</LongreadArticle>
+</Story>
+
+<style>
+	.story-sheet-ground {
+		padding: var(--space-8) var(--page-padding-x);
+	}
+
+	.story-after-sheet {
+		min-height: 100vh;
+		padding-top: var(--space-8);
+		text-align: center;
+		color: var(--text-muted);
+	}
+</style>

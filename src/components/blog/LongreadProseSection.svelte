@@ -25,6 +25,8 @@
 		/** Rail label for this section — unique within the article (it doubles
 		    as the render key upstream). */
 		kicker: string;
+		/** Anchor for in-page contents links (SectionList) and deep links. */
+		id?: string;
 		/**
 		 * Pre-sanitised HTML only — passed straight through to LongreadProse,
 		 * which injects it via {@html} and performs no sanitisation of its
@@ -38,7 +40,7 @@
 		children?: Snippet;
 	}
 
-	let { kicker, html = '', children }: Props = $props();
+	let { kicker, id, html = '', children }: Props = $props();
 
 	const context = getLongreadContext();
 	let root = $state<HTMLElement>();
@@ -51,7 +53,7 @@
 	});
 </script>
 
-<section bind:this={root} class="longread-prose-section" aria-label={kicker}>
+<section {id} bind:this={root} class="longread-prose-section" aria-label={kicker}>
 	<LongreadProse {html} {children} />
 </section>
 

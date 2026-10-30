@@ -17,3 +17,7 @@ export { default as LongreadFigure } from './LongreadFigure.svelte';
 export { default as LongreadStatBand } from './LongreadStatBand.svelte';
 export type { LongreadStat } from './LongreadStatBand.svelte';
 export type { LongreadContext } from './context.js';
+export { default as ReadingFloor } from './ReadingFloor.svelte';
+export type { ReadingFloorProps } from './ReadingFloor.svelte';
+export { default as SectionList } from './SectionList.svelte';
+export type { SectionListEntry, SectionListProps } from './SectionList.svelte';
