@@ -4492,6 +4492,7 @@
         "--bg-primary",
         "--font-monospace",
         "--reading-floor-clearance",
+        "--reading-floor-clearance-end",
         "--reading-floor-height",
         "--space-2",
         "--space-3",

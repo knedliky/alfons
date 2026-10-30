@@ -34,17 +34,26 @@
 	 * restoration still works, which the prototype's inner reading viewport
 	 * broke.
 	 *
-	 * The pill already claims the band's bottom-left corner on every page, so
-	 * the controls start to the right of it and the progress runs as a
-	 * hairline along the band's top edge. While the reader scrolls forward
+	 * The pill already claims one of the band's bottom corners on every page,
+	 * so the controls keep clear of it on that side and the progress runs as
+	 * a hairline along the band's top edge. While the reader scrolls forward
 	 * the controls sink and only the hairline stays; scrolling back, the top
 	 * and the end raise them again. Sunk controls are inert, so they leave
 	 * the tab order with the picture.
 	 *
-	 * Geometry comes from two custom properties the page sets on an ancestor:
-	 *   --reading-floor-height     the band's height (default --space-8)
-	 *   --reading-floor-clearance  where the controls start from the left,
-	 *                              past the pill (default --space-3)
+	 * Geometry comes from custom properties the page sets on an ancestor:
+	 *   --reading-floor-height         the band's height (default --space-8)
+	 *   --reading-floor-clearance      where the controls start from the left,
+	 *                                  past a pill on the left (default --space-3)
+	 *   --reading-floor-clearance-end  where the controls end from the right,
+	 *                                  past a pill on the right (default --space-3)
+	 * Set only the clearance on the pill's side. The controls sit at the
+	 * right-hand end of what is left, so a pill on the right puts them just
+	 * to its left. That leaves them little room on a narrow phone, so when
+	 * the dock is narrower than both controls at full width the contents
+	 * button drops its visible position and keeps the menu icon; the
+	 * position stays in its accessible name and the hairline still shows
+	 * how far the reader has come.
 	 *
 	 * From 80rem up the floor and its reserve are gone: LongreadArticle's
 	 * sheet rail takes over there, at the same breakpoint.
@@ -125,21 +134,23 @@
 	</div>
 
 	<nav class="floor-dock" class:floor-dock-sunk={!raised} inert={!raised} aria-label="Reading dock">
-		<BackLink href={backHref} label={backLabel} />
-		<Button
-			variant="secondary"
-			size="sm"
-			type="button"
-			aria-haspopup="dialog"
-			aria-expanded={contentsOpen}
-			aria-label="Contents, {positionDescription}"
-			onclick={onOpenContents}
-		>
-			<span class="contents-label">
-				<Icon name="menu" size="sm" />
-				{positionLabel}
-			</span>
-		</Button>
+		<div class="floor-controls">
+			<BackLink href={backHref} label={backLabel} />
+			<Button
+				variant="secondary"
+				size="sm"
+				type="button"
+				aria-haspopup="dialog"
+				aria-expanded={contentsOpen}
+				aria-label="Contents, {positionDescription}"
+				onclick={onOpenContents}
+			>
+				<span class="contents-label">
+					<Icon name="menu" size="sm" />
+					<span class="contents-position">{positionLabel}</span>
+				</span>
+			</Button>
+		</div>
 	</nav>
 </div>
 
@@ -174,15 +185,20 @@
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		right: var(--space-3);
+		right: var(--reading-floor-clearance-end, var(--space-3));
 		left: var(--reading-floor-clearance, var(--space-3));
+		container: reading-dock / inline-size;
+		transition:
+			transform var(--transition-normal),
+			opacity var(--transition-normal);
+	}
+
+	.floor-controls {
+		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 		gap: var(--space-3);
-		transition:
-			transform var(--transition-normal),
-			opacity var(--transition-normal);
 	}
 
 	.floor-dock-sunk {
@@ -196,6 +212,20 @@
 		gap: var(--space-2);
 		font-family: var(--font-monospace);
 		font-size: var(--text-micro);
+	}
+
+	/* Narrower than the back link and the contents button side by side at
+	   full width (about 150 px with the default labels), which a pill on the
+	   right leaves on a 375 px phone. The query asks about the dock itself,
+	   so it holds whichever side the clearance comes from. */
+	@container reading-dock (width < 9.5rem) {
+		.floor-controls {
+			gap: var(--space-2);
+		}
+
+		.contents-position {
+			display: none;
+		}
 	}
 
 	/* LongreadArticle's sheet rail takes over at this width; keep the two
