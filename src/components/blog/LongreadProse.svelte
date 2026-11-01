@@ -71,8 +71,25 @@
 		padding-left: var(--space-5);
 	}
 
+	/* The markers are set here rather than left to the browser default,
+	   because consumers load Tailwind's preflight, which strips list-style
+	   from every ul and ol; a numbered list in an essay carries meaning in
+	   its numbers (AL-BUG-004). */
+	.longread-prose :global(ul) {
+		list-style: disc outside;
+	}
+
+	.longread-prose :global(ol) {
+		list-style: decimal outside;
+	}
+
 	.longread-prose :global(li) {
 		margin: 0 0 var(--space-2);
+	}
+
+	.longread-prose :global(li::marker) {
+		color: var(--accent);
+		font-weight: var(--fw-bold);
 	}
 
 	.longread-prose :global(strong) {

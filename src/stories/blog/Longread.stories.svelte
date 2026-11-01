@@ -32,6 +32,20 @@
 	const proseC = `
 		<p>Stat bands and figures slot between prose blocks as full-width interludes.</p>`;
 
+	const listsHtml = `
+		<p>A bulleted list, for points whose order does not matter:</p>
+		<ul>
+			<li>The ledger holds the plan of record.</li>
+			<li>Each task runs in its own worktree session.</li>
+			<li>A seal judges every criterion against main.</li>
+		</ul>
+		<p>A numbered list, where the numbers carry the order:</p>
+		<ol>
+			<li>File the task before the session starts.</li>
+			<li>Build inside the declared files.</li>
+			<li>Land on main, then seal against the commit main holds.</li>
+		</ol>`;
+
 	const stats = [
 		{ value: '923', label: 'occupations scored' },
 		{ value: '19k', label: 'tasks assessed' },
@@ -102,6 +116,14 @@
 <Story name="Images" asChild>
 	<LongreadArticle sections={[{ kicker: 'Images' }]} showProgress={false}>
 		<LongreadProse html={imagesHtml} />
+	</LongreadArticle>
+</Story>
+
+<!-- Lists keep their bullets and numbers, with accent markers, even under
+     Tailwind's preflight, which strips list-style in every consumer. -->
+<Story name="Lists" asChild>
+	<LongreadArticle sections={[{ kicker: 'Lists' }]} showProgress={false}>
+		<LongreadProse html={listsHtml} />
 	</LongreadArticle>
 </Story>
 

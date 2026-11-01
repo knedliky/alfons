@@ -2877,6 +2877,7 @@
         "--card-border",
         "--font-display",
         "--font-monospace",
+        "--fw-bold",
         "--radius-surface",
         "--space-2",
         "--space-3",
@@ -8553,7 +8554,9 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadProse"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
