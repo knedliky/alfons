@@ -402,17 +402,23 @@
 			inset 0 1px 1px rgba(var(--sheen-rgb), 0.3), inset 0 -3px 6px rgba(var(--shade-rgb), 0.45);
 
 		/* === LAMPS AND GROOVES — panel details ===========================
-		   An unlit indicator lamp; a rail lamp that glows in --lamp-colour
-		   (the accent by default) at roughly a third of the editorial glow's
-		   falloff, so a 6px stop reads as the same light source without
-		   flooding its neighbours; and a recessed rule, whose dark upper cut
-		   and faint lower highlight make a one-pixel separator read as a
-		   groove machined into the surface. */
+		   An unlit indicator lamp; a rail lamp that glows in the lamp's own
+		   `color` at roughly a third of the editorial glow's falloff, so a
+		   6px stop reads as the same light source without flooding its
+		   neighbours; and a recessed rule, whose dark upper cut and faint
+		   lower highlight make a one-pixel separator read as a groove
+		   machined into the surface.
+		   The glow mixes currentColor rather than a custom property because
+		   this token is declared here, on the theme root, and a var() in it
+		   is substituted here too: a --lamp-colour set on the lamp never
+		   reached it, so every lamp glowed in the accent (AL-BUG-005).
+		   currentColor stays a keyword until the lamp paints its shadow, so
+		   the lamp sets `color` to choose its glow. */
 		--led-off: radial-gradient(circle at 38% 30%, var(--led-off-face), var(--led-off-edge) 72%);
 		--shadow-rail-lamp:
-			0 0 4px 1px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 82%),
-			0 0 11px 3px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 92%),
-			0 0 20px 7px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 97%);
+			0 0 4px 1px color-mix(in oklab, currentColor, transparent 82%),
+			0 0 11px 3px color-mix(in oklab, currentColor, transparent 92%),
+			0 0 20px 7px color-mix(in oklab, currentColor, transparent 97%);
 		/* The lamp's recessed lens: a sheen catch on the upper lip, shade
 		   pooled in the lower one. Unlit, a dark bezel ring seats it in the
 		   panel; lit, the brighter catch reads as glass over a lit filament,

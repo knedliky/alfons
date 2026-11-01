@@ -2724,7 +2724,6 @@
         "--label-steps",
         "--lamp-colour",
         "--led-off",
-        "--lit-lamp-colour",
         "--page-padding-x",
         "--page-padding-x-mobile",
         "--pinion-pink",
@@ -10082,7 +10081,7 @@
     },
     {
       "name": "--shadow-rail-lamp",
-      "value": "0 0 4px 1px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 82%), 0 0 11px 3px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 92%), 0 0 20px 7px color-mix(in oklab, var(--lamp-colour, var(--accent)), transparent 97%)",
+      "value": "0 0 4px 1px color-mix(in oklab, currentColor, transparent 82%), 0 0 11px 3px color-mix(in oklab, currentColor, transparent 92%), 0 0 20px 7px color-mix(in oklab, currentColor, transparent 97%)",
       "file": "themes/meccano.css",
       "category": "elevation",
       "surface": "public",

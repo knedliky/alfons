@@ -585,19 +585,19 @@
 		}
 
 		/* A lit lamp is its own section colour, brightest where the lens
-		   catches the light, with the rail-lamp glow around it. The glow is
-		   the accent on every lamp: --shadow-rail-lamp is declared on :root,
-		   so its var(--lamp-colour) resolves there and setting --lamp-colour
-		   here cannot reach it. That matches the a6 rail and Atlas today. */
+		   catches the light, with the rail-lamp glow around it. The glow
+		   takes the lamp's `color`, so `color` carries the section colour
+		   too; the lamp holds no text for it to paint. */
 		.longread-article-sheet .rail-item:hover .rail-square,
 		.longread-article-sheet .rail-item:focus-visible .rail-square,
 		.longread-article-sheet .rail-item.rail-item-active .rail-square {
-			--lit-lamp-colour: var(--dot-colour, var(--accent));
+			--lamp-colour: var(--dot-colour, var(--accent));
 
+			color: var(--lamp-colour);
 			background: radial-gradient(
 				circle at 38% 30%,
-				color-mix(in oklab, var(--lit-lamp-colour), white 50%),
-				var(--lit-lamp-colour) 72%
+				color-mix(in oklab, var(--lamp-colour), white 50%),
+				var(--lamp-colour) 72%
 			);
 			opacity: 1;
 			transform: none;
