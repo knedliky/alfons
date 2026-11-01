@@ -2,7 +2,7 @@
 	/**
 	 * LongreadSection — one passage of a LongreadArticle.
 	 *
-	 * Renders a centred serif title and a measured prose column. The section
+	 * Renders a centred display title and a measured prose column. The section
 	 * dims to background opacity until it takes scroll focus. Running text is
 	 * --text-primary — supporting greys are reserved for captions and labels,
 	 * never body copy. Registration is browser-only ($effect), so SSR output
@@ -81,16 +81,14 @@
 		width: 100%;
 	}
 
-	/* Template-wide prose: reading serif (IBM Plex Serif via --font-display),
-	   primary text, comfortable measure and leading. Longreads read as an
-	   editorial serif column; pages style their own specialised blocks
-	   (asides, tables, lists). */
+	/* Template-wide prose: the body face, primary text, comfortable measure
+	   and leading. The title above keeps the display face; running text
+	   does not, because Redaction 35 is drawn for headings (AL-BUG-007).
+	   Pages style their own specialised blocks (asides, tables, lists). */
 	.section-passage :global(p) {
-		font-family: var(--font-display);
+		font-family: var(--font-body);
 		font-size: var(--text-body);
-		/* Serif reads tighter than sans at the same leading; 1.85 gives the
-		   editorial column room to breathe. */
-		line-height: 1.85;
+		line-height: var(--lh-body);
 		color: var(--text-primary);
 		margin: 0 0 var(--space-5);
 	}

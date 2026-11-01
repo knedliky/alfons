@@ -1,10 +1,10 @@
 <script lang="ts">
 	/**
-	 * LongreadProse — the flat longread body: the template's serif reading
-	 * styles applied over sanitised article HTML.
+	 * LongreadProse — the flat longread body: the template's reading styles
+	 * applied over sanitised article HTML.
 	 *
-	 * Mirrors LongreadSection's passage CSS (reading serif via --font-display,
-	 * primary text, 1.85 leading, 42rem measure) without the numbered-section
+	 * Mirrors LongreadSection's passage CSS (body copy in --font-body,
+	 * primary text, --lh-body leading, 42rem measure) without the numbered-section
 	 * treatment — no divider, no scroll-focus dimming (D-111). The HTML it
 	 * injects must already be sanitised server-side (renderArticleBody in
 	 * $lib/server/markdown); this component never receives raw markdown or
@@ -49,15 +49,16 @@
 	}
 
 	/* Template-wide prose mirrored from LongreadSection's passage rules:
-	   reading serif (IBM Plex Serif via --font-display), primary text, and
-	   1.85 leading — serif reads tighter than sans at the same leading, so
-	   the editorial column needs the extra room to breathe. Body copy is
-	   never a supporting grey. */
+	   running text is set in the body face, not the display face. Since
+	   D-245 --font-display is Redaction 35, a face drawn for headings that
+	   tires the eye over a whole essay (AL-BUG-007). The 1.85 leading this
+	   once carried was tuned for a reading serif; a sans takes --lh-body.
+	   Body copy is never a supporting grey. */
 	.longread-prose :global(p),
 	.longread-prose :global(li) {
-		font-family: var(--font-display);
+		font-family: var(--font-body);
 		font-size: var(--text-body);
-		line-height: 1.85;
+		line-height: var(--lh-body);
 		color: var(--text-primary);
 	}
 
@@ -97,7 +98,7 @@
 		font-weight: 600;
 	}
 
-	/* Headings share the display serif; the h2 carries the between-passage
+	/* Headings take the display face; the h2 carries the between-passage
 	   rhythm the numbered section titles used to provide. */
 	.longread-prose :global(h2) {
 		font-family: var(--font-display);
@@ -169,7 +170,9 @@
 		margin-top: var(--space-3);
 	}
 
-	/* Pull-quote idiom: an accent rule with italic serif at lead size. */
+	/* Pull-quote idiom: an accent rule with the display face in italic at
+	   lead size. The family is restated on the paragraph because the body
+	   rule above also matches a quote's p. */
 	.longread-prose :global(blockquote) {
 		border-left: 3px solid var(--accent);
 		margin: var(--space-6) 0;
@@ -178,6 +181,7 @@
 	}
 
 	.longread-prose :global(blockquote p) {
+		font-family: var(--font-display);
 		font-size: var(--text-lead);
 		line-height: 1.6;
 		margin: 0 0 var(--space-3);

@@ -53,8 +53,10 @@
 		margin: 0 0 var(--space-5);
 	}
 
+	/* The standfirst is body copy, so it takes the body face; only the
+	   title is display (AL-BUG-007). */
 	.hero-standfirst {
-		font-family: var(--font-display);
+		font-family: var(--font-body);
 		font-size: var(--text-lead);
 		line-height: 1.55;
 		color: var(--text-primary);

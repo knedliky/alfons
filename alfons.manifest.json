@@ -2834,6 +2834,7 @@
         }
       ],
       "tokensUsed": [
+        "--font-body",
         "--font-display",
         "--font-monospace",
         "--space-4",
@@ -2874,9 +2875,11 @@
         "--accent",
         "--card-bg",
         "--card-border",
+        "--font-body",
         "--font-display",
         "--font-monospace",
         "--fw-bold",
+        "--lh-body",
         "--radius-surface",
         "--space-2",
         "--space-3",
@@ -2895,7 +2898,7 @@
         "LongreadProseSection"
       ],
       "exported": true,
-      "summary": "the flat longread body: the template's serif reading styles applied over sanitised article HTML.",
+      "summary": "the flat longread body: the template's reading styles applied over sanitised article HTML.",
       "usage": null,
       "features": [],
       "storyId": null,
@@ -2962,7 +2965,9 @@
       ],
       "tokensUsed": [
         "--dur-slow",
+        "--font-body",
         "--font-display",
+        "--lh-body",
         "--scroll-margin-top",
         "--space-5",
         "--space-7",
@@ -8080,6 +8085,9 @@
         "Chip",
         "Footer",
         "Header",
+        "LongreadHero",
+        "LongreadProse",
+        "LongreadSection",
         "Menu",
         "PageHeader",
         "Popover",
@@ -9267,7 +9275,10 @@
       "category": "typography",
       "surface": "public",
       "layer": "semantic",
-      "referencedBy": [],
+      "referencedBy": [
+        "LongreadProse",
+        "LongreadSection"
+      ],
       "usedInTokenLayer": true,
       "usedInStories": false,
       "lifecycle": {
