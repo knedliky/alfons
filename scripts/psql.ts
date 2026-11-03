@@ -78,10 +78,15 @@ export function writerUrl(): string {
 
 // The URL reaches psql as an argument, so it is visible to `ps` on this
 // machine while psql runs; the shared apply script accepts the same.
+// --quiet, because -At still prints a command tag such as `INSERT 0 0` after
+// an insert ... returning that matched nothing, and a caller counting
+// returned lines would count the tag as a row.
 function run(url: string, sql: string): string {
-	const result = spawnSync(resolvePsql(), [url, '-At', '-v', 'ON_ERROR_STOP=1', '-c', sql], {
-		encoding: 'utf8'
-	});
+	const result = spawnSync(
+		resolvePsql(),
+		[url, '--quiet', '-At', '-v', 'ON_ERROR_STOP=1', '-c', sql],
+		{ encoding: 'utf8' }
+	);
 	if (result.error) throw result.error;
 	if (result.status !== 0) {
 		throw new Error(`psql exited ${result.status}: ${result.stderr.trim()}`);

@@ -29,8 +29,9 @@ manifest, the MCP answers and the catalogue follow from it.
 # Regenerate the manifest, then build the library into dist/
 bun run build
 
-# Regenerate alfons.manifest.json alone. Needs the context database: the
-# manifest joins authored lifecycle from the alfons schema (D-162).
+# Regenerate alfons.manifest.json alone. Needs the cloud database: the
+# manifest joins authored lifecycle from the alfons schema (D-162). Reads as
+# ledger_reader — see "Where alfons lives" below.
 bun run manifest
 
 # Verify the derived half of the manifest matches the tree. Needs no database,
@@ -38,9 +39,9 @@ bun run manifest
 bun run manifest:check
 
 # Teach the database the token and component names the tree now carries, so a
-# lifecycle replacement has something to reference. Needs a writer connection.
+# lifecycle replacement has something to reference. Writes as alfons_writer.
 # READS THE MANIFEST, NOT THE TREE — see the ordering note below.
-ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync
+bun run lifecycle:sync
 
 # Normally called by the project hook. Run directly to recover or to refresh
 # after making the same change through a client that does not execute hooks.
@@ -62,11 +63,15 @@ bun run build-storybook
 After changing tokens, run them in exactly this order:
 
 ```bash
-bun run format                                                    # 1
-bun run manifest                                                  # 2
-ALFONS_DATABASE_URL='postgresql:///context' bun run lifecycle:sync # 3
-psql-18 -d context -f migrations/NNNN_whatever.sql                # 4
+bun run format                                                          # 1
+bun run manifest                                                        # 2
+bun run lifecycle:sync                                                  # 3
+~/.claude/scripts/apply-migration.sh supabase/migrations/<version>_<verb>_<object>.sql  # 4
 ```
+
+Step 4 is a cloud migration carrying the lifecycle rows, written and applied
+under D-249 (load the `database-changes` skill first); the apply script needs
+`MOTIVKA_DATABASE_URL` from the Keychain item `motivka-database-url`.
 
 Both possible inversions fail confusingly rather than loudly, which is why
 they are written down.
@@ -285,8 +290,31 @@ recomputes these alone and compares; it needs no database, which is why CI runs 
 
 **Authored** — whether a token is `live`, `deprecated` or `retired`, what replaced it, and
 the decision that said so. Nothing can recover this from a parse: a retired token and an
-unadopted one look identical. These live in the `alfons` schema in the context database,
-under `migrations/`, and `bun run manifest` joins them on at build time.
+unadopted one look identical. These live in the `alfons` schema in the cloud database,
+and `bun run manifest` joins them on at build time.
+
+### Where alfons lives
+
+Since 2026-11-02 (AL-037, D-251) the `alfons` schema is in the Supabase project `motivka`,
+created by `supabase/migrations/`. The local `context` database keeps a frozen copy:
+`migrations/0015` refuses every write to it, the superuser's included, and `context_reader`
+can no longer read it. `migrations/0001`–`0015` are history; never add a sixteenth.
+
+`scripts/psql.ts` holds the two connections, each from an environment variable or else
+the Keychain:
+
+| Path   | Role            | Variable              | Keychain item                |
+| ------ | --------------- | --------------------- | ---------------------------- |
+| Reads  | `ledger_reader` | `LEDGER_DATABASE_URL` | `ledger-reader-database-url` |
+| Writes | `alfons_writer` | `ALFONS_DATABASE_URL` | `alfons-database-url`        |
+
+Reads go through `ledger_reader` because the manifest joins `alfons.design_decisions` onto
+`ledger_api.decisions_v1` in one query, and that role sees both. Every alfons table has
+row-level security on, with one select policy for `ledger_reader`; any other non-owner role
+sees **zero rows and no error**, and the generator treats an empty lifecycle as legal. So
+probe a new connection by asserting row counts, never by seeing that a query ran. A session
+whose `LEDGER_DATABASE_URL` still names `context_reader` fails loudly with "permission denied
+for schema alfons": open a fresh shell, or unset it so the Keychain is used.
 
 Postgres is therefore a **build-time dependency and never a runtime one**. The MCP server
 and every consumer read the emitted file. Never make a consumer reach the database.
